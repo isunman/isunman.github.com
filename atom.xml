@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-25T20:25:45.048Z</updated>
+  <updated>2016-02-25T20:36:07.348Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -16,13 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>用Hexo和github搭建博客（2）：了解hexo</title>
+    <title>用Hexo和github搭建博客（2）：了解Hexo</title>
     <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step2/"/>
     <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step2/</id>
-    <published>2016-02-25T20:26:23.632Z</published>
-    <updated>2016-02-25T20:25:45.048Z</updated>
+    <published>2016-02-25T20:36:07.423Z</published>
+    <updated>2016-02-25T20:36:07.348Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;Hexo是什么&quot;&gt;&lt;a href=&quot;#Hexo是什么&quot; class=&quot;headerlink&quot; title=&quot;Hexo是什么&quot;&gt;&lt;/a&gt;Hexo是什么&lt;/h2&gt;&lt;h2 id=&quot;为什么用Hexo&quot;&gt;&lt;a href=&quot;#为什么用Hexo&quot; class=&quot;headerlink&quot; title=&quot;为什么用Hexo&quot;&gt;&lt;/a&gt;为什么用Hexo&lt;/h2&gt;&lt;h2 id=&quot;Hexo的问题&quot;&gt;&lt;a href=&quot;#Hexo的问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo的问题&quot;&gt;&lt;/a&gt;Hexo的问题&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;h2 id=&quot;Hexo是什么&quot;&gt;&lt;a href=&quot;#Hexo是什么&quot; class=&quot;headerlink&quot; title=&quot;Hexo是什么&quot;&gt;&lt;/a&gt;Hexo是什么&lt;/h2&gt;&lt;h2 id=&quot;为什么用Hexo&quot;&gt;&lt;a href=&quot;#为什么用Hexo&quot; class=&quot;headerlink&quot; title=&quot;为什么用Hexo&quot;&gt;&lt;/a&gt;为什么用Hexo&lt;/h2&gt;&lt;h2 id=&quot;Hexo的问题&quot;&gt;&lt;a href=&quot;#Hexo的问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo的问题&quot;&gt;&lt;/a&gt;Hexo的问题&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/5e8cb366jw1e62o63tkv3j20dh078q5a.jpg&quot; alt=&quot;好看不&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
