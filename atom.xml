@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-26T09:05:13.268Z</updated>
+  <updated>2016-02-26T09:12:50.344Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>用Hexo和github搭建博客（3）：Hexo介绍</title>
     <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step3/"/>
     <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step3/</id>
-    <published>2016-02-26T09:05:13.325Z</published>
-    <updated>2016-02-26T09:05:13.268Z</updated>
+    <published>2016-02-26T09:12:50.402Z</published>
+    <updated>2016-02-26T09:12:50.344Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么是博客&quot;&gt;&lt;a href=&quot;#为什么是博客&quot; class=&quot;headerlink&quot; title=&quot;为什么是博客&quot;&gt;&lt;/a&gt;为什么是博客&lt;/h2&gt;&lt;p&gt;对于个人来说，博客可以发布记录并沉淀自己的观点、经验和想法。在锻炼了自己的表达能力和思维的同时，还可以形成自己的“社交货币”。&lt;/p&gt;
 &lt;h2 id=&quot;为什么是静态博客&quot;&gt;&lt;a href=&quot;#为什么是静态博客&quot; class=&quot;headerlink&quot; title=&quot;为什么是静态博客&quot;&gt;&lt;/a&gt;为什么是静态博客&lt;/h2&gt;&lt;p&gt;当然，直接使用现成的博客平台的就不在此讨论了，只说个人独立博客。很多人选择在虚拟主机或 VPS 上面搭建动态博客。但是这些主机商通常“免费的不稳定，稳定的不免费”。&lt;/p&gt;
