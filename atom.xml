@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-26T04:54:27.147Z</updated>
+  <updated>2016-02-26T05:28:32.377Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Hexo和github搭建博客（2）：部署到github</title>
+    <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step2/"/>
+    <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step2/</id>
+    <published>2016-02-26T05:28:32.448Z</published>
+    <updated>2016-02-26T05:28:32.377Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;github设置&quot;&gt;&lt;a href=&quot;#github设置&quot; class=&quot;headerlink&quot; title=&quot;github设置&quot;&gt;&lt;/a&gt;github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个github账号（没有的自行注册）&lt;/p&gt;
+&lt;p&gt;2、创建一个新的 repositories&lt;/p&gt;
+&lt;p&gt;github页面分为个人主页和项目主页，此处建立个人主页为例：&lt;/p&gt;
+&lt;p&gt;例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.github.com”&lt;/p&gt;
+&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;1、编辑 Hexo 根目录下的_config.yml文件。&lt;/p&gt;
+&lt;p&gt;在文件的最后，代码修改为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;deploy:
+
+    type: git
+
+    repo: https://github.com/isunman/isunman.github.com.git
+
+    branch: master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你在部署时，要把下面的 isunman 都换成你的账号名。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个是github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。&lt;/p&gt;
+&lt;p&gt;User &amp;amp; Organization Pages live in a special repository dedicated to GitHub Pages files. You will need to name this repository with the account name.&lt;/p&gt;
+&lt;p&gt;You must use the username.github.io naming scheme.&lt;br&gt;Content from the master branch will be used to build and&lt;br&gt;publish your GitHub Pages site.&lt;br&gt;You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://&lt;username&gt;.github.io.&lt;/username&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;执行下列指令即可完成部署。&lt;/p&gt;
+&lt;p&gt;先生成静态文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;再部署到 github&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;记住：&lt;/p&gt;
+&lt;p&gt;每次修改本地文件后，需要 hexo g 才能重新生成静态文件。&lt;/p&gt;
+&lt;p&gt;每次使用命令时，都要在 Hexo 根目录下。&lt;/p&gt;
+&lt;p&gt;至此，我们的博客已经完成，在浏览器访问 isunman.github.io 即可查看效果！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;github设置&quot;&gt;&lt;a href=&quot;#github设置&quot; class=&quot;headerlink&quot; title=&quot;github设置&quot;&gt;&lt;/a&gt;github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个github账号（没有的自行注册）&lt;/p&gt;
+&lt;p&gt;2、创建一个新的 rep
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>用Hexo和github搭建博客（1）：安装环境</title>
@@ -71,29 +122,6 @@
       <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
     
       <category term="github" scheme="http://isunman.com/tags/github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Hexo和github搭建博客（2）：了解Hexo</title>
-    <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step2/"/>
-    <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step2/</id>
-    <published>2016-02-25T20:36:07.423Z</published>
-    <updated>2016-02-25T20:36:07.348Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Hexo是什么&quot;&gt;&lt;a href=&quot;#Hexo是什么&quot; class=&quot;headerlink&quot; title=&quot;Hexo是什么&quot;&gt;&lt;/a&gt;Hexo是什么&lt;/h2&gt;&lt;h2 id=&quot;为什么用Hexo&quot;&gt;&lt;a href=&quot;#为什么用Hexo&quot; class=&quot;headerlink&quot; title=&quot;为什么用Hexo&quot;&gt;&lt;/a&gt;为什么用Hexo&lt;/h2&gt;&lt;h2 id=&quot;Hexo的问题&quot;&gt;&lt;a href=&quot;#Hexo的问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo的问题&quot;&gt;&lt;/a&gt;Hexo的问题&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/5e8cb366jw1e62o63tkv3j20dh078q5a.jpg&quot; alt=&quot;好看不&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Hexo是什么&quot;&gt;&lt;a href=&quot;#Hexo是什么&quot; class=&quot;headerlink&quot; title=&quot;Hexo是什么&quot;&gt;&lt;/a&gt;Hexo是什么&lt;/h2&gt;&lt;h2 id=&quot;为什么用Hexo&quot;&gt;&lt;a href=&quot;#为什么用Hexo&quot; class=&quot;headerli
-    
-    </summary>
-    
-      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
-    
-    
-      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
     
   </entry>
   

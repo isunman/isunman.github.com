@@ -234,6 +234,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/26/blog-by-hexo-github-step2/" itemprop="url">
+                  用Hexo和github搭建博客（2）：部署到github
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-26T13:28:32+08:00" content="2016-02-26">
+              2016-02-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/26/blog-by-hexo-github-step2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/26/blog-by-hexo-github-step2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="github设置"><a href="#github设置" class="headerlink" title="github设置"></a>github设置</h2><p>1、必须已经有一个github账号（没有的自行注册）</p>
+<p>2、创建一个新的 repositories</p>
+<p>github页面分为个人主页和项目主页，此处建立个人主页为例：</p>
+<p>例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.github.com”</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>1、编辑 Hexo 根目录下的_config.yml文件。</p>
+<p>在文件的最后，代码修改为：</p>
+<pre><code>deploy:
+
+    type: git
+
+    repo: https://github.com/isunman/isunman.github.com.git
+
+    branch: master
+</code></pre><p>你在部署时，要把下面的 isunman 都换成你的账号名。</p>
+<blockquote>
+<p>这个是github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。</p>
+<p>User &amp; Organization Pages live in a special repository dedicated to GitHub Pages files. You will need to name this repository with the account name.</p>
+<p>You must use the username.github.io naming scheme.<br>Content from the master branch will be used to build and<br>publish your GitHub Pages site.<br>You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://<username>.github.io.</username></p>
+</blockquote>
+<p>执行下列指令即可完成部署。</p>
+<p>先生成静态文件</p>
+<p><code>hexo g</code></p>
+<p>再部署到 github</p>
+<p><code>hexo d</code></p>
+<p>记住：</p>
+<p>每次修改本地文件后，需要 hexo g 才能重新生成静态文件。</p>
+<p>每次使用命令时，都要在 Hexo 根目录下。</p>
+<p>至此，我们的博客已经完成，在浏览器访问 isunman.github.io 即可查看效果！</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/26/blog-by-hexo-github-step1/" itemprop="url">
                   用Hexo和github搭建博客（1）：安装环境
                 </a>
@@ -337,116 +474,6 @@
 <p><code>hexo s</code></p>
 <p>浏览器打开 localhost:4000 即可查看。</p>
 <p>至此，本地基于 Node.js 的 Hexo 博客系统已经搭建完成。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/26/blog-by-hexo-github-step2/" itemprop="url">
-                  用Hexo和github搭建博客（2）：了解Hexo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-26T04:36:07+08:00" content="2016-02-26">
-              2016-02-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/26/blog-by-hexo-github-step2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/26/blog-by-hexo-github-step2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么"></a>Hexo是什么</h2><h2 id="为什么用Hexo"><a href="#为什么用Hexo" class="headerlink" title="为什么用Hexo"></a>为什么用Hexo</h2><h2 id="Hexo的问题"><a href="#Hexo的问题" class="headerlink" title="Hexo的问题"></a>Hexo的问题</h2><p><img src="http://ww2.sinaimg.cn/large/5e8cb366jw1e62o63tkv3j20dh078q5a.jpg" alt="好看不"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 
           
         
