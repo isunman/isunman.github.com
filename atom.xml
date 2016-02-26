@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-26T04:42:50.707Z</updated>
+  <updated>2016-02-26T04:54:27.147Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -19,23 +19,20 @@
     <title>用Hexo和github搭建博客（1）：安装环境</title>
     <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step1/"/>
     <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step1/</id>
-    <published>2016-02-26T04:42:50.784Z</published>
-    <updated>2016-02-26T04:42:50.707Z</updated>
+    <published>2016-02-26T04:54:27.214Z</published>
+    <updated>2016-02-26T04:54:27.147Z</updated>
     
-    <content type="html">&lt;p&gt;##安装git&lt;/p&gt;
-&lt;p&gt;###下载msysGit&lt;br&gt;1、访问 msysGit 的项目主页，下载 msysGit。&lt;a href=&quot;http://msysgit.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msysgit.github.io&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;安装git&quot;&gt;&lt;a href=&quot;#安装git&quot; class=&quot;headerlink&quot; title=&quot;安装git&quot;&gt;&lt;/a&gt;安装git&lt;/h2&gt;&lt;h3 id=&quot;下载msysGit&quot;&gt;&lt;a href=&quot;#下载msysGit&quot; class=&quot;headerlink&quot; title=&quot;下载msysGit&quot;&gt;&lt;/a&gt;下载msysGit&lt;/h3&gt;&lt;p&gt;1、访问 msysGit 的项目主页，下载 msysGit。&lt;a href=&quot;http://msysgit.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msysgit.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2、点击“Download”，下载软件（当前版本Git-2.7.2-64-bit.exe）&lt;/p&gt;
-&lt;p&gt;###安装msysGit&lt;/p&gt;
-&lt;p&gt;1、点击安装程序（如 Git-2.7.2-64-bit.exe）开始安装；&lt;/p&gt;
+&lt;h3 id=&quot;安装msysGit&quot;&gt;&lt;a href=&quot;#安装msysGit&quot; class=&quot;headerlink&quot; title=&quot;安装msysGit&quot;&gt;&lt;/a&gt;安装msysGit&lt;/h3&gt;&lt;p&gt;1、点击安装程序（如 Git-2.7.2-64-bit.exe）开始安装；&lt;/p&gt;
 &lt;p&gt;2、配置安装目录，可手动修改路径，也可“Browse..”选择安装目录；&lt;/p&gt;
 &lt;p&gt;3、选择“not noly for Git Bash”,下一步；&lt;/p&gt;
 &lt;p&gt;4、不创建启动文件夹，下一步；&lt;/p&gt;
 &lt;p&gt;5、询问是否修改环境变量。默认选择“Use Git Bash Only”，即只在 msysGit 提供的 shell 环境中使用 Git，不修改环境变量。若需要在 CMD 中直接使用 Git，请选择第三项修改环境变量，即可在CMD命令行中使用 Git；&lt;/p&gt;
 &lt;p&gt;6、询问换行符的转换方式，默认。下一步；&lt;/p&gt;
 &lt;p&gt;7、安装进度显示、安装完成后会显示安装完成界面。&lt;/p&gt;
-&lt;p&gt;###检测msysGit是否安装成功&lt;br&gt;任意目录下，鼠标右键新增Git功能“ Git Gui here”和“ Git Bash here”，点击即可进入 Git 命令行边界界面。说明安装成功。&lt;/p&gt;
-&lt;p&gt;##安装Node.js&lt;/p&gt;
-&lt;p&gt;在 Windows 环境下安装 Node.js 非常简单，仅需下载安装文件并执行即可。 &lt;/p&gt;
+&lt;h3 id=&quot;检测msysGit是否安装成功&quot;&gt;&lt;a href=&quot;#检测msysGit是否安装成功&quot; class=&quot;headerlink&quot; title=&quot;检测msysGit是否安装成功&quot;&gt;&lt;/a&gt;检测msysGit是否安装成功&lt;/h3&gt;&lt;p&gt;任意目录下，鼠标右键新增Git功能“ Git Gui here”和“ Git Bash here”，点击即可进入 Git 命令行边界界面。说明安装成功。&lt;/p&gt;
+&lt;h2 id=&quot;安装Node-js&quot;&gt;&lt;a href=&quot;#安装Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装Node.js&quot;&gt;&lt;/a&gt;安装Node.js&lt;/h2&gt;&lt;p&gt;在 Windows 环境下安装 Node.js 非常简单，仅需下载安装文件并执行即可。 &lt;/p&gt;
 &lt;p&gt;下载地址：&lt;a href=&quot;https://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nodejs.org/&lt;/a&gt;&lt;br&gt;Win 64位系统的当前版本：&lt;br&gt;&lt;a href=&quot;https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;安装好后，打开 cmd，查看 Node.js 是否可用&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;node -v&lt;/code&gt;&lt;/p&gt;
@@ -46,8 +43,7 @@
 &lt;p&gt;结果&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;3.6.0&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;说明下面可以使用 npm 安装 Hexo 了。&lt;/p&gt;
-&lt;p&gt;##安装 Hexo&lt;/p&gt;
-&lt;p&gt;1、任意目录下右键点击“ Git Bash here ”，打开 Git 的命令行界面。&lt;/p&gt;
+&lt;h2 id=&quot;安装-Hexo&quot;&gt;&lt;a href=&quot;#安装-Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装 Hexo&quot;&gt;&lt;/a&gt;安装 Hexo&lt;/h2&gt;&lt;p&gt;1、任意目录下右键点击“ Git Bash here ”，打开 Git 的命令行界面。&lt;/p&gt;
 &lt;p&gt;2、输入如下命令，进行安装 Hexo&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;npm install -g hexo&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;3、创建 Hexo 目录&lt;/p&gt;
@@ -65,8 +61,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;##安装git&lt;/p&gt;
-&lt;p&gt;###下载msysGit&lt;br&gt;1、访问 msysGit 的项目主页，下载 msysGit。&lt;a href=&quot;http://msysgit.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msy
+      &lt;h2 id=&quot;安装git&quot;&gt;&lt;a href=&quot;#安装git&quot; class=&quot;headerlink&quot; title=&quot;安装git&quot;&gt;&lt;/a&gt;安装git&lt;/h2&gt;&lt;h3 id=&quot;下载msysGit&quot;&gt;&lt;a href=&quot;#下载msysGit&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
