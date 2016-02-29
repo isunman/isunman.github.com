@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-26T09:12:50.344Z</updated>
+  <updated>2016-02-29T02:51:27.796Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>用Hexo和github搭建博客（3）：Hexo介绍</title>
-    <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step3/"/>
-    <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step3/</id>
-    <published>2016-02-26T09:12:50.402Z</published>
-    <updated>2016-02-26T09:12:50.344Z</updated>
+    <link href="http://isunman.com/2016/02/29/blog-by-hexo-github-step3/"/>
+    <id>http://isunman.com/2016/02/29/blog-by-hexo-github-step3/</id>
+    <published>2016-02-29T02:51:27.909Z</published>
+    <updated>2016-02-29T02:51:27.796Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么是博客&quot;&gt;&lt;a href=&quot;#为什么是博客&quot; class=&quot;headerlink&quot; title=&quot;为什么是博客&quot;&gt;&lt;/a&gt;为什么是博客&lt;/h2&gt;&lt;p&gt;对于个人来说，博客可以发布记录并沉淀自己的观点、经验和想法。在锻炼了自己的表达能力和思维的同时，还可以形成自己的“社交货币”。&lt;/p&gt;
 &lt;h2 id=&quot;为什么是静态博客&quot;&gt;&lt;a href=&quot;#为什么是静态博客&quot; class=&quot;headerlink&quot; title=&quot;为什么是静态博客&quot;&gt;&lt;/a&gt;为什么是静态博客&lt;/h2&gt;&lt;p&gt;当然，直接使用现成的博客平台的就不在此讨论了，只说个人独立博客。很多人选择在虚拟主机或 VPS 上面搭建动态博客。但是这些主机商通常“免费的不稳定，稳定的不免费”。&lt;/p&gt;
@@ -71,7 +71,7 @@ npm install hexo --save
 &lt;pre&gt;&lt;code&gt;alias cnpm=&amp;quot;npm --registry=https://registry.npm.taobao.org \ --cache=$HOME/.npm/.cache/cnpm \ --disturl=https://npm.taobao.org/dist \ --userconfig=$HOME/.cnpmrc&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Or alias it in .bashrc or .zshrc&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ echo &amp;apos;\n#alias for cnpm\nalias cnpm=&amp;quot;npm --registry=https://registry.npm.taobao.org \ --cache=$HOME/.npm/.cache/cnpm \ --disturl=https://npm.taobao.org/dist \ --userconfig=$HOME/.cnpmrc&amp;quot;&amp;apos; &amp;gt;&amp;gt; ~/.zshrc &amp;amp;&amp;amp; source ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Windows系统（具体环境配置请参考 &lt;a href=&quot;http://www.cnblogs.com/seanlv/archive/2011/11/22/2258716.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;查看链接&lt;/a&gt; ）&lt;br&gt;node环境&lt;br&gt;npm(node包管理器)&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Windows系统（具体环境配置请参考 &lt;a href=&quot;http://www.cnblogs.com/seanlv/archive/2011/11/22/2258716.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击查看&lt;/a&gt; ）&lt;br&gt;node环境&lt;br&gt;npm(node包管理器)&lt;/p&gt;
 &lt;h3 id=&quot;Hexo-配置方法&quot;&gt;&lt;a href=&quot;#Hexo-配置方法&quot; class=&quot;headerlink&quot; title=&quot;Hexo 配置方法&quot;&gt;&lt;/a&gt;Hexo 配置方法&lt;/h3&gt;&lt;p&gt;新建一个需要当做博客目录的文件夹&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mkdir blog
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;进去之后加入 hexo 主程序和安装 npm&lt;/p&gt;
@@ -229,11 +229,67 @@ tags: [博客，文章] #文章标签，多于一项时用这种格式
   </entry>
   
   <entry>
+    <title>用Hexo和Github搭建博客（2）：部署到Github</title>
+    <link href="http://isunman.com/2016/02/29/blog-by-hexo-github-step2/"/>
+    <id>http://isunman.com/2016/02/29/blog-by-hexo-github-step2/</id>
+    <published>2016-02-29T02:51:01.281Z</published>
+    <updated>2016-02-29T02:51:01.204Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
+&lt;p&gt;2、创建一个新的 repositories&lt;/p&gt;
+&lt;p&gt;Github页面分为个人主页和项目主页，此处建立个人主页为例：&lt;/p&gt;
+&lt;p&gt;例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.Github.com”&lt;/p&gt;
+&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;1、编辑 Hexo 根目录下的_config.yml文件。&lt;/p&gt;
+&lt;p&gt;在文件的最后，代码修改为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;deploy:
+
+    type: git
+
+    repo: https://Github.com/isunman/isunman.Github.com.git
+
+    branch: master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你在部署时，要把下面的 isunman 都换成你的账号名。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个是Github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。&lt;/p&gt;
+&lt;p&gt;User &amp;amp; Organization Pages live in a special repository dedicated to Github Pages files. You will need to name this repository with the account name.&lt;/p&gt;
+&lt;p&gt;You must use the username.Github.io naming scheme.&lt;br&gt;Content from the master branch will be used to build and&lt;br&gt;publish your Github Pages site.&lt;br&gt;You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.Github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://&lt;username&gt;.Github.io.&lt;/username&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;执行下列指令即可完成部署。&lt;/p&gt;
+&lt;p&gt;先生成静态文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;再部署到 Github&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hexo常用命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo g == hexo generate 
+hexo d == hexo deploy 
+hexo s == hexo server 
+hexo n == hexo new
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;记住：&lt;/p&gt;
+&lt;p&gt;（1）每次修改本地文件后，需要 hexo g 才能重新生成静态文件。&lt;/p&gt;
+&lt;p&gt;（2）每次使用命令时，都要在 Hexo 根目录下。&lt;/p&gt;
+&lt;p&gt;至此，我们的博客已经完成，在浏览器访问 isunman.Github.io 即可查看效果！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
+&lt;p&gt;2、创建一个新的 repo
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用Hexo和Github搭建博客（1）：安装环境</title>
-    <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step1/"/>
-    <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step1/</id>
-    <published>2016-02-26T07:49:57.221Z</published>
-    <updated>2016-02-26T07:49:57.158Z</updated>
+    <link href="http://isunman.com/2016/02/29/blog-by-hexo-github-step1/"/>
+    <id>http://isunman.com/2016/02/29/blog-by-hexo-github-step1/</id>
+    <published>2016-02-29T02:50:01.620Z</published>
+    <updated>2016-02-29T02:50:01.532Z</updated>
     
     <content type="html">&lt;h2 id=&quot;安装git&quot;&gt;&lt;a href=&quot;#安装git&quot; class=&quot;headerlink&quot; title=&quot;安装git&quot;&gt;&lt;/a&gt;安装git&lt;/h2&gt;&lt;h3 id=&quot;下载msysGit&quot;&gt;&lt;a href=&quot;#下载msysGit&quot; class=&quot;headerlink&quot; title=&quot;下载msysGit&quot;&gt;&lt;/a&gt;下载msysGit&lt;/h3&gt;&lt;p&gt;1、访问 msysGit 的项目主页，下载 msysGit。&lt;a href=&quot;http://msysgit.Github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msysgit.Github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2、点击“Download”，下载软件（当前版本Git-2.7.2-64-bit.exe）&lt;/p&gt;
@@ -269,7 +325,7 @@ tags: [博客，文章] #文章标签，多于一项时用这种格式
 &lt;p&gt;启动本地静态服务器&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;hexo s&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;浏览器打开 localhost:4000 即可查看。&lt;/p&gt;
-&lt;p&gt;至此，本地基于 Node.js 的 Hexo 博客系统已经搭建完成。&lt;/p&gt;
+&lt;p&gt;至此，本地基于 Node.js 的 Hexo 博客静态系统已经搭建完成。&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -282,62 +338,6 @@ tags: [博客，文章] #文章标签，多于一项时用这种格式
     
     
       <category term="Github" scheme="http://isunman.com/tags/github/"/>
-    
-      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Hexo和Github搭建博客（2）：部署到Github</title>
-    <link href="http://isunman.com/2016/02/26/blog-by-hexo-github-step2/"/>
-    <id>http://isunman.com/2016/02/26/blog-by-hexo-github-step2/</id>
-    <published>2016-02-26T07:49:18.989Z</published>
-    <updated>2016-02-26T07:49:18.907Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
-&lt;p&gt;2、创建一个新的 repositories&lt;/p&gt;
-&lt;p&gt;Github页面分为个人主页和项目主页，此处建立个人主页为例：&lt;/p&gt;
-&lt;p&gt;例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.Github.com”&lt;/p&gt;
-&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;1、编辑 Hexo 根目录下的_config.yml文件。&lt;/p&gt;
-&lt;p&gt;在文件的最后，代码修改为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;deploy:
-
-    type: git
-
-    repo: https://Github.com/isunman/isunman.Github.com.git
-
-    branch: master
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你在部署时，要把下面的 isunman 都换成你的账号名。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这个是Github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。&lt;/p&gt;
-&lt;p&gt;User &amp;amp; Organization Pages live in a special repository dedicated to Github Pages files. You will need to name this repository with the account name.&lt;/p&gt;
-&lt;p&gt;You must use the username.Github.io naming scheme.&lt;br&gt;Content from the master branch will be used to build and&lt;br&gt;publish your Github Pages site.&lt;br&gt;You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.Github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://&lt;username&gt;.Github.io.&lt;/username&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;执行下列指令即可完成部署。&lt;/p&gt;
-&lt;p&gt;先生成静态文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;再部署到 Github&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Hexo常用命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;hexo g == hexo generate 
-hexo d == hexo deploy 
-hexo s == hexo server 
-hexo n == hexo new
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;记住：&lt;/p&gt;
-&lt;p&gt;每次修改本地文件后，需要 hexo g 才能重新生成静态文件。&lt;/p&gt;
-&lt;p&gt;每次使用命令时，都要在 Hexo 根目录下。&lt;/p&gt;
-&lt;p&gt;至此，我们的博客已经完成，在浏览器访问 isunman.Github.io 即可查看效果！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
-&lt;p&gt;2、创建一个新的 repo
-    
-    </summary>
-    
-      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
-    
     
       <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
     
