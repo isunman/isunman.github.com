@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-02-29T02:51:27.796Z</updated>
+  <updated>2016-03-02T06:08:46.653Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown的基本语法</title>
+    <link href="http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/"/>
+    <id>http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/</id>
+    <published>2016-03-02T06:08:46.733Z</published>
+    <updated>2016-03-02T06:08:46.653Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;什么是-Markdown&quot;&gt;&lt;a href=&quot;#什么是-Markdown&quot; class=&quot;headerlink&quot; title=&quot;什么是 Markdown&quot;&gt;&lt;/a&gt;什么是 Markdown&lt;/h2&gt;&lt;p&gt;Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。&lt;/p&gt;
+&lt;p&gt;特点就是：易读、易写、跨平台。&lt;/p&gt;
+&lt;h2 id=&quot;Markdown基本语法&quot;&gt;&lt;a href=&quot;#Markdown基本语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown基本语法&quot;&gt;&lt;/a&gt;Markdown基本语法&lt;/h2&gt;&lt;h3 id=&quot;1、分级标题&quot;&gt;&lt;a href=&quot;#1、分级标题&quot; class=&quot;headerlink&quot; title=&quot;1、分级标题&quot;&gt;&lt;/a&gt;1、分级标题&lt;/h3&gt;&lt;h4 id=&quot;一级标题-H1&quot;&gt;&lt;a href=&quot;#一级标题-H1&quot; class=&quot;headerlink&quot; title=&quot;一级标题 H1&quot;&gt;&lt;/a&gt;一级标题 H1&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;# 我是一级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;二级标题-H2&quot;&gt;&lt;a href=&quot;#二级标题-H2&quot; class=&quot;headerlink&quot; title=&quot;二级标题 H2&quot;&gt;&lt;/a&gt;二级标题 H2&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;## 我是二级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;三级标题-H3&quot;&gt;&lt;a href=&quot;#三级标题-H3&quot; class=&quot;headerlink&quot; title=&quot;三级标题 H3&quot;&gt;&lt;/a&gt;三级标题 H3&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;### 我是三级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以此类推，最多到六级标题，没有七级标题。&lt;/p&gt;
+&lt;h3 id=&quot;2、粗体和斜体&quot;&gt;&lt;a href=&quot;#2、粗体和斜体&quot; class=&quot;headerlink&quot; title=&quot;2、粗体和斜体&quot;&gt;&lt;/a&gt;2、粗体和斜体&lt;/h3&gt;&lt;p&gt;使用 &lt;em&gt; 和 *&lt;/em&gt; 表示斜体和粗体&lt;/p&gt;
+&lt;p&gt;示例：&lt;em&gt;斜体&lt;/em&gt; 和 &lt;strong&gt;粗体&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3、引用&quot;&gt;&lt;a href=&quot;#3、引用&quot; class=&quot;headerlink&quot; title=&quot;3、引用&quot;&gt;&lt;/a&gt;3、引用&lt;/h3&gt;&lt;p&gt;使用 &amp;gt; 表示文字引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;野火烧不尽，更上一层楼。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;多行引用需要使用两个空格。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;人生若只如初见，&lt;br&gt;一枝红杏出墙来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;4、行内代码&quot;&gt;&lt;a href=&quot;#4、行内代码&quot; class=&quot;headerlink&quot; title=&quot;4、行内代码&quot;&gt;&lt;/a&gt;4、行内代码&lt;/h3&gt;&lt;p&gt;使用 `代码` （~ 键的下档键）表示行内代码块。&lt;/p&gt;
+&lt;p&gt;例如我是行内代码 &lt;code&gt;Hello World&lt;/code&gt; 看到了吧，融为一体。&lt;/p&gt;
+&lt;h3 id=&quot;5、代码块&quot;&gt;&lt;a href=&quot;#5、代码块&quot; class=&quot;headerlink&quot; title=&quot;5、代码块&quot;&gt;&lt;/a&gt;5、代码块&lt;/h3&gt;&lt;p&gt;使用四个缩进空格或者一个Tab表示代码块&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;我是代码块
+这是第二行
+我是最后一行
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6、无序列表&quot;&gt;&lt;a href=&quot;#6、无序列表&quot; class=&quot;headerlink&quot; title=&quot;6、无序列表&quot;&gt;&lt;/a&gt;6、无序列表&lt;/h3&gt;&lt;p&gt;使用 *，+，- 表示无序列表&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* 无序列表1
++ 无序列表2
+- 无序列表3
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;无序列表1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;无序列表2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;无序列表3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;7、有序列表&quot;&gt;&lt;a href=&quot;#7、有序列表&quot; class=&quot;headerlink&quot; title=&quot;7、有序列表&quot;&gt;&lt;/a&gt;7、有序列表&lt;/h3&gt;&lt;p&gt;使用数字和点表示有序列列表，注意点后有一个空格。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 有序列表一
+2. 有序列表二
+3. 有序列表三
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;有序列表一&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有序列表二&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有序列表三&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;8、外链接&quot;&gt;&lt;a href=&quot;#8、外链接&quot; class=&quot;headerlink&quot; title=&quot;8、外链接&quot;&gt;&lt;/a&gt;8、外链接&lt;/h3&gt;&lt;p&gt;使用 [描述](链接地址) 为文字增加外链接。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;这是去往[太阳侠](http://isunman.com)的链接
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是去往&lt;a href=&quot;http://isunman.com&quot;&gt;太阳侠&lt;/a&gt;的链接&lt;/p&gt;
+&lt;h3 id=&quot;9、插入图像&quot;&gt;&lt;a href=&quot;#9、插入图像&quot; class=&quot;headerlink&quot; title=&quot;9、插入图像&quot;&gt;&lt;/a&gt;9、插入图像&lt;/h3&gt;&lt;p&gt;使用 ![描述]（图片链接地址）插入图像&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://isunman.com/images/avatar.jpg&quot; alt=&quot;太阳侠的头像&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;10、插入HTML代码&quot;&gt;&lt;a href=&quot;#10、插入HTML代码&quot; class=&quot;headerlink&quot; title=&quot;10、插入HTML代码&quot;&gt;&lt;/a&gt;10、插入HTML代码&lt;/h3&gt;&lt;p&gt;Markdown完全兼容html，可以插入任意的html代码，包括分享的视频和音乐等。&lt;/p&gt;
+&lt;p&gt;例如音乐&lt;/p&gt;
+&lt;embed src=&quot;http://www.xiami.com/widget/0_1774250852/singlePlayer.swf&quot; type=&quot;application/x-shockwave-flash&quot; width=&quot;257&quot; height=&quot;33&quot; wmode=&quot;transparent&quot;&gt;
+
+&lt;p&gt;例如视频：&lt;/p&gt;
+&lt;embed src=&quot;http://player.youku.com/player.php/sid/XODI1MDg0MDQ4/v.swf&quot; allowfullscreen=&quot;true&quot; quality=&quot;high&quot; width=&quot;480&quot; height=&quot;400&quot; align=&quot;middle&quot; allowscriptaccess=&quot;always&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是-Markdown&quot;&gt;&lt;a href=&quot;#什么是-Markdown&quot; class=&quot;headerlink&quot; title=&quot;什么是 Markdown&quot;&gt;&lt;/a&gt;什么是 Markdown&lt;/h2&gt;&lt;p&gt;Markdown 是一种方便记忆、书写的纯文本标记语言，用户
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
+    
+      <category term="Markdown" scheme="http://isunman.com/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>用Hexo和github搭建博客（3）：Hexo介绍</title>
