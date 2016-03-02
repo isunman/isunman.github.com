@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-03-02T06:08:46.653Z</updated>
+  <updated>2016-03-02T06:31:37.465Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Markdown的基本语法</title>
     <link href="http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/"/>
     <id>http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/</id>
-    <published>2016-03-02T06:08:46.733Z</published>
-    <updated>2016-03-02T06:08:46.653Z</updated>
+    <published>2016-03-02T06:31:37.590Z</published>
+    <updated>2016-03-02T06:31:37.465Z</updated>
     
     <content type="html">&lt;h2 id=&quot;什么是-Markdown&quot;&gt;&lt;a href=&quot;#什么是-Markdown&quot; class=&quot;headerlink&quot; title=&quot;什么是 Markdown&quot;&gt;&lt;/a&gt;什么是 Markdown&lt;/h2&gt;&lt;p&gt;Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。&lt;/p&gt;
 &lt;p&gt;特点就是：易读、易写、跨平台。&lt;/p&gt;
@@ -28,8 +28,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;二级标题-H2&quot;&gt;&lt;a href=&quot;#二级标题-H2&quot; class=&quot;headerlink&quot; title=&quot;二级标题 H2&quot;&gt;&lt;/a&gt;二级标题 H2&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;## 我是二级标题
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;三级标题-H3&quot;&gt;&lt;a href=&quot;#三级标题-H3&quot; class=&quot;headerlink&quot; title=&quot;三级标题 H3&quot;&gt;&lt;/a&gt;三级标题 H3&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;### 我是三级标题
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以此类推，最多到六级标题，没有七级标题。&lt;/p&gt;
-&lt;h3 id=&quot;2、粗体和斜体&quot;&gt;&lt;a href=&quot;#2、粗体和斜体&quot; class=&quot;headerlink&quot; title=&quot;2、粗体和斜体&quot;&gt;&lt;/a&gt;2、粗体和斜体&lt;/h3&gt;&lt;p&gt;使用 &lt;em&gt; 和 *&lt;/em&gt; 表示斜体和粗体&lt;/p&gt;
-&lt;p&gt;示例：&lt;em&gt;斜体&lt;/em&gt; 和 &lt;strong&gt;粗体&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2、粗体和斜体&quot;&gt;&lt;a href=&quot;#2、粗体和斜体&quot; class=&quot;headerlink&quot; title=&quot;2、粗体和斜体&quot;&gt;&lt;/a&gt;2、粗体和斜体&lt;/h3&gt;&lt;p&gt;使用 * 和 ** 表示斜体和粗体&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*斜体* 和 **粗体**
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt; 和 &lt;strong&gt;粗体&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&quot;3、引用&quot;&gt;&lt;a href=&quot;#3、引用&quot; class=&quot;headerlink&quot; title=&quot;3、引用&quot;&gt;&lt;/a&gt;3、引用&lt;/h3&gt;&lt;p&gt;使用 &amp;gt; 表示文字引用&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;野火烧不尽，更上一层楼。&lt;/p&gt;
