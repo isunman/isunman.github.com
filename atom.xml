@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-03-02T06:31:37.465Z</updated>
+  <updated>2016-03-06T05:54:51.618Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -16,11 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>TeamViewer 好用的跨平台远程控制工具</title>
+    <link href="http://isunman.com/2016/03/06/teamviewer-easy-to-use-cross-platform-remote-control-tool/"/>
+    <id>http://isunman.com/2016/03/06/teamviewer-easy-to-use-cross-platform-remote-control-tool/</id>
+    <published>2016-03-06T05:54:51.684Z</published>
+    <updated>2016-03-06T05:54:51.618Z</updated>
+    
+    <content type="html">&lt;p&gt;因为工作需要，急需一款远程控制类的工具，最好可以使用手机（Android和iOS 都支持）控制远程电脑（Mac OS 和 Windows 都支持）。&lt;/p&gt;
+&lt;p&gt;通过网上查找，对比试用发现一款好用的工具：TeamViewer。&lt;/p&gt;
+&lt;h2 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h2&gt;&lt;p&gt;Win2000/WinXP/Win2003/WindowsVista/Windows7/Windows8/Mac OS/Linux/iphone/Android/Windows Phone&lt;/p&gt;
+&lt;p&gt;看到了吧，几乎支持目前所有的计算机系统（电脑/手机/移动设备），即可以达到任意一台设备控制另外任意一台有权管理的设备。&lt;/p&gt;
+&lt;h2 id=&quot;软件介绍&quot;&gt;&lt;a href=&quot;#软件介绍&quot; class=&quot;headerlink&quot; title=&quot;软件介绍&quot;&gt;&lt;/a&gt;软件介绍&lt;/h2&gt;&lt;p&gt;TeamViewer - 通过Internet进行远程访问和远程支持的一体化解决方案&lt;/p&gt;
+&lt;p&gt;TeamViewer可在几秒钟内连接到世界各地的任何PC或服务器上。您可以身临现场般地远程控制您伙伴的PC。&lt;/p&gt;
+&lt;p&gt;找出超过2亿用户信任TeamViewer的原因！&lt;/p&gt;
+&lt;p&gt;———— 《知乎》&lt;/p&gt;
+&lt;p&gt;TeamViewer GmbH公司创建于2005年，总部位于德国，致力于研发和销售高端的在线协作和通讯解决方案。&lt;/p&gt;
+&lt;p&gt;如果您回到家后想连接控制在学校或公司里自己的电脑，很多人会想到使用Windows远程桌面连接。一般情况下，它无疑是最好的方案了，但如果你要连接的电脑位于内网，即路由器（Router）或防火墙后方(电脑是内部IP)，那样就必须在路由器上做一些设定端口映射之类的设置才有办法连上，而网管也不太可能帮您设定的。&lt;/p&gt;
+&lt;p&gt;这时TeamViewer无疑就是最佳的解决方案了。&lt;/p&gt;
+&lt;p&gt;————《百度百科》&lt;/p&gt;
+&lt;h2 id=&quot;主要特点&quot;&gt;&lt;a href=&quot;#主要特点&quot; class=&quot;headerlink&quot; title=&quot;主要特点&quot;&gt;&lt;/a&gt;主要特点&lt;/h2&gt;&lt;h3 id=&quot;无需安装&quot;&gt;&lt;a href=&quot;#无需安装&quot; class=&quot;headerlink&quot; title=&quot;无需安装&quot;&gt;&lt;/a&gt;无需安装&lt;/h3&gt;&lt;p&gt;TeamViewer 没有复杂的安装过程，只需要双方都运行TeamViewer记住彼此的ID即可。&lt;/p&gt;
+&lt;h3 id=&quot;突破防火墙&quot;&gt;&lt;a href=&quot;#突破防火墙&quot; class=&quot;headerlink&quot; title=&quot;突破防火墙&quot;&gt;&lt;/a&gt;突破防火墙&lt;/h3&gt;&lt;p&gt;使用TeamViewer可以完全突破防火墙的限制，无需担心是否是固定IP。&lt;/p&gt;
+&lt;h3 id=&quot;高速度高质量&quot;&gt;&lt;a href=&quot;#高速度高质量&quot; class=&quot;headerlink&quot; title=&quot;高速度高质量&quot;&gt;&lt;/a&gt;高速度高质量&lt;/h3&gt;&lt;p&gt;无论你是LAN或者拨号连接TeamViewer都会根据实际网络状况优化传输速度和显示质量。&lt;/p&gt;
+&lt;h3 id=&quot;安全标准&quot;&gt;&lt;a href=&quot;#安全标准&quot; class=&quot;headerlink&quot; title=&quot;安全标准&quot;&gt;&lt;/a&gt;安全标准&lt;/h3&gt;&lt;p&gt;采用密钥交换和AES (256位) 会话编码，https/SSL采用 相同的安全标准。&lt;/p&gt;
+&lt;h3 id=&quot;多功能&quot;&gt;&lt;a href=&quot;#多功能&quot; class=&quot;headerlink&quot; title=&quot;多功能&quot;&gt;&lt;/a&gt;多功能&lt;/h3&gt;&lt;p&gt;支持在线状态显示、语音功能、传输文件功能、远程管理无人执守的服务器等。&lt;/p&gt;
+&lt;h3 id=&quot;美观易用&quot;&gt;&lt;a href=&quot;#美观易用&quot; class=&quot;headerlink&quot; title=&quot;美观易用&quot;&gt;&lt;/a&gt;美观易用&lt;/h3&gt;&lt;p&gt;TeamViewer的界面简约漂亮，操作极其简单，无需专业知识即可轻松上手。&lt;/p&gt;
+&lt;h2 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h2&gt;&lt;p&gt;###远程控制支持&lt;br&gt;即时远程控制 – 客户端无需安装任何程序&lt;/p&gt;
+&lt;p&gt;远程维护 – 全天候访问远程计算机和服务器&lt;/p&gt;
+&lt;p&gt;远程访问 – 随时随地访问您的数据和应用&lt;/p&gt;
+&lt;p&gt;家庭办公 – 在家也能访问办公室计算机&lt;/p&gt;
+&lt;p&gt;###会议演示&lt;br&gt;在线会议 – 最多可容纳25名参加者&lt;/p&gt;
+&lt;p&gt;演示 – 提升销售潜力&lt;/p&gt;
+&lt;p&gt;培训会 – 实施在线培训，削减支出&lt;/p&gt;
+&lt;p&gt;团队协作 – 实现实时在线文档协作&lt;/p&gt;
+&lt;h2 id=&quot;使用心得&quot;&gt;&lt;a href=&quot;#使用心得&quot; class=&quot;headerlink&quot; title=&quot;使用心得&quot;&gt;&lt;/a&gt;使用心得&lt;/h2&gt;&lt;p&gt;以上介绍部分引用自百度百科。&lt;/p&gt;
+&lt;h3 id=&quot;个人评价&quot;&gt;&lt;a href=&quot;#个人评价&quot; class=&quot;headerlink&quot; title=&quot;个人评价&quot;&gt;&lt;/a&gt;个人评价&lt;/h3&gt;&lt;p&gt;本人经常使用，Android手机和iOS系统设备都可以使用，方便很多。只是手机控制远程电脑时比较耗电，需要备好充电器或者移动电源。还有就是有时候提示网络问题链接不上，其实可以连上。&lt;/p&gt;
+&lt;p&gt;最最关键的，也不说3遍了，就1遍：&lt;strong&gt;非商业用途免费！&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;与-VNC-对比&quot;&gt;&lt;a href=&quot;#与-VNC-对比&quot; class=&quot;headerlink&quot; title=&quot;与 VNC 对比&quot;&gt;&lt;/a&gt;与 VNC 对比&lt;/h3&gt;&lt;p&gt;VNC 是另一个远程控制的软件，别人也用过几次。&lt;/p&gt;
+&lt;p&gt;这里说一下两者的区别。&lt;/p&gt;
+&lt;p&gt;vnc常用到linux系统，可以用命令行远程，一半多用在远程服务器，很多linux服务器没有可视化桌面，只有命令行，而且linux服务器也不需要桌面，所以，用vnc既快又方便；&lt;/p&gt;
+&lt;p&gt;teamview的优势在于是可视化桌面的远程，如果你需要操作桌面，teamview是最好的选择；如果你是电脑高手，用vnc效率更高&lt;/p&gt;
+&lt;p&gt;相关连接：&lt;/p&gt;
+&lt;p&gt;知乎话题 &lt;a href=&quot;https://www.zhihu.com/topic/19905507&quot; title=&quot;teamviewer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;teamviewer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;百度百科 &lt;a href=&quot;http://baike.baidu.com/item/TeamViewer&amp;quot;&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TeamViewer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;维基百科 &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/TeamViewer&amp;quot;&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TeamViewer&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为工作需要，急需一款远程控制类的工具，最好可以使用手机（Android和iOS 都支持）控制远程电脑（Mac OS 和 Windows 都支持）。&lt;/p&gt;
+&lt;p&gt;通过网上查找，对比试用发现一款好用的工具：TeamViewer。&lt;/p&gt;
+&lt;h2 id=&quot;运行环境&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="网络工具" scheme="http://isunman.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="远程控制" scheme="http://isunman.com/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Markdown的基本语法</title>
     <link href="http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/"/>
     <id>http://isunman.com/2016/03/02/the-basic-syntax-of-markdown/</id>
-    <published>2016-03-02T06:31:37.590Z</published>
-    <updated>2016-03-02T06:31:37.465Z</updated>
+    <published>2016-03-02T06:37:02.150Z</published>
+    <updated>2016-03-02T06:37:01.969Z</updated>
     
     <content type="html">&lt;h2 id=&quot;什么是-Markdown&quot;&gt;&lt;a href=&quot;#什么是-Markdown&quot; class=&quot;headerlink&quot; title=&quot;什么是 Markdown&quot;&gt;&lt;/a&gt;什么是 Markdown&lt;/h2&gt;&lt;p&gt;Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。&lt;/p&gt;
 &lt;p&gt;特点就是：易读、易写、跨平台。&lt;/p&gt;
