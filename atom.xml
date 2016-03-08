@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-03-06T07:55:07.599Z</updated>
+  <updated>2016-03-08T14:16:57.180Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xcode错误：No matching provisioning profiles found</title>
+    <link href="http://isunman.com/2016/03/08/no-matching-provisioning-profiles-found/"/>
+    <id>http://isunman.com/2016/03/08/no-matching-provisioning-profiles-found/</id>
+    <published>2016-03-08T14:16:57.238Z</published>
+    <updated>2016-03-08T14:16:57.180Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;更新证书错误：No matching provisioning profiles found&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在Xcode中当你在更新了你得证书而再重新编译你的程序，真机调试会出现“Your build settings specify a provisioning profile with the UUID‘XXX’, however, no such provisioning profile was found.  Xcode can resolve this issue by downloading a new provisioning profile from the Member Center.”。&lt;/p&gt;
+&lt;p&gt;一般出现这种结果，会有2种原因：&lt;/p&gt;
+&lt;h3 id=&quot;开发证书没有问题，此项目的问题&quot;&gt;&lt;a href=&quot;#开发证书没有问题，此项目的问题&quot; class=&quot;headerlink&quot; title=&quot;开发证书没有问题，此项目的问题&quot;&gt;&lt;/a&gt;开发证书没有问题，此项目的问题&lt;/h3&gt;&lt;p&gt;有时是在别的电脑上真机调试过，把项目拷贝到另一条电脑上进行打包时。本人是从其他电脑上拷贝过来项目进行企业分发版打包时出现此错误。&lt;/p&gt;
+&lt;p&gt;由于查看开发者证书，处于有效状态，且其他项目可以正常打包，只有当前项目遇到此问题，因此找到了下面这个可以解决问题的方法。&lt;/p&gt;
+&lt;p&gt;1.关闭项目，找到项目文件XXXX.xcodeproj，在文件上点击右键，选择“显示包内容”（Show Package Contents）。会新打开一个Finder。&lt;/p&gt;
+&lt;p&gt;2.在新打开的Finder中找到project.pbxproj，并且打开，找到你所有包含报错的UUID‘XXX’的行，删除。&lt;/p&gt;
+&lt;p&gt;3.保存，重新启动项目，再编译，就OK了。&lt;/p&gt;
+&lt;h3 id=&quot;开发证书失效或者过期&quot;&gt;&lt;a href=&quot;#开发证书失效或者过期&quot; class=&quot;headerlink&quot; title=&quot;开发证书失效或者过期&quot;&gt;&lt;/a&gt;开发证书失效或者过期&lt;/h3&gt;&lt;p&gt;如果所有项目都有这个问题，包括以前正常的项目（中间没有更改过），也突然这么不正常了，就非常可能是开发者的开发证书的问题。需要重新安装开发者的开发证书（注意：不是生产证书和分发证书）。&lt;/p&gt;
+&lt;p&gt;目前遇到的问题，都可以使用上面两种方法解决。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;更新证书错误：No matching provisioning profiles found&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在Xcode中当你在更新了你得证书而再重新编译你的程序，真机调试会出现“Your build settings specify a 
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://isunman.com/categories/ios/"/>
+    
+    
+      <category term="Xcode" scheme="http://isunman.com/tags/xcode/"/>
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>TeamViewer 好用的跨平台远程控制工具</title>
