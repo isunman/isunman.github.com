@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-03-08T14:16:57.180Z</updated>
+  <updated>2016-03-12T17:26:10.170Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -17,14 +17,14 @@
   
   <entry>
     <title>Xcode错误：No matching provisioning profiles found</title>
-    <link href="http://isunman.com/2016/03/08/no-matching-provisioning-profiles-found/"/>
-    <id>http://isunman.com/2016/03/08/no-matching-provisioning-profiles-found/</id>
-    <published>2016-03-08T14:16:57.238Z</published>
-    <updated>2016-03-08T14:16:57.180Z</updated>
+    <link href="http://isunman.com/2016/03/13/no-matching-provisioning-profiles-found/"/>
+    <id>http://isunman.com/2016/03/13/no-matching-provisioning-profiles-found/</id>
+    <published>2016-03-12T17:26:10.240Z</published>
+    <updated>2016-03-12T17:26:10.170Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;更新证书错误：No matching provisioning profiles found&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在Xcode中当你在更新了你得证书而再重新编译你的程序，真机调试会出现“Your build settings specify a provisioning profile with the UUID‘XXX’, however, no such provisioning profile was found.  Xcode can resolve this issue by downloading a new provisioning profile from the Member Center.”。&lt;/p&gt;
-&lt;p&gt;一般出现这种结果，会有2种原因：&lt;/p&gt;
+&lt;p&gt;一般出现这种结果，会有以下2种原因：&lt;/p&gt;
 &lt;h3 id=&quot;开发证书没有问题，此项目的问题&quot;&gt;&lt;a href=&quot;#开发证书没有问题，此项目的问题&quot; class=&quot;headerlink&quot; title=&quot;开发证书没有问题，此项目的问题&quot;&gt;&lt;/a&gt;开发证书没有问题，此项目的问题&lt;/h3&gt;&lt;p&gt;有时是在别的电脑上真机调试过，把项目拷贝到另一条电脑上进行打包时。本人是从其他电脑上拷贝过来项目进行企业分发版打包时出现此错误。&lt;/p&gt;
 &lt;p&gt;由于查看开发者证书，处于有效状态，且其他项目可以正常打包，只有当前项目遇到此问题，因此找到了下面这个可以解决问题的方法。&lt;/p&gt;
 &lt;p&gt;1.关闭项目，找到项目文件XXXX.xcodeproj，在文件上点击右键，选择“显示包内容”（Show Package Contents）。会新打开一个Finder。&lt;/p&gt;
@@ -52,10 +52,10 @@
   
   <entry>
     <title>TeamViewer 好用的跨平台远程控制工具</title>
-    <link href="http://isunman.com/2016/03/06/teamviewer-easy-to-use-cross-platform-remote-control-tool/"/>
-    <id>http://isunman.com/2016/03/06/teamviewer-easy-to-use-cross-platform-remote-control-tool/</id>
-    <published>2016-03-06T07:55:07.660Z</published>
-    <updated>2016-03-06T07:55:07.599Z</updated>
+    <link href="http://isunman.com/2016/03/13/teamviewer-easy-to-use-cross-platform-remote-control-tool/"/>
+    <id>http://isunman.com/2016/03/13/teamviewer-easy-to-use-cross-platform-remote-control-tool/</id>
+    <published>2016-03-12T17:25:04.417Z</published>
+    <updated>2016-03-12T17:25:04.357Z</updated>
     
     <content type="html">&lt;p&gt;因为工作需要，急需一款远程控制类的工具，最好可以使用手机（Android和iOS 都支持）控制远程电脑（Mac OS 和 Windows 都支持）。&lt;/p&gt;
 &lt;p&gt;通过网上查找，对比试用发现一款好用的工具：TeamViewer。&lt;/p&gt;
@@ -75,11 +75,11 @@
 &lt;h3 id=&quot;安全标准&quot;&gt;&lt;a href=&quot;#安全标准&quot; class=&quot;headerlink&quot; title=&quot;安全标准&quot;&gt;&lt;/a&gt;安全标准&lt;/h3&gt;&lt;p&gt;采用密钥交换和AES (256位) 会话编码，https/SSL采用 相同的安全标准。&lt;/p&gt;
 &lt;h3 id=&quot;多功能&quot;&gt;&lt;a href=&quot;#多功能&quot; class=&quot;headerlink&quot; title=&quot;多功能&quot;&gt;&lt;/a&gt;多功能&lt;/h3&gt;&lt;p&gt;支持在线状态显示、语音功能、传输文件功能、远程管理无人执守的服务器等。&lt;/p&gt;
 &lt;h3 id=&quot;美观易用&quot;&gt;&lt;a href=&quot;#美观易用&quot; class=&quot;headerlink&quot; title=&quot;美观易用&quot;&gt;&lt;/a&gt;美观易用&lt;/h3&gt;&lt;p&gt;TeamViewer的界面简约漂亮，操作极其简单，无需专业知识即可轻松上手。&lt;/p&gt;
-&lt;h2 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h2&gt;&lt;p&gt;###远程控制支持&lt;br&gt;即时远程控制 – 客户端无需安装任何程序&lt;/p&gt;
+&lt;h2 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h2&gt;&lt;h3 id=&quot;远程控制支持&quot;&gt;&lt;a href=&quot;#远程控制支持&quot; class=&quot;headerlink&quot; title=&quot;远程控制支持&quot;&gt;&lt;/a&gt;远程控制支持&lt;/h3&gt;&lt;p&gt;即时远程控制 – 客户端无需安装任何程序&lt;/p&gt;
 &lt;p&gt;远程维护 – 全天候访问远程计算机和服务器&lt;/p&gt;
 &lt;p&gt;远程访问 – 随时随地访问您的数据和应用&lt;/p&gt;
 &lt;p&gt;家庭办公 – 在家也能访问办公室计算机&lt;/p&gt;
-&lt;p&gt;###会议演示&lt;br&gt;在线会议 – 最多可容纳25名参加者&lt;/p&gt;
+&lt;h3 id=&quot;会议演示&quot;&gt;&lt;a href=&quot;#会议演示&quot; class=&quot;headerlink&quot; title=&quot;会议演示&quot;&gt;&lt;/a&gt;会议演示&lt;/h3&gt;&lt;p&gt;在线会议 – 最多可容纳25名参加者&lt;/p&gt;
 &lt;p&gt;演示 – 提升销售潜力&lt;/p&gt;
 &lt;p&gt;培训会 – 实施在线培训，削减支出&lt;/p&gt;
 &lt;p&gt;团队协作 – 实现实时在线文档协作&lt;/p&gt;
