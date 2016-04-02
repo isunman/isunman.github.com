@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-04-02T06:55:14.110Z</updated>
+  <updated>2016-04-02T07:07:11.372Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>月入十万，难吗？</title>
     <link href="http://isunman.com/2016/04/02/monthly-income-of-thousands-difficult/"/>
     <id>http://isunman.com/2016/04/02/monthly-income-of-thousands-difficult/</id>
-    <published>2016-04-02T06:55:14.246Z</published>
-    <updated>2016-04-02T06:55:14.110Z</updated>
+    <published>2016-04-02T07:07:11.444Z</published>
+    <updated>2016-04-02T07:07:11.372Z</updated>
     
     <content type="html">&lt;p&gt;题主提到的月入十万，显然是站在一个打工阶层的视角来看问题，所以凡是凭借资本和风险作为要素来取得回报的情况，不太适用，尽管我后面的故事会讲到这个。&lt;/p&gt;
 &lt;p&gt;先讲一个纯粹而简单的真理：&lt;strong&gt;所有打工者创造的价值都远远超过其获得的收入。&lt;/strong&gt;&lt;/p&gt;
@@ -61,7 +61,7 @@
 &lt;p&gt;请不要孤立地看问题。二代们请结合一代一起考虑。谁规定老子的财富不能传给儿子？巴菲特裸捐还给儿子10亿美金生活费呢！如果一代创业承担了风险，为什么二代不能享受一代的成果？同理，名人明星请参考整个群体。每年多少人做着明星梦进了上戏北电中戏这些学校，但最后有几个人成了范冰冰汤唯赵薇？&lt;/p&gt;
 &lt;p&gt;3.到底应该如何正确理解“风险”？&lt;/p&gt;
 &lt;p&gt;依然举金融学的经典模型说明。现代金融理论和实务的基石CAPM的结论：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://zhihu.com/equation?tex=Ri-Rf%3D%5Cbeta+i+%EF%BC%88Rm-Rf%EF%BC%89%E5%85%B6%E4%B8%AD%5Cbeta+i+%3DCov%EF%BC%88Ri%2CRm%EF%BC%89%2FVar%28Rm%29&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/equation0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;没有金融背景的同学不一定能看懂，不过不要紧。先简单讲一下这个公式，Ri表示任何一种资产i（可以是股票，债券，或者资产组合）的收益率（Return），Rf表示无风险收益率（可以简单粗暴地理解为储蓄存款利率，虽然理论上这样的理解是错误的），Rm表示资产i所在的市场的整体收益率，例如整个股票市场。而Beta则表示资产i的风险系数。它是资产i同市场的协方差与市场的方差之比。&lt;/p&gt;
 &lt;p&gt;以上讲人话就是，一项资产的收益情况，取决于它跟市场的联动情况（Beta），因为其他变量都是可以看着是外生的（Exogenous）。这在术语里叫系统性风险，举个例子，这几天的股市暴跌，属于此列。&lt;/p&gt;
 &lt;p&gt;整个金融实务和理论都建立在这个公式上。你可以找出任何一个公司的股票他有各种各样的自己独特的风险因素（非系统系风险），但是这些并不会决定它的股票回报，它的回报唯一地取决于它和整个金融市场的联动性Beta。&lt;/p&gt;
