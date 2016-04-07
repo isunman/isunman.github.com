@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-04-02T07:07:11.372Z</updated>
+  <updated>2016-04-07T15:09:35.228Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>队列是什么</title>
+    <link href="http://isunman.com/2016/04/07/what-queues-are/"/>
+    <id>http://isunman.com/2016/04/07/what-queues-are/</id>
+    <published>2016-04-07T15:09:35.285Z</published>
+    <updated>2016-04-07T15:09:35.228Z</updated>
+    
+    <content type="html">&lt;p&gt;首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。&lt;/p&gt;
+&lt;p&gt;不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系统有Beanstalkd,RabbitMQ,Redis(可以作为队列系统使用)等，其核心作用都是先将消息数据通过系统接口按顺序放入队列(暂存于内存)，需要时再按放入的顺序依次取出以作后续处理。&lt;/p&gt;
+&lt;p&gt;就拿我前段时间做的邮件发送系统举例：&lt;/p&gt;
+&lt;p&gt;系统以HTTP协议提供服务，对外提供的主要功能是发送邮件，API地址为 /api/msg.send。使用者只要以POST请求此地址，传入subject,body,recipient这三个参数，即可发送一封邮件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方案1： 不使用数据库，不使用队列&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;请求接口时，控制器直接调用sendmail或外部smtp服务器发送邮件，整个发送过程HTTP请求处于等待状态，待邮件发送完成，返回发送结果（只是调用发送程序是否成功的结果，不是邮件真正的发送结果，真正发送结果需要分析邮件日志) &lt;/p&gt;
+&lt;p&gt;这个方案最简单直接，平时发送少量邮件是可以的，但是缺点也很明显： &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因为接口调用时整个邮件发送过程都是同步进行的，每次请求都要等待邮件发送端完成处理，必然导致每次调用接口的等待时间增长。&lt;/li&gt;
+&lt;li&gt;当系统接口并发请求较高时，系统可用性不仅受限于WebServer的处理能力，还完全受限于邮件发送端软件的处理能力，其中任一环节故障就会导致整个系统无法提供服务。&lt;/li&gt;
+&lt;li&gt;若邮件发送端软件出现故障（比如SMTP连接超时），导致某次请求时邮件发送失败，那这封邮件内容便彻底丢失了，系统没有任何存留，不能实现自动重发。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;方案2： 使用数据库，不使用队列&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;请求接口时，将要发送的邮件信息存入数据库,表结构如下：&lt;/p&gt;
+&lt;p&gt;id | subject | body | recipient | sent_at | failed_at | failed_times&lt;br&gt;然后在服务器上运行一个定时任务，每秒一次读取 sent_at=0 &amp;amp;&amp;amp; failed_times &amp;lt; 10 的记录，随后调用邮件发送端发送邮件，成功后把sent_at设为当前时间，失败后设置failed_at并累加failed_times。 方案2已经用到了类似队列的思想。&lt;/p&gt;
+&lt;p&gt;相对于方案1的提升：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;去掉了同步发送邮件的操作，接口请求响应会快很多&lt;/li&gt;
+&lt;li&gt;邮件发送失败后可以重发，邮件不会丢失&lt;/li&gt;
+&lt;li&gt;当邮件发送端完全失效后系统也可以接受邮件发送请求，待发送端恢复后可以继续发送邮件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;但还是存在缺点： &lt;/p&gt;
+&lt;p&gt;每次请求都会写一次数据库，当大并发量或者大数据量（一次请求包含100万个收件人）时，数据库负载过高影响稳定性，同时也会严重增加接口的响应时间（一下子写入100万条记录不是闹着玩的）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方案3： 数据库 + 队列&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;请求接口时，将要发送的邮件信息以JSON格式存入队列系统，放入的单个消息形如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+&amp;quot;subject&amp;quot; : &amp;quot;今天没吃药&amp;quot;,
+&amp;quot;body&amp;quot; : &amp;quot;感觉自己&amp;quot;,
+&amp;quot;recipient&amp;quot; : &amp;quot;mengmeng@da.com&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在的队列基本上都是内存队列，数据存取非常快，一瞬间写入100万条数据再也不是难事。&lt;br&gt;随后，在服务器上运行一个常驻进程任务(Worker)，实时监听队列中是否有新的消息（Job,此处指邮件信息）。当新消息进入时，从队列中取出消息，调用邮件发送端完成处理，发送成功后将此消息销毁并将消息内容插入数据库（同方案2），如果发送失败，将此消息重新放入队列，并加入一个60秒的延时标记，意味60秒后再取出处理。&lt;/p&gt;
+&lt;p&gt;这样改进后整个系统的吞吐量和响应速度将大大提升，而且同时也让系统支持了分布式运行的能力。每个Worker进程都可以视为一个处理节点，倘若把worker分散到不同的服务器上，便实现整个系统的分布式处理了，这也是队列的一个重要特性之一。&lt;/p&gt;
+&lt;p&gt;在我实际项目中还是做了许多基于方案3的改进，对于群发还使用了邮件列表和邮件模板等设计，整个系统类似Mailgun和Sendcloud的设计，等整个系统稳定下来，我会考虑将代码开源到Github。&lt;/p&gt;
+&lt;p&gt;这个例子只是队列的一个常见使用场景，一般来说在需要缓解数据库写入压力的场景下面，都可以考虑使用消息队列，还有一些需要分布式处理的情况下，也是队列很好的使用场景。&lt;/p&gt;
+&lt;p&gt;现在大部分语言都有成熟的消息队列处理组件，可以很方便的使用各种队列系统，比如我常用的Laravel 便原生支持了 Beanstalkd,Amazon SQS,IronMQ,Redis。&lt;/p&gt;
+&lt;p&gt;抱砖引玉，不足之处请指正，谢谢。&lt;/p&gt;
+&lt;p&gt;原文链接： &lt;a href=&quot;https://www.zhihu.com/question/26533799&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.zhihu.com/question/26533799&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。&lt;/p&gt;
+&lt;p&gt;不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="MySQL" scheme="http://isunman.com/tags/mysql/"/>
+    
+      <category term="Redis" scheme="http://isunman.com/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>月入十万，难吗？</title>
