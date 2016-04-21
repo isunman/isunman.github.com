@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,github," />
+  <meta name="keywords" content="SQLServer," />
 
 
 
@@ -59,22 +59,28 @@
 
 
 
-<meta name="description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
+<meta name="description" content="服务端配置:
+一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
+二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
+telnet 202.114.100.100 1433
+1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://isunman.com/2016/02/26/hello-world/index.html">
+<meta property="og:title" content="Sql2000的远程连接（含Sp4补丁）">
+<meta property="og:url" content="http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
-<meta property="og:updated_time" content="2016-02-25T20:05:46.957Z">
+<meta property="og:description" content="服务端配置:
+一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
+二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
+telnet 202.114.100.100 1433
+1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
+<meta property="og:updated_time" content="2016-04-21T10:41:13.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
+<meta name="twitter:title" content="Sql2000的远程连接（含Sp4补丁）">
+<meta name="twitter:description" content="服务端配置:
+一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
+二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
+telnet 202.114.100.100 1433
+1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
 
 
 
@@ -92,7 +98,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
   };
 </script>
 
-  <title> Hello World | 太阳侠 </title>
+  <title> Sql2000的远程连接（含Sp4补丁） | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +248,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
             
             
               
-                Hello World
+                Sql2000的远程连接（含Sp4补丁）
               
             
           </h1>
@@ -254,8 +260,8 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-26T04:05:47+08:00" content="2016-02-26">
-              2016-02-26
+            <time itemprop="dateCreated" datetime="2016-04-21T18:41:13+08:00" content="2016-04-21">
+              2016-04-21
             </time>
           </span>
 
@@ -268,8 +274,8 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
                   </a>
                 </span>
 
@@ -284,8 +290,8 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/26/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/26/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/sql2000-remote-connections-including-sp4-patch/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -306,10 +312,22 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
       
 
       
-        <p>Hello，World！ 本文开篇第一回</p>
-<h2 id="Hello"><a href="#Hello" class="headerlink" title="Hello"></a>Hello</h2><p>“你好”<br>这是自己给自己打个招呼。<br>一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。<br>总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。</p>
-<h2 id="World"><a href="#World" class="headerlink" title="World"></a>World</h2><p>“世界”<br>世界很大，我很渺小。<br>这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。<br>同时，继续学习新的东西，记下学习过程和心得。<br>鞭策自己，警醒自己。</p>
-<p>此为开篇也。</p>
+        <p>服务端配置:</p>
+<h4 id="一-、看ping-服务器IP能否ping通。"><a href="#一-、看ping-服务器IP能否ping通。" class="headerlink" title="一 、看ping 服务器IP能否ping通。"></a>一 、看ping 服务器IP能否ping通。</h4><p>这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。</p>
+<h4 id="二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><a href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。" class="headerlink" title="二 、在Dos下输入telnet 服务器IP 端口，看能否连通。"></a>二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</h4><p>例如：</p>
+<pre><code>telnet 202.114.100.100 1433
+</code></pre><p>1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：</p>
+<p>1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。</p>
+<p>2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。</p>
+<p>3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 </p>
+<pre><code>netstat –an
+</code></pre><p>（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 </p>
+<pre><code>tcp  127.0.0.1 1433   listening
+</code></pre><p>的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入</p>
+<pre><code>select @@version
+</code></pre><p>执行后可以看到版本号，版本号在 <strong>8.00.2039</strong> 以下的都需要打补丁。这是Sp4的下载地址  <a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE" target="_blank" rel="external">（SQLServer SP4补丁下载）</a> 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。</p>
+<p>这时再做telnet测试，应该OK了。</p>
+<p><a href="http://blog.163.com/tcl_6688/blog/static/168864257201151574157197" target="_blank" rel="external">原文参考</a></p>
 
       
     </div>
@@ -318,9 +336,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#Hexo</a>
-          
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/tags/sqlserver/" rel="tag">#SQLServer</a>
           
         </div>
       
@@ -329,12 +345,16 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/" rel="next" title="windows2000/2003/2008中安装sqlserver 2000图文教程">
+                <i class="fa fa-chevron-left"></i> windows2000/2003/2008中安装sqlserver 2000图文教程
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/29/blog-by-hexo-github-step1/" rel="prev" title="用Hexo和Github搭建博客（1）：安装环境">
-                用Hexo和Github搭建博客（1）：安装环境 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/21/sqlserver2000-installation-error-a-general-network-error/" rel="prev" title="安装sqlserver2000出错，一般性网络错误">
+                安装sqlserver2000出错，一般性网络错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,10 +370,10 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/26/hello-world/"
-     data-title="Hello World"
+        <div class="ds-share flat" data-thread-key="2016/04/21/sql2000-remote-connections-including-sp4-patch/"
+     data-title="Sql2000的远程连接（含Sp4补丁）"
      data-content=""
-     data-url="http://isunman.com/2016/02/26/hello-world/">
+     data-url="http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -382,8 +402,8 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/26/hello-world/"
-           data-title="Hello World" data-url="http://isunman.com/2016/02/26/hello-world/">
+      <div class="ds-thread" data-thread-key="2016/04/21/sql2000-remote-connections-including-sp4-patch/"
+           data-title="Sql2000的远程连接（含Sp4补丁）" data-url="http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/">
       </div>
     
   </div>
@@ -502,7 +522,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello"><span class="nav-number">1.</span> <span class="nav-text">Hello</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#World"><span class="nav-number">2.</span> <span class="nav-text">World</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-、看ping-服务器IP能否ping通。"><span class="nav-number">1.</span> <span class="nav-text">一 、看ping 服务器IP能否ping通。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><span class="nav-number">2.</span> <span class="nav-text">二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
