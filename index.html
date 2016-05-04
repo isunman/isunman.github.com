@@ -244,6 +244,174 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/04/crawls-pages-text-content/" itemprop="url">
+                  抓取网页正文内容
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T22:04:26+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/04/crawls-pages-text-content/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/crawls-pages-text-content/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>近来做了有关抓取网页正文内容（含正文中图片）的功能，这里小结一下。</p>
+<p>服务器端语言：PHP</p>
+<p>已知：源文章的 URL</p>
+<h2 id="1、常规方法"><a href="#1、常规方法" class="headerlink" title="1、常规方法"></a>1、常规方法</h2><p>使用 PHP 内置函数 file_get_contents 或者 CURL 方法直接获取 URL 对应的网页源代码。</p>
+<p>这两种方法的使用都很简单，此处不展开讲。注意 CURL 需要模块开启。</p>
+<p>问题：可以提取到大部分网页源代码，但是同时也提取到了页面上的其他信息，例如广告、侧栏、通用顶部、通用底部、用户评论等等“噪点数据”，我们其实需要的是“原创文正的正文部分”，不需要其他乱七八糟的内容。</p>
+<p>此时，这个源代码就需要进一步处理，使用普通的正则匹配不可用，因为网站内容格式千差万别。如果只是提取固定网站或者有限几个网站的内容，单独进行正则匹配也可凑合使用。这里要介绍的是一种通用的方法，不限网站个数和内容格式，适配几乎所有内容类的网站。</p>
+<h2 id="2、进阶方法"><a href="#2、进阶方法" class="headerlink" title="2、进阶方法"></a>2、进阶方法</h2><p>此处需要一个算法，把已经提取到的内容源文件处理一下，计算出正文部分内容（含图片）。</p>
+<p>此方法叫做：Readability，一个开源的提取网页正文内容的类。Readability 是一个很不错的实现，它通过遍历Dom对象，通过标签和常用文字的加减权，来重新整合出页面的内容。</p>
+<p>JS 版本的 Readability 是最好用的，它可以直接在浏览器完成分析，于是用户还可以人工对分析出来的内容进行修改和校正。</p>
+<p>由于 Readability 解决的需求很通用，于是其他语言的程序员纷纷移植了该算法。</p>
+<p>PHP 版本 <a href="https://github.com/feelinglucky/php-readability" target="_blank" rel="external">https://github.com/feelinglucky/php-readability</a></p>
+<p>Java 版本 <a href="https://github.com/wuman/JReadability" target="_blank" rel="external">https://github.com/wuman/JReadability</a></p>
+<p>Node 版本 <a href="https://www.npmjs.org/package/node-readability" target="_blank" rel="external">https://www.npmjs.org/package/node-readability</a></p>
+<p>本人就是使用了 PHP 版本的。只是需要与自己的具体业务相结合，需要自己再修改即可，核心算法不变。</p>
+<p>这个方法很有效，做内容聚合类的项目很适合（注意版权问题）。</p>
+<h2 id="3、特殊方法"><a href="#3、特殊方法" class="headerlink" title="3、特殊方法"></a>3、特殊方法</h2><p>为什么有特殊方法？</p>
+<p>因为有些网站有版权保护意识，增加了一些措施防止原创内容被盗取。通常都是图片防盗链，也有正文文字也防盗取的。</p>
+<p>此处举2例。</p>
+<h3 id="（1）微信公众号文章"><a href="#（1）微信公众号文章" class="headerlink" title="（1）微信公众号文章"></a>（1）微信公众号文章</h3><p>微信公众号文章目前数据量就不用说了，发的人多，看的人超级多，不乏一些优秀的原创。</p>
+<p>它这个是要是图片防盗链。提取内容没有问题，但是所有的图片都被防盗链机制过滤掉了。</p>
+<p>解决方案：</p>
+<p>例如，其中一篇截图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/sunyi00000.png" alt="蜜糖少女孙怡"></p>
+<p>下面对应的图片部分的代码为：</p>
+<pre><code>&lt;img data-s=&quot;300,640&quot; data-type=&quot;jpeg&quot; data-src=&quot;http://mmbiz.qpic.cn/mmbiz/9aMpMo0Xap52pCAdiaicq59bbawuXKt0Epws5Qc845SIgM059HHuBIkYpUzl9zUtLLjgwvKjwCkf7VGW6buZAIXQ/0?wx_fmt=jpeg&quot; data-ratio=&quot;1.5&quot; data-w=&quot;&quot; src=&quot;http://mmbiz.qpic.cn/mmbiz/9aMpMo0Xap52pCAdiaicq59bbawuXKt0Epws5Qc845SIgM059HHuBIkYpUzl9zUtLLjgwvKjwCkf7VGW6buZAIXQ/640?wx_fmt=jpeg&amp;amp;tp=webp&amp;amp;wxfrom=5&amp;amp;wx_lazy=1&quot; style=&quot;width: auto !important; visibility: visible !important; height: auto !important;&quot;&gt;
+</code></pre><p>其中，src 中的数据是懒加载的同时防盗链，在当前位置到达浏览器窗口时才加载（使用了JS），所以如果直接获取源代码，所有图片属性 src 都是指定的防盗链的静态图片 URL，不是图片的实际 URL。</p>
+<p>但是，观察发现，图片实际 URL，已经包括在属性 data-src 中，同时返回了（方便 JS 处理）。</p>
+<p>因此，我们在这里替换一次，把所有的图片属性 src 的值替换为图片实际 URL（即 data-src 中的值）即可。 </p>
+<pre><code>$text= preg_replace(&quot;/data-src/ie&quot;, &quot;src&quot;, $text);
+</code></pre><p>之后，按普通方法继续处理。</p>
+<h3 id="（2）36氪文章"><a href="#（2）36氪文章" class="headerlink" title="（2）36氪文章"></a>（2）36氪文章</h3><p>科技媒体36氪文章的保护意识更强，直接抓取，别说图片，连正文文字都获取不到。</p>
+<p>这里引用一下 V2EX 上的一篇文章的说法：</p>
+<blockquote>
+<p>本人使用 PHP 的： file_get_contents 和 curl 函数都未曾获取到。就认真研究了下 36 氪的正文加载过程。</p>
+<p>看了一下，它应该是使用 js 加载的正文内容。</p>
+<p>如果禁用 js 调试，正文就没有内容；否则，就可以正常显示。但是查看了下所有的 js 文件也没看出来头绪，如果使用“网页另存为”本地文件，再用浏览器打开也是没有正文。</p>
+<p>是不是使用了什么加密技术来获取正文（为了防止爬虫）？各位探讨一下</p>
+</blockquote>
+<p>就是这个意思，我也遇到了同样的问题，不过我怀疑：它的正文时动态加载的。</p>
+<p>看了之后，我又去仔细研究了下，得出结论：</p>
+<p>因为它的正文内容的确是<strong>使用 JS 动态加载的</strong>。</p>
+<p>幸运的是，实际的数据也已经提前随源代码返回来了，只是没有经过 JS 处理，浏览器中不可见而已。</p>
+<p>参考截图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/36krarticle00000.png" alt=""></p>
+<p>经过仔细观察发现，可以获取 html 源代码中的 data-dom-id 值为 App-react-component-0 的属性 data-props 的值，就是包含正文内容的 JSON 格式数据。</p>
+<p>此处可以使用 DOM 获取，也可以使用正则匹配，本人使用了正则匹配。</p>
+<p>正则表达式：</p>
+<pre><code>data-dom-id=&quot;App-react-component-0&quot;([\s\S]*?)data-props=[&apos;|\&quot;]([\s\S]*?)[&apos;|\&quot;]\s+data-trace=
+</code></pre><p>匹配结果的第2个元素即为包含正文数据的 JSON 格式数据。</p>
+<p>之后，把 JSON 格式数据转换为 数组，即可进一步处理。</p>
+<pre><code>preg_match(&quot;/data-dom-id=\&quot;App-react-component-0\&quot;([\s\S]*?)data-props=[&apos;|\&quot;]([\s\S]*?)[&apos;|\&quot;]\s+data-trace=/i&quot;, $source, $matches);
+$matchesstr = htmlspecialchars_decode($matches[2]);
+$matchestarget = json_decode($matchesstr,true);
+</code></pre><p>此处注意，转移实体的反转义。否则 JSON 解码函数结果为空。</p>
+<h2 id="4、小结"><a href="#4、小结" class="headerlink" title="4、小结"></a>4、小结</h2><p>以上，就是已经用到的方法，总体思路就是：</p>
+<p>直接获取 –&gt; 间接获取 –&gt; 正则匹配 –&gt; 替换成可处理格式</p>
+<p>不过，这些具体方法本身可能需要随时修正的，具体就看源网站的规则什么时候修改，修改为什么样子了。</p>
+<p>掌握核心思考方法和处理机制，任其万变，不离其宗。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/29/basic-knowledge-about-health-knowledge/" itemprop="url">
                   有关健康常识的基本认知 (2016 版)
                 </a>
@@ -1580,152 +1748,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/07/what-queues-are/" itemprop="url">
-                  队列是什么
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-07T23:09:35+08:00" content="2016-04-07">
-              2016-04-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/07/what-queues-are/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/07/what-queues-are/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。</p>
-<p>不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系统有Beanstalkd,RabbitMQ,Redis(可以作为队列系统使用)等，其核心作用都是先将消息数据通过系统接口按顺序放入队列(暂存于内存)，需要时再按放入的顺序依次取出以作后续处理。</p>
-<p>就拿我前段时间做的邮件发送系统举例：</p>
-<p>系统以HTTP协议提供服务，对外提供的主要功能是发送邮件，API地址为 /api/msg.send。使用者只要以POST请求此地址，传入subject,body,recipient这三个参数，即可发送一封邮件。</p>
-<p><strong>方案1： 不使用数据库，不使用队列</strong></p>
-<p>请求接口时，控制器直接调用sendmail或外部smtp服务器发送邮件，整个发送过程HTTP请求处于等待状态，待邮件发送完成，返回发送结果（只是调用发送程序是否成功的结果，不是邮件真正的发送结果，真正发送结果需要分析邮件日志) </p>
-<p>这个方案最简单直接，平时发送少量邮件是可以的，但是缺点也很明显： </p>
-<ol>
-<li>因为接口调用时整个邮件发送过程都是同步进行的，每次请求都要等待邮件发送端完成处理，必然导致每次调用接口的等待时间增长。</li>
-<li>当系统接口并发请求较高时，系统可用性不仅受限于WebServer的处理能力，还完全受限于邮件发送端软件的处理能力，其中任一环节故障就会导致整个系统无法提供服务。</li>
-<li>若邮件发送端软件出现故障（比如SMTP连接超时），导致某次请求时邮件发送失败，那这封邮件内容便彻底丢失了，系统没有任何存留，不能实现自动重发。</li>
-</ol>
-<p><strong>方案2： 使用数据库，不使用队列</strong></p>
-<p>请求接口时，将要发送的邮件信息存入数据库,表结构如下：</p>
-<p>id | subject | body | recipient | sent_at | failed_at | failed_times<br>然后在服务器上运行一个定时任务，每秒一次读取 sent_at=0 &amp;&amp; failed_times &lt; 10 的记录，随后调用邮件发送端发送邮件，成功后把sent_at设为当前时间，失败后设置failed_at并累加failed_times。 方案2已经用到了类似队列的思想。</p>
-<p>相对于方案1的提升：</p>
-<ol>
-<li>去掉了同步发送邮件的操作，接口请求响应会快很多</li>
-<li>邮件发送失败后可以重发，邮件不会丢失</li>
-<li>当邮件发送端完全失效后系统也可以接受邮件发送请求，待发送端恢复后可以继续发送邮件。</li>
-</ol>
-<p>但还是存在缺点： </p>
-<p>每次请求都会写一次数据库，当大并发量或者大数据量（一次请求包含100万个收件人）时，数据库负载过高影响稳定性，同时也会严重增加接口的响应时间（一下子写入100万条记录不是闹着玩的）</p>
-<p><strong>方案3： 数据库 + 队列</strong></p>
-<p>请求接口时，将要发送的邮件信息以JSON格式存入队列系统，放入的单个消息形如：</p>
-<pre><code>{
-&quot;subject&quot; : &quot;今天没吃药&quot;,
-&quot;body&quot; : &quot;感觉自己&quot;,
-&quot;recipient&quot; : &quot;mengmeng@da.com&quot;
-}
-</code></pre><p>现在的队列基本上都是内存队列，数据存取非常快，一瞬间写入100万条数据再也不是难事。<br>随后，在服务器上运行一个常驻进程任务(Worker)，实时监听队列中是否有新的消息（Job,此处指邮件信息）。当新消息进入时，从队列中取出消息，调用邮件发送端完成处理，发送成功后将此消息销毁并将消息内容插入数据库（同方案2），如果发送失败，将此消息重新放入队列，并加入一个60秒的延时标记，意味60秒后再取出处理。</p>
-<p>这样改进后整个系统的吞吐量和响应速度将大大提升，而且同时也让系统支持了分布式运行的能力。每个Worker进程都可以视为一个处理节点，倘若把worker分散到不同的服务器上，便实现整个系统的分布式处理了，这也是队列的一个重要特性之一。</p>
-<p>在我实际项目中还是做了许多基于方案3的改进，对于群发还使用了邮件列表和邮件模板等设计，整个系统类似Mailgun和Sendcloud的设计，等整个系统稳定下来，我会考虑将代码开源到Github。</p>
-<p>这个例子只是队列的一个常见使用场景，一般来说在需要缓解数据库写入压力的场景下面，都可以考虑使用消息队列，还有一些需要分布式处理的情况下，也是队列很好的使用场景。</p>
-<p>现在大部分语言都有成熟的消息队列处理组件，可以很方便的使用各种队列系统，比如我常用的Laravel 便原生支持了 Beanstalkd,Amazon SQS,IronMQ,Redis。</p>
-<p>抱砖引玉，不足之处请指正，谢谢。</p>
-<p>原文链接： <a href="https://www.zhihu.com/question/26533799" target="_blank" rel="external">https://www.zhihu.com/question/26533799</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1772,7 +1794,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1789,7 +1811,7 @@ extension=php_mysqli.dll
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

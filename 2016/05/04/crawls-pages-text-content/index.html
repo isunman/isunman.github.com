@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SQLServer," />
+  <meta name="keywords" content="PHP,正则表达式," />
 
 
 
@@ -59,77 +59,33 @@
 
 
 
-<meta name="description" content="本文章来详细的以图文形式来说明在windows操作系统中如何来安装sqlserver2000数据库的方法，有需要了解的朋友可以参考一下。
-首先是sql2000的第一部分,rar包的安装过程:第1步:解压rar的sql2000压缩包到当前路径,点击autorun.exe或者setup.bat进行安装,如下图:
-
-第2步:点击”安装SQL Server 2000 组件”,如下图:
-
-第3步:点击”安装">
+<meta name="description" content="近来做了有关抓取网页正文内容（含正文中图片）的功能，这里小结一下。
+服务器端语言：PHP
+已知：源文章的 URL
+1、常规方法使用 PHP 内置函数 file_get_contents 或者 CURL 方法直接获取 URL 对应的网页源代码。
+这两种方法的使用都很简单，此处不展开讲。注意 CURL 需要模块开启。
+问题：可以提取到大部分网页源代码，但是同时也提取到了页面上的其他信息，例如广告、侧栏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows2000/2003/2008中安装sqlserver 2000图文教程">
-<meta property="og:url" content="http://isunman.com/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/index.html">
+<meta property="og:title" content="抓取网页正文内容">
+<meta property="og:url" content="http://isunman.com/2016/05/04/crawls-pages-text-content/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="本文章来详细的以图文形式来说明在windows操作系统中如何来安装sqlserver2000数据库的方法，有需要了解的朋友可以参考一下。
-首先是sql2000的第一部分,rar包的安装过程:第1步:解压rar的sql2000压缩包到当前路径,点击autorun.exe或者setup.bat进行安装,如下图:
-
-第2步:点击”安装SQL Server 2000 组件”,如下图:
-
-第3步:点击”安装">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0001.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0002.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0003.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0004.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0005.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0006.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0007.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0008.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0009.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0011.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0012.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0013.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0014.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0015.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0016.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0017.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0018.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0019.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0020.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0021.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0022.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0023.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0024.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0025.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0026.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0028.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0029.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0030.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0031.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0032.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0033.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0034.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0035.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0036.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0037.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0038.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0039.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0040.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0041.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0042.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0043.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0044.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0045.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0046.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0047.jpg">
-<meta property="og:image" content="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0048.jpg">
-<meta property="og:updated_time" content="2016-04-21T10:27:17.682Z">
+<meta property="og:description" content="近来做了有关抓取网页正文内容（含正文中图片）的功能，这里小结一下。
+服务器端语言：PHP
+已知：源文章的 URL
+1、常规方法使用 PHP 内置函数 file_get_contents 或者 CURL 方法直接获取 URL 对应的网页源代码。
+这两种方法的使用都很简单，此处不展开讲。注意 CURL 需要模块开启。
+问题：可以提取到大部分网页源代码，但是同时也提取到了页面上的其他信息，例如广告、侧栏">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/sunyi00000.png">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/36krarticle00000.png">
+<meta property="og:updated_time" content="2016-05-04T14:04:26.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows2000/2003/2008中安装sqlserver 2000图文教程">
-<meta name="twitter:description" content="本文章来详细的以图文形式来说明在windows操作系统中如何来安装sqlserver2000数据库的方法，有需要了解的朋友可以参考一下。
-首先是sql2000的第一部分,rar包的安装过程:第1步:解压rar的sql2000压缩包到当前路径,点击autorun.exe或者setup.bat进行安装,如下图:
-
-第2步:点击”安装SQL Server 2000 组件”,如下图:
-
-第3步:点击”安装">
+<meta name="twitter:title" content="抓取网页正文内容">
+<meta name="twitter:description" content="近来做了有关抓取网页正文内容（含正文中图片）的功能，这里小结一下。
+服务器端语言：PHP
+已知：源文章的 URL
+1、常规方法使用 PHP 内置函数 file_get_contents 或者 CURL 方法直接获取 URL 对应的网页源代码。
+这两种方法的使用都很简单，此处不展开讲。注意 CURL 需要模块开启。
+问题：可以提取到大部分网页源代码，但是同时也提取到了页面上的其他信息，例如广告、侧栏">
 
 
 
@@ -147,7 +103,7 @@
   };
 </script>
 
-  <title> windows2000/2003/2008中安装sqlserver 2000图文教程 | 太阳侠 </title>
+  <title> 抓取网页正文内容 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -297,7 +253,7 @@
             
             
               
-                windows2000/2003/2008中安装sqlserver 2000图文教程
+                抓取网页正文内容
               
             
           </h1>
@@ -309,8 +265,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T18:27:17+08:00" content="2016-04-21">
-              2016-04-21
+            <time itemprop="dateCreated" datetime="2016-05-04T22:04:26+08:00" content="2016-05-04">
+              2016-05-04
             </time>
           </span>
 
@@ -323,8 +279,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
                   </a>
                 </span>
 
@@ -339,8 +295,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/" itemprop="commentsCount"></span>
+                <a href="/2016/05/04/crawls-pages-text-content/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/crawls-pages-text-content/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -361,84 +317,65 @@
       
 
       
-        <p>本文章来详细的以图文形式来说明在windows操作系统中如何来安装sqlserver2000数据库的方法，有需要了解的朋友可以参考一下。</p>
-<h3 id="首先是sql2000的第一部分-rar包的安装过程"><a href="#首先是sql2000的第一部分-rar包的安装过程" class="headerlink" title="首先是sql2000的第一部分,rar包的安装过程:"></a>首先是sql2000的第一部分,rar包的安装过程:</h3><p>第1步:解压rar的sql2000压缩包到当前路径,点击autorun.exe或者setup.bat进行安装,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0001.jpg" alt=""></p>
-<p>第2步:点击”安装SQL Server 2000 组件”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0002.jpg" alt=""></p>
-<p>第3步:点击”安装数据库服务器”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0003.jpg" alt=""></p>
-<p>第4步:点击”继续”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0004.jpg" alt=""></p>
-<p>第5步:点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0005.jpg" alt=""></p>
-<p>第6步:选择”本地计算机”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0006.jpg" alt=""></p>
-<p>第7步:如果出现如下图的报错,请重启服务器,然后重新安装sql2000,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0007.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0008.jpg" alt=""></p>
-<p>第8步:选中如下图的按钮,点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0009.jpg" alt=""></p>
-<p>第9步:默认,不用修改,点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0011.jpg" alt=""></p>
-<p>第10步:点击”是”继续,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0012.jpg" alt=""></p>
-<p>第11步:选择”服务器和客户端工具”,点击”下一步”继续,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0013.jpg" alt=""></p>
-<p>第12步:选中”默认”,点击”下一步”继续,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0014.jpg" alt=""></p>
-<p>第13步:修改安装路径,一般安装在非系统盘,D盘或者E盘,如下三张图片:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0015.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0016.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0017.jpg" alt=""></p>
-<p>第14步:选择”使用本地系统账户”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0018.jpg" alt=""></p>
-<p>第15步:选择”混合模式”,并输入sa(管理员)密码,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0019.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0020.jpg" alt=""></p>
-<p>第16步:点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0021.jpg" alt=""></p>
-<p>第17步:在”每客户”输入5,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0022.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0023.jpg" alt=""></p>
-<p>第18步:点击”继续”正式进入安装过程,如下面几张图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0024.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0025.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0026.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0028.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0029.jpg" alt=""></p>
-<p>第19步:点击”完成”.</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0030.jpg" alt=""></p>
-<h3 id="接下来是sql2000的第二部分-sp4补丁包的安装过程"><a href="#接下来是sql2000的第二部分-sp4补丁包的安装过程" class="headerlink" title="接下来是sql2000的第二部分,sp4补丁包的安装过程:"></a>接下来是sql2000的第二部分,sp4补丁包的安装过程:</h3><p>第1步:解压sql2ksp4.rar这个压缩包到当前路径,点击setup.bat进行安装,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0031.jpg" alt=""></p>
-<p>第2步:点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0032.jpg" alt=""></p>
-<p>第3步:点击”是”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0033.jpg" alt=""></p>
-<p>第4步:继续点击”是”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0034.jpg" alt=""></p>
-<p>第5步:点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0035.jpg" alt=""></p>
-<p>第6步:选择”我用来登录到自己计算机上的windows账户信息(windows身份验证)”,点击”下一步”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0036.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0037.jpg" alt=""></p>
-<p>第7步:勾选”升级microsoft search 并应用SQL Server 2000 SP4(必须)”,点击”继续”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0038.jpg" alt=""></p>
-<p>第8步:点击”确认”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0039.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0040.jpg" alt=""></p>
-<p>第9步:点击”下一步”,进入安装过程,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0041.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0042.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0043.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0044.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0045.jpg" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0046.jpg" alt=""></p>
-<p>第10步:点击”完成”,如下图:</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0047.jpg" alt=""></p>
-<p>至此,sql2000全部安装完毕.</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/sqlserver2000setup0048.jpg" alt=""></p>
-<p><a href="http://www.111cn.net/sys/Windows/42656.htm" target="_blank" rel="external">原文参考</a></p>
+        <p>近来做了有关抓取网页正文内容（含正文中图片）的功能，这里小结一下。</p>
+<p>服务器端语言：PHP</p>
+<p>已知：源文章的 URL</p>
+<h2 id="1、常规方法"><a href="#1、常规方法" class="headerlink" title="1、常规方法"></a>1、常规方法</h2><p>使用 PHP 内置函数 file_get_contents 或者 CURL 方法直接获取 URL 对应的网页源代码。</p>
+<p>这两种方法的使用都很简单，此处不展开讲。注意 CURL 需要模块开启。</p>
+<p>问题：可以提取到大部分网页源代码，但是同时也提取到了页面上的其他信息，例如广告、侧栏、通用顶部、通用底部、用户评论等等“噪点数据”，我们其实需要的是“原创文正的正文部分”，不需要其他乱七八糟的内容。</p>
+<p>此时，这个源代码就需要进一步处理，使用普通的正则匹配不可用，因为网站内容格式千差万别。如果只是提取固定网站或者有限几个网站的内容，单独进行正则匹配也可凑合使用。这里要介绍的是一种通用的方法，不限网站个数和内容格式，适配几乎所有内容类的网站。</p>
+<h2 id="2、进阶方法"><a href="#2、进阶方法" class="headerlink" title="2、进阶方法"></a>2、进阶方法</h2><p>此处需要一个算法，把已经提取到的内容源文件处理一下，计算出正文部分内容（含图片）。</p>
+<p>此方法叫做：Readability，一个开源的提取网页正文内容的类。Readability 是一个很不错的实现，它通过遍历Dom对象，通过标签和常用文字的加减权，来重新整合出页面的内容。</p>
+<p>JS 版本的 Readability 是最好用的，它可以直接在浏览器完成分析，于是用户还可以人工对分析出来的内容进行修改和校正。</p>
+<p>由于 Readability 解决的需求很通用，于是其他语言的程序员纷纷移植了该算法。</p>
+<p>PHP 版本 <a href="https://github.com/feelinglucky/php-readability" target="_blank" rel="external">https://github.com/feelinglucky/php-readability</a></p>
+<p>Java 版本 <a href="https://github.com/wuman/JReadability" target="_blank" rel="external">https://github.com/wuman/JReadability</a></p>
+<p>Node 版本 <a href="https://www.npmjs.org/package/node-readability" target="_blank" rel="external">https://www.npmjs.org/package/node-readability</a></p>
+<p>本人就是使用了 PHP 版本的。只是需要与自己的具体业务相结合，需要自己再修改即可，核心算法不变。</p>
+<p>这个方法很有效，做内容聚合类的项目很适合（注意版权问题）。</p>
+<h2 id="3、特殊方法"><a href="#3、特殊方法" class="headerlink" title="3、特殊方法"></a>3、特殊方法</h2><p>为什么有特殊方法？</p>
+<p>因为有些网站有版权保护意识，增加了一些措施防止原创内容被盗取。通常都是图片防盗链，也有正文文字也防盗取的。</p>
+<p>此处举2例。</p>
+<h3 id="（1）微信公众号文章"><a href="#（1）微信公众号文章" class="headerlink" title="（1）微信公众号文章"></a>（1）微信公众号文章</h3><p>微信公众号文章目前数据量就不用说了，发的人多，看的人超级多，不乏一些优秀的原创。</p>
+<p>它这个是要是图片防盗链。提取内容没有问题，但是所有的图片都被防盗链机制过滤掉了。</p>
+<p>解决方案：</p>
+<p>例如，其中一篇截图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/sunyi00000.png" alt="蜜糖少女孙怡"></p>
+<p>下面对应的图片部分的代码为：</p>
+<pre><code>&lt;img data-s=&quot;300,640&quot; data-type=&quot;jpeg&quot; data-src=&quot;http://mmbiz.qpic.cn/mmbiz/9aMpMo0Xap52pCAdiaicq59bbawuXKt0Epws5Qc845SIgM059HHuBIkYpUzl9zUtLLjgwvKjwCkf7VGW6buZAIXQ/0?wx_fmt=jpeg&quot; data-ratio=&quot;1.5&quot; data-w=&quot;&quot; src=&quot;http://mmbiz.qpic.cn/mmbiz/9aMpMo0Xap52pCAdiaicq59bbawuXKt0Epws5Qc845SIgM059HHuBIkYpUzl9zUtLLjgwvKjwCkf7VGW6buZAIXQ/640?wx_fmt=jpeg&amp;amp;tp=webp&amp;amp;wxfrom=5&amp;amp;wx_lazy=1&quot; style=&quot;width: auto !important; visibility: visible !important; height: auto !important;&quot;&gt;
+</code></pre><p>其中，src 中的数据是懒加载的同时防盗链，在当前位置到达浏览器窗口时才加载（使用了JS），所以如果直接获取源代码，所有图片属性 src 都是指定的防盗链的静态图片 URL，不是图片的实际 URL。</p>
+<p>但是，观察发现，图片实际 URL，已经包括在属性 data-src 中，同时返回了（方便 JS 处理）。</p>
+<p>因此，我们在这里替换一次，把所有的图片属性 src 的值替换为图片实际 URL（即 data-src 中的值）即可。 </p>
+<pre><code>$text= preg_replace(&quot;/data-src/ie&quot;, &quot;src&quot;, $text);
+</code></pre><p>之后，按普通方法继续处理。</p>
+<h3 id="（2）36氪文章"><a href="#（2）36氪文章" class="headerlink" title="（2）36氪文章"></a>（2）36氪文章</h3><p>科技媒体36氪文章的保护意识更强，直接抓取，别说图片，连正文文字都获取不到。</p>
+<p>这里引用一下 V2EX 上的一篇文章的说法：</p>
+<blockquote>
+<p>本人使用 PHP 的： file_get_contents 和 curl 函数都未曾获取到。就认真研究了下 36 氪的正文加载过程。</p>
+<p>看了一下，它应该是使用 js 加载的正文内容。</p>
+<p>如果禁用 js 调试，正文就没有内容；否则，就可以正常显示。但是查看了下所有的 js 文件也没看出来头绪，如果使用“网页另存为”本地文件，再用浏览器打开也是没有正文。</p>
+<p>是不是使用了什么加密技术来获取正文（为了防止爬虫）？各位探讨一下</p>
+</blockquote>
+<p>就是这个意思，我也遇到了同样的问题，不过我怀疑：它的正文时动态加载的。</p>
+<p>看了之后，我又去仔细研究了下，得出结论：</p>
+<p>因为它的正文内容的确是<strong>使用 JS 动态加载的</strong>。</p>
+<p>幸运的是，实际的数据也已经提前随源代码返回来了，只是没有经过 JS 处理，浏览器中不可见而已。</p>
+<p>参考截图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/36krarticle00000.png" alt=""></p>
+<p>经过仔细观察发现，可以获取 html 源代码中的 data-dom-id 值为 App-react-component-0 的属性 data-props 的值，就是包含正文内容的 JSON 格式数据。</p>
+<p>此处可以使用 DOM 获取，也可以使用正则匹配，本人使用了正则匹配。</p>
+<p>正则表达式：</p>
+<pre><code>data-dom-id=&quot;App-react-component-0&quot;([\s\S]*?)data-props=[&apos;|\&quot;]([\s\S]*?)[&apos;|\&quot;]\s+data-trace=
+</code></pre><p>匹配结果的第2个元素即为包含正文数据的 JSON 格式数据。</p>
+<p>之后，把 JSON 格式数据转换为 数组，即可进一步处理。</p>
+<pre><code>preg_match(&quot;/data-dom-id=\&quot;App-react-component-0\&quot;([\s\S]*?)data-props=[&apos;|\&quot;]([\s\S]*?)[&apos;|\&quot;]\s+data-trace=/i&quot;, $source, $matches);
+$matchesstr = htmlspecialchars_decode($matches[2]);
+$matchestarget = json_decode($matchesstr,true);
+</code></pre><p>此处注意，转移实体的反转义。否则 JSON 解码函数结果为空。</p>
+<h2 id="4、小结"><a href="#4、小结" class="headerlink" title="4、小结"></a>4、小结</h2><p>以上，就是已经用到的方法，总体思路就是：</p>
+<p>直接获取 –&gt; 间接获取 –&gt; 正则匹配 –&gt; 替换成可处理格式</p>
+<p>不过，这些具体方法本身可能需要随时修正的，具体就看源网站的规则什么时候修改，修改为什么样子了。</p>
+<p>掌握核心思考方法和处理机制，任其万变，不离其宗。</p>
 
       
     </div>
@@ -447,7 +384,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sqlserver/" rel="tag">#SQLServer</a>
+            <a href="/tags/php/" rel="tag">#PHP</a>
+          
+            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
           
         </div>
       
@@ -456,17 +395,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/12/win7-64bit-php56-apache24-mysql56-installation-environment/" rel="next" title="win7(64位)php5.6-Apache2.4-mysql5.6环境安装">
-                <i class="fa fa-chevron-left"></i> win7(64位)php5.6-Apache2.4-mysql5.6环境安装
+              <a href="/2016/04/29/basic-knowledge-about-health-knowledge/" rel="next" title="有关健康常识的基本认知 (2016 版)">
+                <i class="fa fa-chevron-left"></i> 有关健康常识的基本认知 (2016 版)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/" rel="prev" title="Sql2000的远程连接（含Sp4补丁）">
-                Sql2000的远程连接（含Sp4补丁） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,10 +416,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/"
-     data-title="windows2000/2003/2008中安装sqlserver 2000图文教程"
+        <div class="ds-share flat" data-thread-key="2016/05/04/crawls-pages-text-content/"
+     data-title="抓取网页正文内容"
      data-content=""
-     data-url="http://isunman.com/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/">
+     data-url="http://isunman.com/2016/05/04/crawls-pages-text-content/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -513,8 +448,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/"
-           data-title="windows2000/2003/2008中安装sqlserver 2000图文教程" data-url="http://isunman.com/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/">
+      <div class="ds-thread" data-thread-key="2016/05/04/crawls-pages-text-content/"
+           data-title="抓取网页正文内容" data-url="http://isunman.com/2016/05/04/crawls-pages-text-content/">
       </div>
     
   </div>
@@ -633,7 +568,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先是sql2000的第一部分-rar包的安装过程"><span class="nav-number">1.</span> <span class="nav-text">首先是sql2000的第一部分,rar包的安装过程:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来是sql2000的第二部分-sp4补丁包的安装过程"><span class="nav-number">2.</span> <span class="nav-text">接下来是sql2000的第二部分,sp4补丁包的安装过程:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、常规方法"><span class="nav-number">1.</span> <span class="nav-text">1、常规方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、进阶方法"><span class="nav-number">2.</span> <span class="nav-text">2、进阶方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、特殊方法"><span class="nav-number">3.</span> <span class="nav-text">3、特殊方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）微信公众号文章"><span class="nav-number">3.1.</span> <span class="nav-text">（1）微信公众号文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）36氪文章"><span class="nav-number">3.2.</span> <span class="nav-text">（2）36氪文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、小结"><span class="nav-number">4.</span> <span class="nav-text">4、小结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
