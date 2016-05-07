@@ -244,6 +244,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/07/xcode-disk-space-on-large-cleanup/" itemprop="url">
+                  Xcode磁盘空间大清理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T12:00:41+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mac使用/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac使用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/07/xcode-disk-space-on-large-cleanup/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/xcode-disk-space-on-large-cleanup/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。</p>
+<p>先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。</p>
+<p>如下图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.05.07.png" alt=""></p>
+<p>下面是清除 Xcode 缓存的步骤：</p>
+<p>（1）移除对旧设备的支持</p>
+<p>影响：连接设备调试时，会重新自动生成</p>
+<p>路径：~/Library/Developer/Xcode/iOS DeviceSupport</p>
+<p>（2）移除旧版本的模拟器支持</p>
+<p>影响：可重新下载了</p>
+<p>路径：~/Library/Application Support/iPhone Simulator</p>
+<p>路径：~/Library/Application Support/iPhone Simulator/x.x/tmp (模拟器临时文件)</p>
+<p>路径：~/Library/Application Support/iPhone Simulator/x.x/Applications (模拟器安装的应用)</p>
+<p><strong>（3）移除Archives</strong></p>
+<p>影响：不可恢复；Adhoc或者App Store版本会被删除。建议备份dSYM文件夹</p>
+<p>路径：~/Library/Developer/Xcode/Archives</p>
+<p><strong>（4）移除DerivedData</strong></p>
+<p>影响：可重新生成；会删除build生成的项目索引、build输出以及日志。重新打开项目时会重新生成，大的项目会耗费一些时间。</p>
+<p>路径：~/Library/Developer/Xcode/DerivedData</p>
+<p>（5）移除旧的Docsets</p>
+<p>影响：不可恢复；将删除旧的Docsets文档</p>
+<p>路径：~/Library/Developer/Shared/Documentation/DocSets</p>
+<p>本人亲测了（3）和（4），不影响 Xcode 任何使用。以下是步骤截图：</p>
+<p>首先，进入到对应目录（直接进入找不到）</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.03.15.png" alt=""></p>
+<p>找到对应目录之后，直接删除到废纸篓，还需要彻底删除。此处使用的工具 Dr.Cleaner 进行废纸篓清除。</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.01.35.png" alt=""></p>
+<p>最后是彻底清除之后的磁盘容量数据，这下，清爽多了。</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8811.10.05.png" alt=""></p>
+<p>PS：因为需要清理的磁盘空间实在太大，清除时用了很长时间。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/04/crawls-pages-text-content/" itemprop="url">
                   抓取网页正文内容
                 </a>
@@ -1626,128 +1765,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/12/win7-environment-configuration-vc11/" itemprop="url">
-                  Win7 配置VC++11环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T11:37:32+08:00" content="2016-04-12">
-              2016-04-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/12/win7-environment-configuration-vc11/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/win7-environment-configuration-vc11/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先，安装的Win7 旗舰版，注意不是 Win7 旗舰版 sp1的话，首先需要升级SP1补丁包，因为VC++11不能安装在Win7旗舰版上却可以安装在Win7旗舰版 SP1上。</p>
-<p>这样选择的原因：Win7旗舰版SP1是离Win7最近的版本，方便升级。当然如果升级到Win10也可以。</p>
-<p>1、下载Win7 SP1补丁包</p>
-<p>官网下载地址：<a href="https://www.microsoft.com/zh-cn/download/details.aspx?id=5842" target="_blank" rel="external">https://www.microsoft.com/zh-cn/download/details.aspx?id=5842</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/000.png" alt=""></p>
-<p>2、安装Win7 SP1补丁包，安装成功以后，在系统版本中可以看到SP1字样。</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/001.png" alt=""></p>
-<p>3、下载VC++11的安装文件</p>
-<p>官网下载地址：<a href="https://www.microsoft.com/zh-cn/download/details.aspx?id=30679" target="_blank" rel="external">https://www.microsoft.com/zh-cn/download/details.aspx?id=30679</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/002.png" alt=""></p>
-<p>4、安装VC++11环境</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/003.png" alt=""></p>
-<p>出现如图提示，则安装成功。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1794,7 +1811,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1802,7 +1819,7 @@ extension=php_mysqli.dll
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

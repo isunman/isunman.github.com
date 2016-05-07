@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,wamp," />
+  <meta name="keywords" content="Xcode," />
 
 
 
@@ -59,34 +59,38 @@
 
 
 
-<meta name="description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
+<meta name="description" content="Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。
+先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。
+如下图：
+
+下面是清除 Xcode 缓存的步骤：
+（1）移除对旧设备的支持
+影响：连接设备调试时，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Win下php5.6的curl模块无效">
-<meta property="og:url" content="http://isunman.com/2016/04/12/win-the-curl-module-invalid-under-php56/index.html">
+<meta property="og:title" content="Xcode磁盘空间大清理">
+<meta property="og:url" content="http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
-<meta property="og:updated_time" content="2016-04-12T04:05:40.109Z">
+<meta property="og:description" content="Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。
+先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。
+如下图：
+
+下面是清除 Xcode 缓存的步骤：
+（1）移除对旧设备的支持
+影响：连接设备调试时，">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.05.07.png">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.03.15.png">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.01.35.png">
+<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8811.10.05.png">
+<meta property="og:updated_time" content="2016-05-07T04:00:41.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Win下php5.6的curl模块无效">
-<meta name="twitter:description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
+<meta name="twitter:title" content="Xcode磁盘空间大清理">
+<meta name="twitter:description" content="Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。
+先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。
+如下图：
+
+下面是清除 Xcode 缓存的步骤：
+（1）移除对旧设备的支持
+影响：连接设备调试时，">
 
 
 
@@ -104,7 +108,7 @@ Fatal error: Call to undefined function curl_init() in ……
   };
 </script>
 
-  <title> Win下php5.6的curl模块无效 | 太阳侠 </title>
+  <title> Xcode磁盘空间大清理 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +258,7 @@ Fatal error: Call to undefined function curl_init() in ……
             
             
               
-                Win下php5.6的curl模块无效
+                Xcode磁盘空间大清理
               
             
           </h1>
@@ -266,8 +270,8 @@ Fatal error: Call to undefined function curl_init() in ……
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T12:05:40+08:00" content="2016-04-12">
-              2016-04-12
+            <time itemprop="dateCreated" datetime="2016-05-07T12:00:41+08:00" content="2016-05-07">
+              2016-05-07
             </time>
           </span>
 
@@ -280,8 +284,8 @@ Fatal error: Call to undefined function curl_init() in ……
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
+                  <a href="/categories/mac使用/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac使用</span>
                   </a>
                 </span>
 
@@ -296,8 +300,8 @@ Fatal error: Call to undefined function curl_init() in ……
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/12/win-the-curl-module-invalid-under-php56/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/win-the-curl-module-invalid-under-php56/" itemprop="commentsCount"></span>
+                <a href="/2016/05/07/xcode-disk-space-on-large-cleanup/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/xcode-disk-space-on-large-cleanup/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -318,21 +322,36 @@ Fatal error: Call to undefined function curl_init() in ……
       
 
       
-        <p>表现：<br>1、在调用 curl_init 函数时，提示错误</p>
-<pre><code>Fatal error: Call to undefined function curl_init() in ……
-</code></pre><p>2、在 phpinfo 页不显示 curl 模块信息。</p>
-<p>前提：<br>在 php.ini 配置文件中已经启用了：</p>
-<pre><code>;extension=php_curl.dll
-</code></pre><p>去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。</p>
-<p>解决方案：</p>
-<p>官方说明文档中的 <a href="http://php.net/manual/zh/curl.installation.php" target="_blank" rel="external">http://php.net/manual/zh/curl.installation.php</a></p>
-<p><strong>Note: Win32用户注意<br>要在Windows环境下使用这个模块，libeay32.dll和ssleay32.dll必须放到PATH环境变量包含的目录下。 不用cURL网站上的libcurl.dll。</strong></p>
-<blockquote>
-<p>I had to also also copy libssh2.dll into my Apache24 folder for this to &gt; work with my PHP 5.6.2 installation. So altogether I had to do the &gt; following:</p>
-<p>Move to Windows\system32 folder:<br>libssh2.dll, php_curl.dll, ssleay32.dll, libeay32.dll</p>
-<p>Move to Apache24\bin folder<br>libssh2.dll</p>
-<p>Uncomment extension=php_curl.dll</p>
-</blockquote>
+        <p>Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。</p>
+<p>先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。</p>
+<p>如下图：</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.05.07.png" alt=""></p>
+<p>下面是清除 Xcode 缓存的步骤：</p>
+<p>（1）移除对旧设备的支持</p>
+<p>影响：连接设备调试时，会重新自动生成</p>
+<p>路径：~/Library/Developer/Xcode/iOS DeviceSupport</p>
+<p>（2）移除旧版本的模拟器支持</p>
+<p>影响：可重新下载了</p>
+<p>路径：~/Library/Application Support/iPhone Simulator</p>
+<p>路径：~/Library/Application Support/iPhone Simulator/x.x/tmp (模拟器临时文件)</p>
+<p>路径：~/Library/Application Support/iPhone Simulator/x.x/Applications (模拟器安装的应用)</p>
+<p><strong>（3）移除Archives</strong></p>
+<p>影响：不可恢复；Adhoc或者App Store版本会被删除。建议备份dSYM文件夹</p>
+<p>路径：~/Library/Developer/Xcode/Archives</p>
+<p><strong>（4）移除DerivedData</strong></p>
+<p>影响：可重新生成；会删除build生成的项目索引、build输出以及日志。重新打开项目时会重新生成，大的项目会耗费一些时间。</p>
+<p>路径：~/Library/Developer/Xcode/DerivedData</p>
+<p>（5）移除旧的Docsets</p>
+<p>影响：不可恢复；将删除旧的Docsets文档</p>
+<p>路径：~/Library/Developer/Shared/Documentation/DocSets</p>
+<p>本人亲测了（3）和（4），不影响 Xcode 任何使用。以下是步骤截图：</p>
+<p>首先，进入到对应目录（直接进入找不到）</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.03.15.png" alt=""></p>
+<p>找到对应目录之后，直接删除到废纸篓，还需要彻底删除。此处使用的工具 Dr.Cleaner 进行废纸篓清除。</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.01.35.png" alt=""></p>
+<p>最后是彻底清除之后的磁盘容量数据，这下，清爽多了。</p>
+<p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8811.10.05.png" alt=""></p>
+<p>PS：因为需要清理的磁盘空间实在太大，清除时用了很长时间。</p>
 
       
     </div>
@@ -341,9 +360,7 @@ Fatal error: Call to undefined function curl_init() in ……
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#PHP</a>
-          
-            <a href="/tags/wamp/" rel="tag">#wamp</a>
+            <a href="/tags/xcode/" rel="tag">#Xcode</a>
           
         </div>
       
@@ -352,17 +369,13 @@ Fatal error: Call to undefined function curl_init() in ……
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/12/win7-environment-configuration-vc11/" rel="next" title="Win7 配置VC++11环境">
-                <i class="fa fa-chevron-left"></i> Win7 配置VC++11环境
+              <a href="/2016/05/04/crawls-pages-text-content/" rel="next" title="抓取网页正文内容">
+                <i class="fa fa-chevron-left"></i> 抓取网页正文内容
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/mysql-databas-upgrade-or-migration/" rel="prev" title="MySQL数据库升级或者迁移">
-                MySQL数据库升级或者迁移 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -377,10 +390,10 @@ Fatal error: Call to undefined function curl_init() in ……
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/12/win-the-curl-module-invalid-under-php56/"
-     data-title="Win下php5.6的curl模块无效"
+        <div class="ds-share flat" data-thread-key="2016/05/07/xcode-disk-space-on-large-cleanup/"
+     data-title="Xcode磁盘空间大清理"
      data-content=""
-     data-url="http://isunman.com/2016/04/12/win-the-curl-module-invalid-under-php56/">
+     data-url="http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -409,8 +422,8 @@ Fatal error: Call to undefined function curl_init() in ……
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/12/win-the-curl-module-invalid-under-php56/"
-           data-title="Win下php5.6的curl模块无效" data-url="http://isunman.com/2016/04/12/win-the-curl-module-invalid-under-php56/">
+      <div class="ds-thread" data-thread-key="2016/05/07/xcode-disk-space-on-large-cleanup/"
+           data-title="Xcode磁盘空间大清理" data-url="http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/">
       </div>
     
   </div>

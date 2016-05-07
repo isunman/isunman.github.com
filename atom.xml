@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-05-04T14:04:26.055Z</updated>
+  <updated>2016-05-07T04:00:41.774Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xcode磁盘空间大清理</title>
+    <link href="http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/"/>
+    <id>http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/</id>
+    <published>2016-05-07T04:00:41.827Z</published>
+    <updated>2016-05-07T04:00:41.774Z</updated>
+    
+    <content type="html">&lt;p&gt;Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。&lt;/p&gt;
+&lt;p&gt;先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。&lt;/p&gt;
+&lt;p&gt;如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.05.07.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下面是清除 Xcode 缓存的步骤：&lt;/p&gt;
+&lt;p&gt;（1）移除对旧设备的支持&lt;/p&gt;
+&lt;p&gt;影响：连接设备调试时，会重新自动生成&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Developer/Xcode/iOS DeviceSupport&lt;/p&gt;
+&lt;p&gt;（2）移除旧版本的模拟器支持&lt;/p&gt;
+&lt;p&gt;影响：可重新下载了&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator/x.x/tmp (模拟器临时文件)&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator/x.x/Applications (模拟器安装的应用)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（3）移除Archives&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;影响：不可恢复；Adhoc或者App Store版本会被删除。建议备份dSYM文件夹&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Developer/Xcode/Archives&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（4）移除DerivedData&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;影响：可重新生成；会删除build生成的项目索引、build输出以及日志。重新打开项目时会重新生成，大的项目会耗费一些时间。&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Developer/Xcode/DerivedData&lt;/p&gt;
+&lt;p&gt;（5）移除旧的Docsets&lt;/p&gt;
+&lt;p&gt;影响：不可恢复；将删除旧的Docsets文档&lt;/p&gt;
+&lt;p&gt;路径：~/Library/Developer/Shared/Documentation/DocSets&lt;/p&gt;
+&lt;p&gt;本人亲测了（3）和（4），不影响 Xcode 任何使用。以下是步骤截图：&lt;/p&gt;
+&lt;p&gt;首先，进入到对应目录（直接进入找不到）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.03.15.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;找到对应目录之后，直接删除到废纸篓，还需要彻底删除。此处使用的工具 Dr.Cleaner 进行废纸篓清除。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.01.35.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最后是彻底清除之后的磁盘容量数据，这下，清爽多了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8811.10.05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;PS：因为需要清理的磁盘空间实在太大，清除时用了很长时间。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。&lt;/p&gt;
+&lt;p&gt;先说结果吧：本人使用的 Mac mini 500G 磁盘，Xc
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="Xcode" scheme="http://isunman.com/tags/xcode/"/>
+    
+  </entry>
   
   <entry>
     <title>抓取网页正文内容</title>
@@ -1429,62 +1482,6 @@ tags: [博客，文章] #文章标签，多于一项时用这种格式
     <summary type="html">
     
       &lt;h2 id=&quot;为什么是博客&quot;&gt;&lt;a href=&quot;#为什么是博客&quot; class=&quot;headerlink&quot; title=&quot;为什么是博客&quot;&gt;&lt;/a&gt;为什么是博客&lt;/h2&gt;&lt;p&gt;对于个人来说，博客可以发布记录并沉淀自己的观点、经验和想法。在锻炼了自己的表达能力和思维的同时，还可以形成自
-    
-    </summary>
-    
-      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
-    
-    
-      <category term="Hexo" scheme="http://isunman.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Hexo和Github搭建博客（2）：部署到Github</title>
-    <link href="http://isunman.com/2016/02/29/blog-by-hexo-github-step2/"/>
-    <id>http://isunman.com/2016/02/29/blog-by-hexo-github-step2/</id>
-    <published>2016-02-29T02:51:01.281Z</published>
-    <updated>2016-02-29T02:51:01.204Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
-&lt;p&gt;2、创建一个新的 repositories&lt;/p&gt;
-&lt;p&gt;Github页面分为个人主页和项目主页，此处建立个人主页为例：&lt;/p&gt;
-&lt;p&gt;例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.Github.com”&lt;/p&gt;
-&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;1、编辑 Hexo 根目录下的_config.yml文件。&lt;/p&gt;
-&lt;p&gt;在文件的最后，代码修改为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;deploy:
-
-    type: git
-
-    repo: https://Github.com/isunman/isunman.Github.com.git
-
-    branch: master
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你在部署时，要把下面的 isunman 都换成你的账号名。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这个是Github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。&lt;/p&gt;
-&lt;p&gt;User &amp;amp; Organization Pages live in a special repository dedicated to Github Pages files. You will need to name this repository with the account name.&lt;/p&gt;
-&lt;p&gt;You must use the username.Github.io naming scheme.&lt;br&gt;Content from the master branch will be used to build and&lt;br&gt;publish your Github Pages site.&lt;br&gt;You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.Github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://&lt;username&gt;.Github.io.&lt;/username&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;执行下列指令即可完成部署。&lt;/p&gt;
-&lt;p&gt;先生成静态文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;再部署到 Github&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Hexo常用命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;hexo g == hexo generate 
-hexo d == hexo deploy 
-hexo s == hexo server 
-hexo n == hexo new
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;记住：&lt;/p&gt;
-&lt;p&gt;（1）每次修改本地文件后，需要 hexo g 才能重新生成静态文件。&lt;/p&gt;
-&lt;p&gt;（2）每次使用命令时，都要在 Hexo 根目录下。&lt;/p&gt;
-&lt;p&gt;至此，我们的博客已经完成，在浏览器访问 isunman.Github.io 即可查看效果！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Github设置&quot;&gt;&lt;a href=&quot;#Github设置&quot; class=&quot;headerlink&quot; title=&quot;Github设置&quot;&gt;&lt;/a&gt;Github设置&lt;/h2&gt;&lt;p&gt;1、必须已经有一个Github账号（没有的去面壁）&lt;/p&gt;
-&lt;p&gt;2、创建一个新的 repo
     
     </summary>
     
