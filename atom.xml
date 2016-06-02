@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-05-15T07:26:52.820Z</updated>
+  <updated>2016-06-02T06:50:44.330Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,118 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）</title>
+    <link href="http://isunman.com/2016/06/02/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools/"/>
+    <id>http://isunman.com/2016/06/02/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools/</id>
+    <published>2016-06-02T06:50:44.372Z</published>
+    <updated>2016-06-02T06:50:44.330Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;App-Cleaner&quot;&gt;&lt;a href=&quot;#App-Cleaner&quot; class=&quot;headerlink&quot; title=&quot;App Cleaner&quot;&gt;&lt;/a&gt;App Cleaner&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://freemacsoft.net/appcleaner/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;删除软件的必备。用这个软件可以搜索出一个 app 附带的 data 文件夹，和各种类似注册表的东西。当你需要彻底删除一个软件的时候，可以用。&lt;/p&gt;
+&lt;h4 id=&quot;Duet&quot;&gt;&lt;a href=&quot;#Duet&quot; class=&quot;headerlink&quot; title=&quot;Duet&quot;&gt;&lt;/a&gt;Duet&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.duetdisplay.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;把你的 iPad 变成一个外接 Mac 显示器的软件（如果你要用 iPhone 也没人阻止你）。性能相当出色，可用性很高。对于需要移动所以不能使用单独的外接显示器的时候，非常有用。&lt;/p&gt;
+&lt;h4 id=&quot;Fluid&quot;&gt;&lt;a href=&quot;#Fluid&quot; class=&quot;headerlink&quot; title=&quot;Fluid&quot;&gt;&lt;/a&gt;Fluid&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://fluidapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;一个把 web app 包裹起来成为一个单独 app 的壳。相当于把你的 web app 单独包进一个浏览器里。对于你常用的 app 来说，非常值得一试。&lt;/p&gt;
+&lt;h4 id=&quot;AirServer&quot;&gt;&lt;a href=&quot;#AirServer&quot; class=&quot;headerlink&quot; title=&quot;AirServer&quot;&gt;&lt;/a&gt;AirServer&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.airserver.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;把你的 mac 变成一个AirPlay 显示器，可以把 iPhone/iPad 屏幕通过 AirPlay 投射到电脑屏幕上。&lt;/p&gt;
+&lt;h4 id=&quot;Path-Finder&quot;&gt;&lt;a href=&quot;#Path-Finder&quot; class=&quot;headerlink&quot; title=&quot;Path Finder&quot;&gt;&lt;/a&gt;Path Finder&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.cocoatech.com/pathfinder/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;全面增强附加功能版 Finder，对于集成性功能性强的文件管理器有需求的用户来说很好用。&lt;/p&gt;
+&lt;h4 id=&quot;Tuxera-Disk-Manager&quot;&gt;&lt;a href=&quot;#Tuxera-Disk-Manager&quot; class=&quot;headerlink&quot; title=&quot;Tuxera Disk Manager&quot;&gt;&lt;/a&gt;Tuxera Disk Manager&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.tuxera.com/products/tuxera-ntfs-for-Mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;给你的 mac 增加 NTFS write 支持的软件。NTFS 也就是 windows 的文件格式，mac 原厂只能读不能写。有需要的朋友一定要装这个。&lt;/p&gt;
+&lt;h4 id=&quot;Keka&quot;&gt;&lt;a href=&quot;#Keka&quot; class=&quot;headerlink&quot; title=&quot;Keka&quot;&gt;&lt;/a&gt;Keka&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.kekaosx.com/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;万能文件解压软件。&lt;/p&gt;
+&lt;h4 id=&quot;Transmission&quot;&gt;&lt;a href=&quot;#Transmission&quot; class=&quot;headerlink&quot; title=&quot;Transmission&quot;&gt;&lt;/a&gt;Transmission&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.transmissionbt.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;BitTorrent 客户端。&lt;/p&gt;
+&lt;h4 id=&quot;Hider-2&quot;&gt;&lt;a href=&quot;#Hider-2&quot; class=&quot;headerlink&quot; title=&quot;Hider 2&quot;&gt;&lt;/a&gt;Hider 2&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://macpaw.com/hider&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;人如其名，就是一个放置隐藏文件夹和加密文件的软件，一定不要忘了密码。&lt;/p&gt;
+&lt;h4 id=&quot;Splash-Streamer&quot;&gt;&lt;a href=&quot;#Splash-Streamer&quot; class=&quot;headerlink&quot; title=&quot;Splash Streamer&quot;&gt;&lt;/a&gt;Splash Streamer&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.splashtop.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0011.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;远程控制软件。支持 PC，Mac，iOS，android 的远程操控。&lt;/p&gt;
+&lt;h4 id=&quot;Teamviewer&quot;&gt;&lt;a href=&quot;#Teamviewer&quot; class=&quot;headerlink&quot; title=&quot;Teamviewer&quot;&gt;&lt;/a&gt;Teamviewer&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.teamviewer.com/en/download/Mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0012.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;和上面一个同类的软件，不过这个个人使用免费。&lt;/p&gt;
+&lt;h4 id=&quot;RecordIt&quot;&gt;&lt;a href=&quot;#RecordIt&quot; class=&quot;headerlink&quot; title=&quot;RecordIt&quot;&gt;&lt;/a&gt;RecordIt&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://recordit.co/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0013.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;截取屏幕操作的 gif 并且自动上传云端的软件，操作简单直观，分享容易。&lt;/p&gt;
+&lt;h4 id=&quot;Parallels-Desktop&quot;&gt;&lt;a href=&quot;#Parallels-Desktop&quot; class=&quot;headerlink&quot; title=&quot;Parallels Desktop&quot;&gt;&lt;/a&gt;Parallels Desktop&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.parallels.com/products/desktop/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0014.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;非常好用的虚拟机软件。&lt;/p&gt;
+&lt;h4 id=&quot;Actions-Server-gt-Quadro&quot;&gt;&lt;a href=&quot;#Actions-Server-gt-Quadro&quot; class=&quot;headerlink&quot; title=&quot;Actions Server -&amp;gt; Quadro&quot;&gt;&lt;/a&gt;Actions Server -&amp;gt; Quadro&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://getactionsapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Actions Server 官网下载1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://quadro.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quadro 官网下载2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0015.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Actions 是一个把你的 iPad/iPhone 变成电脑一个快捷键面板的软件。Quadro 是前者结束支持以后的付费版后继者。&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OS X 常用 / 必备软件推荐 —— （目录）</title>
+    <link href="http://isunman.com/2016/06/02/osx-common-software-index/"/>
+    <id>http://isunman.com/2016/06/02/osx-common-software-index/</id>
+    <published>2016-06-02T06:27:18.716Z</published>
+    <updated>2016-06-02T06:27:18.657Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（目录）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（目录）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （目录）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （目录）&lt;/h3&gt;&lt;p&gt;我是一个 Web 开发者，也做一点 iOS 开发，摄影、绘画、无损音乐均有所涉猎。&lt;/p&gt;
+&lt;p&gt;我整理了一下自己电脑上，几年来安装的软件，选取其中我觉得受益颇多的软件，来给大家介绍一番。因为总数太多，所以只能分成几个分页了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/CommonSoftware_0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （作图与绘画）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （读与写）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （Developer/ web）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280914?refer=yifeng-tech&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21265787&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（目录）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（目录）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （目录）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>21天自学C++的有效方法</title>
@@ -1361,167 +1473,6 @@ extension=php_mysqli.dll
     
     
       <category term="思考" scheme="http://isunman.com/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>什么是“富人思维”</title>
-    <link href="http://isunman.com/2016/04/02/what-is-the-thinking-of-the-rich/"/>
-    <id>http://isunman.com/2016/04/02/what-is-the-thinking-of-the-rich/</id>
-    <published>2016-04-02T06:38:34.325Z</published>
-    <updated>2016-04-02T06:38:34.241Z</updated>
-    
-    <content type="html">&lt;p&gt;如果每个人都理解你，那你得普通成什么样。&lt;/p&gt;
-&lt;p&gt;上面这句话不是我说的，是陈老师说的，虽然陈老师算不上大富之人，但是他这句话却道出了富人思维的本质：富人思维是什么，&lt;strong&gt;是少数人的思维，20%的思维，是小众思维&lt;/strong&gt;。有人说这个话是在放屁，富人本来就是少数，我这样说是在语义重复。但其实不是这样的。&lt;/p&gt;
-&lt;p&gt;记不清什么时候谁给我说过这样一句话：如果你寻求的是一种大多人都觉得合理的生活，那你就会过上大多数人的生活。如果你安全感的起点在于大多数人的赞同，那最终也会过上大多数人的生活。&lt;/p&gt;
-&lt;p&gt;如果我们把富人当做一个群体样本（即不分割所谓的一代还是二代），你会发现，他们在一开始积累财富的时候，都走了和大部分人不一样的路。这种不一样，可能是不认可，不理解，反对，唾弃，甚至是法律的边缘，以及极端情况下，暴力革命。&lt;/p&gt;
-&lt;p&gt;为了积累财富，如果你开始做一件事，80%的人都觉得这件事很棒，那么极有可能你也就是这百分之八十，但很遗憾，富人是剩下那20%。如果你开始做一件事，99%的人都觉得很棒，那么你就成为不了剩下那1%的富人。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;以我的调性，通常会把日常的解释上升到理论的高度的。于是我想到了金融学里的无套利定价原理（Non-Arbitrage Pricing）。它的核心思想是，如果同一个东西，在两个不同市场的定价有差异，那么套利行为会使得这种差异消失&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;比如，白菜在北京卖5块钱一斤，在上海卖10块钱一斤，就会有人在北京买了白菜拿到上海卖，无风险套利。当然，我们没有考虑交易成本，比如白菜从北京到上海的交通费用，也没有提及很多假设，但不重要，我们不是回答金融学的考试题。我们理解当中的思想就够了。&lt;/p&gt;
-&lt;p&gt;如果80%的人都觉得这是个可靠的赚大钱的机会，那么以大家对赚钱的强烈渴望来讲，必然大家会迅速冲进去，结果是什么，竞争变得异常惨烈，最后大家都赚不到钱，或者能赚也只能赚到远低于预期的小钱。这就是无套利的结果。这里暗含的意思，&lt;strong&gt;越多人认可或者可以去做到的事情，套利的交易成本就越低，套利行为的发生就越容易，最后大家赚到的钱，也就越趋近于市场平均水平&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;富人会怎么样呢，富人会选择小众思维，大家都不太容易接受或者没能力接受的事情去做，比如创业。90%的人会觉得，哇，这个好大的风险，我不具备相关的资源/能力/资金，我要再准备准备。万一失败了我会很艰难，而且成功率那么低，等等。但剩下那10%的人思维会完全相反。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;他们一旦成功，会立马摇身变为富人，而且会自然形成极高的交易成本阻止其他人的进入，即阻止套利行为的发生。这里的交易成本就包括胆大、敢冒险、有赌性、有血性、对风险承担能力特别强等等&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;具体地，我们以公司老板和员工（少数人，近似的理解为富人，和多数人，近似地理解为非富人）为例，来看多数人思维和少数人思维的区别。以下内容来自网络。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：哇塞，他真有钱。 &lt;/p&gt;
-&lt;p&gt;少数人：尼玛，我要想办法比他有钱。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：编制，社保，养老金怎么办？&lt;/p&gt;
-&lt;p&gt;少数人：还要靠政府养老，弱爆了！&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：买了头牛，然后找个绳子来牵。&lt;/p&gt;
-&lt;p&gt;少数人：先找个绳子，以后可以牵牛。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：人多的地方才安全。&lt;/p&gt;
-&lt;p&gt;少数人：人少的地方风景更美。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：存下来的才是钱。&lt;/p&gt;
-&lt;p&gt;少数人：花出去的才是钱。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：这人真牛逼，向他学习。&lt;/p&gt;
-&lt;p&gt;少数人：真人真牛逼，把他用起来。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：输了会很惨。&lt;/p&gt;
-&lt;p&gt;少数人：赢了会很爽。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：借钱是负债。&lt;/p&gt;
-&lt;p&gt;少数人：借钱是资产。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：现在创业越来越不容易了。&lt;/p&gt;
-&lt;p&gt;少数人：以后的人会说现在创业真容易。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：明天早上起来把这事儿办了。&lt;/p&gt;
-&lt;p&gt;少数人：现在就把这事儿办了再睡。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：钱是生活的保障。&lt;/p&gt;
-&lt;p&gt;少数人：钱是生活的工具。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：没钱没资源，所以创不了业。&lt;/p&gt;
-&lt;p&gt;少数人：没钱没资源，所以要创业。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：完了，基本没戏了。&lt;/p&gt;
-&lt;p&gt;少数人：不错，还有一线生机。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：真好吃，下次还来。&lt;/p&gt;
-&lt;p&gt;少数人：真好吃，怎么做的？&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：成功，要付出很多代价。&lt;/p&gt;
-&lt;p&gt;少数人：不成功，要付出更多代价。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：这座山的风景真不错。&lt;/p&gt;
-&lt;p&gt;少数人：这座山的那边是什么&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：吃着碗里的，想着锅里的。&lt;/p&gt;
-&lt;p&gt;少数人：吃着碗里的，想着田里的。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：这人病得不轻。&lt;/p&gt;
-&lt;p&gt;少数人：这人活得没劲。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：别做梦了，现实点吧。&lt;/p&gt;
-&lt;p&gt;少数人：不做梦，不如去死。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：跟着走，有事大家担。&lt;/p&gt;
-&lt;p&gt;少数人：跟我走，有事算我的。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：有一块钱，办一块钱的事&lt;/p&gt;
-&lt;p&gt;少数人：有一块钱，办十块钱的事&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：试试吧，不行就算了。&lt;/p&gt;
-&lt;p&gt;少数人：干到底，不行也得行。&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;多数人：都是鸡汤，并无卵用。&lt;/p&gt;
-&lt;p&gt;少数人：这鸡汤怎么熬的，鸡肉在哪？&lt;/p&gt;
-&lt;p&gt;————&lt;/p&gt;
-&lt;p&gt;所以，要有富人思维，第一步是什么，是把自己从大部分人的思维先解脱出来，开始做一件事的时候，不要向大部分人寻求安全感和认可，毕竟你是要超越碾压他们的啊！&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://www.zhihu.com/question/26980854/answer/93253662&quot; title=&quot;来自知乎 原文链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.zhihu.com/question/26980854/answer/93253662&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如果每个人都理解你，那你得普通成什么样。&lt;/p&gt;
-&lt;p&gt;上面这句话不是我说的，是陈老师说的，虽然陈老师算不上大富之人，但是他这句话却道出了富人思维的本质：富人思维是什么，&lt;strong&gt;是少数人的思维，20%的思维，是小众思维&lt;/strong&gt;。有人说这个话是在放屁，富人本
-    
-    </summary>
-    
-      <category term="生活感悟" scheme="http://isunman.com/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
-    
-    
-      <category term="思考" scheme="http://isunman.com/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Facebook公司内部PPT分享:如何高效工作</title>
-    <link href="http://isunman.com/2016/03/20/how-to-work-effectively/"/>
-    <id>http://isunman.com/2016/03/20/how-to-work-effectively/</id>
-    <published>2016-03-20T06:56:20.295Z</published>
-    <updated>2016-03-20T06:56:20.192Z</updated>
-    
-    <content type="html">&lt;p&gt;Facebook内部PPT，看看人家是如何高效工作滴&lt;/p&gt;
-&lt;h3 id=&quot;1、时间常有，时间优先。&quot;&gt;&lt;a href=&quot;#1、时间常有，时间优先。&quot; class=&quot;headerlink&quot; title=&quot;1、时间常有，时间优先。&quot;&gt;&lt;/a&gt;1、时间常有，时间优先。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0001.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-时间总会有的：每天只计划4-5小时真正地工作。&quot;&gt;&lt;a href=&quot;#2-时间总会有的：每天只计划4-5小时真正地工作。&quot; class=&quot;headerlink&quot; title=&quot;2.时间总会有的：每天只计划4~5小时真正地工作。&quot;&gt;&lt;/a&gt;2.时间总会有的：每天只计划4~5小时真正地工作。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0002.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活-12-小时，这都很正常的。&quot;&gt;&lt;a href=&quot;#3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活-12-小时，这都很正常的。&quot; class=&quot;headerlink&quot; title=&quot;3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活 12 小时，这都很正常的。&quot;&gt;&lt;/a&gt;3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活 12 小时，这都很正常的。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0003.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;4、重视你的时间，并使其值得重视：你的时间值-1000-美元-小时，你得动起来。&quot;&gt;&lt;a href=&quot;#4、重视你的时间，并使其值得重视：你的时间值-1000-美元-小时，你得动起来。&quot; class=&quot;headerlink&quot; title=&quot;4、重视你的时间，并使其值得重视：你的时间值 1000 美元/小时，你得动起来。&quot;&gt;&lt;/a&gt;4、重视你的时间，并使其值得重视：你的时间值 1000 美元/小时，你得动起来。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0004.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;5、不要多任务，这只会消耗注意力；保持专注，一心一用。&quot;&gt;&lt;a href=&quot;#5、不要多任务，这只会消耗注意力；保持专注，一心一用。&quot; class=&quot;headerlink&quot; title=&quot;5、不要多任务，这只会消耗注意力；保持专注，一心一用。&quot;&gt;&lt;/a&gt;5、不要多任务，这只会消耗注意力；保持专注，一心一用。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0005.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;6、养成工作习惯，并持之以恒，你的身体会适应的。&quot;&gt;&lt;a href=&quot;#6、养成工作习惯，并持之以恒，你的身体会适应的。&quot; class=&quot;headerlink&quot; title=&quot;6、养成工作习惯，并持之以恒，你的身体会适应的。&quot;&gt;&lt;/a&gt;6、养成工作习惯，并持之以恒，你的身体会适应的。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0006.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7、在有限的时间内，我们总是非常专注并且有效率。&quot;&gt;&lt;a href=&quot;#7、在有限的时间内，我们总是非常专注并且有效率。&quot; class=&quot;headerlink&quot; title=&quot;7、在有限的时间内，我们总是非常专注并且有效率。&quot;&gt;&lt;/a&gt;7、在有限的时间内，我们总是非常专注并且有效率。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0007.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。&quot;&gt;&lt;a href=&quot;#8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。&quot; class=&quot;headerlink&quot; title=&quot;8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。&quot;&gt;&lt;/a&gt;8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0008.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工”-Facebook-办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。&quot;&gt;&lt;a href=&quot;#9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工”-Facebook-办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。&quot; class=&quot;headerlink&quot; title=&quot;9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工” Facebook 办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。&quot;&gt;&lt;/a&gt;9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工” Facebook 办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0009.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;10、工作时间越长，并不等于效率越高。&quot;&gt;&lt;a href=&quot;#10、工作时间越长，并不等于效率越高。&quot; class=&quot;headerlink&quot; title=&quot;10、工作时间越长，并不等于效率越高。&quot;&gt;&lt;/a&gt;10、工作时间越长，并不等于效率越高。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0010.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;11、按重要性工作，提高效率。&quot;&gt;&lt;a href=&quot;#11、按重要性工作，提高效率。&quot; class=&quot;headerlink&quot; title=&quot;11、按重要性工作，提高效率。&quot;&gt;&lt;/a&gt;11、按重要性工作，提高效率。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0011.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。&quot;&gt;&lt;a href=&quot;#12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。&quot; class=&quot;headerlink&quot; title=&quot;12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。&quot;&gt;&lt;/a&gt;12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0012.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;13、把会议和沟通-邮件或电话-结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。&quot;&gt;&lt;a href=&quot;#13、把会议和沟通-邮件或电话-结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。&quot; class=&quot;headerlink&quot; title=&quot;13、把会议和沟通 (邮件或电话) 结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。&quot;&gt;&lt;/a&gt;13、把会议和沟通 (邮件或电话) 结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0013.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;14、一整天保持相同的工作环境。在项目-客户之间切换，会效率低。&quot;&gt;&lt;a href=&quot;#14、一整天保持相同的工作环境。在项目-客户之间切换，会效率低。&quot; class=&quot;headerlink&quot; title=&quot;14、一整天保持相同的工作环境。在项目/客户之间切换，会效率低。&quot;&gt;&lt;/a&gt;14、一整天保持相同的工作环境。在项目/客户之间切换，会效率低。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0014.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;15、工作—放松—工作-高效-番茄工作法-—拖延症—高效。&quot;&gt;&lt;a href=&quot;#15、工作—放松—工作-高效-番茄工作法-—拖延症—高效。&quot; class=&quot;headerlink&quot; title=&quot;15、工作—放松—工作=高效(番茄工作法)—拖延症—高效。&quot;&gt;&lt;/a&gt;15、工作—放松—工作=高效(番茄工作法)—拖延症—高效。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0015.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。&quot;&gt;&lt;a href=&quot;#16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。&quot; class=&quot;headerlink&quot; title=&quot;16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。&quot;&gt;&lt;/a&gt;16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0016.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。&quot;&gt;&lt;a href=&quot;#17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。&quot; class=&quot;headerlink&quot; title=&quot;17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。&quot;&gt;&lt;/a&gt;17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0017.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;18、必须清楚白天必须完成的那件事，是么。“Only-ever-work-on-the-thing-that-will-have-the-biggest-impact”-只去做那件有着最大影响的事情。——-Jason-Cohen&quot;&gt;&lt;a href=&quot;#18、必须清楚白天必须完成的那件事，是么。“Only-ever-work-on-the-thing-that-will-have-the-biggest-impact”-只去做那件有着最大影响的事情。——-Jason-Cohen&quot; class=&quot;headerlink&quot; title=&quot;18、必须清楚白天必须完成的那件事，是么。“Only ever work on the thing that will have the biggest impact” 只去做那件有着最大影响的事情。—— Jason Cohen&quot;&gt;&lt;/a&gt;18、必须清楚白天必须完成的那件事，是么。“Only ever work on the thing that will have the biggest impact” 只去做那件有着最大影响的事情。—— Jason Cohen&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0018.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;19、把任务按时间分段，就能感觉它快被搞定了。&quot;&gt;&lt;a href=&quot;#19、把任务按时间分段，就能感觉它快被搞定了。&quot; class=&quot;headerlink&quot; title=&quot;19、把任务按时间分段，就能感觉它快被搞定了。&quot;&gt;&lt;/a&gt;19、把任务按时间分段，就能感觉它快被搞定了。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0019.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;20、授权并擅用他人的力量。—君子善假于物-人-也，如果某件事其他人也可以做到八成，那就给他做！&quot;&gt;&lt;a href=&quot;#20、授权并擅用他人的力量。—君子善假于物-人-也，如果某件事其他人也可以做到八成，那就给他做！&quot; class=&quot;headerlink&quot; title=&quot;20、授权并擅用他人的力量。—君子善假于物(人)也，如果某件事其他人也可以做到八成，那就给他做！&quot;&gt;&lt;/a&gt;20、授权并擅用他人的力量。—君子善假于物(人)也，如果某件事其他人也可以做到八成，那就给他做！&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0020.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。&quot;&gt;&lt;a href=&quot;#21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。&quot; class=&quot;headerlink&quot; title=&quot;21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。&quot;&gt;&lt;/a&gt;21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0021.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;22、给所有事情都设定一个期限。不要让工作无期限地进行下去。&quot;&gt;&lt;a href=&quot;#22、给所有事情都设定一个期限。不要让工作无期限地进行下去。&quot; class=&quot;headerlink&quot; title=&quot;22、给所有事情都设定一个期限。不要让工作无期限地进行下去。&quot;&gt;&lt;/a&gt;22、给所有事情都设定一个期限。不要让工作无期限地进行下去。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0022.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结&quot;&gt;&lt;a href=&quot;#23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结&quot; class=&quot;headerlink&quot; title=&quot;23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结&quot;&gt;&lt;/a&gt;23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0023.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;24、多记，多做笔记&quot;&gt;&lt;a href=&quot;#24、多记，多做笔记&quot; class=&quot;headerlink&quot; title=&quot;24、多记，多做笔记&quot;&gt;&lt;/a&gt;24、多记，多做笔记&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0024.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。&quot;&gt;&lt;a href=&quot;#25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。&quot; class=&quot;headerlink&quot; title=&quot;25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。&quot;&gt;&lt;/a&gt;25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0025.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;26、休息，休息一下～&quot;&gt;&lt;a href=&quot;#26、休息，休息一下～&quot; class=&quot;headerlink&quot; title=&quot;26、休息，休息一下～&quot;&gt;&lt;/a&gt;26、休息，休息一下～&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/isunman0026.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;好好看看，能改则改。需要学习的方法和工作态度太多了。&lt;/p&gt;
-&lt;p&gt;工作很受用，尤其是做IT搞技术的。&lt;/p&gt;
-&lt;p&gt;2016/3/20 14:53:18 &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Facebook内部PPT，看看人家是如何高效工作滴&lt;/p&gt;
-&lt;h3 id=&quot;1、时间常有，时间优先。&quot;&gt;&lt;a href=&quot;#1、时间常有，时间优先。&quot; class=&quot;headerlink&quot; title=&quot;1、时间常有，时间优先。&quot;&gt;&lt;/a&gt;1、时间常有，时间优先。&lt;/h3
-    
-    </summary>
-    
-      <category term="工作学习" scheme="http://isunman.com/categories/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
     
   </entry>
   
