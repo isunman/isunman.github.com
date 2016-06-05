@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-06-02T07:05:45.090Z</updated>
+  <updated>2016-06-05T04:40:48.964Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OS X 常用 / 必备软件推荐 —— （读与写）</title>
+    <link href="http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/"/>
+    <id>http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/</id>
+    <published>2016-06-05T04:40:49.059Z</published>
+    <updated>2016-06-05T04:40:48.964Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（读与写）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（读与写）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （读与写）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （读与写）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Simple-Comic&quot;&gt;&lt;a href=&quot;#Simple-Comic&quot; class=&quot;headerlink&quot; title=&quot;Simple Comic&quot;&gt;&lt;/a&gt;Simple Comic&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://dancingtortoise.com/simplecomic/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看漫画的软件，可以看打包的 zip，或者整个文件夹的图片。不看漫画看图册或者收集的图片也非常合适。&lt;/p&gt;
+&lt;h4 id=&quot;Pocket&quot;&gt;&lt;a href=&quot;#Pocket&quot; class=&quot;headerlink&quot; title=&quot;Pocket&quot;&gt;&lt;/a&gt;Pocket&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://getpocket.com/Mac/?a=Mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;稍后阅读类软件，手机 app 浏览器插件都很完备。&lt;/p&gt;
+&lt;h4 id=&quot;Reeder&quot;&gt;&lt;a href=&quot;#Reeder&quot; class=&quot;headerlink&quot; title=&quot;Reeder&quot;&gt;&lt;/a&gt;Reeder&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://reederapp.com/Mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;RSS feed 阅读器。&lt;/p&gt;
+&lt;h4 id=&quot;iA-Writer&quot;&gt;&lt;a href=&quot;#iA-Writer&quot; class=&quot;headerlink&quot; title=&quot;iA Writer&quot;&gt;&lt;/a&gt;iA Writer&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://ia.net/writer/mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;比较偏向写作者的 markdown 编辑器，干净整洁，但是对代码的支持不是最好。&lt;/p&gt;
+&lt;h4 id=&quot;MacDown&quot;&gt;&lt;a href=&quot;#MacDown&quot; class=&quot;headerlink&quot; title=&quot;MacDown&quot;&gt;&lt;/a&gt;MacDown&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://macdown.uranusjr.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;各方面都很不错的 markdown 编辑器。&lt;/p&gt;
+&lt;h4 id=&quot;Leanote&quot;&gt;&lt;a href=&quot;#Leanote&quot; class=&quot;headerlink&quot; title=&quot;Leanote&quot;&gt;&lt;/a&gt;Leanote&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;偏向程序员的 markdown 记事本，可以网上发布，可以多人协作。开源。&lt;/p&gt;
+&lt;h4 id=&quot;Day-One-2&quot;&gt;&lt;a href=&quot;#Day-One-2&quot; class=&quot;headerlink&quot; title=&quot;Day One 2&quot;&gt;&lt;/a&gt;Day One 2&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://dayoneapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;日记本，密码，照片，GPS等功能俱全，支持 markdown，有 iOS 客户端。&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280991&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（读与写）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（读与写）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （读与写）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）</title>
+    <link href="http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/"/>
+    <id>http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/</id>
+    <published>2016-06-05T04:28:26.277Z</published>
+    <updated>2016-06-05T04:28:26.221Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Bilibili&quot;&gt;&lt;a href=&quot;#Bilibili&quot; class=&quot;headerlink&quot; title=&quot;Bilibili&quot;&gt;&lt;/a&gt;Bilibili&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://bilimac.eqoe.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio_0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;第三方，开源的 b 站客户端，告别 flash，还可以帮助海外党（你懂的），总之是个非常推荐的软件。&lt;/p&gt;
+&lt;h4 id=&quot;iTunes&quot;&gt;&lt;a href=&quot;#iTunes&quot; class=&quot;headerlink&quot; title=&quot;iTunes&quot;&gt;&lt;/a&gt;iTunes&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Mac 上管理音乐最好的软件还是 iTunes，包括手动管理 iDevice 的音乐也很方便。格式的话，有损可以用 aac，无损可以用 AppleLossless，当然，如果你有非苹果设备播放的需求的话，还是用第三方吧。&lt;/p&gt;
+&lt;h4 id=&quot;Vox&quot;&gt;&lt;a href=&quot;#Vox&quot; class=&quot;headerlink&quot; title=&quot;Vox&quot;&gt;&lt;/a&gt;Vox&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://coppertino.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;综合下来，最好用，最稳定的第三方音乐播放器。支持各种格式，和许多在线服务，功能齐全。&lt;/p&gt;
+&lt;h4 id=&quot;XLD&quot;&gt;&lt;a href=&quot;#XLD&quot; class=&quot;headerlink&quot; title=&quot;XLD&quot;&gt;&lt;/a&gt;XLD&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/projects/xld/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;格式转换软件，无损转 AppleLossLess，或者转 mp3 或者 aac 等等，强烈推荐。&lt;/p&gt;
+&lt;h4 id=&quot;Movist&quot;&gt;&lt;a href=&quot;#Movist&quot; class=&quot;headerlink&quot; title=&quot;Movist&quot;&gt;&lt;/a&gt;Movist&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://itunes.apple.com/us/app/movist/id461788075?mt=12&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;目前的主力播放器。可能有全屏闪退的问题，不过……不影响使用。&lt;/p&gt;
+&lt;h4 id=&quot;MPlayerX&quot;&gt;&lt;a href=&quot;#MPlayerX&quot; class=&quot;headerlink&quot; title=&quot;MPlayerX&quot;&gt;&lt;/a&gt;MPlayerX&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://mplayerx.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;曾经的主力播放器，出了什么问题以后我换了 Movist 使用至今（时间久远不记得当初遇到什么问题了，好像是打开某些视频直接闪退）。相信现在也已经修复 bug 了吧，值得一试。&lt;/p&gt;
+&lt;h4 id=&quot;VLC&quot;&gt;&lt;a href=&quot;#VLC&quot; class=&quot;headerlink&quot; title=&quot;VLC&quot;&gt;&lt;/a&gt;VLC&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.videolan.org/vlc/download-Macosx.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;开源的视频播放器，有很多特殊的使用方式，喜欢折腾的话可以用。&lt;/p&gt;
+&lt;h4 id=&quot;Blu-ray-Player&quot;&gt;&lt;a href=&quot;#Blu-ray-Player&quot; class=&quot;headerlink&quot; title=&quot;Blu-ray Player&quot;&gt;&lt;/a&gt;Blu-ray Player&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.macblurayplayer.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果你需要播放蓝光碟，你不仅需要一个蓝光光驱，还需要对应的软件。这个软件是最无脑的播放软件。&lt;/p&gt;
+&lt;h4 id=&quot;MakeMKV&quot;&gt;&lt;a href=&quot;#MakeMKV&quot; class=&quot;headerlink&quot; title=&quot;MakeMKV&quot;&gt;&lt;/a&gt;MakeMKV&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.makemkv.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果你需要把蓝光碟的内容 rip 下来，用这个可以到处 MKV 文件。&lt;/p&gt;
+&lt;h4 id=&quot;HandBrake&quot;&gt;&lt;a href=&quot;#HandBrake&quot; class=&quot;headerlink&quot; title=&quot;HandBrake&quot;&gt;&lt;/a&gt;HandBrake&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://handbrake.fr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;万能视频格式转码软件。&lt;/p&gt;
+&lt;h4 id=&quot;OBS&quot;&gt;&lt;a href=&quot;#OBS&quot; class=&quot;headerlink&quot; title=&quot;OBS&quot;&gt;&lt;/a&gt;OBS&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://obsproject.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0011.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;开源视频直播源输出软件。如果你需要直播你电脑的画面，就用它。&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280979&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>OS X 常用 / 必备软件推荐 —— （作图与绘画）</title>
@@ -1346,104 +1450,6 @@ extension=php_mysqli.dll
       <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
       <category term="wamp" scheme="http://isunman.com/tags/wamp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win7 配置VC++11环境</title>
-    <link href="http://isunman.com/2016/04/12/win7-environment-configuration-vc11/"/>
-    <id>http://isunman.com/2016/04/12/win7-environment-configuration-vc11/</id>
-    <published>2016-04-12T03:37:32.576Z</published>
-    <updated>2016-04-12T03:37:32.515Z</updated>
-    
-    <content type="html">&lt;p&gt;首先，安装的Win7 旗舰版，注意不是 Win7 旗舰版 sp1的话，首先需要升级SP1补丁包，因为VC++11不能安装在Win7旗舰版上却可以安装在Win7旗舰版 SP1上。&lt;/p&gt;
-&lt;p&gt;这样选择的原因：Win7旗舰版SP1是离Win7最近的版本，方便升级。当然如果升级到Win10也可以。&lt;/p&gt;
-&lt;p&gt;1、下载Win7 SP1补丁包&lt;/p&gt;
-&lt;p&gt;官网下载地址：&lt;a href=&quot;https://www.microsoft.com/zh-cn/download/details.aspx?id=5842&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.microsoft.com/zh-cn/download/details.aspx?id=5842&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;2、安装Win7 SP1补丁包，安装成功以后，在系统版本中可以看到SP1字样。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;3、下载VC++11的安装文件&lt;/p&gt;
-&lt;p&gt;官网下载地址：&lt;a href=&quot;https://www.microsoft.com/zh-cn/download/details.aspx?id=30679&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.microsoft.com/zh-cn/download/details.aspx?id=30679&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;4、安装VC++11环境&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;出现如图提示，则安装成功。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先，安装的Win7 旗舰版，注意不是 Win7 旗舰版 sp1的话，首先需要升级SP1补丁包，因为VC++11不能安装在Win7旗舰版上却可以安装在Win7旗舰版 SP1上。&lt;/p&gt;
-&lt;p&gt;这样选择的原因：Win7旗舰版SP1是离Win7最近的版本，方便升级。当然如果升级
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="wamp" scheme="http://isunman.com/tags/wamp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>队列是什么</title>
-    <link href="http://isunman.com/2016/04/07/what-queues-are/"/>
-    <id>http://isunman.com/2016/04/07/what-queues-are/</id>
-    <published>2016-04-07T15:09:35.285Z</published>
-    <updated>2016-04-07T15:09:35.228Z</updated>
-    
-    <content type="html">&lt;p&gt;首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。&lt;/p&gt;
-&lt;p&gt;不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系统有Beanstalkd,RabbitMQ,Redis(可以作为队列系统使用)等，其核心作用都是先将消息数据通过系统接口按顺序放入队列(暂存于内存)，需要时再按放入的顺序依次取出以作后续处理。&lt;/p&gt;
-&lt;p&gt;就拿我前段时间做的邮件发送系统举例：&lt;/p&gt;
-&lt;p&gt;系统以HTTP协议提供服务，对外提供的主要功能是发送邮件，API地址为 /api/msg.send。使用者只要以POST请求此地址，传入subject,body,recipient这三个参数，即可发送一封邮件。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;方案1： 不使用数据库，不使用队列&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;请求接口时，控制器直接调用sendmail或外部smtp服务器发送邮件，整个发送过程HTTP请求处于等待状态，待邮件发送完成，返回发送结果（只是调用发送程序是否成功的结果，不是邮件真正的发送结果，真正发送结果需要分析邮件日志) &lt;/p&gt;
-&lt;p&gt;这个方案最简单直接，平时发送少量邮件是可以的，但是缺点也很明显： &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;因为接口调用时整个邮件发送过程都是同步进行的，每次请求都要等待邮件发送端完成处理，必然导致每次调用接口的等待时间增长。&lt;/li&gt;
-&lt;li&gt;当系统接口并发请求较高时，系统可用性不仅受限于WebServer的处理能力，还完全受限于邮件发送端软件的处理能力，其中任一环节故障就会导致整个系统无法提供服务。&lt;/li&gt;
-&lt;li&gt;若邮件发送端软件出现故障（比如SMTP连接超时），导致某次请求时邮件发送失败，那这封邮件内容便彻底丢失了，系统没有任何存留，不能实现自动重发。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;方案2： 使用数据库，不使用队列&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;请求接口时，将要发送的邮件信息存入数据库,表结构如下：&lt;/p&gt;
-&lt;p&gt;id | subject | body | recipient | sent_at | failed_at | failed_times&lt;br&gt;然后在服务器上运行一个定时任务，每秒一次读取 sent_at=0 &amp;amp;&amp;amp; failed_times &amp;lt; 10 的记录，随后调用邮件发送端发送邮件，成功后把sent_at设为当前时间，失败后设置failed_at并累加failed_times。 方案2已经用到了类似队列的思想。&lt;/p&gt;
-&lt;p&gt;相对于方案1的提升：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;去掉了同步发送邮件的操作，接口请求响应会快很多&lt;/li&gt;
-&lt;li&gt;邮件发送失败后可以重发，邮件不会丢失&lt;/li&gt;
-&lt;li&gt;当邮件发送端完全失效后系统也可以接受邮件发送请求，待发送端恢复后可以继续发送邮件。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;但还是存在缺点： &lt;/p&gt;
-&lt;p&gt;每次请求都会写一次数据库，当大并发量或者大数据量（一次请求包含100万个收件人）时，数据库负载过高影响稳定性，同时也会严重增加接口的响应时间（一下子写入100万条记录不是闹着玩的）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;方案3： 数据库 + 队列&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;请求接口时，将要发送的邮件信息以JSON格式存入队列系统，放入的单个消息形如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-&amp;quot;subject&amp;quot; : &amp;quot;今天没吃药&amp;quot;,
-&amp;quot;body&amp;quot; : &amp;quot;感觉自己&amp;quot;,
-&amp;quot;recipient&amp;quot; : &amp;quot;mengmeng@da.com&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在的队列基本上都是内存队列，数据存取非常快，一瞬间写入100万条数据再也不是难事。&lt;br&gt;随后，在服务器上运行一个常驻进程任务(Worker)，实时监听队列中是否有新的消息（Job,此处指邮件信息）。当新消息进入时，从队列中取出消息，调用邮件发送端完成处理，发送成功后将此消息销毁并将消息内容插入数据库（同方案2），如果发送失败，将此消息重新放入队列，并加入一个60秒的延时标记，意味60秒后再取出处理。&lt;/p&gt;
-&lt;p&gt;这样改进后整个系统的吞吐量和响应速度将大大提升，而且同时也让系统支持了分布式运行的能力。每个Worker进程都可以视为一个处理节点，倘若把worker分散到不同的服务器上，便实现整个系统的分布式处理了，这也是队列的一个重要特性之一。&lt;/p&gt;
-&lt;p&gt;在我实际项目中还是做了许多基于方案3的改进，对于群发还使用了邮件列表和邮件模板等设计，整个系统类似Mailgun和Sendcloud的设计，等整个系统稳定下来，我会考虑将代码开源到Github。&lt;/p&gt;
-&lt;p&gt;这个例子只是队列的一个常见使用场景，一般来说在需要缓解数据库写入压力的场景下面，都可以考虑使用消息队列，还有一些需要分布式处理的情况下，也是队列很好的使用场景。&lt;/p&gt;
-&lt;p&gt;现在大部分语言都有成熟的消息队列处理组件，可以很方便的使用各种队列系统，比如我常用的Laravel 便原生支持了 Beanstalkd,Amazon SQS,IronMQ,Redis。&lt;/p&gt;
-&lt;p&gt;抱砖引玉，不足之处请指正，谢谢。&lt;/p&gt;
-&lt;p&gt;原文链接： &lt;a href=&quot;https://www.zhihu.com/question/26533799&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.zhihu.com/question/26533799&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。&lt;/p&gt;
-&lt;p&gt;不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="MySQL" scheme="http://isunman.com/tags/mysql/"/>
-    
-      <category term="Redis" scheme="http://isunman.com/tags/redis/"/>
     
   </entry>
   
