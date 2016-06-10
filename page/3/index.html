@@ -221,6 +221,254 @@
 
     
     
+      
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/12/mysql-databas-upgrade-or-migration/" itemprop="url">
+                  MySQL数据库升级或者迁移
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T12:08:49+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/mysql-databas-upgrade-or-migration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/mysql-databas-upgrade-or-migration/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假设数据库根目录为 mysqlroot，则：</p>
+<p>使用cmd切换到目录mysqlroot/bin，然后使用命令</p>
+<pre><code>mysqldump -u root -p 密码 --all-databases &gt; all.sql
+</code></pre><p>把整个数据库里所有数据库文件备份到all.sql<br>根据数据库文件的大小，需要导出的时间不同。只要没有提示错误，在命令行看不到结果，实际上就是在执行。可以在bin目录下查看正在生成的all.sql文件一直在增大。</p>
+<p>备份完整之后，把all.sql移动到合适的目录备用。</p>
+<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/0000mysql.png" alt="导出导入数据库命令"></p>
+<p>升级或者迁移数据库，mysql配置好可以正常使用以后，在“根目录/bin”下执行命令</p>
+<pre><code>mysql -u root -p 密码 &lt; all.sql
+</code></pre><p>则原备份数据库可恢复。</p>
+<p>注意：实际在命令行执行时，出现“密码”的地方留空即可，等当前这一条命令输入完毕按回车之后会提示输入密码。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/12/win-the-curl-module-invalid-under-php56/" itemprop="url">
+                  Win下php5.6的curl模块无效
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T12:05:40+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/win-the-curl-module-invalid-under-php56/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/win-the-curl-module-invalid-under-php56/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>表现：<br>1、在调用 curl_init 函数时，提示错误</p>
+<pre><code>Fatal error: Call to undefined function curl_init() in ……
+</code></pre><p>2、在 phpinfo 页不显示 curl 模块信息。</p>
+<p>前提：<br>在 php.ini 配置文件中已经启用了：</p>
+<pre><code>;extension=php_curl.dll
+</code></pre><p>去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。</p>
+<p>解决方案：</p>
+<p>官方说明文档中的 <a href="http://php.net/manual/zh/curl.installation.php" target="_blank" rel="external">http://php.net/manual/zh/curl.installation.php</a></p>
+<p><strong>Note: Win32用户注意<br>要在Windows环境下使用这个模块，libeay32.dll和ssleay32.dll必须放到PATH环境变量包含的目录下。 不用cURL网站上的libcurl.dll。</strong></p>
+<blockquote>
+<p>I had to also also copy libssh2.dll into my Apache24 folder for this to &gt; work with my PHP 5.6.2 installation. So altogether I had to do the &gt; following:</p>
+<p>Move to Windows\system32 folder:<br>libssh2.dll, php_curl.dll, ssleay32.dll, libeay32.dll</p>
+<p>Move to Apache24\bin folder<br>libssh2.dll</p>
+<p>Uncomment extension=php_curl.dll</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1379,483 +1627,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/06/the-basic-syntax-of-markdown/" itemprop="url">
-                  Markdown的基本语法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T15:53:35+08:00" content="2016-03-06">
-              2016-03-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/06/the-basic-syntax-of-markdown/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/06/the-basic-syntax-of-markdown/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h2><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。</p>
-<p>特点就是：易读、易写、跨平台。</p>
-<h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="1、分级标题"><a href="#1、分级标题" class="headerlink" title="1、分级标题"></a>1、分级标题</h3><h4 id="一级标题-H1"><a href="#一级标题-H1" class="headerlink" title="一级标题 H1"></a>一级标题 H1</h4><pre><code># 我是一级标题
-</code></pre><h4 id="二级标题-H2"><a href="#二级标题-H2" class="headerlink" title="二级标题 H2"></a>二级标题 H2</h4><pre><code>## 我是二级标题
-</code></pre><h4 id="三级标题-H3"><a href="#三级标题-H3" class="headerlink" title="三级标题 H3"></a>三级标题 H3</h4><pre><code>### 我是三级标题
-</code></pre><p>以此类推，最多到六级标题，没有七级标题。</p>
-<h3 id="2、粗体和斜体"><a href="#2、粗体和斜体" class="headerlink" title="2、粗体和斜体"></a>2、粗体和斜体</h3><p>使用 * 和 ** 表示斜体和粗体</p>
-<p>示例：</p>
-<pre><code>*斜体* 和 **粗体**
-</code></pre><p><em>斜体</em> 和 <strong>粗体</strong></p>
-<h3 id="3、引用"><a href="#3、引用" class="headerlink" title="3、引用"></a>3、引用</h3><p>使用 &gt; 表示文字引用</p>
-<blockquote>
-<p>野火烧不尽，更上一层楼。</p>
-</blockquote>
-<p>多行引用需要使用两个空格。</p>
-<blockquote>
-<p>人生若只如初见，<br>一枝红杏出墙来。</p>
-</blockquote>
-<h3 id="4、行内代码"><a href="#4、行内代码" class="headerlink" title="4、行内代码"></a>4、行内代码</h3><p>使用 `代码` （~ 键的下档键）表示行内代码块。</p>
-<p>例如我是行内代码 <code>Hello World</code> 看到了吧，融为一体。</p>
-<h3 id="5、代码块"><a href="#5、代码块" class="headerlink" title="5、代码块"></a>5、代码块</h3><p>使用四个缩进空格或者一个Tab表示代码块</p>
-<p>示例：</p>
-<pre><code>我是代码块
-这是第二行
-我是最后一行
-</code></pre><h3 id="6、无序列表"><a href="#6、无序列表" class="headerlink" title="6、无序列表"></a>6、无序列表</h3><p>使用 *，+，- 表示无序列表</p>
-<p>示例：</p>
-<pre><code>* 无序列表1
-+ 无序列表2
-- 无序列表3
-</code></pre><ul>
-<li>无序列表1</li>
-</ul>
-<ul>
-<li>无序列表2</li>
-</ul>
-<ul>
-<li>无序列表3</li>
-</ul>
-<h3 id="7、有序列表"><a href="#7、有序列表" class="headerlink" title="7、有序列表"></a>7、有序列表</h3><p>使用数字和点表示有序列列表，注意点后有一个空格。</p>
-<p>示例：</p>
-<pre><code>1. 有序列表一
-2. 有序列表二
-3. 有序列表三
-</code></pre><ol>
-<li><p>有序列表一</p>
-</li>
-<li><p>有序列表二</p>
-</li>
-<li><p>有序列表三</p>
-</li>
-</ol>
-<h3 id="8、外链接"><a href="#8、外链接" class="headerlink" title="8、外链接"></a>8、外链接</h3><p>使用 [描述](链接地址) 为文字增加外链接。</p>
-<p>示例：</p>
-<pre><code>这是去往[太阳侠](http://isunman.com)的链接
-</code></pre><p>这是去往<a href="http://isunman.com">太阳侠</a>的链接</p>
-<h3 id="9、插入图像"><a href="#9、插入图像" class="headerlink" title="9、插入图像"></a>9、插入图像</h3><p>使用 ![描述]（图片链接地址）插入图像</p>
-<p>示例：</p>
-<p><img src="http://isunman.com/images/avatar.jpg" alt="太阳侠的头像"></p>
-<p>第三方云存储图片示例（此处存储在七牛云存储，福利啊）：</p>
-<p>示例：</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman1ad5ad6eddc451da23540d51b4fd5266d11632ed.jpg" alt="腿玩年"></p>
-<h3 id="10、插入HTML代码"><a href="#10、插入HTML代码" class="headerlink" title="10、插入HTML代码"></a>10、插入HTML代码</h3><p>Markdown完全兼容html，可以插入任意的html代码，包括分享的视频和音乐等。</p>
-<p>例如音乐</p>
-<embed src="http://www.xiami.com/widget/0_1774250852/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent">
-
-<p>例如视频：</p>
-<embed src="http://player.youku.com/player.php/sid/XODI1MDg0MDQ4/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/29/blog-by-hexo-github-step3/" itemprop="url">
-                  用Hexo和github搭建博客（3）：Hexo介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T10:51:27+08:00" content="2016-02-29">
-              2016-02-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/29/blog-by-hexo-github-step3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/blog-by-hexo-github-step3/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="为什么是博客"><a href="#为什么是博客" class="headerlink" title="为什么是博客"></a>为什么是博客</h2><p>对于个人来说，博客可以发布记录并沉淀自己的观点、经验和想法。在锻炼了自己的表达能力和思维的同时，还可以形成自己的“社交货币”。</p>
-<h2 id="为什么是静态博客"><a href="#为什么是静态博客" class="headerlink" title="为什么是静态博客"></a>为什么是静态博客</h2><p>当然，直接使用现成的博客平台的就不在此讨论了，只说个人独立博客。很多人选择在虚拟主机或 VPS 上面搭建动态博客。但是这些主机商通常“免费的不稳定，稳定的不免费”。</p>
-<p>正如阮一峰所说：</p>
-<blockquote>
-<p>喜欢写Blog的人，会经历三个阶段。</p>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>静态博客编译之后是纯html页面,优点就是支持它的环境十分好找,例如 Github、gitcafe、七牛云存储等站点都支持静态页面托管,自然是我们的首选了。</p>
-<p>但是静态博客并非没有缺点。动态博客更新文章时,脚本是不变的,只需要更新数据库。静态博客要频繁改动文件,不支持增量式上传的东西,比如ftp,就难于管理。此外,还要十分熟悉 git 各种命令,才能部署页面。</p>
-<p>不过对于极客来说，使用静态博客正好可以来练手和显示极范。</p>
-<h2 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么"></a>Hexo是什么</h2><p>Hexo 是一款基于 Node.js 的静态博客框架。目前在 Github上已有8712  Star 和 1435 Fork。</p>
-<p>Hexo 是一个轻量的静态博客框架。通过 Hexo 可以快速生成一个静态博客框架,仅需要几条命令就可以完成,相当方便。</p>
-<p>而架设 Hexo 的环境更简单，不需要 lnmp/lamp 这些繁琐复杂的环境 仅仅需要一个简单的 http 服务器即可使用 或者使用互联网上免费的页面托管服务。比如，Hexo 的官方网站 <a href="http://hexo.io" target="_blank" rel="external">http://hexo.io</a> 就是托管于 Github 的 pages 服务上。</p>
-<h2 id="Hexo特性"><a href="#Hexo特性" class="headerlink" title="Hexo特性"></a>Hexo特性</h2><ul>
-<li><p>风一般的速度</p>
-<p>  Hexo基于Node.js，支持多进程，几百篇文章也可以秒生成。</p>
-</li>
-<li><p>流畅的撰写</p>
-<p>  支持GitHub Flavored Markdown和所有Octopress的插件。</p>
-</li>
-<li><p>扩展性</p>
-<p>  Hexo支持EJS、Swig和Stylus。通过插件支持Haml、Jade和Less.</p>
-</li>
-</ul>
-<h2 id="Hexo-快速入门"><a href="#Hexo-快速入门" class="headerlink" title="Hexo 快速入门"></a>Hexo 快速入门</h2><h3 id="Hexo-安装方法"><a href="#Hexo-安装方法" class="headerlink" title="Hexo 安装方法"></a>Hexo 安装方法</h3><p>1、Mac OS X/Linux或其他UNIX/类UNIX系统</p>
-<p>2、node环境 请去 官方网站 下载源代码编译安装 </p>
-<pre><code>wget http://nodejs.org/dist/v0.12.4/node-v0.12.7.tar.gz
-tar zxvf node-v0.12.0.tar.gz
-cd node-v0.12.0
-./configure --prefix=/usr
-make
-make install
-</code></pre><p>3、npm(node包管理器)</p>
-<p>redhat系</p>
-<pre><code>yum install npm -y
-</code></pre><p>debain系</p>
-<pre><code>apt-get install npm -y
-</code></pre><p>其他发行版请自行寻找wiki获得帮助</p>
-<p>4、通过npm安装 Hexo-Cli 和 Hexo</p>
-<pre><code>npm install hexo-cli -g
-npm install hexo --save
-</code></pre><p>如果以上命令不能安装 可以尝试把官方源替换为 淘宝npm源 再执行安装Hexo </p>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><p>或者你直接通过添加 npm 参数 alias 一个新命令: </p>
-<pre><code>alias cnpm=&quot;npm --registry=https://registry.npm.taobao.org \ --cache=$HOME/.npm/.cache/cnpm \ --disturl=https://npm.taobao.org/dist \ --userconfig=$HOME/.cnpmrc&quot;
-</code></pre><p>Or alias it in .bashrc or .zshrc</p>
-<pre><code>$ echo &apos;\n#alias for cnpm\nalias cnpm=&quot;npm --registry=https://registry.npm.taobao.org \ --cache=$HOME/.npm/.cache/cnpm \ --disturl=https://npm.taobao.org/dist \ --userconfig=$HOME/.cnpmrc&quot;&apos; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc
-</code></pre><p>Windows系统（具体环境配置请参考 <a href="http://www.cnblogs.com/seanlv/archive/2011/11/22/2258716.html" target="_blank" rel="external">点击查看</a> ）<br>node环境<br>npm(node包管理器)</p>
-<h3 id="Hexo-配置方法"><a href="#Hexo-配置方法" class="headerlink" title="Hexo 配置方法"></a>Hexo 配置方法</h3><p>新建一个需要当做博客目录的文件夹</p>
-<pre><code>mkdir blog
-</code></pre><p>进去之后加入 hexo 主程序和安装 npm</p>
-<pre><code>hexo init
-npm install
-</code></pre><p>完成之后，文件夹大致结构如下</p>
-<ul>
-<li><p>scaffolds 工具模板</p>
-</li>
-<li><p>scripts hexo的功能js</p>
-</li>
-<li><p>source 博客资源文件夹</p>
-</li>
-<li><p>source/_posts 文章文件夹</p>
-</li>
-<li><p>themes 存放主题的文件夹</p>
-</li>
-<li><p>themes/landscape 默认皮肤文件夹</p>
-</li>
-<li><p>_config.yml 全局配置文件</p>
-</li>
-<li><p>db.json json格式的静态常量数据库</p>
-</li>
-<li><p>_posts 目录：Hexo存放博客文章的文件夹</p>
-</li>
-<li><p>themes 目录：存放皮肤的文件夹，默认使用官方的主题。你也可以从 Hexo 主题页面下载你喜欢的主题。</p>
-</li>
-</ul>
-<h2 id="Hexo-配置文件详解"><a href="#Hexo-配置文件详解" class="headerlink" title="Hexo 配置文件详解"></a>Hexo 配置文件详解</h2><p>即根目录下 _config.yml 全局配置文件</p>
-<pre><code># Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
-
-# Site 这里的配置，都是网站本身的全局参数，可以参考我的博客
-title: 太阳侠
-subtitle: 我是一颗恒星
-description: love IT, love Movie, love Love
-author: isunman
-language: zh-Hans
-timezone:
-
-# URL #这项可以绑定域，指定博客的域名映射的目录对子目录有用
-## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;
-url: http://isunman.com
-root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-
-# Directory # 指定每一个功能对应的目录
-source_dir: source
-public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
-
-# Writing 文章布局、写作格式的定义，不修改
-new_post_name: :title.md # File name of new posts
-default_layout: post
-titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
-filename_case: 1
-render_drafts: false
-post_asset_folder: false
-relative_link: false
-future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
-
-# Category &amp; Tag # 分类和标签
-default_category: uncategorized
-category_map:
-tag_map:
-
-# Date / Time format # 日期时间格式，不修改
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-
-# Pagination 每页显示文章数，可以自定义，默认值10
-## Set per_page to 0 to disable pagination
-per_page: 10
-pagination_dir: page
-
-# Extensions 扩展，此处可以设置要使用的主题
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: next
-
-# 打开RSS订阅功能
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-  hub:
-
-# 网站版权信息中的开始年份
-since: 2011
-
-# 以下两项  Social links 和 links 都是自定义的链接
-# Social links
-social:
-  github: https://github.com/isunman
-  # 等等
-
-# title, chinese available
-links_title: Links
-# links
-links:
-  知乎: http://www.zhihu.com/
-
-# Deployment 站点部署到 Github 要配置
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: https://github.com/isunman/isunman.github.com.git
-  branch: master
-</code></pre><h2 id="Hexo-配置注意事项"><a href="#Hexo-配置注意事项" class="headerlink" title="Hexo 配置注意事项"></a>Hexo 配置注意事项</h2><p>1、用文本编辑器修改_config.yml这个文件，大致如上，只需要自行修改几个，其他保持默认即可。</p>
-<p>2、通常需要修改站点名称 /URL格式 /归档设置 /disqus评论用户名 /部署配置 这几项就可以了 注意冒号后面都要添加一个半角空格，之后才是设置参数。</p>
-<p>3、自定义域名设置，在 source 我文件夹下面新建 CNAME 文件，里面写入你的自定义域名并设置您的dns配置cname方式到服务提供商的给的地址即可 。</p>
-<h2 id="使用-Hexo-发布文章"><a href="#使用-Hexo-发布文章" class="headerlink" title="使用 Hexo 发布文章"></a>使用 Hexo 发布文章</h2><p>站点配置好，如何发布文章呢？</p>
-<pre><code>hexo new &quot;newpost&quot;
-</code></pre><p>在 Hexo根目录的 \source_posts 中打开这个文件（建议使用 Sublime 打开，其他的编程IDE也可以），配置开头。</p>
-<pre><code>---
-title: newpost #文章标题，需要修改
-date: 2016-02-26 16:39:43 #发表日期，一般不改动
-categories: blog #文章文类
-tags: [博客，文章] #文章标签，多于一项时用这种格式
----
-</code></pre><p>然后命令执行：</p>
-<pre><code>hexo s
-</code></pre><p>浏览器访问 localhost：4000 预览效果。</p>
-<pre><code>hexo d
-</code></pre><p>没问题之后，使用下面命令同步到 Github。完成之后刷新可以看到实际效果。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1902,7 +1673,7 @@ tags: [博客，文章] #文章标签，多于一项时用这种格式
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
