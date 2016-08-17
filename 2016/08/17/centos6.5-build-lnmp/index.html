@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="思考,生命," />
+  <meta name="keywords" content="lnmp," />
 
 
 
@@ -59,23 +59,28 @@
 
 
 
-<meta name="description" content="跟朋友以及网友交流多了，发现大众对于健康常识的认知已经糟糕到「非常可怕」的地步了。作为一个现代社会人，应该有一个朴素的对健康常识的认知。比如，至少应该知道并理解如下几条常识：
-1.你从小就听到的那句「偏方治大病」就是屁话，不可能治大病。倒是可能导致大病。
-2.没有所谓能「大补」的东西，冬虫夏草人参鱼翅燕窝铁皮石斛阿胶都不管用，吃的越多可能死的越快，个别的东西甚至改变了中国历史进程，比如冬虫夏草，你">
+<meta name="description" content="CentOS6.5搭建LNMP  
+1：查看环境：[root@10-4-14-168 html]# cat /etc/redhat-release
+CentOS release 6.5 (Final)
+2：关掉防火墙[root@10-4-14-168 html]# chkconfig iptables off
+3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有关健康常识的基本认知 (2016 版)">
-<meta property="og:url" content="http://isunman.com/2016/04/29/basic-knowledge-about-health-knowledge/index.html">
+<meta property="og:title" content="CentOS6.5搭建LNMP">
+<meta property="og:url" content="http://isunman.com/2016/08/17/centos6.5-build-lnmp/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="跟朋友以及网友交流多了，发现大众对于健康常识的认知已经糟糕到「非常可怕」的地步了。作为一个现代社会人，应该有一个朴素的对健康常识的认知。比如，至少应该知道并理解如下几条常识：
-1.你从小就听到的那句「偏方治大病」就是屁话，不可能治大病。倒是可能导致大病。
-2.没有所谓能「大补」的东西，冬虫夏草人参鱼翅燕窝铁皮石斛阿胶都不管用，吃的越多可能死的越快，个别的东西甚至改变了中国历史进程，比如冬虫夏草，你">
-<meta property="og:image" content="http://7xi3f2.com1.z0.glb.clouddn.com/xiaodaoxiaoxi0000.jpg">
-<meta property="og:updated_time" content="2016-04-28T16:02:35.070Z">
+<meta property="og:description" content="CentOS6.5搭建LNMP  
+1：查看环境：[root@10-4-14-168 html]# cat /etc/redhat-release
+CentOS release 6.5 (Final)
+2：关掉防火墙[root@10-4-14-168 html]# chkconfig iptables off
+3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软">
+<meta property="og:updated_time" content="2016-08-17T11:31:13.574Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有关健康常识的基本认知 (2016 版)">
-<meta name="twitter:description" content="跟朋友以及网友交流多了，发现大众对于健康常识的认知已经糟糕到「非常可怕」的地步了。作为一个现代社会人，应该有一个朴素的对健康常识的认知。比如，至少应该知道并理解如下几条常识：
-1.你从小就听到的那句「偏方治大病」就是屁话，不可能治大病。倒是可能导致大病。
-2.没有所谓能「大补」的东西，冬虫夏草人参鱼翅燕窝铁皮石斛阿胶都不管用，吃的越多可能死的越快，个别的东西甚至改变了中国历史进程，比如冬虫夏草，你">
+<meta name="twitter:title" content="CentOS6.5搭建LNMP">
+<meta name="twitter:description" content="CentOS6.5搭建LNMP  
+1：查看环境：[root@10-4-14-168 html]# cat /etc/redhat-release
+CentOS release 6.5 (Final)
+2：关掉防火墙[root@10-4-14-168 html]# chkconfig iptables off
+3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软">
 
 
 
@@ -93,7 +98,7 @@
   };
 </script>
 
-  <title> 有关健康常识的基本认知 (2016 版) | 太阳侠 </title>
+  <title> CentOS6.5搭建LNMP | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +248,7 @@
             
             
               
-                有关健康常识的基本认知 (2016 版)
+                CentOS6.5搭建LNMP
               
             
           </h1>
@@ -255,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-29T00:02:35+08:00" content="2016-04-29">
-              2016-04-29
+            <time itemprop="dateCreated" datetime="2016-08-17T19:31:13+08:00" content="2016-08-17">
+              2016-08-17
             </time>
           </span>
 
@@ -269,8 +274,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活感悟/" itemprop="url" rel="index">
-                    <span itemprop="name">生活感悟</span>
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
                   </a>
                 </span>
 
@@ -285,8 +290,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/29/basic-knowledge-about-health-knowledge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/basic-knowledge-about-health-knowledge/" itemprop="commentsCount"></span>
+                <a href="/2016/08/17/centos6.5-build-lnmp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/centos6.5-build-lnmp/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -307,29 +312,75 @@
       
 
       
-        <p><img src="http://7xi3f2.com1.z0.glb.clouddn.com/xiaodaoxiaoxi0000.jpg" alt=""></p>
-<p>跟朋友以及网友交流多了，发现大众对于健康常识的认知已经糟糕到「非常可怕」的地步了。作为一个现代社会人，应该有一个朴素的对健康常识的认知。比如，至少应该知道并理解如下几条常识：</p>
-<p>1.你从小就听到的那句「偏方治大病」就是屁话，不可能治大病。倒是可能导致大病。</p>
-<p>2.没有所谓能「大补」的东西，冬虫夏草人参鱼翅燕窝铁皮石斛阿胶都不管用，吃的越多可能死的越快，个别的东西甚至改变了中国历史进程，比如冬虫夏草，你懂的。</p>
-<p>3.中药副作用并不小，相反，倒是因为成份不明药效不清等一堆原因导致的副作用会非常大。 而且，中药并不便宜。更糟糕的是，很多中药里面经常勾兑剂量不清的西药成分，风险更大。</p>
-<p>4.身体没必要进行所谓的「调理」，要多锻炼。懒也要锻炼。比如我懒我就承认自己懒，但我不会幻想吃什么东西会让自己骨骼清奇。</p>
-<p>5.没有所谓的酸性体质，所谓的「体虚」「体寒」「宫寒」「肾虚」之类的说法也都是扯淡，同样，人体也不需要经常「排毒」。</p>
-<p>6.光看药品说明书也没用，你还有必要知道药品之间的相互作用以及药物的最新警示，而这个除了「丁香医生」这个 App，没人能告诉你。你懂了这个，就能降低很多风险。</p>
-<p>7.无需你鉴定，上一条是广告。但不会害你，产品也不收费，产品里也不卖药，也没广告。</p>
-<p>8.自己会用搜索引擎查个药找一下疾病信息当然也算是一种能力，但不值得炫耀，因为很多人就是这么被骗的。尤其不要通过百度这样的搜索引擎找医院。</p>
-<p>9.产品名字里包含「红外」「磁疗」 之类的各种家用理疗仪器、床甚至枕头都是骗人的。他们不可能对你的糖尿病高血压心脏病…有任何效果，除了心理安慰。花那么多钱买个心理安慰是不是太贵了?</p>
-<p>10.女人准备怀孕前不要去找中医进行「调理」。有孩子的，如果是自己的亲生孩子，让孩子远离中医药。不是自己亲生孩子，出于人道考虑，也要远离中医药。</p>
-<p>11.年轻人有青春痘别怕，过了一定年龄就好了，我当年肯定比你严重多了。别因为这个就去服用一些来历不明的中药，很多治疗青春痘的药物都含有激素，而且过量。</p>
-<p>12.警惕「标本兼治」，这只是一句广告语罢了，如果有卖药的跟你说能标本兼治，基本是骗子；如果有医生跟你吹嘘标本兼治，基本是忽悠。</p>
-<p>13.警惕电视上任何「健康养生」节目的所谓「专家」建议。别信电视上医药广告里的任何代言人，尤其是电影电视以及相声演员代言的医疗健康类东西，都是骗子。</p>
-<p>14.听到对某种疾病的疗法中包含「攻克」之类的字眼要警惕，骗子。我们有生之年都很难遇到一个疾病会被攻克，江湖游医无法攻克任何一个疾病，他们只会攻克你的钱包。</p>
-<p>15.如果你是中老年人，那么你更应该相信你的受过现代教育的儿女们给你的医疗和健康类的建议，而不是相信你邻居二大妈七大姑八大姨的。</p>
-<p>16.如果你是中老年人，跟你同龄的亲戚朋友给你推荐的所谓「神医」，离他们远点。感谢他们的好意即可，但别信他们的。有些人是好心眼儿，但是在这个事情上，蠢货太多了。</p>
-<p>17.一些所谓的藏药、苗药号称有神奇功能的，别信，别因为那地方神秘就觉得真管用。顺便说一下，西藏现在人均寿命也才 68 岁，全国人均寿命是 76 岁。</p>
-<p>18.如果以上任何建议你听着不顺耳，那都是你错了。如果觉得我说的不够严谨，这倒是有可能的，我们可以探讨一下细节。</p>
-<p>19.转基因并不可怕，你已经吃过很多转基因的东西了。如果你还是不放心，那么我告诉你，有些中药也是转基因的，你怎么办?</p>
-<p>20.还有很多… 我想起来再说。</p>
-<p><a href="http://mp.weixin.qq.com/s?src=3&amp;timestamp=1461858884&amp;ver=1&amp;signature=9iql2gUC5J7Ore2nR-vE*H0gMx-FPnvh7tg-59H5QWPZmf3t2WP*jYaq9jn*M-gGD8yNTgzvp9Z9iCNR*XIqj7nBDSXbaJUejZd0ClOvZaeGHESOemkgBHp8AhtZqNtsFoR4azA3xGPvuA*iO6UYsYzK1-FRcLpwyuV754qJoMk=" target="_blank" rel="external">原文链接</a></p>
+        <p>CentOS6.5搭建LNMP  </p>
+<h3 id="1：查看环境："><a href="#1：查看环境：" class="headerlink" title="1：查看环境："></a>1：查看环境：</h3><pre><code>[root@10-4-14-168 html]# cat /etc/redhat-release
+CentOS release 6.5 (Final)
+</code></pre><h3 id="2：关掉防火墙"><a href="#2：关掉防火墙" class="headerlink" title="2：关掉防火墙"></a>2：关掉防火墙</h3><pre><code>[root@10-4-14-168 html]# chkconfig iptables off
+</code></pre><h3 id="3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）"><a href="#3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）" class="headerlink" title="3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）"></a>3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）</h3><pre><code>#wget http://www.atomicorp.com/installers/atomic
+#sh ./atomic
+#yum check-update
+</code></pre><h3 id="4：安装开发包和库文件"><a href="#4：安装开发包和库文件" class="headerlink" title="4：安装开发包和库文件　"></a>4：安装开发包和库文件　</h3><pre><code>#yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng
+libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel
+gcc gcc-c++ libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2
+libxml2-devel imake autoconf automake screen sysstat compat-libstdc++-33 curl curl-devel
+</code></pre><h3 id="5：卸载已安装的apache、mysql、php"><a href="#5：卸载已安装的apache、mysql、php" class="headerlink" title="5：卸载已安装的apache、mysql、php"></a>5：卸载已安装的apache、mysql、php</h3><pre><code># yum remove httpd
+# yum remove mysql
+# yum remove php
+</code></pre><h3 id="6：安装nginx"><a href="#6：安装nginx" class="headerlink" title="6：安装nginx"></a>6：安装nginx</h3><pre><code># yum install nginx
+# service nginx start
+# chkconfig --levels 235 nginx on
+//设2、3、5级别开机启动
+</code></pre><h3 id="7：安装mysql"><a href="#7：安装mysql" class="headerlink" title="7：安装mysql"></a>7：安装mysql</h3><pre><code># yum install mysql mysql-server mysql-devel
+# service mysqld start
+# chkconfig --levels 235 mysqld on
+</code></pre><p>登陆MySQL删除空用户，修改root密码<br>    mysql&gt;select user,host,password from mysql.user;</p>
+<pre><code>mysql&gt;drop user &apos;&apos;@localhost;
+
+mysql&gt;update mysql.user set password = PASSWORD(&apos;*********&apos;) where user=&apos;root&apos;;
+
+mysql&gt;flush privileges;
+</code></pre><p>　　</p>
+<h3 id="8：安装php"><a href="#8：安装php" class="headerlink" title="8：安装php"></a>8：安装php</h3><pre><code># yum install php lighttpd-fastcgi php-cli php-mysql php-gd php-imap php-ldap
+php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mssql php-snmp php-soap
+</code></pre><p>//安装php和所需组件使PHP支持MySQL、FastCGI模式</p>
+<pre><code>#yum install  php-tidy php-common php-devel php-fpm php-mysql
+
+# service php-fpm start
+# chkconfig --levels 235 php-fpm on
+</code></pre><h3 id="9：配置nginx支持php"><a href="#9：配置nginx支持php" class="headerlink" title="9：配置nginx支持php"></a>9：配置nginx支持php</h3><pre><code># mv /etc/nginx/nginx.conf /etc/nginx/nginx.confbak
+//将配置文件改为备份文件
+
+# cp /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf
+//由于原配置文件要自己去写因此可以使用默认的配置文件作为配置文件
+
+//修改nginx配置文件，添加fastcgi支持
+# vi /etc/nginx/nginx.conf
+index index.php index.html index.htm;
+//加入index.php
+
+location ~ \.php$ {
+            root           /usr/share/nginx/html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
+            include        fastcgi_params;
+    }
+
+//将以上代码注释去掉，并修改成nginx默认路径
+</code></pre><h3 id="10：配置php"><a href="#10：配置php" class="headerlink" title="10：配置php"></a>10：配置php</h3><p>//编辑文件php.ini，在文件末尾添加cgi.fix_pathinfo = 1<br>    [root@CentOS ~]# vi /etc/php.ini</p>
+<h3 id="11：重启nginx-php-fpm"><a href="#11：重启nginx-php-fpm" class="headerlink" title="11：重启nginx php-fpm"></a>11：重启nginx php-fpm</h3><pre><code># service nginx restart
+# service php-fpm restart
+</code></pre><p>　　</p>
+<h3 id="12：建立info-php文件"><a href="#12：建立info-php文件" class="headerlink" title="12：建立info.php文件"></a>12：建立info.php文件</h3><pre><code># vi /usr/share/nginx/html/info.php
+
+&lt;?php
+   phpinfo();
+?&gt;
+</code></pre><p>　　</p>
+<h3 id="13：测试nginx是否解析php"><a href="#13：测试nginx是否解析php" class="headerlink" title="13：测试nginx是否解析php"></a>13：测试nginx是否解析php</h3><p>本地浏览器输入：</p>
+<pre><code>192.168.1.105/info.php
+</code></pre><p>显示php界面  环境搭建成功
+　　</p>
 
       
     </div>
@@ -338,9 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/思考/" rel="tag">#思考</a>
-          
-            <a href="/tags/生命/" rel="tag">#生命</a>
+            <a href="/tags/lnmp/" rel="tag">#lnmp</a>
           
         </div>
       
@@ -349,17 +398,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/23/you-are-generally-obtained-through-what-channels-people-do-not-know-the-knowledge-and-information/" rel="next" title="你是通过什么渠道获取一般人不知道的知识和信息的？">
-                <i class="fa fa-chevron-left"></i> 你是通过什么渠道获取一般人不知道的知识和信息的？
+              <a href="/2016/08/17/php-probability-of-winning-algorithm/" rel="next" title="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法">
+                <i class="fa fa-chevron-left"></i> php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/04/crawls-pages-text-content/" rel="prev" title="抓取网页正文内容">
-                抓取网页正文内容 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -374,10 +419,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/29/basic-knowledge-about-health-knowledge/"
-     data-title="有关健康常识的基本认知 (2016 版)"
+        <div class="ds-share flat" data-thread-key="2016/08/17/centos6.5-build-lnmp/"
+     data-title="CentOS6.5搭建LNMP"
      data-content=""
-     data-url="http://isunman.com/2016/04/29/basic-knowledge-about-health-knowledge/">
+     data-url="http://isunman.com/2016/08/17/centos6.5-build-lnmp/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -406,8 +451,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/29/basic-knowledge-about-health-knowledge/"
-           data-title="有关健康常识的基本认知 (2016 版)" data-url="http://isunman.com/2016/04/29/basic-knowledge-about-health-knowledge/">
+      <div class="ds-thread" data-thread-key="2016/08/17/centos6.5-build-lnmp/"
+           data-title="CentOS6.5搭建LNMP" data-url="http://isunman.com/2016/08/17/centos6.5-build-lnmp/">
       </div>
     
   </div>
@@ -526,7 +571,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1：查看环境："><span class="nav-number">1.</span> <span class="nav-text">1：查看环境：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2：关掉防火墙"><span class="nav-number">2.</span> <span class="nav-text">2：关掉防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）"><span class="nav-number">3.</span> <span class="nav-text">3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4：安装开发包和库文件"><span class="nav-number">4.</span> <span class="nav-text">4：安装开发包和库文件　</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5：卸载已安装的apache、mysql、php"><span class="nav-number">5.</span> <span class="nav-text">5：卸载已安装的apache、mysql、php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6：安装nginx"><span class="nav-number">6.</span> <span class="nav-text">6：安装nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7：安装mysql"><span class="nav-number">7.</span> <span class="nav-text">7：安装mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8：安装php"><span class="nav-number">8.</span> <span class="nav-text">8：安装php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9：配置nginx支持php"><span class="nav-number">9.</span> <span class="nav-text">9：配置nginx支持php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10：配置php"><span class="nav-number">10.</span> <span class="nav-text">10：配置php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11：重启nginx-php-fpm"><span class="nav-number">11.</span> <span class="nav-text">11：重启nginx php-fpm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12：建立info-php文件"><span class="nav-number">12.</span> <span class="nav-text">12：建立info.php文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13：测试nginx是否解析php"><span class="nav-number">13.</span> <span class="nav-text">13：测试nginx是否解析php</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
