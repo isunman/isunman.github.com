@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2016-08-17T11:31:13.574Z</updated>
+  <updated>2016-10-20T04:33:48.796Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>16个小众却很实用的网站（程序员 向）</title>
+    <link href="http://isunman.com/2016/10/20/16-niche-is-very-useful-site/"/>
+    <id>http://isunman.com/2016/10/20/16-niche-is-very-useful-site/</id>
+    <published>2016-10-20T04:33:48.830Z</published>
+    <updated>2016-10-20T04:33:48.796Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3个月以前在知乎上回答一个问题【有哪些能集实用，装逼于一身的冷门网站？】得到很多小伙伴的喜爱，一直到现在都还陆陆续续收到大家的赞，谢谢大家。&lt;br&gt;于是，我就想，现在有了专栏，干脆把这个回答写成一篇文章吧，当然肯定不是原封不动的摘抄过来，我会再添加一些比较小众但很实用的网站，希望可以给大家一些参考和帮助。&lt;/p&gt;
+&lt;p&gt;以下是我在该问答下的回答，共分享了8个网站：&lt;/p&gt;
+&lt;p&gt;啊，看到上面分享了好多比较酷炫的网站，好多都放进我的收藏夹了，(&lt;em&gt;^__^&lt;/em&gt;) 嘻嘻……看的我也忍不住想分享了，因为是IT行业，所以分享几个我收集的比较实用而且酷炫的网站O(∩_∩)O~&lt;/p&gt;
+&lt;h3 id=&quot;1-“Hello-World”大全&quot;&gt;&lt;a href=&quot;#1-“Hello-World”大全&quot; class=&quot;headerlink&quot; title=&quot;1.“Hello World”大全&quot;&gt;&lt;/a&gt;1.&lt;a href=&quot;https://netsmell.com/apps/helloworldcollection/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;“Hello World”大全&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;网站一共收集了大约481种“Hello World”程序，差不多涵盖了目前已知的所有编程语言，比较有趣好玩，很多语言可能都没有听过。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-Font-Awesome-Cheatsheet&quot;&gt;&lt;a href=&quot;#2-Font-Awesome-Cheatsheet&quot; class=&quot;headerlink&quot; title=&quot;2.Font Awesome Cheatsheet&quot;&gt;&lt;/a&gt;2.&lt;a href=&quot;https://fontawesome.io/cheatsheet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Font Awesome Cheatsheet&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Font Awesome图标，不多说，开发和设计都会用到。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3-实验楼-国内领先的IT技术实训平台&quot;&gt;&lt;a href=&quot;#3-实验楼-国内领先的IT技术实训平台&quot; class=&quot;headerlink&quot; title=&quot;3.实验楼 - 国内领先的IT技术实训平台&quot;&gt;&lt;/a&gt;3.&lt;a href=&quot;https://www.shiyanlou.com/courses/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;实验楼 - 国内领先的IT技术实训平台&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个拥有在线开发环境的IT学习网站，各种在线开发环境啊！！各种在线开发环境啊！！各种在线开发环境啊！！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;4-动画展示各种路径搜索算法&quot;&gt;&lt;a href=&quot;#4-动画展示各种路径搜索算法&quot; class=&quot;headerlink&quot; title=&quot;4.动画展示各种路径搜索算法&quot;&gt;&lt;/a&gt;4.&lt;a href=&quot;http://netsmell.com/post/pathfinding.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;动画展示各种路径搜索算法&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我觉得还蛮有趣的，直观的感受路径搜索算法；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;5-Most-Exclusive-Website&quot;&gt;&lt;a href=&quot;#5-Most-Exclusive-Website&quot; class=&quot;headerlink&quot; title=&quot;5.Most Exclusive Website&quot;&gt;&lt;/a&gt;5.&lt;a href=&quot;https://mostexclusivewebsite.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Most Exclusive Website&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;网站每次只允许一个人访问，而且只能访问网站60秒,已经有超多人排队了，你可以试试~当然这个可能并不一定实用，但是还觉得蛮好玩的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;6-IT-eBooks-Free-Download&quot;&gt;&lt;a href=&quot;#6-IT-eBooks-Free-Download&quot; class=&quot;headerlink&quot; title=&quot;6.IT eBooks - Free Download&quot;&gt;&lt;/a&gt;6.&lt;a href=&quot;https://www.it-ebooks.info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IT eBooks - Free Download&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;可以下载IT电子书籍的网站，英文；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;7-Collecting-all-the-cheat-sheets&quot;&gt;&lt;a href=&quot;#7-Collecting-all-the-cheat-sheets&quot; class=&quot;headerlink&quot; title=&quot;7.Collecting all the cheat sheets&quot;&gt;&lt;/a&gt;7.&lt;a href=&quot;https://overapi.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Collecting all the cheat sheets&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这个网站可以查询到所有与编程相关的各种技术，并给出详细的知识点；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;8-DevDocs-API-Documentation&quot;&gt;&lt;a href=&quot;#8-DevDocs-API-Documentation&quot; class=&quot;headerlink&quot; title=&quot;8.DevDocs API Documentation&quot;&gt;&lt;/a&gt;8.&lt;a href=&quot;https://devdocs.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DevDocs API Documentation&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这是一份综合类的在线API列表，很全，方便查找。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下面再添加一些比较小众，但也比较有趣或者有用的网站。&lt;/p&gt;
+&lt;h3 id=&quot;1-GEEKTyper-com&quot;&gt;&lt;a href=&quot;#1-GEEKTyper-com&quot; class=&quot;headerlink&quot; title=&quot;1.GEEKTyper.com&quot;&gt;&lt;/a&gt;1.&lt;a href=&quot;http://geektyper.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GEEKTyper.com&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个在线模拟黑客工作的虚拟桌面系统，提供多种黑客工作的场景，就像是我们在电影里看到的黑客是如何操作电脑和进行代码录入的。伪装成黑客的网站啊，不一定有用但肯定有趣，我想所有程序员都想试试吧，毕竟成为一个黑客还是很酷炫的啊。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-codewars&quot;&gt;&lt;a href=&quot;#2-codewars&quot; class=&quot;headerlink&quot; title=&quot;2.codewars&quot;&gt;&lt;/a&gt;2.&lt;a href=&quot;http://www.codewars.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;codewars&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Codewars是一个刷题网站，使用者可选择所学技术领域不断实战答题挑战，而且它的奖励系统激励程序员们像打游戏升级一样地做习题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-011.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3-免费的计算机编程类中文书籍&quot;&gt;&lt;a href=&quot;#3-免费的计算机编程类中文书籍&quot; class=&quot;headerlink&quot; title=&quot;3.免费的计算机编程类中文书籍&quot;&gt;&lt;/a&gt;3.&lt;a href=&quot;https://github.com/justjavac/free-programming-books-zh_CN&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;免费的计算机编程类中文书籍&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;其实这个算不上小众，但是我认为非常有用，免费的中文书籍诶，随时可以看，所以也放进来了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-012.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这里还有英文的：&lt;/p&gt;
+&lt;h3 id=&quot;4-free-programming-books&quot;&gt;&lt;a href=&quot;#4-free-programming-books&quot; class=&quot;headerlink&quot; title=&quot;4.free-programming-books&quot;&gt;&lt;/a&gt;4.&lt;a href=&quot;https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;free-programming-books&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;分享了大量免费的编程书籍，比上面分享的中文版的编程书籍要全要多，不过都是英文的；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-013.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;5-The-World’s-Most-Exclusive-Website&quot;&gt;&lt;a href=&quot;#5-The-World’s-Most-Exclusive-Website&quot; class=&quot;headerlink&quot; title=&quot;5.The World’s Most Exclusive Website&quot;&gt;&lt;/a&gt;5.&lt;a href=&quot;http://www.theworldsmostexclusivewebsite.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The World’s Most Exclusive Website&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个独特神秘的网站。基本上，该网站允许用户访问的级别是基于你在Twitter上的追随者有多少。它一共拥有10个房间。要进入“室1”，你需要是一个经过验证的Twitter用户。要进入“室2”，你需要有至少5000个追随者。级别越高，要求也就越高。也是世界上最容易被破解的。我们技术娴熟的一个读者甚至无需登录Twitter，只花费了不到60秒的时间便查看到该网站的所有页面。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-014.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;6-oreilly-Free-Programming-Ebooks&quot;&gt;&lt;a href=&quot;#6-oreilly-Free-Programming-Ebooks&quot; class=&quot;headerlink&quot; title=&quot;6.oreilly Free Programming Ebooks&quot;&gt;&lt;/a&gt;6.&lt;a href=&quot;http://www.oreilly.com/programming/free/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;oreilly Free Programming Ebooks&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ORielly 的免费电子书，有需要的童鞋可以免费下载，虽说免费的书籍文章前面已经有过介绍了，但是书籍嘛，还是免费的，是很有用的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-015.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;7-The-Python-Challenge&quot;&gt;&lt;a href=&quot;#7-The-Python-Challenge&quot; class=&quot;headerlink&quot; title=&quot;7.The Python Challenge&quot;&gt;&lt;/a&gt;7.&lt;a href=&quot;http://www.pythonchallenge.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Python Challenge&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;是一个基于Python语言的闯关挑战游戏，每一关给出一个Python相关的图片，闯关者需要解答问题之后才能跳转到下一个关卡，还蛮有趣的，Python学习者可以看看。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-016.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;8-Regexper&quot;&gt;&lt;a href=&quot;#8-Regexper&quot; class=&quot;headerlink&quot; title=&quot;8.Regexper&quot;&gt;&lt;/a&gt;8.&lt;a href=&quot;https://regexper.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Regexper&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个正则表达式的可视化开源工具，直接输入正则表达式就能用可视化显示出来，只需要把你的表达式输入进去，就有可视化的图形。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-017.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;以上了就是我整理的16个相对来说比较小众，但是对程序员来说却有趣或者有用的网站，如果你还有其他相关网站，评论出来啊，我随时更新上来，大家共同学习嘛。&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/23005451&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：IT干货分享&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3个月以前在知乎上回答一个问题【有哪些能集实用，装逼于一身的冷门网站？】得到很多小伙伴的喜爱，一直到现在都
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS6.5搭建LNMP</title>
@@ -1393,45 +1459,6 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
     
       &lt;h3 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h3&gt;&lt;p&gt;安装sqlserver2000出错，一般性网络错误，错误提示如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;安装程序配置服务器失败。参考服务器
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="SQLServer" scheme="http://isunman.com/tags/sqlserver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sql2000的远程连接（含Sp4补丁）</title>
-    <link href="http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/"/>
-    <id>http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/</id>
-    <published>2016-04-21T10:41:13.632Z</published>
-    <updated>2016-04-21T10:41:13.579Z</updated>
-    
-    <content type="html">&lt;p&gt;服务端配置:&lt;/p&gt;
-&lt;h4 id=&quot;一-、看ping-服务器IP能否ping通。&quot;&gt;&lt;a href=&quot;#一-、看ping-服务器IP能否ping通。&quot; class=&quot;headerlink&quot; title=&quot;一 、看ping 服务器IP能否ping通。&quot;&gt;&lt;/a&gt;一 、看ping 服务器IP能否ping通。&lt;/h4&gt;&lt;p&gt;这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。&lt;/p&gt;
-&lt;h4 id=&quot;二-、在Dos下输入telnet-服务器IP-端口，看能否连通。&quot;&gt;&lt;a href=&quot;#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。&quot; class=&quot;headerlink&quot; title=&quot;二 、在Dos下输入telnet 服务器IP 端口，看能否连通。&quot;&gt;&lt;/a&gt;二 、在Dos下输入telnet 服务器IP 端口，看能否连通。&lt;/h4&gt;&lt;p&gt;例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;telnet 202.114.100.100 1433
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：&lt;/p&gt;
-&lt;p&gt;1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。&lt;/p&gt;
-&lt;p&gt;2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。&lt;/p&gt;
-&lt;p&gt;3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;netstat –an
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tcp  127.0.0.1 1433   listening
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;select @@version
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行后可以看到版本号，版本号在 &lt;strong&gt;8.00.2039&lt;/strong&gt; 以下的都需要打补丁。这是Sp4的下载地址  &lt;a href=&quot;http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;（SQLServer SP4补丁下载）&lt;/a&gt; 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。&lt;/p&gt;
-&lt;p&gt;这时再做telnet测试，应该OK了。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.163.com/tcl_6688/blog/static/168864257201151574157197&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文参考&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;服务端配置:&lt;/p&gt;
-&lt;h4 id=&quot;一-、看ping-服务器IP能否ping通。&quot;&gt;&lt;a href=&quot;#一-、看ping-服务器IP能否ping通。&quot; class=&quot;headerlink&quot; title=&quot;一 、看ping 服务器IP能否ping通。&quot;&gt;&lt;/a&gt;一 、看pi
     
     </summary>
     
