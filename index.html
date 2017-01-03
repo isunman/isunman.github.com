@@ -244,6 +244,124 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/" itemprop="url">
+                  PHP与JSON的三点心得
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-03T19:27:05+08:00" content="2017-01-03">
+              2017-01-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、json-encode处理中文"><a href="#1、json-encode处理中文" class="headerlink" title="1、json_encode处理中文"></a>1、json_encode处理中文</h3><p>用PHP的json_encode来处理中文的时候, 中文都会被编码, 变成不可读的, 类似”\u<em>*</em>”的格式, 还会在一定程度上增加传输的数据量。<br>而在PHP5.4, 这个问题终于得以解决, Json新增了一个选项: JSON_UNESCAPED_UNICODE, 故名思议, 就是说, Json不要编码Unicode，而是现实中文本身。</p>
+<p>参考：<a href="http://php.net/manual/en/function.json-encode.php" target="_blank" rel="external">http://php.net/manual/en/function.json-encode.php</a></p>
+<h3 id="2、PHP进行POST提交JSON格式数据做参数"><a href="#2、PHP进行POST提交JSON格式数据做参数" class="headerlink" title="2、PHP进行POST提交JSON格式数据做参数"></a>2、PHP进行POST提交JSON格式数据做参数</h3><p>无论是使用curl还是fsockopen，都需要注意：</p>
+<p>‘Content-Type: application/json’</p>
+<p>同时注意不再使用<code>http_build_query</code>函数。</p>
+<p>看一下<br><code>http_build_query</code> 的定义和描述。</p>
+<p>定义：生成 url-encoded 之后的请求字符串。<br>描述：使用给出的关联（或下标）数组生成一个url-encoded请求字符串。参数 formdata 可以是数组或包含属性的对象。一个formdata数组可以是简单的一维结构，也可以是由数组组成的数组（其依次可以包含其它数组）。如果在基础数组中使用了数字下标同时给出了numeric_prefix参数，此参数值将会作为基础数组中的数字下标元素的前缀。这是为了让PHP或其它CGI程序在稍后对数据进行解码时获取合法的变量名。</p>
+<h3 id="3、PHP处理返回JSON格式的数据"><a href="#3、PHP处理返回JSON格式的数据" class="headerlink" title="3、PHP处理返回JSON格式的数据"></a>3、PHP处理返回JSON格式的数据</h3><p>使用 json_decode($return,true);注意后面那个参数“true”，可以输出关联数组。</p>
+<p>直接赋值给变量，即是一个数组。可直接使用。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/22/How-to-solve-the-spike-performance-issues-and-oversold-discussions/" itemprop="url">
                   如何解决秒杀的性能问题和超卖的讨论
                 </a>
@@ -1598,135 +1716,6 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （作图与绘画）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T15:05:45+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（作图与绘画）"><a href="#OS-X-常用-必备软件推荐-——-（作图与绘画）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （作图与绘画）"></a>OS X 常用 / 必备软件推荐 —— （作图与绘画）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0000.png" alt=""></p>
-<h4 id="MediBangPaintPro"><a href="#MediBangPaintPro" class="headerlink" title="MediBangPaintPro"></a>MediBangPaintPro</h4><p><a href="http://medibangpaint.com/en/pc/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0001.png" alt=""></p>
-<p>免费软件，功能齐全，还有云画笔素材库，还有云同步和平板手机 app。</p>
-<h4 id="FireAlpaca"><a href="#FireAlpaca" class="headerlink" title="FireAlpaca"></a>FireAlpaca</h4><p><a href="http://firealpaca.com/en" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0002.png" alt=""></p>
-<p>medibang 的轻量版，用来小的涂鸦或者 p 图都是很合适的。</p>
-<h4 id="Clip-Studio-Paint"><a href="#Clip-Studio-Paint" class="headerlink" title="Clip Studio Paint"></a>Clip Studio Paint</h4><p><a href="http://www.clipstudio.net/en" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0003.png" alt=""></p>
-<p>mac 上的收费绘画软件。mac 上没有 sai，这款软件可以替代 sai。</p>
-<h4 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h4><p><a href="https://www.sketchapp.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0004.png" alt=""></p>
-<p>设计界的新宠，如果你只用过 PhotoShop，不妨试一下。</p>
-<h4 id="Pencil"><a href="#Pencil" class="headerlink" title="Pencil"></a>Pencil</h4><p><a href="http://pencil.evolus.vn/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0005.png" alt=""></p>
-<p>UML 图表绘制，wireframe，mockup 草图绘制软件。</p>
-<h4 id="MindNode"><a href="#MindNode" class="headerlink" title="MindNode"></a>MindNode</h4><p><a href="https://mindnode.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0006.png" alt=""></p>
-<p>思维导图软件。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21281001" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1773,7 +1762,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1790,7 +1779,7 @@ print_r($res);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1854,7 +1843,7 @@ print_r($res);
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
