@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SQLServer," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -59,46 +59,19 @@
 
 
 
-<meta name="description" content="问题：安装sqlserver2000出错，一般性网络错误，错误提示如下：
-安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
-正在启动?
-
-Chinese_PRC_CI_AS
-
--m -Q -T4022 -T3659
-
-正在与服务?
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
+<meta name="description" content="服务器端周期提醒如何设计问：为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。
+答：因为时间是线性的，设置的再多，其实每次需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装sqlserver2000出错，一般性网络错误">
-<meta property="og:url" content="http://isunman.com/2016/04/21/sqlserver2000-installation-error-a-general-network-error/index.html">
+<meta property="og:title" content="服务器端周期提醒如何设计">
+<meta property="og:url" content="http://isunman.com/2017/03/16/server-side-cycle-to-remind-how-to-design/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="问题：安装sqlserver2000出错，一般性网络错误，错误提示如下：
-安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
-正在启动?
-
-Chinese_PRC_CI_AS
-
--m -Q -T4022 -T3659
-
-正在与服务?
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
-<meta property="og:updated_time" content="2016-04-21T10:41:50.881Z">
+<meta property="og:description" content="服务器端周期提醒如何设计问：为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。
+答：因为时间是线性的，设置的再多，其实每次需">
+<meta property="og:updated_time" content="2017-03-16T09:04:00.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装sqlserver2000出错，一般性网络错误">
-<meta name="twitter:description" content="问题：安装sqlserver2000出错，一般性网络错误，错误提示如下：
-安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
-正在启动?
-
-Chinese_PRC_CI_AS
-
--m -Q -T4022 -T3659
-
-正在与服务?
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
+<meta name="twitter:title" content="服务器端周期提醒如何设计">
+<meta name="twitter:description" content="服务器端周期提醒如何设计问：为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。
+答：因为时间是线性的，设置的再多，其实每次需">
 
 
 
@@ -116,7 +89,7 @@ driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
   };
 </script>
 
-  <title> 安装sqlserver2000出错，一般性网络错误 | 太阳侠 </title>
+  <title> 服务器端周期提醒如何设计 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +239,7 @@ driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
             
             
               
-                安装sqlserver2000出错，一般性网络错误
+                服务器端周期提醒如何设计
               
             
           </h1>
@@ -278,8 +251,8 @@ driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T18:41:50+08:00" content="2016-04-21">
-              2016-04-21
+            <time itemprop="dateCreated" datetime="2017-03-16T17:04:00+08:00" content="2017-03-16">
+              2017-03-16
             </time>
           </span>
 
@@ -308,8 +281,8 @@ driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/21/sqlserver2000-installation-error-a-general-network-error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/sqlserver2000-installation-error-a-general-network-error/" itemprop="commentsCount"></span>
+                <a href="/2017/03/16/server-side-cycle-to-remind-how-to-design/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/server-side-cycle-to-remind-how-to-design/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,66 +303,10 @@ driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;da">
       
 
       
-        <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>安装sqlserver2000出错，一般性网络错误，错误提示如下：</p>
-<pre><code>安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
-正在启动?
-
-Chinese_PRC_CI_AS
-
--m -Q -T4022 -T3659
-
-正在与服务?
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
-
-driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
-
-[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
-
-SQL Server 配置?
-
-###############################################################################
-
-13:11:03 Process Exit Code: (-1) 
-13:11:25 安装程序配置服务器失败。参考服务器错误日志和 C:\WINDOWS\sqlstp.log 了解更多信息。
-13:11:25 Action CleanUpInstall:
-13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service SQLAgent$MATCHONE
-13:11:25 Process Exit Code: (1060) 指定的服务并未以已安装的服务存在。
-
-13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service MSSQL$MATCHONE
-13:11:25 Process Exit Code: (0) 
-13:11:25 StatsGenerate returned: 2
-13:11:25 StatsGenerate (0xc0200006,0x1,0xf000000,0x300,2052,303,0x0,0x1,0,0,0
-13:11:25 StatsGenerate -1,zhang)
-13:11:25 Installation Failed.
-
-SQL SERVER 2000在C:\windows\sqlstp.log中提示错误如下：
-=======================================================
-driver={sql server};server=soyo;UID=sa;PWD=;database=master
-[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
-[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
-driver={sql server};server=soyo;UID=sa;PWD=;database=master
-[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
-[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
-driver={sql server};server=soyo;UID=sa;PWD=;database=master
-[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
-[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionR
-=======================================================
-</code></pre><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>把计算机名改为大写，重新启动</strong></p>
-<p>OK  真的解决问题。</p>
-<p>另外提示一下，在安装sqlServer时 安装路径下不能有中文！</p>
+        <h2 id="服务器端周期提醒如何设计"><a href="#服务器端周期提醒如何设计" class="headerlink" title="服务器端周期提醒如何设计"></a>服务器端周期提醒如何设计</h2><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><p>为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。</p>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><p>因为时间是线性的，设置的再多，其实每次需要执行的下一个时间最多也只有一个。<br>因此可以这进行数据库设计–下一次提醒时间，重复的时间，特定时间。到时间发送通知，然后更新数据库的下一次提醒时间。</p>
+<p>PS：是一种不错的思路，可行性高</p>
+<p>原文链接：<a href="https://segmentfault.com/q/1010000006929169" title="原文链接" target="_blank" rel="external">https://segmentfault.com/q/1010000006929169</a></p>
 
       
     </div>
@@ -398,7 +315,7 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
       
         <div class="post-tags">
           
-            <a href="/tags/sqlserver/" rel="tag">#SQLServer</a>
+            <a href="/tags/mysql/" rel="tag">#MySQL</a>
           
         </div>
       
@@ -407,17 +324,13 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/" rel="next" title="Sql2000的远程连接（含Sp4补丁）">
-                <i class="fa fa-chevron-left"></i> Sql2000的远程连接（含Sp4补丁）
+              <a href="/2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/" rel="next" title="PHP与JSON的三点心得">
+                <i class="fa fa-chevron-left"></i> PHP与JSON的三点心得
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/23/you-are-generally-obtained-through-what-channels-people-do-not-know-the-knowledge-and-information/" rel="prev" title="你是通过什么渠道获取一般人不知道的知识和信息的？">
-                你是通过什么渠道获取一般人不知道的知识和信息的？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -432,10 +345,10 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/21/sqlserver2000-installation-error-a-general-network-error/"
-     data-title="安装sqlserver2000出错，一般性网络错误"
+        <div class="ds-share flat" data-thread-key="2017/03/16/server-side-cycle-to-remind-how-to-design/"
+     data-title="服务器端周期提醒如何设计"
      data-content=""
-     data-url="http://isunman.com/2016/04/21/sqlserver2000-installation-error-a-general-network-error/">
+     data-url="http://isunman.com/2017/03/16/server-side-cycle-to-remind-how-to-design/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -464,8 +377,8 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/21/sqlserver2000-installation-error-a-general-network-error/"
-           data-title="安装sqlserver2000出错，一般性网络错误" data-url="http://isunman.com/2016/04/21/sqlserver2000-installation-error-a-general-network-error/">
+      <div class="ds-thread" data-thread-key="2017/03/16/server-side-cycle-to-remind-how-to-design/"
+           data-title="服务器端周期提醒如何设计" data-url="http://isunman.com/2017/03/16/server-side-cycle-to-remind-how-to-design/">
       </div>
     
   </div>
@@ -584,7 +497,7 @@ driver={sql server};server=soyo;UID=sa;PWD=;database=master
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题："><span class="nav-number">1.</span> <span class="nav-text">问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端周期提醒如何设计"><span class="nav-number">1.</span> <span class="nav-text">服务器端周期提醒如何设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问："><span class="nav-number">1.0.1.</span> <span class="nav-text">问：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#答："><span class="nav-number">1.0.2.</span> <span class="nav-text">答：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
