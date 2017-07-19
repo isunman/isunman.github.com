@@ -221,6 +221,155 @@
 
     
     
+      
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/29/blog-by-hexo-github-step1/" itemprop="url">
+                  用Hexo和Github搭建博客（1）：安装环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-29T10:50:01+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/29/blog-by-hexo-github-step1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/blog-by-hexo-github-step1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="下载msysGit"><a href="#下载msysGit" class="headerlink" title="下载msysGit"></a>下载msysGit</h3><p>1、访问 msysGit 的项目主页，下载 msysGit。<a href="http://msysgit.Github.io" target="_blank" rel="external">http://msysgit.Github.io</a></p>
+<p>2、点击“Download”，下载软件（当前版本Git-2.7.2-64-bit.exe）</p>
+<h3 id="安装msysGit"><a href="#安装msysGit" class="headerlink" title="安装msysGit"></a>安装msysGit</h3><p>1、点击安装程序（如 Git-2.7.2-64-bit.exe）开始安装；</p>
+<p>2、配置安装目录，可手动修改路径，也可“Browse..”选择安装目录；</p>
+<p>3、选择“not noly for Git Bash”,下一步；</p>
+<p>4、不创建启动文件夹，下一步；</p>
+<p>5、询问是否修改环境变量。默认选择“Use Git Bash Only”，即只在 msysGit 提供的 shell 环境中使用 Git，不修改环境变量。若需要在 CMD 中直接使用 Git，请选择第三项修改环境变量，即可在CMD命令行中使用 Git；</p>
+<p>6、询问换行符的转换方式，默认。下一步；</p>
+<p>7、安装进度显示、安装完成后会显示安装完成界面。</p>
+<h3 id="检测msysGit是否安装成功"><a href="#检测msysGit是否安装成功" class="headerlink" title="检测msysGit是否安装成功"></a>检测msysGit是否安装成功</h3><p>任意目录下，鼠标右键新增Git功能“ Git Gui here”和“ Git Bash here”，点击即可进入 Git 命令行边界界面。说明安装成功。</p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>在 Windows 环境下安装 Node.js 非常简单，仅需下载安装文件并执行即可。 </p>
+<p>下载地址：<a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a><br>Win 64位系统的当前版本：<br><a href="https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi" target="_blank" rel="external">https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi</a></p>
+<p>安装好后，打开 cmd，查看 Node.js 是否可用</p>
+<p><code>node -v</code></p>
+<p>结果</p>
+<p><code>v5.7.0</code></p>
+<p>再测试 rpm 是否可用</p>
+<p><code>rpm -v</code></p>
+<p>结果</p>
+<p><code>3.6.0</code></p>
+<p>说明下面可以使用 npm 安装 Hexo 了。</p>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>1、任意目录下右键点击“ Git Bash here ”，打开 Git 的命令行界面。</p>
+<p>2、输入如下命令，进行安装 Hexo</p>
+<p><code>npm install -g hexo</code></p>
+<p>3、创建 Hexo 目录</p>
+<p>安装完成后，选择或者新建 Hexo 的根目录。让 Git Bash 切换到此目录，，执行如下命令，Hexo 会进行初始化，自动生成建立网站所需要的文件。</p>
+<p><code>hexo init</code></p>
+<p>安装依赖包</p>
+<p><code>npm install</code></p>
+<p>安装完成后，生成网站静态文件</p>
+<p><code>hexo g</code></p>
+<p>启动本地静态服务器</p>
+<p><code>hexo s</code></p>
+<p>浏览器打开 localhost:4000 即可查看。</p>
+<p>至此，本地基于 Node.js 的 Hexo 博客静态系统已经搭建完成。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -382,7 +531,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -399,7 +548,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
