@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2017-07-19T16:49:10.638Z</updated>
+  <updated>2017-07-21T06:38:31.575Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如果你想做个程序员相关的论坛，请三思</title>
+    <link href="http://isunman.com/2017/07/21/If-you-want-to-be-a-programmer-related-forum-think-twice/"/>
+    <id>http://isunman.com/2017/07/21/If-you-want-to-be-a-programmer-related-forum-think-twice/</id>
+    <published>2017-07-21T06:38:31.626Z</published>
+    <updated>2017-07-21T06:38:31.575Z</updated>
+    
+    <content type="html">&lt;p&gt;标题中的“做”有两方面所指：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开发：使用某种编程语言实现&lt;/li&gt;
+&lt;li&gt;运营：使用某套程序直接搭建&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;无论是哪方面，如果你有做程序员相关论坛的想法，请三思而后行，因为你的竞争对手不是一般的多…. 所以在你行动之前，先了解一下吧！&lt;/p&gt;
+&lt;p&gt;下面整理了一些使用 开源 程序搭建的论坛，他们的相似点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“小众”社区，用户大多是程序员&lt;/li&gt;
+&lt;li&gt;基于“节点”进行分版&lt;/li&gt;
+&lt;li&gt;界面都比较精致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每一项的顺序分别是：站点、项目地址、开发语言。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://phphub.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PHPHub - PHP &amp;amp; Laravel 的中文社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/summerblue/phphub5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/summerblue/phphub5&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://flarumone.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FlarumOne 官网 中文 Flarum 第一站&lt;/a&gt;    &lt;a href=&quot;https://github.com/flarumone/flarumone&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/flarumone/flarumone&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.94cb.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Carbon Forum&lt;/a&gt;    &lt;a href=&quot;https://github.com/lincanbin/Carbon-Forum&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/lincanbin/Carbon-Forum&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://youbbs.sinaapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;youBBS - u 社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/ego008/youbbs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ego008/youbbs&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://bbs.xiuno.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Xiuno BBS&lt;/a&gt;    &lt;a href=&quot;http://git.oschina.net/strwei/xiuno&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://git.oschina.net/strwei/xiuno&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://vanillaforums.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vanilla 中文社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/chuck911/vanilla4china&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/chuck911/vanilla4china&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://laravel.so/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Laravel.so - 最新的 Laravel 技巧&lt;/a&gt;    &lt;a href=&quot;https://github.com/laravelso/site&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/laravelso/site&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://getyii.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Get√Yii - 致力打造 Yii 中国第一社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/iiyii/getyii&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/iiyii/getyii&lt;/a&gt;    &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://hacpai.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;黑客派&lt;/a&gt;    &lt;a href=&quot;https://github.com/b3log/symphony&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/b3log/symphony&lt;/a&gt;    &lt;strong&gt;Java&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://bbs.tomoya.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;朋也社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/tomoya92/pybbs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/tomoya92/pybbs&lt;/a&gt;    &lt;strong&gt;Java&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://java-china.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java 中国&lt;/a&gt;    &lt;a href=&quot;https://github.com/junicorn/java-china&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/junicorn/java-china&lt;/a&gt;    &lt;strong&gt;Java&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://nutz.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nutz 社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/wendal/nutz-book-project&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/wendal/nutz-book-project&lt;/a&gt;     &lt;strong&gt;Java&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.html-js.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端乱炖&lt;/a&gt;    &lt;a href=&quot;https://github.com/xinyu198736/htmljs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/xinyu198736/htmljs&lt;/a&gt;    &lt;strong&gt;Node.js&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js 专业中文社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/cnodejs/nodeclub&lt;/a&gt;    &lt;strong&gt;Node.js&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://nodebb.org.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NodeBB 官方中文社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/NodeBB/NodeBB&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/NodeBB/NodeBB&lt;/a&gt;    &lt;strong&gt;Node.js&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://meta.discoursecn.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Discourse 中文论坛&lt;/a&gt;    &lt;a href=&quot;https://github.com/discourse/discourse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/discourse/discourse&lt;/a&gt;    &lt;strong&gt;Ruby&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://ruby-china.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ruby China&lt;/a&gt;    &lt;a href=&quot;https://github.com/ruby-china/ruby-china&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ruby-china/ruby-china&lt;/a&gt;     &lt;strong&gt;Ruby&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://studygolang.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Go 语言中文网    &lt;/a&gt;&lt;a href=&quot;https://github.com/studygolang/studygolang&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/studygolang/studygolang&lt;/a&gt;    &lt;strong&gt;Go&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://golangtc.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Golang 中国&lt;/a&gt;    &lt;a href=&quot;https://github.com/jimmykuu/gopher&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/jimmykuu/gopher&lt;/a&gt;    &lt;strong&gt;Go&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://f2e.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;F2E - 前端技术社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/PaulGuo/F2E.im&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/PaulGuo/F2E.im&lt;/a&gt;    &lt;strong&gt;Python&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://beyoung.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Young 社区&lt;/a&gt;    &lt;a href=&quot;https://github.com/shiyanhui/Young&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/shiyanhui/Young&lt;/a&gt;    &lt;strong&gt;Python&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;欢迎大家进行补充    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;也许每个程序员都有一颗想写论坛的心&lt;/li&gt;
+&lt;li&gt;PHP 不愧是世界上最好的编程语言….&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标题中的“做”有两方面所指：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开发：使用某种编程语言实现&lt;/li&gt;
+&lt;li&gt;运营：使用某套程序直接搭建&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;无论是哪方面，如果你有做程序员相关论坛的想法，请三思而后行，因为你的竞争对手不是一般的多…. 所以在你行动之前，先了
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="开源" scheme="http://isunman.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>推荐三个很赞的英语学习网站</title>
@@ -1316,59 +1407,6 @@ print_r($res);
     
     
       <category term="思考" scheme="http://isunman.com/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Xcode磁盘空间大清理</title>
-    <link href="http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/"/>
-    <id>http://isunman.com/2016/05/07/xcode-disk-space-on-large-cleanup/</id>
-    <published>2016-05-07T04:00:41.827Z</published>
-    <updated>2016-05-07T04:00:41.774Z</updated>
-    
-    <content type="html">&lt;p&gt;Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。&lt;/p&gt;
-&lt;p&gt;先说结果吧：本人使用的 Mac mini 500G 磁盘，Xcode 的缓存竟然占去 256G 空间。&lt;/p&gt;
-&lt;p&gt;如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.05.07.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;下面是清除 Xcode 缓存的步骤：&lt;/p&gt;
-&lt;p&gt;（1）移除对旧设备的支持&lt;/p&gt;
-&lt;p&gt;影响：连接设备调试时，会重新自动生成&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Developer/Xcode/iOS DeviceSupport&lt;/p&gt;
-&lt;p&gt;（2）移除旧版本的模拟器支持&lt;/p&gt;
-&lt;p&gt;影响：可重新下载了&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator/x.x/tmp (模拟器临时文件)&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Application Support/iPhone Simulator/x.x/Applications (模拟器安装的应用)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;（3）移除Archives&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;影响：不可恢复；Adhoc或者App Store版本会被删除。建议备份dSYM文件夹&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Developer/Xcode/Archives&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;（4）移除DerivedData&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;影响：可重新生成；会删除build生成的项目索引、build输出以及日志。重新打开项目时会重新生成，大的项目会耗费一些时间。&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Developer/Xcode/DerivedData&lt;/p&gt;
-&lt;p&gt;（5）移除旧的Docsets&lt;/p&gt;
-&lt;p&gt;影响：不可恢复；将删除旧的Docsets文档&lt;/p&gt;
-&lt;p&gt;路径：~/Library/Developer/Shared/Documentation/DocSets&lt;/p&gt;
-&lt;p&gt;本人亲测了（3）和（4），不影响 Xcode 任何使用。以下是步骤截图：&lt;/p&gt;
-&lt;p&gt;首先，进入到对应目录（直接进入找不到）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.03.15.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;找到对应目录之后，直接删除到废纸篓，还需要彻底删除。此处使用的工具 Dr.Cleaner 进行废纸篓清除。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8812.01.35.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;最后是彻底清除之后的磁盘容量数据，这下，清爽多了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xi3f2.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-07%20%E4%B8%8A%E5%8D%8811.10.05.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;PS：因为需要清理的磁盘空间实在太大，清除时用了很长时间。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Mac 电脑上使用Xcode时间长了，磁盘空间越来越小，在明确没有其他大量文件占用空间情况下，磁盘也是不够用了。此处应该检查Xcode缓存占用的空间，一般会比较大（除非你经常清除Xcode缓存）。&lt;/p&gt;
-&lt;p&gt;先说结果吧：本人使用的 Mac mini 500G 磁盘，Xc
-    
-    </summary>
-    
-      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="Xcode" scheme="http://isunman.com/tags/xcode/"/>
     
   </entry>
   
