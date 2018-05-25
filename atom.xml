@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-05-25T04:37:16.629Z</updated>
+  <updated>2018-05-25T05:01:52.500Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,104 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案</title>
+    <link href="http://isunman.com/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/"/>
+    <id>http://isunman.com/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/</id>
+    <published>2018-05-25T05:01:52.563Z</published>
+    <updated>2018-05-25T05:01:52.500Z</updated>
+    
+    <content type="html">&lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
+&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
+&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的&lt;/p&gt;
+&lt;h3 id=&quot;php配置&quot;&gt;&lt;a href=&quot;#php配置&quot; class=&quot;headerlink&quot; title=&quot;php配置&quot;&gt;&lt;/a&gt;php配置&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;function get_image_info($target, $allowswf = false) {
+    $ext = discuz_upload::fileext($target);
+    $isimage = discuz_upload::is_image_ext($ext);
+    if(!$isimage &amp;amp;&amp;amp; ($ext != &amp;apos;swf&amp;apos; || !$allowswf)) {
+        return false;
+    } elseif(!is_readable($target)) {
+        return false;
+    } elseif($imageinfo = @getimagesize($target)) {
+        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&amp;apos;&amp;apos;, &amp;apos;&amp;apos;, &amp;apos;&amp;apos;);
+        $size = $width * $height;
+        if($size &amp;gt; 16777216 || $size &amp;lt; 16 ) {
+            return false;
+        } elseif($ext == &amp;apos;swf&amp;apos; &amp;amp;&amp;amp; $type != 4 &amp;amp;&amp;amp; $type != 13) {
+            return false;
+        } elseif($isimage &amp;amp;&amp;amp; !in_array($type, array(1,2,3,6,13))) {
+            return false;
+        } elseif(!$allowswf &amp;amp;&amp;amp; ($ext == &amp;apos;swf&amp;apos; || $type == 4 || $type == 13)) {
+            return false;
+        }
+        return $imageinfo;
+    } else {
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.muquan.net/article/390.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Discuz" scheme="http://isunman.com/tags/discuz/"/>
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux定时任务精确到秒</title>
+    <link href="http://isunman.com/2018/05/25/Linux-timing-tasks-are-accurate-to-seconds/"/>
+    <id>http://isunman.com/2018/05/25/Linux-timing-tasks-are-accurate-to-seconds/</id>
+    <published>2018-05-25T04:55:50.226Z</published>
+    <updated>2018-05-25T04:55:50.174Z</updated>
+    
+    <content type="html">&lt;p&gt;linux的crond定时任务只能精确到分，如何才能做到控制到秒呢?答案肯定是明显的，实现的方法也有多种，但本文只介绍一个相对来说比较精确，又方便的写法。&lt;/p&gt;
+&lt;h3 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h3&gt;&lt;p&gt;增加一个普通的定时器脚本de &amp;gt;dateTime.shde&amp;gt;，放于/目录&lt;/p&gt;
+&lt;p&gt;此脚本用于打印当前系统时间&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+date
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;增加可执行权限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x /dateTime.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编写定时任务&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crontab -e
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;脚本内容为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*/1 * * * * /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+*/1 * * * * sleep 5 &amp;amp;&amp;amp; /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+*/1 * * * * sleep 10 &amp;amp;&amp;amp; /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+*/1 * * * * sleep 15 &amp;amp;&amp;amp; /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+*/1 * * * * sleep 20 &amp;amp;&amp;amp; /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+...
+*/1 * * * * sleep 55 &amp;amp;&amp;amp; /dateTime.sh &amp;gt;&amp;gt; /dateTime.log
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重新启动crond&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service crond restart
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;程序就会每5秒执行一次脚本，并将时间写入/dateTime.log文件中&lt;/p&gt;
+&lt;h3 id=&quot;核心&quot;&gt;&lt;a href=&quot;#核心&quot; class=&quot;headerlink&quot; title=&quot;核心&quot;&gt;&lt;/a&gt;核心&lt;/h3&gt;&lt;p&gt;主要是使用linux的sleep控制脚本执行时间&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/dounine/article/details/53357113&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;linux的crond定时任务只能精确到分，如何才能做到控制到秒呢?答案肯定是明显的，实现的方法也有多种，但本文只介绍一个相对来说比较精确，又方便的写法。&lt;/p&gt;
+&lt;h3 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>php发送get、post请求的6种方法简明总结</title>
@@ -1194,351 +1292,6 @@ print_r($res);
     
       <category term="工作学习" scheme="http://isunman.com/categories/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/"/>
     
-    
-      <category term="野趣" scheme="http://isunman.com/tags/%E9%87%8E%E8%B6%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>豫东方言商丘话</title>
-    <link href="http://isunman.com/2016/05/14/shangqiu-yudong-dialect-words/"/>
-    <id>http://isunman.com/2016/05/14/shangqiu-yudong-dialect-words/</id>
-    <published>2016-05-14T09:04:36.345Z</published>
-    <updated>2016-05-14T09:04:36.281Z</updated>
-    
-    <content type="html">&lt;p&gt;豫东方言商丘话&lt;/p&gt;
-&lt;h2 id=&quot;在俺商丘，-有一种关心叫：你咋咋啦？&quot;&gt;&lt;a href=&quot;#在俺商丘，-有一种关心叫：你咋咋啦？&quot; class=&quot;headerlink&quot; title=&quot;在俺商丘， 有一种关心叫：你咋咋啦？&quot;&gt;&lt;/a&gt;在俺商丘， 有一种关心叫：你咋咋啦？&lt;/h2&gt;&lt;p&gt;有一种关心叫：你咋咋啦？ &lt;/p&gt;
-&lt;p&gt;有一种委屈叫：我咋咋你啦？&lt;/p&gt;
-&lt;p&gt;有一种惊讶叫：我类乖乖！&lt;/p&gt;
-&lt;p&gt;有一种不耐烦叫：你到底想咋咋吧？&lt;/p&gt;
-&lt;p&gt;有一种不甘示弱叫：咋咋！！&lt;/p&gt;
-&lt;p&gt;有一种问候叫：这一绷儿咋样儿？&lt;/p&gt;
-&lt;p&gt;有一种讨厌叫：你咋嫩不稀罕人哎！&lt;/p&gt;
-&lt;p&gt;有一种威胁叫：你给我招捂咯点儿！&lt;/p&gt;
-&lt;p&gt;有一种莫名叫：你弄啥家使来？&lt;/p&gt;
-&lt;p&gt;有一种舒服叫：得类很！&lt;/p&gt;
-&lt;p&gt;有一种失陪叫：先过几啦！&lt;/p&gt;
-&lt;p&gt;有一种迷茫叫：zua啦？&lt;/p&gt;
-&lt;p&gt;有一种愤怒叫：恼类慌！&lt;/p&gt;
-&lt;p&gt;有一种休息叫：歪一会儿！&lt;/p&gt;
-&lt;p&gt;有一种直率叫：实诚！&lt;/p&gt;
-&lt;p&gt;有一种幼稚叫：跟小孩尚！&lt;/p&gt;
-&lt;p&gt;有一种等待叫：先白慌类！&lt;/p&gt;
-&lt;p&gt;有一种畏惧叫：吓类合撒！&lt;/p&gt;
-&lt;p&gt;有一种不该喝的酒叫：猫尿！&lt;/p&gt;
-&lt;h2 id=&quot;常见词语&quot;&gt;&lt;a href=&quot;#常见词语&quot; class=&quot;headerlink&quot; title=&quot;常见词语&quot;&gt;&lt;/a&gt;常见词语&lt;/h2&gt;&lt;p&gt;血虎得====壁虎&lt;/p&gt;
-&lt;p&gt;面面呼得===蝙蝠&lt;/p&gt;
-&lt;p&gt;马嘎得====喜鹊&lt;/p&gt;
-&lt;p&gt;小小虫===麻雀&lt;/p&gt;
-&lt;p&gt;扁嘴得—-鸭子&lt;/p&gt;
-&lt;p&gt;木伏—–梳子&lt;/p&gt;
-&lt;p&gt;马可都得—–蝌蚪&lt;/p&gt;
-&lt;p&gt;赖嘟—–蟾蜍&lt;/p&gt;
-&lt;p&gt;马扎得—–可以合在一起中间带绳的板凳&lt;/p&gt;
-&lt;p&gt;麦了—-蝉的一种&lt;/p&gt;
-&lt;p&gt;河马—–青蛙&lt;/p&gt;
-&lt;p&gt;屋后——是指家的后边&lt;/p&gt;
-&lt;p&gt;鸡鸟得—–蝉&lt;/p&gt;
-&lt;p&gt;爬蚱—–幼蝉&lt;/p&gt;
-&lt;p&gt;啥家使—什莫东西&lt;/p&gt;
-&lt;p&gt;kài蛤蟆—捉青蛙&lt;/p&gt;
-&lt;p&gt;莫即了–最后&lt;/p&gt;
-&lt;p&gt;裤叉得–短裤&lt;/p&gt;
-&lt;p&gt;克朗得-骨头架子&lt;/p&gt;
-&lt;p&gt;洋火–火柴&lt;/p&gt;
-&lt;p&gt;护弄人、却人–骗人&lt;/p&gt;
-&lt;p&gt;决孟得—-感觉&lt;/p&gt;
-&lt;p&gt;出不出—-缩水否&lt;/p&gt;
-&lt;p&gt;门楼得—-门框&lt;/p&gt;
-&lt;p&gt;扑拉蛾得—-飞蛾&lt;/p&gt;
-&lt;p&gt;厥得—-木桩&lt;/p&gt;
-&lt;p&gt;憋勒慌—-闷&lt;/p&gt;
-&lt;p&gt;坷拉—-石块&lt;/p&gt;
-&lt;p&gt;秃爪得—-蛐蛐 &lt;/p&gt;
-&lt;p&gt;哦（OU）—-牛&lt;/p&gt;
-&lt;p&gt;洋车子-自行车 &lt;/p&gt;
-&lt;p&gt;洋油–煤油 &lt;/p&gt;
-&lt;p&gt;一个半劲–不停的干什么&lt;/p&gt;
-&lt;p&gt;装孬–耍无赖 &lt;/p&gt;
-&lt;p&gt;佛瞎话–说荒话&lt;/p&gt;
-&lt;p&gt;孬种、半扶（熟）—骂人的话&lt;/p&gt;
-&lt;p&gt;不惊喜–不聪明（傻的意思）&lt;/p&gt;
-&lt;p&gt;前个-前天&lt;/p&gt;
-&lt;p&gt;清恼起来–早上&lt;/p&gt;
-&lt;p&gt;胡吊乱、跟得乱、跟得砝（FA）-没规矩等&lt;/p&gt;
-&lt;p&gt;汗褂查得~~衬衣&lt;/p&gt;
-&lt;p&gt;义得~~肥皂&lt;/p&gt;
-&lt;p&gt;得劲~~舒服&lt;/p&gt;
-&lt;p&gt;梭皮—-头皮削&lt;/p&gt;
-&lt;p&gt;sei—-谁&lt;/p&gt;
-&lt;p&gt;气刮得—-烟火的一种&lt;/p&gt;
-&lt;p&gt;闸皮–土气&lt;/p&gt;
-&lt;p&gt;傍灰—灰尘多&lt;/p&gt;
-&lt;p&gt;到明儿—以后&lt;/p&gt;
-&lt;p&gt;黄晌－－下午&lt;/p&gt;
-&lt;p&gt;毛得－－厕所&lt;/p&gt;
-&lt;p&gt;夜个－－昨天&lt;/p&gt;
-&lt;p&gt;小小得—–小男孩&lt;/p&gt;
-&lt;p&gt;膈捞——-角落&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;豫东方言商丘话&lt;/p&gt;
-&lt;h2 id=&quot;在俺商丘，-有一种关心叫：你咋咋啦？&quot;&gt;&lt;a href=&quot;#在俺商丘，-有一种关心叫：你咋咋啦？&quot; class=&quot;headerlink&quot; title=&quot;在俺商丘， 有一种关心叫：你咋咋啦？&quot;&gt;&lt;/a&gt;在俺商丘， 有一种关心叫：你咋咋啦
-    
-    </summary>
-    
-      <category term="文学" scheme="http://isunman.com/categories/%E6%96%87%E5%AD%A6/"/>
-    
-    
-      <category term="家乡" scheme="http://isunman.com/tags/%E5%AE%B6%E4%B9%A1/"/>
-    
-      <category term="野趣" scheme="http://isunman.com/tags/%E9%87%8E%E8%B6%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>豫东方言词汇</title>
-    <link href="http://isunman.com/2016/05/14/yudong-dialect-vocabulary/"/>
-    <id>http://isunman.com/2016/05/14/yudong-dialect-vocabulary/</id>
-    <published>2016-05-14T08:54:57.727Z</published>
-    <updated>2016-05-14T08:54:57.673Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;词条统计&quot;&gt;&lt;a href=&quot;#词条统计&quot; class=&quot;headerlink&quot; title=&quot;词条统计&quot;&gt;&lt;/a&gt;词条统计&lt;/h2&gt;&lt;p&gt;打鼻：刺鼻。&lt;/p&gt;
-&lt;p&gt;愿意：祷告。&lt;/p&gt;
-&lt;p&gt;灵：灵性。&lt;/p&gt;
-&lt;p&gt;泥洼子：泥潭。&lt;/p&gt;
-&lt;p&gt;护犊子：原意大牛犊呵护小牛犊。&lt;/p&gt;
-&lt;p&gt;车把式：赶车的。&lt;/p&gt;
-&lt;p&gt;执事：总指挥。&lt;/p&gt;
-&lt;p&gt;细粉：粉条。&lt;/p&gt;
-&lt;p&gt;礼条子、刀头：长条的猪肉。&lt;/p&gt;
-&lt;p&gt;见过礼：行过礼。&lt;/p&gt;
-&lt;p&gt;封了钱：给了钱。&lt;/p&gt;
-&lt;p&gt;大车：牲口拉的四轮木车。&lt;/p&gt;
-&lt;p&gt;火煤子：草纸。&lt;/p&gt;
-&lt;p&gt;盖头：盖在头上的红布。&lt;/p&gt;
-&lt;p&gt;搽：摸。&lt;/p&gt;
-&lt;p&gt;周周正正：端端正正。&lt;/p&gt;
-&lt;p&gt;簸篱子：用做隔墙的高粱秆织的簸。&lt;/p&gt;
-&lt;p&gt;担待：原谅。&lt;/p&gt;
-&lt;p&gt;咋：怎么。&lt;/p&gt;
-&lt;p&gt;恁：你们。&lt;/p&gt;
-&lt;p&gt;秫面：高粱面。&lt;/p&gt;
-&lt;p&gt;就：配着吃。&lt;/p&gt;
-&lt;p&gt;叽牛子：知了。&lt;/p&gt;
-&lt;p&gt;当门：中间的一间。&lt;/p&gt;
-&lt;p&gt;爬蚱：知了的前身。&lt;/p&gt;
-&lt;p&gt;恁：那么。&lt;/p&gt;
-&lt;p&gt;茅房：厕所。&lt;/p&gt;
-&lt;p&gt;脚脖子：脚踝。&lt;/p&gt;
-&lt;p&gt;一拃：五寸。&lt;/p&gt;
-&lt;p&gt;拖车：四腿朝上的木制农具。&lt;/p&gt;
-&lt;p&gt;认：愿意。&lt;/p&gt;
-&lt;p&gt;中：行，可以。&lt;/p&gt;
-&lt;p&gt;钱鞳子：装钱物的小布袋。&lt;/p&gt;
-&lt;p&gt;土垃：细土。&lt;/p&gt;
-&lt;p&gt;亏：冤屈。&lt;/p&gt;
-&lt;p&gt;闲书：指小说。&lt;/p&gt;
-&lt;p&gt;先生：医生。&lt;/p&gt;
-&lt;p&gt;一节子：一节段。&lt;/p&gt;
-&lt;p&gt;串门：到别人家去玩。&lt;/p&gt;
-&lt;p&gt;白：别，不要。&lt;/p&gt;
-&lt;p&gt;不得法：不舒服。&lt;/p&gt;
-&lt;p&gt;垡子：犁好后，还没有种庄稼的空白地。&lt;/p&gt;
-&lt;p&gt;略黑：天刚黑。&lt;/p&gt;
-&lt;p&gt;三四指：三四个手指，约两寸。&lt;/p&gt;
-&lt;p&gt;谷秸瘩：谷根。&lt;/p&gt;
-&lt;p&gt;一季子：一个季节。&lt;/p&gt;
-&lt;p&gt;八薄：八根绳子织的簸。&lt;/p&gt;
-&lt;p&gt;激灵：因惊吓而猛然一动。&lt;/p&gt;
-&lt;p&gt;睡的死：熟睡。&lt;/p&gt;
-&lt;p&gt;行行好：做做好事。&lt;/p&gt;
-&lt;p&gt;碓窑子:石磙一头挖了洞的搉杂粮的石具。&lt;/p&gt;
-&lt;p&gt;搉：往下砸。&lt;/p&gt;
-&lt;p&gt;碓碓：安了木把子的圆石头。&lt;/p&gt;
-&lt;p&gt;箩床子：两根平行的木板。&lt;/p&gt;
-&lt;p&gt;秫靶子：高粱头做的小扫帚。&lt;/p&gt;
-&lt;p&gt;瓢：半个葫芦。&lt;/p&gt;
-&lt;p&gt;洼着脊子：弯着腰。&lt;/p&gt;
-&lt;p&gt;揳：砸。&lt;/p&gt;
-&lt;p&gt;向口：方向。&lt;/p&gt;
-&lt;p&gt;拼对：拼凑。&lt;/p&gt;
-&lt;p&gt;老师儿：师傅。&lt;/p&gt;
-&lt;p&gt;气：气味。&lt;/p&gt;
-&lt;p&gt;劳盆：钻了小孔的小瓦盆。&lt;/p&gt;
-&lt;p&gt;大梗：粗绳。&lt;/p&gt;
-&lt;p&gt;搭帮：凑伙。&lt;/p&gt;
-&lt;p&gt;急：困难。&lt;/p&gt;
-&lt;p&gt;红车子：木做的独轮车。&lt;/p&gt;
-&lt;p&gt;靽绳：常为拉车用的绳。&lt;/p&gt;
-&lt;p&gt;大：父亲。&lt;/p&gt;
-&lt;p&gt;今个：今天。&lt;/p&gt;
-&lt;p&gt;明个：明天。&lt;/p&gt;
-&lt;p&gt;福大命大造化大不中：不可，不行。&lt;/p&gt;
-&lt;p&gt;主儿：人。&lt;/p&gt;
-&lt;p&gt;悠：串，转。&lt;/p&gt;
-&lt;p&gt;家里：老婆。&lt;/p&gt;
-&lt;p&gt;女人：妻子。&lt;/p&gt;
-&lt;p&gt;先生：医生。&lt;/p&gt;
-&lt;p&gt;细粉：粉条。&lt;/p&gt;
-&lt;p&gt;被子：用糊涂把几层不粘在一起。&lt;/p&gt;
-&lt;p&gt;白眼：不放菜的面条。&lt;/p&gt;
-&lt;p&gt;背筐：装草的大筐。&lt;/p&gt;
-&lt;p&gt;中蒙：中吗。&lt;/p&gt;
-&lt;p&gt;待：在。&lt;/p&gt;
-&lt;p&gt;仁彩：漂亮。&lt;/p&gt;
-&lt;p&gt;饶：白送。&lt;/p&gt;
-&lt;p&gt;瀪蛋：下蛋。&lt;/p&gt;
-&lt;p&gt;沤人：吵闹人。&lt;/p&gt;
-&lt;p&gt;端上：上面。&lt;/p&gt;
-&lt;p&gt;够：伸手拿东西。&lt;/p&gt;
-&lt;p&gt;主贵：金贵，贵重。&lt;/p&gt;
-&lt;p&gt;木杓：木桶。&lt;/p&gt;
-&lt;p&gt;挈：逮。&lt;/p&gt;
-&lt;p&gt;劙：划。&lt;/p&gt;
-&lt;p&gt;半大橛子：年轻小伙。&lt;/p&gt;
-&lt;p&gt;仁彩：好看。&lt;/p&gt;
-&lt;p&gt;出门子：出嫁。&lt;/p&gt;
-&lt;p&gt;迎喜：结婚。&lt;/p&gt;
-&lt;p&gt;大：叔。&lt;/p&gt;
-&lt;p&gt;怪：挺。&lt;/p&gt;
-&lt;p&gt;刁：懂事，精明。&lt;/p&gt;
-&lt;p&gt;花布机子：棉花卷成的长条。&lt;/p&gt;
-&lt;p&gt;落子：用来缠线的四框木具。&lt;/p&gt;
-&lt;p&gt;作假：谦虚。&lt;/p&gt;
-&lt;p&gt;菜修子：钻了洞的铁皮。&lt;/p&gt;
-&lt;p&gt;作心：胃里不舒服。&lt;/p&gt;
-&lt;p&gt;小铺对子：铺在下面的被子。&lt;/p&gt;
-&lt;p&gt;拨支：摆弄。&lt;/p&gt;
-&lt;p&gt;塌秧：即将干枯。&lt;/p&gt;
-&lt;p&gt;官：官中，公共。&lt;/p&gt;
-&lt;p&gt;平活：平安。&lt;/p&gt;
-&lt;p&gt;不是：不对。&lt;/p&gt;
-&lt;p&gt;谷个子：谷子梱。&lt;/p&gt;
-&lt;p&gt;瓢半嘴：乌鸦嘴。&lt;/p&gt;
-&lt;p&gt;碾转：用磨磨的麦仁。&lt;/p&gt;
-&lt;p&gt;沏猛子：凫水，扎猛子。&lt;/p&gt;
-&lt;p&gt;抄：迈。&lt;/p&gt;
-&lt;p&gt;破套子：旧棉花。&lt;/p&gt;
-&lt;p&gt;使头：撞头。&lt;/p&gt;
-&lt;p&gt;跑反：逃匪患。&lt;/p&gt;
-&lt;p&gt;打地磙子：比石磙细长。&lt;/p&gt;
-&lt;p&gt;墹：根基。&lt;/p&gt;
-&lt;p&gt;堆：坍塌。&lt;/p&gt;
-&lt;p&gt;泥机子：小板凳样的木鞋。&lt;/p&gt;
-&lt;p&gt;瓤：软。&lt;/p&gt;
-&lt;p&gt;花卷子：一层杂粮面，一层麦面卷做的馍。&lt;/p&gt;
-&lt;p&gt;光：只。&lt;/p&gt;
-&lt;p&gt;溜地搬：原指没有根基直接打墙。&lt;/p&gt;
-&lt;p&gt;松劲：寂寞无聊，没有兴致。&lt;/p&gt;
-&lt;p&gt;面叶子耳朵：软，怕老婆色。&lt;/p&gt;
-&lt;p&gt;破五：正月初五。&lt;/p&gt;
-&lt;p&gt;色：虱。&lt;/p&gt;
-&lt;p&gt;五伏：五代。&lt;/p&gt;
-&lt;p&gt;篓角子：肩顶草帽。&lt;/p&gt;
-&lt;p&gt;伸头戳屋：东张张望。&lt;/p&gt;
-&lt;p&gt;眼巴巴：可怜巴巴。&lt;/p&gt;
-&lt;p&gt;鲜：富足。&lt;/p&gt;
-&lt;p&gt;扑拉：用手摸扫。&lt;/p&gt;
-&lt;p&gt;狗不及：烧的粉芡，因太热狗不敢吃。&lt;/p&gt;
-&lt;p&gt;当误：端午。&lt;/p&gt;
-&lt;p&gt;饶：另外再无偿多给些。&lt;/p&gt;
-&lt;p&gt;尸把子：巫婆。&lt;/p&gt;
-&lt;p&gt;一势：一帮，一派。&lt;/p&gt;
-&lt;p&gt;揳打：抖动。&lt;/p&gt;
-&lt;p&gt;两挎子：两枝。&lt;/p&gt;
-&lt;p&gt;大油：猪油。&lt;/p&gt;
-&lt;p&gt;杓：桶。&lt;/p&gt;
-&lt;p&gt;咕哝：蠕动。&lt;/p&gt;
-&lt;p&gt;凿：弯了手指打。&lt;/p&gt;
-&lt;p&gt;奋：生：下崽。&lt;/p&gt;
-&lt;p&gt;串化肥：施化肥。&lt;/p&gt;
-&lt;p&gt;一扇子：半头猪。&lt;/p&gt;
-&lt;p&gt;能：聪明。&lt;/p&gt;
-&lt;p&gt;拖：两只胳膊伸直为一拖，约五尺。&lt;/p&gt;
-&lt;p&gt;主贵：珍贵。&lt;/p&gt;
-&lt;p&gt;小小虫：麻雀。&lt;/p&gt;
-&lt;p&gt;拍子：麦秸编织的尖顶的圆形蒸馍锅盖。&lt;/p&gt;
-&lt;p&gt;鲜：松软。&lt;/p&gt;
-&lt;p&gt;掉底：露底。&lt;/p&gt;
-&lt;p&gt;打渣子：开玩笑。&lt;/p&gt;
-&lt;p&gt;别干大：别开玩笑。&lt;/p&gt;
-&lt;p&gt;马虎：凶，不论理。&lt;/p&gt;
-&lt;p&gt;走了：死了。&lt;/p&gt;
-&lt;p&gt;仲米：婴儿吃用的东西。&lt;/p&gt;
-&lt;p&gt;老师儿：师傅。&lt;/p&gt;
-&lt;p&gt;抠挤：吝啬。&lt;/p&gt;
-&lt;p&gt;泼辣：开放。&lt;/p&gt;
-&lt;p&gt;泼泼辣辣：健健康康。&lt;/p&gt;
-&lt;p&gt;悠：扇、打。&lt;/p&gt;
-&lt;p&gt;哈：轻呼。&lt;/p&gt;
-&lt;p&gt;摔轱辘子：摔倒。&lt;/p&gt;
-&lt;p&gt;喳喳：吵叫。&lt;/p&gt;
-&lt;p&gt;该这个劲儿：该这个样子。&lt;/p&gt;
-&lt;p&gt;附路：柏油外的土路。&lt;/p&gt;
-&lt;p&gt;照：瞄看。&lt;/p&gt;
-&lt;p&gt;摽：较劲。&lt;/p&gt;
-&lt;p&gt;搂台：拥护捧场。&lt;/p&gt;
-&lt;p&gt;瓤子：皮里面的芯。&lt;/p&gt;
-&lt;p&gt;情：只管、尽管。&lt;/p&gt;
-&lt;p&gt;老好好：老好人。&lt;/p&gt;
-&lt;p&gt;镇压：枪毙。&lt;/p&gt;
-&lt;p&gt;兴：狂傲。&lt;/p&gt;
-&lt;p&gt;不如是：不如意。&lt;/p&gt;
-&lt;p&gt;拉拉呱：聊天。&lt;/p&gt;
-&lt;p&gt;眼角食：斜眼看着你吃。&lt;/p&gt;
-&lt;p&gt;堆：堆放。托放：发放。&lt;/p&gt;
-&lt;p&gt;不胜人：不如人。&lt;/p&gt;
-&lt;p&gt;谷堆：蹲。&lt;/p&gt;
-&lt;p&gt;拉拉呱：闲聊。&lt;/p&gt;
-&lt;p&gt;不经心：不吸取教训。&lt;/p&gt;
-&lt;p&gt;丧数：祭奠用品。&lt;/p&gt;
-&lt;p&gt;该：欠。&lt;/p&gt;
-&lt;h2 id=&quot;选几个典型的豫东方言的词汇&quot;&gt;&lt;a href=&quot;#选几个典型的豫东方言的词汇&quot; class=&quot;headerlink&quot; title=&quot;选几个典型的豫东方言的词汇&quot;&gt;&lt;/a&gt;选几个典型的豫东方言的词汇&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;硌硬（胳应）&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;意思是说心里不舒服。写做前面的硌硬，让人想到童话里公主睡床上的那棵蚕豆，或者人体中暗种的各种“结石”，隐隐不爽。这词在河南话里好象都通用，加了括号里的，我改做胳支的胳，是因为在豫东方言里，是读作一声的，听起来有点象猫抓得不安稳。&lt;/p&gt;
-&lt;p&gt;例句：你别给我说普通话，我听着光胳应。（嘻嘻，这是同学宋小玉打电话给我的通牒，说家乡话）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;枯楚&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;其实对应的就是普通话的皱纹。那个枯字，我想大致是不错的，人老了，都会风干了去。那个发chu音，写做哪个，看起来都有点不象原配，没办法了。豫东方言在发这个音时，语音是重音向下后坠的，让人想起那些折皱都是一堆提不起的岁月年轮。&lt;/p&gt;
-&lt;p&gt;例句：满脸枯楚。。。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;抢亮(强梁、强粮)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;是说某些人的行为特征，干嘛都爱争个先，稍具贬意，是那种有点自私霸道的不管不顾。我写做抢亮，是有感豫东的火神阏伯台，为黄帝子孙最早保存火种，在中国文明史发展的意义。有可能吗？算我瞎想罢。括号里的强梁，大家都知道，稍早些的强盗山贼叫这个。以前都农业社会，我疑心强梁也许从抢粮化过来的。&lt;/p&gt;
-&lt;p&gt;例句：这人干啥都抢亮。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;会过&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;意思是说会过日子，精打细算那种。这个词，就是典型的河南方言的尽在不言中的省略。很奇怪，河南话中没有那种叠字多语音的形容词，都是干撅撅的土坷拉（土疙瘩）味。想起来，小时候看街上的女人吵架，也是“你咋咋啦，我咋咋拉”然后加上一些祖宗八代的问候。&lt;/p&gt;
-&lt;p&gt;例句：这人可会过啦。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;乱&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这个字在豫东方言里，很有意思。它除却通常意义上说的混乱的状态。一般还做动词用，有“玩闹”、“逗趣”的意思。这个字也是极具河南话特色的简省，一个字把玩闹过程后面可能的严重后果都一字道出。&lt;/p&gt;
-&lt;p&gt;例句：你别给他乱！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;逞脸&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;经常是大人训小孩的话，调皮捣蛋。细究起来，同齐鲁大地（我听山东的朋友也说过）原来的文明教化有关，那就是大人都是端着的，崩着的，小孩子逞脸的犯上作乱，是在公共场合的出位。&lt;/p&gt;
-&lt;p&gt;例句：越有人越逞脸，看你能哩。（那个能，也是简化语意的，能干、本事）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;肉&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;是指人做事慢，性子绵。河南话很多这种单字的形容词，纳闷。&lt;/p&gt;
-&lt;p&gt;例句：不招人待见（喜欢），忒肉啦！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;沾&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;同河南话的“中”通用，好象只在豫东一带。有点象古语中的“诺”，OK啦！&lt;/p&gt;
-&lt;p&gt;例句：沾不沾？沾（可以译作这事中不中或者行不行，回答时也就一个字，沾、中、行）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;咕叽guji&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这个词很意思，翻成普通话，也就是蹲，现在也很少人说了。这个词我不知怎么写，写成这个词，是觉得这个词说得过程的动感，少有河南话翻成普通话多了一个字。&lt;/p&gt;
-&lt;p&gt;例句：你咕叽那儿！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;词条统计&quot;&gt;&lt;a href=&quot;#词条统计&quot; class=&quot;headerlink&quot; title=&quot;词条统计&quot;&gt;&lt;/a&gt;词条统计&lt;/h2&gt;&lt;p&gt;打鼻：刺鼻。&lt;/p&gt;
-&lt;p&gt;愿意：祷告。&lt;/p&gt;
-&lt;p&gt;灵：灵性。&lt;/p&gt;
-&lt;p&gt;泥洼子：泥潭。&lt;/p&gt;
-&lt;p&gt;护犊子：原意
-    
-    </summary>
-    
-      <category term="文学" scheme="http://isunman.com/categories/%E6%96%87%E5%AD%A6/"/>
-    
-    
-      <category term="家乡" scheme="http://isunman.com/tags/%E5%AE%B6%E4%B9%A1/"/>
     
       <category term="野趣" scheme="http://isunman.com/tags/%E9%87%8E%E8%B6%A3/"/>
     
