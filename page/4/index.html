@@ -244,6 +244,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/" itemprop="url">
+                  Sql2000的远程连接（含Sp4补丁）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T18:41:13+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>服务端配置:</p>
+<h4 id="一-、看ping-服务器IP能否ping通。"><a href="#一-、看ping-服务器IP能否ping通。" class="headerlink" title="一 、看ping 服务器IP能否ping通。"></a>一 、看ping 服务器IP能否ping通。</h4><p>这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。</p>
+<h4 id="二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><a href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。" class="headerlink" title="二 、在Dos下输入telnet 服务器IP 端口，看能否连通。"></a>二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</h4><p>例如：</p>
+<pre><code>telnet 202.114.100.100 1433
+</code></pre><p>1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：</p>
+<p>1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。</p>
+<p>2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。</p>
+<p>3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 </p>
+<pre><code>netstat –an
+</code></pre><p>（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 </p>
+<pre><code>tcp  127.0.0.1 1433   listening
+</code></pre><p>的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入</p>
+<pre><code>select @@version
+</code></pre><p>执行后可以看到版本号，版本号在 <strong>8.00.2039</strong> 以下的都需要打补丁。这是Sp4的下载地址  <a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE" target="_blank" rel="external">（SQLServer SP4补丁下载）</a> 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。</p>
+<p>这时再做telnet测试，应该OK了。</p>
+<p><a href="http://blog.163.com/tcl_6688/blog/static/168864257201151574157197" target="_blank" rel="external">原文参考</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/" itemprop="url">
                   windows2000/2003/2008中安装sqlserver 2000图文教程
                 </a>
@@ -1594,133 +1712,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/life-is-too-short-it-is-what-we-want/" itemprop="url">
-                  Facebook一组火爆漫画：生命太短暂，什么才是我们想要的？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T14:40:21+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活感悟/" itemprop="url" rel="index">
-                    <span itemprop="name">生活感悟</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>人们都在关心事业、追逐成功，但是不管我们取得了怎样的成就，永远都不够，我们总是想要得到更多、更多……慢慢的我们开始思考：什么才是我们想要的，一开始陪伴我们的人在哪里走散了。</p>
-<p>但是，生活就像一个小偷，偷走我们快乐、我们的爱，所以无论如何都别忘了自己，别忘了你爱的人，握紧快乐，抓牢爱人。</p>
-<h3 id="1、尝试逗他人开心，每天至少让三个人因你而微笑。"><a href="#1、尝试逗他人开心，每天至少让三个人因你而微笑。" class="headerlink" title="1、尝试逗他人开心，每天至少让三个人因你而微笑。"></a>1、尝试逗他人开心，每天至少让三个人因你而微笑。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0001.jpg" alt=""></p>
-<h3 id="2、每天至少安静地坐十分钟。"><a href="#2、每天至少安静地坐十分钟。" class="headerlink" title="2、每天至少安静地坐十分钟。"></a>2、每天至少安静地坐十分钟。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0002.jpg" alt=""></p>
-<h3 id="3、你不需要赢得每一场争论。赞同你不赞同的。"><a href="#3、你不需要赢得每一场争论。赞同你不赞同的。" class="headerlink" title="3、你不需要赢得每一场争论。赞同你不赞同的。"></a>3、你不需要赢得每一场争论。赞同你不赞同的。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0003.jpg" alt=""></p>
-<h3 id="4、不要把自己看得太重要，其他人不会在乎的。"><a href="#4、不要把自己看得太重要，其他人不会在乎的。" class="headerlink" title="4、不要把自己看得太重要，其他人不会在乎的。"></a>4、不要把自己看得太重要，其他人不会在乎的。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0004.jpg" alt=""></p>
-<h3 id="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"><a href="#5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。" class="headerlink" title="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"></a>5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0005.jpg" alt=""></p>
-<h3 id="6、在你清醒的时候，你可以梦想更多。"><a href="#6、在你清醒的时候，你可以梦想更多。" class="headerlink" title="6、在你清醒的时候，你可以梦想更多。"></a>6、在你清醒的时候，你可以梦想更多。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0006.jpg" alt=""></p>
-<h3 id="7、别人怎么看待你，完全与你无关。"><a href="#7、别人怎么看待你，完全与你无关。" class="headerlink" title="7、别人怎么看待你，完全与你无关。"></a>7、别人怎么看待你，完全与你无关。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0007.jpg" alt=""></p>
-<h3 id="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"><a href="#8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。" class="headerlink" title="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"></a>8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0008.jpg" alt=""></p>
-<h3 id="9、生命太短暂，我没时间讨厌你。"><a href="#9、生命太短暂，我没时间讨厌你。" class="headerlink" title="9、生命太短暂，我没时间讨厌你。"></a>9、生命太短暂，我没时间讨厌你。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0009.jpg" alt=""></p>
-<h3 id="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"><a href="#10、微笑、大笑、笑哭了……让生活拥有更多欢笑" class="headerlink" title="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"></a>10、微笑、大笑、笑哭了……让生活拥有更多欢笑</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0010.jpg" alt=""></p>
-<h3 id="11、没有人能决定你的快乐，除了你自己。"><a href="#11、没有人能决定你的快乐，除了你自己。" class="headerlink" title="11、没有人能决定你的快乐，除了你自己。"></a>11、没有人能决定你的快乐，除了你自己。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0011.jpg" alt=""></p>
-<h3 id="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"><a href="#12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。" class="headerlink" title="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"></a>12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0012.jpg" alt=""></p>
-<h3 id="13、每天睡8小时。"><a href="#13、每天睡8小时。" class="headerlink" title="13、每天睡8小时。"></a>13、每天睡8小时。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0013.jpg" alt=""></p>
-<h3 id="14、多喝水（每天至少摄入2升水）。"><a href="#14、多喝水（每天至少摄入2升水）。" class="headerlink" title="14、多喝水（每天至少摄入2升水）。"></a>14、多喝水（每天至少摄入2升水）。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0014.jpg" alt=""></p>
-<h3 id="15、多读书，争取比上个月多读一本书。"><a href="#15、多读书，争取比上个月多读一本书。" class="headerlink" title="15、多读书，争取比上个月多读一本书。"></a>15、多读书，争取比上个月多读一本书。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0015.jpg" alt=""></p>
-<h3 id="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"><a href="#16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。" class="headerlink" title="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"></a>16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0016.jpg" alt=""></p>
-<h3 id="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"><a href="#17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。" class="headerlink" title="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"></a>17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0017.jpg" alt=""></p>
-<h3 id="18、每天慢跑10-30分钟。"><a href="#18、每天慢跑10-30分钟。" class="headerlink" title="18、每天慢跑10-30分钟。"></a>18、每天慢跑10-30分钟。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0018.jpg" alt=""></p>
-<h3 id="19、经常给家人打电话。"><a href="#19、经常给家人打电话。" class="headerlink" title="19、经常给家人打电话。"></a>19、经常给家人打电话。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0019.jpg" alt=""></p>
-<h3 id="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"><a href="#20、留一些时间给自己，练习冥想、瑜伽和祈祷。" class="headerlink" title="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"></a>20、留一些时间给自己，练习冥想、瑜伽和祈祷。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman20160320_wantlife_0020.jpg" alt=""></p>
-<p>以上，可能有点鸡汤了。</p>
-<p>但是有些确实需要去改变，并坚持下去。</p>
-<p>2016/3/20 14:33:26 </p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1767,7 +1758,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1784,7 +1775,7 @@ extension=php_mysqli.dll
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
