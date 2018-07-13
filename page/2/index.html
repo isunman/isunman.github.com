@@ -221,11 +221,112 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/16/server-side-cycle-to-remind-how-to-design/" itemprop="url">
+                  服务器端周期提醒如何设计
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-16T17:04:00+08:00" content="2017-03-16">
+              2017-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-    
+        
+          
+            <h2 id="服务器端周期提醒如何设计"><a href="#服务器端周期提醒如何设计" class="headerlink" title="服务器端周期提醒如何设计"></a>服务器端周期提醒如何设计</h2><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><p>为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。</p>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><p>因为时间是线性的，设置的再多，其实每次需要执行的下一个时间最多也只有一个。<br>因此可以这进行数据库设计–下一次提醒时间，重复的时间，特定时间。到时间发送通知，然后更新数据库的下一次提醒时间。</p>
+<p>PS：是一种不错的思路，可行性高</p>
+<p>原文链接：<a href="https://segmentfault.com/q/1010000006929169" title="原文链接" target="_blank" rel="external">https://segmentfault.com/q/1010000006929169</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1515,148 +1616,12 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T12:28:26+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）"><a href="#OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）"></a>OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0000.png" alt=""></p>
-<h4 id="Bilibili"><a href="#Bilibili" class="headerlink" title="Bilibili"></a>Bilibili</h4><p><a href="http://bilimac.eqoe.cn/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio_0001.png" alt=""></p>
-<p>第三方，开源的 b 站客户端，告别 flash，还可以帮助海外党（你懂的），总之是个非常推荐的软件。</p>
-<h4 id="iTunes"><a href="#iTunes" class="headerlink" title="iTunes"></a>iTunes</h4><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0002.png" alt=""></p>
-<p>Mac 上管理音乐最好的软件还是 iTunes，包括手动管理 iDevice 的音乐也很方便。格式的话，有损可以用 aac，无损可以用 AppleLossless，当然，如果你有非苹果设备播放的需求的话，还是用第三方吧。</p>
-<h4 id="Vox"><a href="#Vox" class="headerlink" title="Vox"></a>Vox</h4><p><a href="http://coppertino.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0003.png" alt=""></p>
-<p>综合下来，最好用，最稳定的第三方音乐播放器。支持各种格式，和许多在线服务，功能齐全。</p>
-<h4 id="XLD"><a href="#XLD" class="headerlink" title="XLD"></a>XLD</h4><p><a href="https://sourceforge.net/projects/xld/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0004.png" alt=""></p>
-<p>格式转换软件，无损转 AppleLossLess，或者转 mp3 或者 aac 等等，强烈推荐。</p>
-<h4 id="Movist"><a href="#Movist" class="headerlink" title="Movist"></a>Movist</h4><p><a href="https://itunes.apple.com/us/app/movist/id461788075?mt=12" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0005.png" alt=""></p>
-<p>目前的主力播放器。可能有全屏闪退的问题，不过……不影响使用。</p>
-<h4 id="MPlayerX"><a href="#MPlayerX" class="headerlink" title="MPlayerX"></a>MPlayerX</h4><p><a href="http://mplayerx.org/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0006.png" alt=""></p>
-<p>曾经的主力播放器，出了什么问题以后我换了 Movist 使用至今（时间久远不记得当初遇到什么问题了，好像是打开某些视频直接闪退）。相信现在也已经修复 bug 了吧，值得一试。</p>
-<h4 id="VLC"><a href="#VLC" class="headerlink" title="VLC"></a>VLC</h4><p><a href="http://www.videolan.org/vlc/download-Macosx.html" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0007.png" alt=""></p>
-<p>开源的视频播放器，有很多特殊的使用方式，喜欢折腾的话可以用。</p>
-<h4 id="Blu-ray-Player"><a href="#Blu-ray-Player" class="headerlink" title="Blu-ray Player"></a>Blu-ray Player</h4><p><a href="http://www.macblurayplayer.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0008.png" alt=""></p>
-<p>如果你需要播放蓝光碟，你不仅需要一个蓝光光驱，还需要对应的软件。这个软件是最无脑的播放软件。</p>
-<h4 id="MakeMKV"><a href="#MakeMKV" class="headerlink" title="MakeMKV"></a>MakeMKV</h4><p><a href="http://www.makemkv.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0009.png" alt=""></p>
-<p>如果你需要把蓝光碟的内容 rip 下来，用这个可以到处 MKV 文件。</p>
-<h4 id="HandBrake"><a href="#HandBrake" class="headerlink" title="HandBrake"></a>HandBrake</h4><p><a href="https://handbrake.fr/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0010.png" alt=""></p>
-<p>万能视频格式转码软件。</p>
-<h4 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h4><p><a href="https://obsproject.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0011.png" alt=""></p>
-<p>开源视频直播源输出软件。如果你需要直播你电脑的画面，就用它。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21280979" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1697,7 +1662,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1714,7 +1679,7 @@ print_r($res);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

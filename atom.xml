@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-07-02T01:26:01.201Z</updated>
+  <updated>2018-07-13T03:59:18.575Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信小程序客服消息</title>
+    <link href="http://isunman.com/2018/07/13/wechat-miniprogramcustomer-service-message/"/>
+    <id>http://isunman.com/2018/07/13/wechat-miniprogramcustomer-service-message/</id>
+    <published>2018-07-13T03:59:18.612Z</published>
+    <updated>2018-07-13T03:59:18.575Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;a href=&quot;#微信小程序消息服务接入步骤&quot; class=&quot;headerlink&quot; title=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;/a&gt;微信小程序消息服务接入步骤&lt;/h3&gt;&lt;p&gt;1、填写服务器配置；&lt;br&gt;&lt;br&gt;2、验证服务器地址的有效性；&lt;br&gt;&lt;br&gt;3、依据接口文档实现业务逻辑。&lt;/p&gt;
+&lt;h3 id=&quot;客服消息之接收消息和事件&quot;&gt;&lt;a href=&quot;#客服消息之接收消息和事件&quot; class=&quot;headerlink&quot; title=&quot;客服消息之接收消息和事件&quot;&gt;&lt;/a&gt;客服消息之接收消息和事件&lt;/h3&gt;&lt;p&gt;1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。&lt;br&gt;&lt;br&gt;2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。&lt;/p&gt;
+&lt;h3 id=&quot;客服消息之发送客服消息&quot;&gt;&lt;a href=&quot;#客服消息之发送客服消息&quot; class=&quot;headerlink&quot; title=&quot;客服消息之发送客服消息&quot;&gt;&lt;/a&gt;客服消息之发送客服消息&lt;/h3&gt;&lt;p&gt;1、发送消息格式固定为JSON格式。&lt;br&gt;&lt;br&gt;2、支持4种消息类型：&lt;strong&gt;文本&lt;/strong&gt;，&lt;strong&gt;图片&lt;/strong&gt;，&lt;strong&gt;图文链接&lt;/strong&gt;，&lt;strong&gt;小程序卡片&lt;/strong&gt;。&lt;br&gt;&lt;br&gt;3、touser等于发送消息的FromUsername，即微信用户的openid。&lt;br&gt;&lt;br&gt;4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。&lt;/p&gt;
+&lt;h3 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h3&gt;&lt;p&gt;1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。&lt;/p&gt;
+&lt;p&gt;2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。&lt;/p&gt;
+&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;p&gt;1、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接入微信小程序消息服务&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接收消息和事件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;发送客服消息&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;a href=&quot;#微信小程序消息服务接入步骤&quot; class=&quot;headerlink&quot; title=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;/a&gt;微信小程序消息服务接入步骤&lt;/h3&gt;&lt;p&gt;1、填写服务器配置；&lt;br&gt;&lt;br&gt;2、验证服务器地
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="微信" scheme="http://isunman.com/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
+    
+  </entry>
   
   <entry>
     <title>如何用好 github 中的 watch、star、fork</title>
@@ -1275,64 +1307,6 @@ print_r($res);
     <summary type="html">
     
       &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（读与写）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（读与写）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （读与写）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推
-    
-    </summary>
-    
-      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）</title>
-    <link href="http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/"/>
-    <id>http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/</id>
-    <published>2016-06-05T04:28:26.277Z</published>
-    <updated>2016-06-05T04:28:26.221Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Bilibili&quot;&gt;&lt;a href=&quot;#Bilibili&quot; class=&quot;headerlink&quot; title=&quot;Bilibili&quot;&gt;&lt;/a&gt;Bilibili&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://bilimac.eqoe.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio_0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;第三方，开源的 b 站客户端，告别 flash，还可以帮助海外党（你懂的），总之是个非常推荐的软件。&lt;/p&gt;
-&lt;h4 id=&quot;iTunes&quot;&gt;&lt;a href=&quot;#iTunes&quot; class=&quot;headerlink&quot; title=&quot;iTunes&quot;&gt;&lt;/a&gt;iTunes&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Mac 上管理音乐最好的软件还是 iTunes，包括手动管理 iDevice 的音乐也很方便。格式的话，有损可以用 aac，无损可以用 AppleLossless，当然，如果你有非苹果设备播放的需求的话，还是用第三方吧。&lt;/p&gt;
-&lt;h4 id=&quot;Vox&quot;&gt;&lt;a href=&quot;#Vox&quot; class=&quot;headerlink&quot; title=&quot;Vox&quot;&gt;&lt;/a&gt;Vox&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://coppertino.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;综合下来，最好用，最稳定的第三方音乐播放器。支持各种格式，和许多在线服务，功能齐全。&lt;/p&gt;
-&lt;h4 id=&quot;XLD&quot;&gt;&lt;a href=&quot;#XLD&quot; class=&quot;headerlink&quot; title=&quot;XLD&quot;&gt;&lt;/a&gt;XLD&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/projects/xld/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;格式转换软件，无损转 AppleLossLess，或者转 mp3 或者 aac 等等，强烈推荐。&lt;/p&gt;
-&lt;h4 id=&quot;Movist&quot;&gt;&lt;a href=&quot;#Movist&quot; class=&quot;headerlink&quot; title=&quot;Movist&quot;&gt;&lt;/a&gt;Movist&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://itunes.apple.com/us/app/movist/id461788075?mt=12&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;目前的主力播放器。可能有全屏闪退的问题，不过……不影响使用。&lt;/p&gt;
-&lt;h4 id=&quot;MPlayerX&quot;&gt;&lt;a href=&quot;#MPlayerX&quot; class=&quot;headerlink&quot; title=&quot;MPlayerX&quot;&gt;&lt;/a&gt;MPlayerX&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://mplayerx.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;曾经的主力播放器，出了什么问题以后我换了 Movist 使用至今（时间久远不记得当初遇到什么问题了，好像是打开某些视频直接闪退）。相信现在也已经修复 bug 了吧，值得一试。&lt;/p&gt;
-&lt;h4 id=&quot;VLC&quot;&gt;&lt;a href=&quot;#VLC&quot; class=&quot;headerlink&quot; title=&quot;VLC&quot;&gt;&lt;/a&gt;VLC&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.videolan.org/vlc/download-Macosx.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;开源的视频播放器，有很多特殊的使用方式，喜欢折腾的话可以用。&lt;/p&gt;
-&lt;h4 id=&quot;Blu-ray-Player&quot;&gt;&lt;a href=&quot;#Blu-ray-Player&quot; class=&quot;headerlink&quot; title=&quot;Blu-ray Player&quot;&gt;&lt;/a&gt;Blu-ray Player&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.macblurayplayer.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;如果你需要播放蓝光碟，你不仅需要一个蓝光光驱，还需要对应的软件。这个软件是最无脑的播放软件。&lt;/p&gt;
-&lt;h4 id=&quot;MakeMKV&quot;&gt;&lt;a href=&quot;#MakeMKV&quot; class=&quot;headerlink&quot; title=&quot;MakeMKV&quot;&gt;&lt;/a&gt;MakeMKV&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.makemkv.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;如果你需要把蓝光碟的内容 rip 下来，用这个可以到处 MKV 文件。&lt;/p&gt;
-&lt;h4 id=&quot;HandBrake&quot;&gt;&lt;a href=&quot;#HandBrake&quot; class=&quot;headerlink&quot; title=&quot;HandBrake&quot;&gt;&lt;/a&gt;HandBrake&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://handbrake.fr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;万能视频格式转码软件。&lt;/p&gt;
-&lt;h4 id=&quot;OBS&quot;&gt;&lt;a href=&quot;#OBS&quot; class=&quot;headerlink&quot; title=&quot;OBS&quot;&gt;&lt;/a&gt;OBS&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://obsproject.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--video-and-audio-0011.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;开源视频直播源输出软件。如果你需要直播你电脑的画面，就用它。&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280979&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（AV-Video-影Audio-音）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —
     
     </summary>
     
