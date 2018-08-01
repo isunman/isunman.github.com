@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-07-13T03:59:18.575Z</updated>
+  <updated>2018-08-01T15:22:50.472Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xcode中的Version和Build的区别</title>
+    <link href="http://isunman.com/2018/08/01/the-difference-between-version-and-build-in-xcode/"/>
+    <id>http://isunman.com/2018/08/01/the-difference-between-version-and-build-in-xcode/</id>
+    <published>2018-08-01T15:22:50.517Z</published>
+    <updated>2018-08-01T15:22:50.472Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;a href=&quot;#Version对应的是CFBundleShortVersionString。&quot; class=&quot;headerlink&quot; title=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;/a&gt;Version对应的是CFBundleShortVersionString。&lt;/h3&gt;&lt;p&gt;Version 一般由产品部门确定，版本号是由分隔的整数组成的字符串，一般有2段或者3段式, 如:1.2,  1.2.3&lt;/p&gt;
+&lt;h3 id=&quot;二段式：&quot;&gt;&lt;a href=&quot;#二段式：&quot; class=&quot;headerlink&quot; title=&quot;二段式：&quot;&gt;&lt;/a&gt;二段式：&lt;/h3&gt;&lt;p&gt;第一个段：（主版本号）大功能的新增或者有迥异的变化&lt;br&gt;第二个段：（副版本号）既包含小功能更新也会包含 bug 修复&lt;/p&gt;
+&lt;h3 id=&quot;三段式：&quot;&gt;&lt;a href=&quot;#三段式：&quot; class=&quot;headerlink&quot; title=&quot;三段式：&quot;&gt;&lt;/a&gt;三段式：&lt;/h3&gt;&lt;p&gt;第一个段：重大修改的版本，如实现新的大功能或重大变化的修订。&lt;br&gt;第二个段：实现较突出的特点，如新功能添加和大问题修复。&lt;br&gt;第三个段：代表维护版本，修复bug。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本号的管理是一个谨慎的事情，希望各位开发者了解其中的意义。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Build（-应用程序内部标示-）&quot;&gt;&lt;a href=&quot;#Build（-应用程序内部标示-）&quot; class=&quot;headerlink&quot; title=&quot;Build（ 应用程序内部标示 ）&quot;&gt;&lt;/a&gt;Build（ 应用程序内部标示 ）&lt;/h3&gt;&lt;p&gt;Bulid 是给内部使用,与 Version 不会有太大联系.&lt;/p&gt;
+&lt;p&gt;Bulid对应的是CFBundleVersion。标识（发布或未发布）的内部版本号。用以记录开发版本的，每次更新的时候都需要比上一次高。&lt;br&gt;作用：发布build版本供测试团队进行测试。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;a href=&quot;#Version对应的是CFBundleShortVersionString。&quot; class=&quot;headerlink&quot; title=&quot;Version对应的是CFBun
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://isunman.com/categories/ios/"/>
+    
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>微信小程序客服消息</title>
@@ -1261,52 +1289,6 @@ print_r($res);
     <summary type="html">
     
       &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（Developer-web）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（Developer-web）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （Devel
-    
-    </summary>
-    
-      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OS X 常用 / 必备软件推荐 —— （读与写）</title>
-    <link href="http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/"/>
-    <id>http://isunman.com/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/</id>
-    <published>2016-06-05T04:40:49.059Z</published>
-    <updated>2016-06-05T04:40:48.964Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（读与写）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（读与写）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （读与写）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （读与写）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Simple-Comic&quot;&gt;&lt;a href=&quot;#Simple-Comic&quot; class=&quot;headerlink&quot; title=&quot;Simple Comic&quot;&gt;&lt;/a&gt;Simple Comic&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://dancingtortoise.com/simplecomic/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;看漫画的软件，可以看打包的 zip，或者整个文件夹的图片。不看漫画看图册或者收集的图片也非常合适。&lt;/p&gt;
-&lt;h4 id=&quot;Pocket&quot;&gt;&lt;a href=&quot;#Pocket&quot; class=&quot;headerlink&quot; title=&quot;Pocket&quot;&gt;&lt;/a&gt;Pocket&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://getpocket.com/Mac/?a=Mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;稍后阅读类软件，手机 app 浏览器插件都很完备。&lt;/p&gt;
-&lt;h4 id=&quot;Reeder&quot;&gt;&lt;a href=&quot;#Reeder&quot; class=&quot;headerlink&quot; title=&quot;Reeder&quot;&gt;&lt;/a&gt;Reeder&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://reederapp.com/Mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;RSS feed 阅读器。&lt;/p&gt;
-&lt;h4 id=&quot;iA-Writer&quot;&gt;&lt;a href=&quot;#iA-Writer&quot; class=&quot;headerlink&quot; title=&quot;iA Writer&quot;&gt;&lt;/a&gt;iA Writer&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://ia.net/writer/mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;比较偏向写作者的 markdown 编辑器，干净整洁，但是对代码的支持不是最好。&lt;/p&gt;
-&lt;h4 id=&quot;MacDown&quot;&gt;&lt;a href=&quot;#MacDown&quot; class=&quot;headerlink&quot; title=&quot;MacDown&quot;&gt;&lt;/a&gt;MacDown&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://macdown.uranusjr.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;各方面都很不错的 markdown 编辑器。&lt;/p&gt;
-&lt;h4 id=&quot;Leanote&quot;&gt;&lt;a href=&quot;#Leanote&quot; class=&quot;headerlink&quot; title=&quot;Leanote&quot;&gt;&lt;/a&gt;Leanote&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;偏向程序员的 markdown 记事本，可以网上发布，可以多人协作。开源。&lt;/p&gt;
-&lt;h4 id=&quot;Day-One-2&quot;&gt;&lt;a href=&quot;#Day-One-2&quot; class=&quot;headerlink&quot; title=&quot;Day One 2&quot;&gt;&lt;/a&gt;Day One 2&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://dayoneapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;日记本，密码，照片，GPS等功能俱全，支持 markdown，有 iOS 客户端。&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280991&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（读与写）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（读与写）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （读与写）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推
     
     </summary>
     
