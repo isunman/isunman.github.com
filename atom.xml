@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-08-07T03:43:11.650Z</updated>
+  <updated>2018-08-21T11:02:17.839Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web端的即时通讯解决方案</title>
+    <link href="http://isunman.com/2018/08/21/web-based-instant-messaging-solution/"/>
+    <id>http://isunman.com/2018/08/21/web-based-instant-messaging-solution/</id>
+    <published>2018-08-21T11:02:17.901Z</published>
+    <updated>2018-08-21T11:02:17.839Z</updated>
+    
+    <content type="html">&lt;p&gt;Web端的即时通讯解决方案&lt;/p&gt;
+&lt;h3 id=&quot;首先，确定使用WebSocket技术。&quot;&gt;&lt;a href=&quot;#首先，确定使用WebSocket技术。&quot; class=&quot;headerlink&quot; title=&quot;首先，确定使用WebSocket技术。&quot;&gt;&lt;/a&gt;首先，确定使用WebSocket技术。&lt;/h3&gt;&lt;p&gt;逻辑分析：&lt;/p&gt;
+&lt;p&gt;1、如果需要支持多个项目，提交登录信息时，需提供当前的项目的ID。&lt;br&gt;或者不同的项目使用不同的端口，在服务器端启用多个WebSocket的服务。&lt;/p&gt;
+&lt;p&gt;2、与Redis的结合。&lt;/p&gt;
+&lt;p&gt;3、作为独立第三方，只负责即时通讯的连接和转发消息，不涉及具体业务逻辑。&lt;/p&gt;
+&lt;h3 id=&quot;在Linux服务器上安装配置该技术的步骤：&quot;&gt;&lt;a href=&quot;#在Linux服务器上安装配置该技术的步骤：&quot; class=&quot;headerlink&quot; title=&quot;在Linux服务器上安装配置该技术的步骤：&quot;&gt;&lt;/a&gt;在Linux服务器上安装配置该技术的步骤：&lt;/h3&gt;&lt;p&gt;1、先安装Redis&lt;/p&gt;
+&lt;p&gt;2、再安装PHP的redis扩展&lt;/p&gt;
+&lt;p&gt;3、调试功能。&lt;/p&gt;
+&lt;p&gt;4、Redis的后台运行。&lt;/p&gt;
+&lt;p&gt;5、PHP文件的命令行执行的后台运行。&lt;/p&gt;
+&lt;h3 id=&quot;详细说明每个步骤中遇到的坑&quot;&gt;&lt;a href=&quot;#详细说明每个步骤中遇到的坑&quot; class=&quot;headerlink&quot; title=&quot;详细说明每个步骤中遇到的坑&quot;&gt;&lt;/a&gt;详细说明每个步骤中遇到的坑&lt;/h3&gt;&lt;p&gt;1、安装Redis中没遇到什么问题。Linux时CentOS 7版本，直接使用yum安装即可。&lt;/p&gt;
+&lt;p&gt;2、注意PHP的redis扩展中的PHP的安装路径。&lt;/p&gt;
+&lt;p&gt;3、无问题。&lt;/p&gt;
+&lt;p&gt;4、Redis的后台运行，需要确认进程和端口未被占用。&lt;/p&gt;
+&lt;p&gt;5、这一步有大坑。PHP文件后台命令行模式一直启动不了。说是命令的路径不对，修改了也不行。后来使用PHP命令的绝对地址才可以启动，暂时先使用。因为此文件不会经常启动。&lt;/p&gt;
+&lt;h3 id=&quot;其他注意事项&quot;&gt;&lt;a href=&quot;#其他注意事项&quot; class=&quot;headerlink&quot; title=&quot;其他注意事项&quot;&gt;&lt;/a&gt;其他注意事项&lt;/h3&gt;&lt;p&gt;1、把Redis和server.php文件加入到服务器开机自启动中，Redis可以，server.php不可以。只有暂时手动启动此文件的运行。&lt;/p&gt;
+&lt;p&gt;2、每次重启服务器一定要注意重启server.php。&lt;/p&gt;
+&lt;p&gt;3、每次重启服务器，一定要住已清理Redis中与WebSocket相关的缓存数据。&lt;/p&gt;
+&lt;p&gt;——小永&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Web端的即时通讯解决方案&lt;/p&gt;
+&lt;h3 id=&quot;首先，确定使用WebSocket技术。&quot;&gt;&lt;a href=&quot;#首先，确定使用WebSocket技术。&quot; class=&quot;headerlink&quot; title=&quot;首先，确定使用WebSocket技术。&quot;&gt;&lt;/a&gt;首先，确定使用W
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Redis" scheme="http://isunman.com/tags/redis/"/>
+    
+      <category term="linux" scheme="http://isunman.com/tags/linux/"/>
+    
+      <category term="即时通讯" scheme="http://isunman.com/tags/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>告诉你Redis是一个牛逼货</title>
@@ -1225,61 +1271,6 @@ print_r($res);
     <summary type="html">
     
       &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（目录）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（目录）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （目录）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —
-    
-    </summary>
-    
-      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）</title>
-    <link href="http://isunman.com/2016/06/10/osx-common_software-prerequisites-recommended--menubar-gadgets/"/>
-    <id>http://isunman.com/2016/06/10/osx-common_software-prerequisites-recommended--menubar-gadgets/</id>
-    <published>2016-06-10T14:02:17.347Z</published>
-    <updated>2016-06-10T14:02:17.273Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（Menubar-小工具篇）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（Menubar-小工具篇）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）&quot;&gt;&lt;/a&gt;OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0000.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Bartender&quot;&gt;&lt;a href=&quot;#Bartender&quot; class=&quot;headerlink&quot; title=&quot;Bartender&quot;&gt;&lt;/a&gt;Bartender&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.macbartender.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;把你 menu bar 的应用图标全都收纳进另一个空间，美观又实用，必备。。&lt;/p&gt;
-&lt;h4 id=&quot;Flux-screen&quot;&gt;&lt;a href=&quot;#Flux-screen&quot; class=&quot;headerlink&quot; title=&quot;Flux screen&quot;&gt;&lt;/a&gt;Flux screen&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://justgetflux.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;根据日出日落调节屏幕色温，就像 iOS 上的 nightshift 功能一样，只不过这个更早。&lt;/p&gt;
-&lt;h4 id=&quot;Caffeine&quot;&gt;&lt;a href=&quot;#Caffeine&quot; class=&quot;headerlink&quot; title=&quot;Caffeine&quot;&gt;&lt;/a&gt;Caffeine&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://lightheadsw.com/caffeine/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;一个按钮，保持你的屏幕不睡眠。（所以说为什么不索性关掉自动休眠？不知道）&lt;/p&gt;
-&lt;h4 id=&quot;iStat-Menus&quot;&gt;&lt;a href=&quot;#iStat-Menus&quot; class=&quot;headerlink&quot; title=&quot;iStat Menus&quot;&gt;&lt;/a&gt;iStat Menus&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://bjango.com/Mac/istatmenus/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在 menu bar 显示你的系统状态，比如CPU、内存、硬盘使用情况，网速，机身温度等等。&lt;/p&gt;
-&lt;h4 id=&quot;Moom&quot;&gt;&lt;a href=&quot;#Moom&quot; class=&quot;headerlink&quot; title=&quot;Moom&quot;&gt;&lt;/a&gt;Moom&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://manytricks.com/moom/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;帮助你管理窗口尺寸，比如分成左右50%，或者全屏，或者自定义比例和尺寸。&lt;/p&gt;
-&lt;h4 id=&quot;Paste&quot;&gt;&lt;a href=&quot;#Paste&quot; class=&quot;headerlink&quot; title=&quot;Paste&quot;&gt;&lt;/a&gt;Paste&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://pasteapp.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;增强你的剪贴板，记录你的剪贴板历史。idea 不错，但是实际用下来发现我并不需要这个功能，音效还很烦人。&lt;/p&gt;
-&lt;h4 id=&quot;PopClip&quot;&gt;&lt;a href=&quot;#PopClip&quot; class=&quot;headerlink&quot; title=&quot;PopClip&quot;&gt;&lt;/a&gt;PopClip&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://pilotmoon.com/popclip/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;像 iOS 一样，在你选中文字的上方出现一个菜单，有非常多的插件可以扩展，很方便。我装了一些插件：Append, Sort, Title Case, Say, PDF highlight。&lt;/p&gt;
-&lt;h4 id=&quot;SleepTime&quot;&gt;&lt;a href=&quot;#SleepTime&quot; class=&quot;headerlink&quot; title=&quot;SleepTime&quot;&gt;&lt;/a&gt;SleepTime&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://itunes.apple.com/us/app/sleeptime/id465772885?mt=12&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;MagicanRest&quot;&gt;&lt;a href=&quot;#MagicanRest&quot; class=&quot;headerlink&quot; title=&quot;MagicanRest&quot;&gt;&lt;/a&gt;MagicanRest&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://itunes.apple.com/us/app/magicanrest/id634255909?mt=12&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;每隔一小时提醒你休息5分钟，之类的，时间完全自定义，长期面对电脑的必备。&lt;/p&gt;
-&lt;h4 id=&quot;Itsycal&quot;&gt;&lt;a href=&quot;#Itsycal&quot; class=&quot;headerlink&quot; title=&quot;Itsycal&quot;&gt;&lt;/a&gt;Itsycal&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.mowglii.com/itsycal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--menubar-gadgets-0010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在 menu bar 上显示日历，也可以添加 event 和显示 event，想 check 一下日期的，或者深度使用都比单独点开 Calendar.app 要方便很多。&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21280767&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：峰兄’s tech talks&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;OS-X-常用-必备软件推荐-——-（Menubar-小工具篇）&quot;&gt;&lt;a href=&quot;#OS-X-常用-必备软件推荐-——-（Menubar-小工具篇）&quot; class=&quot;headerlink&quot; title=&quot;OS X 常用 / 必备软件推荐 —— （Menubar
     
     </summary>
     
