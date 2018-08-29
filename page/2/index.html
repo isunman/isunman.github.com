@@ -244,6 +244,234 @@
             
               
                 
+                <a class="post-title-link" href="/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/" itemprop="url">
+                  php发送get、post请求的6种方法简明总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-25T12:37:16+08:00" content="2018-05-25">
+              2018-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="方法1-用file-get-contents-以get方式获取内容："><a href="#方法1-用file-get-contents-以get方式获取内容：" class="headerlink" title="方法1: 用file_get_contents 以get方式获取内容："></a>方法1: 用file_get_contents 以get方式获取内容：</h3><pre><code>&lt;?php
+$url=&apos;http://www.yongdev.com/&apos;;  
+$html = file_get_contents($url);
+echo $html;
+?&gt;
+</code></pre><h3 id="方法2-用fopen打开url-以get方式获取内容："><a href="#方法2-用fopen打开url-以get方式获取内容：" class="headerlink" title="方法2: 用fopen打开url, 以get方式获取内容："></a>方法2: 用fopen打开url, 以get方式获取内容：</h3><pre><code>&lt;?php
+$fp = fopen($url, &apos;r&apos;);
+stream_get_meta_data($fp);
+while(!feof($fp)) {
+$result .= fgets($fp, 1024);
+}
+echo &quot;url body: $result&quot;;
+fclose($fp);
+?&gt;
+</code></pre><h3 id="方法3：用file-get-contents函数-以post方式获取url"><a href="#方法3：用file-get-contents函数-以post方式获取url" class="headerlink" title="方法3：用file_get_contents函数,以post方式获取url"></a>方法3：用file_get_contents函数,以post方式获取url</h3><pre><code>&lt;?php
+$data = array (&apos;foo&apos; =&gt; &apos;bar&apos;);
+$data = http_build_query($data);
+
+$opts = array (
+‘http&apos; =&gt; array (
+&apos;method&apos; =&gt; &apos;POST&apos;,
+&apos;header&apos;=&gt; &quot;Content-type: application/x-www-form-urlencodedrn&quot;,
+&quot;Content-Length: &quot; . strlen($data) . &quot;rn&quot;,
+&apos;content&apos; =&gt; $data
+)
+);
+
+$context = stream_context_create($opts);
+$html = file_get_contents(&apos;http://www.yongdev.com/test.html&apos;, false, $context);
+
+echo $html;
+?&gt;
+</code></pre><h3 id="方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启"><a href="#方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启" class="headerlink" title="方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启"></a>方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启</h3><pre><code>&lt;?php
+function get_url ($url,$cookie=false)
+{
+$url = parse_url($url);
+$query = $url[path].&quot;?&quot;.$url[query];
+echo &quot;Query:&quot;.$query;
+$fp = fsockopen( $url[host], $url[port]?$url[port]:80 , $errno, $errstr, 30);
+if (!$fp) {
+return false;
+} else {
+$request = &quot;GET $query HTTP/1.1rn&quot;;
+$request .= &quot;Host: $url[host]rn&quot;;
+$request .= &quot;Connection: Closern&quot;;
+if($cookie) $request.=&quot;Cookie:  $cookien&quot;;
+$request.=&quot;rn&quot;;
+fwrite($fp,$request);
+while(!@feof($fp)) {
+$result .= @fgets($fp, 1024);
+}
+fclose($fp);
+return $result;
+}
+}
+//获取url的html部分，去掉header
+function GetUrlHTML($url,$cookie=false)
+{
+$rowdata = get_url($url,$cookie);
+if($rowdata)
+{
+$body= stristr($rowdata,&quot;rnrn&quot;);
+$body=substr($body,4,strlen($body));
+return $body;
+}
+
+return false;
+}
+?&gt;
+</code></pre><h3 id="方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body"><a href="#方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body" class="headerlink" title="方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body"></a>方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body</h3><pre><code>&lt;?php
+function HTTP_Post($URL,$data,$cookie, $referrer=”&quot;)
+{
+
+// parsing the given URL
+$URL_Info=parse_url($URL);
+
+// Building referrer
+if($referrer==&quot;&quot;) // if not given use this script as referrer
+$referrer=&quot;111&quot;;
+
+// making string from $data
+foreach($data as $key=&gt;$value)
+$values[]=&quot;$key=&quot;.urlencode($value);
+$data_string=implode(&quot;&amp;&quot;,$values);
+
+// Find out which port is needed – if not given use standard (=80)
+if(!isset($URL_Info[&quot;port&quot;]))
+$URL_Info[&quot;port&quot;]=80;
+
+// building POST-request:
+$request.=&quot;POST &quot;.$URL_Info[&quot;path&quot;].&quot; HTTP/1.1n&quot;;
+$request.=&quot;Host: &quot;.$URL_Info[&quot;host&quot;].&quot;n&quot;;
+$request.=&quot;Referer: $referern&quot;;
+$request.=&quot;Content-type: application/x-www-form-urlencodedn&quot;;
+$request.=&quot;Content-length: &quot;.strlen($data_string).&quot;n&quot;;
+$request.=&quot;Connection: closen&quot;;
+
+$request.=&quot;Cookie:  $cookien&quot;;
+
+$request.=&quot;n&quot;;
+$request.=$data_string.&quot;n&quot;;
+
+$fp = fsockopen($URL_Info[&quot;host&quot;],$URL_Info[&quot;port&quot;]);
+fputs($fp, $request);
+while(!feof($fp)) {
+$result .= fgets($fp, 1024);
+}
+fclose($fp);
+
+return $result;
+}
+
+?&gt;
+</code></pre><h3 id="方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展"><a href="#方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展" class="headerlink" title="方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展"></a>方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展</h3><pre><code>&lt;?php
+$ch = curl_init();
+$timeout = 5;
+curl_setopt ($ch, CURLOPT_URL, &apos;http://www.yongdev.com/&apos;);
+curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$file_contents = curl_exec($ch);
+curl_close($ch);
+
+echo $file_contents;
+?&gt;
+</code></pre><p>说一下实践中遇到的问题：</p>
+<p>使用“方法6的curl方法”过程中时执行特别慢。改为“方法3：用file_get_contents函数,以post方式”后速度快很多。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/25/thoroughly-understand-the-web-service-soap-wsdl/" itemprop="url">
                   彻底理解WebService SOAP WSDL
                 </a>
@@ -1527,126 +1755,6 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/10/osx-common-software-index/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （目录）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-10T22:12:24+08:00" content="2016-06-10">
-              2016-06-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（目录）"><a href="#OS-X-常用-必备软件推荐-——-（目录）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （目录）"></a>OS X 常用 / 必备软件推荐 —— （目录）</h3><p>我是一个 Web 开发者，也做一点 iOS 开发，摄影、绘画、无损音乐均有所涉猎。</p>
-<p>我整理了一下自己电脑上，几年来安装的软件，选取其中我觉得受益颇多的软件，来给大家介绍一番。因为总数太多，所以只能分成几个分页了。</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/CommonSoftware_0001.png" alt=""></p>
-<ol>
-<li><p><a href="/2016/06/02/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools/">OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）</a></p>
-</li>
-<li><p><a href="/2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/">OS X 常用 / 必备软件推荐 —— （作图与绘画）</a></p>
-</li>
-<li><p><a href="/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/">OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）</a></p>
-</li>
-<li><p><a href="/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/">OS X 常用 / 必备软件推荐 —— （读与写）</a></p>
-</li>
-<li><p><a href="2016/06/10/osx-common_software-prerequisites-recommended--developer-and-web/">OS X 常用 / 必备软件推荐 —— （Developer/ web）</a></p>
-</li>
-<li><p><a href="/2016/06/10/osx-common_software-prerequisites-recommended--menubar-gadgets/">OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）</a></p>
-</li>
-</ol>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21265787" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1693,7 +1801,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
