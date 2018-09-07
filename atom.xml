@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-08-29T12:18:53.628Z</updated>
+  <updated>2018-09-07T19:33:50.223Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自定义iPhone的铃声</title>
+    <link href="http://isunman.com/2018/09/08/customize-your-iPhones-ringtone/"/>
+    <id>http://isunman.com/2018/09/08/customize-your-iPhones-ringtone/</id>
+    <published>2018-09-07T19:33:50.282Z</published>
+    <updated>2018-09-07T19:33:50.223Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;a href=&quot;#需使用Mac电脑上的itunes进行设置。&quot; class=&quot;headerlink&quot; title=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;/a&gt;需使用Mac电脑上的itunes进行设置。&lt;/h3&gt;&lt;p&gt;具体方法如下：&lt;/p&gt;
+&lt;p&gt;1、将手机和苹果电脑连接，打开iTunes切换到资料库看“xxx”的iphone这一栏有没有铃声菜单，没有的话点击编辑菜单勾选铃声。&lt;/p&gt;
+&lt;p&gt;2、下载你喜欢的歌曲点击歌曲-&amp;gt;文件-&amp;gt;添加到资料库，选取要自定义铃声的歌曲之后选择打开。&lt;/p&gt;
+&lt;p&gt;3、选定歌曲右击-&amp;gt;显示简介-&amp;gt;选项，选择开始停止时间，记得打钩 ( 这里注意的是苹果的铃声只能在40s内 ),然后点击好。&lt;/p&gt;
+&lt;p&gt;4、选定歌曲文件-&amp;gt;转换-&amp;gt;创建ACC版本，出现两个同名文件。&lt;/p&gt;
+&lt;p&gt;5、右击刚刚新生成同名文件选择在Finder打开，修改该文件的扩展名为m4r。为了后续操作方便把该文件拖到桌面。&lt;/p&gt;
+&lt;p&gt;6、返回资料库删除刚刚生成的同名文件。点击音乐-&amp;gt;铃声把刚刚拖到桌面的m4r文件,拖放到列表&lt;/p&gt;
+&lt;p&gt;7、点击手机按钮进入手机管理。打开手机 设置-&amp;gt;声音与触感-&amp;gt;电话铃声 就可以自定义铃声了。&lt;/p&gt;
+&lt;p&gt;其中，第2-4步的扩展可以参考如下：&lt;/p&gt;
+&lt;h3 id=&quot;mp3文件到acc文件的剪切与格式转换&quot;&gt;&lt;a href=&quot;#mp3文件到acc文件的剪切与格式转换&quot; class=&quot;headerlink&quot; title=&quot;mp3文件到acc文件的剪切与格式转换&quot;&gt;&lt;/a&gt;mp3文件到acc文件的剪切与格式转换&lt;/h3&gt;&lt;p&gt;当先打开访达，在访达点击左侧的音乐。&lt;/p&gt;
+&lt;p&gt;在音乐里面选择一个需要剪切的音频文件，然后右键打开方式为图二的软件即可。&lt;/p&gt;
+&lt;p&gt;打开软件后点击这个音乐文件，然后看到出现在下方点击名字上的右侧三个小点。并在菜单上选择歌曲信息。&lt;/p&gt;
+&lt;p&gt;然后在这个信息框点击选项，把开始结束这里勾上。&lt;/p&gt;
+&lt;p&gt;输入一个需要的时间，即音乐的时长。而后看到这个音乐已经被修改了时长了。例如这里设置为10秒钟，则输入10即可。&lt;/p&gt;
+&lt;p&gt;然后点击菜单栏上的文件转换，选择创建ACC版本。&lt;/p&gt;
+&lt;p&gt;这个时候看到在原来的名字下面多个版本，就是创建后的文件，把文件拖到桌面。接着桌面多个剪切后的音频文件了。一个音频文件至此就剪切剪辑完毕了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;a href=&quot;#需使用Mac电脑上的itunes进行设置。&quot; class=&quot;headerlink&quot; title=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;/a&gt;需使用Mac电脑上的itunes进行设置。&lt;/
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>如何下载知乎视频</title>
@@ -1172,107 +1210,6 @@ location ~ \.php$ {
     
     
       <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法</title>
-    <link href="http://isunman.com/2016/08/17/php-probability-of-winning-algorithm/"/>
-    <id>http://isunman.com/2016/08/17/php-probability-of-winning-algorithm/</id>
-    <published>2016-08-17T11:06:01.500Z</published>
-    <updated>2016-08-17T11:06:01.392Z</updated>
-    
-    <content type="html">&lt;p&gt;php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-/*
- * 经典的概率算法，
- * $proArr是一个预先设置的数组，
- * 假设数组为：array(100,200,300，400)，
- * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
- * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，
- * 在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。
- * 这样 筛选到最终，总会有一个数满足要求。
- * 就相当于去一个箱子里摸东西，
- * 第一个不是，第二个不是，第三个还不是，那最后一个一定是。
- * 这个算法简单，而且效率非常 高，
- * 关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。
- */
-function get_rand($proArr) { 
-$result = &amp;apos;&amp;apos;;  
-//概率数组的总概率精度 
-$proSum = array_sum($proArr);  
-//概率数组循环 
-foreach ($proArr as $key =&amp;gt; $proCur) { 
-$randNum = mt_rand(1, $proSum); 
-if ($randNum &amp;lt;= $proCur) { 
-$result = $key; 
-break; 
-} else { 
-$proSum -= $proCur; 
-}         
-} 
-unset ($proArr);  
-return $result; 
-} 
-
-
-/*
- * 奖项数组
- * 是一个二维数组，记录了所有本次抽奖的奖项信息，
- * 其中id表示中奖等级，prize表示奖品，v表示中奖概率。
- * 注意其中的v必须为整数，你可以将对应的 奖项的v设置成0，即意味着该奖项抽中的几率是0，
- * 数组中v的总和（基数），基数越大越能体现概率的准确性。
- * 本例中v的总和为100，那么平板电脑对应的 中奖概率就是1%，
- * 如果v的总和是10000，那中奖概率就是万分之一了。
- * 
- */
-$prize_arr = array( 
-&amp;apos;0&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;1,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;平板电脑&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;1), 
-&amp;apos;1&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;2,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;数码相机&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;5), 
-&amp;apos;2&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;3,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;音箱设备&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;10), 
-&amp;apos;3&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;4,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;4G优盘&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;12), 
-&amp;apos;4&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;5,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;10Q币&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;22), 
-&amp;apos;5&amp;apos; =&amp;gt; array(&amp;apos;id&amp;apos;=&amp;gt;6,&amp;apos;prize&amp;apos;=&amp;gt;&amp;apos;下次没准就能中哦&amp;apos;,&amp;apos;v&amp;apos;=&amp;gt;50), 
-); 
-
-/*
- * 每次前端页面的请求，PHP循环奖项设置数组，
- * 通过概率计算函数get_rand获取抽中的奖项id。
- * 将中奖奖品保存在数组$res[&amp;apos;yes&amp;apos;]中，
- * 而剩下的未中奖的信息保存在$res[&amp;apos;no&amp;apos;]中，
- * 最后输出json个数数据给前端页面。
- */
-foreach ($prize_arr as $key =&amp;gt; $val) { 
-$arr[$val[&amp;apos;id&amp;apos;]] = $val[&amp;apos;v&amp;apos;]; 
-} 
-$rid = get_rand($arr); //根据概率获取奖项id 
-
-$res[&amp;apos;yes&amp;apos;] = $prize_arr[$rid-1][&amp;apos;prize&amp;apos;]; //中奖项 
-unset($prize_arr[$rid-1]); //将中奖项从数组中剔除，剩下未中奖项 
-shuffle($prize_arr); //打乱数组顺序 
-for($i=0;$i&amp;lt;count($prize_arr);$i++){ 
-$pr[] = $prize_arr[$i][&amp;apos;prize&amp;apos;]; 
-} 
-$res[&amp;apos;no&amp;apos;] = $pr; 
-print_r($res); 
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-/*
- * 经典的概率算法，
- * $proArr是一个预先设置的数组，
- * 假设数组为：array(100,200,300，
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="PHP 算法" scheme="http://isunman.com/tags/php-%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
