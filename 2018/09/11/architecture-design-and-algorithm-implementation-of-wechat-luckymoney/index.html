@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,github," />
+  <meta name="keywords" content="PHP算法,微信," />
 
 
 
@@ -59,22 +59,22 @@
 
 
 
-<meta name="description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
+<meta name="description" content="微信红包的架构设计简介概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。
+微信的金额什么时候算？答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。
+实时性：为什么明明抢到红包，点开后发现没有？答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://isunman.com/2016/02/26/hello-world/index.html">
+<meta property="og:title" content="微信红包的架构设计与算法实现">
+<meta property="og:url" content="http://isunman.com/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
-<meta property="og:updated_time" content="2016-02-25T20:05:46.957Z">
+<meta property="og:description" content="微信红包的架构设计简介概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。
+微信的金额什么时候算？答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。
+实时性：为什么明明抢到红包，点开后发现没有？答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再">
+<meta property="og:updated_time" content="2018-09-11T10:51:17.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Hello，World！ 本文开篇第一回
-Hello“你好”这是自己给自己打个招呼。一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。
-World“世界”世界很大，我很渺小。这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。同时，继续学习新的东西，记下学习过程和心得。鞭策自己，警">
+<meta name="twitter:title" content="微信红包的架构设计与算法实现">
+<meta name="twitter:description" content="微信红包的架构设计简介概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。
+微信的金额什么时候算？答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。
+实时性：为什么明明抢到红包，点开后发现没有？答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再">
 
 
 
@@ -92,7 +92,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
   };
 </script>
 
-  <title> Hello World | 太阳侠 </title>
+  <title> 微信红包的架构设计与算法实现 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +242,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
             
             
               
-                Hello World
+                微信红包的架构设计与算法实现
               
             
           </h1>
@@ -254,8 +254,8 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-26T04:05:47+08:00" content="2016-02-26">
-              2016-02-26
+            <time itemprop="dateCreated" datetime="2018-09-11T18:51:17+08:00" content="2018-09-11">
+              2018-09-11
             </time>
           </span>
 
@@ -299,10 +299,85 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
       
 
       
-        <p>Hello，World！ 本文开篇第一回</p>
-<h2 id="Hello"><a href="#Hello" class="headerlink" title="Hello"></a>Hello</h2><p>“你好”<br>这是自己给自己打个招呼。<br>一直也在“发布”文章，转载的多，原创的少，而且中间换了许多平台，各有优缺点。<br>总的来说就是，发布界面都是傻瓜式的“所见即所得”，但是控制权不够，界面也不可以DIY。</p>
-<h2 id="World"><a href="#World" class="headerlink" title="World"></a>World</h2><p>“世界”<br>世界很大，我很渺小。<br>这么多年来也多少攒下一些技术上的经验，可以在这里总结一下。<br>同时，继续学习新的东西，记下学习过程和心得。<br>鞭策自己，警醒自己。</p>
-<p>此为开篇也。</p>
+        <h3 id="微信红包的架构设计简介"><a href="#微信红包的架构设计简介" class="headerlink" title="微信红包的架构设计简介"></a>微信红包的架构设计简介</h3><p>概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。</p>
+<h5 id="微信的金额什么时候算？"><a href="#微信的金额什么时候算？" class="headerlink" title="微信的金额什么时候算？"></a>微信的金额什么时候算？</h5><p>答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。<br>采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。</p>
+<h5 id="实时性：为什么明明抢到红包，点开后发现没有？"><a href="#实时性：为什么明明抢到红包，点开后发现没有？" class="headerlink" title="实时性：为什么明明抢到红包，点开后发现没有？"></a>实时性：为什么明明抢到红包，点开后发现没有？</h5><p>答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再转账。<br>2015年的红包的拆和抢是分离的，需要点两次，因此会出现抢到红包了，但点开后告知红包已经被领完的状况。进入到第一个页面不代表抢到，只表示当时红包还有。</p>
+<h5 id="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"><a href="#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？" class="headerlink" title="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"></a>分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？</h5><p>答：随机，额度在0.01和剩余平均值×2之间。<br>例如：发100块钱，总共10个红包，那么平均值是10块钱一个，那么发出来的红包的额度在0.01元～20元之间波动。<br>当前面3个红包总共被领了40块钱时，剩下60块钱，总共7个红包，那么这7个红包的额度在：0.01～（60/7×2）=17.14之间。<br>注意：这里的算法是每被抢一个后，剩下的会再次执行上面的这样的算法（Tim老师也觉得上述算法太复杂，不知基于什么样的考虑）。</p>
+<p>这样算下去，会超过最开始的全部金额，因此到了最后面如果不够这么算，那么会采取如下算法：保证剩余用户能拿到最低1分钱即可。</p>
+<p>如果前面的人手气不好，那么后面的余额越多，红包额度也就越多，因此实际概率一样的。</p>
+<h5 id="红包的设计"><a href="#红包的设计" class="headerlink" title="红包的设计"></a>红包的设计</h5><p>答：微信从财付通拉取金额数据郭莱，生成个数/红包类型/金额放到redis集群里，app端将红包ID的请求放入请求队列中，如果发现超过红包的个数，直接返回。根据红包的裸祭处理成功得到令牌请求，则由财付通进行一致性调用，通过像比特币一样，两边保存交易记录，交易后交给第三方服务审计，如果交易过程中出现不一致就强制回归。</p>
+<h5 id="发性处理：红包如何计算被抢完？"><a href="#发性处理：红包如何计算被抢完？" class="headerlink" title="发性处理：红包如何计算被抢完？"></a>发性处理：红包如何计算被抢完？</h5><p>答：cache会抵抗无效请求，将无效的请求过滤掉，实际进入到后台的量不大。cache记录红包个数，原子操作进行个数递减，到0表示被抢光。财付通按照20万笔每秒入账准备，但实际还不到8万每秒。</p>
+<h5 id="通如何保持8w每秒的写入？"><a href="#通如何保持8w每秒的写入？" class="headerlink" title="通如何保持8w每秒的写入？"></a>通如何保持8w每秒的写入？</h5><p>答：多主sharding，水平扩展机器。</p>
+<h5 id="数据容量多少？"><a href="#数据容量多少？" class="headerlink" title="数据容量多少？"></a>数据容量多少？</h5><p>答：一个红包只占一条记录，有效期只有几天，因此不需要太多空间。</p>
+<h5 id="查询红包分配，压力大不？"><a href="#查询红包分配，压力大不？" class="headerlink" title="查询红包分配，压力大不？"></a>查询红包分配，压力大不？</h5><p>答：抢到红包的人数和红包都在一条cache记录上，没有太大的查询压力。</p>
+<h5 id="一个红包一个队列？"><a href="#一个红包一个队列？" class="headerlink" title="一个红包一个队列？"></a>一个红包一个队列？</h5><p>答：没有队列，一个红包一条数据，数据上有一个计数器字段。</p>
+<h5 id="有没有从数据上证明每个红包的概率是不是均等？"><a href="#有没有从数据上证明每个红包的概率是不是均等？" class="headerlink" title="有没有从数据上证明每个红包的概率是不是均等？"></a>有没有从数据上证明每个红包的概率是不是均等？</h5><p>答：不是绝对均等，就是一个简单的拍脑袋算法。</p>
+<h5 id="拍脑袋算法，会不会出现两个最佳？"><a href="#拍脑袋算法，会不会出现两个最佳？" class="headerlink" title="拍脑袋算法，会不会出现两个最佳？"></a>拍脑袋算法，会不会出现两个最佳？</h5><p>答：会出现金额一样的，但是手气最佳只有一个，先抢到的那个最佳。</p>
+<h5 id="每领一个红包就更新数据么？"><a href="#每领一个红包就更新数据么？" class="headerlink" title="每领一个红包就更新数据么？"></a>每领一个红包就更新数据么？</h5><p>答：每抢到一个红包，就cas更新剩余金额和红包个数。</p>
+<h5 id="红包如何入库入账？"><a href="#红包如何入库入账？" class="headerlink" title="红包如何入库入账？"></a>红包如何入库入账？</h5><p>数据库会累加已经领取的个数与金额，插入一条领取记录。入账则是后台异步操作。</p>
+<h5 id="入帐出错怎么办？比如红包个数没了，但余额还有？"><a href="#入帐出错怎么办？比如红包个数没了，但余额还有？" class="headerlink" title="入帐出错怎么办？比如红包个数没了，但余额还有？"></a>入帐出错怎么办？比如红包个数没了，但余额还有？</h5><p>答：最后会有一个take all操作。另外还有一个对账来保障。</p>
+<h3 id="算法实现java版"><a href="#算法实现java版" class="headerlink" title="算法实现java版"></a>算法实现java版</h3><p>算法很简单，不是提前算好，而是抢红包时计算</p>
+<pre><code>public static double getRandomMoney(RedPackage _redPackage) {
+// remainSize 剩余的红包数量
+// remainMoney 剩余的钱
+if (_redPackage.remainSize == 1) {
+    _redPackage.remainSize--;
+    return (double) Math.round(_redPackage.remainMoney * 100) / 100;
+}
+Random r     = new Random();
+double min   = 0.01; //
+double max   = _redPackage.remainMoney / _redPackage.remainSize * 2;
+double money = r.nextDouble() * max;
+money = money &lt;= min ? 0.01: money;
+money = Math.floor(money * 100) / 100;
+_redPackage.remainSize--;
+_redPackage.remainMoney -= money;
+return money;
+}
+</code></pre><p><code>LeftMoneyPackage</code>数据结构如下：</p>
+<pre><code>class RedPackage {
+int    remainSize;
+double remainMoney;
+}
+</code></pre><p>测试时初始化相关数据是：</p>
+<pre><code>static void init() {
+redPackage.remainSize  = 20;
+redPackage.remainMoney = 200;
+}
+</code></pre><h3 id="算法实现PHP版"><a href="#算法实现PHP版" class="headerlink" title="算法实现PHP版"></a>算法实现PHP版</h3><p>关键就是定义核心函数</p>
+<pre><code>function getrandommoney($remainmoney,$remainpacket,$moneymax = 0){
+if($remainpacket &lt; 1 || $remainmoney &lt;= 0){
+    return 0;
+}
+if($remainpacket == 1){
+    return     $remainmoney;
+}
+
+$min = 1;//注意倍数
+$max = $remainmoney / $remainpacket * 2;
+$money = rand($min,$max) ;
+$money = $money &lt;= $min ? $min : $money;
+//每一次领取时的最大值
+if($moneymax &amp;&amp; $money &gt; $moneymax){
+    $money = $moneymax;
+}
+
+return $money;
+}
+</code></pre><p>函数调用</p>
+<pre><code>$lmremainingtotal = 200.00;//总金额
+$lmremainingtimes = 20;//总个数
+$lmmoneymax = 0;
+$lmremainingtotaltemp = $lmremainingtotal * 100;
+$getonelm = getrandommoney($lmremainingtotaltemp,$lmremainingtimes);
+$getonelm = round($getonelm/100,2);    
+echo $getonelm;
+</code></pre><p>说明：</p>
+<p>1、注意函数内部实现时使用的整数，传参进去时需要扩大100倍，最后得到的本次随机数需要在缩小至1%。</p>
+<p>2、增加了每一次调用的随机最大数限额这个参数，默认为0表示不限。</p>
+<p>3、更改剩余的红包总额度与红包个数，是在函数外实现的（必须步骤）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上述方法都是每次计算一个红包的额度。如果需要一次性计算所有的红包，并分配完成，则需要循环执行。注意数据并发量的大小。</p>
+<p>　　</p>
 
       
     </div>
@@ -311,9 +386,9 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/php算法/" rel="tag">#PHP算法</a>
           
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/tags/微信/" rel="tag">#微信</a>
           
         </div>
       
@@ -322,13 +397,13 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/08/customize-your-iPhones-ringtone/" rel="next" title="自定义iPhone的铃声">
+                <i class="fa fa-chevron-left"></i> 自定义iPhone的铃声
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/29/blog-by-hexo-github-step1/" rel="prev" title="用Hexo和Github搭建博客（1）：安装环境">
-                用Hexo和Github搭建博客（1）：安装环境 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,7 +547,7 @@ World“世界”世界很大，我很渺小。这么多年来也多少攒下一
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello"><span class="nav-number">1.</span> <span class="nav-text">Hello</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#World"><span class="nav-number">2.</span> <span class="nav-text">World</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#微信红包的架构设计简介"><span class="nav-number">1.</span> <span class="nav-text">微信红包的架构设计简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#微信的金额什么时候算？"><span class="nav-number">1.0.1.</span> <span class="nav-text">微信的金额什么时候算？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实时性：为什么明明抢到红包，点开后发现没有？"><span class="nav-number">1.0.2.</span> <span class="nav-text">实时性：为什么明明抢到红包，点开后发现没有？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"><span class="nav-number">1.0.3.</span> <span class="nav-text">分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#红包的设计"><span class="nav-number">1.0.4.</span> <span class="nav-text">红包的设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发性处理：红包如何计算被抢完？"><span class="nav-number">1.0.5.</span> <span class="nav-text">发性处理：红包如何计算被抢完？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通如何保持8w每秒的写入？"><span class="nav-number">1.0.6.</span> <span class="nav-text">通如何保持8w每秒的写入？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据容量多少？"><span class="nav-number">1.0.7.</span> <span class="nav-text">数据容量多少？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询红包分配，压力大不？"><span class="nav-number">1.0.8.</span> <span class="nav-text">查询红包分配，压力大不？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一个红包一个队列？"><span class="nav-number">1.0.9.</span> <span class="nav-text">一个红包一个队列？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有没有从数据上证明每个红包的概率是不是均等？"><span class="nav-number">1.0.10.</span> <span class="nav-text">有没有从数据上证明每个红包的概率是不是均等？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#拍脑袋算法，会不会出现两个最佳？"><span class="nav-number">1.0.11.</span> <span class="nav-text">拍脑袋算法，会不会出现两个最佳？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每领一个红包就更新数据么？"><span class="nav-number">1.0.12.</span> <span class="nav-text">每领一个红包就更新数据么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#红包如何入库入账？"><span class="nav-number">1.0.13.</span> <span class="nav-text">红包如何入库入账？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#入帐出错怎么办？比如红包个数没了，但余额还有？"><span class="nav-number">1.0.14.</span> <span class="nav-text">入帐出错怎么办？比如红包个数没了，但余额还有？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现java版"><span class="nav-number">2.</span> <span class="nav-text">算法实现java版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现PHP版"><span class="nav-number">3.</span> <span class="nav-text">算法实现PHP版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-09-07T19:33:50.223Z</updated>
+  <updated>2018-09-11T10:51:17.526Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信红包的架构设计与算法实现</title>
+    <link href="http://isunman.com/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/"/>
+    <id>http://isunman.com/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/</id>
+    <published>2018-09-11T10:51:17.584Z</published>
+    <updated>2018-09-11T10:51:17.526Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;微信红包的架构设计简介&quot;&gt;&lt;a href=&quot;#微信红包的架构设计简介&quot; class=&quot;headerlink&quot; title=&quot;微信红包的架构设计简介&quot;&gt;&lt;/a&gt;微信红包的架构设计简介&lt;/h3&gt;&lt;p&gt;概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。&lt;/p&gt;
+&lt;h5 id=&quot;微信的金额什么时候算？&quot;&gt;&lt;a href=&quot;#微信的金额什么时候算？&quot; class=&quot;headerlink&quot; title=&quot;微信的金额什么时候算？&quot;&gt;&lt;/a&gt;微信的金额什么时候算？&lt;/h5&gt;&lt;p&gt;答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。&lt;br&gt;采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。&lt;/p&gt;
+&lt;h5 id=&quot;实时性：为什么明明抢到红包，点开后发现没有？&quot;&gt;&lt;a href=&quot;#实时性：为什么明明抢到红包，点开后发现没有？&quot; class=&quot;headerlink&quot; title=&quot;实时性：为什么明明抢到红包，点开后发现没有？&quot;&gt;&lt;/a&gt;实时性：为什么明明抢到红包，点开后发现没有？&lt;/h5&gt;&lt;p&gt;答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再转账。&lt;br&gt;2015年的红包的拆和抢是分离的，需要点两次，因此会出现抢到红包了，但点开后告知红包已经被领完的状况。进入到第一个页面不代表抢到，只表示当时红包还有。&lt;/p&gt;
+&lt;h5 id=&quot;分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？&quot;&gt;&lt;a href=&quot;#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？&quot; class=&quot;headerlink&quot; title=&quot;分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？&quot;&gt;&lt;/a&gt;分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？&lt;/h5&gt;&lt;p&gt;答：随机，额度在0.01和剩余平均值×2之间。&lt;br&gt;例如：发100块钱，总共10个红包，那么平均值是10块钱一个，那么发出来的红包的额度在0.01元～20元之间波动。&lt;br&gt;当前面3个红包总共被领了40块钱时，剩下60块钱，总共7个红包，那么这7个红包的额度在：0.01～（60/7×2）=17.14之间。&lt;br&gt;注意：这里的算法是每被抢一个后，剩下的会再次执行上面的这样的算法（Tim老师也觉得上述算法太复杂，不知基于什么样的考虑）。&lt;/p&gt;
+&lt;p&gt;这样算下去，会超过最开始的全部金额，因此到了最后面如果不够这么算，那么会采取如下算法：保证剩余用户能拿到最低1分钱即可。&lt;/p&gt;
+&lt;p&gt;如果前面的人手气不好，那么后面的余额越多，红包额度也就越多，因此实际概率一样的。&lt;/p&gt;
+&lt;h5 id=&quot;红包的设计&quot;&gt;&lt;a href=&quot;#红包的设计&quot; class=&quot;headerlink&quot; title=&quot;红包的设计&quot;&gt;&lt;/a&gt;红包的设计&lt;/h5&gt;&lt;p&gt;答：微信从财付通拉取金额数据郭莱，生成个数/红包类型/金额放到redis集群里，app端将红包ID的请求放入请求队列中，如果发现超过红包的个数，直接返回。根据红包的裸祭处理成功得到令牌请求，则由财付通进行一致性调用，通过像比特币一样，两边保存交易记录，交易后交给第三方服务审计，如果交易过程中出现不一致就强制回归。&lt;/p&gt;
+&lt;h5 id=&quot;发性处理：红包如何计算被抢完？&quot;&gt;&lt;a href=&quot;#发性处理：红包如何计算被抢完？&quot; class=&quot;headerlink&quot; title=&quot;发性处理：红包如何计算被抢完？&quot;&gt;&lt;/a&gt;发性处理：红包如何计算被抢完？&lt;/h5&gt;&lt;p&gt;答：cache会抵抗无效请求，将无效的请求过滤掉，实际进入到后台的量不大。cache记录红包个数，原子操作进行个数递减，到0表示被抢光。财付通按照20万笔每秒入账准备，但实际还不到8万每秒。&lt;/p&gt;
+&lt;h5 id=&quot;通如何保持8w每秒的写入？&quot;&gt;&lt;a href=&quot;#通如何保持8w每秒的写入？&quot; class=&quot;headerlink&quot; title=&quot;通如何保持8w每秒的写入？&quot;&gt;&lt;/a&gt;通如何保持8w每秒的写入？&lt;/h5&gt;&lt;p&gt;答：多主sharding，水平扩展机器。&lt;/p&gt;
+&lt;h5 id=&quot;数据容量多少？&quot;&gt;&lt;a href=&quot;#数据容量多少？&quot; class=&quot;headerlink&quot; title=&quot;数据容量多少？&quot;&gt;&lt;/a&gt;数据容量多少？&lt;/h5&gt;&lt;p&gt;答：一个红包只占一条记录，有效期只有几天，因此不需要太多空间。&lt;/p&gt;
+&lt;h5 id=&quot;查询红包分配，压力大不？&quot;&gt;&lt;a href=&quot;#查询红包分配，压力大不？&quot; class=&quot;headerlink&quot; title=&quot;查询红包分配，压力大不？&quot;&gt;&lt;/a&gt;查询红包分配，压力大不？&lt;/h5&gt;&lt;p&gt;答：抢到红包的人数和红包都在一条cache记录上，没有太大的查询压力。&lt;/p&gt;
+&lt;h5 id=&quot;一个红包一个队列？&quot;&gt;&lt;a href=&quot;#一个红包一个队列？&quot; class=&quot;headerlink&quot; title=&quot;一个红包一个队列？&quot;&gt;&lt;/a&gt;一个红包一个队列？&lt;/h5&gt;&lt;p&gt;答：没有队列，一个红包一条数据，数据上有一个计数器字段。&lt;/p&gt;
+&lt;h5 id=&quot;有没有从数据上证明每个红包的概率是不是均等？&quot;&gt;&lt;a href=&quot;#有没有从数据上证明每个红包的概率是不是均等？&quot; class=&quot;headerlink&quot; title=&quot;有没有从数据上证明每个红包的概率是不是均等？&quot;&gt;&lt;/a&gt;有没有从数据上证明每个红包的概率是不是均等？&lt;/h5&gt;&lt;p&gt;答：不是绝对均等，就是一个简单的拍脑袋算法。&lt;/p&gt;
+&lt;h5 id=&quot;拍脑袋算法，会不会出现两个最佳？&quot;&gt;&lt;a href=&quot;#拍脑袋算法，会不会出现两个最佳？&quot; class=&quot;headerlink&quot; title=&quot;拍脑袋算法，会不会出现两个最佳？&quot;&gt;&lt;/a&gt;拍脑袋算法，会不会出现两个最佳？&lt;/h5&gt;&lt;p&gt;答：会出现金额一样的，但是手气最佳只有一个，先抢到的那个最佳。&lt;/p&gt;
+&lt;h5 id=&quot;每领一个红包就更新数据么？&quot;&gt;&lt;a href=&quot;#每领一个红包就更新数据么？&quot; class=&quot;headerlink&quot; title=&quot;每领一个红包就更新数据么？&quot;&gt;&lt;/a&gt;每领一个红包就更新数据么？&lt;/h5&gt;&lt;p&gt;答：每抢到一个红包，就cas更新剩余金额和红包个数。&lt;/p&gt;
+&lt;h5 id=&quot;红包如何入库入账？&quot;&gt;&lt;a href=&quot;#红包如何入库入账？&quot; class=&quot;headerlink&quot; title=&quot;红包如何入库入账？&quot;&gt;&lt;/a&gt;红包如何入库入账？&lt;/h5&gt;&lt;p&gt;数据库会累加已经领取的个数与金额，插入一条领取记录。入账则是后台异步操作。&lt;/p&gt;
+&lt;h5 id=&quot;入帐出错怎么办？比如红包个数没了，但余额还有？&quot;&gt;&lt;a href=&quot;#入帐出错怎么办？比如红包个数没了，但余额还有？&quot; class=&quot;headerlink&quot; title=&quot;入帐出错怎么办？比如红包个数没了，但余额还有？&quot;&gt;&lt;/a&gt;入帐出错怎么办？比如红包个数没了，但余额还有？&lt;/h5&gt;&lt;p&gt;答：最后会有一个take all操作。另外还有一个对账来保障。&lt;/p&gt;
+&lt;h3 id=&quot;算法实现java版&quot;&gt;&lt;a href=&quot;#算法实现java版&quot; class=&quot;headerlink&quot; title=&quot;算法实现java版&quot;&gt;&lt;/a&gt;算法实现java版&lt;/h3&gt;&lt;p&gt;算法很简单，不是提前算好，而是抢红包时计算&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static double getRandomMoney(RedPackage _redPackage) {
+// remainSize 剩余的红包数量
+// remainMoney 剩余的钱
+if (_redPackage.remainSize == 1) {
+    _redPackage.remainSize--;
+    return (double) Math.round(_redPackage.remainMoney * 100) / 100;
+}
+Random r     = new Random();
+double min   = 0.01; //
+double max   = _redPackage.remainMoney / _redPackage.remainSize * 2;
+double money = r.nextDouble() * max;
+money = money &amp;lt;= min ? 0.01: money;
+money = Math.floor(money * 100) / 100;
+_redPackage.remainSize--;
+_redPackage.remainMoney -= money;
+return money;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;LeftMoneyPackage&lt;/code&gt;数据结构如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class RedPackage {
+int    remainSize;
+double remainMoney;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;测试时初始化相关数据是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static void init() {
+redPackage.remainSize  = 20;
+redPackage.remainMoney = 200;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;算法实现PHP版&quot;&gt;&lt;a href=&quot;#算法实现PHP版&quot; class=&quot;headerlink&quot; title=&quot;算法实现PHP版&quot;&gt;&lt;/a&gt;算法实现PHP版&lt;/h3&gt;&lt;p&gt;关键就是定义核心函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function getrandommoney($remainmoney,$remainpacket,$moneymax = 0){
+if($remainpacket &amp;lt; 1 || $remainmoney &amp;lt;= 0){
+    return 0;
+}
+if($remainpacket == 1){
+    return     $remainmoney;
+}
+
+$min = 1;//注意倍数
+$max = $remainmoney / $remainpacket * 2;
+$money = rand($min,$max) ;
+$money = $money &amp;lt;= $min ? $min : $money;
+//每一次领取时的最大值
+if($moneymax &amp;amp;&amp;amp; $money &amp;gt; $moneymax){
+    $money = $moneymax;
+}
+
+return $money;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;函数调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$lmremainingtotal = 200.00;//总金额
+$lmremainingtimes = 20;//总个数
+$lmmoneymax = 0;
+$lmremainingtotaltemp = $lmremainingtotal * 100;
+$getonelm = getrandommoney($lmremainingtotaltemp,$lmremainingtimes);
+$getonelm = round($getonelm/100,2);    
+echo $getonelm;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;说明：&lt;/p&gt;
+&lt;p&gt;1、注意函数内部实现时使用的整数，传参进去时需要扩大100倍，最后得到的本次随机数需要在缩小至1%。&lt;/p&gt;
+&lt;p&gt;2、增加了每一次调用的随机最大数限额这个参数，默认为0表示不限。&lt;/p&gt;
+&lt;p&gt;3、更改剩余的红包总额度与红包个数，是在函数外实现的（必须步骤）。&lt;/p&gt;
+&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;上述方法都是每次计算一个红包的额度。如果需要一次性计算所有的红包，并分配完成，则需要循环执行。注意数据并发量的大小。&lt;/p&gt;
+&lt;p&gt;　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;微信红包的架构设计简介&quot;&gt;&lt;a href=&quot;#微信红包的架构设计简介&quot; class=&quot;headerlink&quot; title=&quot;微信红包的架构设计简介&quot;&gt;&lt;/a&gt;微信红包的架构设计简介&lt;/h3&gt;&lt;p&gt;概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cac
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP算法" scheme="http://isunman.com/tags/php%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="微信" scheme="http://isunman.com/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义iPhone的铃声</title>
@@ -1118,98 +1221,6 @@ echo $file_contents;
       <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
     
       <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS6.5搭建LNMP</title>
-    <link href="http://isunman.com/2016/08/17/centos6.5-build-lnmp/"/>
-    <id>http://isunman.com/2016/08/17/centos6.5-build-lnmp/</id>
-    <published>2016-08-17T11:31:13.639Z</published>
-    <updated>2016-08-17T11:31:13.574Z</updated>
-    
-    <content type="html">&lt;p&gt;CentOS6.5搭建LNMP  &lt;/p&gt;
-&lt;h3 id=&quot;1：查看环境：&quot;&gt;&lt;a href=&quot;#1：查看环境：&quot; class=&quot;headerlink&quot; title=&quot;1：查看环境：&quot;&gt;&lt;/a&gt;1：查看环境：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[root@10-4-14-168 html]# cat /etc/redhat-release
-CentOS release 6.5 (Final)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2：关掉防火墙&quot;&gt;&lt;a href=&quot;#2：关掉防火墙&quot; class=&quot;headerlink&quot; title=&quot;2：关掉防火墙&quot;&gt;&lt;/a&gt;2：关掉防火墙&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[root@10-4-14-168 html]# chkconfig iptables off
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）&quot;&gt;&lt;a href=&quot;#3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）&quot; class=&quot;headerlink&quot; title=&quot;3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）&quot;&gt;&lt;/a&gt;3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#wget http://www.atomicorp.com/installers/atomic
-#sh ./atomic
-#yum check-update
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4：安装开发包和库文件&quot;&gt;&lt;a href=&quot;#4：安装开发包和库文件&quot; class=&quot;headerlink&quot; title=&quot;4：安装开发包和库文件　&quot;&gt;&lt;/a&gt;4：安装开发包和库文件　&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng
-libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel
-gcc gcc-c++ libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2
-libxml2-devel imake autoconf automake screen sysstat compat-libstdc++-33 curl curl-devel
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5：卸载已安装的apache、mysql、php&quot;&gt;&lt;a href=&quot;#5：卸载已安装的apache、mysql、php&quot; class=&quot;headerlink&quot; title=&quot;5：卸载已安装的apache、mysql、php&quot;&gt;&lt;/a&gt;5：卸载已安装的apache、mysql、php&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# yum remove httpd
-# yum remove mysql
-# yum remove php
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6：安装nginx&quot;&gt;&lt;a href=&quot;#6：安装nginx&quot; class=&quot;headerlink&quot; title=&quot;6：安装nginx&quot;&gt;&lt;/a&gt;6：安装nginx&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# yum install nginx
-# service nginx start
-# chkconfig --levels 235 nginx on
-//设2、3、5级别开机启动
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;7：安装mysql&quot;&gt;&lt;a href=&quot;#7：安装mysql&quot; class=&quot;headerlink&quot; title=&quot;7：安装mysql&quot;&gt;&lt;/a&gt;7：安装mysql&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# yum install mysql mysql-server mysql-devel
-# service mysqld start
-# chkconfig --levels 235 mysqld on
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;登陆MySQL删除空用户，修改root密码&lt;br&gt;    mysql&amp;gt;select user,host,password from mysql.user;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;mysql&amp;gt;drop user &amp;apos;&amp;apos;@localhost;
-
-mysql&amp;gt;update mysql.user set password = PASSWORD(&amp;apos;*********&amp;apos;) where user=&amp;apos;root&amp;apos;;
-
-mysql&amp;gt;flush privileges;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
-&lt;h3 id=&quot;8：安装php&quot;&gt;&lt;a href=&quot;#8：安装php&quot; class=&quot;headerlink&quot; title=&quot;8：安装php&quot;&gt;&lt;/a&gt;8：安装php&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# yum install php lighttpd-fastcgi php-cli php-mysql php-gd php-imap php-ldap
-php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mssql php-snmp php-soap
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;//安装php和所需组件使PHP支持MySQL、FastCGI模式&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#yum install  php-tidy php-common php-devel php-fpm php-mysql
-
-# service php-fpm start
-# chkconfig --levels 235 php-fpm on
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;9：配置nginx支持php&quot;&gt;&lt;a href=&quot;#9：配置nginx支持php&quot; class=&quot;headerlink&quot; title=&quot;9：配置nginx支持php&quot;&gt;&lt;/a&gt;9：配置nginx支持php&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# mv /etc/nginx/nginx.conf /etc/nginx/nginx.confbak
-//将配置文件改为备份文件
-
-# cp /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf
-//由于原配置文件要自己去写因此可以使用默认的配置文件作为配置文件
-
-//修改nginx配置文件，添加fastcgi支持
-# vi /etc/nginx/nginx.conf
-index index.php index.html index.htm;
-//加入index.php
-
-location ~ \.php$ {
-            root           /usr/share/nginx/html;
-            fastcgi_pass   127.0.0.1:9000;
-            fastcgi_index  index.php;
-            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
-            include        fastcgi_params;
-    }
-
-//将以上代码注释去掉，并修改成nginx默认路径
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;10：配置php&quot;&gt;&lt;a href=&quot;#10：配置php&quot; class=&quot;headerlink&quot; title=&quot;10：配置php&quot;&gt;&lt;/a&gt;10：配置php&lt;/h3&gt;&lt;p&gt;//编辑文件php.ini，在文件末尾添加cgi.fix_pathinfo = 1&lt;br&gt;    [root@CentOS ~]# vi /etc/php.ini&lt;/p&gt;
-&lt;h3 id=&quot;11：重启nginx-php-fpm&quot;&gt;&lt;a href=&quot;#11：重启nginx-php-fpm&quot; class=&quot;headerlink&quot; title=&quot;11：重启nginx php-fpm&quot;&gt;&lt;/a&gt;11：重启nginx php-fpm&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# service nginx restart
-# service php-fpm restart
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
-&lt;h3 id=&quot;12：建立info-php文件&quot;&gt;&lt;a href=&quot;#12：建立info-php文件&quot; class=&quot;headerlink&quot; title=&quot;12：建立info.php文件&quot;&gt;&lt;/a&gt;12：建立info.php文件&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# vi /usr/share/nginx/html/info.php
-
-&amp;lt;?php
-   phpinfo();
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
-&lt;h3 id=&quot;13：测试nginx是否解析php&quot;&gt;&lt;a href=&quot;#13：测试nginx是否解析php&quot; class=&quot;headerlink&quot; title=&quot;13：测试nginx是否解析php&quot;&gt;&lt;/a&gt;13：测试nginx是否解析php&lt;/h3&gt;&lt;p&gt;本地浏览器输入：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;192.168.1.105/info.php
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;显示php界面  环境搭建成功
-　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;CentOS6.5搭建LNMP  &lt;/p&gt;
-&lt;h3 id=&quot;1：查看环境：&quot;&gt;&lt;a href=&quot;#1：查看环境：&quot; class=&quot;headerlink&quot; title=&quot;1：查看环境：&quot;&gt;&lt;/a&gt;1：查看环境：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[root@10-4-14-168
-    
-    </summary>
-    
-      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
-    
-    
-      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
     
   </entry>
   
