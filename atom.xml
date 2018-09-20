@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-09-11T10:51:17.526Z</updated>
+  <updated>2018-09-20T08:33:13.533Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,140 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP模拟上传文件使用CURLFile函数</title>
+    <link href="http://isunman.com/2018/09/20/php-simulates-uploading-files-using-the-CURLFile-function/"/>
+    <id>http://isunman.com/2018/09/20/php-simulates-uploading-files-using-the-CURLFile-function/</id>
+    <published>2018-09-20T08:33:13.603Z</published>
+    <updated>2018-09-20T08:33:13.533Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;一、CURLFile-介绍&quot;&gt;&lt;a href=&quot;#一、CURLFile-介绍&quot; class=&quot;headerlink&quot; title=&quot;一、CURLFile 介绍&quot;&gt;&lt;/a&gt;一、CURLFile 介绍&lt;/h3&gt;&lt;h4 id=&quot;CURLFile-construct&quot;&gt;&lt;a href=&quot;#CURLFile-construct&quot; class=&quot;headerlink&quot; title=&quot;CURLFile::__construct&quot;&gt;&lt;/a&gt;CURLFile::__construct&lt;/h4&gt;&lt;p&gt;(PHP 5 &amp;gt;= 5.5.0, PHP 7)&lt;br&gt;CURLFile::__construct – curl_file_create — 创建 CURLFile 对象&lt;/p&gt;
+&lt;h4 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h4&gt;&lt;p&gt;面向对象风格&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public CURLFile::__construct ( string $filename [, string $mimetype [, string $postname ]] )
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;过程化风格&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CURLFile curl_file_create ( string $filename [, string $mimetype [, string $postname ]] )
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建 CURLFile 对象，使用 CURLOPT_POSTFIELDS 选项上传文件。&lt;/p&gt;
+&lt;h4 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h4&gt;&lt;p&gt;filename 被上传文件的 路径。&lt;/p&gt;
+&lt;p&gt;mimetype 被上传文件的 MIME 类型。&lt;/p&gt;
+&lt;p&gt;postname 上传数据里面的文件名。&lt;/p&gt;
+&lt;h4 id=&quot;返回值&quot;&gt;&lt;a href=&quot;#返回值&quot; class=&quot;headerlink&quot; title=&quot;返回值&quot;&gt;&lt;/a&gt;返回值&lt;/h4&gt;&lt;p&gt;返回 CURLFile 对象。&lt;/p&gt;
+&lt;h3 id=&quot;二、使用示例&quot;&gt;&lt;a href=&quot;#二、使用示例&quot; class=&quot;headerlink&quot; title=&quot;二、使用示例&quot;&gt;&lt;/a&gt;二、使用示例&lt;/h3&gt;&lt;h4 id=&quot;1、一个单独的函数定义&quot;&gt;&lt;a href=&quot;#1、一个单独的函数定义&quot; class=&quot;headerlink&quot; title=&quot;1、一个单独的函数定义&quot;&gt;&lt;/a&gt;1、一个单独的函数定义&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public function testUpload01(){
+    $file = __DIR__.&amp;apos;\assets\test.jpg&amp;apos;;
+    //var_dump($file);
+    //$post[&amp;apos;file&amp;apos;] = &amp;apos;@&amp;apos;.$file;
+    $obj = new CurlFile($file);
+    &amp;lt;span style=&amp;quot;color:#ff0000;&amp;quot;&amp;gt;$obj-&amp;gt;setMimeType(&amp;quot;image/jpeg&amp;quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&amp;lt;/span&amp;gt;
+    $post[&amp;apos;file&amp;apos;] =  $obj;
+    $post[&amp;apos;abc&amp;apos;] = &amp;quot;abc&amp;quot;;
+    var_dump($post);
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    //启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+    curl_setopt($ch, CURLOPT_URL, &amp;quot;http://localhost/fs/upload.php&amp;quot;);//上传类
+
+    $info= curl_exec($ch);
+    curl_close($ch);
+    var_dump($info);
+    file_put_contents(&amp;apos;./1.html&amp;apos;,$info);
+    $res=json_decode($info,true);
+    //var_dump($res);
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2、模拟php-curl向远程服务器上传文件&quot;&gt;&lt;a href=&quot;#2、模拟php-curl向远程服务器上传文件&quot; class=&quot;headerlink&quot; title=&quot;2、模拟php curl向远程服务器上传文件&quot;&gt;&lt;/a&gt;2、模拟php curl向远程服务器上传文件&lt;/h4&gt;&lt;p&gt;第1个文件：test.php 可以向远程服务器模拟提交上传文件的PHP文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+    header(&amp;apos;content-type:text/html;charset=utf8&amp;apos;);
+
+    $ch = curl_init();
+
+    //加@符号curl就会把它当成是文件上传处理
+    $data = array(&amp;apos;img&amp;apos;=&amp;gt;&amp;apos;@&amp;apos;. dirname(__FILE__).&amp;apos;/img/1.jpg&amp;apos;);
+    curl_setopt($ch,CURLOPT_URL,&amp;quot;http://localhost:8088/curl/get_img.php&amp;quot;);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POST,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    echo json_decode($result);
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第2个文件：get_img.php 可以接收上传文件的PHP文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+if($_FILES){
+    $filename = $_FILES[&amp;apos;img&amp;apos;][&amp;apos;name&amp;apos;];
+    $tmpname = $_FILES[&amp;apos;img&amp;apos;][&amp;apos;tmp_name&amp;apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&amp;apos;/upload/&amp;apos;.$filename)){
+        echo json_encode(&amp;apos;上传成功&amp;apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;3、本人实测可用综合示例&quot;&gt;&lt;a href=&quot;#3、本人实测可用综合示例&quot; class=&quot;headerlink&quot; title=&quot;3、本人实测可用综合示例&quot;&gt;&lt;/a&gt;3、本人实测可用综合示例&lt;/h4&gt;&lt;p&gt;第1个文件 test.php 模拟上传文件的PHP文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+$file = __DIR__.&amp;apos;\test.jpg&amp;apos;;
+$obj = new CurlFile($file);
+$obj-&amp;gt;setMimeType(&amp;quot;image/jpeg&amp;quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&amp;lt;/span&amp;gt;
+$post[&amp;apos;file&amp;apos;] =  $obj;
+$post[&amp;apos;abc&amp;apos;] = &amp;quot;abc&amp;quot;;
+var_dump($post);
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, false);
+//启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_URL, &amp;quot;http://locaolhost/test/get_img.php&amp;quot;);//上传类
+
+$info= curl_exec($ch);
+curl_close($ch);
+var_dump($info);
+file_put_contents(&amp;apos;./1.html&amp;apos;,$info);
+$res=json_decode($info,true);
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第2个文件 get_img.php 接收数据的PHP文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+
+print_r($_FILES);
+if($_FILES){
+    $filename = $_FILES[&amp;apos;file&amp;apos;][&amp;apos;name&amp;apos;];
+    $tmpname = $_FILES[&amp;apos;file&amp;apos;][&amp;apos;tmp_name&amp;apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&amp;apos;/&amp;apos;.$filename)){
+        echo json_encode(&amp;apos;SUCCESS&amp;apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h3&gt;&lt;p&gt;1、经实际测试，可以使用。如果使用本地签发的SSL证书的https协议，注意本地环境无法测试，可以暂时使用http代替。&lt;/p&gt;
+&lt;p&gt;线上的https协议可以正常使用。&lt;/p&gt;
+&lt;p&gt;2、线上在使用curl中转当前服务器上传的文件再次转发到另一个远程服务器时，需要把文件先临时存储到当前服务器，待另一个远程服务器接收并处理完成后再把当前服务器上的临时文件删除即可。&lt;/p&gt;
+&lt;p&gt;　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;一、CURLFile-介绍&quot;&gt;&lt;a href=&quot;#一、CURLFile-介绍&quot; class=&quot;headerlink&quot; title=&quot;一、CURLFile 介绍&quot;&gt;&lt;/a&gt;一、CURLFile 介绍&lt;/h3&gt;&lt;h4 id=&quot;CURLFile-construct&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="上传文件" scheme="http://isunman.com/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>微信红包的架构设计与算法实现</title>
@@ -1153,72 +1287,6 @@ echo $file_contents;
     
     
       <category term="MySQL" scheme="http://isunman.com/tags/mysql/"/>
-    
-      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>16个小众却很实用的网站（程序员 向）</title>
-    <link href="http://isunman.com/2016/10/20/16-niche-is-very-useful-site/"/>
-    <id>http://isunman.com/2016/10/20/16-niche-is-very-useful-site/</id>
-    <published>2016-10-20T04:33:48.830Z</published>
-    <updated>2016-10-20T04:33:48.796Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;3个月以前在知乎上回答一个问题【有哪些能集实用，装逼于一身的冷门网站？】得到很多小伙伴的喜爱，一直到现在都还陆陆续续收到大家的赞，谢谢大家。&lt;br&gt;于是，我就想，现在有了专栏，干脆把这个回答写成一篇文章吧，当然肯定不是原封不动的摘抄过来，我会再添加一些比较小众但很实用的网站，希望可以给大家一些参考和帮助。&lt;/p&gt;
-&lt;p&gt;以下是我在该问答下的回答，共分享了8个网站：&lt;/p&gt;
-&lt;p&gt;啊，看到上面分享了好多比较酷炫的网站，好多都放进我的收藏夹了，(&lt;em&gt;^__^&lt;/em&gt;) 嘻嘻……看的我也忍不住想分享了，因为是IT行业，所以分享几个我收集的比较实用而且酷炫的网站O(∩_∩)O~&lt;/p&gt;
-&lt;h3 id=&quot;1-“Hello-World”大全&quot;&gt;&lt;a href=&quot;#1-“Hello-World”大全&quot; class=&quot;headerlink&quot; title=&quot;1.“Hello World”大全&quot;&gt;&lt;/a&gt;1.&lt;a href=&quot;https://netsmell.com/apps/helloworldcollection/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;“Hello World”大全&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;网站一共收集了大约481种“Hello World”程序，差不多涵盖了目前已知的所有编程语言，比较有趣好玩，很多语言可能都没有听过。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-Font-Awesome-Cheatsheet&quot;&gt;&lt;a href=&quot;#2-Font-Awesome-Cheatsheet&quot; class=&quot;headerlink&quot; title=&quot;2.Font Awesome Cheatsheet&quot;&gt;&lt;/a&gt;2.&lt;a href=&quot;https://fontawesome.io/cheatsheet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Font Awesome Cheatsheet&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Font Awesome图标，不多说，开发和设计都会用到。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-实验楼-国内领先的IT技术实训平台&quot;&gt;&lt;a href=&quot;#3-实验楼-国内领先的IT技术实训平台&quot; class=&quot;headerlink&quot; title=&quot;3.实验楼 - 国内领先的IT技术实训平台&quot;&gt;&lt;/a&gt;3.&lt;a href=&quot;https://www.shiyanlou.com/courses/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;实验楼 - 国内领先的IT技术实训平台&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个拥有在线开发环境的IT学习网站，各种在线开发环境啊！！各种在线开发环境啊！！各种在线开发环境啊！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-004.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;4-动画展示各种路径搜索算法&quot;&gt;&lt;a href=&quot;#4-动画展示各种路径搜索算法&quot; class=&quot;headerlink&quot; title=&quot;4.动画展示各种路径搜索算法&quot;&gt;&lt;/a&gt;4.&lt;a href=&quot;http://netsmell.com/post/pathfinding.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;动画展示各种路径搜索算法&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我觉得还蛮有趣的，直观的感受路径搜索算法；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-005.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;5-Most-Exclusive-Website&quot;&gt;&lt;a href=&quot;#5-Most-Exclusive-Website&quot; class=&quot;headerlink&quot; title=&quot;5.Most Exclusive Website&quot;&gt;&lt;/a&gt;5.&lt;a href=&quot;https://mostexclusivewebsite.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Most Exclusive Website&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;网站每次只允许一个人访问，而且只能访问网站60秒,已经有超多人排队了，你可以试试~当然这个可能并不一定实用，但是还觉得蛮好玩的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;6-IT-eBooks-Free-Download&quot;&gt;&lt;a href=&quot;#6-IT-eBooks-Free-Download&quot; class=&quot;headerlink&quot; title=&quot;6.IT eBooks - Free Download&quot;&gt;&lt;/a&gt;6.&lt;a href=&quot;https://www.it-ebooks.info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IT eBooks - Free Download&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;可以下载IT电子书籍的网站，英文；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7-Collecting-all-the-cheat-sheets&quot;&gt;&lt;a href=&quot;#7-Collecting-all-the-cheat-sheets&quot; class=&quot;headerlink&quot; title=&quot;7.Collecting all the cheat sheets&quot;&gt;&lt;/a&gt;7.&lt;a href=&quot;https://overapi.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Collecting all the cheat sheets&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这个网站可以查询到所有与编程相关的各种技术，并给出详细的知识点；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-008.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;8-DevDocs-API-Documentation&quot;&gt;&lt;a href=&quot;#8-DevDocs-API-Documentation&quot; class=&quot;headerlink&quot; title=&quot;8.DevDocs API Documentation&quot;&gt;&lt;/a&gt;8.&lt;a href=&quot;https://devdocs.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DevDocs API Documentation&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这是一份综合类的在线API列表，很全，方便查找。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;下面再添加一些比较小众，但也比较有趣或者有用的网站。&lt;/p&gt;
-&lt;h3 id=&quot;1-GEEKTyper-com&quot;&gt;&lt;a href=&quot;#1-GEEKTyper-com&quot; class=&quot;headerlink&quot; title=&quot;1.GEEKTyper.com&quot;&gt;&lt;/a&gt;1.&lt;a href=&quot;http://geektyper.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GEEKTyper.com&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个在线模拟黑客工作的虚拟桌面系统，提供多种黑客工作的场景，就像是我们在电影里看到的黑客是如何操作电脑和进行代码录入的。伪装成黑客的网站啊，不一定有用但肯定有趣，我想所有程序员都想试试吧，毕竟成为一个黑客还是很酷炫的啊。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-010.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-codewars&quot;&gt;&lt;a href=&quot;#2-codewars&quot; class=&quot;headerlink&quot; title=&quot;2.codewars&quot;&gt;&lt;/a&gt;2.&lt;a href=&quot;http://www.codewars.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;codewars&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Codewars是一个刷题网站，使用者可选择所学技术领域不断实战答题挑战，而且它的奖励系统激励程序员们像打游戏升级一样地做习题。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-011.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-免费的计算机编程类中文书籍&quot;&gt;&lt;a href=&quot;#3-免费的计算机编程类中文书籍&quot; class=&quot;headerlink&quot; title=&quot;3.免费的计算机编程类中文书籍&quot;&gt;&lt;/a&gt;3.&lt;a href=&quot;https://github.com/justjavac/free-programming-books-zh_CN&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;免费的计算机编程类中文书籍&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;其实这个算不上小众，但是我认为非常有用，免费的中文书籍诶，随时可以看，所以也放进来了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-012.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这里还有英文的：&lt;/p&gt;
-&lt;h3 id=&quot;4-free-programming-books&quot;&gt;&lt;a href=&quot;#4-free-programming-books&quot; class=&quot;headerlink&quot; title=&quot;4.free-programming-books&quot;&gt;&lt;/a&gt;4.&lt;a href=&quot;https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;free-programming-books&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;分享了大量免费的编程书籍，比上面分享的中文版的编程书籍要全要多，不过都是英文的；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-013.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;5-The-World’s-Most-Exclusive-Website&quot;&gt;&lt;a href=&quot;#5-The-World’s-Most-Exclusive-Website&quot; class=&quot;headerlink&quot; title=&quot;5.The World’s Most Exclusive Website&quot;&gt;&lt;/a&gt;5.&lt;a href=&quot;http://www.theworldsmostexclusivewebsite.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The World’s Most Exclusive Website&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个独特神秘的网站。基本上，该网站允许用户访问的级别是基于你在Twitter上的追随者有多少。它一共拥有10个房间。要进入“室1”，你需要是一个经过验证的Twitter用户。要进入“室2”，你需要有至少5000个追随者。级别越高，要求也就越高。也是世界上最容易被破解的。我们技术娴熟的一个读者甚至无需登录Twitter，只花费了不到60秒的时间便查看到该网站的所有页面。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-014.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;6-oreilly-Free-Programming-Ebooks&quot;&gt;&lt;a href=&quot;#6-oreilly-Free-Programming-Ebooks&quot; class=&quot;headerlink&quot; title=&quot;6.oreilly Free Programming Ebooks&quot;&gt;&lt;/a&gt;6.&lt;a href=&quot;http://www.oreilly.com/programming/free/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;oreilly Free Programming Ebooks&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ORielly 的免费电子书，有需要的童鞋可以免费下载，虽说免费的书籍文章前面已经有过介绍了，但是书籍嘛，还是免费的，是很有用的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-015.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7-The-Python-Challenge&quot;&gt;&lt;a href=&quot;#7-The-Python-Challenge&quot; class=&quot;headerlink&quot; title=&quot;7.The Python Challenge&quot;&gt;&lt;/a&gt;7.&lt;a href=&quot;http://www.pythonchallenge.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Python Challenge&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;是一个基于Python语言的闯关挑战游戏，每一关给出一个Python相关的图片，闯关者需要解答问题之后才能跳转到下一个关卡，还蛮有趣的，Python学习者可以看看。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-016.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;8-Regexper&quot;&gt;&lt;a href=&quot;#8-Regexper&quot; class=&quot;headerlink&quot; title=&quot;8.Regexper&quot;&gt;&lt;/a&gt;8.&lt;a href=&quot;https://regexper.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Regexper&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一个正则表达式的可视化开源工具，直接输入正则表达式就能用可视化显示出来，只需要把你的表达式输入进去，就有可视化的图形。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-017.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;以上了就是我整理的16个相对来说比较小众，但是对程序员来说却有趣或者有用的网站，如果你还有其他相关网站，评论出来啊，我随时更新上来，大家共同学习嘛。&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/23005451&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎专栏：IT干货分享&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xrl2u.com1.z0.glb.clouddn.com/useful-site-001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;3个月以前在知乎上回答一个问题【有哪些能集实用，装逼于一身的冷门网站？】得到很多小伙伴的喜爱，一直到现在都
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
     
       <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
     

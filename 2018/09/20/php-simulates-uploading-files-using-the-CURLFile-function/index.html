@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术概念," />
+  <meta name="keywords" content="PHP,上传文件," />
 
 
 
@@ -59,19 +59,22 @@
 
 
 
-<meta name="description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
+<meta name="description" content="一、CURLFile 介绍CURLFile::__construct(PHP 5 &amp;gt;= 5.5.0, PHP 7)CURLFile::__construct – curl_file_create — 创建 CURLFile 对象
+说明面向对象风格
+public CURLFile::__construct ( string $filename [, string $mimetype [, st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解同步和异步">
-<meta property="og:url" content="http://isunman.com/2018/07/01/understand-synchronization-and-asynchrony/index.html">
+<meta property="og:title" content="PHP模拟上传文件使用CURLFile函数">
+<meta property="og:url" content="http://isunman.com/2018/09/20/php-simulates-uploading-files-using-the-CURLFile-function/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
-<meta property="og:updated_time" content="2018-06-30T17:04:43.809Z">
+<meta property="og:description" content="一、CURLFile 介绍CURLFile::__construct(PHP 5 &amp;gt;= 5.5.0, PHP 7)CURLFile::__construct – curl_file_create — 创建 CURLFile 对象
+说明面向对象风格
+public CURLFile::__construct ( string $filename [, string $mimetype [, st">
+<meta property="og:updated_time" content="2018-09-20T08:33:13.533Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解同步和异步">
-<meta name="twitter:description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
+<meta name="twitter:title" content="PHP模拟上传文件使用CURLFile函数">
+<meta name="twitter:description" content="一、CURLFile 介绍CURLFile::__construct(PHP 5 &amp;gt;= 5.5.0, PHP 7)CURLFile::__construct – curl_file_create — 创建 CURLFile 对象
+说明面向对象风格
+public CURLFile::__construct ( string $filename [, string $mimetype [, st">
 
 
 
@@ -89,7 +92,7 @@
   };
 </script>
 
-  <title> 理解同步和异步 | 太阳侠 </title>
+  <title> PHP模拟上传文件使用CURLFile函数 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +242,7 @@
             
             
               
-                理解同步和异步
+                PHP模拟上传文件使用CURLFile函数
               
             
           </h1>
@@ -251,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-01T01:04:43+08:00" content="2018-07-01">
-              2018-07-01
+            <time itemprop="dateCreated" datetime="2018-09-20T16:33:13+08:00" content="2018-09-20">
+              2018-09-20
             </time>
           </span>
 
@@ -296,25 +299,116 @@
       
 
       
-        <h3 id="一种说法"><a href="#一种说法" class="headerlink" title="一种说法"></a>一种说法</h3><p>老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。</p>
-<p>“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接听状态(即：打不通，联系不上)，为了拿到生活费，你就不停的oncall、等待，最终可能不能及时要到生活费，导致你今天要做的事都没有完成，而白白花掉了时间。</p>
-<p>“异步”就是：在你打完电话发现没人接听时，猜想：对方可能在忙，暂时无法接听电话，所以你发了一条短信(或者语音留言，亦或是其他的方式)通知对方后便忙其他要紧的事了；这时你就不需要持续不断的拨打电话，还可以做其他事情；待一定时间后，对方看到你的留言便回复响应你，当然对方可能转钱也可能不转钱。但是整个一天下来，你还做了很多事情。 或者说你找室友临时借了一笔钱，又开始happy的上学时光了。</p>
-<p>简而言之，言而总之：同步就是我强依赖你(对方)，我必须等到你的回复，才能做出下一步响应。即我的操作(行程)是顺序执行的，中间少了哪一步都不可以，或者说中间哪一步出错都不可以，类似于编程中程序被解释器顺序执行一样；同时如果我没有收到你的回复，我就一直处于等待、也就是阻塞的状态。 异步则相反，我并不强依赖你，我对你响应的时间也不敏感，无论你返回还是不返回，我都能继续运行；你响应并返回了，我就继续做之前的事情，你没有响应，我就做其他的事情。也就是说我不存在等待对方的概念，我就是非阻塞的。</p>
-<p>从上面的例子来看：同步似乎等价于阻塞，异步则等价于非阻塞。其实有些狭义，但不可否认的是，在一定情况下，确实可以这么认为；因为同步一定存在着阻塞状态，而异步一定不存在非阻塞的状态。 但是不是就是说 同步调用 == 阻塞调用呢？然并不是；阻塞和非阻塞强调的是程序在等待调用结果（消息，返回值）时的状态.  阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。 对于同步调用来说，很多时候当前线程还是激活的状态，只是从逻辑上当前函数没有返回而已，即同步等待时什么都不干，白白占用着资源。</p>
-<h3 id="另一个有趣的例子"><a href="#另一个有趣的例子" class="headerlink" title="另一个有趣的例子"></a>另一个有趣的例子</h3><p>老张爱喝茶，废话不说，煮开水。</p>
-<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
-<p>1 老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻</p>
-<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
-<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大</p>
-<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。</p>
-<p>普通水壶，同步；响水壶，异步。</p>
-<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
-<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
-<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由调用者主动等待这个调用的结果。而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>原文链接：<a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="external">知乎问答</a></p>
+        <h3 id="一、CURLFile-介绍"><a href="#一、CURLFile-介绍" class="headerlink" title="一、CURLFile 介绍"></a>一、CURLFile 介绍</h3><h4 id="CURLFile-construct"><a href="#CURLFile-construct" class="headerlink" title="CURLFile::__construct"></a>CURLFile::__construct</h4><p>(PHP 5 &gt;= 5.5.0, PHP 7)<br>CURLFile::__construct – curl_file_create — 创建 CURLFile 对象</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>面向对象风格</p>
+<pre><code>public CURLFile::__construct ( string $filename [, string $mimetype [, string $postname ]] )
+</code></pre><p>过程化风格</p>
+<pre><code>CURLFile curl_file_create ( string $filename [, string $mimetype [, string $postname ]] )
+</code></pre><p>创建 CURLFile 对象，使用 CURLOPT_POSTFIELDS 选项上传文件。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>filename 被上传文件的 路径。</p>
+<p>mimetype 被上传文件的 MIME 类型。</p>
+<p>postname 上传数据里面的文件名。</p>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>返回 CURLFile 对象。</p>
+<h3 id="二、使用示例"><a href="#二、使用示例" class="headerlink" title="二、使用示例"></a>二、使用示例</h3><h4 id="1、一个单独的函数定义"><a href="#1、一个单独的函数定义" class="headerlink" title="1、一个单独的函数定义"></a>1、一个单独的函数定义</h4><pre><code>public function testUpload01(){
+    $file = __DIR__.&apos;\assets\test.jpg&apos;;
+    //var_dump($file);
+    //$post[&apos;file&apos;] = &apos;@&apos;.$file;
+    $obj = new CurlFile($file);
+    &lt;span style=&quot;color:#ff0000;&quot;&gt;$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
+    $post[&apos;file&apos;] =  $obj;
+    $post[&apos;abc&apos;] = &quot;abc&quot;;
+    var_dump($post);
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    //启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+    curl_setopt($ch, CURLOPT_URL, &quot;http://localhost/fs/upload.php&quot;);//上传类
+
+    $info= curl_exec($ch);
+    curl_close($ch);
+    var_dump($info);
+    file_put_contents(&apos;./1.html&apos;,$info);
+    $res=json_decode($info,true);
+    //var_dump($res);
+</code></pre><h4 id="2、模拟php-curl向远程服务器上传文件"><a href="#2、模拟php-curl向远程服务器上传文件" class="headerlink" title="2、模拟php curl向远程服务器上传文件"></a>2、模拟php curl向远程服务器上传文件</h4><p>第1个文件：test.php 可以向远程服务器模拟提交上传文件的PHP文件</p>
+<pre><code>&lt;?php
+    header(&apos;content-type:text/html;charset=utf8&apos;);
+
+    $ch = curl_init();
+
+    //加@符号curl就会把它当成是文件上传处理
+    $data = array(&apos;img&apos;=&gt;&apos;@&apos;. dirname(__FILE__).&apos;/img/1.jpg&apos;);
+    curl_setopt($ch,CURLOPT_URL,&quot;http://localhost:8088/curl/get_img.php&quot;);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POST,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    echo json_decode($result);
+
+?&gt;
+</code></pre><p>第2个文件：get_img.php 可以接收上传文件的PHP文件</p>
+<pre><code>&lt;?php
+if($_FILES){
+    $filename = $_FILES[&apos;img&apos;][&apos;name&apos;];
+    $tmpname = $_FILES[&apos;img&apos;][&apos;tmp_name&apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/upload/&apos;.$filename)){
+        echo json_encode(&apos;上传成功&apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&gt;
+</code></pre><h4 id="3、本人实测可用综合示例"><a href="#3、本人实测可用综合示例" class="headerlink" title="3、本人实测可用综合示例"></a>3、本人实测可用综合示例</h4><p>第1个文件 test.php 模拟上传文件的PHP文件</p>
+<pre><code>&lt;?php
+$file = __DIR__.&apos;\test.jpg&apos;;
+$obj = new CurlFile($file);
+$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
+$post[&apos;file&apos;] =  $obj;
+$post[&apos;abc&apos;] = &quot;abc&quot;;
+var_dump($post);
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, false);
+//启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_URL, &quot;http://locaolhost/test/get_img.php&quot;);//上传类
+
+$info= curl_exec($ch);
+curl_close($ch);
+var_dump($info);
+file_put_contents(&apos;./1.html&apos;,$info);
+$res=json_decode($info,true);
+?&gt;
+</code></pre><p>第2个文件 get_img.php 接收数据的PHP文件</p>
+<pre><code>&lt;?php
+
+print_r($_FILES);
+if($_FILES){
+    $filename = $_FILES[&apos;file&apos;][&apos;name&apos;];
+    $tmpname = $_FILES[&apos;file&apos;][&apos;tmp_name&apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/&apos;.$filename)){
+        echo json_encode(&apos;SUCCESS&apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&gt;
+</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>1、经实际测试，可以使用。如果使用本地签发的SSL证书的https协议，注意本地环境无法测试，可以暂时使用http代替。</p>
+<p>线上的https协议可以正常使用。</p>
+<p>2、线上在使用curl中转当前服务器上传的文件再次转发到另一个远程服务器时，需要把文件先临时存储到当前服务器，待另一个远程服务器接收并处理完成后再把当前服务器上的临时文件删除即可。</p>
+<p>　　</p>
 
       
     </div>
@@ -323,7 +417,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术概念/" rel="tag">#技术概念</a>
+            <a href="/tags/php/" rel="tag">#PHP</a>
+          
+            <a href="/tags/上传文件/" rel="tag">#上传文件</a>
           
         </div>
       
@@ -332,17 +428,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/06/mvc_mode/" rel="next" title="MVC详解">
-                <i class="fa fa-chevron-left"></i> MVC详解
+              <a href="/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/" rel="next" title="微信红包的架构设计与算法实现">
+                <i class="fa fa-chevron-left"></i> 微信红包的架构设计与算法实现
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/02/How-to-use-the-watch-star-and-fork-in-github/" rel="prev" title="如何用好 github 中的 watch、star、fork">
-                如何用好 github 中的 watch、star、fork <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +578,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一种说法"><span class="nav-number">1.</span> <span class="nav-text">一种说法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另一个有趣的例子"><span class="nav-number">2.</span> <span class="nav-text">另一个有趣的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、CURLFile-介绍"><span class="nav-number">1.</span> <span class="nav-text">一、CURLFile 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CURLFile-construct"><span class="nav-number">1.1.</span> <span class="nav-text">CURLFile::__construct</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明"><span class="nav-number">1.2.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值"><span class="nav-number">1.4.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用示例"><span class="nav-number">2.</span> <span class="nav-text">二、使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、一个单独的函数定义"><span class="nav-number">2.1.</span> <span class="nav-text">1、一个单独的函数定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、模拟php-curl向远程服务器上传文件"><span class="nav-number">2.2.</span> <span class="nav-text">2、模拟php curl向远程服务器上传文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、本人实测可用综合示例"><span class="nav-number">2.3.</span> <span class="nav-text">3、本人实测可用综合示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
