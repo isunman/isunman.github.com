@@ -245,7 +245,7 @@
               
                 
                 <a class="post-title-link" href="/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/" itemprop="url">
-                  Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案
+                  对多维数组进行排序的函数array_multisort
                 </a>
               
             
@@ -258,7 +258,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-07-31T17:59:58+08:00" content="2019-07-31">
+            <time itemprop="dateCreated" datetime="2019-07-31T18:10:53+08:00" content="2019-07-31">
               2019-07-31
             </time>
           </span>
@@ -305,35 +305,47 @@
       
         
           
-            <p>用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的</p>
-<h3 id="php配置"><a href="#php配置" class="headerlink" title="php配置"></a>php配置</h3><pre><code>function get_image_info($target, $allowswf = false) {
-    $ext = discuz_upload::fileext($target);
-    $isimage = discuz_upload::is_image_ext($ext);
-    if(!$isimage &amp;&amp; ($ext != &apos;swf&apos; || !$allowswf)) {
-        return false;
-    } elseif(!is_readable($target)) {
-        return false;
-    } elseif($imageinfo = @getimagesize($target)) {
-        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&apos;&apos;, &apos;&apos;, &apos;&apos;);
-        $size = $width * $height;
-        if($size &gt; 16777216 || $size &lt; 16 ) {
-            return false;
-        } elseif($ext == &apos;swf&apos; &amp;&amp; $type != 4 &amp;&amp; $type != 13) {
-            return false;
-        } elseif($isimage &amp;&amp; !in_array($type, array(1,2,3,6,13))) {
-            return false;
-        } elseif(!$allowswf &amp;&amp; ($ext == &apos;swf&apos; || $type == 4 || $type == 13)) {
-            return false;
-        }
-        return $imageinfo;
-    } else {
-        return false;
-    }
-}
-</code></pre><p>这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。</p>
-<p><a href="http://www.muquan.net/article/390.html" target="_blank" rel="external">原文链接</a></p>
+            <p>经常会面临这样的需求，虽然有时候我们可以在数据库查询的时候，直接对数据进行排序，但还是无法满足日益复杂的业务需求。这里边会用到两个函数一个是<code>array_column()</code>函数，这个函数接受三个参数。详情参见这里是从二维数组中抽出一个键的值，作为一个新的数组返回。<br>另一个是<code>array_multisort()</code>函数，这个函数是一个排序函数，<a href="https://www.php.net/manual/zh/function.array-multisort.php" target="_blank" rel="external">详情参见这里</a>。<br>它会依照第一个参数数组的排序规则，依照第一个参数数组的值在第三个参数重的位置对第三个参数进行排序。</p>
+<p>听不明白吧？听不明白就对了，还是直接看代码来的实在：</p>
+<pre><code>$orgin = array(
+ array(
+    &apos;id&apos; =&gt; 5698,
+    &apos;first_name&apos; =&gt; &apos;Bill&apos;,
+    &apos;last_name&apos; =&gt; &apos;Gates&apos;,
+  ),
+ array(
+    &apos;id&apos; =&gt; 4767,
+    &apos;first_name&apos; =&gt; &apos;Steve&apos;,
+    &apos;last_name&apos; =&gt; &apos;Jobs&apos;,
+ ),
+ array(
+    &apos;id&apos; =&gt; 3809,
+    &apos;first_name&apos; =&gt; &apos;Mark&apos;,
+    &apos;last_name&apos; =&gt; &apos;Zuckerberg&apos;,
+  )
+);
+
+$idArr = array_column($orgin, &apos;id&apos;);
+array_multisort($idArr,SORT_ASC,$orgin);
+var_dump($orgin);
+</code></pre><p>这个打印的结果是：</p>
+<pre><code>array (size=3)
+      0 =&gt; 
+array (size=3)
+  &apos;id&apos; =&gt; int 3809
+  &apos;first_name&apos; =&gt; string &apos;Mark&apos; (length=4)
+  &apos;last_name&apos; =&gt; string &apos;Zuckerberg&apos; (length=10)
+  1 =&gt; 
+array (size=3)
+  &apos;id&apos; =&gt; int 4767
+  &apos;first_name&apos; =&gt; string &apos;Steve&apos; (length=5)
+  &apos;last_name&apos; =&gt; string &apos;Jobs&apos; (length=4)
+  2 =&gt; 
+array (size=3)
+  &apos;id&apos; =&gt; int 5698
+  &apos;first_name&apos; =&gt; string &apos;Bill&apos; (length=4)   
+  &apos;last_name&apos; =&gt; string &apos;Gates&apos; (length=5)
+</code></pre><p>此函数有点意思。</p>
 
           
         
