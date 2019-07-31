@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2018-10-21T15:43:35.906Z</updated>
+  <updated>2018-05-25T05:01:52.500Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案</title>
+    <link href="http://isunman.com/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/"/>
+    <id>http://isunman.com/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/</id>
+    <published>2019-07-31T09:59:58.319Z</published>
+    <updated>2018-05-25T05:01:52.500Z</updated>
+    
+    <content type="html">&lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
+&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
+&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的&lt;/p&gt;
+&lt;h3 id=&quot;php配置&quot;&gt;&lt;a href=&quot;#php配置&quot; class=&quot;headerlink&quot; title=&quot;php配置&quot;&gt;&lt;/a&gt;php配置&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;function get_image_info($target, $allowswf = false) {
+    $ext = discuz_upload::fileext($target);
+    $isimage = discuz_upload::is_image_ext($ext);
+    if(!$isimage &amp;amp;&amp;amp; ($ext != &amp;apos;swf&amp;apos; || !$allowswf)) {
+        return false;
+    } elseif(!is_readable($target)) {
+        return false;
+    } elseif($imageinfo = @getimagesize($target)) {
+        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&amp;apos;&amp;apos;, &amp;apos;&amp;apos;, &amp;apos;&amp;apos;);
+        $size = $width * $height;
+        if($size &amp;gt; 16777216 || $size &amp;lt; 16 ) {
+            return false;
+        } elseif($ext == &amp;apos;swf&amp;apos; &amp;amp;&amp;amp; $type != 4 &amp;amp;&amp;amp; $type != 13) {
+            return false;
+        } elseif($isimage &amp;amp;&amp;amp; !in_array($type, array(1,2,3,6,13))) {
+            return false;
+        } elseif(!$allowswf &amp;amp;&amp;amp; ($ext == &amp;apos;swf&amp;apos; || $type == 4 || $type == 13)) {
+            return false;
+        }
+        return $imageinfo;
+    } else {
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.muquan.net/article/390.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Discuz" scheme="http://isunman.com/tags/discuz/"/>
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Facebook一组火爆漫画：生命太短暂，什么才是我们想要的？</title>
@@ -1262,32 +1315,6 @@ echo $file_contents;
     
     
       <category term="英语" scheme="http://isunman.com/tags/%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器端周期提醒如何设计</title>
-    <link href="http://isunman.com/2017/03/16/server-side-cycle-to-remind-how-to-design/"/>
-    <id>http://isunman.com/2017/03/16/server-side-cycle-to-remind-how-to-design/</id>
-    <published>2017-03-16T09:04:00.812Z</published>
-    <updated>2017-03-16T09:04:00.435Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;服务器端周期提醒如何设计&quot;&gt;&lt;a href=&quot;#服务器端周期提醒如何设计&quot; class=&quot;headerlink&quot; title=&quot;服务器端周期提醒如何设计&quot;&gt;&lt;/a&gt;服务器端周期提醒如何设计&lt;/h2&gt;&lt;h4 id=&quot;问：&quot;&gt;&lt;a href=&quot;#问：&quot; class=&quot;headerlink&quot; title=&quot;问：&quot;&gt;&lt;/a&gt;问：&lt;/h4&gt;&lt;p&gt;为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。&lt;/p&gt;
-&lt;h4 id=&quot;答：&quot;&gt;&lt;a href=&quot;#答：&quot; class=&quot;headerlink&quot; title=&quot;答：&quot;&gt;&lt;/a&gt;答：&lt;/h4&gt;&lt;p&gt;因为时间是线性的，设置的再多，其实每次需要执行的下一个时间最多也只有一个。&lt;br&gt;因此可以这进行数据库设计–下一次提醒时间，重复的时间，特定时间。到时间发送通知，然后更新数据库的下一次提醒时间。&lt;/p&gt;
-&lt;p&gt;PS：是一种不错的思路，可行性高&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;https://segmentfault.com/q/1010000006929169&quot; title=&quot;原文链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://segmentfault.com/q/1010000006929169&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;服务器端周期提醒如何设计&quot;&gt;&lt;a href=&quot;#服务器端周期提醒如何设计&quot; class=&quot;headerlink&quot; title=&quot;服务器端周期提醒如何设计&quot;&gt;&lt;/a&gt;服务器端周期提醒如何设计&lt;/h2&gt;&lt;h4 id=&quot;问：&quot;&gt;&lt;a href=&quot;#问：&quot; class=&quot;
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="MySQL" scheme="http://isunman.com/tags/mysql/"/>
     
   </entry>
   

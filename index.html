@@ -244,6 +244,137 @@
             
               
                 
+                <a class="post-title-link" href="/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/" itemprop="url">
+                  Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-07-31T17:59:58+08:00" content="2019-07-31">
+              2019-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
+<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
+<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的</p>
+<h3 id="php配置"><a href="#php配置" class="headerlink" title="php配置"></a>php配置</h3><pre><code>function get_image_info($target, $allowswf = false) {
+    $ext = discuz_upload::fileext($target);
+    $isimage = discuz_upload::is_image_ext($ext);
+    if(!$isimage &amp;&amp; ($ext != &apos;swf&apos; || !$allowswf)) {
+        return false;
+    } elseif(!is_readable($target)) {
+        return false;
+    } elseif($imageinfo = @getimagesize($target)) {
+        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&apos;&apos;, &apos;&apos;, &apos;&apos;);
+        $size = $width * $height;
+        if($size &gt; 16777216 || $size &lt; 16 ) {
+            return false;
+        } elseif($ext == &apos;swf&apos; &amp;&amp; $type != 4 &amp;&amp; $type != 13) {
+            return false;
+        } elseif($isimage &amp;&amp; !in_array($type, array(1,2,3,6,13))) {
+            return false;
+        } elseif(!$allowswf &amp;&amp; ($ext == &apos;swf&apos; || $type == 4 || $type == 13)) {
+            return false;
+        }
+        return $imageinfo;
+    } else {
+        return false;
+    }
+}
+</code></pre><p>这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。</p>
+<p><a href="http://www.muquan.net/article/390.html" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/10/21/life-is-too-short-it-is-what-we-want/" itemprop="url">
                   Facebook一组火爆漫画：生命太短暂，什么才是我们想要的？
                 </a>
@@ -1483,116 +1614,6 @@ echo $getonelm;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/07/13/wechat-miniprogramcustomer-service-message/" itemprop="url">
-                  微信小程序客服消息
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-13T11:59:18+08:00" content="2018-07-13">
-              2018-07-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="微信小程序消息服务接入步骤"><a href="#微信小程序消息服务接入步骤" class="headerlink" title="微信小程序消息服务接入步骤"></a>微信小程序消息服务接入步骤</h3><p>1、填写服务器配置；<br><br>2、验证服务器地址的有效性；<br><br>3、依据接口文档实现业务逻辑。</p>
-<h3 id="客服消息之接收消息和事件"><a href="#客服消息之接收消息和事件" class="headerlink" title="客服消息之接收消息和事件"></a>客服消息之接收消息和事件</h3><p>1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。<br><br>2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。</p>
-<h3 id="客服消息之发送客服消息"><a href="#客服消息之发送客服消息" class="headerlink" title="客服消息之发送客服消息"></a>客服消息之发送客服消息</h3><p>1、发送消息格式固定为JSON格式。<br><br>2、支持4种消息类型：<strong>文本</strong>，<strong>图片</strong>，<strong>图文链接</strong>，<strong>小程序卡片</strong>。<br><br>3、touser等于发送消息的FromUsername，即微信用户的openid。<br><br>4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。</p>
-<p>2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html" target="_blank" rel="external">接入微信小程序消息服务</a></p>
-<p>2、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html" target="_blank" rel="external">接收消息和事件</a></p>
-<p>3、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html" target="_blank" rel="external">发送客服消息</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1639,7 +1660,7 @@ echo $getonelm;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1720,7 +1741,7 @@ echo $getonelm;
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
