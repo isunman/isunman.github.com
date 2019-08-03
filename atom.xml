@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2019-07-31T10:10:53.448Z</updated>
+  <updated>2019-08-03T09:06:09.485Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>九酷音乐真实地址解析</title>
+    <link href="http://isunman.com/2019/08/03/9-cool-music-real-address-resolution/"/>
+    <id>http://isunman.com/2019/08/03/9-cool-music-real-address-resolution/</id>
+    <published>2019-08-03T09:06:48.203Z</published>
+    <updated>2019-08-03T09:06:09.485Z</updated>
+    
+    <content type="html">&lt;p&gt;九酷音乐的资源还是比较全的；九酷的历史也比较长，从2002年就有了。&lt;br&gt;许多其他音乐平台，例如QQ音乐、虾米音乐、网易云音乐上面没有的，这里也可以找到。&lt;/p&gt;
+&lt;p&gt;缺点就是网页上广告太多，而且页面也不好看。目前也没有PC客户端，手机客户端iOS版一直不能用（数据加载失败，2年多未更新了）。&lt;/p&gt;
+&lt;p&gt;九酷音乐官网：&lt;a href=&quot;http://www.9ku.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.9ku.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;选择一首歌曲，如 &lt;a href=&quot;http://m.9ku.com/play/86179.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://m.9ku.com/play/86179.htm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其中，86179就是歌曲的id号&lt;/p&gt;
+&lt;p&gt;真实地址为：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://mp3.9ku.com/m4a/86179.m4a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp3.9ku.com/m4a/86179.m4a&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://111.161.71.11/mp3.9ku.com/m4a/86179.m4a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://111.161.71.11/mp3.9ku.com/m4a/86179.m4a&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;九酷音乐的资源还是比较全的；九酷的历史也比较长，从2002年就有了。&lt;br&gt;许多其他音乐平台，例如QQ音乐、虾米音乐、网易云音乐上面没有的，这里也可以找到。&lt;/p&gt;
+&lt;p&gt;缺点就是网页上广告太多，而且页面也不好看。目前也没有PC客户端，手机客户端iOS版一直不能用（数据加载
+    
+    </summary>
+    
+      <category term="网络工具" scheme="http://isunman.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="音乐" scheme="http://isunman.com/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+  </entry>
   
   <entry>
     <title>对多维数组进行排序的函数array_multisort</title>
@@ -1292,39 +1323,6 @@ echo $file_contents;
       <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
       <category term="开源" scheme="http://isunman.com/tags/%E5%BC%80%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>推荐三个很赞的英语学习网站</title>
-    <link href="http://isunman.com/2017/07/20/recommend-the-three-favorite-english-learning-sites/"/>
-    <id>http://isunman.com/2017/07/20/recommend-the-three-favorite-english-learning-sites/</id>
-    <published>2017-07-19T16:49:10.994Z</published>
-    <updated>2017-07-19T16:49:10.638Z</updated>
-    
-    <content type="html">&lt;p&gt;很多读者都知道我有在学英语，对英语蠢蠢欲动的同学，纷纷给我留言，问我是怎么学习的？有什么学习渠道、学习技巧之类的么？哪有啊，我也就是随意瞎学，没有任何技巧而言，我总觉得学习哪有那么多所谓的学习技巧、学习捷径，就按部就班默默的坚持就好了。&lt;/p&gt;
-&lt;p&gt;但是虽说没什么学习捷径，但是我却发现一些不错的英语学习网站，我自己也亲自试用过，非常好用，所以推荐给大家。&lt;/p&gt;
-&lt;h3 id=&quot;1-Lingvist&quot;&gt;&lt;a href=&quot;#1-Lingvist&quot; class=&quot;headerlink&quot; title=&quot;1. Lingvist&quot;&gt;&lt;/a&gt;1. Lingvist&lt;/h3&gt;&lt;p&gt;这个网站其实不只是可以用来学英语，还可以学习其他语言，如西班牙语、法语、俄罗斯语等等，号称学习一门语言只需要 200 小时，不过它牛逼的是号称通过人工智能运算、大数据，推荐最适合你水平的教材，确定你的学习进度，了解你的学习难点，你的每一步动作与习惯，都会影响它的教程，亲身尝试确实很好用，适合各种水平的英语学习者，推荐大家使用。&lt;/p&gt;
-&lt;p&gt;地址：&lt;a href=&quot;http://lingvist.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lingvist.com&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-多邻国&quot;&gt;&lt;a href=&quot;#2-多邻国&quot; class=&quot;headerlink&quot; title=&quot;2. 多邻国&quot;&gt;&lt;/a&gt;2. 多邻国&lt;/h3&gt;&lt;p&gt;这个网站只能学习英语和西班牙语，而且一进入网站就看到很醒目的一行字「学习语言，免费永远」，对很多人应该非常有吸引力，这个网站的特色除了免费外，通过游戏化的方式让你学习，让你的学习不那么枯燥，很有趣，让你更容易的坚持下去，也推荐大家尝试下。&lt;/p&gt;
-&lt;p&gt;地址：&lt;a href=&quot;http://www.duolingo.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.duolingo.cn&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-TED&quot;&gt;&lt;a href=&quot;#3-TED&quot; class=&quot;headerlink&quot; title=&quot;3. TED&quot;&gt;&lt;/a&gt;3. TED&lt;/h3&gt;&lt;p&gt;想要学习的话，上面两个网站就差不多够了，适用不同的人与很多场景了，推荐多了，反而很纠结，但是除了以上两个网站之外，再推荐一个 TED，TED 大家应该都听过吧？是美国的一个非盈利组织，涉及技术、娱乐、设计，TED 演讲都很有质量，是学习英语的绝佳之地，你现在英语水平听不懂也没关系，我一直觉得英语本身其实不难，只不过我们没有这种氛围，没那种感觉，所以我没事就会听下 TED 的演讲，即使听不懂，但是时间长了，我相信自己会有点感觉得的。&lt;/p&gt;
-&lt;p&gt;地址：&lt;a href=&quot;https://www.ted.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.ted.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以上就是我推荐给大家的三个不错的英语学习网站，拿去不谢，对了，补充下，他们都有相对应的 App，手机上学习一样方便。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;相信我，学点英语没坏处，任何时候学，都不晚！&lt;/strong&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;很多读者都知道我有在学英语，对英语蠢蠢欲动的同学，纷纷给我留言，问我是怎么学习的？有什么学习渠道、学习技巧之类的么？哪有啊，我也就是随意瞎学，没有任何技巧而言，我总觉得学习哪有那么多所谓的学习技巧、学习捷径，就按部就班默默的坚持就好了。&lt;/p&gt;
-&lt;p&gt;但是虽说没什么学习捷径
-    
-    </summary>
-    
-      <category term="工作学习" scheme="http://isunman.com/categories/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="英语" scheme="http://isunman.com/tags/%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
