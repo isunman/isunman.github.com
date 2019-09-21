@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术概念," />
+  <meta name="keywords" content="PHP算法," />
 
 
 
@@ -59,19 +59,37 @@
 
 
 
-<meta name="description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
+<meta name="description" content="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  
+&amp;lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解同步和异步">
-<meta property="og:url" content="http://isunman.com/2018/07/01/understand-synchronization-and-asynchrony/index.html">
+<meta property="og:title" content="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法">
+<meta property="og:url" content="http://isunman.com/2019/09/21/php-probability-of-winning-algorithm/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
-<meta property="og:updated_time" content="2018-06-30T17:04:43.809Z">
+<meta property="og:description" content="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  
+&amp;lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数">
+<meta property="og:updated_time" content="2019-09-21T09:48:34.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解同步和异步">
-<meta name="twitter:description" content="一种说法老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。
-“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接">
+<meta name="twitter:title" content="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法">
+<meta name="twitter:description" content="php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  
+&amp;lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数">
 
 
 
@@ -89,7 +107,7 @@
   };
 </script>
 
-  <title> 理解同步和异步 | 太阳侠 </title>
+  <title> php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +257,7 @@
             
             
               
-                理解同步和异步
+                php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
               
             
           </h1>
@@ -251,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-01T01:04:43+08:00" content="2018-07-01">
-              2018-07-01
+            <time itemprop="dateCreated" datetime="2019-09-21T17:48:34+08:00" content="2019-09-21">
+              2019-09-21
             </time>
           </span>
 
@@ -296,26 +314,81 @@
       
 
       
-        <h3 id="一种说法"><a href="#一种说法" class="headerlink" title="一种说法"></a>一种说法</h3><p>老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。</p>
-<p>“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接听状态(即：打不通，联系不上)，为了拿到生活费，你就不停的oncall、等待，最终可能不能及时要到生活费，导致你今天要做的事都没有完成，而白白花掉了时间。</p>
-<p>“异步”就是：在你打完电话发现没人接听时，猜想：对方可能在忙，暂时无法接听电话，所以你发了一条短信(或者语音留言，亦或是其他的方式)通知对方后便忙其他要紧的事了；这时你就不需要持续不断的拨打电话，还可以做其他事情；待一定时间后，对方看到你的留言便回复响应你，当然对方可能转钱也可能不转钱。但是整个一天下来，你还做了很多事情。 或者说你找室友临时借了一笔钱，又开始happy的上学时光了。</p>
-<p>简而言之，言而总之：同步就是我强依赖你(对方)，我必须等到你的回复，才能做出下一步响应。即我的操作(行程)是顺序执行的，中间少了哪一步都不可以，或者说中间哪一步出错都不可以，类似于编程中程序被解释器顺序执行一样；同时如果我没有收到你的回复，我就一直处于等待、也就是阻塞的状态。 异步则相反，我并不强依赖你，我对你响应的时间也不敏感，无论你返回还是不返回，我都能继续运行；你响应并返回了，我就继续做之前的事情，你没有响应，我就做其他的事情。也就是说我不存在等待对方的概念，我就是非阻塞的。</p>
-<p>从上面的例子来看：同步似乎等价于阻塞，异步则等价于非阻塞。其实有些狭义，但不可否认的是，在一定情况下，确实可以这么认为；因为同步一定存在着阻塞状态，而异步一定不存在非阻塞的状态。 但是不是就是说 同步调用 == 阻塞调用呢？然并不是；阻塞和非阻塞强调的是程序在等待调用结果（消息，返回值）时的状态.  阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。 对于同步调用来说，很多时候当前线程还是激活的状态，只是从逻辑上当前函数没有返回而已，即同步等待时什么都不干，白白占用着资源。</p>
-<h3 id="另一个有趣的例子"><a href="#另一个有趣的例子" class="headerlink" title="另一个有趣的例子"></a>另一个有趣的例子</h3><p>老张爱喝茶，废话不说，煮开水。</p>
-<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
-<p>1 老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻</p>
-<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
-<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大</p>
-<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。</p>
-<p>普通水壶，同步；响水壶，异步。</p>
-<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
-<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
-<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由调用者主动等待这个调用的结果。而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>原文链接：<a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="external">知乎问答</a></p>
+        <p>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  </p>
+<pre><code>&lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，
+ * 在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。
+ * 这样 筛选到最终，总会有一个数满足要求。
+ * 就相当于去一个箱子里摸东西，
+ * 第一个不是，第二个不是，第三个还不是，那最后一个一定是。
+ * 这个算法简单，而且效率非常 高，
+ * 关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。
+ */
+function get_rand($proArr) { 
+$result = &apos;&apos;;  
+//概率数组的总概率精度 
+$proSum = array_sum($proArr);  
+//概率数组循环 
+foreach ($proArr as $key =&gt; $proCur) { 
+$randNum = mt_rand(1, $proSum); 
+if ($randNum &lt;= $proCur) { 
+$result = $key; 
+break; 
+} else { 
+$proSum -= $proCur; 
+}         
+} 
+unset ($proArr);  
+return $result; 
+} 
 
+
+/*
+ * 奖项数组
+ * 是一个二维数组，记录了所有本次抽奖的奖项信息，
+ * 其中id表示中奖等级，prize表示奖品，v表示中奖概率。
+ * 注意其中的v必须为整数，你可以将对应的 奖项的v设置成0，即意味着该奖项抽中的几率是0，
+ * 数组中v的总和（基数），基数越大越能体现概率的准确性。
+ * 本例中v的总和为100，那么平板电脑对应的 中奖概率就是1%，
+ * 如果v的总和是10000，那中奖概率就是万分之一了。
+ * 
+ */
+$prize_arr = array( 
+&apos;0&apos; =&gt; array(&apos;id&apos;=&gt;1,&apos;prize&apos;=&gt;&apos;平板电脑&apos;,&apos;v&apos;=&gt;1), 
+&apos;1&apos; =&gt; array(&apos;id&apos;=&gt;2,&apos;prize&apos;=&gt;&apos;数码相机&apos;,&apos;v&apos;=&gt;5), 
+&apos;2&apos; =&gt; array(&apos;id&apos;=&gt;3,&apos;prize&apos;=&gt;&apos;音箱设备&apos;,&apos;v&apos;=&gt;10), 
+&apos;3&apos; =&gt; array(&apos;id&apos;=&gt;4,&apos;prize&apos;=&gt;&apos;4G优盘&apos;,&apos;v&apos;=&gt;12), 
+&apos;4&apos; =&gt; array(&apos;id&apos;=&gt;5,&apos;prize&apos;=&gt;&apos;10Q币&apos;,&apos;v&apos;=&gt;22), 
+&apos;5&apos; =&gt; array(&apos;id&apos;=&gt;6,&apos;prize&apos;=&gt;&apos;下次没准就能中哦&apos;,&apos;v&apos;=&gt;50), 
+); 
+
+/*
+ * 每次前端页面的请求，PHP循环奖项设置数组，
+ * 通过概率计算函数get_rand获取抽中的奖项id。
+ * 将中奖奖品保存在数组$res[&apos;yes&apos;]中，
+ * 而剩下的未中奖的信息保存在$res[&apos;no&apos;]中，
+ * 最后输出json个数数据给前端页面。
+ */
+foreach ($prize_arr as $key =&gt; $val) { 
+$arr[$val[&apos;id&apos;]] = $val[&apos;v&apos;]; 
+} 
+$rid = get_rand($arr); //根据概率获取奖项id 
+
+$res[&apos;yes&apos;] = $prize_arr[$rid-1][&apos;prize&apos;]; //中奖项 
+unset($prize_arr[$rid-1]); //将中奖项从数组中剔除，剩下未中奖项 
+shuffle($prize_arr); //打乱数组顺序 
+for($i=0;$i&lt;count($prize_arr);$i++){ 
+$pr[] = $prize_arr[$i][&apos;prize&apos;]; 
+} 
+$res[&apos;no&apos;] = $pr; 
+print_r($res); 
+?&gt;
+</code></pre>
       
     </div>
 
@@ -323,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术概念/" rel="tag">#技术概念</a>
+            <a href="/tags/php算法/" rel="tag">#PHP算法</a>
           
         </div>
       
@@ -332,17 +405,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/06/mvc_mode/" rel="next" title="MVC详解">
-                <i class="fa fa-chevron-left"></i> MVC详解
+              <a href="/2019/09/21/Explanation-of-id-number/" rel="next" title="身份证号码解释，附：18位公民身份证编码规则">
+                <i class="fa fa-chevron-left"></i> 身份证号码解释，附：18位公民身份证编码规则
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/02/How-to-use-the-watch-star-and-fork-in-github/" rel="prev" title="如何用好 github 中的 watch、star、fork">
-                如何用好 github 中的 watch、star、fork <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +555,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一种说法"><span class="nav-number">1.</span> <span class="nav-text">一种说法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另一个有趣的例子"><span class="nav-number">2.</span> <span class="nav-text">另一个有趣的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
