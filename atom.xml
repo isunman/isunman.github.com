@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2019-09-21T09:48:34.260Z</updated>
+  <updated>2019-10-11T08:05:57.538Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>下载海外地区的AppStore中应用的方法</title>
+    <link href="http://isunman.com/2019/10/11/download-the-application-method-in-the-AppStore-of-overseas-region/"/>
+    <id>http://isunman.com/2019/10/11/download-the-application-method-in-the-AppStore-of-overseas-region/</id>
+    <published>2019-10-11T08:05:57.603Z</published>
+    <updated>2019-10-11T08:05:57.538Z</updated>
+    
+    <content type="html">&lt;p&gt;下载海外地区的AppStore中应用的方法&lt;/p&gt;
+&lt;h3 id=&quot;1、官方应用直接下载&quot;&gt;&lt;a href=&quot;#1、官方应用直接下载&quot; class=&quot;headerlink&quot; title=&quot;1、官方应用直接下载&quot;&gt;&lt;/a&gt;1、官方应用直接下载&lt;/h3&gt;&lt;p&gt;如果是下载指定地区的AppStore中的应用，必须拥有此地区的AppID，然后使用此AppID登录AppStore即可随意下载免费应用。&lt;/p&gt;
+&lt;p&gt;如果需要下载收费的应用，又没有开通对应的支付方式（例如对应国家地区的信用卡），可以去TB上购买一个Gifts Card充值到账户余额。然后再操作。&lt;/p&gt;
+&lt;h3 id=&quot;2、一些共享AppID的平台&quot;&gt;&lt;a href=&quot;#2、一些共享AppID的平台&quot; class=&quot;headerlink&quot; title=&quot;2、一些共享AppID的平台&quot;&gt;&lt;/a&gt;2、一些共享AppID的平台&lt;/h3&gt;&lt;p&gt;有专门做这个的网站或者论坛帖子，前几年多些。&lt;/p&gt;
+&lt;p&gt;还有公众号（例如：野泽科技、绝世废柴、DoMiSo），现在以公众号居多。&lt;/p&gt;
+&lt;h3 id=&quot;3、第三方平台安装&quot;&gt;&lt;a href=&quot;#3、第三方平台安装&quot; class=&quot;headerlink&quot; title=&quot;3、第三方平台安装&quot;&gt;&lt;/a&gt;3、第三方平台安装&lt;/h3&gt;&lt;p&gt;使用爱思助手或PP助手直接连接电脑安装对应的应用。&lt;/p&gt;
+&lt;h3 id=&quot;4、怎么获得一个美国区的AppID&quot;&gt;&lt;a href=&quot;#4、怎么获得一个美国区的AppID&quot; class=&quot;headerlink&quot; title=&quot;4、怎么获得一个美国区的AppID&quot;&gt;&lt;/a&gt;4、怎么获得一个美国区的AppID&lt;/h3&gt;&lt;p&gt;这个目前已经有很多方法，而且各种方法都在与时俱进地跟新。可以直接搜索“知乎”等，就有许多可行的方案。
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下载海外地区的AppStore中应用的方法&lt;/p&gt;
+&lt;h3 id=&quot;1、官方应用直接下载&quot;&gt;&lt;a href=&quot;#1、官方应用直接下载&quot; class=&quot;headerlink&quot; title=&quot;1、官方应用直接下载&quot;&gt;&lt;/a&gt;1、官方应用直接下载&lt;/h3&gt;&lt;p&gt;如果是下载指定地区
+    
+    </summary>
+    
+      <category term="网络工具" scheme="http://isunman.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+      <category term="科学上网" scheme="http://isunman.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法</title>
@@ -1172,154 +1205,6 @@ date
     
     
       <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php发送get、post请求的6种方法简明总结</title>
-    <link href="http://isunman.com/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/"/>
-    <id>http://isunman.com/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/</id>
-    <published>2018-05-25T04:37:16.668Z</published>
-    <updated>2018-05-25T04:37:16.629Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;方法1-用file-get-contents-以get方式获取内容：&quot;&gt;&lt;a href=&quot;#方法1-用file-get-contents-以get方式获取内容：&quot; class=&quot;headerlink&quot; title=&quot;方法1: 用file_get_contents 以get方式获取内容：&quot;&gt;&lt;/a&gt;方法1: 用file_get_contents 以get方式获取内容：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-$url=&amp;apos;http://www.yongdev.com/&amp;apos;;  
-$html = file_get_contents($url);
-echo $html;
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法2-用fopen打开url-以get方式获取内容：&quot;&gt;&lt;a href=&quot;#方法2-用fopen打开url-以get方式获取内容：&quot; class=&quot;headerlink&quot; title=&quot;方法2: 用fopen打开url, 以get方式获取内容：&quot;&gt;&lt;/a&gt;方法2: 用fopen打开url, 以get方式获取内容：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-$fp = fopen($url, &amp;apos;r&amp;apos;);
-stream_get_meta_data($fp);
-while(!feof($fp)) {
-$result .= fgets($fp, 1024);
-}
-echo &amp;quot;url body: $result&amp;quot;;
-fclose($fp);
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法3：用file-get-contents函数-以post方式获取url&quot;&gt;&lt;a href=&quot;#方法3：用file-get-contents函数-以post方式获取url&quot; class=&quot;headerlink&quot; title=&quot;方法3：用file_get_contents函数,以post方式获取url&quot;&gt;&lt;/a&gt;方法3：用file_get_contents函数,以post方式获取url&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-$data = array (&amp;apos;foo&amp;apos; =&amp;gt; &amp;apos;bar&amp;apos;);
-$data = http_build_query($data);
-
-$opts = array (
-‘http&amp;apos; =&amp;gt; array (
-&amp;apos;method&amp;apos; =&amp;gt; &amp;apos;POST&amp;apos;,
-&amp;apos;header&amp;apos;=&amp;gt; &amp;quot;Content-type: application/x-www-form-urlencodedrn&amp;quot;,
-&amp;quot;Content-Length: &amp;quot; . strlen($data) . &amp;quot;rn&amp;quot;,
-&amp;apos;content&amp;apos; =&amp;gt; $data
-)
-);
-
-$context = stream_context_create($opts);
-$html = file_get_contents(&amp;apos;http://www.yongdev.com/test.html&amp;apos;, false, $context);
-
-echo $html;
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启&quot;&gt;&lt;a href=&quot;#方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启&quot; class=&quot;headerlink&quot; title=&quot;方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启&quot;&gt;&lt;/a&gt;方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-function get_url ($url,$cookie=false)
-{
-$url = parse_url($url);
-$query = $url[path].&amp;quot;?&amp;quot;.$url[query];
-echo &amp;quot;Query:&amp;quot;.$query;
-$fp = fsockopen( $url[host], $url[port]?$url[port]:80 , $errno, $errstr, 30);
-if (!$fp) {
-return false;
-} else {
-$request = &amp;quot;GET $query HTTP/1.1rn&amp;quot;;
-$request .= &amp;quot;Host: $url[host]rn&amp;quot;;
-$request .= &amp;quot;Connection: Closern&amp;quot;;
-if($cookie) $request.=&amp;quot;Cookie:  $cookien&amp;quot;;
-$request.=&amp;quot;rn&amp;quot;;
-fwrite($fp,$request);
-while(!@feof($fp)) {
-$result .= @fgets($fp, 1024);
-}
-fclose($fp);
-return $result;
-}
-}
-//获取url的html部分，去掉header
-function GetUrlHTML($url,$cookie=false)
-{
-$rowdata = get_url($url,$cookie);
-if($rowdata)
-{
-$body= stristr($rowdata,&amp;quot;rnrn&amp;quot;);
-$body=substr($body,4,strlen($body));
-return $body;
-}
-
-return false;
-}
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body&quot;&gt;&lt;a href=&quot;#方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body&quot; class=&quot;headerlink&quot; title=&quot;方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body&quot;&gt;&lt;/a&gt;方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-function HTTP_Post($URL,$data,$cookie, $referrer=”&amp;quot;)
-{
-
-// parsing the given URL
-$URL_Info=parse_url($URL);
-
-// Building referrer
-if($referrer==&amp;quot;&amp;quot;) // if not given use this script as referrer
-$referrer=&amp;quot;111&amp;quot;;
-
-// making string from $data
-foreach($data as $key=&amp;gt;$value)
-$values[]=&amp;quot;$key=&amp;quot;.urlencode($value);
-$data_string=implode(&amp;quot;&amp;amp;&amp;quot;,$values);
-
-// Find out which port is needed – if not given use standard (=80)
-if(!isset($URL_Info[&amp;quot;port&amp;quot;]))
-$URL_Info[&amp;quot;port&amp;quot;]=80;
-
-// building POST-request:
-$request.=&amp;quot;POST &amp;quot;.$URL_Info[&amp;quot;path&amp;quot;].&amp;quot; HTTP/1.1n&amp;quot;;
-$request.=&amp;quot;Host: &amp;quot;.$URL_Info[&amp;quot;host&amp;quot;].&amp;quot;n&amp;quot;;
-$request.=&amp;quot;Referer: $referern&amp;quot;;
-$request.=&amp;quot;Content-type: application/x-www-form-urlencodedn&amp;quot;;
-$request.=&amp;quot;Content-length: &amp;quot;.strlen($data_string).&amp;quot;n&amp;quot;;
-$request.=&amp;quot;Connection: closen&amp;quot;;
-
-$request.=&amp;quot;Cookie:  $cookien&amp;quot;;
-
-$request.=&amp;quot;n&amp;quot;;
-$request.=$data_string.&amp;quot;n&amp;quot;;
-
-$fp = fsockopen($URL_Info[&amp;quot;host&amp;quot;],$URL_Info[&amp;quot;port&amp;quot;]);
-fputs($fp, $request);
-while(!feof($fp)) {
-$result .= fgets($fp, 1024);
-}
-fclose($fp);
-
-return $result;
-}
-
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展&quot;&gt;&lt;a href=&quot;#方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展&quot; class=&quot;headerlink&quot; title=&quot;方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展&quot;&gt;&lt;/a&gt;方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-$ch = curl_init();
-$timeout = 5;
-curl_setopt ($ch, CURLOPT_URL, &amp;apos;http://www.yongdev.com/&amp;apos;);
-curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-$file_contents = curl_exec($ch);
-curl_close($ch);
-
-echo $file_contents;
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;说一下实践中遇到的问题：&lt;/p&gt;
-&lt;p&gt;使用“方法6的curl方法”过程中时执行特别慢。改为“方法3：用file_get_contents函数,以post方式”后速度快很多。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;方法1-用file-get-contents-以get方式获取内容：&quot;&gt;&lt;a href=&quot;#方法1-用file-get-contents-以get方式获取内容：&quot; class=&quot;headerlink&quot; title=&quot;方法1: 用file_get_contents 
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
   </entry>
   

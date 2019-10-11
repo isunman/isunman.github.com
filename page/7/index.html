@@ -244,6 +244,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/29/blog-by-hexo-github-step2/" itemprop="url">
+                  用Hexo和Github搭建博客（2）：部署到Github
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-29T10:51:01+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Github设置"><a href="#Github设置" class="headerlink" title="Github设置"></a>Github设置</h2><p>1、必须已经有一个Github账号（没有的去面壁）</p>
+<p>2、创建一个新的 repositories</p>
+<p>Github页面分为个人主页和项目主页，此处建立个人主页为例：</p>
+<p>例如我的用户名为isunman，则新建的 repositories 名称为 “isunman.Github.com”</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>1、编辑 Hexo 根目录下的_config.yml文件。</p>
+<p>在文件的最后，代码修改为：</p>
+<pre><code>deploy:
+
+    type: git
+
+    repo: https://Github.com/isunman/isunman.Github.com.git
+
+    branch: master
+</code></pre><p>你在部署时，要把下面的 isunman 都换成你的账号名。</p>
+<blockquote>
+<p>这个是Github官方规定的,必须要名字和账号名保持一致！要不然到后面部署完毕后，你会发现找不到这个页面的。</p>
+<p>User &amp; Organization Pages live in a special repository dedicated to Github Pages files. You will need to name this repository with the account name.</p>
+<p>You must use the username.Github.io naming scheme.<br>Content from the master branch will be used to build and<br>publish your Github Pages site.<br>You can only use your own account name for a User or Organization Page repository. A repository like joe/bob.Github.io will not build a User Pages site.When User Pages are built, they are available at http(s)://<username>.Github.io.</username></p>
+</blockquote>
+<p>执行下列指令即可完成部署。</p>
+<p>先生成静态文件</p>
+<p><code>hexo g</code></p>
+<p>再部署到 Github</p>
+<p><code>hexo d</code></p>
+<p>Hexo常用命令</p>
+<pre><code>hexo g == hexo generate 
+hexo d == hexo deploy 
+hexo s == hexo server 
+hexo n == hexo new
+</code></pre><p>记住：</p>
+<p>（1）每次修改本地文件后，需要 hexo g 才能重新生成静态文件。</p>
+<p>（2）每次使用命令时，都要在 Hexo 根目录下。</p>
+<p>至此，我们的博客已经完成，在浏览器访问 isunman.Github.io 即可查看效果！</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/29/blog-by-hexo-github-step1/" itemprop="url">
                   用Hexo和Github搭建博客（1）：安装环境
                 </a>
@@ -512,7 +647,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -529,7 +664,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
