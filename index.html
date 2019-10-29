@@ -258,7 +258,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-10-29T12:05:38+08:00" content="2019-10-29">
+            <time itemprop="dateCreated" datetime="2019-10-29T12:31:05+08:00" content="2019-10-29">
               2019-10-29
             </time>
           </span>
@@ -311,42 +311,85 @@
 <p>为了让普通人了解 AI 的进展，谷歌的机器学习专家格里高利·萨普诺夫（Grigory Sapunov）写了一篇通俗的<a href="https://blog.inten.to/welcome-to-the-simulation-dd0d8cb6534d" target="_blank" rel="external">科普文章</a>，介绍目前的技术成果。这盘文章非常精彩，有大量的图片，加上一些简单的解释，信息量很大，对于了解技术动态很有帮助。</p>
 <p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102802.jpg" alt=""></p>
 <p>（图2：谷歌的机器学习专家格里高利·萨普诺夫）<br>下面就是那篇文章的翻译，比较长，图片很多，但是值得耐心读完。我保证，有些内容一定会让你感到吃惊。</p>
-<p>一、图像处理<br>人工智能最早是从图像处理开始的。图像处理是一种常见任务，智能要求比较高，需要使用 PhotoShop 之类的软件人工编辑，一般的算法解决不了。<br>1.1 对象补全<br>2017年，日本科学家提出了一种<a href="https://web.archive.org/web/20191016060740/http://iizuka.cs.tsukuba.ac.jp/projects/completion/en/" target="_blank" rel="external">图像的对象补全模型</a>。经过训练，模型可以补全图片上缺失的部分。</p>
+<p>##一、图像处理</p>
+<p>人工智能最早是从图像处理开始的。图像处理是一种常见任务，智能要求比较高，需要使用 PhotoShop 之类的软件人工编辑，一般的算法解决不了。</p>
+<p>###1.1 对象补全</p>
+<p>2017年，日本科学家提出了一种<a href="https://web.archive.org/web/20191016060740/http://iizuka.cs.tsukuba.ac.jp/projects/completion/en/" target="_blank" rel="external">图像的对象补全模型</a>。经过训练，模型可以补全图片上缺失的部分。</p>
 <p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102803.jpg" alt=""></p>
 <p>（图3：图像的对象补全模型）<br>上图中，左边是原始图片，然后把中间的花盆涂掉，输入模型。模型会自动补全缺失的部分（右图），由于它不知道，那里有一个花盆，所以只会根据没有涂掉的部分，补上地板和扶手。<br>下面是更多这样的例子。涂掉的部分，模型都会补上，哪怕它根本不知道，那里原来是什么。</p>
 <p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102804.jpg" alt=""></p>
 <p>（图4：图像的对象补全示例）<br>Nvidia 公司将这个模型做成了产品，放在网上。你可以到<a href="https://www.nvidia.com/research/inpainting/" target="_blank" rel="external">它的网站</a>，上传一张图片，然后涂掉一些部分，让网站替你补全。</p>
 <p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102805.jpg" alt=""></p>
-<p>（图5：涂掉沙发旁边的茶几）<br>有的<a href="https://www.slashgear.com/adobes-entry-level-photoshop-elements-gets-new-ai-powered-tools-04594215/" target="_blank" rel="external">图像软件</a>已经应用这项技术，去除人像脸上的斑点。<br>1.2 背景处理<br>背景处理指的是，将前景物体从图片分离出来，再对背景进行加工。目前，已经有很好的智能算法可以去除图片背景。</p>
-<p>（图6：图片的背景去除）<br>在模型内部，图片会转成像素的色块。下图的浅紫色块就是前景物体，然后再把这些像素提取出来。</p>
-<p>（图7：背景去除模型）<br>这个模型也已经做成了线上服务，大家可以上传图片感受一下它的效果。<br>既然可以去除背景，那当然就可以更改背景，为图片合成打开方便之门。</p>
-<p>（图8：更改图片背景）<br>1.3 样式转换<br>人工智能还能够识别图片的风格样式（即像素的变化规律），将其套用在另一张图片。</p>
-<p>（图9：原始图片）<br>上图是两张原始图片，第一张是梵高的名画《星夜》，第二张是普通的风景照。模型可以提取第一张图片的风格，将其套用在第二张图片。</p>
-<p>（图10：套用梵高的《星夜》风格）<br>其他名画的风格，同样可以套用。</p>
-<p>（图11：图像的风格转换）<br>1.4 图像着色<br>一旦识别出图片中的物体，模型就可以统计不同物体的像素颜色规律，然后就能推断黑白照片可能的颜色，从而实现照片着色。</p>
-<p>（图12：黑白照片的着色）<br>网上也有免费的着色服务，大家可以体验。<br>二、GAN 方法<br>2.1 简介<br>GAN 是”生成对抗网络”（Generative Adversarial Networks）的缩写，它是一种革命性的提升人工智能模型效果、生成虚拟图像的方法。<br>原理很简单，就是两个神经网络互相对抗。一个神经网络负责生成虚拟图像，另一个神经网络负责鉴定假图像。理论上，如果 GAN 训练成功，那么生成的假图像与真图像将无法区分。2014年，这种方法提出以后，快速发展，目前效果已经可以乱真。</p>
-<p>（图13：GAN 的改进速度）<br>上图是过去几年，GAN 生成的虚拟人像。可以发现，每过一年，图片越来越大，细节越来越丰富，越发接近真实人像。它的工作方法也是如此，第一步生成一张低分辨率图片，然后慢慢放大，依次修改每一个像素，确定该像素怎样才能最大概率通过鉴定器。<br>GAN 不仅能生成虚拟图像，还能生成音频、文本，甚至是化合物分子。AI 模型可能创造出来的任何东西，都能使用 GAN 提升效果。GitHub 有一个仓库，专门收集不同用途的 GAN，目前已经有500多种模型。<br>2.2 StyleGAN<br>目前，生成虚拟人像效果最好的模型是 Nvidia 公司的 StyleGAN。下面两张头像，你能分辨哪张是虚拟的，哪张是真实的吗？</p>
-<p>（图14：GAN 虚拟人像）<br>这是网站截图，你可以去那个网站试试看，能猜对多少张。需要提醒的是，这是2018年底的模型产物，随着模型进化，迟早将无法分辨真假。<br>GAN 不仅能生成人像，实际上可以生成任何图像。下面是 BigGAN 模型生成的各种图像，图片里的东西都是不存在的。</p>
-<p>（图15：BigGAN 模型生成的虚拟图像）<br>2.3 图像翻译<br>一种图像通过 GAN 转变为另一种图像，称为图像翻译。空拍照片变成地图、黑白照片变成彩色照片，都是图像翻译的例子。<br>pix2pix 是图像翻译的开源工具，它可以让黑夜变成白天，示意图变成实物图。</p>
-<p>（图16：图像翻译）<br>也可以让春天变成夏天，晴天变成雨天。</p>
-<p>（图17：图像翻译）<br>图像翻译的难点在于，它需要有成对的示例（源图像和相应的目标图像），告诉模型应该怎么翻译，这些示例可能很难创建。但是反过来，只要有配对的示例，就可以翻译图像，不管这种翻译是否合理。下面是两只小猫翻译成对应的豹子、狮子和老虎。</p>
-<p>（图18：图像翻译）<br>CycleGAN 模型还支持跨域翻译，将照片翻译成油画，斑马翻译成马。</p>
-<p>（图19：图像翻译）<br>Nvidia 开发了一个 GauGAN 软件，可以在线试玩。用户只需手绘一个示意图，软件就能生成一张对应的风景照片。</p>
-<p>（图20：GauGAN 将示意图变成照片）<br>2.4 人像翻译<br>图像翻译用于人像，就是人像翻译。StarGAN 模型可以翻译面部属性，比如头发的颜色、性别、肤色等。</p>
-<p>（图21：脸部属性的改变）<br>还可以把其他人的表情移植到你的脸上，下图分别是愤怒、快乐、恐惧的表情翻译。</p>
-<p>（图22：表情的改变）<br>SC-FEGAN 是人像翻译的开源软件，可以让你编辑人像，比如加上刘海，去除墨镜等等。</p>
-<p>（图23：人像编辑软件 SC_FEGAN）<br>2.5 文本到图像生成<br>GAN 最惊人的成果之一，大概就是根据文本生成图像。用户提供一个句子，软件生成对应的图像。原始文本”一只红中透白、长着非常短的尖嘴的鸟”，可以得到下面的图像。</p>
-<p>（图24：根据文本生成图像）<br>论文甚至提到，将来存在可能，根据剧本直接生成一部电影。<br>三、视频生成<br>图像处理逐渐成熟以后，人工智能业界的关注重点就转向了视频。<br>从一个视频生成另一个视频，这就叫视频翻译。目前比较成熟的两个方向是运动传递和面部交换。<br>3.1 运动传递<br>运动传递指的是，将一个人的动作（包括身体、眼睛或嘴唇的动作）翻译到另一个人身上，使得另一个人出现一模一样的动作。<br>2018的论文《Everybody Dance Now》，给出了一个模型，可以将舞者的动作移植到任何人身上。</p>
-<p>（图25：动作传递）<br>上图中，蓝衣女子的跳舞视频完全是假的，是将左上角舞者的动作套用在她身上，自动生成的。<br>NVIDIA 公司的开源软件 vid2vid 更为强大，可以生成高分辨率的、连贯的逼真视频。</p>
-<p>（图26：vidvid 软件）<br>3.2 脸部生成<br>脸部生成指的是，根据一张脸的表情和动作，重建另一张脸。最著名的例子是虚拟的奥巴马演讲。2017年，华盛顿大学的团队发表了一段奥巴马的演讲视频。奥巴马其实从未做过这个演讲，是将别人的表情和口型套在他脸上生成的，语音也是合成的。</p>
-<p>（图27：虚拟的奥巴马演讲）<br>这种伪造的视频被称为 Deepfake（深度伪造），具有很大的欺骗性，许多在线平台都禁止上传这一类视频。</p>
-<p>（图28：伪造的特朗普演讲，将喜剧演员的表演变成特朗普自己在讲。）</p>
-<p>（图29：深度伪造的普京）<br>2018年出现的《深度视频肖像》更进了一步，生成的视频不局限于虚拟的面部表情，还会头部旋转、眼睛凝视和眨眼，是 3D 的肖像重构。</p>
-<p>（图29：深度视频肖像）<br>这些技术还在继续发展，现在你可以给出任意文本，从任何你指定的对象嘴里说出来。甚至只凭一张照片，就可以生成一段表情变化的视频。</p>
-<p>（图30：一张照片生成各种表情）<br>3.3 中国的实践<br>国内的人工智能视频生成，并不落后于国外。换脸应用 ZAO 只需用户上传一张照片，就能把影视剧主人公的脸换掉，好像你本人在表演电影一样。</p>
-<p>（图31：换脸应用 ZAO）<br>2018年，新华社与搜狗合作推出了虚拟新闻主播，具有真人的形象，带有声音、面部表情和动作，在电视上播报新闻，已经开通了英语、俄语、阿拉伯语的主持人。</p>
-<p>（图32：虚拟新闻主播）<br>3.4 视频渲染<br>除了视频生成，人工智能在视频渲染上也取得了很大进展。<br>Nvidia 公司2018年展示了实时光线追踪 RTX 技术。这项技术用人工智能预测光线的变化，从而不用耗费大量计算去追踪光线，因此可以实时渲染出高画质的 3D 动画。这对于视频游戏有重大意义。<br>下面是使用这项技术的 Unreal Engine 4，实时渲染出的一个女子的3D 动画，可以一边计算生成，一边播放，完全没有延迟。</p>
-<p>（图32：实时渲染的动画）<br>实时光线追踪技术还可以用于自动驾驶，在白天和黑夜的不同时间，不同的路面和环境下，预测出暴雨、风雪和强烈的眩光导致的光线变化，对驾驶做出调整。<br>四、文本和声音处理<br>最后，简单提一下，人工智能在文本和声音处理领域的进展。<br>（1）语音合成<br>谷歌在2018年推出了智能助手 Google Duplex，它会根据你的日程，自动打电话去餐厅订座位。谷歌 CEO 说，这个机器人的对话能力，使得对方完全没有发现这是机器人。<br>（2）音乐合成<br>OpenAI 基金会推出的 MuseNet，通过学习数十万段 MIDI 音乐，能做到使用10种乐器，生成一段4分钟的音乐。它的官网有这些音乐的下载，相当动听。<br>（3）自动评论<br>据报道，使用 Yelp 网站的数据进行训练的模型，可以自动生成餐厅评论。<br>我喜欢这个地方，一直来这里已经好多年。它是与朋友和家人相聚的好地点，我喜欢这里的食物和服务，从未有过糟糕的经历。<br>我吃了烤蔬菜汉堡配薯条！哦，很好吃！<br>我和我的家人都是这个地方的忠实粉丝。工作人员超级好，食物也很棒。鸡肉很好，大蒜酱也很完美。配水果的冰淇淋也很美味。强烈推荐！<br>上面这些都是机器生成的评论。<br>（4）智能邮件<br>Gmail 会根据电子邮件的来信内容，自动生成三种不同的回复，让用户选择。如果只是简单回应，用户不用自己动手写。<br>Gmail 的另一个功能是，根据用户已经写的内容，预测接下来会写的句子，供用户选择。<br>五、小结<br>毫无疑问，人工智能是很酷的技术，创造出了神奇的产品，有着难以想象的巨大应用前景。<br>但是，人工智能也是一把双刃剑，模糊了现实与虚拟之间的界限，把我们带上了一条不可预测的道路。作为个人，了解这些技术的进展和潜力，有助于保持一份清醒，享受技术之福的同时，避免它带来的一些副作用。<br>（正文完）</p>
+<p>（图5：涂掉沙发旁边的茶几）<br>有的<a href="https://www.slashgear.com/adobes-entry-level-photoshop-elements-gets-new-ai-powered-tools-04594215/" target="_blank" rel="external">图像软件</a>已经应用这项技术，去除人像脸上的斑点。</p>
+<p>###1.2 背景处理</p>
+<p>背景处理指的是，将前景物体从图片分离出来，再对背景进行加工。目前，已经有<a href="https://towardsdatascience.com/background-removal-with-deep-learning-c4f2104b3157" target="_blank" rel="external">很好的智能算法</a>可以去除图片背景。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102806.jpg" alt=""><br>（图6：图片的背景去除）<br>在模型内部，图片会转成像素的色块。下图的浅紫色块就是前景物体，然后再把这些像素提取出来。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102807.jpg" alt=""><br>（图7：背景去除模型）<br>这个模型也已经做成了<a href="https://www.remove.bg/" target="_blank" rel="external">线上服务</a>，大家可以上传图片感受一下它的效果。<br>既然可以去除背景，那当然就可以<a href="https://arxiv.org/abs/1703.03872" target="_blank" rel="external">更改背景</a>，为图片合成打开方便之门。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102808.jpg" alt=""><br>（图8：更改图片背景）</p>
+<h3 id="1-3-样式转换"><a href="#1-3-样式转换" class="headerlink" title="1.3 样式转换"></a>1.3 样式转换</h3><p>人工智能还能够<a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf" target="_blank" rel="external">识别</a>图片的风格样式（即像素的变化规律），将其套用在另一张图片。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102809.jpg" alt=""><br>（图9：原始图片）<br>上图是两张原始图片，第一张是梵高的名画《星夜》，第二张是普通的风景照。模型可以提取第一张图片的风格，将其套用在第二张图片。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102810.jpg" alt=""><br>（图10：套用梵高的《星夜》风格）<br>其他名画的风格，同样可以套用。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102812.jpg" alt=""><br><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102813.jpg" alt=""><br>（图11：图像的风格转换）</p>
+<p>###1.4 图像着色</p>
+<p>一旦识别出图片中的物体，模型就可以统计不同物体的像素颜色规律，然后就能推断黑白照片可能的颜色，从而实现<a href="https://arxiv.org/abs/1603.06668" target="_blank" rel="external">照片着色</a>。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102814.jpg" alt=""><br>（图12：黑白照片的着色）<br>网上也有免费的<a href="https://colorize.cc/" target="_blank" rel="external">着色服务</a>，大家可以体验。</p>
+<p>##二、GAN 方法</p>
+<p>2.1 简介<br>GAN 是”生成对抗网络”（Generative Adversarial Networks）的缩写，它是一种革命性的提升人工智能模型效果、生成虚拟图像的方法。<br>原理很简单，就是两个神经网络互相对抗。一个神经网络负责生成虚拟图像，另一个神经网络负责鉴定假图像。理论上，如果 GAN 训练成功，那么生成的假图像与真图像将无法区分。2014年，这种方法提出以后，快速发展，目前效果已经可以乱真。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102815.jpg" alt=""><br>（图13：GAN 的改进速度）<br>上图是过去几年，GAN 生成的虚拟人像。可以发现，每过一年，图片越来越大，细节越来越丰富，越发接近真实人像。它的工作方法也是如此，第一步生成一张低分辨率图片，然后慢慢放大，依次修改每一个像素，确定该像素怎样才能最大概率通过鉴定器。<br>GAN 不仅能生成虚拟图像，还能生成音频、文本，甚至是化合物分子。AI 模型可能创造出来的任何东西，都能使用 GAN 提升效果。GitHub 有一个<a href="https://github.com/hindupuravinash/the-gan-zoo" target="_blank" rel="external">仓库</a>，专门收集不同用途的 GAN，目前已经有500多种模型。</p>
+<p>###2.2 StyleGAN</p>
+<p>目前，生成虚拟人像效果最好的模型是 Nvidia 公司的 <a href="https://arxiv.org/abs/1812.04948" target="_blank" rel="external">StyleGAN</a>。下面两张头像，你能分辨哪张是虚拟的，哪张是真实的吗？</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102816.jpg" alt=""><br>（图14：GAN 虚拟人像）<br>这是网站截图，你可以去<a href="http://www.whichfaceisreal.com/" target="_blank" rel="external">那个网站</a>试试看，能猜对多少张。需要提醒的是，这是2018年底的模型产物，随着模型进化，迟早将无法分辨真假。<br>GAN 不仅能生成人像，实际上可以生成任何图像。下面是 <a href="https://arxiv.org/abs/1809.11096" target="_blank" rel="external">BigGAN</a> 模型生成的各种图像，图片里的东西都是不存在的。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102817.jpg" alt=""><br>（图15：BigGAN 模型生成的虚拟图像）</p>
+<p>###2.3 图像翻译</p>
+<p>一种图像通过 GAN 转变为另一种图像，称为图像翻译。空拍照片变成地图、黑白照片变成彩色照片，都是图像翻译的例子。<br><a href="https://github.com/phillipi/pix2pix" target="_blank" rel="external">pix2pix</a> 是图像翻译的开源工具，它可以让黑夜变成白天，示意图变成实物图。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102818.jpg" alt=""><br>（图16：图像翻译）<br>也可以让春天变成夏天，晴天变成雨天。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102819.jpg" alt=""><br>（图17：图像翻译）<br>图像翻译的难点在于，它需要有成对的示例（源图像和相应的目标图像），告诉模型应该怎么翻译，这些示例可能很难创建。但是反过来，只要有配对的示例，就可以翻译图像，不管这种翻译是否合理。下面是两只小猫翻译成对应的豹子、狮子和老虎。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102820.jpg" alt=""><br>（图18：图像翻译）<br><a href="https://github.com/junyanz/CycleGAN" target="_blank" rel="external">CycleGAN</a> 模型还支持跨域翻译，将照片翻译成油画，斑马翻译成马。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102821.jpg" alt=""><br>（图19：图像翻译）<br>Nvidia 开发了一个 <a href="http://nvidia-research-mingyuliu.com/gaugan" target="_blank" rel="external">GauGAN</a> 软件，可以在线试玩。用户只需手绘一个示意图，软件就能生成一张对应的风景照片。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102829.jpg" alt=""><br>（图20：GauGAN 将示意图变成照片）</p>
+<p>###2.4 人像翻译</p>
+<p>图像翻译用于人像，就是人像翻译。<a href="https://github.com/yunjey/StarGAN" target="_blank" rel="external">StarGAN</a> 模型可以翻译面部属性，比如头发的颜色、性别、肤色等。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102824.jpg" alt=""><br>（图21：脸部属性的改变）<br>还可以把其他人的表情移植到你的脸上，下图分别是愤怒、快乐、恐惧的表情翻译。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102825.jpg" alt=""><br>（图22：表情的改变）<br><a href="https://github.com/run-youngjoo/SC-FEGAN" target="_blank" rel="external">SC-FEGAN</a> 是人像翻译的开源软件，可以让你编辑人像，比如加上刘海，去除墨镜等等。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102826.jpg" alt=""><br><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102827.jpg" alt=""><br>（图23：人像编辑软件 SC_FEGAN）</p>
+<p>###2.5 文本到图像生成</p>
+<p>GAN 最惊人的成果之一，大概就是<a href="https://arxiv.org/abs/1711.10485" target="_blank" rel="external">根据文本生成图像</a>。用户提供一个句子，软件生成对应的图像。原始文本”一只红中透白、长着非常短的尖嘴的鸟”，可以得到下面的图像。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102830.jpg" alt=""><br>（图24：根据文本生成图像）<br>论文甚至提到，将来存在可能，根据剧本直接生成一部电影。</p>
+<p>##三、视频生成</p>
+<p>图像处理逐渐成熟以后，人工智能业界的关注重点就转向了视频。<br>从一个视频生成另一个视频，这就叫视频翻译。目前比较成熟的两个方向是运动传递和面部交换。</p>
+<p>###3.1 运动传递</p>
+<p>运动传递指的是，将一个人的动作（包括身体、眼睛或嘴唇的动作）翻译到另一个人身上，使得另一个人出现一模一样的动作。<br>2018的论文<a href="https://carolineec.github.io/everybody_dance_now/" target="_blank" rel="external">《Everybody Dance Now》</a>，给出了一个模型，可以将舞者的动作移植到任何人身上。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102831.jpg" alt=""><br>（图25：动作传递）<br>上图中，蓝衣女子的跳舞视频完全是假的，是将左上角舞者的动作套用在她身上，自动生成的。<br>NVIDIA 公司的开源软件 <a href="https://github.com/NVIDIA/vid2vid" target="_blank" rel="external">vid2vid</a> 更为强大，可以生成高分辨率的、连贯的逼真视频。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102832.jpg" alt=""><br>（图26：vidvid 软件）</p>
+<p>###3.2 脸部生成</p>
+<p>脸部生成指的是，根据一张脸的表情和动作，重建另一张脸。最著名的例子是虚拟的<a href="http://grail.cs.washington.edu/projects/AudioToObama/" target="_blank" rel="external">奥巴马演讲</a>。2017年，华盛顿大学的团队发表了一段奥巴马的演讲视频。奥巴马其实从未做过这个演讲，是将别人的表情和口型套在他脸上生成的，语音也是合成的。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102833.jpg" alt=""><br>（图27：虚拟的奥巴马演讲）<br>这种伪造的视频被称为 <a href="https://en.wikipedia.org/wiki/Deepfake" target="_blank" rel="external">Deepfake</a>（深度伪造），具有很大的欺骗性，许多在线平台都禁止上传这一类视频。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102834.jpg" alt=""><br>（图28：伪造的特朗普演讲，将喜剧演员的表演变成特朗普自己在讲。）</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102837.jpg" alt=""><br>（图29：深度伪造的普京）<br>2018年出现的<a href="https://web.stanford.edu/~zollhoef/papers/SG2018_DeepVideo/page.html" target="_blank" rel="external">《深度视频肖像》</a>更进了一步，生成的视频不局限于虚拟的面部表情，还会头部旋转、眼睛凝视和眨眼，是 3D 的肖像重构。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102835.jpg" alt=""><br>（图29：深度视频肖像）<br>这些技术还在<a href="https://www.theverge.com/2019/6/10/18659432/deepfake-ai-fakes-tech-edit-video-by-typing-new-words" target="_blank" rel="external">继续发展</a>，现在你可以给出任意文本，从任何你指定的对象嘴里说出来。甚至只凭一张照片，就可以生成一段表情变化的视频。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102836.jpg" alt=""><br>（图30：一张照片生成各种表情）</p>
+<p>###3.3 中国的实践</p>
+<p>国内的人工智能视频生成，并不落后于国外。换脸应用 ZAO 只需用户上传一张照片，就能把影视剧主人公的脸换掉，好像你本人在表演电影一样。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102838.jpg" alt=""><br>（图31：换脸应用 ZAO）<br>2018年，新华社与搜狗合作推出了虚拟新闻主播，具有真人的形象，带有声音、面部表情和动作，在电视上播报新闻，已经开通了英语、俄语、阿拉伯语的主持人。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102839.jpg" alt=""><br>（图32：虚拟新闻主播）</p>
+<p>###3.4 视频渲染</p>
+<p>除了视频生成，人工智能在视频渲染上也取得了很大进展。<br>Nvidia 公司2018年展示了实时光线追踪 RTX 技术。这项技术用人工智能预测光线的变化，从而不用耗费大量计算去追踪光线，因此可以实时渲染出高画质的 3D 动画。这对于视频游戏有重大意义。<br>下面是使用这项技术的 Unreal Engine 4，实时渲染出的一个女子的<a href="https://venturebeat.com/2018/03/21/epic-games-shows-off-amazing-real-time-digital-human-with-siren-demo/" target="_blank" rel="external">3D 动画</a>，可以一边计算生成，一边播放，完全没有延迟。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102840.jpg" alt=""><br><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102841.jpg" alt=""><br>（图32：实时渲染的动画）<br>实时光线追踪技术还可以用于自动驾驶，在白天和黑夜的不同时间，不同的路面和环境下，预测出暴雨、风雪和强烈的眩光导致的光线变化，对驾驶做出调整。</p>
+<p>##四、文本和声音处理</p>
+<p>最后，简单提一下，人工智能在文本和声音处理领域的进展。</p>
+<p>####（1）语音合成<br>谷歌在2018年推出了智能助手 Google Duplex，它会根据你的日程，自动打电话去餐厅订座位。谷歌 CEO 说，这个机器人的对话能力，使得对方完全没有发现这是机器人。</p>
+<p>####（2）音乐合成<br>OpenAI 基金会推出的 <a href="https://openai.com/blog/musenet/" target="_blank" rel="external">MuseNet</a>，通过学习数十万段 MIDI 音乐，能做到使用10种乐器，生成一段4分钟的音乐。它的官网有这些音乐的下载，相当动听。</p>
+<p>####（3）自动评论<br>据报道，使用 Yelp 网站的数据进行训练的模型，可以自动生成餐厅评论。</p>
+<pre><code>- 我喜欢这个地方，一直来这里已经好多年。它是与朋友和家人相聚的好地点，我喜欢这里的食物和服务，从未有过糟糕的经历。
+- 我吃了烤蔬菜汉堡配薯条！哦，很好吃！
+- 我和我的家人都是这个地方的忠实粉丝。工作人员超级好，食物也很棒。鸡肉很好，大蒜酱也很完美。配水果的冰淇淋也很美味。强烈推荐！
+- 上面这些都是机器生成的评论。
+</code></pre><p>####（4）智能邮件<br>Gmail 会根据电子邮件的来信内容，自动生成<a href="https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/" target="_blank" rel="external">三种不同的回复</a>，让用户选择。如果只是简单回应，用户不用自己动手写。<br>Gmail 的<a href="https://ai.googleblog.com/2018/05/smart-compose-using-neural-networks-to.html" target="_blank" rel="external">另一个功能</a>是，根据用户已经写的内容，预测接下来会写的句子，供用户选择。</p>
+<p>##五、小结</p>
+<p>毫无疑问，人工智能是很酷的技术，创造出了神奇的产品，有着难以想象的巨大应用前景。<br>但是，人工智能也是一把双刃剑，模糊了现实与虚拟之间的界限，把我们带上了一条不可预测的道路。作为个人，了解这些技术的进展和潜力，有助于保持一份清醒，享受技术之福的同时，避免它带来的一些副作用。<br>（正文完）</p>
+<hr>
+<p>References</p>
+<p>[1] 拍卖: <a href="https://www.christies.com/features/A-collaboration-between-two-artists-one-human-one-a-machine-9332-1.aspx" target="_blank" rel="external">https://www.christies.com/features/A-collaboration-between-two-artists-one-human-one-a-machine-9332-1.aspx</a><br>[2] 科普文章: <a href="https://blog.inten.to/welcome-to-the-simulation-dd0d8cb6534d" target="_blank" rel="external">https://blog.inten.to/welcome-to-the-simulation-dd0d8cb6534d</a><br>[3] 腾讯课堂: <a href="https://ke.qq.com/?utm=ruanyifeng" target="_blank" rel="external">https://ke.qq.com/?utm=ruanyifeng</a><br>[4] “腾讯课堂101计划”: <a href="https://edu.qq.com/a/20190119/005414.htm" target="_blank" rel="external">https://edu.qq.com/a/20190119/005414.htm</a><br>[5] 图像的对象补全模型: <a href="https://web.archive.org/web/20191016060740/http://iizuka.cs.tsukuba.ac.jp/projects/completion/en/" target="_blank" rel="external">https://web.archive.org/web/20191016060740/http://iizuka.cs.tsukuba.ac.jp/projects/completion/en/</a><br>[6] 它的网站: <a href="https://www.nvidia.com/research/inpainting/" target="_blank" rel="external">https://www.nvidia.com/research/inpainting/</a><br>[7] 图像软件: <a href="https://www.slashgear.com/adobes-entry-level-photoshop-elements-gets-new-ai-powered-tools-04594215/" target="_blank" rel="external">https://www.slashgear.com/adobes-entry-level-photoshop-elements-gets-new-ai-powered-tools-04594215/</a><br>[8] 很好的智能算法: <a href="https://towardsdatascience.com/background-removal-with-deep-learning-c4f2104b3157" target="_blank" rel="external">https://towardsdatascience.com/background-removal-with-deep-learning-c4f2104b3157</a><br>[9] 线上服务: <a href="https://www.remove.bg/" target="_blank" rel="external">https://www.remove.bg/</a><br>[10] 更改背景: <a href="https://arxiv.org/abs/1703.03872" target="_blank" rel="external">https://arxiv.org/abs/1703.03872</a><br>[11] 识别: <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf" target="_blank" rel="external">https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf</a><br>[12] 照片着色: <a href="https://arxiv.org/abs/1603.06668" target="_blank" rel="external">https://arxiv.org/abs/1603.06668</a><br>[13] 着色服务: <a href="https://colorize.cc/" target="_blank" rel="external">https://colorize.cc/</a><br>[14] 仓库: <a href="https://github.com/hindupuravinash/the-gan-zoo" target="_blank" rel="external">https://github.com/hindupuravinash/the-gan-zoo</a><br>[15] StyleGAN: <a href="https://arxiv.org/abs/1812.04948" target="_blank" rel="external">https://arxiv.org/abs/1812.04948</a><br>[16] 那个网站: <a href="http://www.whichfaceisreal.com/" target="_blank" rel="external">http://www.whichfaceisreal.com/</a><br>[17] BigGAN: <a href="https://arxiv.org/abs/1809.11096" target="_blank" rel="external">https://arxiv.org/abs/1809.11096</a><br>[18] pix2pix: <a href="https://github.com/phillipi/pix2pix" target="_blank" rel="external">https://github.com/phillipi/pix2pix</a><br>[19] CycleGAN: <a href="https://github.com/junyanz/CycleGAN" target="_blank" rel="external">https://github.com/junyanz/CycleGAN</a><br>[20] GauGAN: <a href="http://nvidia-research-mingyuliu.com/gaugan" target="_blank" rel="external">http://nvidia-research-mingyuliu.com/gaugan</a><br>[21] StarGAN: <a href="https://github.com/yunjey/StarGAN" target="_blank" rel="external">https://github.com/yunjey/StarGAN</a><br>[22] SC-FEGAN: <a href="https://github.com/run-youngjoo/SC-FEGAN" target="_blank" rel="external">https://github.com/run-youngjoo/SC-FEGAN</a><br>[23] 根据文本生成图像: <a href="https://arxiv.org/abs/1711.10485" target="_blank" rel="external">https://arxiv.org/abs/1711.10485</a><br>[24] 《Everybody Dance Now》: <a href="https://carolineec.github.io/everybody_dance_now/" target="_blank" rel="external">https://carolineec.github.io/everybody_dance_now/</a><br>[25] vid2vid: <a href="https://github.com/NVIDIA/vid2vid" target="_blank" rel="external">https://github.com/NVIDIA/vid2vid</a><br>[26] 奥巴马演讲: <a href="http://grail.cs.washington.edu/projects/AudioToObama/" target="_blank" rel="external">http://grail.cs.washington.edu/projects/AudioToObama/</a><br>[27] Deepfake: <a href="https://en.wikipedia.org/wiki/Deepfake" target="_blank" rel="external">https://en.wikipedia.org/wiki/Deepfake</a><br>[28] 《深度视频肖像》: <a href="https://web.stanford.edu/~zollhoef/papers/SG2018_DeepVideo/page.html" target="_blank" rel="external">https://web.stanford.edu/~zollhoef/papers/SG2018_DeepVideo/page.html</a><br>[29] 继续发展: <a href="https://www.theverge.com/2019/6/10/18659432/deepfake-ai-fakes-tech-edit-video-by-typing-new-words" target="_blank" rel="external">https://www.theverge.com/2019/6/10/18659432/deepfake-ai-fakes-tech-edit-video-by-typing-new-words</a><br>[30] 3D 动画: <a href="https://venturebeat.com/2018/03/21/epic-games-shows-off-amazing-real-time-digital-human-with-siren-demo/" target="_blank" rel="external">https://venturebeat.com/2018/03/21/epic-games-shows-off-amazing-real-time-digital-human-with-siren-demo/</a><br>[31] MuseNet: <a href="https://openai.com/blog/musenet/" target="_blank" rel="external">https://openai.com/blog/musenet/</a><br>[32] 自动生成: <a href="https://www.theverge.com/2017/8/31/16232180/ai-fake-reviews-yelp-amazon" target="_blank" rel="external">https://www.theverge.com/2017/8/31/16232180/ai-fake-reviews-yelp-amazon</a><br>[33] 三种不同的回复: <a href="https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/" target="_blank" rel="external">https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/</a><br>[34] 另一个功能: <a href="https://ai.googleblog.com/2018/05/smart-compose-using-neural-networks-to.html" target="_blank" rel="external">https://ai.googleblog.com/2018/05/smart-compose-using-neural-networks-to.html</a></p>
 <hr>
 <p>严重声明：本文转载自阮一峰的博客，版权属于原作者所有。<br><a href="http://www.ruanyifeng.com/blog/2019/10/artificial-intelligenence.html" target="_blank" rel="external">原文链接</a>。</p>
 
