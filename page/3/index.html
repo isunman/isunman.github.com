@@ -244,6 +244,130 @@
             
               
                 
+                <a class="post-title-link" href="/2018/05/25/Linux-timing-tasks-are-accurate-to-seconds/" itemprop="url">
+                  linux定时任务精确到秒
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-25T12:55:50+08:00" content="2018-05-25">
+              2018-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux的crond定时任务只能精确到分，如何才能做到控制到秒呢?答案肯定是明显的，实现的方法也有多种，但本文只介绍一个相对来说比较精确，又方便的写法。</p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>增加一个普通的定时器脚本de &gt;dateTime.shde&gt;，放于/目录</p>
+<p>此脚本用于打印当前系统时间</p>
+<pre><code>#!/bin/bash
+date
+</code></pre><p>增加可执行权限</p>
+<pre><code>chmod +x /dateTime.sh
+</code></pre><p>编写定时任务</p>
+<pre><code>crontab -e
+</code></pre><p>脚本内容为</p>
+<pre><code>*/1 * * * * /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 5 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 10 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 15 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 20 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+...
+*/1 * * * * sleep 55 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+</code></pre><p>重新启动crond</p>
+<pre><code>service crond restart
+</code></pre><p>程序就会每5秒执行一次脚本，并将时间写入/dateTime.log文件中</p>
+<h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>主要是使用linux的sleep控制脚本执行时间</p>
+<p><a href="http://blog.csdn.net/dounine/article/details/53357113" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/" itemprop="url">
                   php发送get、post请求的6种方法简明总结
                 </a>
@@ -1579,126 +1703,6 @@ location ~ \.php$ {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/10/osx-common-software-index/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （目录）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-10T22:12:24+08:00" content="2016-06-10">
-              2016-06-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（目录）"><a href="#OS-X-常用-必备软件推荐-——-（目录）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （目录）"></a>OS X 常用 / 必备软件推荐 —— （目录）</h3><p>我是一个 Web 开发者，也做一点 iOS 开发，摄影、绘画、无损音乐均有所涉猎。</p>
-<p>我整理了一下自己电脑上，几年来安装的软件，选取其中我觉得受益颇多的软件，来给大家介绍一番。因为总数太多，所以只能分成几个分页了。</p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/CommonSoftware_0001.png" alt=""></p>
-<ol>
-<li><p><a href="/2016/06/02/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools/">OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）</a></p>
-</li>
-<li><p><a href="/2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/">OS X 常用 / 必备软件推荐 —— （作图与绘画）</a></p>
-</li>
-<li><p><a href="/2016/06/05/osx-common_software-prerequisites-recommended--video-and-audio/">OS X 常用 / 必备软件推荐 —— （AV*Video 影Audio 音）</a></p>
-</li>
-<li><p><a href="/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/">OS X 常用 / 必备软件推荐 —— （读与写）</a></p>
-</li>
-<li><p><a href="2016/06/10/osx-common_software-prerequisites-recommended--developer-and-web/">OS X 常用 / 必备软件推荐 —— （Developer/ web）</a></p>
-</li>
-<li><p><a href="/2016/06/10/osx-common_software-prerequisites-recommended--menubar-gadgets/">OS X 常用 / 必备软件推荐 —— （Menubar 小工具篇）</a></p>
-</li>
-</ol>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21265787" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1745,7 +1749,7 @@ location ~ \.php$ {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1753,7 +1757,7 @@ location ~ \.php$ {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1762,7 +1766,7 @@ location ~ \.php$ {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

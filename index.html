@@ -244,6 +244,152 @@
             
               
                 
+                <a class="post-title-link" href="/2019/10/29/AI-progress-you-do-not-know/" itemprop="url">
+                  你所不知道的 AI 进展
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-10-29T12:05:38+08:00" content="2019-10-29">
+              2019-10-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未来探索/" itemprop="url" rel="index">
+                    <span itemprop="name">未来探索</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>人工智能现在是常见词汇，大多数人可能觉得，它是学术话题，跟普通人关系不大。<br>但是实际上，AI 突飞猛进，正在脱离实验室，进入日常生活。仅仅是现在的技术水平，就足以模糊现实与虚拟的界限，颠覆一般民众的认知。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102801.jpg" alt=""></p>
+<p>（图1：2018年10月，世界第一幅 AI 生成的肖像画，<a href="https://www.christies.com/features/A-collaboration-between-two-artists-one-human-one-a-machine-9332-1.aspx" target="_blank" rel="external">拍卖</a>成交价43.25万美元。）</p>
+<p>为了让普通人了解 AI 的进展，谷歌的机器学习专家格里高利·萨普诺夫（Grigory Sapunov）写了一篇通俗的<a href="https://blog.inten.to/welcome-to-the-simulation-dd0d8cb6534d" target="_blank" rel="external">科普文章</a>，介绍目前的技术成果。这盘文章非常精彩，有大量的图片，加上一些简单的解释，信息量很大，对于了解技术动态很有帮助。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102802.jpg" alt=""></p>
+<p>（图2：谷歌的机器学习专家格里高利·萨普诺夫）<br>下面就是那篇文章的翻译，比较长，图片很多，但是值得耐心读完。我保证，有些内容一定会让你感到吃惊。</p>
+<p>一、图像处理<br>人工智能最早是从图像处理开始的。图像处理是一种常见任务，智能要求比较高，需要使用 PhotoShop 之类的软件人工编辑，一般的算法解决不了。<br>1.1 对象补全<br>2017年，日本科学家提出了一种<a href="https://web.archive.org/web/20191016060740/http://iizuka.cs.tsukuba.ac.jp/projects/completion/en/" target="_blank" rel="external">图像的对象补全模型</a>。经过训练，模型可以补全图片上缺失的部分。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102803.jpg" alt=""></p>
+<p>（图3：图像的对象补全模型）<br>上图中，左边是原始图片，然后把中间的花盆涂掉，输入模型。模型会自动补全缺失的部分（右图），由于它不知道，那里有一个花盆，所以只会根据没有涂掉的部分，补上地板和扶手。<br>下面是更多这样的例子。涂掉的部分，模型都会补上，哪怕它根本不知道，那里原来是什么。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102804.jpg" alt=""></p>
+<p>（图4：图像的对象补全示例）<br>Nvidia 公司将这个模型做成了产品，放在网上。你可以到<a href="https://www.nvidia.com/research/inpainting/" target="_blank" rel="external">它的网站</a>，上传一张图片，然后涂掉一些部分，让网站替你补全。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201910/bg2019102805.jpg" alt=""></p>
+<p>（图5：涂掉沙发旁边的茶几）<br>有的<a href="https://www.slashgear.com/adobes-entry-level-photoshop-elements-gets-new-ai-powered-tools-04594215/" target="_blank" rel="external">图像软件</a>已经应用这项技术，去除人像脸上的斑点。<br>1.2 背景处理<br>背景处理指的是，将前景物体从图片分离出来，再对背景进行加工。目前，已经有很好的智能算法可以去除图片背景。</p>
+<p>（图6：图片的背景去除）<br>在模型内部，图片会转成像素的色块。下图的浅紫色块就是前景物体，然后再把这些像素提取出来。</p>
+<p>（图7：背景去除模型）<br>这个模型也已经做成了线上服务，大家可以上传图片感受一下它的效果。<br>既然可以去除背景，那当然就可以更改背景，为图片合成打开方便之门。</p>
+<p>（图8：更改图片背景）<br>1.3 样式转换<br>人工智能还能够识别图片的风格样式（即像素的变化规律），将其套用在另一张图片。</p>
+<p>（图9：原始图片）<br>上图是两张原始图片，第一张是梵高的名画《星夜》，第二张是普通的风景照。模型可以提取第一张图片的风格，将其套用在第二张图片。</p>
+<p>（图10：套用梵高的《星夜》风格）<br>其他名画的风格，同样可以套用。</p>
+<p>（图11：图像的风格转换）<br>1.4 图像着色<br>一旦识别出图片中的物体，模型就可以统计不同物体的像素颜色规律，然后就能推断黑白照片可能的颜色，从而实现照片着色。</p>
+<p>（图12：黑白照片的着色）<br>网上也有免费的着色服务，大家可以体验。<br>二、GAN 方法<br>2.1 简介<br>GAN 是”生成对抗网络”（Generative Adversarial Networks）的缩写，它是一种革命性的提升人工智能模型效果、生成虚拟图像的方法。<br>原理很简单，就是两个神经网络互相对抗。一个神经网络负责生成虚拟图像，另一个神经网络负责鉴定假图像。理论上，如果 GAN 训练成功，那么生成的假图像与真图像将无法区分。2014年，这种方法提出以后，快速发展，目前效果已经可以乱真。</p>
+<p>（图13：GAN 的改进速度）<br>上图是过去几年，GAN 生成的虚拟人像。可以发现，每过一年，图片越来越大，细节越来越丰富，越发接近真实人像。它的工作方法也是如此，第一步生成一张低分辨率图片，然后慢慢放大，依次修改每一个像素，确定该像素怎样才能最大概率通过鉴定器。<br>GAN 不仅能生成虚拟图像，还能生成音频、文本，甚至是化合物分子。AI 模型可能创造出来的任何东西，都能使用 GAN 提升效果。GitHub 有一个仓库，专门收集不同用途的 GAN，目前已经有500多种模型。<br>2.2 StyleGAN<br>目前，生成虚拟人像效果最好的模型是 Nvidia 公司的 StyleGAN。下面两张头像，你能分辨哪张是虚拟的，哪张是真实的吗？</p>
+<p>（图14：GAN 虚拟人像）<br>这是网站截图，你可以去那个网站试试看，能猜对多少张。需要提醒的是，这是2018年底的模型产物，随着模型进化，迟早将无法分辨真假。<br>GAN 不仅能生成人像，实际上可以生成任何图像。下面是 BigGAN 模型生成的各种图像，图片里的东西都是不存在的。</p>
+<p>（图15：BigGAN 模型生成的虚拟图像）<br>2.3 图像翻译<br>一种图像通过 GAN 转变为另一种图像，称为图像翻译。空拍照片变成地图、黑白照片变成彩色照片，都是图像翻译的例子。<br>pix2pix 是图像翻译的开源工具，它可以让黑夜变成白天，示意图变成实物图。</p>
+<p>（图16：图像翻译）<br>也可以让春天变成夏天，晴天变成雨天。</p>
+<p>（图17：图像翻译）<br>图像翻译的难点在于，它需要有成对的示例（源图像和相应的目标图像），告诉模型应该怎么翻译，这些示例可能很难创建。但是反过来，只要有配对的示例，就可以翻译图像，不管这种翻译是否合理。下面是两只小猫翻译成对应的豹子、狮子和老虎。</p>
+<p>（图18：图像翻译）<br>CycleGAN 模型还支持跨域翻译，将照片翻译成油画，斑马翻译成马。</p>
+<p>（图19：图像翻译）<br>Nvidia 开发了一个 GauGAN 软件，可以在线试玩。用户只需手绘一个示意图，软件就能生成一张对应的风景照片。</p>
+<p>（图20：GauGAN 将示意图变成照片）<br>2.4 人像翻译<br>图像翻译用于人像，就是人像翻译。StarGAN 模型可以翻译面部属性，比如头发的颜色、性别、肤色等。</p>
+<p>（图21：脸部属性的改变）<br>还可以把其他人的表情移植到你的脸上，下图分别是愤怒、快乐、恐惧的表情翻译。</p>
+<p>（图22：表情的改变）<br>SC-FEGAN 是人像翻译的开源软件，可以让你编辑人像，比如加上刘海，去除墨镜等等。</p>
+<p>（图23：人像编辑软件 SC_FEGAN）<br>2.5 文本到图像生成<br>GAN 最惊人的成果之一，大概就是根据文本生成图像。用户提供一个句子，软件生成对应的图像。原始文本”一只红中透白、长着非常短的尖嘴的鸟”，可以得到下面的图像。</p>
+<p>（图24：根据文本生成图像）<br>论文甚至提到，将来存在可能，根据剧本直接生成一部电影。<br>三、视频生成<br>图像处理逐渐成熟以后，人工智能业界的关注重点就转向了视频。<br>从一个视频生成另一个视频，这就叫视频翻译。目前比较成熟的两个方向是运动传递和面部交换。<br>3.1 运动传递<br>运动传递指的是，将一个人的动作（包括身体、眼睛或嘴唇的动作）翻译到另一个人身上，使得另一个人出现一模一样的动作。<br>2018的论文《Everybody Dance Now》，给出了一个模型，可以将舞者的动作移植到任何人身上。</p>
+<p>（图25：动作传递）<br>上图中，蓝衣女子的跳舞视频完全是假的，是将左上角舞者的动作套用在她身上，自动生成的。<br>NVIDIA 公司的开源软件 vid2vid 更为强大，可以生成高分辨率的、连贯的逼真视频。</p>
+<p>（图26：vidvid 软件）<br>3.2 脸部生成<br>脸部生成指的是，根据一张脸的表情和动作，重建另一张脸。最著名的例子是虚拟的奥巴马演讲。2017年，华盛顿大学的团队发表了一段奥巴马的演讲视频。奥巴马其实从未做过这个演讲，是将别人的表情和口型套在他脸上生成的，语音也是合成的。</p>
+<p>（图27：虚拟的奥巴马演讲）<br>这种伪造的视频被称为 Deepfake（深度伪造），具有很大的欺骗性，许多在线平台都禁止上传这一类视频。</p>
+<p>（图28：伪造的特朗普演讲，将喜剧演员的表演变成特朗普自己在讲。）</p>
+<p>（图29：深度伪造的普京）<br>2018年出现的《深度视频肖像》更进了一步，生成的视频不局限于虚拟的面部表情，还会头部旋转、眼睛凝视和眨眼，是 3D 的肖像重构。</p>
+<p>（图29：深度视频肖像）<br>这些技术还在继续发展，现在你可以给出任意文本，从任何你指定的对象嘴里说出来。甚至只凭一张照片，就可以生成一段表情变化的视频。</p>
+<p>（图30：一张照片生成各种表情）<br>3.3 中国的实践<br>国内的人工智能视频生成，并不落后于国外。换脸应用 ZAO 只需用户上传一张照片，就能把影视剧主人公的脸换掉，好像你本人在表演电影一样。</p>
+<p>（图31：换脸应用 ZAO）<br>2018年，新华社与搜狗合作推出了虚拟新闻主播，具有真人的形象，带有声音、面部表情和动作，在电视上播报新闻，已经开通了英语、俄语、阿拉伯语的主持人。</p>
+<p>（图32：虚拟新闻主播）<br>3.4 视频渲染<br>除了视频生成，人工智能在视频渲染上也取得了很大进展。<br>Nvidia 公司2018年展示了实时光线追踪 RTX 技术。这项技术用人工智能预测光线的变化，从而不用耗费大量计算去追踪光线，因此可以实时渲染出高画质的 3D 动画。这对于视频游戏有重大意义。<br>下面是使用这项技术的 Unreal Engine 4，实时渲染出的一个女子的3D 动画，可以一边计算生成，一边播放，完全没有延迟。</p>
+<p>（图32：实时渲染的动画）<br>实时光线追踪技术还可以用于自动驾驶，在白天和黑夜的不同时间，不同的路面和环境下，预测出暴雨、风雪和强烈的眩光导致的光线变化，对驾驶做出调整。<br>四、文本和声音处理<br>最后，简单提一下，人工智能在文本和声音处理领域的进展。<br>（1）语音合成<br>谷歌在2018年推出了智能助手 Google Duplex，它会根据你的日程，自动打电话去餐厅订座位。谷歌 CEO 说，这个机器人的对话能力，使得对方完全没有发现这是机器人。<br>（2）音乐合成<br>OpenAI 基金会推出的 MuseNet，通过学习数十万段 MIDI 音乐，能做到使用10种乐器，生成一段4分钟的音乐。它的官网有这些音乐的下载，相当动听。<br>（3）自动评论<br>据报道，使用 Yelp 网站的数据进行训练的模型，可以自动生成餐厅评论。<br>我喜欢这个地方，一直来这里已经好多年。它是与朋友和家人相聚的好地点，我喜欢这里的食物和服务，从未有过糟糕的经历。<br>我吃了烤蔬菜汉堡配薯条！哦，很好吃！<br>我和我的家人都是这个地方的忠实粉丝。工作人员超级好，食物也很棒。鸡肉很好，大蒜酱也很完美。配水果的冰淇淋也很美味。强烈推荐！<br>上面这些都是机器生成的评论。<br>（4）智能邮件<br>Gmail 会根据电子邮件的来信内容，自动生成三种不同的回复，让用户选择。如果只是简单回应，用户不用自己动手写。<br>Gmail 的另一个功能是，根据用户已经写的内容，预测接下来会写的句子，供用户选择。<br>五、小结<br>毫无疑问，人工智能是很酷的技术，创造出了神奇的产品，有着难以想象的巨大应用前景。<br>但是，人工智能也是一把双刃剑，模糊了现实与虚拟之间的界限，把我们带上了一条不可预测的道路。作为个人，了解这些技术的进展和潜力，有助于保持一份清醒，享受技术之福的同时，避免它带来的一些副作用。<br>（正文完）</p>
+<hr>
+<p>严重声明：本文转载自阮一峰的博客，版权属于原作者所有。<br><a href="http://www.ruanyifeng.com/blog/2019/10/artificial-intelligenence.html" target="_blank" rel="external">原文链接</a>。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/10/11/download-the-application-method-in-the-AppStore-of-overseas-region/" itemprop="url">
                   下载海外地区的AppStore中应用的方法
                 </a>
@@ -1570,124 +1716,6 @@ echo $getonelm;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/09/08/customize-your-iPhones-ringtone/" itemprop="url">
-                  自定义iPhone的铃声
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-09-08T03:33:50+08:00" content="2018-09-08">
-              2018-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="需使用Mac电脑上的itunes进行设置。"><a href="#需使用Mac电脑上的itunes进行设置。" class="headerlink" title="需使用Mac电脑上的itunes进行设置。"></a>需使用Mac电脑上的itunes进行设置。</h3><p>具体方法如下：</p>
-<p>1、将手机和苹果电脑连接，打开iTunes切换到资料库看“xxx”的iphone这一栏有没有铃声菜单，没有的话点击编辑菜单勾选铃声。</p>
-<p>2、下载你喜欢的歌曲点击歌曲-&gt;文件-&gt;添加到资料库，选取要自定义铃声的歌曲之后选择打开。</p>
-<p>3、选定歌曲右击-&gt;显示简介-&gt;选项，选择开始停止时间，记得打钩 ( 这里注意的是苹果的铃声只能在40s内 ),然后点击好。</p>
-<p>4、选定歌曲文件-&gt;转换-&gt;创建ACC版本，出现两个同名文件。</p>
-<p>5、右击刚刚新生成同名文件选择在Finder打开，修改该文件的扩展名为m4r。为了后续操作方便把该文件拖到桌面。</p>
-<p>6、返回资料库删除刚刚生成的同名文件。点击音乐-&gt;铃声把刚刚拖到桌面的m4r文件,拖放到列表</p>
-<p>7、点击手机按钮进入手机管理。打开手机 设置-&gt;声音与触感-&gt;电话铃声 就可以自定义铃声了。</p>
-<p>其中，第2-4步的扩展可以参考如下：</p>
-<h3 id="mp3文件到acc文件的剪切与格式转换"><a href="#mp3文件到acc文件的剪切与格式转换" class="headerlink" title="mp3文件到acc文件的剪切与格式转换"></a>mp3文件到acc文件的剪切与格式转换</h3><p>当先打开访达，在访达点击左侧的音乐。</p>
-<p>在音乐里面选择一个需要剪切的音频文件，然后右键打开方式为图二的软件即可。</p>
-<p>打开软件后点击这个音乐文件，然后看到出现在下方点击名字上的右侧三个小点。并在菜单上选择歌曲信息。</p>
-<p>然后在这个信息框点击选项，把开始结束这里勾上。</p>
-<p>输入一个需要的时间，即音乐的时长。而后看到这个音乐已经被修改了时长了。例如这里设置为10秒钟，则输入10即可。</p>
-<p>然后点击菜单栏上的文件转换，选择创建ACC版本。</p>
-<p>这个时候看到在原来的名字下面多个版本，就是创建后的文件，把文件拖到桌面。接着桌面多个剪切后的音频文件了。一个音频文件至此就剪切剪辑完毕了。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1734,7 +1762,7 @@ echo $getonelm;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1742,7 +1770,7 @@ echo $getonelm;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1751,7 +1779,7 @@ echo $getonelm;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
