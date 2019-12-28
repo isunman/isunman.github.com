@@ -244,6 +244,168 @@
             
               
                 
+                <a class="post-title-link" href="/2019/12/28/ios-support-universal-links/" itemprop="url">
+                  iOS 支持通用链接UniversalLinks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-12-28T17:04:26+08:00" content="2019-12-28">
+              2019-12-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iOS 支持通用链接UniversalLinks</p>
+<p>关于iOS中的Universal Links（通用链接）分三部分讲解一下。<br>这个功能是从 iOS 9 之后开始支持的。</p>
+<hr>
+<h3 id="第一部分：一篇文章《iOS微信里打开app，Universal-Links》"><a href="#第一部分：一篇文章《iOS微信里打开app，Universal-Links》" class="headerlink" title="第一部分：一篇文章《iOS微信里打开app，Universal Links》"></a>第一部分：一篇文章《iOS微信里打开app，Universal Links》</h3><p>从第三方应用或者浏览器打开自己app的东西</p>
+<p>传统的方式是通过URL Scheme的方式，但是iOS9以后又出了新的更完美的方式Universal Links。</p>
+<p>传统的URL Scheme方式微信内置的浏览器都是封锁了所有它投资的公司之外的，只有白名单的才可以（比如京东，B站，等）。Universal Links也不能算是完美的实现，但是已经是目前为止最好的了。</p>
+<p>就说一下这个东西的介绍，就像在windows里面为某一类型的文件添加了默认的打开方式。只不过这个文件类型变成了某一个“域名”（并非完全是某个域名，或者可以称之为某段有特殊意义的URL）的URL。这个东西只能在iOS9以后才有。</p>
+<p>具体的表现在在iOS系统中，当你邮件或者短信或者其他方式收到含有某段“特定标示”的URL的时候如果安装有你的app，就可以直接默认调用app去打开，否则只能调用你的Safari去打开。具体到微信里面就是打开了分享的H5，右上角更多－在Safari中打开，可以直接调用你的app去打开这个URL。具体在app的中怎么展示相关的逻辑就看你的了。</p>
+<h4 id="具体介绍的相关文章："><a href="#具体介绍的相关文章：" class="headerlink" title="具体介绍的相关文章："></a>具体介绍的相关文章：</h4><p>苹果文档：<br><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html</a></p>
+<p>苹果检测链接有效性：<br><a href="https://search.developer.apple.com/appsearch-validation-tool/" target="_blank" rel="external">https://search.developer.apple.com/appsearch-validation-tool/</a></p>
+<p>很棒的一个英文的步骤文章：<br><a href="https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9" target="_blank" rel="external">https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9</a></p>
+<p>相关的文章：<a href="http://www.jackivers.me/blog/2015/9/17/list-of-universal-link-ios-9-apps" target="_blank" rel="external">http://www.jackivers.me/blog/2015/9/17/list-of-universal-link-ios-9-apps</a></p>
+<p><a href="http://tech.glowing.com/cn/deferred-deep-linking-and-branch-sdk-in-ios/（URL" target="_blank" rel="external">http://tech.glowing.com/cn/deferred-deep-linking-and-branch-sdk-in-ios/（URL</a> Scheme和Universal Links优缺点介绍的很棒，这个团队的技术博客也很不错哦）</p>
+<p><a href="http://www.cocoachina.com/ios/20150911/13321.html（里面的那个运行流程的总结图很不错）" target="_blank" rel="external">http://www.cocoachina.com/ios/20150911/13321.html（里面的那个运行流程的总结图很不错）</a></p>
+<p>具体的步骤就不再赘述了，因为无论是官方文档，还是其他人写的文章都很棒了，我就说一下实际开发中可能遇到的的坑。</p>
+<p>1.注意拼写那个json文件的时候，应该是你的开发者中心，Identifiers—App IDs— 应用的证书名字（bundle id所有对应的那个）—Prefix<br>.英文的点号，再跟上你的bundle id。并且文件的名字必须为“apple-app-site-association”，不能自己私自定义。用浏览器打开https://<domain>/apple-app-site-association文件，看一下成功否就可以了。</domain></p>
+<p>2.生成后的json文件一定是要放到你的那些网页所在的站点的目录下面的HTTPS web server根目录下面。比如你的网站是<a href="https://www.google.com（所有的网页都是以这个开头的），然后你应用的地址baseurl是https://api.google.com，其实你应该放在www的那个HTTPS" target="_blank" rel="external">https://www.google.com（所有的网页都是以这个开头的），然后你应用的地址baseurl是https://api.google.com，其实你应该放在www的那个HTTPS</a> web server根目录下面。然后过两三分钟吧，就用苹果有效性检测工具的那个去试一下，找一个你要分享出去的h5链接试一下，只要不出错，出来很多的相关信息就可以了（就跟用这个URL测试出来的结果一样就可以了<a href="https://www.yelp.com/biz/michael-winnetka）。" target="_blank" rel="external">https://www.yelp.com/biz/michael-winnetka）。</a></p>
+<p>3.在工程的设置Associated Domains的时候，一定先要去苹果的开发者中心打开你的应用证书Associated Domains Enabled。然后记得更新你的证书关联的东西，然后更新本地的证书。才可以打开工程的Associated Domains。记住填写链接的时候是applinks:<domain>。这个<domain>就是第1点中调试通的那个（如果你的应用的api的和页面的不区分服务器就一样了）。</domain></domain></p>
+<p>4.然后编译你的应用。如果你在短信中含有类似的https://<domain>?a=1&amp;b=2 已经通过了后，直接长按会出来“在“XXX”中打开”就说明成功了。可以去微信微博等其他的地方去看看了。</domain></p>
+<p>这一段内容来源链接（版权归属原作者）：<a href="https://www.cnblogs.com/ysk-china/p/5777299.html" target="_blank" rel="external">https://www.cnblogs.com/ysk-china/p/5777299.html</a></p>
+<hr>
+<h3 id="第二部分：一篇文章《iOS-9-通用链接（Universal-Links）》"><a href="#第二部分：一篇文章《iOS-9-通用链接（Universal-Links）》" class="headerlink" title="第二部分：一篇文章《iOS 9 通用链接（Universal Links）》"></a>第二部分：一篇文章《iOS 9 通用链接（Universal Links）》</h3><p>1.apple-app-site-association文件不能带后缀，务必把”.json”的后缀去掉！有些人的电脑是隐藏文件后缀的，这要格外注意；</p>
+<p>2.apple-app-site-association一定要传到域名根目录下；</p>
+<p>3.WebServer需要支持https，且https使用有效的证书（是私密链接）。笔者在这里卡了很久，原因就是后台给配的https使用无效的证书，导致应用安装的时候不能正确的下载apple-app-site-association文件；</p>
+<p>4.如果想测试这个功能，可以让后台搭一个测试服务器，并配置虚拟主机生成域名，然后iOS这边通过host访问域名就可以了。注意”applink:”后面写的一定是域名，不能是IP；</p>
+<p>5.抓包的结果显示，网络顺畅的情况下，应用会在在刚安装（不是打开）的时候会去applink中的地址下载apple-app-site-association文件，所以如果需要测试，请保证网络通畅；</p>
+<p>6.当所有都准备好，需要测试该功能的时候，只需要在记事本或短信中输入App能识别的链接，然后直接点击或是长按就可以了，直接点的效果是跳转到你的App，然后右上角是“去网页”的箭头，长按的效果是弹出的菜单中第二项是“在’XXX’中打开”，这也代表着成功。直接在Safari中输入链接是无效的，必须从一处跳入才可以（比如上一级网页）。</p>
+<p>7.苹果有个网址（这里）可以检测你的apple-app-site-association是否是有效的，准备好了可以测试一下。</p>
+<p>8.测试的时候，建议使用dev证书打包，之后安装到手机上测试功能。未安装应用的情况下直接在手机上跑好像也是可以的，因为抓到过请求。</p>
+<p>9.如果你有问题，但上面没有列出，Stackoverflow上面有个问题，可以看下其他人的建议。</p>
+<h4 id="继续之前的补充几点"><a href="#继续之前的补充几点" class="headerlink" title="继续之前的补充几点"></a>继续之前的补充几点</h4><p>1.如果需要支持此功能，需要在开发者中心做配置。具体是这样：开发者中心-&gt;Identitiers-&gt;App IDs-&gt;需要支持的应用App ID，在Application Services列表里有Associated Domains一条，把它变为Enabled就可以了。</p>
+<p>2.当你在项目targets-&gt;Capabilities-&gt;Associated Domains中配置app link之后，系统会自动帮你写入.entitlements文件，所以不需要自己去手动加。需要注意的是，有人遇到过.entitlements文件没有被加入工程的，这也会产生问题，需要手动把.entitlements加入工程。</p>
+<p>3.apple-app-site-association文件里有个paths字段，这个是用来控制可识别链接的，星号的写法代表了可识别域名下所有链接。这篇博客里有很多其他公司的例子，可以参考一下。</p>
+<p>这一段内容来源链接（版权归属原作者）：<a href="https://www.jianshu.com/p/c2ca5b5f391f" target="_blank" rel="external">https://www.jianshu.com/p/c2ca5b5f391f</a></p>
+<hr>
+<h3 id="第三部分-关于apple-app-site-association文件自己遇到的坑"><a href="#第三部分-关于apple-app-site-association文件自己遇到的坑" class="headerlink" title="第三部分 关于apple-app-site-association文件自己遇到的坑"></a>第三部分 关于apple-app-site-association文件自己遇到的坑</h3><p>Configure your website to host the apple-app-site-association file</p>
+<ol>
+<li>Buy a domain name or pick from your existing.</li>
+<li>Acquire SSL certification for the domain name.</li>
+<li>Create structured apple-app-site-association JSON file.</li>
+<li>Sign the JSON file with the SSL certification.</li>
+<li>Configure the file server.</li>
+</ol>
+<p>上面是一篇英文文章说明这个文件的配置过程，很准确。</p>
+<p>但是，实际配置过程总遇到的问题有以下几点：</p>
+<p>1、此文件在浏览器中访问时，默认是下载而不是打开显示文件内容。</p>
+<p><strong>解决方法</strong>：在服务器对应项目的配置文件中增加</p>
+<pre><code>location ~ apple-app-site-association$ {
+    add_header  Content-Type &apos;text/plain&apos;;
+}
+</code></pre><p>2、上述方法解决了浏览器直接显示文件内容的问题，但是并不是返回的json格式数据，但是使用苹果的URL检测工具不通过，显示469错误。</p>
+<p><strong>解决方法</strong>：在服务器对应项目的配置文件中增加</p>
+<pre><code>location ~ apple-app-site-association$ {
+    default_type application/json;
+}
+</code></pre><p>3、上述方法同时解决了显示文件内容和返回json格式的问题，也按上面的方案修改了，但是使用苹果的URL检测工具仍然不通过。</p>
+<p><strong>解决方法</strong>：注意苹果官网检测工具的一句话“Applebot will crawl your webpage”，需要服务器允许苹果爬的访问权限（默认是禁止所有爬虫的）。在修改允许苹果爬虫Applebot之后，经检测工具检测，apple-app-site-association文件已有效可用。</p>
+<p>另外2个问题说明：</p>
+<p>1、配置过程中需要多次重启nginx服务器，并且清除浏览器缓存。</p>
+<p>2、apple-app-site-association文件的内容是由iOS开发工程师配置好的，此处只涉及服务器上传此文件，并支持检测工具检测到可用状态。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/10/29/AI-progress-you-do-not-know/" itemprop="url">
                   你所不知道的 AI 进展
                 </a>
@@ -1562,187 +1724,6 @@ if($_FILES){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/" itemprop="url">
-                  微信红包的架构设计与算法实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-09-11T18:51:17+08:00" content="2018-09-11">
-              2018-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="微信红包的架构设计简介"><a href="#微信红包的架构设计简介" class="headerlink" title="微信红包的架构设计简介"></a>微信红包的架构设计简介</h3><p>概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。</p>
-<h5 id="微信的金额什么时候算？"><a href="#微信的金额什么时候算？" class="headerlink" title="微信的金额什么时候算？"></a>微信的金额什么时候算？</h5><p>答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。<br>采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。</p>
-<h5 id="实时性：为什么明明抢到红包，点开后发现没有？"><a href="#实时性：为什么明明抢到红包，点开后发现没有？" class="headerlink" title="实时性：为什么明明抢到红包，点开后发现没有？"></a>实时性：为什么明明抢到红包，点开后发现没有？</h5><p>答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再转账。<br>2015年的红包的拆和抢是分离的，需要点两次，因此会出现抢到红包了，但点开后告知红包已经被领完的状况。进入到第一个页面不代表抢到，只表示当时红包还有。</p>
-<h5 id="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"><a href="#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？" class="headerlink" title="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"></a>分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？</h5><p>答：随机，额度在0.01和剩余平均值×2之间。<br>例如：发100块钱，总共10个红包，那么平均值是10块钱一个，那么发出来的红包的额度在0.01元～20元之间波动。<br>当前面3个红包总共被领了40块钱时，剩下60块钱，总共7个红包，那么这7个红包的额度在：0.01～（60/7×2）=17.14之间。<br>注意：这里的算法是每被抢一个后，剩下的会再次执行上面的这样的算法（Tim老师也觉得上述算法太复杂，不知基于什么样的考虑）。</p>
-<p>这样算下去，会超过最开始的全部金额，因此到了最后面如果不够这么算，那么会采取如下算法：保证剩余用户能拿到最低1分钱即可。</p>
-<p>如果前面的人手气不好，那么后面的余额越多，红包额度也就越多，因此实际概率一样的。</p>
-<h5 id="红包的设计"><a href="#红包的设计" class="headerlink" title="红包的设计"></a>红包的设计</h5><p>答：微信从财付通拉取金额数据郭莱，生成个数/红包类型/金额放到redis集群里，app端将红包ID的请求放入请求队列中，如果发现超过红包的个数，直接返回。根据红包的裸祭处理成功得到令牌请求，则由财付通进行一致性调用，通过像比特币一样，两边保存交易记录，交易后交给第三方服务审计，如果交易过程中出现不一致就强制回归。</p>
-<h5 id="发性处理：红包如何计算被抢完？"><a href="#发性处理：红包如何计算被抢完？" class="headerlink" title="发性处理：红包如何计算被抢完？"></a>发性处理：红包如何计算被抢完？</h5><p>答：cache会抵抗无效请求，将无效的请求过滤掉，实际进入到后台的量不大。cache记录红包个数，原子操作进行个数递减，到0表示被抢光。财付通按照20万笔每秒入账准备，但实际还不到8万每秒。</p>
-<h5 id="通如何保持8w每秒的写入？"><a href="#通如何保持8w每秒的写入？" class="headerlink" title="通如何保持8w每秒的写入？"></a>通如何保持8w每秒的写入？</h5><p>答：多主sharding，水平扩展机器。</p>
-<h5 id="数据容量多少？"><a href="#数据容量多少？" class="headerlink" title="数据容量多少？"></a>数据容量多少？</h5><p>答：一个红包只占一条记录，有效期只有几天，因此不需要太多空间。</p>
-<h5 id="查询红包分配，压力大不？"><a href="#查询红包分配，压力大不？" class="headerlink" title="查询红包分配，压力大不？"></a>查询红包分配，压力大不？</h5><p>答：抢到红包的人数和红包都在一条cache记录上，没有太大的查询压力。</p>
-<h5 id="一个红包一个队列？"><a href="#一个红包一个队列？" class="headerlink" title="一个红包一个队列？"></a>一个红包一个队列？</h5><p>答：没有队列，一个红包一条数据，数据上有一个计数器字段。</p>
-<h5 id="有没有从数据上证明每个红包的概率是不是均等？"><a href="#有没有从数据上证明每个红包的概率是不是均等？" class="headerlink" title="有没有从数据上证明每个红包的概率是不是均等？"></a>有没有从数据上证明每个红包的概率是不是均等？</h5><p>答：不是绝对均等，就是一个简单的拍脑袋算法。</p>
-<h5 id="拍脑袋算法，会不会出现两个最佳？"><a href="#拍脑袋算法，会不会出现两个最佳？" class="headerlink" title="拍脑袋算法，会不会出现两个最佳？"></a>拍脑袋算法，会不会出现两个最佳？</h5><p>答：会出现金额一样的，但是手气最佳只有一个，先抢到的那个最佳。</p>
-<h5 id="每领一个红包就更新数据么？"><a href="#每领一个红包就更新数据么？" class="headerlink" title="每领一个红包就更新数据么？"></a>每领一个红包就更新数据么？</h5><p>答：每抢到一个红包，就cas更新剩余金额和红包个数。</p>
-<h5 id="红包如何入库入账？"><a href="#红包如何入库入账？" class="headerlink" title="红包如何入库入账？"></a>红包如何入库入账？</h5><p>数据库会累加已经领取的个数与金额，插入一条领取记录。入账则是后台异步操作。</p>
-<h5 id="入帐出错怎么办？比如红包个数没了，但余额还有？"><a href="#入帐出错怎么办？比如红包个数没了，但余额还有？" class="headerlink" title="入帐出错怎么办？比如红包个数没了，但余额还有？"></a>入帐出错怎么办？比如红包个数没了，但余额还有？</h5><p>答：最后会有一个take all操作。另外还有一个对账来保障。</p>
-<h3 id="算法实现java版"><a href="#算法实现java版" class="headerlink" title="算法实现java版"></a>算法实现java版</h3><p>算法很简单，不是提前算好，而是抢红包时计算</p>
-<pre><code>public static double getRandomMoney(RedPackage _redPackage) {
-// remainSize 剩余的红包数量
-// remainMoney 剩余的钱
-if (_redPackage.remainSize == 1) {
-    _redPackage.remainSize--;
-    return (double) Math.round(_redPackage.remainMoney * 100) / 100;
-}
-Random r     = new Random();
-double min   = 0.01; //
-double max   = _redPackage.remainMoney / _redPackage.remainSize * 2;
-double money = r.nextDouble() * max;
-money = money &lt;= min ? 0.01: money;
-money = Math.floor(money * 100) / 100;
-_redPackage.remainSize--;
-_redPackage.remainMoney -= money;
-return money;
-}
-</code></pre><p><code>LeftMoneyPackage</code>数据结构如下：</p>
-<pre><code>class RedPackage {
-int    remainSize;
-double remainMoney;
-}
-</code></pre><p>测试时初始化相关数据是：</p>
-<pre><code>static void init() {
-redPackage.remainSize  = 20;
-redPackage.remainMoney = 200;
-}
-</code></pre><h3 id="算法实现PHP版"><a href="#算法实现PHP版" class="headerlink" title="算法实现PHP版"></a>算法实现PHP版</h3><p>关键就是定义核心函数</p>
-<pre><code>function getrandommoney($remainmoney,$remainpacket,$moneymax = 0){
-if($remainpacket &lt; 1 || $remainmoney &lt;= 0){
-    return 0;
-}
-if($remainpacket == 1){
-    return     $remainmoney;
-}
-
-$min = 1;//注意倍数
-$max = $remainmoney / $remainpacket * 2;
-$money = rand($min,$max) ;
-$money = $money &lt;= $min ? $min : $money;
-//每一次领取时的最大值
-if($moneymax &amp;&amp; $money &gt; $moneymax){
-    $money = $moneymax;
-}
-
-return $money;
-}
-</code></pre><p>函数调用</p>
-<pre><code>$lmremainingtotal = 200.00;//总金额
-$lmremainingtimes = 20;//总个数
-$lmmoneymax = 0;
-$lmremainingtotaltemp = $lmremainingtotal * 100;
-$getonelm = getrandommoney($lmremainingtotaltemp,$lmremainingtimes);
-$getonelm = round($getonelm/100,2);    
-echo $getonelm;
-</code></pre><p>说明：</p>
-<p>1、注意函数内部实现时使用的整数，传参进去时需要扩大100倍，最后得到的本次随机数需要在缩小至1%。</p>
-<p>2、增加了每一次调用的随机最大数限额这个参数，默认为0表示不限。</p>
-<p>3、更改剩余的红包总额度与红包个数，是在函数外实现的（必须步骤）。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上述方法都是每次计算一个红包的额度。如果需要一次性计算所有的红包，并分配完成，则需要循环执行。注意数据并发量的大小。</p>
-<p>　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1789,7 +1770,7 @@ echo $getonelm;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2019-10-29T04:41:38.531Z</updated>
+  <updated>2019-12-28T09:04:26.585Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,95 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 支持通用链接UniversalLinks</title>
+    <link href="http://isunman.com/2019/12/28/ios-support-universal-links/"/>
+    <id>http://isunman.com/2019/12/28/ios-support-universal-links/</id>
+    <published>2019-12-28T09:04:26.642Z</published>
+    <updated>2019-12-28T09:04:26.585Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS 支持通用链接UniversalLinks&lt;/p&gt;
+&lt;p&gt;关于iOS中的Universal Links（通用链接）分三部分讲解一下。&lt;br&gt;这个功能是从 iOS 9 之后开始支持的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;第一部分：一篇文章《iOS微信里打开app，Universal-Links》&quot;&gt;&lt;a href=&quot;#第一部分：一篇文章《iOS微信里打开app，Universal-Links》&quot; class=&quot;headerlink&quot; title=&quot;第一部分：一篇文章《iOS微信里打开app，Universal Links》&quot;&gt;&lt;/a&gt;第一部分：一篇文章《iOS微信里打开app，Universal Links》&lt;/h3&gt;&lt;p&gt;从第三方应用或者浏览器打开自己app的东西&lt;/p&gt;
+&lt;p&gt;传统的方式是通过URL Scheme的方式，但是iOS9以后又出了新的更完美的方式Universal Links。&lt;/p&gt;
+&lt;p&gt;传统的URL Scheme方式微信内置的浏览器都是封锁了所有它投资的公司之外的，只有白名单的才可以（比如京东，B站，等）。Universal Links也不能算是完美的实现，但是已经是目前为止最好的了。&lt;/p&gt;
+&lt;p&gt;就说一下这个东西的介绍，就像在windows里面为某一类型的文件添加了默认的打开方式。只不过这个文件类型变成了某一个“域名”（并非完全是某个域名，或者可以称之为某段有特殊意义的URL）的URL。这个东西只能在iOS9以后才有。&lt;/p&gt;
+&lt;p&gt;具体的表现在在iOS系统中，当你邮件或者短信或者其他方式收到含有某段“特定标示”的URL的时候如果安装有你的app，就可以直接默认调用app去打开，否则只能调用你的Safari去打开。具体到微信里面就是打开了分享的H5，右上角更多－在Safari中打开，可以直接调用你的app去打开这个URL。具体在app的中怎么展示相关的逻辑就看你的了。&lt;/p&gt;
+&lt;h4 id=&quot;具体介绍的相关文章：&quot;&gt;&lt;a href=&quot;#具体介绍的相关文章：&quot; class=&quot;headerlink&quot; title=&quot;具体介绍的相关文章：&quot;&gt;&lt;/a&gt;具体介绍的相关文章：&lt;/h4&gt;&lt;p&gt;苹果文档：&lt;br&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;苹果检测链接有效性：&lt;br&gt;&lt;a href=&quot;https://search.developer.apple.com/appsearch-validation-tool/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://search.developer.apple.com/appsearch-validation-tool/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;很棒的一个英文的步骤文章：&lt;br&gt;&lt;a href=&quot;https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;相关的文章：&lt;a href=&quot;http://www.jackivers.me/blog/2015/9/17/list-of-universal-link-ios-9-apps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jackivers.me/blog/2015/9/17/list-of-universal-link-ios-9-apps&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://tech.glowing.com/cn/deferred-deep-linking-and-branch-sdk-in-ios/（URL&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tech.glowing.com/cn/deferred-deep-linking-and-branch-sdk-in-ios/（URL&lt;/a&gt; Scheme和Universal Links优缺点介绍的很棒，这个团队的技术博客也很不错哦）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20150911/13321.html（里面的那个运行流程的总结图很不错）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cocoachina.com/ios/20150911/13321.html（里面的那个运行流程的总结图很不错）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;具体的步骤就不再赘述了，因为无论是官方文档，还是其他人写的文章都很棒了，我就说一下实际开发中可能遇到的的坑。&lt;/p&gt;
+&lt;p&gt;1.注意拼写那个json文件的时候，应该是你的开发者中心，Identifiers—App IDs— 应用的证书名字（bundle id所有对应的那个）—Prefix&lt;br&gt;.英文的点号，再跟上你的bundle id。并且文件的名字必须为“apple-app-site-association”，不能自己私自定义。用浏览器打开https://&lt;domain&gt;/apple-app-site-association文件，看一下成功否就可以了。&lt;/domain&gt;&lt;/p&gt;
+&lt;p&gt;2.生成后的json文件一定是要放到你的那些网页所在的站点的目录下面的HTTPS web server根目录下面。比如你的网站是&lt;a href=&quot;https://www.google.com（所有的网页都是以这个开头的），然后你应用的地址baseurl是https://api.google.com，其实你应该放在www的那个HTTPS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.google.com（所有的网页都是以这个开头的），然后你应用的地址baseurl是https://api.google.com，其实你应该放在www的那个HTTPS&lt;/a&gt; web server根目录下面。然后过两三分钟吧，就用苹果有效性检测工具的那个去试一下，找一个你要分享出去的h5链接试一下，只要不出错，出来很多的相关信息就可以了（就跟用这个URL测试出来的结果一样就可以了&lt;a href=&quot;https://www.yelp.com/biz/michael-winnetka）。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.yelp.com/biz/michael-winnetka）。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.在工程的设置Associated Domains的时候，一定先要去苹果的开发者中心打开你的应用证书Associated Domains Enabled。然后记得更新你的证书关联的东西，然后更新本地的证书。才可以打开工程的Associated Domains。记住填写链接的时候是applinks:&lt;domain&gt;。这个&lt;domain&gt;就是第1点中调试通的那个（如果你的应用的api的和页面的不区分服务器就一样了）。&lt;/domain&gt;&lt;/domain&gt;&lt;/p&gt;
+&lt;p&gt;4.然后编译你的应用。如果你在短信中含有类似的https://&lt;domain&gt;?a=1&amp;amp;b=2 已经通过了后，直接长按会出来“在“XXX”中打开”就说明成功了。可以去微信微博等其他的地方去看看了。&lt;/domain&gt;&lt;/p&gt;
+&lt;p&gt;这一段内容来源链接（版权归属原作者）：&lt;a href=&quot;https://www.cnblogs.com/ysk-china/p/5777299.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.cnblogs.com/ysk-china/p/5777299.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;第二部分：一篇文章《iOS-9-通用链接（Universal-Links）》&quot;&gt;&lt;a href=&quot;#第二部分：一篇文章《iOS-9-通用链接（Universal-Links）》&quot; class=&quot;headerlink&quot; title=&quot;第二部分：一篇文章《iOS 9 通用链接（Universal Links）》&quot;&gt;&lt;/a&gt;第二部分：一篇文章《iOS 9 通用链接（Universal Links）》&lt;/h3&gt;&lt;p&gt;1.apple-app-site-association文件不能带后缀，务必把”.json”的后缀去掉！有些人的电脑是隐藏文件后缀的，这要格外注意；&lt;/p&gt;
+&lt;p&gt;2.apple-app-site-association一定要传到域名根目录下；&lt;/p&gt;
+&lt;p&gt;3.WebServer需要支持https，且https使用有效的证书（是私密链接）。笔者在这里卡了很久，原因就是后台给配的https使用无效的证书，导致应用安装的时候不能正确的下载apple-app-site-association文件；&lt;/p&gt;
+&lt;p&gt;4.如果想测试这个功能，可以让后台搭一个测试服务器，并配置虚拟主机生成域名，然后iOS这边通过host访问域名就可以了。注意”applink:”后面写的一定是域名，不能是IP；&lt;/p&gt;
+&lt;p&gt;5.抓包的结果显示，网络顺畅的情况下，应用会在在刚安装（不是打开）的时候会去applink中的地址下载apple-app-site-association文件，所以如果需要测试，请保证网络通畅；&lt;/p&gt;
+&lt;p&gt;6.当所有都准备好，需要测试该功能的时候，只需要在记事本或短信中输入App能识别的链接，然后直接点击或是长按就可以了，直接点的效果是跳转到你的App，然后右上角是“去网页”的箭头，长按的效果是弹出的菜单中第二项是“在’XXX’中打开”，这也代表着成功。直接在Safari中输入链接是无效的，必须从一处跳入才可以（比如上一级网页）。&lt;/p&gt;
+&lt;p&gt;7.苹果有个网址（这里）可以检测你的apple-app-site-association是否是有效的，准备好了可以测试一下。&lt;/p&gt;
+&lt;p&gt;8.测试的时候，建议使用dev证书打包，之后安装到手机上测试功能。未安装应用的情况下直接在手机上跑好像也是可以的，因为抓到过请求。&lt;/p&gt;
+&lt;p&gt;9.如果你有问题，但上面没有列出，Stackoverflow上面有个问题，可以看下其他人的建议。&lt;/p&gt;
+&lt;h4 id=&quot;继续之前的补充几点&quot;&gt;&lt;a href=&quot;#继续之前的补充几点&quot; class=&quot;headerlink&quot; title=&quot;继续之前的补充几点&quot;&gt;&lt;/a&gt;继续之前的补充几点&lt;/h4&gt;&lt;p&gt;1.如果需要支持此功能，需要在开发者中心做配置。具体是这样：开发者中心-&amp;gt;Identitiers-&amp;gt;App IDs-&amp;gt;需要支持的应用App ID，在Application Services列表里有Associated Domains一条，把它变为Enabled就可以了。&lt;/p&gt;
+&lt;p&gt;2.当你在项目targets-&amp;gt;Capabilities-&amp;gt;Associated Domains中配置app link之后，系统会自动帮你写入.entitlements文件，所以不需要自己去手动加。需要注意的是，有人遇到过.entitlements文件没有被加入工程的，这也会产生问题，需要手动把.entitlements加入工程。&lt;/p&gt;
+&lt;p&gt;3.apple-app-site-association文件里有个paths字段，这个是用来控制可识别链接的，星号的写法代表了可识别域名下所有链接。这篇博客里有很多其他公司的例子，可以参考一下。&lt;/p&gt;
+&lt;p&gt;这一段内容来源链接（版权归属原作者）：&lt;a href=&quot;https://www.jianshu.com/p/c2ca5b5f391f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jianshu.com/p/c2ca5b5f391f&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;第三部分-关于apple-app-site-association文件自己遇到的坑&quot;&gt;&lt;a href=&quot;#第三部分-关于apple-app-site-association文件自己遇到的坑&quot; class=&quot;headerlink&quot; title=&quot;第三部分 关于apple-app-site-association文件自己遇到的坑&quot;&gt;&lt;/a&gt;第三部分 关于apple-app-site-association文件自己遇到的坑&lt;/h3&gt;&lt;p&gt;Configure your website to host the apple-app-site-association file&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Buy a domain name or pick from your existing.&lt;/li&gt;
+&lt;li&gt;Acquire SSL certification for the domain name.&lt;/li&gt;
+&lt;li&gt;Create structured apple-app-site-association JSON file.&lt;/li&gt;
+&lt;li&gt;Sign the JSON file with the SSL certification.&lt;/li&gt;
+&lt;li&gt;Configure the file server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上面是一篇英文文章说明这个文件的配置过程，很准确。&lt;/p&gt;
+&lt;p&gt;但是，实际配置过程总遇到的问题有以下几点：&lt;/p&gt;
+&lt;p&gt;1、此文件在浏览器中访问时，默认是下载而不是打开显示文件内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：在服务器对应项目的配置文件中增加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;location ~ apple-app-site-association$ {
+    add_header  Content-Type &amp;apos;text/plain&amp;apos;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2、上述方法解决了浏览器直接显示文件内容的问题，但是并不是返回的json格式数据，但是使用苹果的URL检测工具不通过，显示469错误。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：在服务器对应项目的配置文件中增加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;location ~ apple-app-site-association$ {
+    default_type application/json;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3、上述方法同时解决了显示文件内容和返回json格式的问题，也按上面的方案修改了，但是使用苹果的URL检测工具仍然不通过。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：注意苹果官网检测工具的一句话“Applebot will crawl your webpage”，需要服务器允许苹果爬的访问权限（默认是禁止所有爬虫的）。在修改允许苹果爬虫Applebot之后，经检测工具检测，apple-app-site-association文件已有效可用。&lt;/p&gt;
+&lt;p&gt;另外2个问题说明：&lt;/p&gt;
+&lt;p&gt;1、配置过程中需要多次重启nginx服务器，并且清除浏览器缓存。&lt;/p&gt;
+&lt;p&gt;2、apple-app-site-association文件的内容是由iOS开发工程师配置好的，此处只涉及服务器上传此文件，并支持检测工具检测到可用状态。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS 支持通用链接UniversalLinks&lt;/p&gt;
+&lt;p&gt;关于iOS中的Universal Links（通用链接）分三部分讲解一下。&lt;br&gt;这个功能是从 iOS 9 之后开始支持的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;第一部分：一篇文章《iOS微信里打开app，Uni
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
+    
+      <category term="爬虫" scheme="http://isunman.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>你所不知道的 AI 进展</title>
@@ -1203,59 +1292,6 @@ echo $getonelm;
     
     
       <category term="MVC" scheme="http://isunman.com/tags/mvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案</title>
-    <link href="http://isunman.com/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/"/>
-    <id>http://isunman.com/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/</id>
-    <published>2018-05-25T05:01:52.563Z</published>
-    <updated>2018-05-25T05:01:52.500Z</updated>
-    
-    <content type="html">&lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
-&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。&lt;/p&gt;
-&lt;p&gt;我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的&lt;/p&gt;
-&lt;h3 id=&quot;php配置&quot;&gt;&lt;a href=&quot;#php配置&quot; class=&quot;headerlink&quot; title=&quot;php配置&quot;&gt;&lt;/a&gt;php配置&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;function get_image_info($target, $allowswf = false) {
-    $ext = discuz_upload::fileext($target);
-    $isimage = discuz_upload::is_image_ext($ext);
-    if(!$isimage &amp;amp;&amp;amp; ($ext != &amp;apos;swf&amp;apos; || !$allowswf)) {
-        return false;
-    } elseif(!is_readable($target)) {
-        return false;
-    } elseif($imageinfo = @getimagesize($target)) {
-        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&amp;apos;&amp;apos;, &amp;apos;&amp;apos;, &amp;apos;&amp;apos;);
-        $size = $width * $height;
-        if($size &amp;gt; 16777216 || $size &amp;lt; 16 ) {
-            return false;
-        } elseif($ext == &amp;apos;swf&amp;apos; &amp;amp;&amp;amp; $type != 4 &amp;amp;&amp;amp; $type != 13) {
-            return false;
-        } elseif($isimage &amp;amp;&amp;amp; !in_array($type, array(1,2,3,6,13))) {
-            return false;
-        } elseif(!$allowswf &amp;amp;&amp;amp; ($ext == &amp;apos;swf&amp;apos; || $type == 4 || $type == 13)) {
-            return false;
-        }
-        return $imageinfo;
-    } else {
-        return false;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.muquan.net/article/390.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="Discuz" scheme="http://isunman.com/tags/discuz/"/>
-    
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
   </entry>
   
