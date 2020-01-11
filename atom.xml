@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-01-10T12:29:30.719Z</updated>
+  <updated>2020-01-11T10:53:05.898Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>PHP5.6通过CURL上传图片@符无效的兼容问题</title>
-    <link href="http://isunman.com/2020/01/10/php56-an-invalid-compatibility-problem-with-the-sign-of-an-image-uploaded-via-curl/"/>
-    <id>http://isunman.com/2020/01/10/php56-an-invalid-compatibility-problem-with-the-sign-of-an-image-uploaded-via-curl/</id>
-    <published>2020-01-10T12:29:30.786Z</published>
-    <updated>2020-01-10T12:29:30.719Z</updated>
+    <link href="http://isunman.com/2020/01/11/php56-an-invalid-compatibility-problem-with-the-sign-of-an-image-uploaded-via-curl/"/>
+    <id>http://isunman.com/2020/01/11/php56-an-invalid-compatibility-problem-with-the-sign-of-an-image-uploaded-via-curl/</id>
+    <published>2020-01-11T10:53:05.953Z</published>
+    <updated>2020-01-11T10:53:05.898Z</updated>
     
     <content type="html">&lt;p&gt;今天本来想试试一个图片云的API，于是本地做了个上传图片的测试，结果灰常郁闷的发现以前一直用的好好的CURL上传图片居然死活不起作用，本来几分钟搞定的事情，结果折腾了大半天才终于找到原因，居然是兼容性问题，真是无语。。&lt;/p&gt;
 &lt;p&gt;网上搜索PHP通过CURL上传图片几乎都是类似下面的代码：&lt;/p&gt;
@@ -76,6 +76,9 @@ curl_close($curl);
 print_r($content);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我这里只是最简单的应用，具体可参考下面官方文档：&lt;br&gt;&lt;a href=&quot;http://php.net/manual/en/class.curlfile.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://php.net/manual/en/class.curlfile.php&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这下终于上传成功了。。。太坑爹了，一天时间又被折腾完了。&lt;/p&gt;
+&lt;p&gt;最后，注意使用CURLFile类时的一个问题：&lt;/p&gt;
+&lt;p&gt;CURLFile的第三个参数，如果使用的话，要么带上后缀的文件全名；要么整个空着。不能有值又不带后缀，否则DZ系统默认上传失败，因为获取文件扩展名为空。&lt;/p&gt;
+&lt;p&gt;当然，如果像上面示例一样只有一个文件路径本身，其他全都是缺省值（默认值），服务器会自动获取其他文件属相参数，反而是一个更好的方案。&lt;/p&gt;
 </content>
     
     <summary type="html">
