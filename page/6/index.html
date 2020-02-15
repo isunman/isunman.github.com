@@ -244,6 +244,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/" itemprop="url">
+                  Sql2000的远程连接（含Sp4补丁）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T18:41:13+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>服务端配置:</p>
+<h4 id="一-、看ping-服务器IP能否ping通。"><a href="#一-、看ping-服务器IP能否ping通。" class="headerlink" title="一 、看ping 服务器IP能否ping通。"></a>一 、看ping 服务器IP能否ping通。</h4><p>这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。</p>
+<h4 id="二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><a href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。" class="headerlink" title="二 、在Dos下输入telnet 服务器IP 端口，看能否连通。"></a>二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</h4><p>例如：</p>
+<pre><code>telnet 202.114.100.100 1433
+</code></pre><p>1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：</p>
+<p>1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。</p>
+<p>2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。</p>
+<p>3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 </p>
+<pre><code>netstat –an
+</code></pre><p>（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 </p>
+<pre><code>tcp  127.0.0.1 1433   listening
+</code></pre><p>的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入</p>
+<pre><code>select @@version
+</code></pre><p>执行后可以看到版本号，版本号在 <strong>8.00.2039</strong> 以下的都需要打补丁。这是Sp4的下载地址  <a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE" target="_blank" rel="external">（SQLServer SP4补丁下载）</a> 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。</p>
+<p>这时再做telnet测试，应该OK了。</p>
+<p><a href="http://blog.163.com/tcl_6688/blog/static/168864257201151574157197" target="_blank" rel="external">原文参考</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/21/windows2000-2003-2008-installed-sql-server-2000-graphic-tutorial/" itemprop="url">
                   windows2000/2003/2008中安装sqlserver 2000图文教程
                 </a>
@@ -1594,118 +1712,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/13/no-matching-provisioning-profiles-found/" itemprop="url">
-                  Xcode错误：No matching provisioning profiles found
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-13T01:26:10+08:00" content="2016-03-13">
-              2016-03-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>更新证书错误：No matching provisioning profiles found</strong></p>
-<p>在Xcode中当你在更新了你得证书而再重新编译你的程序，真机调试会出现“Your build settings specify a provisioning profile with the UUID‘XXX’, however, no such provisioning profile was found.  Xcode can resolve this issue by downloading a new provisioning profile from the Member Center.”。</p>
-<p>一般出现这种结果，会有以下2种原因：</p>
-<h3 id="开发证书没有问题，此项目的问题"><a href="#开发证书没有问题，此项目的问题" class="headerlink" title="开发证书没有问题，此项目的问题"></a>开发证书没有问题，此项目的问题</h3><p>有时是在别的电脑上真机调试过，把项目拷贝到另一条电脑上进行打包时。本人是从其他电脑上拷贝过来项目进行企业分发版打包时出现此错误。</p>
-<p>由于查看开发者证书，处于有效状态，且其他项目可以正常打包，只有当前项目遇到此问题，因此找到了下面这个可以解决问题的方法。</p>
-<p>1.关闭项目，找到项目文件XXXX.xcodeproj，在文件上点击右键，选择“显示包内容”（Show Package Contents）。会新打开一个Finder。</p>
-<p>2.在新打开的Finder中找到project.pbxproj，并且打开，找到你所有包含报错的UUID‘XXX’的行，删除。</p>
-<p>3.保存，重新启动项目，再编译，就OK了。</p>
-<h3 id="开发证书失效或者过期"><a href="#开发证书失效或者过期" class="headerlink" title="开发证书失效或者过期"></a>开发证书失效或者过期</h3><p>如果所有项目都有这个问题，包括以前正常的项目（中间没有更改过），也突然这么不正常了，就非常可能是开发者的开发证书的问题。需要重新安装开发者的开发证书（注意：不是生产证书和分发证书）。</p>
-<p>目前遇到的问题，都可以使用上面两种方法解决。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1752,7 +1758,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1769,7 +1775,7 @@ extension=php_mysqli.dll
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

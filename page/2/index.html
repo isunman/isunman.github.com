@@ -244,6 +244,137 @@
             
               
                 
+                <a class="post-title-link" href="/2018/10/17/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/" itemprop="url">
+                  爬虫获取知乎网页title的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-17T16:04:08+08:00" content="2018-10-17">
+              2018-10-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>知乎的网页标题title的提取一直有各种问题。可能是知乎自己做了防止被爬虫抓取的。普通的问题详情页和知乎专栏，都提取不到网页title，或者提取到了错误的title。</p>
+<p>本文记录了实际可用的方法，分别提取知乎问题详情页的title与知乎专栏页的title和封面图片的提取方法。</p>
+<h2 id="知乎问题详情页的title提取"><a href="#知乎问题详情页的title提取" class="headerlink" title="知乎问题详情页的title提取"></a>知乎问题详情页的title提取</h2><p>首先看一下源代码</p>
+<pre><code>&lt;title&gt;你必讲的笑话是哪个？ - 知乎&lt;/title&gt;&lt;title&gt;知乎 - 有问题上知乎&lt;/title&gt;
+</code></pre><p>中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。</p>
+<p>再继续向下面寻找，看到这么一段：<br>    <code>&lt;h1 class=&quot;QuestionHeader-title&quot;&gt;你必讲的笑话是哪个？&lt;/h1&gt;</code></p>
+<p>直接使用正则匹配即可，正则匹配规则为：</p>
+<pre><code>&lt;h1\sclass=\&quot;QuestionHeader-title\&quot;&gt;([\s\S]+?)&lt;\/h1&gt;
+</code></pre><h2 id="知乎专栏文章页的title提取与封面图片提取"><a href="#知乎专栏文章页的title提取与封面图片提取" class="headerlink" title="知乎专栏文章页的title提取与封面图片提取"></a>知乎专栏文章页的title提取与封面图片提取</h2><p>首先看一下源代码</p>
+<pre><code>&lt;title&gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？ - 知乎&lt;/title&gt;&lt;title&gt;知乎 - 有问题上知乎&lt;/title&gt;
+</code></pre><p>中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。</p>
+<p>再继续向下面寻找，看到这么一段：<br>    <code>&lt;header class=&quot;Post-Header&quot;&gt;&lt;h1 class=&quot;Post-Title&quot;&gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？&lt;/h1&gt;</code></p>
+<p>使用正则匹配也匹配不到。可能是因为知乎专栏页的数据是使用js加载的，网页源代码初始代码中不含有这些数据。</p>
+<p>稍微看看知乎专栏网页代码可以发现，如果在浏览器中访问类似这样的专栏文章链接：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/42557513" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/42557513</a></p>
+<p>实际会加载下面的文章内容数据 API 链接，知乎专栏页面加载完数据之后才会显示：</p>
+<p><a href="https://zhuanlan.zhihu.com/api/posts/42557513" target="_blank" rel="external">https://zhuanlan.zhihu.com/api/posts/42557513</a></p>
+<p>而且返回的数据就是json格式的，可以直接转换为PHP数组，然后根据数组的key值，直接获取需要的字段，然后即可使用。</p>
+<h2 id="扩展其他知乎相关页的爬虫抓取"><a href="#扩展其他知乎相关页的爬虫抓取" class="headerlink" title="扩展其他知乎相关页的爬虫抓取"></a>扩展其他知乎相关页的爬虫抓取</h2><p>后面的参考链接中里面有一句话说的好：</p>
+<p>不管AngularJS还是其它架构，都是服务端的东西，再天花乱坠的服务端架构，到了客户端终究逃不脱HTTP协议，至少目前来说还是如此。</p>
+<p>知道用户ID之后可以相机获取：</p>
+<ol>
+<li>获得用户专栏入口</li>
+<li>获得专栏文章信息</li>
+<li>获得专栏文章</li>
+</ol>
+<p>参考链接：<a href="如何用爬虫爬去知乎专栏信息">https://www.zhihu.com/question/24948369/answer/29611724</a></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>使用以上各种方法，基本可以解决与知乎相关内容的爬虫爬取相关的问题。</p>
+<p>另一篇参考文章：<a href="https://www.300168.com/biancheng/show-21974.html" target="_blank" rel="external">简单PHP实现Pocket抓取知乎专栏文章</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/09/20/php-simulates-uploading-files-using-the-CURLFile-function/" itemprop="url">
                   PHP模拟上传文件使用CURLFile函数
                 </a>
@@ -1469,127 +1600,6 @@ echo $getonelm;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/07/01/understand-synchronization-and-asynchrony/" itemprop="url">
-                  理解同步和异步
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-01T01:04:43+08:00" content="2018-07-01">
-              2018-07-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一种说法"><a href="#一种说法" class="headerlink" title="一种说法"></a>一种说法</h3><p>老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。</p>
-<p>“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接听状态(即：打不通，联系不上)，为了拿到生活费，你就不停的oncall、等待，最终可能不能及时要到生活费，导致你今天要做的事都没有完成，而白白花掉了时间。</p>
-<p>“异步”就是：在你打完电话发现没人接听时，猜想：对方可能在忙，暂时无法接听电话，所以你发了一条短信(或者语音留言，亦或是其他的方式)通知对方后便忙其他要紧的事了；这时你就不需要持续不断的拨打电话，还可以做其他事情；待一定时间后，对方看到你的留言便回复响应你，当然对方可能转钱也可能不转钱。但是整个一天下来，你还做了很多事情。 或者说你找室友临时借了一笔钱，又开始happy的上学时光了。</p>
-<p>简而言之，言而总之：同步就是我强依赖你(对方)，我必须等到你的回复，才能做出下一步响应。即我的操作(行程)是顺序执行的，中间少了哪一步都不可以，或者说中间哪一步出错都不可以，类似于编程中程序被解释器顺序执行一样；同时如果我没有收到你的回复，我就一直处于等待、也就是阻塞的状态。 异步则相反，我并不强依赖你，我对你响应的时间也不敏感，无论你返回还是不返回，我都能继续运行；你响应并返回了，我就继续做之前的事情，你没有响应，我就做其他的事情。也就是说我不存在等待对方的概念，我就是非阻塞的。</p>
-<p>从上面的例子来看：同步似乎等价于阻塞，异步则等价于非阻塞。其实有些狭义，但不可否认的是，在一定情况下，确实可以这么认为；因为同步一定存在着阻塞状态，而异步一定不存在非阻塞的状态。 但是不是就是说 同步调用 == 阻塞调用呢？然并不是；阻塞和非阻塞强调的是程序在等待调用结果（消息，返回值）时的状态.  阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。 对于同步调用来说，很多时候当前线程还是激活的状态，只是从逻辑上当前函数没有返回而已，即同步等待时什么都不干，白白占用着资源。</p>
-<h3 id="另一个有趣的例子"><a href="#另一个有趣的例子" class="headerlink" title="另一个有趣的例子"></a>另一个有趣的例子</h3><p>老张爱喝茶，废话不说，煮开水。</p>
-<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
-<p>1 老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻</p>
-<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
-<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大</p>
-<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。</p>
-<p>普通水壶，同步；响水壶，异步。</p>
-<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
-<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
-<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由调用者主动等待这个调用的结果。而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>原文链接：<a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="external">知乎问答</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1636,7 +1646,7 @@ echo $getonelm;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1653,7 +1663,7 @@ echo $getonelm;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
