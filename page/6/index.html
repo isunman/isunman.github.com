@@ -244,6 +244,168 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/sqlserver2000-installation-error-a-general-network-error/" itemprop="url">
+                  安装sqlserver2000出错，一般性网络错误
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T18:41:50+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>安装sqlserver2000出错，一般性网络错误，错误提示如下：</p>
+<pre><code>安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
+正在启动?
+
+Chinese_PRC_CI_AS
+
+-m -Q -T4022 -T3659
+
+正在与服务?
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+SQL Server 配置?
+
+###############################################################################
+
+13:11:03 Process Exit Code: (-1) 
+13:11:25 安装程序配置服务器失败。参考服务器错误日志和 C:\WINDOWS\sqlstp.log 了解更多信息。
+13:11:25 Action CleanUpInstall:
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service SQLAgent$MATCHONE
+13:11:25 Process Exit Code: (1060) 指定的服务并未以已安装的服务存在。
+
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service MSSQL$MATCHONE
+13:11:25 Process Exit Code: (0) 
+13:11:25 StatsGenerate returned: 2
+13:11:25 StatsGenerate (0xc0200006,0x1,0xf000000,0x300,2052,303,0x0,0x1,0,0,0
+13:11:25 StatsGenerate -1,zhang)
+13:11:25 Installation Failed.
+
+SQL SERVER 2000在C:\windows\sqlstp.log中提示错误如下：
+=======================================================
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionR
+=======================================================
+</code></pre><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>把计算机名改为大写，重新启动</strong></p>
+<p>OK  真的解决问题。</p>
+<p>另外提示一下，在安装sqlServer时 安装路径下不能有中文！</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/21/sql2000-remote-connections-including-sp4-patch/" itemprop="url">
                   Sql2000的远程连接（含Sp4补丁）
                 </a>
@@ -1580,138 +1742,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/how-to-work-effectively/" itemprop="url">
-                  Facebook公司内部PPT分享:如何高效工作
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T14:56:20+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工作学习/" itemprop="url" rel="index">
-                    <span itemprop="name">工作学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Facebook内部PPT，看看人家是如何高效工作滴</p>
-<h3 id="1、时间常有，时间优先。"><a href="#1、时间常有，时间优先。" class="headerlink" title="1、时间常有，时间优先。"></a>1、时间常有，时间优先。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0001.jpg" alt=""></p>
-<h3 id="2-时间总会有的：每天只计划4-5小时真正地工作。"><a href="#2-时间总会有的：每天只计划4-5小时真正地工作。" class="headerlink" title="2.时间总会有的：每天只计划4~5小时真正地工作。"></a>2.时间总会有的：每天只计划4~5小时真正地工作。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0002.jpg" alt=""></p>
-<h3 id="3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活-12-小时，这都很正常的。"><a href="#3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活-12-小时，这都很正常的。" class="headerlink" title="3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活 12 小时，这都很正常的。"></a>3、当你在状态时，就多干点；不然就好好休息：有时候会连着几天不是工作状态，有时在工作状态时却又能天天忙活 12 小时，这都很正常的。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0003.jpg" alt=""></p>
-<h3 id="4、重视你的时间，并使其值得重视：你的时间值-1000-美元-小时，你得动起来。"><a href="#4、重视你的时间，并使其值得重视：你的时间值-1000-美元-小时，你得动起来。" class="headerlink" title="4、重视你的时间，并使其值得重视：你的时间值 1000 美元/小时，你得动起来。"></a>4、重视你的时间，并使其值得重视：你的时间值 1000 美元/小时，你得动起来。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0004.jpg" alt=""></p>
-<h3 id="5、不要多任务，这只会消耗注意力；保持专注，一心一用。"><a href="#5、不要多任务，这只会消耗注意力；保持专注，一心一用。" class="headerlink" title="5、不要多任务，这只会消耗注意力；保持专注，一心一用。"></a>5、不要多任务，这只会消耗注意力；保持专注，一心一用。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0005.jpg" alt=""></p>
-<h3 id="6、养成工作习惯，并持之以恒，你的身体会适应的。"><a href="#6、养成工作习惯，并持之以恒，你的身体会适应的。" class="headerlink" title="6、养成工作习惯，并持之以恒，你的身体会适应的。"></a>6、养成工作习惯，并持之以恒，你的身体会适应的。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0006.jpg" alt=""></p>
-<h3 id="7、在有限的时间内，我们总是非常专注并且有效率。"><a href="#7、在有限的时间内，我们总是非常专注并且有效率。" class="headerlink" title="7、在有限的时间内，我们总是非常专注并且有效率。"></a>7、在有限的时间内，我们总是非常专注并且有效率。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0007.jpg" alt=""></p>
-<h3 id="8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。"><a href="#8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。" class="headerlink" title="8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。"></a>8、进入工作状态的最佳方式就是工作，从小任务开始做起，让工作运转起来。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0008.jpg" alt=""></p>
-<h3 id="9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工”-Facebook-办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。"><a href="#9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工”-Facebook-办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。" class="headerlink" title="9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工” Facebook 办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。"></a>9、迭代工作，期待完美收工会令人窒息：“做完事情，要胜于完美收工” Facebook 办公室墙壁上贴的箴言。动手做，胜过任何完美的想象。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0009.jpg" alt=""></p>
-<h3 id="10、工作时间越长，并不等于效率越高。"><a href="#10、工作时间越长，并不等于效率越高。" class="headerlink" title="10、工作时间越长，并不等于效率越高。"></a>10、工作时间越长，并不等于效率越高。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0010.jpg" alt=""></p>
-<h3 id="11、按重要性工作，提高效率。"><a href="#11、按重要性工作，提高效率。" class="headerlink" title="11、按重要性工作，提高效率。"></a>11、按重要性工作，提高效率。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0011.jpg" alt=""></p>
-<h3 id="12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。"><a href="#12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。" class="headerlink" title="12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。"></a>12、有会议就尽早安排，用于准备会议的时间往往都浪费掉了。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0012.jpg" alt=""></p>
-<h3 id="13、把会议和沟通-邮件或电话-结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。"><a href="#13、把会议和沟通-邮件或电话-结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。" class="headerlink" title="13、把会议和沟通 (邮件或电话) 结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。"></a>13、把会议和沟通 (邮件或电话) 结合，创造不间断工作时间：一个小会，也会毁了一个下午，因为它会把下午撕成两个较小的时间段，以至于啥也干不成。PS：当看到一个程序员冥思苦想时，不要过去打扰，甚至一句问候都是多余的。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0013.jpg" alt=""></p>
-<h3 id="14、一整天保持相同的工作环境。在项目-客户之间切换，会效率低。"><a href="#14、一整天保持相同的工作环境。在项目-客户之间切换，会效率低。" class="headerlink" title="14、一整天保持相同的工作环境。在项目/客户之间切换，会效率低。"></a>14、一整天保持相同的工作环境。在项目/客户之间切换，会效率低。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0014.jpg" alt=""></p>
-<h3 id="15、工作—放松—工作-高效-番茄工作法-—拖延症—高效。"><a href="#15、工作—放松—工作-高效-番茄工作法-—拖延症—高效。" class="headerlink" title="15、工作—放松—工作=高效(番茄工作法)—拖延症—高效。"></a>15、工作—放松—工作=高效(番茄工作法)—拖延症—高效。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0015.jpg" alt=""></p>
-<h3 id="16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。"><a href="#16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。" class="headerlink" title="16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。"></a>16、把不切实际的任务分割成合理的小任务，只要每天都完成小任务，你就会越来越接近那个大目标了。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0016.jpg" alt=""></p>
-<h3 id="17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。"><a href="#17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。" class="headerlink" title="17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。"></a>17、从来没有两个任务会有相同的优先级，总会有个更重要，仔细考虑待办事情列表。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0017.jpg" alt=""></p>
-<h3 id="18、必须清楚白天必须完成的那件事，是么。“Only-ever-work-on-the-thing-that-will-have-the-biggest-impact”-只去做那件有着最大影响的事情。——-Jason-Cohen"><a href="#18、必须清楚白天必须完成的那件事，是么。“Only-ever-work-on-the-thing-that-will-have-the-biggest-impact”-只去做那件有着最大影响的事情。——-Jason-Cohen" class="headerlink" title="18、必须清楚白天必须完成的那件事，是么。“Only ever work on the thing that will have the biggest impact” 只去做那件有着最大影响的事情。—— Jason Cohen"></a>18、必须清楚白天必须完成的那件事，是么。“Only ever work on the thing that will have the biggest impact” 只去做那件有着最大影响的事情。—— Jason Cohen</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0018.jpg" alt=""></p>
-<h3 id="19、把任务按时间分段，就能感觉它快被搞定了。"><a href="#19、把任务按时间分段，就能感觉它快被搞定了。" class="headerlink" title="19、把任务按时间分段，就能感觉它快被搞定了。"></a>19、把任务按时间分段，就能感觉它快被搞定了。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0019.jpg" alt=""></p>
-<h3 id="20、授权并擅用他人的力量。—君子善假于物-人-也，如果某件事其他人也可以做到八成，那就给他做！"><a href="#20、授权并擅用他人的力量。—君子善假于物-人-也，如果某件事其他人也可以做到八成，那就给他做！" class="headerlink" title="20、授权并擅用他人的力量。—君子善假于物(人)也，如果某件事其他人也可以做到八成，那就给他做！"></a>20、授权并擅用他人的力量。—君子善假于物(人)也，如果某件事其他人也可以做到八成，那就给他做！</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0020.jpg" alt=""></p>
-<h3 id="21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。"><a href="#21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。" class="headerlink" title="21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。"></a>21、把昨天翻过去，只考虑今天和明天。昨天的全垒打赢不了今天的比赛。—好汉不提当年勇。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0021.jpg" alt=""></p>
-<h3 id="22、给所有事情都设定一个期限。不要让工作无期限地进行下去。"><a href="#22、给所有事情都设定一个期限。不要让工作无期限地进行下去。" class="headerlink" title="22、给所有事情都设定一个期限。不要让工作无期限地进行下去。"></a>22、给所有事情都设定一个期限。不要让工作无期限地进行下去。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0022.jpg" alt=""></p>
-<h3 id="23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结"><a href="#23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结" class="headerlink" title="23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结"></a>23、针对时间紧或有压力的任务，设置结束时间，万事皆可终结</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0023.jpg" alt=""></p>
-<h3 id="24、多记，多做笔记"><a href="#24、多记，多做笔记" class="headerlink" title="24、多记，多做笔记"></a>24、多记，多做笔记</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0024.jpg" alt=""></p>
-<h3 id="25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。"><a href="#25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。" class="headerlink" title="25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。"></a>25、进入高效状态后，记下任何分散你注意力的东西比如Google搜索词、灵光乍现的想法、新点子等等。如果你把它们记下来，它就不会再蹦来蹦去了。</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0025.jpg" alt=""></p>
-<h3 id="26、休息，休息一下～"><a href="#26、休息，休息一下～" class="headerlink" title="26、休息，休息一下～"></a>26、休息，休息一下～</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman0026.jpg" alt=""></p>
-<p>好好看看，能改则改。需要学习的方法和工作态度太多了。</p>
-<p>工作很受用，尤其是做IT搞技术的。</p>
-<p>2016/3/20 14:53:18 </p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1758,7 +1788,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

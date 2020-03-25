@@ -244,6 +244,117 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/" itemprop="url">
+                  PHP与JSON的三点心得
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-03T19:27:05+08:00" content="2017-01-03">
+              2017-01-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、json-encode处理中文"><a href="#1、json-encode处理中文" class="headerlink" title="1、json_encode处理中文"></a>1、json_encode处理中文</h3><p>用PHP的json_encode来处理中文的时候, 中文都会被编码, 变成不可读的, 类似”\u<em>*</em>”的格式, 还会在一定程度上增加传输的数据量。<br>而在PHP5.4, 这个问题终于得以解决, Json新增了一个选项: JSON_UNESCAPED_UNICODE, 故名思议, 就是说, Json不要编码Unicode，而是现实中文本身。</p>
+<p>参考：<a href="http://php.net/manual/en/function.json-encode.php" target="_blank" rel="external">http://php.net/manual/en/function.json-encode.php</a></p>
+<h3 id="2、PHP进行POST提交JSON格式数据做参数"><a href="#2、PHP进行POST提交JSON格式数据做参数" class="headerlink" title="2、PHP进行POST提交JSON格式数据做参数"></a>2、PHP进行POST提交JSON格式数据做参数</h3><p>无论是使用curl还是fsockopen，都需要注意：</p>
+<p>‘Content-Type: application/json’</p>
+<p>同时注意不再使用<code>http_build_query</code>函数。</p>
+<p>看一下<br><code>http_build_query</code> 的定义和描述。</p>
+<p>定义：生成 url-encoded 之后的请求字符串。<br>描述：使用给出的关联（或下标）数组生成一个url-encoded请求字符串。参数 formdata 可以是数组或包含属性的对象。一个formdata数组可以是简单的一维结构，也可以是由数组组成的数组（其依次可以包含其它数组）。如果在基础数组中使用了数字下标同时给出了numeric_prefix参数，此参数值将会作为基础数组中的数字下标元素的前缀。这是为了让PHP或其它CGI程序在稍后对数据进行解码时获取合法的变量名。</p>
+<h3 id="3、PHP处理返回JSON格式的数据"><a href="#3、PHP处理返回JSON格式的数据" class="headerlink" title="3、PHP处理返回JSON格式的数据"></a>3、PHP处理返回JSON格式的数据</h3><p>使用 json_decode($return,true);注意后面那个参数“true”，可以输出关联数组。</p>
+<p>直接赋值给变量，即是一个数组。可直接使用。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/22/How-to-solve-the-spike-performance-issues-and-oversold-discussions/" itemprop="url">
                   如何解决秒杀的性能问题和超卖的讨论
                 </a>
@@ -1481,154 +1592,6 @@ location ~ \.php$ {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T14:50:44+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）"><a href="#OS-X-常用-必备软件推荐-——-（系统扩展强化等工具）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）"></a>OS X 常用 / 必备软件推荐 —— （系统扩展强化等工具）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0000.png" alt=""></p>
-<h4 id="App-Cleaner"><a href="#App-Cleaner" class="headerlink" title="App Cleaner"></a>App Cleaner</h4><p><a href="https://freemacsoft.net/appcleaner/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0001.png" alt=""></p>
-<p>删除软件的必备。用这个软件可以搜索出一个 app 附带的 data 文件夹，和各种类似注册表的东西。当你需要彻底删除一个软件的时候，可以用。</p>
-<h4 id="Duet"><a href="#Duet" class="headerlink" title="Duet"></a>Duet</h4><p><a href="http://www.duetdisplay.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0002.png" alt=""></p>
-<p>把你的 iPad 变成一个外接 Mac 显示器的软件（如果你要用 iPhone 也没人阻止你）。性能相当出色，可用性很高。对于需要移动所以不能使用单独的外接显示器的时候，非常有用。</p>
-<h4 id="Fluid"><a href="#Fluid" class="headerlink" title="Fluid"></a>Fluid</h4><p><a href="http://fluidapp.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0003.png" alt=""></p>
-<p>一个把 web app 包裹起来成为一个单独 app 的壳。相当于把你的 web app 单独包进一个浏览器里。对于你常用的 app 来说，非常值得一试。</p>
-<h4 id="AirServer"><a href="#AirServer" class="headerlink" title="AirServer"></a>AirServer</h4><p><a href="https://www.airserver.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0004.png" alt=""></p>
-<p>把你的 mac 变成一个AirPlay 显示器，可以把 iPhone/iPad 屏幕通过 AirPlay 投射到电脑屏幕上。</p>
-<h4 id="Path-Finder"><a href="#Path-Finder" class="headerlink" title="Path Finder"></a>Path Finder</h4><p><a href="http://www.cocoatech.com/pathfinder/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0005.png" alt=""></p>
-<p>全面增强附加功能版 Finder，对于集成性功能性强的文件管理器有需求的用户来说很好用。</p>
-<h4 id="Tuxera-Disk-Manager"><a href="#Tuxera-Disk-Manager" class="headerlink" title="Tuxera Disk Manager"></a>Tuxera Disk Manager</h4><p><a href="https://www.tuxera.com/products/tuxera-ntfs-for-Mac/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0006.png" alt=""></p>
-<p>给你的 mac 增加 NTFS write 支持的软件。NTFS 也就是 windows 的文件格式，mac 原厂只能读不能写。有需要的朋友一定要装这个。</p>
-<h4 id="Keka"><a href="#Keka" class="headerlink" title="Keka"></a>Keka</h4><p><a href="http://www.kekaosx.com/en/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0007.png" alt=""></p>
-<p>万能文件解压软件。</p>
-<h4 id="Transmission"><a href="#Transmission" class="headerlink" title="Transmission"></a>Transmission</h4><p><a href="https://www.transmissionbt.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0008.png" alt=""></p>
-<p>BitTorrent 客户端。</p>
-<h4 id="Hider-2"><a href="#Hider-2" class="headerlink" title="Hider 2"></a>Hider 2</h4><p><a href="http://macpaw.com/hider" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0009.png" alt=""></p>
-<p>人如其名，就是一个放置隐藏文件夹和加密文件的软件，一定不要忘了密码。</p>
-<h4 id="Splash-Streamer"><a href="#Splash-Streamer" class="headerlink" title="Splash Streamer"></a>Splash Streamer</h4><p><a href="http://www.splashtop.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0010.png" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0011.png" alt=""></p>
-<p>远程控制软件。支持 PC，Mac，iOS，android 的远程操控。</p>
-<h4 id="Teamviewer"><a href="#Teamviewer" class="headerlink" title="Teamviewer"></a>Teamviewer</h4><p><a href="https://www.teamviewer.com/en/download/Mac/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0012.png" alt=""></p>
-<p>和上面一个同类的软件，不过这个个人使用免费。</p>
-<h4 id="RecordIt"><a href="#RecordIt" class="headerlink" title="RecordIt"></a>RecordIt</h4><p><a href="http://recordit.co/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0013.png" alt=""></p>
-<p>截取屏幕操作的 gif 并且自动上传云端的软件，操作简单直观，分享容易。</p>
-<h4 id="Parallels-Desktop"><a href="#Parallels-Desktop" class="headerlink" title="Parallels Desktop"></a>Parallels Desktop</h4><p><a href="http://www.parallels.com/products/desktop/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0014.png" alt=""></p>
-<p>非常好用的虚拟机软件。</p>
-<h4 id="Actions-Server-gt-Quadro"><a href="#Actions-Server-gt-Quadro" class="headerlink" title="Actions Server -&gt; Quadro"></a>Actions Server -&gt; Quadro</h4><p><a href="http://getactionsapp.com/" target="_blank" rel="external">Actions Server 官网下载1</a></p>
-<p><a href="http://quadro.me/" target="_blank" rel="external">Quadro 官网下载2</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--system-expansion-to-strengthen-other-tools-0015.png" alt=""></p>
-<p>Actions 是一个把你的 iPad/iPhone 变成电脑一个快捷键面板的软件。Quadro 是前者结束支持以后的付费版后继者。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21280914" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1675,7 +1638,7 @@ location ~ \.php$ {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
