@@ -244,8 +244,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/07/02/How-to-use-the-watch-star-and-fork-in-github/" itemprop="url">
-                  如何用好 github 中的 watch、star、fork
+                <a class="post-title-link" href="/2020/05/04/Tell-you-that-redis-is-a-real-powerful/" itemprop="url">
+                  告诉你Redis是一个牛逼货
                 </a>
               
             
@@ -258,142 +258,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-02T09:26:01+08:00" content="2018-07-02">
-              2018-07-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工作学习/" itemprop="url" rel="index">
-                    <span itemprop="name">工作学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在每个 github 项目的右上角，都有三个按钮,分别是 watch、star、fork，但是有些刚开始使用 github 的同学，可能对这三个按钮的使用却不怎么了解，包括一开始使用 github 的我也是如此。这篇博客，结合自的理解和使用，说说这三个按钮的用法以及一些个人见解。</p>
-<p>从左至右，依次是 watch star fork，下面分别说下他们的具体作用。</p>
-<h2 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h2><p>watch 翻译过来可以称之为观察，点击 watch 可以看到如下的列表。</p>
-<p>对于别人的项目，默认自己都处于 Not watching 的状态，当你选择 Watching，表示你以后会关注这个项目的所有动态，这个项目以后只要发生变动，如被别人提交了 pull request、被别人发起了issue等等情况，你都会在自己的个人通知中心，收到一条通知消息，如果你设置了个人邮箱，那么你的邮箱也可能收到相应的邮件。</p>
-<p>如下，我 watching 了开源项目android-cn/android-discuss，那么以后任何人只要在这个项目下提交了 issue 或者在 issue 下面有任何留言，我的通知中心就会通知我。如果你配置了邮箱，你还可能会因此不断的收到通知邮件。</p>
-<p>如果你不想接受这个项目的所有通知，那么点击 Not Watching 即可。</p>
-<p>另外这里有一篇文章讲 如何正确接收 GitHub 的消息邮件，很不错的一篇文章，推荐大家看看。</p>
-<h2 id="star"><a href="#star" class="headerlink" title="star"></a>star</h2><p>star 翻译过来是星，但这个翻译没任何具体意义，这里解释为关注或者点赞更合适，当你点击 star，表示你喜欢这个项目或者通俗点，可以把他理解成朋友圈的点赞吧，表示对这个项目的支持。</p>
-<p>不过相比朋友圈的点赞，github 里面会有一个列表，专门收集了你所有 star 过的项目，点击 github 个人头像，可以看到 your stars 的条目，点击就可以查看你 star 过的所有项目了，如下图所示</p>
-<p>不过，star 列表很容易出现这样的问题：如果你平时比较爱逛 Github， star 的项目过多后怎么快速查找自己想要的项目怎么办？</p>
-<p>这时，如果 github 可以提供一个分类功能该多好，就像微信公众号文章的收藏，你在点击微信菜单中的收藏后，微信会提示你对收藏的文章设置 tag。这样设置的好处是，以后在微信收藏列表中查找项目时，可以根设置的 tag 归类查找，这样查找效率会提高不少。</p>
-<p>但是不知道 github 的产品经理是怎么想的，github 本身没有这个功能。但是 github 这个全球最大的程序员社区从来也不缺有思想有执行力的程序员。</p>
-<p>也许是 github 自己也发现了检索的问题，现在 github 增加了一个类似的功能，可以给自己给自己的项目设置 topic.<br>给自己的项目设置 topic 后，相当于自己给自己的项目设置了一个 tag ，这样可以方便别人搜索。比如要搜索所有 topic 为 android 的项目，你只需要在 GitHub 搜索时输入 topic android  然后搜索即可。</p>
-<h2 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h2><p>当选择 fork，相当于你自己有了一份原项目的拷贝，当然这个拷贝只是针对当时的项目文件，如果后续原项目文件发生改变，你必须通过其他的方式去同步。</p>
-<p>一般来说，我们不需要使用 fork 这个功能，除非有一些项目，可能存在 bug 或者可以继续优化的地方，你想帮助原项目作者去完善这个项目或者单纯的想在原来项目基础上己维护一个属于自己项目（比如我 fork 的 AndroidWeekly 客户端，那么你可以 fork 一份项目下来，然后自己对这个项目进行修改完善，当你觉得项目没问题了，你就可以尝试发起 pull request 给原项目作者了。</p>
-<p>然后就静静等待他的 merge 邮件通知了。</p>
-<p>我看到很多人错误的在使用 fork。很多人把 fork 当成了收藏一样的功能，包括一开始使用 github 的我，每次看到一个好的项目就先 fork，</p>
-<p>因为这样，就可以我的 repository(仓库)列表下查看 fork 的项目了。其实你完全可以使用 star 来达到这个目的。</p>
-<h2 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h2><p>1、对于一些可能会经常发生变化的会不定期更新的好项目 多使用 watch.</p>
-<p>比如 android-cn 团队的 android-discuss 项目，</p>
-<p>你就可以 watching 它，这里面都是一些关于 Android 技术的交流，如果有任何新问题，你都可以收到通知，你可以查看别人的回答，</p>
-<p>你可以回答别人提出的问题，这是一个很好的学习成长方式。</p>
-<p>其他值得watch的项目还有很多，比如 github 上很多的 Awesome 系列的项目,如 Awesome-MaterialDesign 等，你 watch 这些项目了，</p>
-<p>只要项目新增一些好玩好用的东西，你就会收到通知。</p>
-<p>我在知乎上看到有人问这样的问题，说 github 上有哪些值得 watch 的项目，其实有很多，我自己也整理了一些，但是没放到 github.</p>
-<p>值得注意的是，如果 watch多了，你可能会被无休止的邮件通知烦死（邮件通知可设置），因为被 watch 项目有任何留言、PR等更新都会触发通知，所以做好权衡。</p>
-<p>2、喜欢一个项目就 star 它吧~</p>
-<p>3、修改开源项目就使用 fork，这样你就可以在原项目的基础上，对项目进行修改提交，现在你是这个项目的主人啦~</p>
-<h2 id="小细节"><a href="#小细节" class="headerlink" title="小细节"></a>小细节</h2><p>有些时候，你看到一个项目的 star 数有很多，你就想知道到底都有那些人 star 了这个项目，或者 fork 了这个项目，</p>
-<p>但是环顾一圈，你却找不到一个入口，后来自己不经意的发现，只要点击 star 傍边的数字，就可以查看有哪些人 star 了这个项目。</p>
-<p>是不是有点意思，现在你就可以去试试，watch、fork上面的数字都是可以点击的，道理一样。</p>
-<p><a href="https://www.jianshu.com/p/6c366b53ea41" target="_blank" rel="external">原文参考</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/07/01/understand-synchronization-and-asynchrony/" itemprop="url">
-                  理解同步和异步
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-01T01:04:43+08:00" content="2018-07-01">
-              2018-07-01
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -439,25 +305,55 @@
       
         
           
-            <h3 id="一种说法"><a href="#一种说法" class="headerlink" title="一种说法"></a>一种说法</h3><p>老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。</p>
-<p>“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接听状态(即：打不通，联系不上)，为了拿到生活费，你就不停的oncall、等待，最终可能不能及时要到生活费，导致你今天要做的事都没有完成，而白白花掉了时间。</p>
-<p>“异步”就是：在你打完电话发现没人接听时，猜想：对方可能在忙，暂时无法接听电话，所以你发了一条短信(或者语音留言，亦或是其他的方式)通知对方后便忙其他要紧的事了；这时你就不需要持续不断的拨打电话，还可以做其他事情；待一定时间后，对方看到你的留言便回复响应你，当然对方可能转钱也可能不转钱。但是整个一天下来，你还做了很多事情。 或者说你找室友临时借了一笔钱，又开始happy的上学时光了。</p>
-<p>简而言之，言而总之：同步就是我强依赖你(对方)，我必须等到你的回复，才能做出下一步响应。即我的操作(行程)是顺序执行的，中间少了哪一步都不可以，或者说中间哪一步出错都不可以，类似于编程中程序被解释器顺序执行一样；同时如果我没有收到你的回复，我就一直处于等待、也就是阻塞的状态。 异步则相反，我并不强依赖你，我对你响应的时间也不敏感，无论你返回还是不返回，我都能继续运行；你响应并返回了，我就继续做之前的事情，你没有响应，我就做其他的事情。也就是说我不存在等待对方的概念，我就是非阻塞的。</p>
-<p>从上面的例子来看：同步似乎等价于阻塞，异步则等价于非阻塞。其实有些狭义，但不可否认的是，在一定情况下，确实可以这么认为；因为同步一定存在着阻塞状态，而异步一定不存在非阻塞的状态。 但是不是就是说 同步调用 == 阻塞调用呢？然并不是；阻塞和非阻塞强调的是程序在等待调用结果（消息，返回值）时的状态.  阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。 对于同步调用来说，很多时候当前线程还是激活的状态，只是从逻辑上当前函数没有返回而已，即同步等待时什么都不干，白白占用着资源。</p>
-<h3 id="另一个有趣的例子"><a href="#另一个有趣的例子" class="headerlink" title="另一个有趣的例子"></a>另一个有趣的例子</h3><p>老张爱喝茶，废话不说，煮开水。</p>
-<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
-<p>1 老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻</p>
-<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
-<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大</p>
-<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。</p>
-<p>普通水壶，同步；响水壶，异步。</p>
-<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
-<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
-<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由调用者主动等待这个调用的结果。而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>原文链接：<a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="external">知乎问答</a></p>
+            <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>Redis是一个 Key-Value 存储系统。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、 list(链表)、 set(集合)和 zset(有序集合)。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，Redis 支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。区别的是 Redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了 master-slave(主从)同步。</p>
+<h2 id="Key-Value存储系统"><a href="#Key-Value存储系统" class="headerlink" title="Key-Value存储系统"></a>Key-Value存储系统</h2><p>Key-Value Store 是当下比较流行的话题，尤其在构建诸如搜索引擎、IM、P2P、游戏服务器、SNS 等大型互联网应用以及提供云计算服务的时候，怎样保证系统在海量数据环境下的高性能、高可靠性、高扩展性、高可用性、低成本成为所有系统架构们挖苦心思考虑的重点，而怎样解决数据库服务器的性能瓶颈是最大的挑战。</p>
+<p>Key-Value Store 更加注重对海量数据存取的性能、分布式、扩展性支持上，并不需要传统关系数据库的一些特征，例如：Schema、事务、完整 SQL 查询支持等等，因此在分布式环境下的性能相对于传统的关系数据库有较大的提升。</p>
+<h2 id="为什么要选择Key-Value-Store"><a href="#为什么要选择Key-Value-Store" class="headerlink" title="为什么要选择Key-Value Store"></a>为什么要选择Key-Value Store</h2><h3 id="1、大规模互联网应用"><a href="#1、大规模互联网应用" class="headerlink" title="1、大规模互联网应用"></a>1、大规模互联网应用</h3><p>一类是仍然采用RDBMS，然后通过对数据库的垂直和水平切分将整个数据库部署到一个集群上，缺点在于它是针对特定应用，通用型不足<br>另一类就是google采用的方法，抛弃RDBMS，采用Key-Value形式存储，这样可以极大增强系统的可扩展性。</p>
+<h3 id="2、云存储"><a href="#2、云存储" class="headerlink" title="2、云存储"></a>2、云存储</h3><p>如果说上一个问题还有可以替代的解决方案（切割数据库）的话，那么对于云存储来说，也许 key-value 的 store 就是唯一的解决方案了。云存储简单点说就是构建一个大型的存储平台给别人用，这也就意味着在这上面运行的应用其实是不可控的。如果其中某个客户的应用随着用户的增长而不断增长时，云存储供应商是没有办法通过数据库的切割来达到 scale 的，因为这个数据是客户的，供应商不了解这个数据自然就没法作出切割。在这种情况下，key-value 的 store 就是唯一的选择了，因为这种条件下的 scalability 必须是自动完成的，不能有人工干预。这也是为什么几乎所有的现有的云存储都是 key-value 形式的，例如 Amazon的 smipleDB，底层实现就是 key-value，还有 google 的  GoogleAppEngine，采用的是 BigTable的存储形式。</p>
+<p>Key-Value Store 最大的特点就是它的可扩展性，这也就是它最大的优势。所谓的可扩展性，在我看来这里包括了两方面内容。一方面，是指 Key-Value Store 可以支持极大的数据的存储，它的分布式的架构决定了只要有更多的机器，就能够保证存储更多的数据。另一方面，是指它可以支持数量很多的并发的查询。对于 RDBMS，一般几百个并发的查询就可以让它很吃力了，而一个 Key-Value Store，可以很轻松的支持上千的并发查询。下面而简单的罗列了一些特点：</p>
+<ul>
+<li>Key-value store：一个  key-value  数据存储系统，只支持一些基本操作，如： SET(key, value) 和  GET(key)  等；</li>
+<li>分布式：多台机器（nodes）同时存储数据和状态，彼此交换消息来保持数据一致，可视为一个完整的存储系统。</li>
+<li>数据一致：所有机器上的数据都是同步更新的、不用担心得到不一致的结果；<br>冗余：所有机器（nodes）保存相同的数据，整个系统的存储能力取决于单台机器（node）的能力；</li>
+<li>容错：如果有少数  nodes  出错，比如重启、当机、断网、网络丢包等各种  fault/fail  都不影响整个系统的运行；</li>
+<li>高可靠性：容错、冗余等保证了数据库系统的可靠性。</li>
+</ul>
+<h2 id="初识Redis"><a href="#初识Redis" class="headerlink" title="初识Redis"></a>初识Redis</h2><p>Redis是一个开源的使用ANSI C语言编写，支持网络、可基于内存且可持久化的日志型、Key-Value数据库，并且提供多个语言的API，访问十分便捷。</p>
+<h3 id="Redis数据类型："><a href="#Redis数据类型：" class="headerlink" title="Redis数据类型："></a>Redis数据类型：</h3><p>作为 Key-value 型数据库，Redis 也提供了键（Key）和键值（Value）的映射关系。但是，除了常规的数值或字符串，Redis 的键值还可以是以下形式之一：</p>
+<ul>
+<li>Lists  （列表）</li>
+<li>Sets  （集合）</li>
+<li>Sorted sets  （有序集合）</li>
+<li>Hashes  （哈希表）</li>
+</ul>
+<p>键值的数据类型决定了该键值支持的操作。Redis 支持诸如列表、集合或有序集合的交集、并集、查集等高级原子操作；同时，如果键值的类型是普通数字，Redis 则提供自增等原子操作。</p>
+<h2 id="Redis持久化："><a href="#Redis持久化：" class="headerlink" title="Redis持久化："></a>Redis持久化：</h2><p>通常，Redis 将数据存储于内存中，或被配置为使用虚拟内存。通过两种方式可以实现数据持久化：使用截图的方式，将内存中的数据不断写入磁盘；或使用类似 MySQL 的日志方式，记录每次更新的日志。前者性能较高，但是可能会引起一定程度的数据丢失；后者相反。</p>
+<p>Redis主从同步：</p>
+<p>Redis支持将数据同步到多台从库，这种特性对提高读取性能非常有益。</p>
+<h2 id="Redis性能："><a href="#Redis性能：" class="headerlink" title="Redis性能："></a>Redis性能：</h2><p>相比需要依赖磁盘记录每个更新的数据库，基于内存的特性无疑给Redis带来了非常优秀的性能，读写操作之间有显著的性能差异。</p>
+<h3 id="性能测试结果："><a href="#性能测试结果：" class="headerlink" title="性能测试结果："></a>性能测试结果：</h3><p>SET操作每秒钟 110000 次，GET操作每秒钟 81000 次，服务器配置如下：<br>Linux 2.6, Xeon X3320 2.5Ghz.<br>stackoverflow 网站使用 Redis 做为缓存服务器。</p>
+<h2 id="适用场合："><a href="#适用场合：" class="headerlink" title="适用场合："></a>适用场合：</h2><p>Redis其实开创了一种新的数据存储思路，使用Redis，我们不用再面对功能单调的数据库时，把精力放在如何把大象放进冰箱的问题，而是利用Redis提供的灵活多变的数据结构和数据操作，为不同的大象构建不同的冰箱。</p>
+<h3 id="下面是一些Redis常用的场景："><a href="#下面是一些Redis常用的场景：" class="headerlink" title="下面是一些Redis常用的场景："></a>下面是一些Redis常用的场景：</h3><h4 id="1、取最新N个数据的操作"><a href="#1、取最新N个数据的操作" class="headerlink" title="1、取最新N个数据的操作"></a>1、取最新N个数据的操作</h4><p>比如典型的取你网站的最新文章，通过下面方式，我们可以将最新的 5000 条评论的 ID 放在Redis 的 List 集合中，并将超出集合部分从数据库获取。使用 LPUSH latest.comments<id>命令，向 list 集合中插入数据插入完成后再用 LTRIM latest.comments 0 5000 命令使其永远只保存最近 5000 个 ID如果你还有不同的筛选维度，比如某个分类的最新 N 条，那么你可以再建一个按此分类的List，只存 ID 的话，Redis 是非常高效的。</id></p>
+<h4 id="2、排行榜应用，取TOP-N操作"><a href="#2、排行榜应用，取TOP-N操作" class="headerlink" title="2、排行榜应用，取TOP N操作"></a>2、排行榜应用，取TOP N操作</h4><p>这个需求与上面需求的不同之处在于，前面操作以时间为权重，这个是以某一个条件为权重，比如按购买的次数或者顶的次数，这时候就需要 sorted set 出马，将你要排序的值设置为sorted set的score，将具体的数据设置为相应的value，每次只需要执行一条ZADD命令即可。</p>
+<h4 id="3、需要精确设定过期时间的应用"><a href="#3、需要精确设定过期时间的应用" class="headerlink" title="3、需要精确设定过期时间的应用"></a>3、需要精确设定过期时间的应用</h4><p>比如你可以把上面说到的 sorted  set 的 score 值设置成过期时间的时间戳，那么就可以简单地通过过期时间排序，定时清除过期数据了，不仅是清除 Redis 中的过期数据，你完全可以把 Redis 里这个过期时间当成是对数据库中数据的索引，用 Redis 来找出哪些数据需要过期删除，然后再精准地从数据库中删除相应的记录。</p>
+<h4 id="4、计数器应用"><a href="#4、计数器应用" class="headerlink" title="4、计数器应用"></a>4、计数器应用</h4><p>Redis的命令是原子性的，你可以轻松利用INCR、DECR命令来构建计数器系统（底层的写入是单线程模型，并发写会按到位顺序执行）</p>
+<h4 id="5、Uniq操作，获取某段时间所有数据去重值"><a href="#5、Uniq操作，获取某段时间所有数据去重值" class="headerlink" title="5、Uniq操作，获取某段时间所有数据去重值"></a>5、Uniq操作，获取某段时间所有数据去重值</h4><p>这个使用Redis的Set数据结构最合适，只需要不断将数据往Set中扔就行，set就是集合，会自动去重</p>
+<h4 id="6、实时系统、发垃圾系统"><a href="#6、实时系统、发垃圾系统" class="headerlink" title="6、实时系统、发垃圾系统"></a>6、实时系统、发垃圾系统</h4><p>通过上面说到的 set 功能，你可以知道一个终端用户是否进行了某个操作，可以找到其操作的集合并进行分析统计对比等。没有做不到，只有想不到。</p>
+<h4 id="7、Pub、Sub构建实时消息系统"><a href="#7、Pub、Sub构建实时消息系统" class="headerlink" title="7、Pub、Sub构建实时消息系统"></a>7、Pub、Sub构建实时消息系统</h4><p>Redis 的 Pub/Sub 系统可以构建实时的消息系统，比如很多用 Pub/Sub 构建的实时聊天系统的例子。</p>
+<h4 id="8、构建队列系统"><a href="#8、构建队列系统" class="headerlink" title="8、构建队列系统"></a>8、构建队列系统</h4><p>使用list可以构建队列系统，使用sorted set 甚至可以构建有优先级的队列系统。</p>
+<h4 id="9、缓存"><a href="#9、缓存" class="headerlink" title="9、缓存"></a>9、缓存</h4><p>性能优于Memcached，并且更优秀的在于数据结构更加多样化</p>
+<h2 id="Redis作者的宣言"><a href="#Redis作者的宣言" class="headerlink" title="Redis作者的宣言"></a>Redis作者的宣言</h2><p>宣言中，作者列举了Redis的7大原则，可以向大家阐明Redis的思想，看了之后我觉得Redis的作者的确牛叉，Redis这款产品这的是程序猿的福利：</p>
+<p>1、Redis 是一个操作数据结构的语言工具，它提供基于 TCP 的协议以操作丰富的数据结构。</p>
+<p>在 Redis 中，数据结构这个词的意义不仅表示在某种数据结构上的操作，更包括了结构本身及这些操作的时间空间复杂度。</p>
+<p>2、Redis 定位于一个内存数据库，正是由于内存的快速访问特性，才使得 Redis 能够有如此高的性能，才使得 Redis 能够轻松处理大量复杂的数据结构，Redis 会尝试其它的存储方面的选择，但是永远不会改变它是一个内存数据库的角色。</p>
+<p>3、Redis 使用基础的 API 操作基础的数据结构， Redis 的 API 与数据结构一样，都是一些最基础的元素，你几乎可以将任何信息交互使用此 API 格式表示。作者调侃说，如果有其它非人类的智能生物存在，他们也能理解 Redis 的 API。因为它是如此的基础。（作者大大很有趣）</p>
+<p>4、Redis 有着诗一般优美的代码，经常有一些不太了解 Redis  有的人会建议 Redis 采用一些其它人的代码，以实现一些 Redis  未实现的功能，但这对我们来说就像是非要给《红楼梦》接上后四十回一样。</p>
+<p>5、Redis 始终避免复杂化，我们认为设计一个系统的本质，就是与复杂化作战。我们不会为了一个小功能而往源码里添加上千行代码，解决复杂问题的方法就是让复杂问题永远不要提复杂的问题。</p>
+<p>6、Redis 支持两个层成的 API，第一个层面包含部分操作 API，但它支持用于分布式环境下的 Redis。第二个层面的 API 支持更复杂的 multi-key 操作。它们各有所长，但是我们不会推出两者都支持的 API，但我们希望能够提供实例间数据迁移的命令，并执行 multi-key 操作。</p>
+<p>7、我们以优化代码为乐，我们相信编码是一件辛苦的工作，唯一对得起这辛苦的就是去享受它。如果我们在编码中失去了乐趣，那最好的解决办法就是停下来。我们决不会选择让Redis不好玩的开发模式。</p>
+<p>我只能感叹道：Redis乃神物，出污泥而不染，濯清涟而不妖。</p>
+<p><strong>PS</strong>： Redis作者antirez曾笑称Redis为一个数据结构服务器，我认为这个还是挺准确的，Redis的所有功能就是将数据以其固有的几种结构来保存，并提供给用户操作这几种结构的接口。</p>
+<p>本文非原创<br><a href="https://www.jianshu.com/p/01b37cdb3f33" target="_blank" rel="external">原文链接</a></p>
 
           
         
@@ -499,8 +395,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/06/06/mvc_mode/" itemprop="url">
-                  MVC详解
+                <a class="post-title-link" href="/2020/05/04/teamviewer-easy-to-use-cross-platform-remote-control-tool/" itemprop="url">
+                  TeamViewer 好用的跨平台远程控制工具
                 </a>
               
             
@@ -513,8 +409,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-06-06T17:27:07+08:00" content="2018-06-06">
-              2018-06-06
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -527,8 +423,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/网络工具/" itemprop="url" rel="index">
+                    <span itemprop="name">网络工具</span>
                   </a>
                 </span>
 
@@ -560,84 +456,43 @@
       
         
           
-            <h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>MVC是一种设计模式（Design pattern），也就是一种解决问题的方法和思路， 是上世纪80年代提出的，到现在已经颇有历史了。 MVC的意义在于指导开发者将数据与表现解耦，提高代码，特别是模型部分代码的复用性。</p>
-<p>MVC不仅仅存在于Web设计中，在桌面程序开发中也是一种常见的方法。MVC的出现已经有一段历史了。 记得我最早了解到MVC的时候，是在Microsoft的Visual C++ 中的MFC中。 当时年少无知，以为是MFC中特有的东西。后来随之不断学习，才发现自己的天真。 所以说，学得越多，就越觉得自己无知。越觉得自己无知，就越懂得敬畏和谦逊。 从这个角度讲，同学们，最好不要看不起谦逊的人。</p>
-<p>有个这么一个段子，说一天A君在圈内聚会时，朋友介绍了另一个人B君互相认识。 聚会场合嘛，这很正常，也很普遍。于是AB君小聊了一下。按国人的习惯，A君就问了“先生在哪高就？”。 B君只说了句，“谈不上高就，炒炒股。” “哦，原来是炒股的。”A君心想，虽没觉得什么不对，但心理觉得B有点low，只是没说破，也没表现出来。 过后了一段时间，一次偶然机会，发现原来B君是国内某上市公司的二股东，身家过亿。 人家没说慌，确实是炒股的……</p>
-<p>话说远了，我们还说正题。MVC是三个单词的缩写：Model, View, Controller。 MVC是一种设计模式，目前几乎所有的Web开发框架都建立在MVC模式之上。 当然，最近几年也出现了一些诸如MVP, MVVM之类的新的设计模式。 但从技术的成熟程度和使用的广泛程度来讲，MVC仍是主流。</p>
-<p>Yii是一个Web框架，从Web开发的分工来讲，Yii的开发工作中，承担后端的内容多一些，毕竟主要就是PHP开发。 前端主要是在HTML、JavaScript、CSS上进行开发，然后通过Yii把前端的内容管起来，如通过Assets等。 这一章要讲的MVC，主要是针对后端的。 前端的MVC严格来讲不属于Yii的范畴，这里我们就不作过多介绍。 如果想了解前端的MVC，可以看看Backbone.js Angular.js等前端框架。</p>
-<h2 id="MVC的三要素"><a href="#MVC的三要素" class="headerlink" title="MVC的三要素"></a>MVC的三要素</h2><p>MVC是模型(Model)、视图(View)、控制器(Controller)3个单词的缩写。 下面我们从这3个方面来讲解MVC中的三个要素。</p>
-<ul>
-<li><p>Model是指数据模型，是对客观事物的抽象。 如一篇博客文章，我们可能会以一个Post类来表示，那么，这个Post类就是数据对象。 同时，博客文章还有一些业务逻辑，如发布、回收、评论等，这一般表现为类的方法，这也是model的内容和范畴。 对于Model，主要是数据、业务逻辑和业务规则。相对而言，这是MVC中比较稳定的部分，一般成品后不会改变。 开发初期的最重要任务，主要也是实现Model的部分。这一部分写得好，后面就可以改得少，开发起来就快。</p>
-</li>
-<li><p>View是指视图，也就是呈现给用户的一个界面，是model的具体表现形式，也是收集用户输入的地方。 如你在某个博客上看到的某一篇文章，就是某个Post类的表现形式。 View的目的在于提供与用户交互的界面。换句话说，对于用户而言，只有View是可见的、可操作的。 事实上也是如此，你不会让用户看到Model，更不会让他直接操作Model。 你只会让用户看到你想让他看的内容。 这就是View要做的事，他往往是MVC中变化频繁的部分，也是客户经常要求改来改去的地方。 今天你可能会以一种形式来展示你的博文，明天可能就变成别的表现形式了。</p>
-</li>
-<li><p>Contorller指的是控制器，主要负责与model和view打交道。 换句话说，model和view之间一般不直接打交道，他们老死不相往来。view中不会对model作任何操作， model不会输出任何用于表现的东西，如HTML代码等。这俩甩手不干了，那总得有人来干吧，只能Controller上了。 Contorller用于决定使用哪些Model，对Model执行什么操作，为视图准备哪些数据，是MVC中沟通的桥梁。</p>
-</li>
-</ul>
-<p>对于MVC中三者的划分并没有十分明晰的定义和界线。MVC设计模式只是一种指导思想， 让你按照model, view, controller三个方面来描述你的应用，并通过三者的交互，使应用功能得以正常运转。</p>
-<p>其中，View的部分比较明确，就是负责显示嘛。一切与显示界面无关的东西，都不应该出现在View里面。 因此，View中一般不会出现复杂的判断语句，不会出现复杂的运算过程。 对于PHP的Web应用而言，毫无疑问，HTML是View中的主要内容。这是关于View的几个原则：</p>
-<ul>
-<li>负责显示界面，以HTML为主；</li>
-<li>一般没有复杂的判断语句或运算过程，可以有简单的循环语句、格式化语句。 比如，一般博客首页的文章列表，就是一种循环结构；</li>
-<li>从不调用Model的写方法。也就是说，View只从Model获取数据，而不直接改写Model，所以我们说他们老死不相往来。</li>
-<li>一般没有任何准备数据的代码，如查询数据库、组合成一定格式的字符串等。 这些一般放在Controller里面，并以变量的形式传给视图。 也就是说，视图里面要用到的数据，都是拿来就能直接用的变量。</li>
-</ul>
-<p>对于Model而言，最主要就是保存事物的信息，表征事物的行为和对他可以进行的操作。 比如，Post类必然有一个用于保存博客文章标题的title属性，必然有一个删除的操作，这都是Model的内容。 以下是关于Model的几个原则：</p>
-<ul>
-<li>数据、行为、方法是Model的主要内容；</li>
-<li>实际工作中，Model是MVC中代码量最大，逻辑最复杂的地方，因为关于应用的大量的业务逻辑也要在这里面表示。</li>
-<li>Model所提供的数据都是原始数据。也就是说，不带有任何表现层的代码。 比如，一般不会在输出的数据中添加HTML标签，这是View的工作。 但是Model可以提供有结构的数据，数组结构、队列结构、乃至其他Model等。 这个结构并非是表现层的格式，而是数据在内存中的表现。</li>
-<li>与输出不同，Model的输入数据，可以是带有表现格式的数据。 如将一篇文章保存到Post里面，内容中必然包含各种HTML标签。 因此，Model一般要对输入数据作过滤、验证和规范化等预处理。 特别是对于需要保存进数据库的，一定要对所有的输入数据作预处理。 这些预处理，有的其实是业务逻辑。比如只有主编才可以删除文章，这一验证规则既也是业务逻辑，也是权限控制。 而有些预处理，则不属于业务逻辑，比如，文章标题前后的空格应去除。</li>
-<li>注意与Controller区分开。Model是处理业务方面的逻辑，Controller只是简单的协调Model和View之间的关系， 只要是与业务有关的，就该放在Model里面。好的设计，应当是胖Model，瘦Controller。</li>
-</ul>
-<p>对于Controller，主要是响应用户请求，决定使用什么视图，需要准备什么数据用来显示。 以下是有关Controller的设计原则：</p>
-<ul>
-<li>用于处理用户请求。 因此，对于reqeust的访问代码应该放在Controller里面，比如 <code>$_GET</code> <code>$_POST</code> 等。 但仅限于获取用户请求数据，不应该对数据有任何操作或预处理，这些工作应该交由Models来完成。</li>
-<li>调用Models的读方法，获取数据，直接传递给视图，供显示。 当涉及到多个Model时，有关的逻辑应当交给Model来完成。</li>
-<li>调用Models的类方法，对Models进行写操作。</li>
-<li>调用视图渲染函数等，形成对用户Reqeust的Response。</li>
-</ul>
-<h2 id="Model设计参考"><a href="#Model设计参考" class="headerlink" title="Model设计参考"></a>Model设计参考</h2><p>在MVC中，Model排第一，是有一定暗示的。一是Model是整个架构中，代码量最大，复用程度最高， 也是最体现程序员设计功力的地方。 二是View和Controller相对于Model而言，在实际开发中，复用程度不高，逻辑复杂程度较低。 可以说，Model设计得好，整个MVC就好，应用开发起就顺。</p>
-<p>因此，这一节将以Model为核心，来讲MVC的设计。 实话说，MVC尽管提出了Model View Controller的划分思想，但到了具体实操中，并不是很好把握的。 下面介绍的设计参考，也仅仅是个人在实际项目中的一些体会和想法，仅作参考。 在具体设计中，可以后把握这么几点：</p>
-<h2 id="Model应当集中整个应用的数据和业务逻辑"><a href="#Model应当集中整个应用的数据和业务逻辑" class="headerlink" title="Model应当集中整个应用的数据和业务逻辑"></a>Model应当集中整个应用的数据和业务逻辑</h2><p>应用当中涉及到的所有业务对象都应尽可能抽像成Model。 如，博客系统当中，文章要抽象成Post，评论要抽象成Comment。 而相关的业务逻辑，如发布新文章可以用<br><code>Post::create()</code> ，删除评论可以用 <code>Comment::delete()</code> 。 这样子整个应用就显得很清晰明了。</p>
-<h2 id="基础Model应当尽可能细化"><a href="#基础Model应当尽可能细化" class="headerlink" title="基础Model应当尽可能细化"></a>基础Model应当尽可能细化</h2><p>在一个应用中，特别是对于大型复杂应用，Model间关系可能比较复杂。在构造应用时，特别是基础Model时， 要从足够小的粒度来设计。 此时，就要考虑采取继承、封装等措施了。 比如，一个博客文章Post，一般包含了若干标签，在页上一般写在作者、日期等Post字段的旁边。 从逻辑上来看，把标签作为Post的一个属性，是说得通的。 但是如果把标签作为一个属性像标题、正文等字段一样依附于Post。那么在有的功能上，实现起来是有难度的。 比如，客户要求，当一个Post含有标签 “yii, model” 时，可以点击 “yii” ， 然后系统列出所有具标签中含有 “yii” 的文章。</p>
-<p>为了实现这个功能，正确的设计是单独将标签抽象成Tag。这样，Post和Tag是多对多的关系， 即一个Post有多个Tag，一个Tag也对应多个Post。这个多对多关系可以通过一张数据表 <code>tbl_post_tag</code> 来表示。 接下来，为Post增加 <code>Post::getTags()</code> 方法，并通过 <code>tbl_post_tag</code> 表来查询当前Post的所有标签。 同时，为Tag增加 <code>Tag::getPosts()</code> 方法，也通过 <code>tbl_post_tag</code> 表来查询当前Tag对应的文章。 这样，就具备了实现客户要求的新功能的基础。</p>
-<p>因此，在Model设计上，要以尽量小的粒度进行设计。一般而言，粒度越小，复用的可能性就越高。</p>
-<p>有的读者可能会问了，既然要求粒度尽可能地小，那么，Post是不是也应当再细化，把段落抽象为Model？ 是否有这个必要，看客户需求。一般情况确实没有这必要，如果这么做，那是不是再以句子为单位进行抽象？ 但如果客户要求这个博客系统的评论是针对段落进行的评论的， 要将评论显示在对应的段落旁边，甚至显示每个段落评论人次等功能。那么就需要把段落抽象成Model了。</p>
-<h2 id="分层次设计Model"><a href="#分层次设计Model" class="headerlink" title="分层次设计Model"></a>分层次设计Model</h2><p>从设计流程上，数据库结构设计与Model的设计是紧密相关的。先有数据库结构设计，后有Model设计。 在设计数据库结构的时候，也是在设计Model。 一般而言，最单元、粒度最小的Model就是根据每个数据库表所生成的Model，这往往是个Active Record。</p>
-<p>比如标签的问题，在数据库存储过程中，Post和Tag是分开存的，而且这两个表的字段，没有冗余。 <code>tbl_post_tag</code> 表也只记录他们的ID，没有实质内容。</p>
-<p>在获取数据渲染视图，向用户展现时，这两个Model及他们的字段，是完全够用，且没有冗余的。</p>
-<p>那么，能不能说 Post 和 Tag 这两个Model是够用的呢？显然还不够。</p>
-<p>当用户在创建文章、修改文章、审核文章时，需要采用一个表单来显示来收集用户输入。 其中，对于标签的采集，一般是一个长条的文本框，让用户一次性输入多个标签，并以<code>,</code> 等进行分隔的。</p>
-<p>但是，这个文本框没有一个字段与之进行对应。我们也没办法对这个字段的用户输入进行任何的验证、预处理。</p>
-<p>因此，Post的功能是不够用的。不够用怎么办？那就加吧。但直接在 Post 里面加个 <code>public $tagString</code> 并不好。 毕竟只是在使用表单时，才会有这个问题，其他场合，这个字段是没用的。</p>
-<p>这种情况下，一般使用继承:</p>
-<pre><code>public class PostForm extends Post
-{
-    public $tagString;
-
-    ... ...
-}
-</code></pre><p>这样，当控制器发现用户在创建、修改、审核文章时，可以使用 PostForm Model来渲染视图了， 而其他场合则仍使用Post。这样就在需要时，增加了一个 <code>tagString</code> 的字段用于收集用户输入的标签。</p>
-<p>在具体设计过程中，由于Model本身就会包含很多代码，因此，要多使用这继承等手段，把代码组织好。</p>
-<h2 id="仔细为Model方法命名"><a href="#仔细为Model方法命名" class="headerlink" title="仔细为Model方法命名"></a>仔细为Model方法命名</h2><p>由于Model的代码量比较大，又集中了大量的逻辑，因此，会在一个Model中有大量的方法。仍然以Post为例， 会涉及到创建、审核、发布、回收等流程，相关的方法比较多，在命名上要用心。 可能会涉及到的、名字又比较接近的方法就有：</p>
-<ul>
-<li>getPrevPost()，前一篇文章，用于导航</li>
-<li>getNextPost()，下一篇文章，用于导航</li>
-<li>getRelatedPosts($n = 10)，获取相关的N篇文章，用于相关文章推荐列表</li>
-<li>getPostsOfAuthor($n = 10)，获取同一作者的N篇相关文章，用于作者文章列表</li>
-<li>getLatestPosts($n = 10)，最新的N篇文章，静态方法，用于文章列表或RSS输出</li>
-<li>getHotestPosts($n = 10)，最热门的N篇文章，静态方法，用于热门文章列表</li>
-<li>getPublishPosts($n = -1)，获取已经发布的N篇文章，静态方法，用于文章列表</li>
-<li>getDraftPosts($n = -1)，获取未发布的N篇文章，静态方法，用于作者页面</li>
-</ul>
-<p>这里只是一些获取其他Post的方法，命名比较合理，一看就知道意思。 而且全部写成getter的形式，可以使用读取属性的方式进行访问。</p>
-<p>不单单是在Model方法的命名上要用心， 在变量名、类名、方法名等的命名上，也要养成习惯，形成规律。 不要图一时之快，胡乱起名。否则，出来混，迟早要还的。</p>
-<h2 id="MVC与前后端的配合"><a href="#MVC与前后端的配合" class="headerlink" title="MVC与前后端的配合"></a>MVC与前后端的配合</h2><p>从MVC的起源来讲，是从桌面应用的开发中发展起来的。从本质来讲，这是一种解决问题的思路和办法。 从实践来讲，这是一种久经考验的有效方式。但是如开头我们讲的，Yii更多的是侧重于后端。 对于Web应用而言，包含Yii在内的许多Web开发框架，都是没有办法知道用户的操作，如鼠标、键盘等操作的。 Web应用想要了解用户的操作，只能依靠用户发送Request。 而对于鼠标、键盘等的响应，只能依靠前端技术，如JavaScript等来实现。</p>
-<p>再加上这几年来Web浏览器的功能日臻强大。因此，Web应用开发出现了一个新的发展苗头，就是功能从后端往前端转移。</p>
-<p>在前端，通过JavaScript捕获用户操作，进行相应处理。 或是发送回后端获取响应后处理，如通过ajax请求后端数据，实现无刷新的局部页面更新，向用户进行反馈； 或直接在前端由浏览器进行处理，如使用backbone.js、Angular.js等前端框架的数据绑定功能等。 这些都使得Web应用表现得越来越像桌面应用。</p>
-<p>后端MVC也在为前后端的发展而改变。 Controller的功能更多的变成了识别是ajax请求还是普通请求， 并根据请求的不同采取相应的视图渲染方式。对于普通请求，正常渲染视图，输出HTML。 对于ajax请求，则返回局部渲染视图，输出HTML片段。有的甚至输出XML或者JSON。 唯一在大潮流中，巍然不动的，还是我们的大Model。</p>
-<p><a href="http://www.digpage.com/mvc.html" title=" 参考链接" target="_blank" rel="external">参考链接</a></p>
+            <p>因为工作需要，急需一款远程控制类的工具，最好可以使用手机（Android和iOS 都支持）控制远程电脑（Mac OS 和 Windows 都支持）。</p>
+<p>通过网上查找，对比试用发现一款好用的工具：TeamViewer。</p>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>Win2000/WinXP/Win2003/WindowsVista/Windows7/Windows8/Mac OS/Linux/iphone/Android/Windows Phone</p>
+<p>看到了吧，几乎支持目前所有的计算机系统（电脑/手机/移动设备），即可以达到任意一台设备控制另外任意一台有权管理的设备。</p>
+<h2 id="软件介绍"><a href="#软件介绍" class="headerlink" title="软件介绍"></a>软件介绍</h2><p>TeamViewer - 通过Internet进行远程访问和远程支持的一体化解决方案</p>
+<p>TeamViewer可在几秒钟内连接到世界各地的任何PC或服务器上。您可以身临现场般地远程控制您伙伴的PC。</p>
+<p>找出超过2亿用户信任TeamViewer的原因！</p>
+<p>———— 《知乎》</p>
+<p>TeamViewer GmbH公司创建于2005年，总部位于德国，致力于研发和销售高端的在线协作和通讯解决方案。</p>
+<p>如果您回到家后想连接控制在学校或公司里自己的电脑，很多人会想到使用Windows远程桌面连接。一般情况下，它无疑是最好的方案了，但如果你要连接的电脑位于内网，即路由器（Router）或防火墙后方(电脑是内部IP)，那样就必须在路由器上做一些设定端口映射之类的设置才有办法连上，而网管也不太可能帮您设定的。</p>
+<p>这时TeamViewer无疑就是最佳的解决方案了。</p>
+<p>————《百度百科》</p>
+<h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><h3 id="无需安装"><a href="#无需安装" class="headerlink" title="无需安装"></a>无需安装</h3><p>TeamViewer 没有复杂的安装过程，只需要双方都运行TeamViewer记住彼此的ID即可。</p>
+<h3 id="突破防火墙"><a href="#突破防火墙" class="headerlink" title="突破防火墙"></a>突破防火墙</h3><p>使用TeamViewer可以完全突破防火墙的限制，无需担心是否是固定IP。</p>
+<h3 id="高速度高质量"><a href="#高速度高质量" class="headerlink" title="高速度高质量"></a>高速度高质量</h3><p>无论你是LAN或者拨号连接TeamViewer都会根据实际网络状况优化传输速度和显示质量。</p>
+<h3 id="安全标准"><a href="#安全标准" class="headerlink" title="安全标准"></a>安全标准</h3><p>采用密钥交换和AES (256位) 会话编码，https/SSL采用 相同的安全标准。</p>
+<h3 id="多功能"><a href="#多功能" class="headerlink" title="多功能"></a>多功能</h3><p>支持在线状态显示、语音功能、传输文件功能、远程管理无人执守的服务器等。</p>
+<h3 id="美观易用"><a href="#美观易用" class="headerlink" title="美观易用"></a>美观易用</h3><p>TeamViewer的界面简约漂亮，操作极其简单，无需专业知识即可轻松上手。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="远程控制支持"><a href="#远程控制支持" class="headerlink" title="远程控制支持"></a>远程控制支持</h3><p>即时远程控制 – 客户端无需安装任何程序</p>
+<p>远程维护 – 全天候访问远程计算机和服务器</p>
+<p>远程访问 – 随时随地访问您的数据和应用</p>
+<p>家庭办公 – 在家也能访问办公室计算机</p>
+<h3 id="会议演示"><a href="#会议演示" class="headerlink" title="会议演示"></a>会议演示</h3><p>在线会议 – 最多可容纳25名参加者</p>
+<p>演示 – 提升销售潜力</p>
+<p>培训会 – 实施在线培训，削减支出</p>
+<p>团队协作 – 实现实时在线文档协作</p>
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>以上介绍部分引用自百度百科。</p>
+<h3 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h3><p>本人经常使用，Android手机和iOS系统设备都可以使用，方便很多。只是手机控制远程电脑时比较耗电，需要备好充电器或者移动电源。还有就是有时候提示网络问题链接不上，其实可以连上。</p>
+<p>最最关键的，也不说3遍了，就1遍：<strong>非商业用途免费！</strong>。</p>
+<h3 id="与-VNC-对比"><a href="#与-VNC-对比" class="headerlink" title="与 VNC 对比"></a>与 VNC 对比</h3><p>VNC 是另一个远程控制的软件，别人也用过几次。</p>
+<p>这里说一下两者的区别。</p>
+<p>vnc常用到linux系统，可以用命令行远程，一半多用在远程服务器，很多linux服务器没有可视化桌面，只有命令行，而且linux服务器也不需要桌面，所以，用vnc既快又方便；</p>
+<p>teamview的优势在于是可视化桌面的远程，如果你需要操作桌面，teamview是最好的选择；如果你是电脑高手，用vnc效率更高</p>
+<p>相关连接：</p>
+<p>知乎话题 <a href="https://www.zhihu.com/topic/19905507" title="teamviewer" target="_blank" rel="external">teamviewer</a></p>
+<p>百度百科 <a href="http://baike.baidu.com/item/TeamViewer&quot;" target="_blank" rel="external">TeamViewer</a></p>
+<p>维基百科 <a href="https://zh.wikipedia.org/zh-cn/TeamViewer&quot;" target="_blank" rel="external">TeamViewer</a></p>
 
           
         
@@ -679,8 +534,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/" itemprop="url">
-                  Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案
+                <a class="post-title-link" href="/2020/05/04/sqlserver2000-installation-error-a-general-network-error/" itemprop="url">
+                  安装sqlserver2000出错，一般性网络错误
                 </a>
               
             
@@ -693,8 +548,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-25T13:01:52+08:00" content="2018-05-25">
-              2018-05-25
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -707,8 +562,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
                   </a>
                 </span>
 
@@ -740,35 +595,66 @@
       
         
           
-            <p>用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的</p>
-<h3 id="php配置"><a href="#php配置" class="headerlink" title="php配置"></a>php配置</h3><pre><code>function get_image_info($target, $allowswf = false) {
-    $ext = discuz_upload::fileext($target);
-    $isimage = discuz_upload::is_image_ext($ext);
-    if(!$isimage &amp;&amp; ($ext != &apos;swf&apos; || !$allowswf)) {
-        return false;
-    } elseif(!is_readable($target)) {
-        return false;
-    } elseif($imageinfo = @getimagesize($target)) {
-        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&apos;&apos;, &apos;&apos;, &apos;&apos;);
-        $size = $width * $height;
-        if($size &gt; 16777216 || $size &lt; 16 ) {
-            return false;
-        } elseif($ext == &apos;swf&apos; &amp;&amp; $type != 4 &amp;&amp; $type != 13) {
-            return false;
-        } elseif($isimage &amp;&amp; !in_array($type, array(1,2,3,6,13))) {
-            return false;
-        } elseif(!$allowswf &amp;&amp; ($ext == &apos;swf&apos; || $type == 4 || $type == 13)) {
-            return false;
-        }
-        return $imageinfo;
-    } else {
-        return false;
-    }
-}
-</code></pre><p>这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。</p>
-<p><a href="http://www.muquan.net/article/390.html" target="_blank" rel="external">原文链接</a></p>
+            <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>安装sqlserver2000出错，一般性网络错误，错误提示如下：</p>
+<pre><code>安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
+正在启动?
+
+Chinese_PRC_CI_AS
+
+-m -Q -T4022 -T3659
+
+正在与服务?
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+SQL Server 配置?
+
+###############################################################################
+
+13:11:03 Process Exit Code: (-1) 
+13:11:25 安装程序配置服务器失败。参考服务器错误日志和 C:\WINDOWS\sqlstp.log 了解更多信息。
+13:11:25 Action CleanUpInstall:
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service SQLAgent$MATCHONE
+13:11:25 Process Exit Code: (1060) 指定的服务并未以已安装的服务存在。
+
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service MSSQL$MATCHONE
+13:11:25 Process Exit Code: (0) 
+13:11:25 StatsGenerate returned: 2
+13:11:25 StatsGenerate (0xc0200006,0x1,0xf000000,0x300,2052,303,0x0,0x1,0,0,0
+13:11:25 StatsGenerate -1,zhang)
+13:11:25 Installation Failed.
+
+SQL SERVER 2000在C:\windows\sqlstp.log中提示错误如下：
+=======================================================
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionR
+=======================================================
+</code></pre><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>把计算机名改为大写，重新启动</strong></p>
+<p>OK  真的解决问题。</p>
+<p>另外提示一下，在安装sqlServer时 安装路径下不能有中文！</p>
 
           
         
@@ -810,8 +696,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/05/25/Linux-timing-tasks-are-accurate-to-seconds/" itemprop="url">
-                  linux定时任务精确到秒
+                <a class="post-title-link" href="/2020/05/04/sql2000-remote-connections-including-sp4-patch/" itemprop="url">
+                  Sql2000的远程连接（含Sp4补丁）
                 </a>
               
             
@@ -824,8 +710,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-25T12:55:50+08:00" content="2018-05-25">
-              2018-05-25
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -838,8 +724,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
                   </a>
                 </span>
 
@@ -871,28 +757,22 @@
       
         
           
-            <p>linux的crond定时任务只能精确到分，如何才能做到控制到秒呢?答案肯定是明显的，实现的方法也有多种，但本文只介绍一个相对来说比较精确，又方便的写法。</p>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>增加一个普通的定时器脚本de &gt;dateTime.shde&gt;，放于/目录</p>
-<p>此脚本用于打印当前系统时间</p>
-<pre><code>#!/bin/bash
-date
-</code></pre><p>增加可执行权限</p>
-<pre><code>chmod +x /dateTime.sh
-</code></pre><p>编写定时任务</p>
-<pre><code>crontab -e
-</code></pre><p>脚本内容为</p>
-<pre><code>*/1 * * * * /dateTime.sh &gt;&gt; /dateTime.log
-*/1 * * * * sleep 5 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
-*/1 * * * * sleep 10 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
-*/1 * * * * sleep 15 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
-*/1 * * * * sleep 20 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
-...
-*/1 * * * * sleep 55 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
-</code></pre><p>重新启动crond</p>
-<pre><code>service crond restart
-</code></pre><p>程序就会每5秒执行一次脚本，并将时间写入/dateTime.log文件中</p>
-<h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>主要是使用linux的sleep控制脚本执行时间</p>
-<p><a href="http://blog.csdn.net/dounine/article/details/53357113" target="_blank" rel="external">原文链接</a></p>
+            <p>服务端配置:</p>
+<h4 id="一-、看ping-服务器IP能否ping通。"><a href="#一-、看ping-服务器IP能否ping通。" class="headerlink" title="一 、看ping 服务器IP能否ping通。"></a>一 、看ping 服务器IP能否ping通。</h4><p>这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。</p>
+<h4 id="二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><a href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。" class="headerlink" title="二 、在Dos下输入telnet 服务器IP 端口，看能否连通。"></a>二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</h4><p>例如：</p>
+<pre><code>telnet 202.114.100.100 1433
+</code></pre><p>1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：</p>
+<p>1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。</p>
+<p>2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。</p>
+<p>3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 </p>
+<pre><code>netstat –an
+</code></pre><p>（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 </p>
+<pre><code>tcp  127.0.0.1 1433   listening
+</code></pre><p>的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入</p>
+<pre><code>select @@version
+</code></pre><p>执行后可以看到版本号，版本号在 <strong>8.00.2039</strong> 以下的都需要打补丁。这是Sp4的下载地址  <a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE" target="_blank" rel="external">（SQLServer SP4补丁下载）</a> 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。</p>
+<p>这时再做telnet测试，应该OK了。</p>
+<p><a href="http://blog.163.com/tcl_6688/blog/static/168864257201151574157197" target="_blank" rel="external">原文参考</a></p>
 
           
         
@@ -934,8 +814,8 @@ date
             
               
                 
-                <a class="post-title-link" href="/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/" itemprop="url">
-                  php发送get、post请求的6种方法简明总结
+                <a class="post-title-link" href="/2020/05/04/shangqiu-yudong-dialect-words/" itemprop="url">
+                  豫东方言商丘话
                 </a>
               
             
@@ -948,8 +828,8 @@ date
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-25T12:37:16+08:00" content="2018-05-25">
-              2018-05-25
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -962,8 +842,8 @@ date
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/文学/" itemprop="url" rel="index">
+                    <span itemprop="name">文学</span>
                   </a>
                 </span>
 
@@ -995,132 +875,80 @@ date
       
         
           
-            <h3 id="方法1-用file-get-contents-以get方式获取内容："><a href="#方法1-用file-get-contents-以get方式获取内容：" class="headerlink" title="方法1: 用file_get_contents 以get方式获取内容："></a>方法1: 用file_get_contents 以get方式获取内容：</h3><pre><code>&lt;?php
-$url=&apos;http://www.yongdev.com/&apos;;  
-$html = file_get_contents($url);
-echo $html;
-?&gt;
-</code></pre><h3 id="方法2-用fopen打开url-以get方式获取内容："><a href="#方法2-用fopen打开url-以get方式获取内容：" class="headerlink" title="方法2: 用fopen打开url, 以get方式获取内容："></a>方法2: 用fopen打开url, 以get方式获取内容：</h3><pre><code>&lt;?php
-$fp = fopen($url, &apos;r&apos;);
-stream_get_meta_data($fp);
-while(!feof($fp)) {
-$result .= fgets($fp, 1024);
-}
-echo &quot;url body: $result&quot;;
-fclose($fp);
-?&gt;
-</code></pre><h3 id="方法3：用file-get-contents函数-以post方式获取url"><a href="#方法3：用file-get-contents函数-以post方式获取url" class="headerlink" title="方法3：用file_get_contents函数,以post方式获取url"></a>方法3：用file_get_contents函数,以post方式获取url</h3><pre><code>&lt;?php
-$data = array (&apos;foo&apos; =&gt; &apos;bar&apos;);
-$data = http_build_query($data);
-
-$opts = array (
-‘http&apos; =&gt; array (
-&apos;method&apos; =&gt; &apos;POST&apos;,
-&apos;header&apos;=&gt; &quot;Content-type: application/x-www-form-urlencodedrn&quot;,
-&quot;Content-Length: &quot; . strlen($data) . &quot;rn&quot;,
-&apos;content&apos; =&gt; $data
-)
-);
-
-$context = stream_context_create($opts);
-$html = file_get_contents(&apos;http://www.yongdev.com/test.html&apos;, false, $context);
-
-echo $html;
-?&gt;
-</code></pre><h3 id="方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启"><a href="#方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body-fsockopen需要-PHP-ini-中-allow-url-fopen-选项开启" class="headerlink" title="方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启"></a>方法4：用fsockopen函数打开url，以get方式获取完整的数据，包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启</h3><pre><code>&lt;?php
-function get_url ($url,$cookie=false)
-{
-$url = parse_url($url);
-$query = $url[path].&quot;?&quot;.$url[query];
-echo &quot;Query:&quot;.$query;
-$fp = fsockopen( $url[host], $url[port]?$url[port]:80 , $errno, $errstr, 30);
-if (!$fp) {
-return false;
-} else {
-$request = &quot;GET $query HTTP/1.1rn&quot;;
-$request .= &quot;Host: $url[host]rn&quot;;
-$request .= &quot;Connection: Closern&quot;;
-if($cookie) $request.=&quot;Cookie:  $cookien&quot;;
-$request.=&quot;rn&quot;;
-fwrite($fp,$request);
-while(!@feof($fp)) {
-$result .= @fgets($fp, 1024);
-}
-fclose($fp);
-return $result;
-}
-}
-//获取url的html部分，去掉header
-function GetUrlHTML($url,$cookie=false)
-{
-$rowdata = get_url($url,$cookie);
-if($rowdata)
-{
-$body= stristr($rowdata,&quot;rnrn&quot;);
-$body=substr($body,4,strlen($body));
-return $body;
-}
-
-return false;
-}
-?&gt;
-</code></pre><h3 id="方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body"><a href="#方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body" class="headerlink" title="方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body"></a>方法5：用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body</h3><pre><code>&lt;?php
-function HTTP_Post($URL,$data,$cookie, $referrer=”&quot;)
-{
-
-// parsing the given URL
-$URL_Info=parse_url($URL);
-
-// Building referrer
-if($referrer==&quot;&quot;) // if not given use this script as referrer
-$referrer=&quot;111&quot;;
-
-// making string from $data
-foreach($data as $key=&gt;$value)
-$values[]=&quot;$key=&quot;.urlencode($value);
-$data_string=implode(&quot;&amp;&quot;,$values);
-
-// Find out which port is needed – if not given use standard (=80)
-if(!isset($URL_Info[&quot;port&quot;]))
-$URL_Info[&quot;port&quot;]=80;
-
-// building POST-request:
-$request.=&quot;POST &quot;.$URL_Info[&quot;path&quot;].&quot; HTTP/1.1n&quot;;
-$request.=&quot;Host: &quot;.$URL_Info[&quot;host&quot;].&quot;n&quot;;
-$request.=&quot;Referer: $referern&quot;;
-$request.=&quot;Content-type: application/x-www-form-urlencodedn&quot;;
-$request.=&quot;Content-length: &quot;.strlen($data_string).&quot;n&quot;;
-$request.=&quot;Connection: closen&quot;;
-
-$request.=&quot;Cookie:  $cookien&quot;;
-
-$request.=&quot;n&quot;;
-$request.=$data_string.&quot;n&quot;;
-
-$fp = fsockopen($URL_Info[&quot;host&quot;],$URL_Info[&quot;port&quot;]);
-fputs($fp, $request);
-while(!feof($fp)) {
-$result .= fgets($fp, 1024);
-}
-fclose($fp);
-
-return $result;
-}
-
-?&gt;
-</code></pre><h3 id="方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展"><a href="#方法6-使用curl库，使用curl库之前，可能需要查看一下php-ini是否已经打开了curl扩展" class="headerlink" title="方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展"></a>方法6:使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展</h3><pre><code>&lt;?php
-$ch = curl_init();
-$timeout = 5;
-curl_setopt ($ch, CURLOPT_URL, &apos;http://www.yongdev.com/&apos;);
-curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-$file_contents = curl_exec($ch);
-curl_close($ch);
-
-echo $file_contents;
-?&gt;
-</code></pre><p>说一下实践中遇到的问题：</p>
-<p>使用“方法6的curl方法”过程中时执行特别慢。改为“方法3：用file_get_contents函数,以post方式”后速度快很多。</p>
+            <p>豫东方言商丘话</p>
+<h2 id="在俺商丘，-有一种关心叫：你咋咋啦？"><a href="#在俺商丘，-有一种关心叫：你咋咋啦？" class="headerlink" title="在俺商丘， 有一种关心叫：你咋咋啦？"></a>在俺商丘， 有一种关心叫：你咋咋啦？</h2><p>有一种关心叫：你咋咋啦？ </p>
+<p>有一种委屈叫：我咋咋你啦？</p>
+<p>有一种惊讶叫：我类乖乖！</p>
+<p>有一种不耐烦叫：你到底想咋咋吧？</p>
+<p>有一种不甘示弱叫：咋咋！！</p>
+<p>有一种问候叫：这一绷儿咋样儿？</p>
+<p>有一种讨厌叫：你咋嫩不稀罕人哎！</p>
+<p>有一种威胁叫：你给我招捂咯点儿！</p>
+<p>有一种莫名叫：你弄啥家使来？</p>
+<p>有一种舒服叫：得类很！</p>
+<p>有一种失陪叫：先过几啦！</p>
+<p>有一种迷茫叫：zua啦？</p>
+<p>有一种愤怒叫：恼类慌！</p>
+<p>有一种休息叫：歪一会儿！</p>
+<p>有一种直率叫：实诚！</p>
+<p>有一种幼稚叫：跟小孩尚！</p>
+<p>有一种等待叫：先白慌类！</p>
+<p>有一种畏惧叫：吓类合撒！</p>
+<p>有一种不该喝的酒叫：猫尿！</p>
+<h2 id="常见词语"><a href="#常见词语" class="headerlink" title="常见词语"></a>常见词语</h2><p>血虎得====壁虎</p>
+<p>面面呼得===蝙蝠</p>
+<p>马嘎得====喜鹊</p>
+<p>小小虫===麻雀</p>
+<p>扁嘴得—-鸭子</p>
+<p>木伏—–梳子</p>
+<p>马可都得—–蝌蚪</p>
+<p>赖嘟—–蟾蜍</p>
+<p>马扎得—–可以合在一起中间带绳的板凳</p>
+<p>麦了—-蝉的一种</p>
+<p>河马—–青蛙</p>
+<p>屋后——是指家的后边</p>
+<p>鸡鸟得—–蝉</p>
+<p>爬蚱—–幼蝉</p>
+<p>啥家使—什莫东西</p>
+<p>kài蛤蟆—捉青蛙</p>
+<p>莫即了–最后</p>
+<p>裤叉得–短裤</p>
+<p>克朗得-骨头架子</p>
+<p>洋火–火柴</p>
+<p>护弄人、却人–骗人</p>
+<p>决孟得—-感觉</p>
+<p>出不出—-缩水否</p>
+<p>门楼得—-门框</p>
+<p>扑拉蛾得—-飞蛾</p>
+<p>厥得—-木桩</p>
+<p>憋勒慌—-闷</p>
+<p>坷拉—-石块</p>
+<p>秃爪得—-蛐蛐 </p>
+<p>哦（OU）—-牛</p>
+<p>洋车子-自行车 </p>
+<p>洋油–煤油 </p>
+<p>一个半劲–不停的干什么</p>
+<p>装孬–耍无赖 </p>
+<p>佛瞎话–说荒话</p>
+<p>孬种、半扶（熟）—骂人的话</p>
+<p>不惊喜–不聪明（傻的意思）</p>
+<p>前个-前天</p>
+<p>清恼起来–早上</p>
+<p>胡吊乱、跟得乱、跟得砝（FA）-没规矩等</p>
+<p>汗褂查得~~衬衣</p>
+<p>义得~~肥皂</p>
+<p>得劲~~舒服</p>
+<p>梭皮—-头皮削</p>
+<p>sei—-谁</p>
+<p>气刮得—-烟火的一种</p>
+<p>闸皮–土气</p>
+<p>傍灰—灰尘多</p>
+<p>到明儿—以后</p>
+<p>黄晌－－下午</p>
+<p>毛得－－厕所</p>
+<p>夜个－－昨天</p>
+<p>小小得—–小男孩</p>
+<p>膈捞——-角落</p>
 
           
         
@@ -1162,341 +990,7 @@ echo $file_contents;
             
               
                 
-                <a class="post-title-link" href="/2017/08/25/thoroughly-understand-the-web-service-soap-wsdl/" itemprop="url">
-                  彻底理解WebService SOAP WSDL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-25T20:01:07+08:00" content="2017-08-25">
-              2017-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="WebServices简介"><a href="#WebServices简介" class="headerlink" title="WebServices简介"></a>WebServices简介</h2><p>先给出一个概念 SOA ，即Service Oriented Architecture ，中文一般理解为面向服务的架构，既然说是一种架构的话，所以一般认为 SOA 是包含了运行环境，编程模型，架构风格和相关方法论等在内的一整套新的分布式软件系统构造方法和环境，涵盖服务的整个生命周期。而在 SOA 的架构风格中，服务是最核心的抽象手段。</p>
-<p>SOA 中的服务是构建在一些列基于开放标准的基础之上的，Web 服务定义了如何在异构系统之间实现通信的标准化方法，从而就使得 Web 服务可以跨越运行平台和实现语言，同时也使得 Web 服务成为了实现 SOA 中服务的主要技术。</p>
-<p>至于SOA 的话，太高深的技术，这里不予讨论（嘿嘿），本篇博文只介绍 WebServices 这项技术。</p>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p><strong>有没有一种办法可以实现跨应用程序进行通信和跨平台进行通信呢？</strong></p>
-<p>换句话说，就是有什么办法可以实现我的应用程序 A 可以和应用程序 B 进行通信呢？<br>或者说是，我用 Java 写的应用程序和用 . Net 开发的应用程序之间进行通信呢？<br>很多时候，上面提到的这些，我们是必须要使用的，比如，一个跨应用程序吧，<br>拿腾讯 QQ 来说吧，我估计每一个人都用过腾讯 QQ 上面的天气预报工具吧 ！ ！ ！</p>
-<p>上面的这个天气预报功能是如何实现的呢？</p>
-<p>有一种办法，那就是腾讯公司放个卫星上天，并且在公司中成立一个气象部门，天天关注于天气，然后每时每刻更新腾讯 QQ 上的这个天气预报信息，确实，这种办法确实行得通，不过，要真这样做的话，估计马化腾也该被踢出去了（哪有这么蠢啊？），那么上面这个是如何实现的呢？</p>
-<p>别急，且听我慢慢道来~~~</p>
-<p>然后，我们再来看看跨平台这个东东又是什么呢？这里主要是拿 . Net 平台和Java 平台来说明例子，假若，有两个公司，每个公司呢都有自己的一个项目，一个公司呢使用 . Net 开发，一个呢，使用 Java 开发，恩，本来呢，这两个是相互独立的，进水不犯河水，但是有一天，突然，这两个公司给合并了，合并后的老总发现，如果把两个项目结合起来将会大大的赚一笔，为此，如何做？因为要把两个项目结合在一起，那么这两个项目之间总应该通通信吧 ！！！可这两个项目又是基于不同的平台，怎么通信呢？麻烦了吧 ！！！而后再看一种情况，就是比如一个公司使用的服务器是 Windows Server 2008，那么它如何和 IT 供应商的UNIX 或者是 Linux 服务器进行连接呢？也很复杂吧 ！！！</p>
-<h2 id="WebServices特点介绍"><a href="#WebServices特点介绍" class="headerlink" title="WebServices特点介绍"></a>WebServices特点介绍</h2><p>WebServices 提供一个建立分布式应用的平台，使得运行在不同操作系统和不同设备上的软件，或者是用不同的程序语言和不同厂商的软件开发工具开发的软件，所有可能的已开发和部署的软件，能够利用这一平台实现分布式计算的目的。WebServices的思想是：使得应用程序也具有 Web 分布式编程模型的松散耦合性。</p>
-<p><strong>WebServices的特点：</strong></p>
-<p>（1），WebServices 是自包含的。即在客户端不需要附加任何软件，只要客户机支持 HTTP 和XML 就 OK 了。</p>
-<p>（2），WebServices 是自我描述的。在客户端和服务端都不需要知道除了请求和响应消息的格式和内容外的任何事。</p>
-<p>（3），WebServices 是跨平台和跨语言的。客户端和服务端均可以在不同的平台和语言环境中实现，同时，不必为了支持 WebServices 而更改现有的代码。</p>
-<p>（4），WebServices 是基于开放和标准的。XML 和 HTTP 是WebServices 的主要技术基础，而 XML 和HTTP 早就成了业内标准了。</p>
-<p>（5），WebServices 是动态的。</p>
-<p>（6），WebServices 是可以组合的。也就是通过一个 WebService 访问另外一个 WebService 来达到组合的目的。通过组合 WebServices 便可以将简单的 WebServices 聚合成为实现更多复杂功能的复杂的服务。</p>
-<p>（7），WebServices 是松散耦合的。它完全解耦了客户端和服务端。</p>
-<p>（8），WebServices 提供编程访问的能力。换句话说，就是可以通过编写程序来访问Web 服务。</p>
-<p>（9），WebServices 是基于经过考验的成熟技术上构建的。比如 XML 和 HTTP。</p>
-<p>（10），WebServices 提供打包现有应用程序的能力。</p>
-<p>（11），WebServices 通过网络进行发布，查找和使用。</p>
-<p>上面这些特点呢，现在不清楚的话，也不用紧，等下还会有详细的说明的 ！！！</p>
-<h2 id="WebServices到底是什么？"><a href="#WebServices到底是什么？" class="headerlink" title="WebServices到底是什么？"></a>WebServices到底是什么？</h2><p>如果简单的说的话，WebServices就是一组函数库，不过这和我们平时概念中的函数库却又有不同，我们平时所使用的函数库要么是自己写的（在自己的应用程序当中写一组函数库），要么是调用底层的 API（操作系统 API 如Win32 API），上面的这两种情况有一个共同点，那就是函数库是位于客户端本地的，比如，您调用 Win32 API的话，就是调用本地操作系统上的函库，而这里提到 Web 服务也是一组函数库这个概念和上面提到的函数库这个概念的区别就在此处，因为 Web服务看做一组函数库的话，那么这组函数库不是位于本地的，而是位于远程机器上（当然也可以是本地机器中）。</p>
-<p><strong>何为 Web 服务？</strong></p>
-<p>也就是网络服务，那就是把网络上不知道那个地方的一些函数看做是一组服务，然后我再通过网络就可以使用这些服务。</p>
-<p>关于什么是 Web 服务，上面的说法那是山寨版的，稍微正经一点的说法是：Web 服务是一种部署在 Web 上的对象或者是应用程序组件。</p>
-<p><strong>Why WebServices？</strong></p>
-<p>为什么需要使用 WebServices呢？这必须根据 WebServices 的特点以及其优势进行分析了。</p>
-<p>首先，上面呢，也说了，Web服务的话，就是一组网络上的应用程序组件，这样的话，您便可以通过在您的应用程序中使用 Web 服务来将您的应用程序提升到服务层面上来。<br>既然可以看做是一组服务了的话，那么当然就是可以提供给别个（别的应用程序）使用咯。<br>比如，我可以通过 Web 服务来公开一些接口给别个使用，至于这些要不要收费呢？那就看我心情了，前面举了腾讯 QQ 上查询天气的例子，这个例子呢，就可以在这里来做一个解释了，<br>在中国，应该只有一个卫星来进行天气预报的吧？腾讯也不可能为了天气预报而专门放个卫星上天吧？</p>
-<p>可是腾讯 QQ 又确实是可以查询天气的，这里，便可以通过 Web 服务来解决。<br>首先，中国气象局应该是有一个卫星的，气象局根据卫星所返回的结果实时发布全国各地的天气状况，并且将这些天气信息以 Web 服务的形式公开，然后呢，腾讯 QQ 便可以通过这个 Web 服务来访问到天气状况了，再将这些天气状况反馈到 QQ 上就 OK 了。</p>
-<p>然后，上面提到了 Web服务是应用程序组件，既然是组件，那么就可以对这个组件重复的进行使用了，同时可以通过 Web 服务来实现将这个应用程序组件作为一个服务来进行使用，<br>更为强大的是，可以将多个 WebServices组合成为更为强大的 WebServices ，<br>并且是通过互联网哦！！！<br>这也是一大优点啊，</p>
-<p>然后呢，最基本的 WebServices是基于 XML 和 HTTP 的<br>（当然这是最基本的 WebServices ，比如 WebServices 还可以通过 HTTPS 或者是 SMTP 来实现通信），<br>这又有什么好处呢？很明显，XML 和HTTP 这些都已经是标准了，<br>不论你是 Java 平台呢，还是 . Net 平台开发出来的（或者是是使用 Web 服务），既然我是使用 XML 和 HTTP 的话，我才懒得鸟你什么 Java 还是 . Net 呢，我也不管你是 linux 还是 Windows ，这一切都和我 Web 服务无关，我关注的只是通过 HTTP 协议来传输 XML 就 OK 了，<br>至于这些 XML 是如何被服务提供者开发出来的或者这些 XML 是如何被服务请求者使用的，这些都和我无关，这里便可以看出 Web 服务的另一个优势了，那就是跨语言跨平台（实现协同工作），所以可以通过 Web 服务来实现不同应用程序和不同平台之间的通信。</p>
-<p>Web 服务允许独立于实现服务基于的硬件或者是软件平台和编写服务所用的编程语言使用服务，<br>根据上面这两点呢，便可以解决掉最开始提出的使用 Java 开发的应用程序如何和使用 . Net 开发的应用程序之间进行通信这一问题，同时，也可以解决 Linux 或者是UNIX 和 Windows Server 2008 之间进行连接这一问题了。最后就是通过使用不同的 Web 服务，也不管 Web 服务是那种编程语言实现的，<br>我们都可以从不同的平台和操作系统进行访问，从而大大提高了不同应用程序共享数据和应用的能力并且 Web服务提供了构建 SOA 所必须得技术基础。</p>
-<p>从上面可以看出通过 WebServices解决了我们曾经想都不敢想的问题，这么强大的东西为什么不加以好好利用呢？   </p>
-<h2 id="WebServices体系结构"><a href="#WebServices体系结构" class="headerlink" title="WebServices体系结构"></a>WebServices体系结构</h2><p>在Web 服务的体系结构中，涉及到三个角色，一个是 Web 服务提供者，一个是 Web 服务中介者，还有一个就是 Web 服务请求者，同时还涉及到三类动作，即发布，查找，绑定，</p>
-<h3 id="Web-服务提供者："><a href="#Web-服务提供者：" class="headerlink" title="Web 服务提供者："></a>Web 服务提供者：</h3><p>可以发布 Web 服务，并且对使用自身服务的请求进行响应，Web 服务的拥有者，它会等待其他的服务或者是应用程序访问自己。</p>
-<h3 id="Web-服务请求者："><a href="#Web-服务请求者：" class="headerlink" title="Web 服务请求者："></a>Web 服务请求者：</h3><p>也就是 Web 服务功能的使用者，它通过服务注册中心也就是 Web 服务中介者查找到所需要的服务，再利用 SOAP 消息向 Web 服务提供者发送请求以获得服务。</p>
-<h3 id="Web-服务中介者："><a href="#Web-服务中介者：" class="headerlink" title="Web 服务中介者："></a>Web 服务中介者：</h3><p>也称为服务代理，用来注册已经发布的 Web服务提供者，并对其进行分类，同时提供搜索服务，<br>简单来说的话，Web 服务中介者的作用就是把一个 Web 服务请求者和合适的 Web 服务提供者联系在一起，充当一个管理者的角色，一般是通过 UDDI来实现。</p>
-<h3 id="发布："><a href="#发布：" class="headerlink" title="发布："></a>发布：</h3><p>通过发布操作，可以使 Web服务提供者向 Web 服务中介者注册自己的功能以及访问的接口。</p>
-<h3 id="发现（查找）："><a href="#发现（查找）：" class="headerlink" title="发现（查找）："></a>发现（查找）：</h3><p>使得 Web 服务请求者可以通过 Web 服务中介者来查找到特点的种类的 Web 服务。</p>
-<h3 id="绑定："><a href="#绑定：" class="headerlink" title="绑定："></a>绑定：</h3><p>这里就是实现让服务请求者能够使用服务提供者提供的服务了。</p>
-<h2 id="WebServices三种基本元素之-SOAP"><a href="#WebServices三种基本元素之-SOAP" class="headerlink" title="WebServices三种基本元素之 SOAP"></a>WebServices三种基本元素之 SOAP</h2><p><strong>SOAP 即 Simple Object AccessProtocol 也就是简单对象访问协议。</strong></p>
-<p>SOAP 呢，其指导理念是“唯一一个没有发明任何新技术的技术”，是一种用于访问 Web 服务的协议。因为 SOAP 基于XML 和 HTTP ，其通过XML 来实现消息描述，然后再通过 HTTP 实现消息传输。</p>
-<p>SOAP 是用于在应用程序之间进行通信的一种通信协议。</p>
-<p>因为是基于 XML 和HTTP 的，所以其独立于语言，独立于平台，并且因为 XML 的扩展性很好，所以基于 XML 的 SOAP 自然扩展性也不差。通过 SOAP 可以非常方便的解决互联网中消息互联互通的需求，其和其他的 Web 服务协议构建起 SOA 应用的技术基础。<br>SOAP 协议的一个重要特点是它独立于底层传输机制，Web 服务应用程序可以根据需要选择自己的数据传输协议，可以在发送消息时来确定相应传输机制。</p>
-<p>由于 HTTP 协议本身的一些特点和局限性，使得当 SOAP 使用HTTP 绑定的 Web 服务并不能满足某些企业应用的需求。比如，HTTP 不是一个可靠传输协议，所以有可能在传输过程中出现问题，然后 HTTP 协议基于Request/Response 模型，也就是说客户端需要在等待响应消息接收完成后才能继续执行，而此时如果响应时间过长呢？基于上面的这些需求，便需要选择合适的传输协议了。关于这方面的内容的话，有点深奥了，有兴趣的可以去看看 IBM 的一些关于这方面内容的介绍。还有一点需要提及一下，那就是 SOAP 是可以绕过防火墙的，将来将会作为 W3C 的标准进行发展。</p>
-<h2 id="WebServices三种基本元素之-WSDL"><a href="#WebServices三种基本元素之-WSDL" class="headerlink" title="WebServices三种基本元素之 WSDL"></a>WebServices三种基本元素之 WSDL</h2><p>WSDL 即Web Services Description Language也就是 Web 服务描述语言。<br>是基于 XML的用于描述 Web 服务以及如何访问 Web 服务的语言。</p>
-<p>服务提供者通过服务描述将所有用于访问 Web服务的规范传送给服务请求者，要实现 Web服务体系结构的松散耦合，服务描述是一个关键，不管是请求者还是服务提供者，通过服务描述便可以不必了解对方的底层平台，编程语言等，<br>服务描述与底层的 SOAP 基础结构相结合，足以封装服务请求者的应用程序和服务提供者的 Web服务之间的这个细节。</p>
-<p>WSDL 描述了 Web服务的三个基本属性：</p>
-<p>（1）服务所提供的操作</p>
-<p>（2）如何访问服务</p>
-<p>（3）服务位于何处（通过 URL 来确定就 OK 了）</p>
-<h2 id="WebServices三种基本元素之-UDDI"><a href="#WebServices三种基本元素之-UDDI" class="headerlink" title="WebServices三种基本元素之 UDDI"></a>WebServices三种基本元素之 UDDI</h2><p>UDDI 即 Universal Description，Discovery and Integration，也就是通用的描述，发现以及整合。WSDL 呢，用来描述了访问特定的 Web 服务的一些相关的信息，可以在互联网上，或者是在企业的不同部门之间，如何来发现我们所需要的 Web 服务呢？<br>而 Web 服务提供商又如何将自己开发的 Web 服务公布到因特网上，这就需要使用到 UDDI了，UDDI的话，是一个跨产业，跨平台的开放性架构，可以帮助 Web 服务提供商在互联网上发布 Web 服务的信息。</p>
-<p>UDDI 呢是一种目录服务，企业可以通过 UDDI 来注册和搜索 Web 服务。<br>简单来时候话，UDDI 就是一个目录，只不过在这个目录中存放的是一些关于 Web 服务的信息而已。并且 UDDI 通过SOAP 进行通讯，构建于 . Net 之上。</p>
-<h2 id="开发-Web服务的方式"><a href="#开发-Web服务的方式" class="headerlink" title="开发 Web服务的方式"></a>开发 Web服务的方式</h2><h3 id="（1）开发阶段："><a href="#（1）开发阶段：" class="headerlink" title="（1）开发阶段："></a>（1）开发阶段：</h3><p>实现一个 Web 服务，使这个 Web 服务能响应和接收 SOAP 消息，（这个呢，其实可以通过 Visual Studio 来帮助实现），定义好逻辑模块（这个 Web 服务总要干点事情吧）， 然后再撰写 WSDL 文件（这个呢，开发工具会自动生成的，不需要人工撰写了）</p>
-<h3 id="（2）部署阶段："><a href="#（2）部署阶段：" class="headerlink" title="（2）部署阶段："></a>（2）部署阶段：</h3><p>指定 Web 服务的传输协议，将 Web 服务注册到相应服务描述部署文件（这些也是可以由工具来自动完成的）</p>
-<h3 id="（3）发布阶段："><a href="#（3）发布阶段：" class="headerlink" title="（3）发布阶段："></a>（3）发布阶段：</h3><p>将 Web 服务的接口和调用的地址公开给客户端调用，常用的发布方式为基于 Web 提供的WSDL 的链接，当然 UDDI 也是一个选择。</p>
-<h2 id="总结一下-WebServices的优点"><a href="#总结一下-WebServices的优点" class="headerlink" title="总结一下 WebServices的优点"></a>总结一下 WebServices的优点</h2><p>其实呢，前面介绍的都是关于 WebServices 的优点，在这里就只是浅要的总结一下了。</p>
-<p>首先，WebServices 是基于 Internet 和异构平台的应用，这样便可以方便的实现通过网络来通信，同时可以实现在不同的平台之间共享数据。</p>
-<p>然后就是，WebServices 是基于 XML 和HTTP 的，也就是基于标准和开放的，基于 XML 的话，扩展性自然好，自然跨语言。<br>基于 HTTP 的话，自然跨平台了。</p>
-<p>最后，再回忆一下 WebServices 是一种应用程序组件吧，这样便可以将 WebServices 重复使用了。</p>
-<h2 id="谈谈-WebServices-的缺点"><a href="#谈谈-WebServices-的缺点" class="headerlink" title="谈谈 WebServices 的缺点"></a>谈谈 WebServices 的缺点</h2><p>首先就是由于 XML 文件的难以解析，所以在使用 Web 服务的时候，会消耗较多的 CPU 和内存资源，而后，SOAP 是基于XML 的，所以在网络传输中传输的是 XML 文件，<br>但是由 XML 文件相比于二进制文件来说，要大很多，自然就会消耗更多的网络资源了。<br>而后，由于通过 WSDL 解耦了Web 服务提供者和请求者，且 SOAP 消息时从发送者向接收者单向传送的，这在一定程度上造成了 WebServices 是一种无状态服务，尽管现在在 . Net 中可以通过 Session 来实现在客户端和服务端共享一些数据，<br>但是单单依靠 Session 来实现客户端和服务端的状态交互也太牵强了吧</p>
-<p>WebServices 在数据绑定上也存在一些缺陷，因为所有的数据在传输中都是使用的 XML 来实现的，因此，需要在二进制数据和 XML 之间进行一个转换（通过序列化和反序列化来实现），<br>而在转换过程中有可能出现语义丢失的情况。</p>
-<p>最后就是 WebServices 的技术要求相对比较高，因为涉及到底层的 HTTP 协议以及SOAP ，WSDL 和UDDL 这三大平台元素，所以学习的曲线也是比较长的，<br>当然，在 . Net 中可以通过 Visual Studio 非常快速和简单的开发和访问一个 Web 服务，<br>但这只限于在简单的使用上，而对于本质的东西，是比较难的。</p>
-<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>正如题目所言，是 WebServices 简介，既然是简介的话，那么自然就是以简为目标了，<br>说明一下的是，上面的这篇博文呢，源自前几天做的一个关于 WebServices 的演讲，<br>演讲的 PPT 还存有，有兴趣要的可以留个邮箱的。</p>
-<h2 id="WebServices-的实战（待续……）"><a href="#WebServices-的实战（待续……）" class="headerlink" title="WebServices 的实战（待续……）"></a>WebServices 的实战（待续……）</h2><p>之前基于的语言不同，需要重新调整：需要从.Net环境变为PHP语言，暂时不写，待续。</p>
-<p><a href="https://wenku.baidu.com/view/f87b55f19e31433239689314.html" target="_blank" rel="external">原文链接</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/21/If-you-want-to-be-a-programmer-related-forum-think-twice/" itemprop="url">
-                  如果你想做个程序员相关的论坛，请三思
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-21T14:38:31+08:00" content="2017-07-21">
-              2017-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>标题中的“做”有两方面所指：</p>
-<ul>
-<li>开发：使用某种编程语言实现</li>
-<li>运营：使用某套程序直接搭建</li>
-</ul>
-<p>无论是哪方面，如果你有做程序员相关论坛的想法，请三思而后行，因为你的竞争对手不是一般的多…. 所以在你行动之前，先了解一下吧！</p>
-<p>下面整理了一些使用 开源 程序搭建的论坛，他们的相似点：</p>
-<ul>
-<li>“小众”社区，用户大多是程序员</li>
-<li>基于“节点”进行分版</li>
-<li>界面都比较精致</li>
-</ul>
-<p>每一项的顺序分别是：站点、项目地址、开发语言。</p>
-<ol>
-<li><p><a href="https://phphub.org/" target="_blank" rel="external">PHPHub - PHP &amp; Laravel 的中文社区</a>    <a href="https://github.com/summerblue/phphub5" target="_blank" rel="external">https://github.com/summerblue/phphub5</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://flarumone.com/" target="_blank" rel="external">FlarumOne 官网 中文 Flarum 第一站</a>    <a href="https://github.com/flarumone/flarumone" target="_blank" rel="external">https://github.com/flarumone/flarumone</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://www.94cb.com/" target="_blank" rel="external">Carbon Forum</a>    <a href="https://github.com/lincanbin/Carbon-Forum" target="_blank" rel="external">https://github.com/lincanbin/Carbon-Forum</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://youbbs.sinaapp.com/" target="_blank" rel="external">youBBS - u 社区</a>    <a href="https://github.com/ego008/youbbs" target="_blank" rel="external">https://github.com/ego008/youbbs</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://bbs.xiuno.com/" target="_blank" rel="external">Xiuno BBS</a>    <a href="http://git.oschina.net/strwei/xiuno" target="_blank" rel="external">http://git.oschina.net/strwei/xiuno</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://vanillaforums.cn/" target="_blank" rel="external">Vanilla 中文社区</a>    <a href="https://github.com/chuck911/vanilla4china" target="_blank" rel="external">https://github.com/chuck911/vanilla4china</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://laravel.so/" target="_blank" rel="external">Laravel.so - 最新的 Laravel 技巧</a>    <a href="https://github.com/laravelso/site" target="_blank" rel="external">https://github.com/laravelso/site</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://getyii.com/" target="_blank" rel="external">Get√Yii - 致力打造 Yii 中国第一社区</a>    <a href="https://github.com/iiyii/getyii" target="_blank" rel="external">https://github.com/iiyii/getyii</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://hacpai.com/" target="_blank" rel="external">黑客派</a>    <a href="https://github.com/b3log/symphony" target="_blank" rel="external">https://github.com/b3log/symphony</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://bbs.tomoya.cn/" target="_blank" rel="external">朋也社区</a>    <a href="https://github.com/tomoya92/pybbs" target="_blank" rel="external">https://github.com/tomoya92/pybbs</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://java-china.org/" target="_blank" rel="external">Java 中国</a>    <a href="https://github.com/junicorn/java-china" target="_blank" rel="external">https://github.com/junicorn/java-china</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://nutz.cn/" target="_blank" rel="external">Nutz 社区</a>    <a href="https://github.com/wendal/nutz-book-project" target="_blank" rel="external">https://github.com/wendal/nutz-book-project</a>     <strong>Java</strong></p>
-</li>
-<li><p><a href="http://www.html-js.com/" target="_blank" rel="external">前端乱炖</a>    <a href="https://github.com/xinyu198736/htmljs" target="_blank" rel="external">https://github.com/xinyu198736/htmljs</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="https://cnodejs.org/" target="_blank" rel="external">Node.js 专业中文社区</a>    <a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">https://github.com/cnodejs/nodeclub</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="http://nodebb.org.cn/" target="_blank" rel="external">NodeBB 官方中文社区</a>    <a href="https://github.com/NodeBB/NodeBB" target="_blank" rel="external">https://github.com/NodeBB/NodeBB</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="https://meta.discoursecn.org/" target="_blank" rel="external">Discourse 中文论坛</a>    <a href="https://github.com/discourse/discourse" target="_blank" rel="external">https://github.com/discourse/discourse</a>    <strong>Ruby</strong></p>
-</li>
-<li><p><a href="https://ruby-china.org/" target="_blank" rel="external">Ruby China</a>    <a href="https://github.com/ruby-china/ruby-china" target="_blank" rel="external">https://github.com/ruby-china/ruby-china</a>     <strong>Ruby</strong></p>
-</li>
-<li><p><a href="http://studygolang.com/" target="_blank" rel="external">Go 语言中文网    </a><a href="https://github.com/studygolang/studygolang" target="_blank" rel="external">https://github.com/studygolang/studygolang</a>    <strong>Go</strong></p>
-</li>
-<li><p><a href="http://golangtc.com/" target="_blank" rel="external">Golang 中国</a>    <a href="https://github.com/jimmykuu/gopher" target="_blank" rel="external">https://github.com/jimmykuu/gopher</a>    <strong>Go</strong></p>
-</li>
-<li><p><a href="http://f2e.im/" target="_blank" rel="external">F2E - 前端技术社区</a>    <a href="https://github.com/PaulGuo/F2E.im" target="_blank" rel="external">https://github.com/PaulGuo/F2E.im</a>    <strong>Python</strong></p>
-</li>
-<li><p><a href="http://beyoung.io/" target="_blank" rel="external">Young 社区</a>    <a href="https://github.com/shiyanhui/Young" target="_blank" rel="external">https://github.com/shiyanhui/Young</a>    <strong>Python</strong></p>
-</li>
-</ol>
-<p>欢迎大家进行补充    </p>
-<ul>
-<li>也许每个程序员都有一颗想写论坛的心</li>
-<li>PHP 不愧是世界上最好的编程语言….</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/20/recommend-the-three-favorite-english-learning-sites/" itemprop="url">
+                <a class="post-title-link" href="/2020/05/04/recommend-the-three-favorite-english-learning-sites/" itemprop="url">
                   推荐三个很赞的英语学习网站
                 </a>
               
@@ -1510,8 +1004,8 @@ echo $file_contents;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-20T00:49:10+08:00" content="2017-07-20">
-              2017-07-20
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -1608,7 +1102,7 @@ echo $file_contents;
             
               
                 
-                <a class="post-title-link" href="/2017/03/16/server-side-cycle-to-remind-how-to-design/" itemprop="url">
+                <a class="post-title-link" href="/2020/05/04/server-side-cycle-to-remind-how-to-design/" itemprop="url">
                   服务器端周期提醒如何设计
                 </a>
               
@@ -1622,8 +1116,8 @@ echo $file_contents;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T17:04:00+08:00" content="2017-03-16">
-              2017-03-16
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -1693,6 +1187,553 @@ echo $file_contents;
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/php56-an-invalid-compatibility-problem-with-the-sign-of-an-image-uploaded-via-curl/" itemprop="url">
+                  PHP5.6通过CURL上传图片@符无效的兼容问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天本来想试试一个图片云的API，于是本地做了个上传图片的测试，结果灰常郁闷的发现以前一直用的好好的CURL上传图片居然死活不起作用，本来几分钟搞定的事情，结果折腾了大半天才终于找到原因，居然是兼容性问题，真是无语。。</p>
+<p>网上搜索PHP通过CURL上传图片几乎都是类似下面的代码：</p>
+<pre><code>&lt;?php
+header(&apos;Content-type:text/html; charset=utf-8&apos;); //声明编码
+$ch = curl_init();
+$url = &apos;https://xxx.com/api/mobile/auto_upload.php?uid=9705459&apos;;
+
+//post数据，使用@符号，curl就会认为是有文件上传
+$curlPost = array(&apos;Filedata&apos;=&gt;&apos;@/Users/finup/Documents/11.png&apos;);
+
+
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HEADER, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1); //POST提交
+curl_setopt($ch, CURLOPT_POSTFIELDS,$curlPost);
+$data =curl_exec($ch);
+curl_close($ch);
+echo &apos;&lt;pre&gt;&apos;;
+var_dump($data);
+</code></pre><p>以前上传图片都是在图片路径前面增加一个 @符号，如：</p>
+<pre><code>$file = __DIR__ .&apos;/0634134726bc5b8b.jpg&apos;;
+$data = array(&apos;mypic&apos;=&gt;&apos;@&apos;. $file);
+</code></pre><p>这样就行了，但现在这种情况一般只适用于 PHP5.6以下的版本。<br>对5.6来说，直接加@是木有用的啦。</p>
+<p>解决办法有两个：一种是兼容；二是使用新的方法。</p>
+<p>1 . 兼容方法：<br>主要用到 CURL 的一个配置参数 CURLOPT_SAFE_UPLOAD<br>CURLOPT_SAFE_UPLOAD 在 PHP5.5中默认值是 false<br>而在 PHP5.6中已经默认为 true 了。<br>所以只需要增加一行强制设置为 false 就行，如下：</p>
+<p><strong>注意：该参数的设置顺序，必须在设置 CURLOPT_POSTFIELDS 参数之前才有效哦！！！</strong></p>
+<pre><code>&lt;?php
+$url = &apos;http://127.0.0.1/test3.php&apos;;
+$file = __DIR__ .&apos;/0634134726bc5b8b.jpg&apos;;
+$data = array(&apos;mypic&apos;=&gt;&apos;@&apos;. $file);
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+$content = curl_exec($curl);
+curl_close($curl);
+print_r($content);
+</code></pre><p>2 . 新的图片上传方法：<br>使用 CURLFile 类来处理文件，如下：</p>
+<pre><code>$url = &apos;http://127.0.0.1/test3.php&apos;;
+$file = __DIR__ .&apos;/0634134726bc5b8b.jpg&apos;;
+$data = array(&apos;mypic&apos;=&gt;new CURLFile($file));
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+$content = curl_exec($curl);
+curl_close($curl);
+print_r($content);
+</code></pre><p>我这里只是最简单的应用，具体可参考下面官方文档：<br><a href="http://php.net/manual/en/class.curlfile.php" target="_blank" rel="external">http://php.net/manual/en/class.curlfile.php</a></p>
+<p>这下终于上传成功了。。。太坑爹了，一天时间又被折腾完了。</p>
+<p>最后，注意使用CURLFile类时的一个问题：</p>
+<p>CURLFile的第三个参数，如果使用的话，要么带上后缀的文件全名；要么整个空着。不能有值又不带后缀，否则DZ系统默认上传失败，因为获取文件扩展名为空。</p>
+<p>当然，如果像上面示例一样只有一个文件路径本身，其他全都是缺省值（默认值），服务器会自动获取其他文件属相参数，反而是一个更好的方案。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/php-probability-of-winning-algorithm/" itemprop="url">
+                  php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  </p>
+<pre><code>&lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，
+ * 在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。
+ * 这样 筛选到最终，总会有一个数满足要求。
+ * 就相当于去一个箱子里摸东西，
+ * 第一个不是，第二个不是，第三个还不是，那最后一个一定是。
+ * 这个算法简单，而且效率非常 高，
+ * 关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。
+ */
+function get_rand($proArr) { 
+$result = &apos;&apos;;  
+//概率数组的总概率精度 
+$proSum = array_sum($proArr);  
+//概率数组循环 
+foreach ($proArr as $key =&gt; $proCur) { 
+$randNum = mt_rand(1, $proSum); 
+if ($randNum &lt;= $proCur) { 
+$result = $key; 
+break; 
+} else { 
+$proSum -= $proCur; 
+}         
+} 
+unset ($proArr);  
+return $result; 
+} 
+
+
+/*
+ * 奖项数组
+ * 是一个二维数组，记录了所有本次抽奖的奖项信息，
+ * 其中id表示中奖等级，prize表示奖品，v表示中奖概率。
+ * 注意其中的v必须为整数，你可以将对应的 奖项的v设置成0，即意味着该奖项抽中的几率是0，
+ * 数组中v的总和（基数），基数越大越能体现概率的准确性。
+ * 本例中v的总和为100，那么平板电脑对应的 中奖概率就是1%，
+ * 如果v的总和是10000，那中奖概率就是万分之一了。
+ * 
+ */
+$prize_arr = array( 
+&apos;0&apos; =&gt; array(&apos;id&apos;=&gt;1,&apos;prize&apos;=&gt;&apos;平板电脑&apos;,&apos;v&apos;=&gt;1), 
+&apos;1&apos; =&gt; array(&apos;id&apos;=&gt;2,&apos;prize&apos;=&gt;&apos;数码相机&apos;,&apos;v&apos;=&gt;5), 
+&apos;2&apos; =&gt; array(&apos;id&apos;=&gt;3,&apos;prize&apos;=&gt;&apos;音箱设备&apos;,&apos;v&apos;=&gt;10), 
+&apos;3&apos; =&gt; array(&apos;id&apos;=&gt;4,&apos;prize&apos;=&gt;&apos;4G优盘&apos;,&apos;v&apos;=&gt;12), 
+&apos;4&apos; =&gt; array(&apos;id&apos;=&gt;5,&apos;prize&apos;=&gt;&apos;10Q币&apos;,&apos;v&apos;=&gt;22), 
+&apos;5&apos; =&gt; array(&apos;id&apos;=&gt;6,&apos;prize&apos;=&gt;&apos;下次没准就能中哦&apos;,&apos;v&apos;=&gt;50), 
+); 
+
+/*
+ * 每次前端页面的请求，PHP循环奖项设置数组，
+ * 通过概率计算函数get_rand获取抽中的奖项id。
+ * 将中奖奖品保存在数组$res[&apos;yes&apos;]中，
+ * 而剩下的未中奖的信息保存在$res[&apos;no&apos;]中，
+ * 最后输出json个数数据给前端页面。
+ */
+foreach ($prize_arr as $key =&gt; $val) { 
+$arr[$val[&apos;id&apos;]] = $val[&apos;v&apos;]; 
+} 
+$rid = get_rand($arr); //根据概率获取奖项id 
+
+$res[&apos;yes&apos;] = $prize_arr[$rid-1][&apos;prize&apos;]; //中奖项 
+unset($prize_arr[$rid-1]); //将中奖项从数组中剔除，剩下未中奖项 
+shuffle($prize_arr); //打乱数组顺序 
+for($i=0;$i&lt;count($prize_arr);$i++){ 
+$pr[] = $prize_arr[$i][&apos;prize&apos;]; 
+} 
+$res[&apos;no&apos;] = $pr; 
+print_r($res); 
+?&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/php-simulates-uploading-files-using-the-CURLFile-function/" itemprop="url">
+                  PHP模拟上传文件使用CURLFile函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、CURLFile-介绍"><a href="#一、CURLFile-介绍" class="headerlink" title="一、CURLFile 介绍"></a>一、CURLFile 介绍</h3><h4 id="CURLFile-construct"><a href="#CURLFile-construct" class="headerlink" title="CURLFile::__construct"></a>CURLFile::__construct</h4><p>(PHP 5 &gt;= 5.5.0, PHP 7)<br>CURLFile::__construct – curl_file_create — 创建 CURLFile 对象</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>面向对象风格</p>
+<pre><code>public CURLFile::__construct ( string $filename [, string $mimetype [, string $postname ]] )
+</code></pre><p>过程化风格</p>
+<pre><code>CURLFile curl_file_create ( string $filename [, string $mimetype [, string $postname ]] )
+</code></pre><p>创建 CURLFile 对象，使用 CURLOPT_POSTFIELDS 选项上传文件。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>filename 被上传文件的 路径。</p>
+<p>mimetype 被上传文件的 MIME 类型。</p>
+<p>postname 上传数据里面的文件名。</p>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>返回 CURLFile 对象。</p>
+<h3 id="二、使用示例"><a href="#二、使用示例" class="headerlink" title="二、使用示例"></a>二、使用示例</h3><h4 id="1、一个单独的函数定义"><a href="#1、一个单独的函数定义" class="headerlink" title="1、一个单独的函数定义"></a>1、一个单独的函数定义</h4><pre><code>public function testUpload01(){
+    $file = __DIR__.&apos;\assets\test.jpg&apos;;
+    //var_dump($file);
+    //$post[&apos;file&apos;] = &apos;@&apos;.$file;
+    $obj = new CurlFile($file);
+    &lt;span style=&quot;color:#ff0000;&quot;&gt;$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
+    $post[&apos;file&apos;] =  $obj;
+    $post[&apos;abc&apos;] = &quot;abc&quot;;
+    var_dump($post);
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    //启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+    curl_setopt($ch, CURLOPT_URL, &quot;http://localhost/fs/upload.php&quot;);//上传类
+
+    $info= curl_exec($ch);
+    curl_close($ch);
+    var_dump($info);
+    file_put_contents(&apos;./1.html&apos;,$info);
+    $res=json_decode($info,true);
+    //var_dump($res);
+</code></pre><h4 id="2、模拟php-curl向远程服务器上传文件"><a href="#2、模拟php-curl向远程服务器上传文件" class="headerlink" title="2、模拟php curl向远程服务器上传文件"></a>2、模拟php curl向远程服务器上传文件</h4><p>第1个文件：test.php 可以向远程服务器模拟提交上传文件的PHP文件</p>
+<pre><code>&lt;?php
+    header(&apos;content-type:text/html;charset=utf8&apos;);
+
+    $ch = curl_init();
+
+    //加@符号curl就会把它当成是文件上传处理
+    $data = array(&apos;img&apos;=&gt;&apos;@&apos;. dirname(__FILE__).&apos;/img/1.jpg&apos;);
+    curl_setopt($ch,CURLOPT_URL,&quot;http://localhost:8088/curl/get_img.php&quot;);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POST,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    echo json_decode($result);
+
+?&gt;
+</code></pre><p>第2个文件：get_img.php 可以接收上传文件的PHP文件</p>
+<pre><code>&lt;?php
+if($_FILES){
+    $filename = $_FILES[&apos;img&apos;][&apos;name&apos;];
+    $tmpname = $_FILES[&apos;img&apos;][&apos;tmp_name&apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/upload/&apos;.$filename)){
+        echo json_encode(&apos;上传成功&apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&gt;
+</code></pre><h4 id="3、本人实测可用综合示例"><a href="#3、本人实测可用综合示例" class="headerlink" title="3、本人实测可用综合示例"></a>3、本人实测可用综合示例</h4><p>第1个文件 test.php 模拟上传文件的PHP文件</p>
+<pre><code>&lt;?php
+$file = __DIR__.&apos;\test.jpg&apos;;
+$obj = new CurlFile($file);
+$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
+$post[&apos;file&apos;] =  $obj;
+$post[&apos;abc&apos;] = &quot;abc&quot;;
+var_dump($post);
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, false);
+//启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_URL, &quot;http://locaolhost/test/get_img.php&quot;);//上传类
+
+$info= curl_exec($ch);
+curl_close($ch);
+var_dump($info);
+file_put_contents(&apos;./1.html&apos;,$info);
+$res=json_decode($info,true);
+?&gt;
+</code></pre><p>第2个文件 get_img.php 接收数据的PHP文件</p>
+<pre><code>&lt;?php
+
+print_r($_FILES);
+if($_FILES){
+    $filename = $_FILES[&apos;file&apos;][&apos;name&apos;];
+    $tmpname = $_FILES[&apos;file&apos;][&apos;tmp_name&apos;];
+    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/&apos;.$filename)){
+        echo json_encode(&apos;SUCCESS&apos;);
+    }else{
+        $data = json_encode($_FILES);
+        echo $data;
+    }
+}
+
+?&gt;
+</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>1、经实际测试，可以使用。如果使用本地签发的SSL证书的https协议，注意本地环境无法测试，可以暂时使用http代替。</p>
+<p>线上的https协议可以正常使用。</p>
+<p>2、线上在使用curl中转当前服务器上传的文件再次转发到另一个远程服务器时，需要把文件先临时存储到当前服务器，待另一个远程服务器接收并处理完成后再把当前服务器上的临时文件删除即可。</p>
+<p>　　</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -1739,7 +1780,7 @@ echo $file_contents;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

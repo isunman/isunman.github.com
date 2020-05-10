@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP算法,野趣," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="太阳侠" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="身份证号码解释，附：18位公民身份证编码规则身份证号码由18位数字组成，你知道它们代表的信息吗？其中的第一、第二数字表示公民所在地的省份（或自治区、直辖市）；第三、第四位数字表示公民所在地的市（或州）；第五、第六位数字表示公民所在地的县（或县级市）；接下来的8位数字表示公民的出生年、月、日；最后4位数字中的前两位表示当地派出所的编码；倒数第二位表示公民是男性还是女性（男性用单数，女性用双数）；最后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="身份证号码解释，附：18位公民身份证编码规则">
+<meta property="og:url" content="http://isunman.com/2020/05/04/Explanation-of-id-number/index.html">
+<meta property="og:site_name" content="太阳侠">
+<meta property="og:description" content="身份证号码解释，附：18位公民身份证编码规则身份证号码由18位数字组成，你知道它们代表的信息吗？其中的第一、第二数字表示公民所在地的省份（或自治区、直辖市）；第三、第四位数字表示公民所在地的市（或州）；第五、第六位数字表示公民所在地的县（或县级市）；接下来的8位数字表示公民的出生年、月、日；最后4位数字中的前两位表示当地派出所的编码；倒数第二位表示公民是男性还是女性（男性用单数，女性用双数）；最后">
+<meta property="og:updated_time" content="2019-09-21T09:47:47.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="身份证号码解释，附：18位公民身份证编码规则">
+<meta name="twitter:description" content="身份证号码解释，附：18位公民身份证编码规则身份证号码由18位数字组成，你知道它们代表的信息吗？其中的第一、第二数字表示公民所在地的省份（或自治区、直辖市）；第三、第四位数字表示公民所在地的市（或州）；第五、第六位数字表示公民所在地的县（或县级市）；接下来的8位数字表示公民的出生年、月、日；最后4位数字中的前两位表示当地派出所的编码；倒数第二位表示公民是男性还是女性（男性用单数，女性用双数）；最后">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 身份证号码解释，附：18位公民身份证编码规则 | 太阳侠 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?edc09d74f003ef7b14a37137efc44fd4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">太阳侠</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是一颗恒星</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                身份证号码解释，附：18位公民身份证编码规则
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网络工具/" itemprop="url" rel="index">
+                    <span itemprop="name">网络工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="身份证号码解释，附：18位公民身份证编码规则"><a href="#身份证号码解释，附：18位公民身份证编码规则" class="headerlink" title="身份证号码解释，附：18位公民身份证编码规则"></a>身份证号码解释，附：18位公民身份证编码规则</h2><h3 id="身份证号码由18位数字组成，你知道它们代表的信息吗？"><a href="#身份证号码由18位数字组成，你知道它们代表的信息吗？" class="headerlink" title="身份证号码由18位数字组成，你知道它们代表的信息吗？"></a>身份证号码由18位数字组成，你知道它们代表的信息吗？</h3><p>其中的第一、第二数字表示公民所在地的省份（或自治区、直辖市）；第三、第四位数字表示公民所在地的市（或州）；第五、第六位数字表示公民所在地的县（或县级市）；接下来的8位数字表示公民的出生年、月、日；最后4位数字中的前两位表示当地派出所的编码；倒数第二位表示公民是男性还是女性（男性用单数，女性用双数）；最后一位数字是一个随机数，又称为校验码。</p>
+<p>大陆的身份证为18位，老的身份证是15位。</p>
+<h3 id="关于身份证第18是怎么计算的，原理如下"><a href="#关于身份证第18是怎么计算的，原理如下" class="headerlink" title="关于身份证第18是怎么计算的，原理如下"></a>关于身份证第18是怎么计算的，原理如下</h3><p>根据〖中华人民共和国国家标准GB11643-1999〗中有关公民身份号码的规定，公民身份号码是特征组合码，由十七位数字本体码和一位数字校验码组成。排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位数字校验码。</p>
+<p>地址码（身份证前六位）表示编码对象常住户口所在县(市、旗、区)的行政区划代码。（所有区域的编码可以到这个网址<a href="http://xzqh.mca.gov.cn查询到最新的县及县以上的行政编码资料。）" target="_blank" rel="external">http://xzqh.mca.gov.cn查询到最新的县及县以上的行政编码资料。）</a></p>
+<p>生日期码（身份证第七位到第十四位）表示编码对象出生的年、月、日，其中年份用四位数字表示，年、月、日之间不用分隔符。例如：1981年05月11日就用19810511表示。</p>
+<p>顺序码（身份证第十五位到十七位）为同一地址码所标识的区域范围内，对同年、月、日出生的人员编定的顺序号。其中第十七位奇数分给男性，偶数分给女性。</p>
+<p>校验码（身份证最后一位）是根据前面十七位数字码，按照ISO7064:1983.MOD11-2校验码计算出来的检验码。</p>
+<h3 id="第十八位数字的计算方法"><a href="#第十八位数字的计算方法" class="headerlink" title="第十八位数字的计算方法"></a>第十八位数字的计算方法</h3><p>1.将前面的身份证号码17位数分别乘以不同的系数。从第一位到第十七位的系数分别为：7910584216379105842</p>
+<p>2.将这17位数字和系数相乘的结果相加。</p>
+<p>3.用加出来和除以11，看余数是多少？</p>
+<p>4.余数只可能有012345678910这11个数字。其分别对应的最后一位身份证的号码为10X98765432。</p>
+<p>5.通过上面得知如果余数是2，就会在身份证的第18位数字上出现罗马数字的Ⅹ。如果余数是10，身份证的最后一位号码就是2。</p>
+<p>例如：某男性的身份证号码是34052419800101001X。我们要看看这个身份证是不是合法的身份证。</p>
+<p>首先：我们得出，前17位的乘积和是189</p>
+<p>然后：用189除以11得出的结果是17+2/11，也就是说余数是2。</p>
+<p>最后：通过对应规则就可以知道余数2对应的数字是X。所以，这是一个合格的身份证号码。</p>
+<hr>
+<h3 id="附：18位公民身份证编码规则"><a href="#附：18位公民身份证编码规则" class="headerlink" title="附：18位公民身份证编码规则"></a>附：18位公民身份证编码规则</h3><p>18位身份证标准在国家质量技术监督局于1999年7月1日实施的GB11643-1999《公民身份号码》中做了明确规定。GB11643-1999《公民身份号码》为GB11643-1989《社会保障号码》的修订版，其中指出将原标准名称“社会保障号码”更名为“公民身份号码”，另外GB11643-1999《公民身份号码》从实施之日起代替GB11643-1989。公民身份号码是特征组合码，由十七位数字本体码和一位校验码组成。排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位校验码。其含义如下：</p>
+<p>1.地址码：表示编码对象常住户口所在县(市、旗、区)的行政区划代码，按GB/T2260的规定执行。</p>
+<p>2.出生日期码：表示编码对象出生的年、月、日，按GB/T7408的规定执行，年、月、日分别用4位、2位、2位数字表示，之间不用分隔符。</p>
+<p>3.顺序码：表示在同一地址码所标识的区域范围内，对同年、同月、同日出生的人编定的顺序号，顺序码的奇数分配给男性，偶数分配给女性。</p>
+<p>校验的计算方式：</p>
+<p>1.对前17位数字本体码加权求和</p>
+<p>公式为：S=Sum(Ai*Wi),i=0,…,16</p>
+<p>其中Ai表示第i位置上的身份证号码数字值，Wi表示第i位置上的加权因子，其各位对应的值依次为：7910584216379105842</p>
+<p>2.以11对计算结果取模</p>
+<p>Y=mod(S,11)</p>
+<p>3.根据模的值得到对应的校验码</p>
+<p>对应关系为：</p>
+<p>Y值：012345678910</p>
+<p>校验码：10X98765432</p>
+<h3 id="关于18位身份证号码尾数是“X”的解释"><a href="#关于18位身份证号码尾数是“X”的解释" class="headerlink" title="关于18位身份证号码尾数是“X”的解释"></a>关于18位身份证号码尾数是“X”的解释</h3><p>居民身份证的号码是按照国家的标准编制的，由18位组成：前六位为行政区划代码，第七至第十四位为出生日期码，第15至17位为顺序码，第18位为校验码。作为尾号的校验码，是由号码编制单位按统一的公式计算出来的，如果某人的尾号是0-9，都不会出现X，但如果尾号是10，那么就得用X来代替，因为如果用10做尾号，那么此人的身份证就变成了19位，而19位的号码违反了国家标准，并且我国的计算机应用系统也不承认19位的身份证号码。X是罗马数字的10，用X来代替10，可以保证公民的身份证符合国家标准。但是我国的居民身份证在升位后，一些人的尾号变成了X，这部分人在工作生活中，例如去银行存取钱、去汽车公司租赁汽车或者报名参加考试等等过程中，往往不被检验者理解，认为是假身份证，这样的误会给很多人的生活带来不便。公安局的同志希望领到X身份证的同志正确理解这个数字的含义，查验身份证的机关和单位更应该清楚这一点。</p>
+<h3 id="一个简单身份证号尾号校验算法的PHP实现的过程"><a href="#一个简单身份证号尾号校验算法的PHP实现的过程" class="headerlink" title="一个简单身份证号尾号校验算法的PHP实现的过程"></a>一个简单身份证号尾号校验算法的PHP实现的过程</h3><pre><code>&lt;?php
+function checkId($id) {
+    $len = strlen($id);
+    if($len != 18) {
+        return 0;
+    }
+    $a=str_split($id,1);
+    $w=array(7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2);
+    $c=array(1,0,&apos;X&apos;,9,8,7,6,5,4,3,2);
+    $sum = 0;
+    for($i=0;$i&lt;17;$i++){
+        $sum= $sum + $a[$i]*$w[$i];
+    }
+    $r=$sum%11;
+    $res=$c[$r];
+    //echo &quot;校验位是: &quot;.$res;
+    if ($res == $a[17]) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+</code></pre><p>　　</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php算法/" rel="tag">#PHP算法</a>
+          
+            <a href="/tags/野趣/" rel="tag">#野趣</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/04/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/04/how-to-download-zhihu-video/" rel="prev" title="如何下载知乎视频">
+                如何下载知乎视频 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="isunman" />
+          <p class="site-author-name" itemprop="name">isunman</p>
+          <p class="site-description motion-element" itemprop="description">love IT, love Movie, love Love</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/isunman" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#身份证号码解释，附：18位公民身份证编码规则"><span class="nav-number">1.</span> <span class="nav-text">身份证号码解释，附：18位公民身份证编码规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#身份证号码由18位数字组成，你知道它们代表的信息吗？"><span class="nav-number">1.1.</span> <span class="nav-text">身份证号码由18位数字组成，你知道它们代表的信息吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于身份证第18是怎么计算的，原理如下"><span class="nav-number">1.2.</span> <span class="nav-text">关于身份证第18是怎么计算的，原理如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十八位数字的计算方法"><span class="nav-number">1.3.</span> <span class="nav-text">第十八位数字的计算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附：18位公民身份证编码规则"><span class="nav-number">1.4.</span> <span class="nav-text">附：18位公民身份证编码规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于18位身份证号码尾数是“X”的解释"><span class="nav-number">1.5.</span> <span class="nav-text">关于18位身份证号码尾数是“X”的解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个简单身份证号尾号校验算法的PHP实现的过程"><span class="nav-number">1.6.</span> <span class="nav-text">一个简单身份证号尾号校验算法的PHP实现的过程</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">isunman</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="powered-by">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="theme-info">
+<span id="busuanzi_container_site_pv">
+    PV<span id="busuanzi_value_site_pv"></span> --
+</span>
+<span id="busuanzi_container_site_uv">
+  UV<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+  
+
+</body>
+</html>

@@ -244,8 +244,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/10/21/life-is-too-short-it-is-what-we-want/" itemprop="url">
-                  Facebook一组火爆漫画：生命太短暂，什么才是我们想要的？
+                <a class="post-title-link" href="/2020/05/04/win-the-curl-module-invalid-under-php56/" itemprop="url">
+                  Win下php5.6的curl模块无效
                 </a>
               
             
@@ -258,8 +258,125 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-10-21T23:43:35+08:00" content="2018-10-21">
-              2018-10-21
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>表现：<br>1、在调用 curl_init 函数时，提示错误</p>
+<pre><code>Fatal error: Call to undefined function curl_init() in ……
+</code></pre><p>2、在 phpinfo 页不显示 curl 模块信息。</p>
+<p>前提：<br>在 php.ini 配置文件中已经启用了：</p>
+<pre><code>;extension=php_curl.dll
+</code></pre><p>去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。</p>
+<p>解决方案：</p>
+<p>官方说明文档中的 <a href="http://php.net/manual/zh/curl.installation.php" target="_blank" rel="external">http://php.net/manual/zh/curl.installation.php</a></p>
+<p><strong>Note: Win32用户注意<br>要在Windows环境下使用这个模块，libeay32.dll和ssleay32.dll必须放到PATH环境变量包含的目录下。 不用cURL网站上的libcurl.dll。</strong></p>
+<blockquote>
+<p>I had to also also copy libssh2.dll into my Apache24 folder for this to &gt; work with my PHP 5.6.2 installation. So altogether I had to do the &gt; following:</p>
+<p>Move to Windows\system32 folder:<br>libssh2.dll, php_curl.dll, ssleay32.dll, libeay32.dll</p>
+<p>Move to Apache24\bin folder<br>libssh2.dll</p>
+<p>Uncomment extension=php_curl.dll</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/what-is-the-thinking-of-the-rich/" itemprop="url">
+                  什么是“富人思维”
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -305,31 +422,89 @@
       
         
           
-            <p>人们都在关心事业、追逐成功，但是不管我们取得了怎样的成就，永远都不够，我们总是想要得到更多、更多……慢慢的我们开始思考：什么才是我们想要的，一开始陪伴我们的人在哪里走散了。</p>
-<p>但是，生活就像一个小偷，偷走我们快乐、我们的爱，所以无论如何都别忘了自己，别忘了你爱的人，握紧快乐，抓牢爱人。</p>
-<h3 id="1、尝试逗他人开心，每天至少让三个人因你而微笑。"><a href="#1、尝试逗他人开心，每天至少让三个人因你而微笑。" class="headerlink" title="1、尝试逗他人开心，每天至少让三个人因你而微笑。"></a>1、尝试逗他人开心，每天至少让三个人因你而微笑。</h3><p><img src="https://i.postimg.cc/qBxrjY95/1456205478566426.jpg" alt=""></p>
-<h3 id="2、每天至少安静地坐十分钟。"><a href="#2、每天至少安静地坐十分钟。" class="headerlink" title="2、每天至少安静地坐十分钟。"></a>2、每天至少安静地坐十分钟。</h3><p><img src="https://i.postimg.cc/tThb0m77/1456205482526617.jpg" alt=""></p>
-<h3 id="3、你不需要赢得每一场争论。赞同你不赞同的。"><a href="#3、你不需要赢得每一场争论。赞同你不赞同的。" class="headerlink" title="3、你不需要赢得每一场争论。赞同你不赞同的。"></a>3、你不需要赢得每一场争论。赞同你不赞同的。</h3><p><img src="https://i.postimg.cc/02tsqS5G/1456205487908408.jpg" alt=""></p>
-<h3 id="4、不要把自己看得太重要，其他人不会在乎的。"><a href="#4、不要把自己看得太重要，其他人不会在乎的。" class="headerlink" title="4、不要把自己看得太重要，其他人不会在乎的。"></a>4、不要把自己看得太重要，其他人不会在乎的。</h3><p><img src="https://i.postimg.cc/8zjVkCs2/1456205491546975.jpg" alt=""></p>
-<h3 id="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"><a href="#5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。" class="headerlink" title="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"></a>5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。</h3><p><img src="https://i.postimg.cc/ht6RXqdf/1456205495400750.jpg" alt=""></p>
-<h3 id="6、在你清醒的时候，你可以梦想更多。"><a href="#6、在你清醒的时候，你可以梦想更多。" class="headerlink" title="6、在你清醒的时候，你可以梦想更多。"></a>6、在你清醒的时候，你可以梦想更多。</h3><p><img src="https://i.postimg.cc/cChNCgRS/1456205500992894.jpg" alt=""></p>
-<h3 id="7、别人怎么看待你，完全与你无关。"><a href="#7、别人怎么看待你，完全与你无关。" class="headerlink" title="7、别人怎么看待你，完全与你无关。"></a>7、别人怎么看待你，完全与你无关。</h3><p><img src="https://i.postimg.cc/Rh4BvQnd/1456205505772668-1.jpg" alt=""></p>
-<h3 id="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"><a href="#8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。" class="headerlink" title="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"></a>8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。</h3><p><img src="https://i.postimg.cc/FsF4qpvs/1456205509874225.jpg" alt=""></p>
-<h3 id="9、生命太短暂，我没时间讨厌你。"><a href="#9、生命太短暂，我没时间讨厌你。" class="headerlink" title="9、生命太短暂，我没时间讨厌你。"></a>9、生命太短暂，我没时间讨厌你。</h3><p><img src="https://i.postimg.cc/FRQtxgGv/1456205526340886.jpg" alt=""></p>
-<h3 id="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"><a href="#10、微笑、大笑、笑哭了……让生活拥有更多欢笑" class="headerlink" title="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"></a>10、微笑、大笑、笑哭了……让生活拥有更多欢笑</h3><p><img src="https://i.postimg.cc/mr9fM6YV/1456205515324739.jpg" alt=""></p>
-<h3 id="11、没有人能决定你的快乐，除了你自己。"><a href="#11、没有人能决定你的快乐，除了你自己。" class="headerlink" title="11、没有人能决定你的快乐，除了你自己。"></a>11、没有人能决定你的快乐，除了你自己。</h3><p><img src="https://i.postimg.cc/2y2PrpYj/1456205563443853.jpg" alt=""></p>
-<h3 id="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"><a href="#12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。" class="headerlink" title="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"></a>12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。</h3><p><img src="https://i.postimg.cc/7YtpRyXm/1456205568257275.jpg" alt=""></p>
-<h3 id="13、每天睡8小时。"><a href="#13、每天睡8小时。" class="headerlink" title="13、每天睡8小时。"></a>13、每天睡8小时。</h3><p><img src="https://i.postimg.cc/sXPkHQ0h/1456205572729404.jpg" alt=""></p>
-<h3 id="14、多喝水（每天至少摄入2升水）。"><a href="#14、多喝水（每天至少摄入2升水）。" class="headerlink" title="14、多喝水（每天至少摄入2升水）。"></a>14、多喝水（每天至少摄入2升水）。</h3><p><img src="https://i.postimg.cc/5yxZh4Zk/1456205576399627.jpg" alt=""></p>
-<h3 id="15、多读书，争取比上个月多读一本书。"><a href="#15、多读书，争取比上个月多读一本书。" class="headerlink" title="15、多读书，争取比上个月多读一本书。"></a>15、多读书，争取比上个月多读一本书。</h3><p><img src="https://i.postimg.cc/zD7mnhhm/1456205581769081.jpg" alt=""></p>
-<h3 id="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"><a href="#16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。" class="headerlink" title="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"></a>16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。</h3><p><img src="https://i.postimg.cc/htJHW35g/1456205585570622.jpg" alt=""></p>
-<h3 id="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"><a href="#17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。" class="headerlink" title="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"></a>17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。</h3><p><img src="https://i.postimg.cc/3Jxs9wjk/1456205589771679.jpg" alt=""></p>
-<h3 id="18、每天慢跑10-30分钟。"><a href="#18、每天慢跑10-30分钟。" class="headerlink" title="18、每天慢跑10-30分钟。"></a>18、每天慢跑10-30分钟。</h3><p><img src="https://i.postimg.cc/bwK4zH7n/1456205594213644.jpg" alt=""></p>
-<h3 id="19、经常给家人打电话。"><a href="#19、经常给家人打电话。" class="headerlink" title="19、经常给家人打电话。"></a>19、经常给家人打电话。</h3><p><img src="https://i.postimg.cc/k5KzDRCp/1456205598893489.jpg" alt=""></p>
-<h3 id="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"><a href="#20、留一些时间给自己，练习冥想、瑜伽和祈祷。" class="headerlink" title="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"></a>20、留一些时间给自己，练习冥想、瑜伽和祈祷。</h3><p><img src="https://i.postimg.cc/ZRmgNYKK/1456205603567533.jpg" alt=""></p>
-<p>以上，可能有点鸡汤了。</p>
-<p>但是有些确实需要去改变，并坚持下去。</p>
-<p>2016/3/20 14:33:26 </p>
+            <p>如果每个人都理解你，那你得普通成什么样。</p>
+<p>上面这句话不是我说的，是陈老师说的，虽然陈老师算不上大富之人，但是他这句话却道出了富人思维的本质：富人思维是什么，<strong>是少数人的思维，20%的思维，是小众思维</strong>。有人说这个话是在放屁，富人本来就是少数，我这样说是在语义重复。但其实不是这样的。</p>
+<p>记不清什么时候谁给我说过这样一句话：如果你寻求的是一种大多人都觉得合理的生活，那你就会过上大多数人的生活。如果你安全感的起点在于大多数人的赞同，那最终也会过上大多数人的生活。</p>
+<p>如果我们把富人当做一个群体样本（即不分割所谓的一代还是二代），你会发现，他们在一开始积累财富的时候，都走了和大部分人不一样的路。这种不一样，可能是不认可，不理解，反对，唾弃，甚至是法律的边缘，以及极端情况下，暴力革命。</p>
+<p>为了积累财富，如果你开始做一件事，80%的人都觉得这件事很棒，那么极有可能你也就是这百分之八十，但很遗憾，富人是剩下那20%。如果你开始做一件事，99%的人都觉得很棒，那么你就成为不了剩下那1%的富人。</p>
+<p><strong>以我的调性，通常会把日常的解释上升到理论的高度的。于是我想到了金融学里的无套利定价原理（Non-Arbitrage Pricing）。它的核心思想是，如果同一个东西，在两个不同市场的定价有差异，那么套利行为会使得这种差异消失</strong>。</p>
+<p>比如，白菜在北京卖5块钱一斤，在上海卖10块钱一斤，就会有人在北京买了白菜拿到上海卖，无风险套利。当然，我们没有考虑交易成本，比如白菜从北京到上海的交通费用，也没有提及很多假设，但不重要，我们不是回答金融学的考试题。我们理解当中的思想就够了。</p>
+<p>如果80%的人都觉得这是个可靠的赚大钱的机会，那么以大家对赚钱的强烈渴望来讲，必然大家会迅速冲进去，结果是什么，竞争变得异常惨烈，最后大家都赚不到钱，或者能赚也只能赚到远低于预期的小钱。这就是无套利的结果。这里暗含的意思，<strong>越多人认可或者可以去做到的事情，套利的交易成本就越低，套利行为的发生就越容易，最后大家赚到的钱，也就越趋近于市场平均水平</strong>。</p>
+<p>富人会怎么样呢，富人会选择小众思维，大家都不太容易接受或者没能力接受的事情去做，比如创业。90%的人会觉得，哇，这个好大的风险，我不具备相关的资源/能力/资金，我要再准备准备。万一失败了我会很艰难，而且成功率那么低，等等。但剩下那10%的人思维会完全相反。</p>
+<p><strong>他们一旦成功，会立马摇身变为富人，而且会自然形成极高的交易成本阻止其他人的进入，即阻止套利行为的发生。这里的交易成本就包括胆大、敢冒险、有赌性、有血性、对风险承担能力特别强等等</strong>。</p>
+<p>具体地，我们以公司老板和员工（少数人，近似的理解为富人，和多数人，近似地理解为非富人）为例，来看多数人思维和少数人思维的区别。以下内容来自网络。</p>
+<p>————</p>
+<p>多数人：哇塞，他真有钱。 </p>
+<p>少数人：尼玛，我要想办法比他有钱。</p>
+<p>————</p>
+<p>多数人：编制，社保，养老金怎么办？</p>
+<p>少数人：还要靠政府养老，弱爆了！</p>
+<p>————</p>
+<p>多数人：买了头牛，然后找个绳子来牵。</p>
+<p>少数人：先找个绳子，以后可以牵牛。</p>
+<p>————</p>
+<p>多数人：人多的地方才安全。</p>
+<p>少数人：人少的地方风景更美。</p>
+<p>————</p>
+<p>多数人：存下来的才是钱。</p>
+<p>少数人：花出去的才是钱。</p>
+<p>————</p>
+<p>多数人：这人真牛逼，向他学习。</p>
+<p>少数人：真人真牛逼，把他用起来。</p>
+<p>————</p>
+<p>多数人：输了会很惨。</p>
+<p>少数人：赢了会很爽。</p>
+<p>————</p>
+<p>多数人：借钱是负债。</p>
+<p>少数人：借钱是资产。</p>
+<p>————</p>
+<p>多数人：现在创业越来越不容易了。</p>
+<p>少数人：以后的人会说现在创业真容易。</p>
+<p>————</p>
+<p>多数人：明天早上起来把这事儿办了。</p>
+<p>少数人：现在就把这事儿办了再睡。</p>
+<p>————</p>
+<p>多数人：钱是生活的保障。</p>
+<p>少数人：钱是生活的工具。</p>
+<p>————</p>
+<p>多数人：没钱没资源，所以创不了业。</p>
+<p>少数人：没钱没资源，所以要创业。</p>
+<p>————</p>
+<p>多数人：完了，基本没戏了。</p>
+<p>少数人：不错，还有一线生机。</p>
+<p>————</p>
+<p>多数人：真好吃，下次还来。</p>
+<p>少数人：真好吃，怎么做的？</p>
+<p>————</p>
+<p>多数人：成功，要付出很多代价。</p>
+<p>少数人：不成功，要付出更多代价。</p>
+<p>————</p>
+<p>多数人：这座山的风景真不错。</p>
+<p>少数人：这座山的那边是什么</p>
+<p>————</p>
+<p>多数人：吃着碗里的，想着锅里的。</p>
+<p>少数人：吃着碗里的，想着田里的。</p>
+<p>————</p>
+<p>多数人：这人病得不轻。</p>
+<p>少数人：这人活得没劲。</p>
+<p>————</p>
+<p>多数人：别做梦了，现实点吧。</p>
+<p>少数人：不做梦，不如去死。</p>
+<p>————</p>
+<p>多数人：跟着走，有事大家担。</p>
+<p>少数人：跟我走，有事算我的。</p>
+<p>————</p>
+<p>多数人：有一块钱，办一块钱的事</p>
+<p>少数人：有一块钱，办十块钱的事</p>
+<p>————</p>
+<p>多数人：试试吧，不行就算了。</p>
+<p>少数人：干到底，不行也得行。</p>
+<p>————</p>
+<p>多数人：都是鸡汤，并无卵用。</p>
+<p>少数人：这鸡汤怎么熬的，鸡肉在哪？</p>
+<p>————</p>
+<p>所以，要有富人思维，第一步是什么，是把自己从大部分人的思维先解脱出来，开始做一件事的时候，不要向大部分人寻求安全感和认可，毕竟你是要超越碾压他们的啊！</p>
+<p>原文链接：<a href="https://www.zhihu.com/question/26980854/answer/93253662" title="来自知乎 原文链接" target="_blank" rel="external">https://www.zhihu.com/question/26980854/answer/93253662</a></p>
 
           
         
@@ -371,7 +546,640 @@
             
               
                 
-                <a class="post-title-link" href="/2018/10/17/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/" itemprop="url">
+                <a class="post-title-link" href="/2020/05/04/web-based-instant-messaging-solution/" itemprop="url">
+                  Web端的即时通讯解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Web端的即时通讯解决方案</p>
+<h3 id="首先，确定使用WebSocket技术。"><a href="#首先，确定使用WebSocket技术。" class="headerlink" title="首先，确定使用WebSocket技术。"></a>首先，确定使用WebSocket技术。</h3><p>逻辑分析：</p>
+<p>1、如果需要支持多个项目，提交登录信息时，需提供当前的项目的ID。<br>或者不同的项目使用不同的端口，在服务器端启用多个WebSocket的服务。</p>
+<p>2、与Redis的结合。</p>
+<p>3、作为独立第三方，只负责即时通讯的连接和转发消息，不涉及具体业务逻辑。</p>
+<h3 id="在Linux服务器上安装配置该技术的步骤："><a href="#在Linux服务器上安装配置该技术的步骤：" class="headerlink" title="在Linux服务器上安装配置该技术的步骤："></a>在Linux服务器上安装配置该技术的步骤：</h3><p>1、先安装Redis</p>
+<p>2、再安装PHP的redis扩展</p>
+<p>3、调试功能。</p>
+<p>4、Redis的后台运行。</p>
+<p>5、PHP文件的命令行执行的后台运行。</p>
+<h3 id="详细说明每个步骤中遇到的坑"><a href="#详细说明每个步骤中遇到的坑" class="headerlink" title="详细说明每个步骤中遇到的坑"></a>详细说明每个步骤中遇到的坑</h3><p>1、安装Redis中没遇到什么问题。Linux时CentOS 7版本，直接使用yum安装即可。</p>
+<p>2、注意PHP的redis扩展中的PHP的安装路径。</p>
+<p>3、无问题。</p>
+<p>4、Redis的后台运行，需要确认进程和端口未被占用。</p>
+<p>5、这一步有大坑。PHP文件后台命令行模式一直启动不了。说是命令的路径不对，修改了也不行。后来使用PHP命令的绝对地址才可以启动，暂时先使用。因为此文件不会经常启动。</p>
+<h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><p>1、把Redis和server.php文件加入到服务器开机自启动中，Redis可以，server.php不可以。只有暂时手动启动此文件的运行。</p>
+<p>2、每次重启服务器一定要注意重启server.php。</p>
+<p>3、每次重启服务器，一定要住已清理Redis中与WebSocket相关的缓存数据。</p>
+<p>——小永</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/wechat-miniprogramcustomer-service-message/" itemprop="url">
+                  微信小程序客服消息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="微信小程序消息服务接入步骤"><a href="#微信小程序消息服务接入步骤" class="headerlink" title="微信小程序消息服务接入步骤"></a>微信小程序消息服务接入步骤</h3><p>1、填写服务器配置；<br><br>2、验证服务器地址的有效性；<br><br>3、依据接口文档实现业务逻辑。</p>
+<h3 id="客服消息之接收消息和事件"><a href="#客服消息之接收消息和事件" class="headerlink" title="客服消息之接收消息和事件"></a>客服消息之接收消息和事件</h3><p>1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。<br><br>2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。</p>
+<h3 id="客服消息之发送客服消息"><a href="#客服消息之发送客服消息" class="headerlink" title="客服消息之发送客服消息"></a>客服消息之发送客服消息</h3><p>1、发送消息格式固定为JSON格式。<br><br>2、支持4种消息类型：<strong>文本</strong>，<strong>图片</strong>，<strong>图文链接</strong>，<strong>小程序卡片</strong>。<br><br>3、touser等于发送消息的FromUsername，即微信用户的openid。<br><br>4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。</p>
+<p>2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html" target="_blank" rel="external">接入微信小程序消息服务</a></p>
+<p>2、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html" target="_blank" rel="external">接收消息和事件</a></p>
+<p>3、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html" target="_blank" rel="external">发送客服消息</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/thoroughly-understand-the-web-service-soap-wsdl/" itemprop="url">
+                  彻底理解WebService SOAP WSDL
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="WebServices简介"><a href="#WebServices简介" class="headerlink" title="WebServices简介"></a>WebServices简介</h2><p>先给出一个概念 SOA ，即Service Oriented Architecture ，中文一般理解为面向服务的架构，既然说是一种架构的话，所以一般认为 SOA 是包含了运行环境，编程模型，架构风格和相关方法论等在内的一整套新的分布式软件系统构造方法和环境，涵盖服务的整个生命周期。而在 SOA 的架构风格中，服务是最核心的抽象手段。</p>
+<p>SOA 中的服务是构建在一些列基于开放标准的基础之上的，Web 服务定义了如何在异构系统之间实现通信的标准化方法，从而就使得 Web 服务可以跨越运行平台和实现语言，同时也使得 Web 服务成为了实现 SOA 中服务的主要技术。</p>
+<p>至于SOA 的话，太高深的技术，这里不予讨论（嘿嘿），本篇博文只介绍 WebServices 这项技术。</p>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p><strong>有没有一种办法可以实现跨应用程序进行通信和跨平台进行通信呢？</strong></p>
+<p>换句话说，就是有什么办法可以实现我的应用程序 A 可以和应用程序 B 进行通信呢？<br>或者说是，我用 Java 写的应用程序和用 . Net 开发的应用程序之间进行通信呢？<br>很多时候，上面提到的这些，我们是必须要使用的，比如，一个跨应用程序吧，<br>拿腾讯 QQ 来说吧，我估计每一个人都用过腾讯 QQ 上面的天气预报工具吧 ！ ！ ！</p>
+<p>上面的这个天气预报功能是如何实现的呢？</p>
+<p>有一种办法，那就是腾讯公司放个卫星上天，并且在公司中成立一个气象部门，天天关注于天气，然后每时每刻更新腾讯 QQ 上的这个天气预报信息，确实，这种办法确实行得通，不过，要真这样做的话，估计马化腾也该被踢出去了（哪有这么蠢啊？），那么上面这个是如何实现的呢？</p>
+<p>别急，且听我慢慢道来~~~</p>
+<p>然后，我们再来看看跨平台这个东东又是什么呢？这里主要是拿 . Net 平台和Java 平台来说明例子，假若，有两个公司，每个公司呢都有自己的一个项目，一个公司呢使用 . Net 开发，一个呢，使用 Java 开发，恩，本来呢，这两个是相互独立的，进水不犯河水，但是有一天，突然，这两个公司给合并了，合并后的老总发现，如果把两个项目结合起来将会大大的赚一笔，为此，如何做？因为要把两个项目结合在一起，那么这两个项目之间总应该通通信吧 ！！！可这两个项目又是基于不同的平台，怎么通信呢？麻烦了吧 ！！！而后再看一种情况，就是比如一个公司使用的服务器是 Windows Server 2008，那么它如何和 IT 供应商的UNIX 或者是 Linux 服务器进行连接呢？也很复杂吧 ！！！</p>
+<h2 id="WebServices特点介绍"><a href="#WebServices特点介绍" class="headerlink" title="WebServices特点介绍"></a>WebServices特点介绍</h2><p>WebServices 提供一个建立分布式应用的平台，使得运行在不同操作系统和不同设备上的软件，或者是用不同的程序语言和不同厂商的软件开发工具开发的软件，所有可能的已开发和部署的软件，能够利用这一平台实现分布式计算的目的。WebServices的思想是：使得应用程序也具有 Web 分布式编程模型的松散耦合性。</p>
+<p><strong>WebServices的特点：</strong></p>
+<p>（1），WebServices 是自包含的。即在客户端不需要附加任何软件，只要客户机支持 HTTP 和XML 就 OK 了。</p>
+<p>（2），WebServices 是自我描述的。在客户端和服务端都不需要知道除了请求和响应消息的格式和内容外的任何事。</p>
+<p>（3），WebServices 是跨平台和跨语言的。客户端和服务端均可以在不同的平台和语言环境中实现，同时，不必为了支持 WebServices 而更改现有的代码。</p>
+<p>（4），WebServices 是基于开放和标准的。XML 和 HTTP 是WebServices 的主要技术基础，而 XML 和HTTP 早就成了业内标准了。</p>
+<p>（5），WebServices 是动态的。</p>
+<p>（6），WebServices 是可以组合的。也就是通过一个 WebService 访问另外一个 WebService 来达到组合的目的。通过组合 WebServices 便可以将简单的 WebServices 聚合成为实现更多复杂功能的复杂的服务。</p>
+<p>（7），WebServices 是松散耦合的。它完全解耦了客户端和服务端。</p>
+<p>（8），WebServices 提供编程访问的能力。换句话说，就是可以通过编写程序来访问Web 服务。</p>
+<p>（9），WebServices 是基于经过考验的成熟技术上构建的。比如 XML 和 HTTP。</p>
+<p>（10），WebServices 提供打包现有应用程序的能力。</p>
+<p>（11），WebServices 通过网络进行发布，查找和使用。</p>
+<p>上面这些特点呢，现在不清楚的话，也不用紧，等下还会有详细的说明的 ！！！</p>
+<h2 id="WebServices到底是什么？"><a href="#WebServices到底是什么？" class="headerlink" title="WebServices到底是什么？"></a>WebServices到底是什么？</h2><p>如果简单的说的话，WebServices就是一组函数库，不过这和我们平时概念中的函数库却又有不同，我们平时所使用的函数库要么是自己写的（在自己的应用程序当中写一组函数库），要么是调用底层的 API（操作系统 API 如Win32 API），上面的这两种情况有一个共同点，那就是函数库是位于客户端本地的，比如，您调用 Win32 API的话，就是调用本地操作系统上的函库，而这里提到 Web 服务也是一组函数库这个概念和上面提到的函数库这个概念的区别就在此处，因为 Web服务看做一组函数库的话，那么这组函数库不是位于本地的，而是位于远程机器上（当然也可以是本地机器中）。</p>
+<p><strong>何为 Web 服务？</strong></p>
+<p>也就是网络服务，那就是把网络上不知道那个地方的一些函数看做是一组服务，然后我再通过网络就可以使用这些服务。</p>
+<p>关于什么是 Web 服务，上面的说法那是山寨版的，稍微正经一点的说法是：Web 服务是一种部署在 Web 上的对象或者是应用程序组件。</p>
+<p><strong>Why WebServices？</strong></p>
+<p>为什么需要使用 WebServices呢？这必须根据 WebServices 的特点以及其优势进行分析了。</p>
+<p>首先，上面呢，也说了，Web服务的话，就是一组网络上的应用程序组件，这样的话，您便可以通过在您的应用程序中使用 Web 服务来将您的应用程序提升到服务层面上来。<br>既然可以看做是一组服务了的话，那么当然就是可以提供给别个（别的应用程序）使用咯。<br>比如，我可以通过 Web 服务来公开一些接口给别个使用，至于这些要不要收费呢？那就看我心情了，前面举了腾讯 QQ 上查询天气的例子，这个例子呢，就可以在这里来做一个解释了，<br>在中国，应该只有一个卫星来进行天气预报的吧？腾讯也不可能为了天气预报而专门放个卫星上天吧？</p>
+<p>可是腾讯 QQ 又确实是可以查询天气的，这里，便可以通过 Web 服务来解决。<br>首先，中国气象局应该是有一个卫星的，气象局根据卫星所返回的结果实时发布全国各地的天气状况，并且将这些天气信息以 Web 服务的形式公开，然后呢，腾讯 QQ 便可以通过这个 Web 服务来访问到天气状况了，再将这些天气状况反馈到 QQ 上就 OK 了。</p>
+<p>然后，上面提到了 Web服务是应用程序组件，既然是组件，那么就可以对这个组件重复的进行使用了，同时可以通过 Web 服务来实现将这个应用程序组件作为一个服务来进行使用，<br>更为强大的是，可以将多个 WebServices组合成为更为强大的 WebServices ，<br>并且是通过互联网哦！！！<br>这也是一大优点啊，</p>
+<p>然后呢，最基本的 WebServices是基于 XML 和 HTTP 的<br>（当然这是最基本的 WebServices ，比如 WebServices 还可以通过 HTTPS 或者是 SMTP 来实现通信），<br>这又有什么好处呢？很明显，XML 和HTTP 这些都已经是标准了，<br>不论你是 Java 平台呢，还是 . Net 平台开发出来的（或者是是使用 Web 服务），既然我是使用 XML 和 HTTP 的话，我才懒得鸟你什么 Java 还是 . Net 呢，我也不管你是 linux 还是 Windows ，这一切都和我 Web 服务无关，我关注的只是通过 HTTP 协议来传输 XML 就 OK 了，<br>至于这些 XML 是如何被服务提供者开发出来的或者这些 XML 是如何被服务请求者使用的，这些都和我无关，这里便可以看出 Web 服务的另一个优势了，那就是跨语言跨平台（实现协同工作），所以可以通过 Web 服务来实现不同应用程序和不同平台之间的通信。</p>
+<p>Web 服务允许独立于实现服务基于的硬件或者是软件平台和编写服务所用的编程语言使用服务，<br>根据上面这两点呢，便可以解决掉最开始提出的使用 Java 开发的应用程序如何和使用 . Net 开发的应用程序之间进行通信这一问题，同时，也可以解决 Linux 或者是UNIX 和 Windows Server 2008 之间进行连接这一问题了。最后就是通过使用不同的 Web 服务，也不管 Web 服务是那种编程语言实现的，<br>我们都可以从不同的平台和操作系统进行访问，从而大大提高了不同应用程序共享数据和应用的能力并且 Web服务提供了构建 SOA 所必须得技术基础。</p>
+<p>从上面可以看出通过 WebServices解决了我们曾经想都不敢想的问题，这么强大的东西为什么不加以好好利用呢？   </p>
+<h2 id="WebServices体系结构"><a href="#WebServices体系结构" class="headerlink" title="WebServices体系结构"></a>WebServices体系结构</h2><p>在Web 服务的体系结构中，涉及到三个角色，一个是 Web 服务提供者，一个是 Web 服务中介者，还有一个就是 Web 服务请求者，同时还涉及到三类动作，即发布，查找，绑定，</p>
+<h3 id="Web-服务提供者："><a href="#Web-服务提供者：" class="headerlink" title="Web 服务提供者："></a>Web 服务提供者：</h3><p>可以发布 Web 服务，并且对使用自身服务的请求进行响应，Web 服务的拥有者，它会等待其他的服务或者是应用程序访问自己。</p>
+<h3 id="Web-服务请求者："><a href="#Web-服务请求者：" class="headerlink" title="Web 服务请求者："></a>Web 服务请求者：</h3><p>也就是 Web 服务功能的使用者，它通过服务注册中心也就是 Web 服务中介者查找到所需要的服务，再利用 SOAP 消息向 Web 服务提供者发送请求以获得服务。</p>
+<h3 id="Web-服务中介者："><a href="#Web-服务中介者：" class="headerlink" title="Web 服务中介者："></a>Web 服务中介者：</h3><p>也称为服务代理，用来注册已经发布的 Web服务提供者，并对其进行分类，同时提供搜索服务，<br>简单来说的话，Web 服务中介者的作用就是把一个 Web 服务请求者和合适的 Web 服务提供者联系在一起，充当一个管理者的角色，一般是通过 UDDI来实现。</p>
+<h3 id="发布："><a href="#发布：" class="headerlink" title="发布："></a>发布：</h3><p>通过发布操作，可以使 Web服务提供者向 Web 服务中介者注册自己的功能以及访问的接口。</p>
+<h3 id="发现（查找）："><a href="#发现（查找）：" class="headerlink" title="发现（查找）："></a>发现（查找）：</h3><p>使得 Web 服务请求者可以通过 Web 服务中介者来查找到特点的种类的 Web 服务。</p>
+<h3 id="绑定："><a href="#绑定：" class="headerlink" title="绑定："></a>绑定：</h3><p>这里就是实现让服务请求者能够使用服务提供者提供的服务了。</p>
+<h2 id="WebServices三种基本元素之-SOAP"><a href="#WebServices三种基本元素之-SOAP" class="headerlink" title="WebServices三种基本元素之 SOAP"></a>WebServices三种基本元素之 SOAP</h2><p><strong>SOAP 即 Simple Object AccessProtocol 也就是简单对象访问协议。</strong></p>
+<p>SOAP 呢，其指导理念是“唯一一个没有发明任何新技术的技术”，是一种用于访问 Web 服务的协议。因为 SOAP 基于XML 和 HTTP ，其通过XML 来实现消息描述，然后再通过 HTTP 实现消息传输。</p>
+<p>SOAP 是用于在应用程序之间进行通信的一种通信协议。</p>
+<p>因为是基于 XML 和HTTP 的，所以其独立于语言，独立于平台，并且因为 XML 的扩展性很好，所以基于 XML 的 SOAP 自然扩展性也不差。通过 SOAP 可以非常方便的解决互联网中消息互联互通的需求，其和其他的 Web 服务协议构建起 SOA 应用的技术基础。<br>SOAP 协议的一个重要特点是它独立于底层传输机制，Web 服务应用程序可以根据需要选择自己的数据传输协议，可以在发送消息时来确定相应传输机制。</p>
+<p>由于 HTTP 协议本身的一些特点和局限性，使得当 SOAP 使用HTTP 绑定的 Web 服务并不能满足某些企业应用的需求。比如，HTTP 不是一个可靠传输协议，所以有可能在传输过程中出现问题，然后 HTTP 协议基于Request/Response 模型，也就是说客户端需要在等待响应消息接收完成后才能继续执行，而此时如果响应时间过长呢？基于上面的这些需求，便需要选择合适的传输协议了。关于这方面的内容的话，有点深奥了，有兴趣的可以去看看 IBM 的一些关于这方面内容的介绍。还有一点需要提及一下，那就是 SOAP 是可以绕过防火墙的，将来将会作为 W3C 的标准进行发展。</p>
+<h2 id="WebServices三种基本元素之-WSDL"><a href="#WebServices三种基本元素之-WSDL" class="headerlink" title="WebServices三种基本元素之 WSDL"></a>WebServices三种基本元素之 WSDL</h2><p>WSDL 即Web Services Description Language也就是 Web 服务描述语言。<br>是基于 XML的用于描述 Web 服务以及如何访问 Web 服务的语言。</p>
+<p>服务提供者通过服务描述将所有用于访问 Web服务的规范传送给服务请求者，要实现 Web服务体系结构的松散耦合，服务描述是一个关键，不管是请求者还是服务提供者，通过服务描述便可以不必了解对方的底层平台，编程语言等，<br>服务描述与底层的 SOAP 基础结构相结合，足以封装服务请求者的应用程序和服务提供者的 Web服务之间的这个细节。</p>
+<p>WSDL 描述了 Web服务的三个基本属性：</p>
+<p>（1）服务所提供的操作</p>
+<p>（2）如何访问服务</p>
+<p>（3）服务位于何处（通过 URL 来确定就 OK 了）</p>
+<h2 id="WebServices三种基本元素之-UDDI"><a href="#WebServices三种基本元素之-UDDI" class="headerlink" title="WebServices三种基本元素之 UDDI"></a>WebServices三种基本元素之 UDDI</h2><p>UDDI 即 Universal Description，Discovery and Integration，也就是通用的描述，发现以及整合。WSDL 呢，用来描述了访问特定的 Web 服务的一些相关的信息，可以在互联网上，或者是在企业的不同部门之间，如何来发现我们所需要的 Web 服务呢？<br>而 Web 服务提供商又如何将自己开发的 Web 服务公布到因特网上，这就需要使用到 UDDI了，UDDI的话，是一个跨产业，跨平台的开放性架构，可以帮助 Web 服务提供商在互联网上发布 Web 服务的信息。</p>
+<p>UDDI 呢是一种目录服务，企业可以通过 UDDI 来注册和搜索 Web 服务。<br>简单来时候话，UDDI 就是一个目录，只不过在这个目录中存放的是一些关于 Web 服务的信息而已。并且 UDDI 通过SOAP 进行通讯，构建于 . Net 之上。</p>
+<h2 id="开发-Web服务的方式"><a href="#开发-Web服务的方式" class="headerlink" title="开发 Web服务的方式"></a>开发 Web服务的方式</h2><h3 id="（1）开发阶段："><a href="#（1）开发阶段：" class="headerlink" title="（1）开发阶段："></a>（1）开发阶段：</h3><p>实现一个 Web 服务，使这个 Web 服务能响应和接收 SOAP 消息，（这个呢，其实可以通过 Visual Studio 来帮助实现），定义好逻辑模块（这个 Web 服务总要干点事情吧）， 然后再撰写 WSDL 文件（这个呢，开发工具会自动生成的，不需要人工撰写了）</p>
+<h3 id="（2）部署阶段："><a href="#（2）部署阶段：" class="headerlink" title="（2）部署阶段："></a>（2）部署阶段：</h3><p>指定 Web 服务的传输协议，将 Web 服务注册到相应服务描述部署文件（这些也是可以由工具来自动完成的）</p>
+<h3 id="（3）发布阶段："><a href="#（3）发布阶段：" class="headerlink" title="（3）发布阶段："></a>（3）发布阶段：</h3><p>将 Web 服务的接口和调用的地址公开给客户端调用，常用的发布方式为基于 Web 提供的WSDL 的链接，当然 UDDI 也是一个选择。</p>
+<h2 id="总结一下-WebServices的优点"><a href="#总结一下-WebServices的优点" class="headerlink" title="总结一下 WebServices的优点"></a>总结一下 WebServices的优点</h2><p>其实呢，前面介绍的都是关于 WebServices 的优点，在这里就只是浅要的总结一下了。</p>
+<p>首先，WebServices 是基于 Internet 和异构平台的应用，这样便可以方便的实现通过网络来通信，同时可以实现在不同的平台之间共享数据。</p>
+<p>然后就是，WebServices 是基于 XML 和HTTP 的，也就是基于标准和开放的，基于 XML 的话，扩展性自然好，自然跨语言。<br>基于 HTTP 的话，自然跨平台了。</p>
+<p>最后，再回忆一下 WebServices 是一种应用程序组件吧，这样便可以将 WebServices 重复使用了。</p>
+<h2 id="谈谈-WebServices-的缺点"><a href="#谈谈-WebServices-的缺点" class="headerlink" title="谈谈 WebServices 的缺点"></a>谈谈 WebServices 的缺点</h2><p>首先就是由于 XML 文件的难以解析，所以在使用 Web 服务的时候，会消耗较多的 CPU 和内存资源，而后，SOAP 是基于XML 的，所以在网络传输中传输的是 XML 文件，<br>但是由 XML 文件相比于二进制文件来说，要大很多，自然就会消耗更多的网络资源了。<br>而后，由于通过 WSDL 解耦了Web 服务提供者和请求者，且 SOAP 消息时从发送者向接收者单向传送的，这在一定程度上造成了 WebServices 是一种无状态服务，尽管现在在 . Net 中可以通过 Session 来实现在客户端和服务端共享一些数据，<br>但是单单依靠 Session 来实现客户端和服务端的状态交互也太牵强了吧</p>
+<p>WebServices 在数据绑定上也存在一些缺陷，因为所有的数据在传输中都是使用的 XML 来实现的，因此，需要在二进制数据和 XML 之间进行一个转换（通过序列化和反序列化来实现），<br>而在转换过程中有可能出现语义丢失的情况。</p>
+<p>最后就是 WebServices 的技术要求相对比较高，因为涉及到底层的 HTTP 协议以及SOAP ，WSDL 和UDDL 这三大平台元素，所以学习的曲线也是比较长的，<br>当然，在 . Net 中可以通过 Visual Studio 非常快速和简单的开发和访问一个 Web 服务，<br>但这只限于在简单的使用上，而对于本质的东西，是比较难的。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>正如题目所言，是 WebServices 简介，既然是简介的话，那么自然就是以简为目标了，<br>说明一下的是，上面的这篇博文呢，源自前几天做的一个关于 WebServices 的演讲，<br>演讲的 PPT 还存有，有兴趣要的可以留个邮箱的。</p>
+<h2 id="WebServices-的实战（待续……）"><a href="#WebServices-的实战（待续……）" class="headerlink" title="WebServices 的实战（待续……）"></a>WebServices 的实战（待续……）</h2><p>之前基于的语言不同，需要重新调整：需要从.Net环境变为PHP语言，暂时不写，待续。</p>
+<p><a href="https://wenku.baidu.com/view/f87b55f19e31433239689314.html" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/understand-synchronization-and-asynchrony/" itemprop="url">
+                  理解同步和异步
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一种说法"><a href="#一种说法" class="headerlink" title="一种说法"></a>一种说法</h3><p>老实说，玩电脑也玩了好几年了；印象中看到”同步和异步”关键字的次数已经记不清了，总感觉自己知道点什么，但却又说不出来什么东西，这是为啥？——  因为没有深入理解，没有总结；也应了那句古话：纸上学来终觉浅，绝知此事要躬行。 不卖关子了，开始进入正题。</p>
+<p>“同步”就好比：你去外地上学(人生地不熟)，突然生活费不够了；此时你决定打电话回家，通知家里转生活费过来，可是当你拨出电话时，对方一直处于待接听状态(即：打不通，联系不上)，为了拿到生活费，你就不停的oncall、等待，最终可能不能及时要到生活费，导致你今天要做的事都没有完成，而白白花掉了时间。</p>
+<p>“异步”就是：在你打完电话发现没人接听时，猜想：对方可能在忙，暂时无法接听电话，所以你发了一条短信(或者语音留言，亦或是其他的方式)通知对方后便忙其他要紧的事了；这时你就不需要持续不断的拨打电话，还可以做其他事情；待一定时间后，对方看到你的留言便回复响应你，当然对方可能转钱也可能不转钱。但是整个一天下来，你还做了很多事情。 或者说你找室友临时借了一笔钱，又开始happy的上学时光了。</p>
+<p>简而言之，言而总之：同步就是我强依赖你(对方)，我必须等到你的回复，才能做出下一步响应。即我的操作(行程)是顺序执行的，中间少了哪一步都不可以，或者说中间哪一步出错都不可以，类似于编程中程序被解释器顺序执行一样；同时如果我没有收到你的回复，我就一直处于等待、也就是阻塞的状态。 异步则相反，我并不强依赖你，我对你响应的时间也不敏感，无论你返回还是不返回，我都能继续运行；你响应并返回了，我就继续做之前的事情，你没有响应，我就做其他的事情。也就是说我不存在等待对方的概念，我就是非阻塞的。</p>
+<p>从上面的例子来看：同步似乎等价于阻塞，异步则等价于非阻塞。其实有些狭义，但不可否认的是，在一定情况下，确实可以这么认为；因为同步一定存在着阻塞状态，而异步一定不存在非阻塞的状态。 但是不是就是说 同步调用 == 阻塞调用呢？然并不是；阻塞和非阻塞强调的是程序在等待调用结果（消息，返回值）时的状态.  阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。 对于同步调用来说，很多时候当前线程还是激活的状态，只是从逻辑上当前函数没有返回而已，即同步等待时什么都不干，白白占用着资源。</p>
+<h3 id="另一个有趣的例子"><a href="#另一个有趣的例子" class="headerlink" title="另一个有趣的例子"></a>另一个有趣的例子</h3><p>老张爱喝茶，废话不说，煮开水。</p>
+<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
+<p>1 老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻</p>
+<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
+<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大</p>
+<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。</p>
+<p>所谓同步异步，只是对于水壶而言。</p>
+<p>普通水壶，同步；响水壶，异步。</p>
+<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
+<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
+<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
+<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由调用者主动等待这个调用的结果。而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
+<p>原文链接：<a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="external">知乎问答</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/the-way-to-teachyourself-c++-in-21-days/" itemprop="url">
+                  21天自学C++的有效方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工作学习/" itemprop="url" rel="index">
+                    <span itemprop="name">工作学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我很激动，因为我发现：世界上还真有“21天学会C++”的方法。**</p>
+<p>下面是一个《Teach Yourself  C++ in 21 Days》的流程图，请各位程序员同仁认真领会。如果有必要，你可以查看这个图书以作参照</p>
+<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/TeachYourselefC++in21days00.jpg" alt="Teach Yourself  C++ in 21 Days"></p>
+<p>看不懂的同学</p>
+<p>可以继续向下看，</p>
+<p><br><br><br><br><br></p>
+<p>下面是中文翻译版。</p>
+<p><br></p>
+<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/TeachYourselefC++in21days01.png" alt="Teach Yourself  C++ in 21 Days"></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/05/04/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/" itemprop="url">
                   爬虫获取知乎网页title的方法
                 </a>
               
@@ -385,8 +1193,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-10-17T16:04:08+08:00" content="2018-10-17">
-              2018-10-17
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -502,901 +1310,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/09/20/php-simulates-uploading-files-using-the-CURLFile-function/" itemprop="url">
-                  PHP模拟上传文件使用CURLFile函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-09-20T16:33:13+08:00" content="2018-09-20">
-              2018-09-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、CURLFile-介绍"><a href="#一、CURLFile-介绍" class="headerlink" title="一、CURLFile 介绍"></a>一、CURLFile 介绍</h3><h4 id="CURLFile-construct"><a href="#CURLFile-construct" class="headerlink" title="CURLFile::__construct"></a>CURLFile::__construct</h4><p>(PHP 5 &gt;= 5.5.0, PHP 7)<br>CURLFile::__construct – curl_file_create — 创建 CURLFile 对象</p>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>面向对象风格</p>
-<pre><code>public CURLFile::__construct ( string $filename [, string $mimetype [, string $postname ]] )
-</code></pre><p>过程化风格</p>
-<pre><code>CURLFile curl_file_create ( string $filename [, string $mimetype [, string $postname ]] )
-</code></pre><p>创建 CURLFile 对象，使用 CURLOPT_POSTFIELDS 选项上传文件。</p>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>filename 被上传文件的 路径。</p>
-<p>mimetype 被上传文件的 MIME 类型。</p>
-<p>postname 上传数据里面的文件名。</p>
-<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>返回 CURLFile 对象。</p>
-<h3 id="二、使用示例"><a href="#二、使用示例" class="headerlink" title="二、使用示例"></a>二、使用示例</h3><h4 id="1、一个单独的函数定义"><a href="#1、一个单独的函数定义" class="headerlink" title="1、一个单独的函数定义"></a>1、一个单独的函数定义</h4><pre><code>public function testUpload01(){
-    $file = __DIR__.&apos;\assets\test.jpg&apos;;
-    //var_dump($file);
-    //$post[&apos;file&apos;] = &apos;@&apos;.$file;
-    $obj = new CurlFile($file);
-    &lt;span style=&quot;color:#ff0000;&quot;&gt;$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
-    $post[&apos;file&apos;] =  $obj;
-    $post[&apos;abc&apos;] = &quot;abc&quot;;
-    var_dump($post);
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_HEADER, false);
-    //启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
-    curl_setopt($ch, CURLOPT_URL, &quot;http://localhost/fs/upload.php&quot;);//上传类
-
-    $info= curl_exec($ch);
-    curl_close($ch);
-    var_dump($info);
-    file_put_contents(&apos;./1.html&apos;,$info);
-    $res=json_decode($info,true);
-    //var_dump($res);
-</code></pre><h4 id="2、模拟php-curl向远程服务器上传文件"><a href="#2、模拟php-curl向远程服务器上传文件" class="headerlink" title="2、模拟php curl向远程服务器上传文件"></a>2、模拟php curl向远程服务器上传文件</h4><p>第1个文件：test.php 可以向远程服务器模拟提交上传文件的PHP文件</p>
-<pre><code>&lt;?php
-    header(&apos;content-type:text/html;charset=utf8&apos;);
-
-    $ch = curl_init();
-
-    //加@符号curl就会把它当成是文件上传处理
-    $data = array(&apos;img&apos;=&gt;&apos;@&apos;. dirname(__FILE__).&apos;/img/1.jpg&apos;);
-    curl_setopt($ch,CURLOPT_URL,&quot;http://localhost:8088/curl/get_img.php&quot;);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($ch,CURLOPT_POST,true);
-    curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    echo json_decode($result);
-
-?&gt;
-</code></pre><p>第2个文件：get_img.php 可以接收上传文件的PHP文件</p>
-<pre><code>&lt;?php
-if($_FILES){
-    $filename = $_FILES[&apos;img&apos;][&apos;name&apos;];
-    $tmpname = $_FILES[&apos;img&apos;][&apos;tmp_name&apos;];
-    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/upload/&apos;.$filename)){
-        echo json_encode(&apos;上传成功&apos;);
-    }else{
-        $data = json_encode($_FILES);
-        echo $data;
-    }
-}
-
-?&gt;
-</code></pre><h4 id="3、本人实测可用综合示例"><a href="#3、本人实测可用综合示例" class="headerlink" title="3、本人实测可用综合示例"></a>3、本人实测可用综合示例</h4><p>第1个文件 test.php 模拟上传文件的PHP文件</p>
-<pre><code>&lt;?php
-$file = __DIR__.&apos;\test.jpg&apos;;
-$obj = new CurlFile($file);
-$obj-&gt;setMimeType(&quot;image/jpeg&quot;);//必须指定文件类型，否则会默认为application/octet-stream，二进制流文件&lt;/span&gt;
-$post[&apos;file&apos;] =  $obj;
-$post[&apos;abc&apos;] = &quot;abc&quot;;
-var_dump($post);
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_HEADER, false);
-//启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch,CURLOPT_BINARYTRANSFER,true);
-curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
-curl_setopt($ch, CURLOPT_URL, &quot;http://locaolhost/test/get_img.php&quot;);//上传类
-
-$info= curl_exec($ch);
-curl_close($ch);
-var_dump($info);
-file_put_contents(&apos;./1.html&apos;,$info);
-$res=json_decode($info,true);
-?&gt;
-</code></pre><p>第2个文件 get_img.php 接收数据的PHP文件</p>
-<pre><code>&lt;?php
-
-print_r($_FILES);
-if($_FILES){
-    $filename = $_FILES[&apos;file&apos;][&apos;name&apos;];
-    $tmpname = $_FILES[&apos;file&apos;][&apos;tmp_name&apos;];
-    if(move_uploaded_file($tmpname,dirname(__FILE__).&apos;/&apos;.$filename)){
-        echo json_encode(&apos;SUCCESS&apos;);
-    }else{
-        $data = json_encode($_FILES);
-        echo $data;
-    }
-}
-
-?&gt;
-</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>1、经实际测试，可以使用。如果使用本地签发的SSL证书的https协议，注意本地环境无法测试，可以暂时使用http代替。</p>
-<p>线上的https协议可以正常使用。</p>
-<p>2、线上在使用curl中转当前服务器上传的文件再次转发到另一个远程服务器时，需要把文件先临时存储到当前服务器，待另一个远程服务器接收并处理完成后再把当前服务器上的临时文件删除即可。</p>
-<p>　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/" itemprop="url">
-                  微信红包的架构设计与算法实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-09-11T18:51:17+08:00" content="2018-09-11">
-              2018-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="微信红包的架构设计简介"><a href="#微信红包的架构设计简介" class="headerlink" title="微信红包的架构设计简介"></a>微信红包的架构设计简介</h3><p>概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。</p>
-<h5 id="微信的金额什么时候算？"><a href="#微信的金额什么时候算？" class="headerlink" title="微信的金额什么时候算？"></a>微信的金额什么时候算？</h5><p>答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。<br>采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。</p>
-<h5 id="实时性：为什么明明抢到红包，点开后发现没有？"><a href="#实时性：为什么明明抢到红包，点开后发现没有？" class="headerlink" title="实时性：为什么明明抢到红包，点开后发现没有？"></a>实时性：为什么明明抢到红包，点开后发现没有？</h5><p>答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再转账。<br>2015年的红包的拆和抢是分离的，需要点两次，因此会出现抢到红包了，但点开后告知红包已经被领完的状况。进入到第一个页面不代表抢到，只表示当时红包还有。</p>
-<h5 id="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"><a href="#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？" class="headerlink" title="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"></a>分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？</h5><p>答：随机，额度在0.01和剩余平均值×2之间。<br>例如：发100块钱，总共10个红包，那么平均值是10块钱一个，那么发出来的红包的额度在0.01元～20元之间波动。<br>当前面3个红包总共被领了40块钱时，剩下60块钱，总共7个红包，那么这7个红包的额度在：0.01～（60/7×2）=17.14之间。<br>注意：这里的算法是每被抢一个后，剩下的会再次执行上面的这样的算法（Tim老师也觉得上述算法太复杂，不知基于什么样的考虑）。</p>
-<p>这样算下去，会超过最开始的全部金额，因此到了最后面如果不够这么算，那么会采取如下算法：保证剩余用户能拿到最低1分钱即可。</p>
-<p>如果前面的人手气不好，那么后面的余额越多，红包额度也就越多，因此实际概率一样的。</p>
-<h5 id="红包的设计"><a href="#红包的设计" class="headerlink" title="红包的设计"></a>红包的设计</h5><p>答：微信从财付通拉取金额数据郭莱，生成个数/红包类型/金额放到redis集群里，app端将红包ID的请求放入请求队列中，如果发现超过红包的个数，直接返回。根据红包的裸祭处理成功得到令牌请求，则由财付通进行一致性调用，通过像比特币一样，两边保存交易记录，交易后交给第三方服务审计，如果交易过程中出现不一致就强制回归。</p>
-<h5 id="发性处理：红包如何计算被抢完？"><a href="#发性处理：红包如何计算被抢完？" class="headerlink" title="发性处理：红包如何计算被抢完？"></a>发性处理：红包如何计算被抢完？</h5><p>答：cache会抵抗无效请求，将无效的请求过滤掉，实际进入到后台的量不大。cache记录红包个数，原子操作进行个数递减，到0表示被抢光。财付通按照20万笔每秒入账准备，但实际还不到8万每秒。</p>
-<h5 id="通如何保持8w每秒的写入？"><a href="#通如何保持8w每秒的写入？" class="headerlink" title="通如何保持8w每秒的写入？"></a>通如何保持8w每秒的写入？</h5><p>答：多主sharding，水平扩展机器。</p>
-<h5 id="数据容量多少？"><a href="#数据容量多少？" class="headerlink" title="数据容量多少？"></a>数据容量多少？</h5><p>答：一个红包只占一条记录，有效期只有几天，因此不需要太多空间。</p>
-<h5 id="查询红包分配，压力大不？"><a href="#查询红包分配，压力大不？" class="headerlink" title="查询红包分配，压力大不？"></a>查询红包分配，压力大不？</h5><p>答：抢到红包的人数和红包都在一条cache记录上，没有太大的查询压力。</p>
-<h5 id="一个红包一个队列？"><a href="#一个红包一个队列？" class="headerlink" title="一个红包一个队列？"></a>一个红包一个队列？</h5><p>答：没有队列，一个红包一条数据，数据上有一个计数器字段。</p>
-<h5 id="有没有从数据上证明每个红包的概率是不是均等？"><a href="#有没有从数据上证明每个红包的概率是不是均等？" class="headerlink" title="有没有从数据上证明每个红包的概率是不是均等？"></a>有没有从数据上证明每个红包的概率是不是均等？</h5><p>答：不是绝对均等，就是一个简单的拍脑袋算法。</p>
-<h5 id="拍脑袋算法，会不会出现两个最佳？"><a href="#拍脑袋算法，会不会出现两个最佳？" class="headerlink" title="拍脑袋算法，会不会出现两个最佳？"></a>拍脑袋算法，会不会出现两个最佳？</h5><p>答：会出现金额一样的，但是手气最佳只有一个，先抢到的那个最佳。</p>
-<h5 id="每领一个红包就更新数据么？"><a href="#每领一个红包就更新数据么？" class="headerlink" title="每领一个红包就更新数据么？"></a>每领一个红包就更新数据么？</h5><p>答：每抢到一个红包，就cas更新剩余金额和红包个数。</p>
-<h5 id="红包如何入库入账？"><a href="#红包如何入库入账？" class="headerlink" title="红包如何入库入账？"></a>红包如何入库入账？</h5><p>数据库会累加已经领取的个数与金额，插入一条领取记录。入账则是后台异步操作。</p>
-<h5 id="入帐出错怎么办？比如红包个数没了，但余额还有？"><a href="#入帐出错怎么办？比如红包个数没了，但余额还有？" class="headerlink" title="入帐出错怎么办？比如红包个数没了，但余额还有？"></a>入帐出错怎么办？比如红包个数没了，但余额还有？</h5><p>答：最后会有一个take all操作。另外还有一个对账来保障。</p>
-<h3 id="算法实现java版"><a href="#算法实现java版" class="headerlink" title="算法实现java版"></a>算法实现java版</h3><p>算法很简单，不是提前算好，而是抢红包时计算</p>
-<pre><code>public static double getRandomMoney(RedPackage _redPackage) {
-// remainSize 剩余的红包数量
-// remainMoney 剩余的钱
-if (_redPackage.remainSize == 1) {
-    _redPackage.remainSize--;
-    return (double) Math.round(_redPackage.remainMoney * 100) / 100;
-}
-Random r     = new Random();
-double min   = 0.01; //
-double max   = _redPackage.remainMoney / _redPackage.remainSize * 2;
-double money = r.nextDouble() * max;
-money = money &lt;= min ? 0.01: money;
-money = Math.floor(money * 100) / 100;
-_redPackage.remainSize--;
-_redPackage.remainMoney -= money;
-return money;
-}
-</code></pre><p><code>LeftMoneyPackage</code>数据结构如下：</p>
-<pre><code>class RedPackage {
-int    remainSize;
-double remainMoney;
-}
-</code></pre><p>测试时初始化相关数据是：</p>
-<pre><code>static void init() {
-redPackage.remainSize  = 20;
-redPackage.remainMoney = 200;
-}
-</code></pre><h3 id="算法实现PHP版"><a href="#算法实现PHP版" class="headerlink" title="算法实现PHP版"></a>算法实现PHP版</h3><p>关键就是定义核心函数</p>
-<pre><code>function getrandommoney($remainmoney,$remainpacket,$moneymax = 0){
-if($remainpacket &lt; 1 || $remainmoney &lt;= 0){
-    return 0;
-}
-if($remainpacket == 1){
-    return     $remainmoney;
-}
-
-$min = 1;//注意倍数
-$max = $remainmoney / $remainpacket * 2;
-$money = rand($min,$max) ;
-$money = $money &lt;= $min ? $min : $money;
-//每一次领取时的最大值
-if($moneymax &amp;&amp; $money &gt; $moneymax){
-    $money = $moneymax;
-}
-
-return $money;
-}
-</code></pre><p>函数调用</p>
-<pre><code>$lmremainingtotal = 200.00;//总金额
-$lmremainingtimes = 20;//总个数
-$lmmoneymax = 0;
-$lmremainingtotaltemp = $lmremainingtotal * 100;
-$getonelm = getrandommoney($lmremainingtotaltemp,$lmremainingtimes);
-$getonelm = round($getonelm/100,2);    
-echo $getonelm;
-</code></pre><p>说明：</p>
-<p>1、注意函数内部实现时使用的整数，传参进去时需要扩大100倍，最后得到的本次随机数需要在缩小至1%。</p>
-<p>2、增加了每一次调用的随机最大数限额这个参数，默认为0表示不限。</p>
-<p>3、更改剩余的红包总额度与红包个数，是在函数外实现的（必须步骤）。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上述方法都是每次计算一个红包的额度。如果需要一次性计算所有的红包，并分配完成，则需要循环执行。注意数据并发量的大小。</p>
-<p>　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/09/08/customize-your-iPhones-ringtone/" itemprop="url">
-                  自定义iPhone的铃声
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-09-08T03:33:50+08:00" content="2018-09-08">
-              2018-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="需使用Mac电脑上的itunes进行设置。"><a href="#需使用Mac电脑上的itunes进行设置。" class="headerlink" title="需使用Mac电脑上的itunes进行设置。"></a>需使用Mac电脑上的itunes进行设置。</h3><p>具体方法如下：</p>
-<p>1、将手机和苹果电脑连接，打开iTunes切换到资料库看“xxx”的iphone这一栏有没有铃声菜单，没有的话点击编辑菜单勾选铃声。</p>
-<p>2、下载你喜欢的歌曲点击歌曲-&gt;文件-&gt;添加到资料库，选取要自定义铃声的歌曲之后选择打开。</p>
-<p>3、选定歌曲右击-&gt;显示简介-&gt;选项，选择开始停止时间，记得打钩 ( 这里注意的是苹果的铃声只能在40s内 ),然后点击好。</p>
-<p>4、选定歌曲文件-&gt;转换-&gt;创建ACC版本，出现两个同名文件。</p>
-<p>5、右击刚刚新生成同名文件选择在Finder打开，修改该文件的扩展名为m4r。为了后续操作方便把该文件拖到桌面。</p>
-<p>6、返回资料库删除刚刚生成的同名文件。点击音乐-&gt;铃声把刚刚拖到桌面的m4r文件,拖放到列表</p>
-<p>7、点击手机按钮进入手机管理。打开手机 设置-&gt;声音与触感-&gt;电话铃声 就可以自定义铃声了。</p>
-<p>其中，第2-4步的扩展可以参考如下：</p>
-<h3 id="mp3文件到acc文件的剪切与格式转换"><a href="#mp3文件到acc文件的剪切与格式转换" class="headerlink" title="mp3文件到acc文件的剪切与格式转换"></a>mp3文件到acc文件的剪切与格式转换</h3><p>当先打开访达，在访达点击左侧的音乐。</p>
-<p>在音乐里面选择一个需要剪切的音频文件，然后右键打开方式为图二的软件即可。</p>
-<p>打开软件后点击这个音乐文件，然后看到出现在下方点击名字上的右侧三个小点。并在菜单上选择歌曲信息。</p>
-<p>然后在这个信息框点击选项，把开始结束这里勾上。</p>
-<p>输入一个需要的时间，即音乐的时长。而后看到这个音乐已经被修改了时长了。例如这里设置为10秒钟，则输入10即可。</p>
-<p>然后点击菜单栏上的文件转换，选择创建ACC版本。</p>
-<p>这个时候看到在原来的名字下面多个版本，就是创建后的文件，把文件拖到桌面。接着桌面多个剪切后的音频文件了。一个音频文件至此就剪切剪辑完毕了。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/29/how-to-download-zhihu-video/" itemprop="url">
-                  如何下载知乎视频
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-08-29T20:18:53+08:00" content="2018-08-29">
-              2018-08-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络工具/" itemprop="url" rel="index">
-                    <span itemprop="name">网络工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>知乎视频缓存是分段每一段几秒，不可能有完整文件可以一次下载完成的。大部分浏览器视频探测下载插件也不管用。</p>
-<p>下面说一种亲测实用的方法。</p>
-<h3 id="1、先找到视频的真正地址，一般都是m3u8格式。"><a href="#1、先找到视频的真正地址，一般都是m3u8格式。" class="headerlink" title="1、先找到视频的真正地址，一般都是m3u8格式。"></a>1、先找到视频的真正地址，一般都是m3u8格式。</h3><p>方法有许多种。暂时介绍2种。</p>
-<p>第1种：<br>如果已经获取到形如<a href="https://v.vzuu.com/video/1018150775008034816格式的知乎视频地址，" target="_blank" rel="external">https://v.vzuu.com/video/1018150775008034816格式的知乎视频地址，</a><br>则使用<a href="https://lens.zhihu.com/api/videos/1018150775008034816来获取视频的真实地址；" target="_blank" rel="external">https://lens.zhihu.com/api/videos/1018150775008034816来获取视频的真实地址；</a><br>最后的数字是视频网页的地址中的参数，返回的json 里有 m3u8 地址。</p>
-<p>第2种：<br>实用浏览器工具“代码检查”或者“查看源码”或者“firebug”，查找到视频的真实地址。</p>
-<h3 id="2、实用FFmpeg命令，可以自动下载分段视频为一个完整的指定格式的文件。"><a href="#2、实用FFmpeg命令，可以自动下载分段视频为一个完整的指定格式的文件。" class="headerlink" title="2、实用FFmpeg命令，可以自动下载分段视频为一个完整的指定格式的文件。"></a>2、实用FFmpeg命令，可以自动下载分段视频为一个完整的指定格式的文件。</h3><p>需要注意的是，需要提前本地安装好ffmpeg；使用命令时，如不识别ffmpeg则需要使用ffmpeg的绝对路径。</p>
-<p>ffmpeg -i “视频真实地址URL” -c copy m.mp4</p>
-<p>执行完成之后，在执行命令行切换的当前目录下就是生成m.mp4的文件。
-　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/21/web-based-instant-messaging-solution/" itemprop="url">
-                  Web端的即时通讯解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-08-21T19:02:17+08:00" content="2018-08-21">
-              2018-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Web端的即时通讯解决方案</p>
-<h3 id="首先，确定使用WebSocket技术。"><a href="#首先，确定使用WebSocket技术。" class="headerlink" title="首先，确定使用WebSocket技术。"></a>首先，确定使用WebSocket技术。</h3><p>逻辑分析：</p>
-<p>1、如果需要支持多个项目，提交登录信息时，需提供当前的项目的ID。<br>或者不同的项目使用不同的端口，在服务器端启用多个WebSocket的服务。</p>
-<p>2、与Redis的结合。</p>
-<p>3、作为独立第三方，只负责即时通讯的连接和转发消息，不涉及具体业务逻辑。</p>
-<h3 id="在Linux服务器上安装配置该技术的步骤："><a href="#在Linux服务器上安装配置该技术的步骤：" class="headerlink" title="在Linux服务器上安装配置该技术的步骤："></a>在Linux服务器上安装配置该技术的步骤：</h3><p>1、先安装Redis</p>
-<p>2、再安装PHP的redis扩展</p>
-<p>3、调试功能。</p>
-<p>4、Redis的后台运行。</p>
-<p>5、PHP文件的命令行执行的后台运行。</p>
-<h3 id="详细说明每个步骤中遇到的坑"><a href="#详细说明每个步骤中遇到的坑" class="headerlink" title="详细说明每个步骤中遇到的坑"></a>详细说明每个步骤中遇到的坑</h3><p>1、安装Redis中没遇到什么问题。Linux时CentOS 7版本，直接使用yum安装即可。</p>
-<p>2、注意PHP的redis扩展中的PHP的安装路径。</p>
-<p>3、无问题。</p>
-<p>4、Redis的后台运行，需要确认进程和端口未被占用。</p>
-<p>5、这一步有大坑。PHP文件后台命令行模式一直启动不了。说是命令的路径不对，修改了也不行。后来使用PHP命令的绝对地址才可以启动，暂时先使用。因为此文件不会经常启动。</p>
-<h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><p>1、把Redis和server.php文件加入到服务器开机自启动中，Redis可以，server.php不可以。只有暂时手动启动此文件的运行。</p>
-<p>2、每次重启服务器一定要注意重启server.php。</p>
-<p>3、每次重启服务器，一定要住已清理Redis中与WebSocket相关的缓存数据。</p>
-<p>——小永</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/07/Tell-you-that-redis-is-a-real-powerful/" itemprop="url">
-                  告诉你Redis是一个牛逼货
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-08-07T11:43:11+08:00" content="2018-08-07">
-              2018-08-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>Redis是一个 Key-Value 存储系统。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、 list(链表)、 set(集合)和 zset(有序集合)。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，Redis 支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。区别的是 Redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了 master-slave(主从)同步。</p>
-<h2 id="Key-Value存储系统"><a href="#Key-Value存储系统" class="headerlink" title="Key-Value存储系统"></a>Key-Value存储系统</h2><p>Key-Value Store 是当下比较流行的话题，尤其在构建诸如搜索引擎、IM、P2P、游戏服务器、SNS 等大型互联网应用以及提供云计算服务的时候，怎样保证系统在海量数据环境下的高性能、高可靠性、高扩展性、高可用性、低成本成为所有系统架构们挖苦心思考虑的重点，而怎样解决数据库服务器的性能瓶颈是最大的挑战。</p>
-<p>Key-Value Store 更加注重对海量数据存取的性能、分布式、扩展性支持上，并不需要传统关系数据库的一些特征，例如：Schema、事务、完整 SQL 查询支持等等，因此在分布式环境下的性能相对于传统的关系数据库有较大的提升。</p>
-<h2 id="为什么要选择Key-Value-Store"><a href="#为什么要选择Key-Value-Store" class="headerlink" title="为什么要选择Key-Value Store"></a>为什么要选择Key-Value Store</h2><h3 id="1、大规模互联网应用"><a href="#1、大规模互联网应用" class="headerlink" title="1、大规模互联网应用"></a>1、大规模互联网应用</h3><p>一类是仍然采用RDBMS，然后通过对数据库的垂直和水平切分将整个数据库部署到一个集群上，缺点在于它是针对特定应用，通用型不足<br>另一类就是google采用的方法，抛弃RDBMS，采用Key-Value形式存储，这样可以极大增强系统的可扩展性。</p>
-<h3 id="2、云存储"><a href="#2、云存储" class="headerlink" title="2、云存储"></a>2、云存储</h3><p>如果说上一个问题还有可以替代的解决方案（切割数据库）的话，那么对于云存储来说，也许 key-value 的 store 就是唯一的解决方案了。云存储简单点说就是构建一个大型的存储平台给别人用，这也就意味着在这上面运行的应用其实是不可控的。如果其中某个客户的应用随着用户的增长而不断增长时，云存储供应商是没有办法通过数据库的切割来达到 scale 的，因为这个数据是客户的，供应商不了解这个数据自然就没法作出切割。在这种情况下，key-value 的 store 就是唯一的选择了，因为这种条件下的 scalability 必须是自动完成的，不能有人工干预。这也是为什么几乎所有的现有的云存储都是 key-value 形式的，例如 Amazon的 smipleDB，底层实现就是 key-value，还有 google 的  GoogleAppEngine，采用的是 BigTable的存储形式。</p>
-<p>Key-Value Store 最大的特点就是它的可扩展性，这也就是它最大的优势。所谓的可扩展性，在我看来这里包括了两方面内容。一方面，是指 Key-Value Store 可以支持极大的数据的存储，它的分布式的架构决定了只要有更多的机器，就能够保证存储更多的数据。另一方面，是指它可以支持数量很多的并发的查询。对于 RDBMS，一般几百个并发的查询就可以让它很吃力了，而一个 Key-Value Store，可以很轻松的支持上千的并发查询。下面而简单的罗列了一些特点：</p>
-<ul>
-<li>Key-value store：一个  key-value  数据存储系统，只支持一些基本操作，如： SET(key, value) 和  GET(key)  等；</li>
-<li>分布式：多台机器（nodes）同时存储数据和状态，彼此交换消息来保持数据一致，可视为一个完整的存储系统。</li>
-<li>数据一致：所有机器上的数据都是同步更新的、不用担心得到不一致的结果；<br>冗余：所有机器（nodes）保存相同的数据，整个系统的存储能力取决于单台机器（node）的能力；</li>
-<li>容错：如果有少数  nodes  出错，比如重启、当机、断网、网络丢包等各种  fault/fail  都不影响整个系统的运行；</li>
-<li>高可靠性：容错、冗余等保证了数据库系统的可靠性。</li>
-</ul>
-<h2 id="初识Redis"><a href="#初识Redis" class="headerlink" title="初识Redis"></a>初识Redis</h2><p>Redis是一个开源的使用ANSI C语言编写，支持网络、可基于内存且可持久化的日志型、Key-Value数据库，并且提供多个语言的API，访问十分便捷。</p>
-<h3 id="Redis数据类型："><a href="#Redis数据类型：" class="headerlink" title="Redis数据类型："></a>Redis数据类型：</h3><p>作为 Key-value 型数据库，Redis 也提供了键（Key）和键值（Value）的映射关系。但是，除了常规的数值或字符串，Redis 的键值还可以是以下形式之一：</p>
-<ul>
-<li>Lists  （列表）</li>
-<li>Sets  （集合）</li>
-<li>Sorted sets  （有序集合）</li>
-<li>Hashes  （哈希表）</li>
-</ul>
-<p>键值的数据类型决定了该键值支持的操作。Redis 支持诸如列表、集合或有序集合的交集、并集、查集等高级原子操作；同时，如果键值的类型是普通数字，Redis 则提供自增等原子操作。</p>
-<h2 id="Redis持久化："><a href="#Redis持久化：" class="headerlink" title="Redis持久化："></a>Redis持久化：</h2><p>通常，Redis 将数据存储于内存中，或被配置为使用虚拟内存。通过两种方式可以实现数据持久化：使用截图的方式，将内存中的数据不断写入磁盘；或使用类似 MySQL 的日志方式，记录每次更新的日志。前者性能较高，但是可能会引起一定程度的数据丢失；后者相反。</p>
-<p>Redis主从同步：</p>
-<p>Redis支持将数据同步到多台从库，这种特性对提高读取性能非常有益。</p>
-<h2 id="Redis性能："><a href="#Redis性能：" class="headerlink" title="Redis性能："></a>Redis性能：</h2><p>相比需要依赖磁盘记录每个更新的数据库，基于内存的特性无疑给Redis带来了非常优秀的性能，读写操作之间有显著的性能差异。</p>
-<h3 id="性能测试结果："><a href="#性能测试结果：" class="headerlink" title="性能测试结果："></a>性能测试结果：</h3><p>SET操作每秒钟 110000 次，GET操作每秒钟 81000 次，服务器配置如下：<br>Linux 2.6, Xeon X3320 2.5Ghz.<br>stackoverflow 网站使用 Redis 做为缓存服务器。</p>
-<h2 id="适用场合："><a href="#适用场合：" class="headerlink" title="适用场合："></a>适用场合：</h2><p>Redis其实开创了一种新的数据存储思路，使用Redis，我们不用再面对功能单调的数据库时，把精力放在如何把大象放进冰箱的问题，而是利用Redis提供的灵活多变的数据结构和数据操作，为不同的大象构建不同的冰箱。</p>
-<h3 id="下面是一些Redis常用的场景："><a href="#下面是一些Redis常用的场景：" class="headerlink" title="下面是一些Redis常用的场景："></a>下面是一些Redis常用的场景：</h3><h4 id="1、取最新N个数据的操作"><a href="#1、取最新N个数据的操作" class="headerlink" title="1、取最新N个数据的操作"></a>1、取最新N个数据的操作</h4><p>比如典型的取你网站的最新文章，通过下面方式，我们可以将最新的 5000 条评论的 ID 放在Redis 的 List 集合中，并将超出集合部分从数据库获取。使用 LPUSH latest.comments<id>命令，向 list 集合中插入数据插入完成后再用 LTRIM latest.comments 0 5000 命令使其永远只保存最近 5000 个 ID如果你还有不同的筛选维度，比如某个分类的最新 N 条，那么你可以再建一个按此分类的List，只存 ID 的话，Redis 是非常高效的。</id></p>
-<h4 id="2、排行榜应用，取TOP-N操作"><a href="#2、排行榜应用，取TOP-N操作" class="headerlink" title="2、排行榜应用，取TOP N操作"></a>2、排行榜应用，取TOP N操作</h4><p>这个需求与上面需求的不同之处在于，前面操作以时间为权重，这个是以某一个条件为权重，比如按购买的次数或者顶的次数，这时候就需要 sorted set 出马，将你要排序的值设置为sorted set的score，将具体的数据设置为相应的value，每次只需要执行一条ZADD命令即可。</p>
-<h4 id="3、需要精确设定过期时间的应用"><a href="#3、需要精确设定过期时间的应用" class="headerlink" title="3、需要精确设定过期时间的应用"></a>3、需要精确设定过期时间的应用</h4><p>比如你可以把上面说到的 sorted  set 的 score 值设置成过期时间的时间戳，那么就可以简单地通过过期时间排序，定时清除过期数据了，不仅是清除 Redis 中的过期数据，你完全可以把 Redis 里这个过期时间当成是对数据库中数据的索引，用 Redis 来找出哪些数据需要过期删除，然后再精准地从数据库中删除相应的记录。</p>
-<h4 id="4、计数器应用"><a href="#4、计数器应用" class="headerlink" title="4、计数器应用"></a>4、计数器应用</h4><p>Redis的命令是原子性的，你可以轻松利用INCR、DECR命令来构建计数器系统（底层的写入是单线程模型，并发写会按到位顺序执行）</p>
-<h4 id="5、Uniq操作，获取某段时间所有数据去重值"><a href="#5、Uniq操作，获取某段时间所有数据去重值" class="headerlink" title="5、Uniq操作，获取某段时间所有数据去重值"></a>5、Uniq操作，获取某段时间所有数据去重值</h4><p>这个使用Redis的Set数据结构最合适，只需要不断将数据往Set中扔就行，set就是集合，会自动去重</p>
-<h4 id="6、实时系统、发垃圾系统"><a href="#6、实时系统、发垃圾系统" class="headerlink" title="6、实时系统、发垃圾系统"></a>6、实时系统、发垃圾系统</h4><p>通过上面说到的 set 功能，你可以知道一个终端用户是否进行了某个操作，可以找到其操作的集合并进行分析统计对比等。没有做不到，只有想不到。</p>
-<h4 id="7、Pub、Sub构建实时消息系统"><a href="#7、Pub、Sub构建实时消息系统" class="headerlink" title="7、Pub、Sub构建实时消息系统"></a>7、Pub、Sub构建实时消息系统</h4><p>Redis 的 Pub/Sub 系统可以构建实时的消息系统，比如很多用 Pub/Sub 构建的实时聊天系统的例子。</p>
-<h4 id="8、构建队列系统"><a href="#8、构建队列系统" class="headerlink" title="8、构建队列系统"></a>8、构建队列系统</h4><p>使用list可以构建队列系统，使用sorted set 甚至可以构建有优先级的队列系统。</p>
-<h4 id="9、缓存"><a href="#9、缓存" class="headerlink" title="9、缓存"></a>9、缓存</h4><p>性能优于Memcached，并且更优秀的在于数据结构更加多样化</p>
-<h2 id="Redis作者的宣言"><a href="#Redis作者的宣言" class="headerlink" title="Redis作者的宣言"></a>Redis作者的宣言</h2><p>宣言中，作者列举了Redis的7大原则，可以向大家阐明Redis的思想，看了之后我觉得Redis的作者的确牛叉，Redis这款产品这的是程序猿的福利：</p>
-<p>1、Redis 是一个操作数据结构的语言工具，它提供基于 TCP 的协议以操作丰富的数据结构。</p>
-<p>在 Redis 中，数据结构这个词的意义不仅表示在某种数据结构上的操作，更包括了结构本身及这些操作的时间空间复杂度。</p>
-<p>2、Redis 定位于一个内存数据库，正是由于内存的快速访问特性，才使得 Redis 能够有如此高的性能，才使得 Redis 能够轻松处理大量复杂的数据结构，Redis 会尝试其它的存储方面的选择，但是永远不会改变它是一个内存数据库的角色。</p>
-<p>3、Redis 使用基础的 API 操作基础的数据结构， Redis 的 API 与数据结构一样，都是一些最基础的元素，你几乎可以将任何信息交互使用此 API 格式表示。作者调侃说，如果有其它非人类的智能生物存在，他们也能理解 Redis 的 API。因为它是如此的基础。（作者大大很有趣）</p>
-<p>4、Redis 有着诗一般优美的代码，经常有一些不太了解 Redis  有的人会建议 Redis 采用一些其它人的代码，以实现一些 Redis  未实现的功能，但这对我们来说就像是非要给《红楼梦》接上后四十回一样。</p>
-<p>5、Redis 始终避免复杂化，我们认为设计一个系统的本质，就是与复杂化作战。我们不会为了一个小功能而往源码里添加上千行代码，解决复杂问题的方法就是让复杂问题永远不要提复杂的问题。</p>
-<p>6、Redis 支持两个层成的 API，第一个层面包含部分操作 API，但它支持用于分布式环境下的 Redis。第二个层面的 API 支持更复杂的 multi-key 操作。它们各有所长，但是我们不会推出两者都支持的 API，但我们希望能够提供实例间数据迁移的命令，并执行 multi-key 操作。</p>
-<p>7、我们以优化代码为乐，我们相信编码是一件辛苦的工作，唯一对得起这辛苦的就是去享受它。如果我们在编码中失去了乐趣，那最好的解决办法就是停下来。我们决不会选择让Redis不好玩的开发模式。</p>
-<p>我只能感叹道：Redis乃神物，出污泥而不染，濯清涟而不妖。</p>
-<p><strong>PS</strong>： Redis作者antirez曾笑称Redis为一个数据结构服务器，我认为这个还是挺准确的，Redis的所有功能就是将数据以其固有的几种结构来保存，并提供给用户操作这几种结构的接口。</p>
-<p>本文非原创<br><a href="https://www.jianshu.com/p/01b37cdb3f33" target="_blank" rel="external">原文链接</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/01/the-difference-between-version-and-build-in-xcode/" itemprop="url">
+                <a class="post-title-link" href="/2020/05/04/the-difference-between-version-and-build-in-xcode/" itemprop="url">
                   Xcode中的Version和Build的区别
                 </a>
               
@@ -1410,8 +1324,8 @@ echo $getonelm;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-08-01T23:22:50+08:00" content="2018-08-01">
-              2018-08-01
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -1504,8 +1418,8 @@ echo $getonelm;
             
               
                 
-                <a class="post-title-link" href="/2018/07/13/wechat-miniprogramcustomer-service-message/" itemprop="url">
-                  微信小程序客服消息
+                <a class="post-title-link" href="/2020/05/04/the-basic-syntax-of-markdown/" itemprop="url">
+                  Markdown的基本语法
                 </a>
               
             
@@ -1518,8 +1432,8 @@ echo $getonelm;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-13T11:59:18+08:00" content="2018-07-13">
-              2018-07-13
+            <time itemprop="dateCreated" datetime="2020-05-04T13:05:11+08:00" content="2020-05-04">
+              2020-05-04
             </time>
           </span>
 
@@ -1532,8 +1446,8 @@ echo $getonelm;
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
                   </a>
                 </span>
 
@@ -1565,14 +1479,74 @@ echo $getonelm;
       
         
           
-            <h3 id="微信小程序消息服务接入步骤"><a href="#微信小程序消息服务接入步骤" class="headerlink" title="微信小程序消息服务接入步骤"></a>微信小程序消息服务接入步骤</h3><p>1、填写服务器配置；<br><br>2、验证服务器地址的有效性；<br><br>3、依据接口文档实现业务逻辑。</p>
-<h3 id="客服消息之接收消息和事件"><a href="#客服消息之接收消息和事件" class="headerlink" title="客服消息之接收消息和事件"></a>客服消息之接收消息和事件</h3><p>1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。<br><br>2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。</p>
-<h3 id="客服消息之发送客服消息"><a href="#客服消息之发送客服消息" class="headerlink" title="客服消息之发送客服消息"></a>客服消息之发送客服消息</h3><p>1、发送消息格式固定为JSON格式。<br><br>2、支持4种消息类型：<strong>文本</strong>，<strong>图片</strong>，<strong>图文链接</strong>，<strong>小程序卡片</strong>。<br><br>3、touser等于发送消息的FromUsername，即微信用户的openid。<br><br>4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。</p>
-<p>2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html" target="_blank" rel="external">接入微信小程序消息服务</a></p>
-<p>2、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html" target="_blank" rel="external">接收消息和事件</a></p>
-<p>3、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html" target="_blank" rel="external">发送客服消息</a></p>
+            <h2 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h2><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。</p>
+<p>特点就是：易读、易写、跨平台。</p>
+<h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="1、分级标题"><a href="#1、分级标题" class="headerlink" title="1、分级标题"></a>1、分级标题</h3><h4 id="一级标题-H1"><a href="#一级标题-H1" class="headerlink" title="一级标题 H1"></a>一级标题 H1</h4><pre><code># 我是一级标题
+</code></pre><h4 id="二级标题-H2"><a href="#二级标题-H2" class="headerlink" title="二级标题 H2"></a>二级标题 H2</h4><pre><code>## 我是二级标题
+</code></pre><h4 id="三级标题-H3"><a href="#三级标题-H3" class="headerlink" title="三级标题 H3"></a>三级标题 H3</h4><pre><code>### 我是三级标题
+</code></pre><p>以此类推，最多到六级标题，没有七级标题。</p>
+<h3 id="2、粗体和斜体"><a href="#2、粗体和斜体" class="headerlink" title="2、粗体和斜体"></a>2、粗体和斜体</h3><p>使用 * 和 ** 表示斜体和粗体</p>
+<p>示例：</p>
+<pre><code>*斜体* 和 **粗体**
+</code></pre><p><em>斜体</em> 和 <strong>粗体</strong></p>
+<h3 id="3、引用"><a href="#3、引用" class="headerlink" title="3、引用"></a>3、引用</h3><p>使用 &gt; 表示文字引用</p>
+<blockquote>
+<p>野火烧不尽，更上一层楼。</p>
+</blockquote>
+<p>多行引用需要使用两个空格。</p>
+<blockquote>
+<p>人生若只如初见，<br>一枝红杏出墙来。</p>
+</blockquote>
+<h3 id="4、行内代码"><a href="#4、行内代码" class="headerlink" title="4、行内代码"></a>4、行内代码</h3><p>使用 `代码` （~ 键的下档键）表示行内代码块。</p>
+<p>例如我是行内代码 <code>Hello World</code> 看到了吧，融为一体。</p>
+<h3 id="5、代码块"><a href="#5、代码块" class="headerlink" title="5、代码块"></a>5、代码块</h3><p>使用四个缩进空格或者一个Tab表示代码块</p>
+<p>示例：</p>
+<pre><code>我是代码块
+这是第二行
+我是最后一行
+</code></pre><h3 id="6、无序列表"><a href="#6、无序列表" class="headerlink" title="6、无序列表"></a>6、无序列表</h3><p>使用 *，+，- 表示无序列表</p>
+<p>示例：</p>
+<pre><code>* 无序列表1
++ 无序列表2
+- 无序列表3
+</code></pre><ul>
+<li>无序列表1</li>
+</ul>
+<ul>
+<li>无序列表2</li>
+</ul>
+<ul>
+<li>无序列表3</li>
+</ul>
+<h3 id="7、有序列表"><a href="#7、有序列表" class="headerlink" title="7、有序列表"></a>7、有序列表</h3><p>使用数字和点表示有序列列表，注意点后有一个空格。</p>
+<p>示例：</p>
+<pre><code>1. 有序列表一
+2. 有序列表二
+3. 有序列表三
+</code></pre><ol>
+<li><p>有序列表一</p>
+</li>
+<li><p>有序列表二</p>
+</li>
+<li><p>有序列表三</p>
+</li>
+</ol>
+<h3 id="8、外链接"><a href="#8、外链接" class="headerlink" title="8、外链接"></a>8、外链接</h3><p>使用 [描述](链接地址) 为文字增加外链接。</p>
+<p>示例：</p>
+<pre><code>这是去往[太阳侠](http://isunman.com)的链接
+</code></pre><p>这是去往<a href="http://isunman.com">太阳侠</a>的链接</p>
+<h3 id="9、插入图像"><a href="#9、插入图像" class="headerlink" title="9、插入图像"></a>9、插入图像</h3><p>使用 ![描述]（图片链接地址）插入图像</p>
+<p>示例：</p>
+<p><img src="http://isunman.com/images/avatar.jpg" alt="太阳侠的头像"></p>
+<p>第三方云存储图片示例（此处存储在七牛云存储，福利啊）：</p>
+<p>示例：</p>
+<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/isunman1ad5ad6eddc451da23540d51b4fd5266d11632ed.jpg" alt="腿玩年"></p>
+<h3 id="10、插入HTML代码"><a href="#10、插入HTML代码" class="headerlink" title="10、插入HTML代码"></a>10、插入HTML代码</h3><p>Markdown完全兼容html，可以插入任意的html代码，包括分享的视频和音乐等。</p>
+<p>例如音乐</p>
+<embed src="http://www.xiami.com/widget/0_1774250852/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent">
+
+<p>例如视频：</p>
+<embed src="http://player.youku.com/player.php/sid/XODI1MDg0MDQ4/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
 
           
         
@@ -1639,7 +1613,7 @@ echo $getonelm;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
