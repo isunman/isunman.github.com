@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-05-10T11:39:51.290Z</updated>
+  <updated>2020-06-01T09:18:34.390Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP的curl函数的证书错误 Peer certificate cannot be authenticated</title>
+    <link href="http://isunman.com/2020/06/01/peer-certificate-of-php-curl-function-cannot-be-authenticated/"/>
+    <id>http://isunman.com/2020/06/01/peer-certificate-of-php-curl-function-cannot-be-authenticated/</id>
+    <published>2020-06-01T09:14:00.000Z</published>
+    <updated>2020-06-01T09:18:34.390Z</updated>
+    
+    <content type="html">&lt;p&gt;系统的短信发送突然全部失败了。使用postman工具测试阿里云云通信的短信API可以正常发送。&lt;/p&gt;
+&lt;p&gt;经过一番仔细核查，原因已找到，是PHP系统自带的CURL函数中的证书验证问题。&lt;/p&gt;
+&lt;p&gt;错误提示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Peer certificate cannot be authenticated with known CA certificates
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中文的意思“对等证书不能使用已知的CA证书进行身份验证”。&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;br&gt;curl的设置中加入这样一项&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即在请求中“信任任何证书”，不再进行CA证书验证。&lt;/p&gt;
+&lt;p&gt;但是至少耽误了一天半的短信发送，只是因为周末和月底，没被发现而已。从2020年05月30日 19:36之后到2020年06月01日10:30之前，都是失败的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;奇怪的就是&lt;/strong&gt;：为什么之前可以用，突然在2020年05月30日晚上失败了，而且是在没有更改任何服务器配置和项目相关代码的情况。后来检测，其他项目中使用相同方法的也失败了。不得不逐一修复。&lt;/p&gt;
+&lt;p&gt;关于CURL函数可以参考官网说明&lt;br&gt;&lt;a href=&quot;https://www.php.net/manual/en/function.curl-setopt.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.php.net/manual/en/function.curl-setopt.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下为php curl https ssl 证书相关的设置汇总：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$curl = curl_init();
+curl_setopt($curl,CURLOPT_URL,$url);
+curl_setopt($curl, CURLOPT_PORT, 443);
+curl_setopt($curl, CURLOPT_SSLVERSION, 3);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //信任任何证书
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); // 检查证书中是否设置域名,0不验证
+curl_setopt($curl, CURLOPT_VERBOSE, 1); //debug模式
+curl_setopt($curl, CURLOPT_SSLCERT, &amp;quot;./keys/client.crt&amp;quot;); //client.crt文件路径
+curl_setopt($curl, CURLOPT_SSLCERTPASSWD, &amp;quot;112358&amp;quot;); //client证书密码
+curl_setopt($curl, CURLOPT_SSLKEY, &amp;quot;./keys/client.key&amp;quot;);
+curl_setopt($curl, CURLOPT_POST, 1);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;所以，在最后总结三点：&lt;/p&gt;
+&lt;p&gt;1、怎么能及时地发现问题；（有没有报警机制）&lt;/p&gt;
+&lt;p&gt;2、怎么能快速地解决问题；（核查问题的能力）&lt;/p&gt;
+&lt;p&gt;3、怎么能避免问题不再发生。（预防可能遇到的坑）
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;系统的短信发送突然全部失败了。使用postman工具测试阿里云云通信的短信API可以正常发送。&lt;/p&gt;
+&lt;p&gt;经过一番仔细核查，原因已找到，是PHP系统自带的CURL函数中的证书验证问题。&lt;/p&gt;
+&lt;p&gt;错误提示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Peer certifica
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux系统inodes资源耗尽问题</title>
@@ -255,7 +312,7 @@ $ crontab -l #查看定时任务是否添加成功
     <link href="http://isunman.com/2020/02/15/mobile-phone-app-scan-code-login-web-terminal-how-to-achieve-technically/"/>
     <id>http://isunman.com/2020/02/15/mobile-phone-app-scan-code-login-web-terminal-how-to-achieve-technically/</id>
     <published>2020-02-15T03:38:00.000Z</published>
-    <updated>2020-05-10T11:38:54.214Z</updated>
+    <updated>2020-06-01T09:18:24.369Z</updated>
     
     <content type="html">&lt;p&gt;手机App扫码登录Web端，技术上是怎么实现的？&lt;/p&gt;
 &lt;p&gt;##1、引言&lt;/p&gt;
@@ -501,7 +558,9 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;amp;defaulturl=&amp;amp;_ksTS=15401
       <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="即时通讯，微信" scheme="http://isunman.com/tags/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%EF%BC%8C%E5%BE%AE%E4%BF%A1/"/>
+      <category term="即时通讯" scheme="http://isunman.com/tags/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/"/>
+    
+      <category term="微信" scheme="http://isunman.com/tags/%E5%BE%AE%E4%BF%A1/"/>
     
   </entry>
   
@@ -1486,38 +1545,6 @@ echo $getonelm;
     
     
       <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信小程序客服消息</title>
-    <link href="http://isunman.com/2018/07/13/wechat-miniprogramcustomer-service-message/"/>
-    <id>http://isunman.com/2018/07/13/wechat-miniprogramcustomer-service-message/</id>
-    <published>2018-07-13T03:57:00.000Z</published>
-    <updated>2020-05-10T11:32:04.707Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;a href=&quot;#微信小程序消息服务接入步骤&quot; class=&quot;headerlink&quot; title=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;/a&gt;微信小程序消息服务接入步骤&lt;/h3&gt;&lt;p&gt;1、填写服务器配置；&lt;br&gt;&lt;br&gt;2、验证服务器地址的有效性；&lt;br&gt;&lt;br&gt;3、依据接口文档实现业务逻辑。&lt;/p&gt;
-&lt;h3 id=&quot;客服消息之接收消息和事件&quot;&gt;&lt;a href=&quot;#客服消息之接收消息和事件&quot; class=&quot;headerlink&quot; title=&quot;客服消息之接收消息和事件&quot;&gt;&lt;/a&gt;客服消息之接收消息和事件&lt;/h3&gt;&lt;p&gt;1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。&lt;br&gt;&lt;br&gt;2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。&lt;/p&gt;
-&lt;h3 id=&quot;客服消息之发送客服消息&quot;&gt;&lt;a href=&quot;#客服消息之发送客服消息&quot; class=&quot;headerlink&quot; title=&quot;客服消息之发送客服消息&quot;&gt;&lt;/a&gt;客服消息之发送客服消息&lt;/h3&gt;&lt;p&gt;1、发送消息格式固定为JSON格式。&lt;br&gt;&lt;br&gt;2、支持4种消息类型：&lt;strong&gt;文本&lt;/strong&gt;，&lt;strong&gt;图片&lt;/strong&gt;，&lt;strong&gt;图文链接&lt;/strong&gt;，&lt;strong&gt;小程序卡片&lt;/strong&gt;。&lt;br&gt;&lt;br&gt;3、touser等于发送消息的FromUsername，即微信用户的openid。&lt;br&gt;&lt;br&gt;4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。&lt;/p&gt;
-&lt;h3 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h3&gt;&lt;p&gt;1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。&lt;/p&gt;
-&lt;p&gt;2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。&lt;/p&gt;
-&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;p&gt;1、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接入微信小程序消息服务&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;2、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接收消息和事件&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;3、&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;发送客服消息&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;a href=&quot;#微信小程序消息服务接入步骤&quot; class=&quot;headerlink&quot; title=&quot;微信小程序消息服务接入步骤&quot;&gt;&lt;/a&gt;微信小程序消息服务接入步骤&lt;/h3&gt;&lt;p&gt;1、填写服务器配置；&lt;br&gt;&lt;br&gt;2、验证服务器地
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="微信" scheme="http://isunman.com/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
     
   </entry>
   
