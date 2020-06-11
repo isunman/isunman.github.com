@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-06-11T07:39:57.536Z</updated>
+  <updated>2020-06-11T07:46:40.323Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://isunman.com/2020/06/11/issue-of-ca-root-certificate-expiration/"/>
     <id>http://isunman.com/2020/06/11/issue-of-ca-root-certificate-expiration/</id>
     <published>2020-06-11T07:38:00.000Z</published>
-    <updated>2020-06-11T07:39:57.536Z</updated>
+    <updated>2020-06-11T07:46:40.323Z</updated>
     
     <content type="html">&lt;p&gt;上一篇文章提到过PHP的curl函数的证书错误&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Peer certificate cannot be authenticated with known CA certificates
@@ -55,9 +55,9 @@
       <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
     
-      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
   </entry>
   
