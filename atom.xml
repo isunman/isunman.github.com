@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-06-01T09:18:34.390Z</updated>
+  <updated>2020-06-11T07:39:57.536Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CA根证书过期的问题</title>
+    <link href="http://isunman.com/2020/06/11/issue-of-ca-root-certificate-expiration/"/>
+    <id>http://isunman.com/2020/06/11/issue-of-ca-root-certificate-expiration/</id>
+    <published>2020-06-11T07:38:00.000Z</published>
+    <updated>2020-06-11T07:39:57.536Z</updated>
+    
+    <content type="html">&lt;p&gt;上一篇文章提到过PHP的curl函数的证书错误&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Peer certificate cannot be authenticated with known CA certificates
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中文的意思“对等证书不能使用已知的CA证书进行身份验证”。&lt;/p&gt;
+&lt;p&gt;后来采用了在curl函数中不验证证书的临时解决方法。&lt;/p&gt;
+&lt;p&gt;虽然问题暂时解决了，但是并没有找到出问题的根本原因，当然也就没有从根本上解决问题。&lt;/p&gt;
+&lt;h4 id=&quot;紧接着，后续又出大问题了。&quot;&gt;&lt;a href=&quot;#紧接着，后续又出大问题了。&quot; class=&quot;headerlink&quot; title=&quot;紧接着，后续又出大问题了。&quot;&gt;&lt;/a&gt;紧接着，后续又出大问题了。&lt;/h4&gt;&lt;p&gt;在linux服务器上的crontab中设置的计划任务也不执行了。里面都是使用的wget加https的URL执行的。&lt;br&gt;经核查发现：&lt;/p&gt;
+&lt;p&gt;1、crontab的计划任务是在定期执行的，只是没有执行wget+https的URL请求。&lt;/p&gt;
+&lt;p&gt;2、上述计划任务中https的URL请求，如果在浏览器执行或postman中执行，都是可以正常执行出结果的。&lt;/p&gt;
+&lt;p&gt;所以证明是wget在执行https的请求时出问题了。&lt;/p&gt;
+&lt;p&gt;联系亚狐科技的客服，询问他们的SSL证书是不是出问题了。&lt;/p&gt;
+&lt;p&gt;回复是，SSL证书本身没有过期，但是颁发SSL证书的CA机构的【根证书】过期了。&lt;/p&gt;
+&lt;p&gt;回复原话&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是CA证书过期了, 您更新下CA证书即可。证书没问题，有问题的是COMODO的上级证书链。浏览器访问都没问题。我可以发您最新的根证书，您替换旧可以。4月30日后签发的证书就没这个问题了。这个问题是历史问题，没办法避免。这样，我全部更新下，您重新下载可以吧。这个我们会注意这个问题，如果再有类似，我通知您。应该不会再发生了。一般如果只是使用浏览器，不会存在问题。是的，我们接收意见，以后避免再发生此类问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当然中间有我的提问没有写出来，这是QQ聊天记录的对方回复的部分内容的合并。&lt;/p&gt;
+&lt;p&gt;之后重新颁发了新的SSL证书，然后更新到所有使用该SSL证书的Nginx服务器之后（重启Nginx），crontab的计划任务可以正常执行了。&lt;/p&gt;
+&lt;h4 id=&quot;总结：&quot;&gt;&lt;a href=&quot;#总结：&quot; class=&quot;headerlink&quot; title=&quot;总结：&quot;&gt;&lt;/a&gt;总结：&lt;/h4&gt;&lt;p&gt;1、CA的根证书快过期本应该提前处理好的，这个根证书时间应该不是每一年一次的。5年或10年吧，还不确定。&lt;/p&gt;
+&lt;p&gt;2、这个CA根证书过期导致的是一些程序的执行命令和系统方法出问题，在浏览器中使用并不会表现出BUG和错误。（目前已发现明显会受影响的就是PHP的CURL函数和Linux的crontab中的wget命令）&lt;/p&gt;
+&lt;p&gt;3、当一个问题出现时，必须及时准确地定位到问题的真正和根本原因，并迅速彻底解决；否则，可能会出现更严重的问题。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一篇文章提到过PHP的curl函数的证书错误&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Peer certificate cannot be authenticated with known CA certificates
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中文的意思“对等证书不能使用
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP的curl函数的证书错误 Peer certificate cannot be authenticated</title>
@@ -1517,34 +1563,6 @@ echo $getonelm;
     
     
       <category term="Redis" scheme="http://isunman.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Xcode中的Version和Build的区别</title>
-    <link href="http://isunman.com/2018/08/01/the-difference-between-version-and-build-in-xcode/"/>
-    <id>http://isunman.com/2018/08/01/the-difference-between-version-and-build-in-xcode/</id>
-    <published>2018-08-01T15:17:00.000Z</published>
-    <updated>2020-05-10T11:32:21.706Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;a href=&quot;#Version对应的是CFBundleShortVersionString。&quot; class=&quot;headerlink&quot; title=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;/a&gt;Version对应的是CFBundleShortVersionString。&lt;/h3&gt;&lt;p&gt;Version 一般由产品部门确定，版本号是由分隔的整数组成的字符串，一般有2段或者3段式, 如:1.2,  1.2.3&lt;/p&gt;
-&lt;h3 id=&quot;二段式：&quot;&gt;&lt;a href=&quot;#二段式：&quot; class=&quot;headerlink&quot; title=&quot;二段式：&quot;&gt;&lt;/a&gt;二段式：&lt;/h3&gt;&lt;p&gt;第一个段：（主版本号）大功能的新增或者有迥异的变化&lt;br&gt;第二个段：（副版本号）既包含小功能更新也会包含 bug 修复&lt;/p&gt;
-&lt;h3 id=&quot;三段式：&quot;&gt;&lt;a href=&quot;#三段式：&quot; class=&quot;headerlink&quot; title=&quot;三段式：&quot;&gt;&lt;/a&gt;三段式：&lt;/h3&gt;&lt;p&gt;第一个段：重大修改的版本，如实现新的大功能或重大变化的修订。&lt;br&gt;第二个段：实现较突出的特点，如新功能添加和大问题修复。&lt;br&gt;第三个段：代表维护版本，修复bug。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;版本号的管理是一个谨慎的事情，希望各位开发者了解其中的意义。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Build（-应用程序内部标示-）&quot;&gt;&lt;a href=&quot;#Build（-应用程序内部标示-）&quot; class=&quot;headerlink&quot; title=&quot;Build（ 应用程序内部标示 ）&quot;&gt;&lt;/a&gt;Build（ 应用程序内部标示 ）&lt;/h3&gt;&lt;p&gt;Bulid 是给内部使用,与 Version 不会有太大联系.&lt;/p&gt;
-&lt;p&gt;Bulid对应的是CFBundleVersion。标识（发布或未发布）的内部版本号。用以记录开发版本的，每次更新的时候都需要比上一次高。&lt;br&gt;作用：发布build版本供测试团队进行测试。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Version对应的是CFBundleShortVersionString。&quot;&gt;&lt;a href=&quot;#Version对应的是CFBundleShortVersionString。&quot; class=&quot;headerlink&quot; title=&quot;Version对应的是CFBun
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://isunman.com/categories/ios/"/>
-    
-    
-      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
     
   </entry>
   
