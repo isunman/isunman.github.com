@@ -244,6 +244,124 @@
             
               
                 
+                <a class="post-title-link" href="/2020/07/23/mysql-Chinese-is-sorted-alphabetically/" itemprop="url">
+                  MySQL中文按首字母排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-07-23T11:28:00+08:00" content="2020-07-23">
+              2020-07-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一种分析"><a href="#一种分析" class="headerlink" title="一种分析"></a>一种分析</h3><p>项目中有时候会遇到需要按照汉字拼音排序的需求。</p>
+<p>如果要排序的字段编码使用的是GBK字符集，那就可以直接按照拼音排序。因为GBK内码编码时本身就采用了拼音排序的方法（常用一级汉字3755个采用拼音排序，二级汉字就不是了），直接在查询语句后面添加ORDER BY name ASC，查询结果将按照姓氏的升序排序。</p>
+<p>如果存储姓名的字段采用的是utf-8字符集，需要在排序的时候对字段进行转码，对应的代码是ORDER BY convert(name using gbk) ASC，同样，查询的结果也是按照汉字拼音的升序排序。</p>
+<p>怎样才能将编码转化为GBK呢？在MySQL中提供了函数CONVERT() ，该函数可用来获取一个类型的值。该函数的使用方式为 CONVERT(字段 USING GBK)。</p>
+<p>例如：</p>
+<pre><code>SELECT * FROM table ORDER BY CONVERT(field USING GBK) ASC
+</code></pre><p>如果字段的值中包含数字和字母也可以排序，因为数字和字母在gbk字符集中本身就是能排序的，数字&lt;字母&lt;汉字。</p>
+<p>以上亲测有效。</p>
+<h3 id="另一种分析："><a href="#另一种分析：" class="headerlink" title="另一种分析："></a>另一种分析：</h3><p>使用MySQL过程中，我们经常会对一个字段进行排序查询，我们一般都是想要按照中文拼音首字母进行依次排序，但mysql中进行中文排序的时候，对汉字的排序结果往往都是错误的。 这种情况在MySQL的很多版本中都存在。</p>
+<p>如果这个问题不解决，那么MySQL将无法实际处理中文。 出现这个问题的原因是因为MySQL在查询字符串时是大小写不敏感的，在编绎MySQL时一般以ISO-8859字符集作为默认的字符集，因此在比较过程中中文编码字符大小写转换造成了这种现象。</p>
+<p>查了资料有两种解决方法：<br>1.对于包含中文的字段加上”binary”属性，使之作为二进制比较，例如将”name varchar(10)”改成”name varchar(10)binary”。</p>
+<ol>
+<li>如果不想对表结构进行修改或者重新编译MySQL，也可以在查询语句的 order by 部分使用 CONVERT 函数。</li>
+</ol>
+<p>比如 name字段为中文，需要按其排序，则可以写select * from mytable order by CONVERT(name USING gbk);
+　　</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2020/06/11/issue-of-ca-root-certificate-expiration/" itemprop="url">
                   CA根证书过期的问题
                 </a>
@@ -1770,116 +1888,6 @@ print_r($content);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/10/11/download-the-application-method-in-the-AppStore-of-overseas-region/" itemprop="url">
-                  下载海外地区的AppStore中应用的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-10-11T16:02:00+08:00" content="2019-10-11">
-              2019-10-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络工具/" itemprop="url" rel="index">
-                    <span itemprop="name">网络工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>下载海外地区的AppStore中应用的方法</p>
-<h3 id="1、官方应用直接下载"><a href="#1、官方应用直接下载" class="headerlink" title="1、官方应用直接下载"></a>1、官方应用直接下载</h3><p>如果是下载指定地区的AppStore中的应用，必须拥有此地区的AppID，然后使用此AppID登录AppStore即可随意下载免费应用。</p>
-<p>如果需要下载收费的应用，又没有开通对应的支付方式（例如对应国家地区的信用卡），可以去TB上购买一个Gifts Card充值到账户余额。然后再操作。</p>
-<h3 id="2、一些共享AppID的平台"><a href="#2、一些共享AppID的平台" class="headerlink" title="2、一些共享AppID的平台"></a>2、一些共享AppID的平台</h3><p>有专门做这个的网站或者论坛帖子，前几年多些。</p>
-<p>还有公众号（例如：野泽科技、绝世废柴、DoMiSo），现在以公众号居多。</p>
-<h3 id="3、第三方平台安装"><a href="#3、第三方平台安装" class="headerlink" title="3、第三方平台安装"></a>3、第三方平台安装</h3><p>使用爱思助手或PP助手直接连接电脑安装对应的应用。</p>
-<h3 id="4、怎么获得一个美国区的AppID"><a href="#4、怎么获得一个美国区的AppID" class="headerlink" title="4、怎么获得一个美国区的AppID"></a>4、怎么获得一个美国区的AppID</h3><p>这个目前已经有很多方法，而且各种方法都在与时俱进地跟新。可以直接搜索“知乎”等，就有许多可行的方案。
-　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1926,7 +1934,7 @@ print_r($content);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
