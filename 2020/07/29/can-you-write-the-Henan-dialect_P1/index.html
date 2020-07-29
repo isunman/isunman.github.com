@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MySQL," />
+  <meta name="keywords" content="家乡,野趣," />
 
 
 
@@ -59,22 +59,46 @@
 
 
 
-<meta name="description" content="一种分析项目中有时候会遇到需要按照汉字拼音排序的需求。
-如果要排序的字段编码使用的是GBK字符集，那就可以直接按照拼音排序。因为GBK内码编码时本身就采用了拼音排序的方法（常用一级汉字3755个采用拼音排序，二级汉字就不是了），直接在查询语句后面添加ORDER BY name ASC，查询结果将按照姓氏的升序排序。
-如果存储姓名的字段采用的是utf-8字符集，需要在排序的时候对字段进行转码，对应的">
+<meta name="description" content="熰[读音]ǒu
+[释义]烤过度的东西出现碳化的迹象
+[引自]《管子?侈靡篇》古之祭有时而熰。《注》熰，热甚也。
+[举例]火上的东西快拿起来，都烤熰了。
+熥[读音]tēng
+[释义]把凉了的物体再加热或烤热
+[引自]《集韻》他東切，音通。以火煖物也。
+[举例]你的衣服湿了，脱下来在火上熥熥。
+缏[读音]biǎn
+[释义]卷起衣袖
+[引自]《说文通训定声》缏,缝缉其边曰缏。这里用引申义，因为袖子或裤子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL中文按首字母排序">
-<meta property="og:url" content="http://isunman.com/2020/07/23/mysql-Chinese-is-sorted-alphabetically/index.html">
+<meta property="og:title" content="能写出来的河南话，你会写几个?">
+<meta property="og:url" content="http://isunman.com/2020/07/29/can-you-write-the-Henan-dialect_P1/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="一种分析项目中有时候会遇到需要按照汉字拼音排序的需求。
-如果要排序的字段编码使用的是GBK字符集，那就可以直接按照拼音排序。因为GBK内码编码时本身就采用了拼音排序的方法（常用一级汉字3755个采用拼音排序，二级汉字就不是了），直接在查询语句后面添加ORDER BY name ASC，查询结果将按照姓氏的升序排序。
-如果存储姓名的字段采用的是utf-8字符集，需要在排序的时候对字段进行转码，对应的">
-<meta property="og:updated_time" content="2020-07-23T03:33:42.801Z">
+<meta property="og:description" content="熰[读音]ǒu
+[释义]烤过度的东西出现碳化的迹象
+[引自]《管子?侈靡篇》古之祭有时而熰。《注》熰，热甚也。
+[举例]火上的东西快拿起来，都烤熰了。
+熥[读音]tēng
+[释义]把凉了的物体再加热或烤热
+[引自]《集韻》他東切，音通。以火煖物也。
+[举例]你的衣服湿了，脱下来在火上熥熥。
+缏[读音]biǎn
+[释义]卷起衣袖
+[引自]《说文通训定声》缏,缝缉其边曰缏。这里用引申义，因为袖子或裤子">
+<meta property="og:updated_time" content="2020-07-29T08:33:10.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL中文按首字母排序">
-<meta name="twitter:description" content="一种分析项目中有时候会遇到需要按照汉字拼音排序的需求。
-如果要排序的字段编码使用的是GBK字符集，那就可以直接按照拼音排序。因为GBK内码编码时本身就采用了拼音排序的方法（常用一级汉字3755个采用拼音排序，二级汉字就不是了），直接在查询语句后面添加ORDER BY name ASC，查询结果将按照姓氏的升序排序。
-如果存储姓名的字段采用的是utf-8字符集，需要在排序的时候对字段进行转码，对应的">
+<meta name="twitter:title" content="能写出来的河南话，你会写几个?">
+<meta name="twitter:description" content="熰[读音]ǒu
+[释义]烤过度的东西出现碳化的迹象
+[引自]《管子?侈靡篇》古之祭有时而熰。《注》熰，热甚也。
+[举例]火上的东西快拿起来，都烤熰了。
+熥[读音]tēng
+[释义]把凉了的物体再加热或烤热
+[引自]《集韻》他東切，音通。以火煖物也。
+[举例]你的衣服湿了，脱下来在火上熥熥。
+缏[读音]biǎn
+[释义]卷起衣袖
+[引自]《说文通训定声》缏,缝缉其边曰缏。这里用引申义，因为袖子或裤子">
 
 
 
@@ -92,7 +116,7 @@
   };
 </script>
 
-  <title> MySQL中文按首字母排序 | 太阳侠 </title>
+  <title> 能写出来的河南话，你会写几个? | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +266,7 @@
             
             
               
-                MySQL中文按首字母排序
+                能写出来的河南话，你会写几个?
               
             
           </h1>
@@ -254,8 +278,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-07-23T11:28:00+08:00" content="2020-07-23">
-              2020-07-23
+            <time itemprop="dateCreated" datetime="2020-07-29T16:32:00+08:00" content="2020-07-29">
+              2020-07-29
             </time>
           </span>
 
@@ -268,8 +292,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
+                  <a href="/categories/文学/" itemprop="url" rel="index">
+                    <span itemprop="name">文学</span>
                   </a>
                 </span>
 
@@ -299,22 +323,82 @@
       
 
       
-        <h3 id="一种分析"><a href="#一种分析" class="headerlink" title="一种分析"></a>一种分析</h3><p>项目中有时候会遇到需要按照汉字拼音排序的需求。</p>
-<p>如果要排序的字段编码使用的是GBK字符集，那就可以直接按照拼音排序。因为GBK内码编码时本身就采用了拼音排序的方法（常用一级汉字3755个采用拼音排序，二级汉字就不是了），直接在查询语句后面添加ORDER BY name ASC，查询结果将按照姓氏的升序排序。</p>
-<p>如果存储姓名的字段采用的是utf-8字符集，需要在排序的时候对字段进行转码，对应的代码是ORDER BY convert(name using gbk) ASC，同样，查询的结果也是按照汉字拼音的升序排序。</p>
-<p>怎样才能将编码转化为GBK呢？在MySQL中提供了函数CONVERT() ，该函数可用来获取一个类型的值。该函数的使用方式为 CONVERT(字段 USING GBK)。</p>
-<p>例如：</p>
-<pre><code>SELECT * FROM table ORDER BY CONVERT(field USING GBK) ASC
-</code></pre><p>如果字段的值中包含数字和字母也可以排序，因为数字和字母在gbk字符集中本身就是能排序的，数字&lt;字母&lt;汉字。</p>
-<p>以上亲测有效。</p>
-<h3 id="另一种分析："><a href="#另一种分析：" class="headerlink" title="另一种分析："></a>另一种分析：</h3><p>使用MySQL过程中，我们经常会对一个字段进行排序查询，我们一般都是想要按照中文拼音首字母进行依次排序，但mysql中进行中文排序的时候，对汉字的排序结果往往都是错误的。 这种情况在MySQL的很多版本中都存在。</p>
-<p>如果这个问题不解决，那么MySQL将无法实际处理中文。 出现这个问题的原因是因为MySQL在查询字符串时是大小写不敏感的，在编绎MySQL时一般以ISO-8859字符集作为默认的字符集，因此在比较过程中中文编码字符大小写转换造成了这种现象。</p>
-<p>查了资料有两种解决方法：<br>1.对于包含中文的字段加上”binary”属性，使之作为二进制比较，例如将”name varchar(10)”改成”name varchar(10)binary”。</p>
-<ol>
-<li>如果不想对表结构进行修改或者重新编译MySQL，也可以在查询语句的 order by 部分使用 CONVERT 函数。</li>
-</ol>
-<p>比如 name字段为中文，需要按其排序，则可以写select * from mytable order by CONVERT(name USING gbk);
-　　</p>
+        <h4 id="熰"><a href="#熰" class="headerlink" title="熰"></a>熰</h4><p>[读音]ǒu</p>
+<p>[释义]烤过度的东西出现碳化的迹象</p>
+<p>[引自]《管子?侈靡篇》古之祭有时而熰。《注》熰，热甚也。</p>
+<p>[举例]火上的东西快拿起来，都烤熰了。</p>
+<h4 id="熥"><a href="#熥" class="headerlink" title="熥"></a>熥</h4><p>[读音]tēng</p>
+<p>[释义]把凉了的物体再加热或烤热</p>
+<p>[引自]《集韻》他東切，音通。以火煖物也。</p>
+<p>[举例]你的衣服湿了，脱下来在火上熥熥。</p>
+<h4 id="缏"><a href="#缏" class="headerlink" title="缏"></a>缏</h4><p>[读音]biǎn</p>
+<p>[释义]卷起衣袖</p>
+<p>[引自]《说文通训定声》缏,缝缉其边曰缏。这里用引申义，因为袖子或裤子挽起的部分很像衣服被缝纫形成的缏。</p>
+<p>[举例]干活就把袖子缏起来，省的弄脏。</p>
+<h4 id="癔症"><a href="#癔症" class="headerlink" title="癔症"></a>癔症</h4><p>[读音]yi zheng</p>
+<p>[释义]走神，发呆，说梦话</p>
+<p>[引自]</p>
+<p>[举例]晚上开车看着点，别发癔症。</p>
+<h4 id="撧"><a href="#撧" class="headerlink" title="撧"></a>撧</h4><p>[读音]字典里读音juē，方言里变音quē</p>
+<p>[释义]古同“绝”，折断；断绝。</p>
+<p>[引自]元?佚名《盆儿鬼》：我待撧枝在头上插。</p>
+<p>[举例]过来把这个树枝撧断了。</p>
+<h4 id="爒"><a href="#爒" class="headerlink" title="爒"></a>爒</h4><p>[读音]liǎo</p>
+<p>[释义]古同「燎」。火烧</p>
+<p>[引自]</p>
+<p>[举例]别靠火那么近，小心把衣服爒了。</p>
+<h4 id="吃起来可艮gen（食物坚硬而不松脆）"><a href="#吃起来可艮gen（食物坚硬而不松脆）" class="headerlink" title="吃起来可艮gen（食物坚硬而不松脆）"></a>吃起来可艮gen（食物坚硬而不松脆）</h4><p>[读音]</p>
+<p>[释义]食物坚硬而不松脆。也指为人特别执拗，过于认真或者行动缓慢。</p>
+<p>[引自]</p>
+<p>[举例]这个萝卜吃起来可艮。你这孩子怎么这么艮不听话。</p>
+<h4 id="薅"><a href="#薅" class="headerlink" title="薅"></a>薅</h4><p>[读音]hāo</p>
+<p>[释义]揪</p>
+<p>[引自]《说文解字》拔去田艸也。</p>
+<p>[举例]你俩打架不要薅头发。</p>
+<h4 id="冇"><a href="#冇" class="headerlink" title="冇"></a>冇</h4><p>[读音]māo（河南地区发音：māo mōu mō mù 均有）</p>
+<p>[释义]没有</p>
+<p>[引自]</p>
+<p>[举例]（粤语中的冇也来自河南话）</p>
+<h4 id="抪拉"><a href="#抪拉" class="headerlink" title="抪拉"></a>抪拉</h4><p>[读音]bu la</p>
+<p>[释义]用手来回拨弄；用手擦。</p>
+<p>[引自]</p>
+<p>[举例]他在朋友进屋前赶紧抪拉了一下桌子上的灰。</p>
+<h4 id="哕"><a href="#哕" class="headerlink" title="哕"></a>哕</h4><p>[读音]yuě</p>
+<p>[释义]呕吐，或要吐而吐不出东西来。</p>
+<p>[引自]明?张自烈《正字通》：方书有物无声曰吐，有声无物曰哕，有声有物曰呕。</p>
+<p>[举例]吃得不舒服，想干哕。</p>
+<h4 id="搲"><a href="#搲" class="headerlink" title="搲"></a>搲</h4><p>[读音]wǎ</p>
+<p>[释义]以手或瓢状舀取。</p>
+<p>[引自]宋?司马光《类篇》：吴俗谓手爬物曰搲。元人杂剧《陈州粜米》第一折：他那边又搲了些米去了。</p>
+<p>[举例]没吃饱，再给我搲点儿米饭。</p>
+<h4 id="扽"><a href="#扽" class="headerlink" title="扽"></a>扽</h4><p>[读音]dèn</p>
+<p>[释义]拉，猛拉，使伸直或平整。</p>
+<p>[引自]清?《康熙字典》：《唐韵》《集韵》都困切，音顿。撼也。又《博雅》引也。一曰摩也。</p>
+<p>[举例]刚洗好的床单太皱，来，跟我一起扽平整。</p>
+<h4 id="鬻"><a href="#鬻" class="headerlink" title="鬻"></a>鬻</h4><p>[读音]yū</p>
+<p>[释义]液体沸腾溢出。</p>
+<p>[引自]宋?《广韵》：鬻，薄没切：说文吹釜溢也。清?《说文解字》段玉裁注：今江苏俗谓火盛水鬻溢出为铺出，鬻之转语也，正当作鬻字。</p>
+<p>[举例]米汤煮得快鬻出来了。</p>
+<h4 id="醭"><a href="#醭" class="headerlink" title="醭"></a>醭</h4><p>[读音]bú</p>
+<p>[释义]酒﹑酱﹑醋等因败坏而生的白霉。亦泛指一切东西受潮而表面出现霉斑。</p>
+<p>[引自]杨万里《风雨》：梅天笔墨都生醭，棐几文书懒拂尘。</p>
+<p>[举例]这个菜赶快放冰箱里面，要不明天就出醭。</p>
+<h4 id="敹"><a href="#敹" class="headerlink" title="敹"></a>敹</h4><p>[读音]liáo</p>
+<p>[释义]粗线缝缀。</p>
+<p>[引自]民国章炳麟《新方言》：凡非绽裂而粗率缝之曰敹。</p>
+<p>[举例]袖口炸线了，给它敹几针就好了。</p>
+<h4 id="嬎"><a href="#嬎" class="headerlink" title="嬎"></a>嬎</h4><p>[读音]fàn</p>
+<p>[释义]禽类下蛋；生子多而整齐划一，也是繁殖的意思。</p>
+<p>[引自]清?《康熙字典》：同娩。息也。清?《说文解字》段玉裁注：谓生子多而如一也。</p>
+<p>[举例]昨晚，他家的老母鸡又嬎了三个鸡蛋。</p>
+<h4 id="拌"><a href="#拌" class="headerlink" title="拌"></a>拌</h4><p>[读音]bǎn</p>
+<p>[释义]扔，丢弃。</p>
+<p>[引自]西汉?杨雄《方言》卷十：拌，弃也。楚凡挥弃物谓之拌。</p>
+<p>[举例]把这些垃圾拌出去。</p>
+<h4 id="谝"><a href="#谝" class="headerlink" title="谝"></a>谝</h4><p>[读音]piǎn</p>
+<p>[释义]炫耀、夸耀或骄傲地显示。</p>
+<p>[引自]东汉?许慎《说文解字》：谝，便巧言也。清?蒲松龄《增补幸云曲》第十六回：这奴才不弹琵琶，光谝他的汗巾子，望我夸他。</p>
+<p>[举例]他买了个戒指，老在我面前谝。</p>
 
       
     </div>
@@ -323,7 +407,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag">#MySQL</a>
+            <a href="/tags/家乡/" rel="tag">#家乡</a>
+          
+            <a href="/tags/野趣/" rel="tag">#野趣</a>
           
         </div>
       
@@ -332,17 +418,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/11/issue-of-ca-root-certificate-expiration/" rel="next" title="CA根证书过期的问题">
-                <i class="fa fa-chevron-left"></i> CA根证书过期的问题
+              <a href="/2020/07/23/mysql-Chinese-is-sorted-alphabetically/" rel="next" title="MySQL中文按首字母排序">
+                <i class="fa fa-chevron-left"></i> MySQL中文按首字母排序
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/29/can-you-write-the-Henan-dialect_P1/" rel="prev" title="能写出来的河南话，你会写几个?">
-                能写出来的河南话，你会写几个? <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +568,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一种分析"><span class="nav-number">1.</span> <span class="nav-text">一种分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另一种分析："><span class="nav-number">2.</span> <span class="nav-text">另一种分析：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#熰"><span class="nav-number">1.</span> <span class="nav-text">熰</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熥"><span class="nav-number">2.</span> <span class="nav-text">熥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缏"><span class="nav-number">3.</span> <span class="nav-text">缏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#癔症"><span class="nav-number">4.</span> <span class="nav-text">癔症</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撧"><span class="nav-number">5.</span> <span class="nav-text">撧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#爒"><span class="nav-number">6.</span> <span class="nav-text">爒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#吃起来可艮gen（食物坚硬而不松脆）"><span class="nav-number">7.</span> <span class="nav-text">吃起来可艮gen（食物坚硬而不松脆）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#薅"><span class="nav-number">8.</span> <span class="nav-text">薅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冇"><span class="nav-number">9.</span> <span class="nav-text">冇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抪拉"><span class="nav-number">10.</span> <span class="nav-text">抪拉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哕"><span class="nav-number">11.</span> <span class="nav-text">哕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搲"><span class="nav-number">12.</span> <span class="nav-text">搲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扽"><span class="nav-number">13.</span> <span class="nav-text">扽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#鬻"><span class="nav-number">14.</span> <span class="nav-text">鬻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#醭"><span class="nav-number">15.</span> <span class="nav-text">醭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#敹"><span class="nav-number">16.</span> <span class="nav-text">敹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嬎"><span class="nav-number">17.</span> <span class="nav-text">嬎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拌"><span class="nav-number">18.</span> <span class="nav-text">拌</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谝"><span class="nav-number">19.</span> <span class="nav-text">谝</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
