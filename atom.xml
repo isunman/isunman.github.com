@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-11-01T08:10:17.063Z</updated>
+  <updated>2020-11-13T07:23:02.456Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云内网打包传输较大文件的方法</title>
+    <link href="http://isunman.com/2020/11/13/aliyun-internal-network-package-transfer-method-of-large-files/"/>
+    <id>http://isunman.com/2020/11/13/aliyun-internal-network-package-transfer-method-of-large-files/</id>
+    <published>2020-11-13T07:15:00.000Z</published>
+    <updated>2020-11-13T07:23:02.456Z</updated>
+    
+    <content type="html">&lt;p&gt;今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。&lt;/p&gt;
+&lt;p&gt;第一、准备工作&lt;/p&gt;
+&lt;p&gt;1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文件的服务器内网IP）&lt;/p&gt;
+&lt;p&gt;2、打包压缩需要备份的网站目录，因为这里我开始打包过了，其实我不应该打包的，直接SCP，因为数据较大，打包时间也很长，后面还要解压也需要时间。&lt;/p&gt;
+&lt;p&gt;第二、SCP命令传输&lt;/p&gt;
+&lt;p&gt;1、复制目录到本地&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scp -r root@网站所在内网IP地址:/home/wwwroot/拷贝网站目录 /当前拷贝过来的网站目录
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2、复制打包文件到本地&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scp root@网站所在的内网IP:/home/wwwroot/拷贝网站目录/laozuo.tar.gz /当前拷贝过来的网站目录
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个执行是在我们转入进来的服务器SSH执行，然后会要求我们同意和输入转出服务器的密码后开始传输。看来速度比直接wget快很多了，达到46MB/s。&lt;/p&gt;
+&lt;p&gt;最后，稍等几分钟（这里10G大概不到5分钟)，传输完毕之后我们再到服务器中解压和数据拷贝（移动）即可。&lt;/p&gt;
+&lt;p&gt;　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
+    
+      <category term="远程控制" scheme="http://isunman.com/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS8解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes</title>
@@ -1568,44 +1604,6 @@ echo $getonelm;
       <category term="PHP算法" scheme="http://isunman.com/tags/php%E7%AE%97%E6%B3%95/"/>
     
       <category term="微信" scheme="http://isunman.com/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自定义iPhone的铃声</title>
-    <link href="http://isunman.com/2018/09/08/customize-your-iPhones-ringtone/"/>
-    <id>http://isunman.com/2018/09/08/customize-your-iPhones-ringtone/</id>
-    <published>2018-09-07T19:31:00.000Z</published>
-    <updated>2020-05-10T11:33:32.630Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;a href=&quot;#需使用Mac电脑上的itunes进行设置。&quot; class=&quot;headerlink&quot; title=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;/a&gt;需使用Mac电脑上的itunes进行设置。&lt;/h3&gt;&lt;p&gt;具体方法如下：&lt;/p&gt;
-&lt;p&gt;1、将手机和苹果电脑连接，打开iTunes切换到资料库看“xxx”的iphone这一栏有没有铃声菜单，没有的话点击编辑菜单勾选铃声。&lt;/p&gt;
-&lt;p&gt;2、下载你喜欢的歌曲点击歌曲-&amp;gt;文件-&amp;gt;添加到资料库，选取要自定义铃声的歌曲之后选择打开。&lt;/p&gt;
-&lt;p&gt;3、选定歌曲右击-&amp;gt;显示简介-&amp;gt;选项，选择开始停止时间，记得打钩 ( 这里注意的是苹果的铃声只能在40s内 ),然后点击好。&lt;/p&gt;
-&lt;p&gt;4、选定歌曲文件-&amp;gt;转换-&amp;gt;创建ACC版本，出现两个同名文件。&lt;/p&gt;
-&lt;p&gt;5、右击刚刚新生成同名文件选择在Finder打开，修改该文件的扩展名为m4r。为了后续操作方便把该文件拖到桌面。&lt;/p&gt;
-&lt;p&gt;6、返回资料库删除刚刚生成的同名文件。点击音乐-&amp;gt;铃声把刚刚拖到桌面的m4r文件,拖放到列表&lt;/p&gt;
-&lt;p&gt;7、点击手机按钮进入手机管理。打开手机 设置-&amp;gt;声音与触感-&amp;gt;电话铃声 就可以自定义铃声了。&lt;/p&gt;
-&lt;p&gt;其中，第2-4步的扩展可以参考如下：&lt;/p&gt;
-&lt;h3 id=&quot;mp3文件到acc文件的剪切与格式转换&quot;&gt;&lt;a href=&quot;#mp3文件到acc文件的剪切与格式转换&quot; class=&quot;headerlink&quot; title=&quot;mp3文件到acc文件的剪切与格式转换&quot;&gt;&lt;/a&gt;mp3文件到acc文件的剪切与格式转换&lt;/h3&gt;&lt;p&gt;当先打开访达，在访达点击左侧的音乐。&lt;/p&gt;
-&lt;p&gt;在音乐里面选择一个需要剪切的音频文件，然后右键打开方式为图二的软件即可。&lt;/p&gt;
-&lt;p&gt;打开软件后点击这个音乐文件，然后看到出现在下方点击名字上的右侧三个小点。并在菜单上选择歌曲信息。&lt;/p&gt;
-&lt;p&gt;然后在这个信息框点击选项，把开始结束这里勾上。&lt;/p&gt;
-&lt;p&gt;输入一个需要的时间，即音乐的时长。而后看到这个音乐已经被修改了时长了。例如这里设置为10秒钟，则输入10即可。&lt;/p&gt;
-&lt;p&gt;然后点击菜单栏上的文件转换，选择创建ACC版本。&lt;/p&gt;
-&lt;p&gt;这个时候看到在原来的名字下面多个版本，就是创建后的文件，把文件拖到桌面。接着桌面多个剪切后的音频文件了。一个音频文件至此就剪切剪辑完毕了。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;a href=&quot;#需使用Mac电脑上的itunes进行设置。&quot; class=&quot;headerlink&quot; title=&quot;需使用Mac电脑上的itunes进行设置。&quot;&gt;&lt;/a&gt;需使用Mac电脑上的itunes进行设置。&lt;/
-    
-    </summary>
-    
-      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
     
   </entry>
   
