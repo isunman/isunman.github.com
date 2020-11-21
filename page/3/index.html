@@ -244,6 +244,187 @@
             
               
                 
+                <a class="post-title-link" href="/2018/09/11/architecture-design-and-algorithm-implementation-of-wechat-luckymoney/" itemprop="url">
+                  微信红包的架构设计与算法实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-11T18:39:00+08:00" content="2018-09-11">
+              2018-09-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="微信红包的架构设计简介"><a href="#微信红包的架构设计简介" class="headerlink" title="微信红包的架构设计简介"></a>微信红包的架构设计简介</h3><p>概况：2014年微信红包使用数据库硬抗整个流量，2015年使用cache抗流量。</p>
+<h5 id="微信的金额什么时候算？"><a href="#微信的金额什么时候算？" class="headerlink" title="微信的金额什么时候算？"></a>微信的金额什么时候算？</h5><p>答：微信金额是拆的时候实时算出来，不是预先分配的，采用的是纯内存计算，不需要预算空间存储。。<br>采取实时计算金额的考虑：预算需要占存储，实时效率很高，预算才效率低。</p>
+<h5 id="实时性：为什么明明抢到红包，点开后发现没有？"><a href="#实时性：为什么明明抢到红包，点开后发现没有？" class="headerlink" title="实时性：为什么明明抢到红包，点开后发现没有？"></a>实时性：为什么明明抢到红包，点开后发现没有？</h5><p>答：2014年的红包一点开就知道金额，分两次操作，先抢到金额，然后再转账。<br>2015年的红包的拆和抢是分离的，需要点两次，因此会出现抢到红包了，但点开后告知红包已经被领完的状况。进入到第一个页面不代表抢到，只表示当时红包还有。</p>
+<h5 id="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"><a href="#分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？" class="headerlink" title="分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？"></a>分配：红包里的金额怎么算？为什么出现各个红包金额相差很大？</h5><p>答：随机，额度在0.01和剩余平均值×2之间。<br>例如：发100块钱，总共10个红包，那么平均值是10块钱一个，那么发出来的红包的额度在0.01元～20元之间波动。<br>当前面3个红包总共被领了40块钱时，剩下60块钱，总共7个红包，那么这7个红包的额度在：0.01～（60/7×2）=17.14之间。<br>注意：这里的算法是每被抢一个后，剩下的会再次执行上面的这样的算法（Tim老师也觉得上述算法太复杂，不知基于什么样的考虑）。</p>
+<p>这样算下去，会超过最开始的全部金额，因此到了最后面如果不够这么算，那么会采取如下算法：保证剩余用户能拿到最低1分钱即可。</p>
+<p>如果前面的人手气不好，那么后面的余额越多，红包额度也就越多，因此实际概率一样的。</p>
+<h5 id="红包的设计"><a href="#红包的设计" class="headerlink" title="红包的设计"></a>红包的设计</h5><p>答：微信从财付通拉取金额数据郭莱，生成个数/红包类型/金额放到redis集群里，app端将红包ID的请求放入请求队列中，如果发现超过红包的个数，直接返回。根据红包的裸祭处理成功得到令牌请求，则由财付通进行一致性调用，通过像比特币一样，两边保存交易记录，交易后交给第三方服务审计，如果交易过程中出现不一致就强制回归。</p>
+<h5 id="发性处理：红包如何计算被抢完？"><a href="#发性处理：红包如何计算被抢完？" class="headerlink" title="发性处理：红包如何计算被抢完？"></a>发性处理：红包如何计算被抢完？</h5><p>答：cache会抵抗无效请求，将无效的请求过滤掉，实际进入到后台的量不大。cache记录红包个数，原子操作进行个数递减，到0表示被抢光。财付通按照20万笔每秒入账准备，但实际还不到8万每秒。</p>
+<h5 id="通如何保持8w每秒的写入？"><a href="#通如何保持8w每秒的写入？" class="headerlink" title="通如何保持8w每秒的写入？"></a>通如何保持8w每秒的写入？</h5><p>答：多主sharding，水平扩展机器。</p>
+<h5 id="数据容量多少？"><a href="#数据容量多少？" class="headerlink" title="数据容量多少？"></a>数据容量多少？</h5><p>答：一个红包只占一条记录，有效期只有几天，因此不需要太多空间。</p>
+<h5 id="查询红包分配，压力大不？"><a href="#查询红包分配，压力大不？" class="headerlink" title="查询红包分配，压力大不？"></a>查询红包分配，压力大不？</h5><p>答：抢到红包的人数和红包都在一条cache记录上，没有太大的查询压力。</p>
+<h5 id="一个红包一个队列？"><a href="#一个红包一个队列？" class="headerlink" title="一个红包一个队列？"></a>一个红包一个队列？</h5><p>答：没有队列，一个红包一条数据，数据上有一个计数器字段。</p>
+<h5 id="有没有从数据上证明每个红包的概率是不是均等？"><a href="#有没有从数据上证明每个红包的概率是不是均等？" class="headerlink" title="有没有从数据上证明每个红包的概率是不是均等？"></a>有没有从数据上证明每个红包的概率是不是均等？</h5><p>答：不是绝对均等，就是一个简单的拍脑袋算法。</p>
+<h5 id="拍脑袋算法，会不会出现两个最佳？"><a href="#拍脑袋算法，会不会出现两个最佳？" class="headerlink" title="拍脑袋算法，会不会出现两个最佳？"></a>拍脑袋算法，会不会出现两个最佳？</h5><p>答：会出现金额一样的，但是手气最佳只有一个，先抢到的那个最佳。</p>
+<h5 id="每领一个红包就更新数据么？"><a href="#每领一个红包就更新数据么？" class="headerlink" title="每领一个红包就更新数据么？"></a>每领一个红包就更新数据么？</h5><p>答：每抢到一个红包，就cas更新剩余金额和红包个数。</p>
+<h5 id="红包如何入库入账？"><a href="#红包如何入库入账？" class="headerlink" title="红包如何入库入账？"></a>红包如何入库入账？</h5><p>数据库会累加已经领取的个数与金额，插入一条领取记录。入账则是后台异步操作。</p>
+<h5 id="入帐出错怎么办？比如红包个数没了，但余额还有？"><a href="#入帐出错怎么办？比如红包个数没了，但余额还有？" class="headerlink" title="入帐出错怎么办？比如红包个数没了，但余额还有？"></a>入帐出错怎么办？比如红包个数没了，但余额还有？</h5><p>答：最后会有一个take all操作。另外还有一个对账来保障。</p>
+<h3 id="算法实现java版"><a href="#算法实现java版" class="headerlink" title="算法实现java版"></a>算法实现java版</h3><p>算法很简单，不是提前算好，而是抢红包时计算</p>
+<pre><code>public static double getRandomMoney(RedPackage _redPackage) {
+// remainSize 剩余的红包数量
+// remainMoney 剩余的钱
+if (_redPackage.remainSize == 1) {
+    _redPackage.remainSize--;
+    return (double) Math.round(_redPackage.remainMoney * 100) / 100;
+}
+Random r     = new Random();
+double min   = 0.01; //
+double max   = _redPackage.remainMoney / _redPackage.remainSize * 2;
+double money = r.nextDouble() * max;
+money = money &lt;= min ? 0.01: money;
+money = Math.floor(money * 100) / 100;
+_redPackage.remainSize--;
+_redPackage.remainMoney -= money;
+return money;
+}
+</code></pre><p><code>LeftMoneyPackage</code>数据结构如下：</p>
+<pre><code>class RedPackage {
+int    remainSize;
+double remainMoney;
+}
+</code></pre><p>测试时初始化相关数据是：</p>
+<pre><code>static void init() {
+redPackage.remainSize  = 20;
+redPackage.remainMoney = 200;
+}
+</code></pre><h3 id="算法实现PHP版"><a href="#算法实现PHP版" class="headerlink" title="算法实现PHP版"></a>算法实现PHP版</h3><p>关键就是定义核心函数</p>
+<pre><code>function getrandommoney($remainmoney,$remainpacket,$moneymax = 0){
+if($remainpacket &lt; 1 || $remainmoney &lt;= 0){
+    return 0;
+}
+if($remainpacket == 1){
+    return     $remainmoney;
+}
+
+$min = 1;//注意倍数
+$max = $remainmoney / $remainpacket * 2;
+$money = rand($min,$max) ;
+$money = $money &lt;= $min ? $min : $money;
+//每一次领取时的最大值
+if($moneymax &amp;&amp; $money &gt; $moneymax){
+    $money = $moneymax;
+}
+
+return $money;
+}
+</code></pre><p>函数调用</p>
+<pre><code>$lmremainingtotal = 200.00;//总金额
+$lmremainingtimes = 20;//总个数
+$lmmoneymax = 0;
+$lmremainingtotaltemp = $lmremainingtotal * 100;
+$getonelm = getrandommoney($lmremainingtotaltemp,$lmremainingtimes);
+$getonelm = round($getonelm/100,2);    
+echo $getonelm;
+</code></pre><p>说明：</p>
+<p>1、注意函数内部实现时使用的整数，传参进去时需要扩大100倍，最后得到的本次随机数需要在缩小至1%。</p>
+<p>2、增加了每一次调用的随机最大数限额这个参数，默认为0表示不限。</p>
+<p>3、更改剩余的红包总额度与红包个数，是在函数外实现的（必须步骤）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上述方法都是每次计算一个红包的额度。如果需要一次性计算所有的红包，并分配完成，则需要循环执行。注意数据并发量的大小。</p>
+<p>　　</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/09/08/customize-your-iPhones-ringtone/" itemprop="url">
                   自定义iPhone的铃声
                 </a>
@@ -1377,137 +1558,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/25/Discuz-has-a-solution-that-prompts-no-legal-files-are-uploaded-due-to-high-image-resolution/" itemprop="url">
-                  Discuz因图片分辨率过高造成提示“没有合法的文件被上传”的解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-25T13:00:00+08:00" content="2018-05-25">
-              2018-05-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的php配置。用相机拍的照片的分辨率是特别高的，分辨率达到3000*5000px以上级别，这么高的图片的品质肯定是杠杠的，但在网页上面来讲确实太大了，因为我们普通的网页也用不着展示这么高清这么大的图片。我觉得原因有二：一是因为我们普通的网页确实不需要这么大的；二是这么大的图片通常有好几兆甚至十几兆大小，这样页面的加载速度回很慢的。</p>
-<p>我们在Discuz中遇到一个问题，那就是上传某些图片的时候提示“没有合法的文件被上传”，而不是说您上传的文件太大了。想到不合法通常会想到的是图片的格式不对，不是普通的jpg或者png之类的，而是其他的非主流的图片格式。但不管把这样的图片转变成png还是jpg都不能上传，但吧图片一缩小却是可以上传的。这样不就是因为文件大小的问题么？（越大一般来讲文件体积也越大）。但检查后发现文件体积并没有超过网站限制以及对应服务器的</p>
-<h3 id="php配置"><a href="#php配置" class="headerlink" title="php配置"></a>php配置</h3><pre><code>function get_image_info($target, $allowswf = false) {
-    $ext = discuz_upload::fileext($target);
-    $isimage = discuz_upload::is_image_ext($ext);
-    if(!$isimage &amp;&amp; ($ext != &apos;swf&apos; || !$allowswf)) {
-        return false;
-    } elseif(!is_readable($target)) {
-        return false;
-    } elseif($imageinfo = @getimagesize($target)) {
-        list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(&apos;&apos;, &apos;&apos;, &apos;&apos;);
-        $size = $width * $height;
-        if($size &gt; 16777216 || $size &lt; 16 ) {
-            return false;
-        } elseif($ext == &apos;swf&apos; &amp;&amp; $type != 4 &amp;&amp; $type != 13) {
-            return false;
-        } elseif($isimage &amp;&amp; !in_array($type, array(1,2,3,6,13))) {
-            return false;
-        } elseif(!$allowswf &amp;&amp; ($ext == &apos;swf&apos; || $type == 4 || $type == 13)) {
-            return false;
-        }
-        return $imageinfo;
-    } else {
-        return false;
-    }
-}
-</code></pre><p>这个方法就是获取图片的信息，而返回的值就是真或者假，而为假的时候就提示非法，为真的时候验证通过，上传流程正常执行。而其中就有一个$size变量，它的值是通过获取图片的长宽，然后长宽乘积得到，默认是16777216，开根之后是4096，也就是超过4096×4096px的图片就会之前的报错。而开始的时候我们上传的是5000*4000=2000000，这个值是大于设定的临界的，于是就返回flase。</p>
-<p><a href="http://www.muquan.net/article/390.html" target="_blank" rel="external">原文链接</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1554,7 +1604,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
