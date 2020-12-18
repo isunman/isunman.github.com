@@ -244,6 +244,130 @@
             
               
                 
+                <a class="post-title-link" href="/2020/12/18/win7-apache-suddenly-failed-to-start/" itemprop="url">
+                  win7下Apache突然启动失败
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-12-18T12:45:00+08:00" content="2020-12-18">
+              2020-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>win7下Apache突然启动失败</p>
+<p>前段时间有一次重启了电脑（win7）之后，发现Apache服务并未随系统自动启动，结果在手动启动的时候也无法启动。</p>
+<p>报错为：</p>
+<blockquote>
+<p>Windows 不能在本地计算机启动apache2.4。有关更多信息，查阅系统事件日志。如果这是非Microsoft服务，请与服务厂商联系，并参考特定服务错误代码1。</p>
+</blockquote>
+<p>分析后发现最大可能是80端口被占用，于是win+r 运行cmd</p>
+<p>输入<code>netstat -ano</code></p>
+<p>可以看到80端口被PID4占用，于是打开任务管理器-进程-查看，选择列，勾选PID</p>
+<p>可以看到pid 4 的被NT kernel &amp; System 占用</p>
+<p>该进程是Http.sys。它是http API的驱动组件，Http栈服务器。如果该端口被Http.sys占用，说明一些正在使用http.sys的应用程序在运行。这就是阻止Apache运行的原因，因为Http.sys占用着80端口。我们提供了一种应用程序的机制来帮助控制端口共享，但是我需要调查导致你遇到这种困难的是什么特殊应用程序。如果你能提供给我们“netsh http show servicestate”这条命令的输出结果，我就能找出是哪个应用程序在使用Http.sys。</p>
+<p>你可以按照下面步骤禁用http.sys：</p>
+<p>第一步： net stop http</p>
+<p>第二步：Sc config http start= disabled</p>
+<p>【正式操作步骤】</p>
+<p>于是运行<code>net stop http</code></p>
+<p>按“Y”确定</p>
+<p>再运行 <code>Sc config http start= disabled</code></p>
+<p>好了，现在启动Apache，发现可以正常启动了。</p>
+<p>再查看一下netstat -ano</p>
+<p>发现pid 4占用了445端口（不再是80端口）。
+　　</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2020/11/22/summary-of-server-migration-issues-for-the-project/" itemprop="url">
                   项目的服务器迁移的问题的总结
                 </a>
@@ -1419,145 +1543,6 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/05/10/the-nginx-accesslog-file-is-too-large-to-clean-up/" itemprop="url">
-                  Nginx access.log文件太大，自动释放清理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-05-10T18:30:00+08:00" content="2020-05-10">
-              2020-05-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Nginx access.log文件太大，自动释放清理</p>
-<p>Nginx在涉及大流量时，会发生非常庞大的日志文件，包含access.log和error.log，日志会随着连接不断增加，到无限大。如果日志文件太大，会导致Nginx运行缓慢，卡顿，也是存储资源的浪费。</p>
-<p>该文件为nginx的访问日志文件可以删除,删除后nginx启动还会产生<br>如果要关闭日志功能,在nginx配置文件中找到access_log一行,改为access_log off;</p>
-<h3 id="手动释放清理Nginx日志文件access-log"><a href="#手动释放清理Nginx日志文件access-log" class="headerlink" title="手动释放清理Nginx日志文件access.log"></a>手动释放清理Nginx日志文件access.log</h3><p>查看并查找相关信息及路径</p>
-<pre><code># 查看空间占用
-$ df -h
-
-# 定位Nginx
-$ which nginx
-/usr/local/nginx/logs
-
-# 列出日志文件
-$ cd /usr/local/nginx/logs
-ls
-
-# 查看日志文件大小
-$ du -sh ./*
-
-# 暂停Nginx并删除日志文件
-# nginx -s stop
-rm -rf *.log
-</code></pre><p>这里需要注意的是，看到网上有人说重启Nginx可以清除日志文件，这是错误的。重启并不会清空日志文件，你需要手动清理。</p>
-<p>另外，你也可以使用覆盖日志的方法清理Nginx日志文件</p>
-<pre><code>echo &quot;&quot; &gt; /usr/local/nginx/access.log
-</code></pre><p>如果不需要日志文件就直接关闭（不建议），nginx.conf</p>
-<pre><code>access_log off; 
-</code></pre><h3 id="对Nginx-access-log进行分割"><a href="#对Nginx-access-log进行分割" class="headerlink" title="对Nginx access.log进行分割"></a>对Nginx access.log进行分割</h3><p>通过shell脚本+linux的定时任务进行的一个平滑切分。不需要重启nginx进程。代码cut_logs.sh</p>
-<pre><code>#!/bin/bash
-log_path=/usr/local/nginx/logs/access.log
-save_path=/usr/local/nginx/logs/bak/access_$(date +%Y%m%d -d &apos;yesterday&apos;).log
-cp $log_path $save_path &amp;&amp; echo &gt; $log_path
-</code></pre><p>设置定时任务</p>
-<pre><code>$ crontab -e
-#输入
-0 0  * * * /usr/bin/sh cut_logs.sh #每天的00:00执行日志切分
-
-$ crontab -l #查看定时任务是否添加成功
-</code></pre>
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1604,7 +1589,7 @@ $ crontab -l #查看定时任务是否添加成功
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

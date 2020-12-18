@@ -244,6 +244,145 @@
             
               
                 
+                <a class="post-title-link" href="/2020/05/10/the-nginx-accesslog-file-is-too-large-to-clean-up/" itemprop="url">
+                  Nginx access.log文件太大，自动释放清理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-10T18:30:00+08:00" content="2020-05-10">
+              2020-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Nginx access.log文件太大，自动释放清理</p>
+<p>Nginx在涉及大流量时，会发生非常庞大的日志文件，包含access.log和error.log，日志会随着连接不断增加，到无限大。如果日志文件太大，会导致Nginx运行缓慢，卡顿，也是存储资源的浪费。</p>
+<p>该文件为nginx的访问日志文件可以删除,删除后nginx启动还会产生<br>如果要关闭日志功能,在nginx配置文件中找到access_log一行,改为access_log off;</p>
+<h3 id="手动释放清理Nginx日志文件access-log"><a href="#手动释放清理Nginx日志文件access-log" class="headerlink" title="手动释放清理Nginx日志文件access.log"></a>手动释放清理Nginx日志文件access.log</h3><p>查看并查找相关信息及路径</p>
+<pre><code># 查看空间占用
+$ df -h
+
+# 定位Nginx
+$ which nginx
+/usr/local/nginx/logs
+
+# 列出日志文件
+$ cd /usr/local/nginx/logs
+ls
+
+# 查看日志文件大小
+$ du -sh ./*
+
+# 暂停Nginx并删除日志文件
+# nginx -s stop
+rm -rf *.log
+</code></pre><p>这里需要注意的是，看到网上有人说重启Nginx可以清除日志文件，这是错误的。重启并不会清空日志文件，你需要手动清理。</p>
+<p>另外，你也可以使用覆盖日志的方法清理Nginx日志文件</p>
+<pre><code>echo &quot;&quot; &gt; /usr/local/nginx/access.log
+</code></pre><p>如果不需要日志文件就直接关闭（不建议），nginx.conf</p>
+<pre><code>access_log off; 
+</code></pre><h3 id="对Nginx-access-log进行分割"><a href="#对Nginx-access-log进行分割" class="headerlink" title="对Nginx access.log进行分割"></a>对Nginx access.log进行分割</h3><p>通过shell脚本+linux的定时任务进行的一个平滑切分。不需要重启nginx进程。代码cut_logs.sh</p>
+<pre><code>#!/bin/bash
+log_path=/usr/local/nginx/logs/access.log
+save_path=/usr/local/nginx/logs/bak/access_$(date +%Y%m%d -d &apos;yesterday&apos;).log
+cp $log_path $save_path &amp;&amp; echo &gt; $log_path
+</code></pre><p>设置定时任务</p>
+<pre><code>$ crontab -e
+#输入
+0 0  * * * /usr/bin/sh cut_logs.sh #每天的00:00执行日志切分
+
+$ crontab -l #查看定时任务是否添加成功
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2020/03/25/liang-ning-speech-practice-in-the-product/" itemprop="url">
                   梁宁演讲：在产品里修行
                 </a>
@@ -1759,137 +1898,6 @@ array (size=3)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/10/17/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/" itemprop="url">
-                  爬虫获取知乎网页title的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-10-17T16:01:00+08:00" content="2018-10-17">
-              2018-10-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>知乎的网页标题title的提取一直有各种问题。可能是知乎自己做了防止被爬虫抓取的。普通的问题详情页和知乎专栏，都提取不到网页title，或者提取到了错误的title。</p>
-<p>本文记录了实际可用的方法，分别提取知乎问题详情页的title与知乎专栏页的title和封面图片的提取方法。</p>
-<h2 id="知乎问题详情页的title提取"><a href="#知乎问题详情页的title提取" class="headerlink" title="知乎问题详情页的title提取"></a>知乎问题详情页的title提取</h2><p>首先看一下源代码</p>
-<pre><code>&lt;title&gt;你必讲的笑话是哪个？ - 知乎&lt;/title&gt;&lt;title&gt;知乎 - 有问题上知乎&lt;/title&gt;
-</code></pre><p>中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。</p>
-<p>再继续向下面寻找，看到这么一段：<br>    <code>&lt;h1 class=&quot;QuestionHeader-title&quot;&gt;你必讲的笑话是哪个？&lt;/h1&gt;</code></p>
-<p>直接使用正则匹配即可，正则匹配规则为：</p>
-<pre><code>&lt;h1\sclass=\&quot;QuestionHeader-title\&quot;&gt;([\s\S]+?)&lt;\/h1&gt;
-</code></pre><h2 id="知乎专栏文章页的title提取与封面图片提取"><a href="#知乎专栏文章页的title提取与封面图片提取" class="headerlink" title="知乎专栏文章页的title提取与封面图片提取"></a>知乎专栏文章页的title提取与封面图片提取</h2><p>首先看一下源代码</p>
-<pre><code>&lt;title&gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？ - 知乎&lt;/title&gt;&lt;title&gt;知乎 - 有问题上知乎&lt;/title&gt;
-</code></pre><p>中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。</p>
-<p>再继续向下面寻找，看到这么一段：<br>    <code>&lt;header class=&quot;Post-Header&quot;&gt;&lt;h1 class=&quot;Post-Title&quot;&gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？&lt;/h1&gt;</code></p>
-<p>使用正则匹配也匹配不到。可能是因为知乎专栏页的数据是使用js加载的，网页源代码初始代码中不含有这些数据。</p>
-<p>稍微看看知乎专栏网页代码可以发现，如果在浏览器中访问类似这样的专栏文章链接：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/42557513" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/42557513</a></p>
-<p>实际会加载下面的文章内容数据 API 链接，知乎专栏页面加载完数据之后才会显示：</p>
-<p><a href="https://zhuanlan.zhihu.com/api/posts/42557513" target="_blank" rel="external">https://zhuanlan.zhihu.com/api/posts/42557513</a></p>
-<p>而且返回的数据就是json格式的，可以直接转换为PHP数组，然后根据数组的key值，直接获取需要的字段，然后即可使用。</p>
-<h2 id="扩展其他知乎相关页的爬虫抓取"><a href="#扩展其他知乎相关页的爬虫抓取" class="headerlink" title="扩展其他知乎相关页的爬虫抓取"></a>扩展其他知乎相关页的爬虫抓取</h2><p>后面的参考链接中里面有一句话说的好：</p>
-<p>不管AngularJS还是其它架构，都是服务端的东西，再天花乱坠的服务端架构，到了客户端终究逃不脱HTTP协议，至少目前来说还是如此。</p>
-<p>知道用户ID之后可以相机获取：</p>
-<ol>
-<li>获得用户专栏入口</li>
-<li>获得专栏文章信息</li>
-<li>获得专栏文章</li>
-</ol>
-<p>参考链接：<a href="如何用爬虫爬去知乎专栏信息">https://www.zhihu.com/question/24948369/answer/29611724</a></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>使用以上各种方法，基本可以解决与知乎相关内容的爬虫爬取相关的问题。</p>
-<p>另一篇参考文章：<a href="https://www.300168.com/biancheng/show-21974.html" target="_blank" rel="external">简单PHP实现Pocket抓取知乎专栏文章</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1936,7 +1944,7 @@ array (size=3)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

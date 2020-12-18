@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-11-23T18:22:42.127Z</updated>
+  <updated>2020-12-18T04:48:03.379Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win7下Apache突然启动失败</title>
+    <link href="http://isunman.com/2020/12/18/win7-apache-suddenly-failed-to-start/"/>
+    <id>http://isunman.com/2020/12/18/win7-apache-suddenly-failed-to-start/</id>
+    <published>2020-12-18T04:45:00.000Z</published>
+    <updated>2020-12-18T04:48:03.379Z</updated>
+    
+    <content type="html">&lt;p&gt;win7下Apache突然启动失败&lt;/p&gt;
+&lt;p&gt;前段时间有一次重启了电脑（win7）之后，发现Apache服务并未随系统自动启动，结果在手动启动的时候也无法启动。&lt;/p&gt;
+&lt;p&gt;报错为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Windows 不能在本地计算机启动apache2.4。有关更多信息，查阅系统事件日志。如果这是非Microsoft服务，请与服务厂商联系，并参考特定服务错误代码1。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;分析后发现最大可能是80端口被占用，于是win+r 运行cmd&lt;/p&gt;
+&lt;p&gt;输入&lt;code&gt;netstat -ano&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以看到80端口被PID4占用，于是打开任务管理器-进程-查看，选择列，勾选PID&lt;/p&gt;
+&lt;p&gt;可以看到pid 4 的被NT kernel &amp;amp; System 占用&lt;/p&gt;
+&lt;p&gt;该进程是Http.sys。它是http API的驱动组件，Http栈服务器。如果该端口被Http.sys占用，说明一些正在使用http.sys的应用程序在运行。这就是阻止Apache运行的原因，因为Http.sys占用着80端口。我们提供了一种应用程序的机制来帮助控制端口共享，但是我需要调查导致你遇到这种困难的是什么特殊应用程序。如果你能提供给我们“netsh http show servicestate”这条命令的输出结果，我就能找出是哪个应用程序在使用Http.sys。&lt;/p&gt;
+&lt;p&gt;你可以按照下面步骤禁用http.sys：&lt;/p&gt;
+&lt;p&gt;第一步： net stop http&lt;/p&gt;
+&lt;p&gt;第二步：Sc config http start= disabled&lt;/p&gt;
+&lt;p&gt;【正式操作步骤】&lt;/p&gt;
+&lt;p&gt;于是运行&lt;code&gt;net stop http&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;按“Y”确定&lt;/p&gt;
+&lt;p&gt;再运行 &lt;code&gt;Sc config http start= disabled&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;好了，现在启动Apache，发现可以正常启动了。&lt;/p&gt;
+&lt;p&gt;再查看一下netstat -ano&lt;/p&gt;
+&lt;p&gt;发现pid 4占用了445端口（不再是80端口）。
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;win7下Apache突然启动失败&lt;/p&gt;
+&lt;p&gt;前段时间有一次重启了电脑（win7）之后，发现Apache服务并未随系统自动启动，结果在手动启动的时候也无法启动。&lt;/p&gt;
+&lt;p&gt;报错为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Windows 不能在本地计算机启动apac
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="wamp" scheme="http://isunman.com/tags/wamp/"/>
+    
+  </entry>
   
   <entry>
     <title>项目的服务器迁移的问题的总结</title>
@@ -1422,62 +1470,6 @@ array (size=3)
     
     
       <category term="PHP" scheme="http://isunman.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫获取知乎网页title的方法</title>
-    <link href="http://isunman.com/2018/10/17/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/"/>
-    <id>http://isunman.com/2018/10/17/The-method-for-crawler-to-get-the-web-page-title-of-zhihu/</id>
-    <published>2018-10-17T08:01:00.000Z</published>
-    <updated>2020-05-10T11:34:30.377Z</updated>
-    
-    <content type="html">&lt;p&gt;知乎的网页标题title的提取一直有各种问题。可能是知乎自己做了防止被爬虫抓取的。普通的问题详情页和知乎专栏，都提取不到网页title，或者提取到了错误的title。&lt;/p&gt;
-&lt;p&gt;本文记录了实际可用的方法，分别提取知乎问题详情页的title与知乎专栏页的title和封面图片的提取方法。&lt;/p&gt;
-&lt;h2 id=&quot;知乎问题详情页的title提取&quot;&gt;&lt;a href=&quot;#知乎问题详情页的title提取&quot; class=&quot;headerlink&quot; title=&quot;知乎问题详情页的title提取&quot;&gt;&lt;/a&gt;知乎问题详情页的title提取&lt;/h2&gt;&lt;p&gt;首先看一下源代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;你必讲的笑话是哪个？ - 知乎&amp;lt;/title&amp;gt;&amp;lt;title&amp;gt;知乎 - 有问题上知乎&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。&lt;/p&gt;
-&lt;p&gt;再继续向下面寻找，看到这么一段：&lt;br&gt;    &lt;code&gt;&amp;lt;h1 class=&amp;quot;QuestionHeader-title&amp;quot;&amp;gt;你必讲的笑话是哪个？&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;直接使用正则匹配即可，正则匹配规则为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;h1\sclass=\&amp;quot;QuestionHeader-title\&amp;quot;&amp;gt;([\s\S]+?)&amp;lt;\/h1&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;知乎专栏文章页的title提取与封面图片提取&quot;&gt;&lt;a href=&quot;#知乎专栏文章页的title提取与封面图片提取&quot; class=&quot;headerlink&quot; title=&quot;知乎专栏文章页的title提取与封面图片提取&quot;&gt;&lt;/a&gt;知乎专栏文章页的title提取与封面图片提取&lt;/h2&gt;&lt;p&gt;首先看一下源代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？ - 知乎&amp;lt;/title&amp;gt;&amp;lt;title&amp;gt;知乎 - 有问题上知乎&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中间部分源代码省略了。其中有2个title，直接使用正则匹配时，只能匹配到第2个title——“知乎 - 有问题上知乎”，所有页都是这个。&lt;/p&gt;
-&lt;p&gt;再继续向下面寻找，看到这么一段：&lt;br&gt;    &lt;code&gt;&amp;lt;header class=&amp;quot;Post-Header&amp;quot;&amp;gt;&amp;lt;h1 class=&amp;quot;Post-Title&amp;quot;&amp;gt;智能闹钟音箱能给自己的商业世界打开一扇窗吗？&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用正则匹配也匹配不到。可能是因为知乎专栏页的数据是使用js加载的，网页源代码初始代码中不含有这些数据。&lt;/p&gt;
-&lt;p&gt;稍微看看知乎专栏网页代码可以发现，如果在浏览器中访问类似这样的专栏文章链接：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/42557513&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zhuanlan.zhihu.com/p/42557513&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;实际会加载下面的文章内容数据 API 链接，知乎专栏页面加载完数据之后才会显示：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/api/posts/42557513&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zhuanlan.zhihu.com/api/posts/42557513&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;而且返回的数据就是json格式的，可以直接转换为PHP数组，然后根据数组的key值，直接获取需要的字段，然后即可使用。&lt;/p&gt;
-&lt;h2 id=&quot;扩展其他知乎相关页的爬虫抓取&quot;&gt;&lt;a href=&quot;#扩展其他知乎相关页的爬虫抓取&quot; class=&quot;headerlink&quot; title=&quot;扩展其他知乎相关页的爬虫抓取&quot;&gt;&lt;/a&gt;扩展其他知乎相关页的爬虫抓取&lt;/h2&gt;&lt;p&gt;后面的参考链接中里面有一句话说的好：&lt;/p&gt;
-&lt;p&gt;不管AngularJS还是其它架构，都是服务端的东西，再天花乱坠的服务端架构，到了客户端终究逃不脱HTTP协议，至少目前来说还是如此。&lt;/p&gt;
-&lt;p&gt;知道用户ID之后可以相机获取：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;获得用户专栏入口&lt;/li&gt;
-&lt;li&gt;获得专栏文章信息&lt;/li&gt;
-&lt;li&gt;获得专栏文章&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;参考链接：&lt;a href=&quot;如何用爬虫爬去知乎专栏信息&quot;&gt;https://www.zhihu.com/question/24948369/answer/29611724&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h2&gt;&lt;p&gt;使用以上各种方法，基本可以解决与知乎相关内容的爬虫爬取相关的问题。&lt;/p&gt;
-&lt;p&gt;另一篇参考文章：&lt;a href=&quot;https://www.300168.com/biancheng/show-21974.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;简单PHP实现Pocket抓取知乎专栏文章&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;知乎的网页标题title的提取一直有各种问题。可能是知乎自己做了防止被爬虫抓取的。普通的问题详情页和知乎专栏，都提取不到网页title，或者提取到了错误的title。&lt;/p&gt;
-&lt;p&gt;本文记录了实际可用的方法，分别提取知乎问题详情页的title与知乎专栏页的title和封面图
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
-    
-      <category term="正则表达式" scheme="http://isunman.com/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-      <category term="爬虫" scheme="http://isunman.com/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
