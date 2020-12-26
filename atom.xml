@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-12-18T04:48:03.379Z</updated>
+  <updated>2020-12-26T04:56:25.717Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP fsockopen 异步调用接口在nginx上偶尔实效的情况</title>
+    <link href="http://isunman.com/2020/12/26/php-function-psockopen-asynchronous-call-interface-is-occasionally-useful-on-nginx/"/>
+    <id>http://isunman.com/2020/12/26/php-function-psockopen-asynchronous-call-interface-is-occasionally-useful-on-nginx/</id>
+    <published>2020-12-26T04:55:00.000Z</published>
+    <updated>2020-12-26T04:56:25.717Z</updated>
+    
+    <content type="html">&lt;p&gt;在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private function fsock_asy_do($get){
+    $fp = fsockopen(&amp;quot;ssl://www.xxx.com&amp;quot;, 443, $errno, $errstr, 30);
+    if (!$fp) {
+        echo &amp;quot;$errstr ($errno)&amp;lt;br /&amp;gt;\n&amp;quot;;
+    } else {
+        stream_set_blocking($fp,0);//开启非阻塞模式
+        $out = &amp;quot;GET /&amp;quot;.$get.&amp;quot; HTTP/1.1\r\n&amp;quot;;
+        $out .= &amp;quot;Host: www.xxxx.com\r\n&amp;quot;;
+        $out .= &amp;quot;Connection: Close\r\n\r\n&amp;quot;;
+
+        fwrite($fp, $out);
+        /*忽略执行结果
+        while (!feof($fp)) {
+            echo fgets($fp, 128);
+        }*/
+        usleep(1000);
+        fclose($fp);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在nginx服务器上有一个比较诡异的情况就是有时候无法调用异步的脚本。&lt;/p&gt;
+&lt;p&gt;查阅相关资料后，是nginx 499 的问题。&lt;/p&gt;
+&lt;p&gt;其中解决方案有以下，经过对每一个方案的验证最终得出结果：&lt;/p&gt;
+&lt;h3 id=&quot;1、NGINX-499&quot;&gt;&lt;a href=&quot;#1、NGINX-499&quot; class=&quot;headerlink&quot; title=&quot;1、NGINX 499&quot;&gt;&lt;/a&gt;1、NGINX 499&lt;/h3&gt;&lt;p&gt;查看 NGINX access log，发现这样的请求会以 499（Client Closed Request）记录。确定问题是因为：客户端主动端口请求连接时，NGINX 不会将该请求代理给上游服务（FastCGI PHP 进程），这个时候 access log 中会以 499 记录这个请求。&lt;/p&gt;
+&lt;p&gt;要解决这个问题需要将 NGINX FastCGI 忽略客户端中断配置打开：&lt;/p&gt;
+&lt;p&gt;fastcgi_ignore_client_abort on;&lt;br&gt;这样无论客户端是否断开，都会将这个请求代理给上游，并且会记录上游服务处理后的返回状态。&lt;/p&gt;
+&lt;h3 id=&quot;2、NGINX-线程原因&quot;&gt;&lt;a href=&quot;#2、NGINX-线程原因&quot; class=&quot;headerlink&quot; title=&quot;2、NGINX 线程原因&quot;&gt;&lt;/a&gt;2、NGINX 线程原因&lt;/h3&gt;&lt;p&gt;将nginx的worker_processes 由之前的auto修改为2（我的是单核服务器）&lt;/p&gt;
+&lt;h3 id=&quot;3、NGINX-499&quot;&gt;&lt;a href=&quot;#3、NGINX-499&quot; class=&quot;headerlink&quot; title=&quot;3、NGINX 499&quot;&gt;&lt;/a&gt;3、NGINX 499&lt;/h3&gt;&lt;p&gt;nginx对499的定义是”client has closed connection”，并且在这些情况下会返回这个状态码：&lt;/p&gt;
+&lt;p&gt;upstream 在收到读写事件处理之前时发现连接不可用。&lt;br&gt;server处理请求未结束，而client提前关闭了连接。&lt;br&gt;upstream出错，执行next_upstream时发现连接不可用。&lt;br&gt;一个不安全的做法是在fclose之前，让当前的进程先睡眠一段时间；我这里设置为10毫秒，这10毫秒的延迟对我完成整个请求的影响不大，同时我也认为nginx一定能在10毫米内把请求转到fastcgi去执行。这个时间间隔很难把握，不能保证php一定有执行到。&lt;/p&gt;
+&lt;p&gt;这种方式并不是真正的异步，只是很取巧的强制关闭连接而不等待服务器端响应。所以在Laruence的那2篇文章中，有2个问题：&lt;/p&gt;
+&lt;p&gt;①PHP使用fsock不能叫做异步，只是伪异步。&lt;/p&gt;
+&lt;p&gt;②fwrite之后马上执行fclose，nginx会直接返回499&lt;/p&gt;
+&lt;p&gt;由于我的代码上面usleep为1000，初步估计是时间不够导致没发出去就close了，所以调整为20000。并进行最后测试。&lt;br&gt;测试2天结果显示正常，的确是usleep数值过小的问题。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private function fsock_asy_do($get){
+    $fp = fsockopen(&amp;quot;ssl://www.xxx.com&amp;quot;
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
+    
+  </entry>
   
   <entry>
     <title>win7下Apache突然启动失败</title>
@@ -1407,69 +1466,6 @@ function checkId($id) {
     
     
       <category term="音乐" scheme="http://isunman.com/tags/%E9%9F%B3%E4%B9%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>对多维数组进行排序的函数array_multisort</title>
-    <link href="http://isunman.com/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/"/>
-    <id>http://isunman.com/2019/07/31/Array_multisort-that-sorts-multidimensional-arrays/</id>
-    <published>2019-07-31T09:57:00.000Z</published>
-    <updated>2020-05-10T11:35:39.251Z</updated>
-    
-    <content type="html">&lt;p&gt;经常会面临这样的需求，虽然有时候我们可以在数据库查询的时候，直接对数据进行排序，但还是无法满足日益复杂的业务需求。这里边会用到两个函数一个是&lt;code&gt;array_column()&lt;/code&gt;函数，这个函数接受三个参数。详情参见这里是从二维数组中抽出一个键的值，作为一个新的数组返回。&lt;br&gt;另一个是&lt;code&gt;array_multisort()&lt;/code&gt;函数，这个函数是一个排序函数，&lt;a href=&quot;https://www.php.net/manual/zh/function.array-multisort.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详情参见这里&lt;/a&gt;。&lt;br&gt;它会依照第一个参数数组的排序规则，依照第一个参数数组的值在第三个参数重的位置对第三个参数进行排序。&lt;/p&gt;
-&lt;p&gt;听不明白吧？听不明白就对了，还是直接看代码来的实在：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$orgin = array(
- array(
-    &amp;apos;id&amp;apos; =&amp;gt; 5698,
-    &amp;apos;first_name&amp;apos; =&amp;gt; &amp;apos;Bill&amp;apos;,
-    &amp;apos;last_name&amp;apos; =&amp;gt; &amp;apos;Gates&amp;apos;,
-  ),
- array(
-    &amp;apos;id&amp;apos; =&amp;gt; 4767,
-    &amp;apos;first_name&amp;apos; =&amp;gt; &amp;apos;Steve&amp;apos;,
-    &amp;apos;last_name&amp;apos; =&amp;gt; &amp;apos;Jobs&amp;apos;,
- ),
- array(
-    &amp;apos;id&amp;apos; =&amp;gt; 3809,
-    &amp;apos;first_name&amp;apos; =&amp;gt; &amp;apos;Mark&amp;apos;,
-    &amp;apos;last_name&amp;apos; =&amp;gt; &amp;apos;Zuckerberg&amp;apos;,
-  )
-);
-
-$idArr = array_column($orgin, &amp;apos;id&amp;apos;);
-array_multisort($idArr,SORT_ASC,$orgin);
-var_dump($orgin);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个打印的结果是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;array (size=3)
-      0 =&amp;gt; 
-array (size=3)
-  &amp;apos;id&amp;apos; =&amp;gt; int 3809
-  &amp;apos;first_name&amp;apos; =&amp;gt; string &amp;apos;Mark&amp;apos; (length=4)
-  &amp;apos;last_name&amp;apos; =&amp;gt; string &amp;apos;Zuckerberg&amp;apos; (length=10)
-  1 =&amp;gt; 
-array (size=3)
-  &amp;apos;id&amp;apos; =&amp;gt; int 4767
-  &amp;apos;first_name&amp;apos; =&amp;gt; string &amp;apos;Steve&amp;apos; (length=5)
-  &amp;apos;last_name&amp;apos; =&amp;gt; string &amp;apos;Jobs&amp;apos; (length=4)
-  2 =&amp;gt; 
-array (size=3)
-  &amp;apos;id&amp;apos; =&amp;gt; int 5698
-  &amp;apos;first_name&amp;apos; =&amp;gt; string &amp;apos;Bill&amp;apos; (length=4)   
-  &amp;apos;last_name&amp;apos; =&amp;gt; string &amp;apos;Gates&amp;apos; (length=5)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此函数有点意思。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;经常会面临这样的需求，虽然有时候我们可以在数据库查询的时候，直接对数据进行排序，但还是无法满足日益复杂的业务需求。这里边会用到两个函数一个是&lt;code&gt;array_column()&lt;/code&gt;函数，这个函数接受三个参数。详情参见这里是从二维数组中抽出一个键的值，作为一个新
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
   </entry>
   

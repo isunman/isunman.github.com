@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux,远程控制," />
+  <meta name="keywords" content="PHP,lnmp," />
 
 
 
@@ -59,22 +59,28 @@
 
 
 
-<meta name="description" content="今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。
-第一、准备工作
-1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文">
+<meta name="description" content="在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。
+private function fsock_asy_do($get){
+    $fp = fsockopen(&amp;quot;ssl://www.xxx.com&amp;quot;, 443, $errno, $errstr, 30);
+    if (!$fp) {
+        echo &amp;quot;$errstr ($errn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云内网打包传输较大文件的方法">
-<meta property="og:url" content="http://isunman.com/2020/11/13/aliyun-internal-network-package-transfer-method-of-large-files/index.html">
+<meta property="og:title" content="PHP fsockopen 异步调用接口在nginx上偶尔实效的情况">
+<meta property="og:url" content="http://isunman.com/2020/12/26/php-function-psockopen-asynchronous-call-interface-is-occasionally-useful-on-nginx/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。
-第一、准备工作
-1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文">
-<meta property="og:updated_time" content="2020-11-22T13:35:09.089Z">
+<meta property="og:description" content="在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。
+private function fsock_asy_do($get){
+    $fp = fsockopen(&amp;quot;ssl://www.xxx.com&amp;quot;, 443, $errno, $errstr, 30);
+    if (!$fp) {
+        echo &amp;quot;$errstr ($errn">
+<meta property="og:updated_time" content="2020-12-26T04:56:25.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云内网打包传输较大文件的方法">
-<meta name="twitter:description" content="今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。
-第一、准备工作
-1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文">
+<meta name="twitter:title" content="PHP fsockopen 异步调用接口在nginx上偶尔实效的情况">
+<meta name="twitter:description" content="在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。
+private function fsock_asy_do($get){
+    $fp = fsockopen(&amp;quot;ssl://www.xxx.com&amp;quot;, 443, $errno, $errstr, 30);
+    if (!$fp) {
+        echo &amp;quot;$errstr ($errn">
 
 
 
@@ -92,7 +98,7 @@
   };
 </script>
 
-  <title> 阿里云内网打包传输较大文件的方法 | 太阳侠 </title>
+  <title> PHP fsockopen 异步调用接口在nginx上偶尔实效的情况 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +248,7 @@
             
             
               
-                阿里云内网打包传输较大文件的方法
+                PHP fsockopen 异步调用接口在nginx上偶尔实效的情况
               
             
           </h1>
@@ -254,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-11-13T15:15:00+08:00" content="2020-11-13">
-              2020-11-13
+            <time itemprop="dateCreated" datetime="2020-12-26T12:55:00+08:00" content="2020-12-26">
+              2020-12-26
             </time>
           </span>
 
@@ -268,8 +274,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
                   </a>
                 </span>
 
@@ -299,23 +305,39 @@
       
 
       
-        <p>今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。</p>
-<p>第一、准备工作</p>
-<p>1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文件的服务器内网IP）</p>
-<p>2、打包压缩需要备份的网站目录，因为这里我开始打包过了，其实我不应该打包的，直接SCP，因为数据较大，打包时间也很长，后面还要解压也需要时间。</p>
-<p>第二、SCP命令传输</p>
-<p>1、复制目录到本地</p>
-<pre><code>scp -r root@网站所在内网IP地址:/home/wwwroot/拷贝网站目录 /当前拷贝过来的网站目录
-</code></pre><p>2、复制打包文件到本地</p>
-<pre><code>scp root@网站所在的内网IP:/home/wwwroot/拷贝网站目录/laozuo.tar.gz /当前拷贝过来的网站目录
-</code></pre><p>这个执行是在我们转入进来的服务器SSH执行，然后会要求我们同意和输入转出服务器的密码后开始传输。看来速度比直接wget快很多了，达到46MB/s。</p>
-<p>最后，稍等几分钟（这里10G大概不到5分钟)，传输完毕之后我们再到服务器中解压和数据拷贝（移动）即可。</p>
-<p>【注意】</p>
-<p>如果当前用户登录在【目标主机】，从【源主机】拷贝到【目标主机】时，有问题的话（需要输入【源主机】用户SSH密码），</p>
-<p>也可以反过来操作，即：用户登录到【源主机】，然后再从【源主机】拷贝到【目标主机】，需要输入【目标主机】的用户SSH密码。</p>
-<pre><code>scp /root/yasm-1.3.0.tar.gz root@111.66.66.888:/root/
-</code></pre><p>以上为一条具体的示例。</p>
-<p>　　</p>
+        <p>在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。</p>
+<pre><code>private function fsock_asy_do($get){
+    $fp = fsockopen(&quot;ssl://www.xxx.com&quot;, 443, $errno, $errstr, 30);
+    if (!$fp) {
+        echo &quot;$errstr ($errno)&lt;br /&gt;\n&quot;;
+    } else {
+        stream_set_blocking($fp,0);//开启非阻塞模式
+        $out = &quot;GET /&quot;.$get.&quot; HTTP/1.1\r\n&quot;;
+        $out .= &quot;Host: www.xxxx.com\r\n&quot;;
+        $out .= &quot;Connection: Close\r\n\r\n&quot;;
+
+        fwrite($fp, $out);
+        /*忽略执行结果
+        while (!feof($fp)) {
+            echo fgets($fp, 128);
+        }*/
+        usleep(1000);
+        fclose($fp);
+    }
+}
+</code></pre><p>在nginx服务器上有一个比较诡异的情况就是有时候无法调用异步的脚本。</p>
+<p>查阅相关资料后，是nginx 499 的问题。</p>
+<p>其中解决方案有以下，经过对每一个方案的验证最终得出结果：</p>
+<h3 id="1、NGINX-499"><a href="#1、NGINX-499" class="headerlink" title="1、NGINX 499"></a>1、NGINX 499</h3><p>查看 NGINX access log，发现这样的请求会以 499（Client Closed Request）记录。确定问题是因为：客户端主动端口请求连接时，NGINX 不会将该请求代理给上游服务（FastCGI PHP 进程），这个时候 access log 中会以 499 记录这个请求。</p>
+<p>要解决这个问题需要将 NGINX FastCGI 忽略客户端中断配置打开：</p>
+<p>fastcgi_ignore_client_abort on;<br>这样无论客户端是否断开，都会将这个请求代理给上游，并且会记录上游服务处理后的返回状态。</p>
+<h3 id="2、NGINX-线程原因"><a href="#2、NGINX-线程原因" class="headerlink" title="2、NGINX 线程原因"></a>2、NGINX 线程原因</h3><p>将nginx的worker_processes 由之前的auto修改为2（我的是单核服务器）</p>
+<h3 id="3、NGINX-499"><a href="#3、NGINX-499" class="headerlink" title="3、NGINX 499"></a>3、NGINX 499</h3><p>nginx对499的定义是”client has closed connection”，并且在这些情况下会返回这个状态码：</p>
+<p>upstream 在收到读写事件处理之前时发现连接不可用。<br>server处理请求未结束，而client提前关闭了连接。<br>upstream出错，执行next_upstream时发现连接不可用。<br>一个不安全的做法是在fclose之前，让当前的进程先睡眠一段时间；我这里设置为10毫秒，这10毫秒的延迟对我完成整个请求的影响不大，同时我也认为nginx一定能在10毫米内把请求转到fastcgi去执行。这个时间间隔很难把握，不能保证php一定有执行到。</p>
+<p>这种方式并不是真正的异步，只是很取巧的强制关闭连接而不等待服务器端响应。所以在Laruence的那2篇文章中，有2个问题：</p>
+<p>①PHP使用fsock不能叫做异步，只是伪异步。</p>
+<p>②fwrite之后马上执行fclose，nginx会直接返回499</p>
+<p>由于我的代码上面usleep为1000，初步估计是时间不够导致没发出去就close了，所以调整为20000。并进行最后测试。<br>测试2天结果显示正常，的确是usleep数值过小的问题。</p>
 
       
     </div>
@@ -324,9 +346,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag">#Linux</a>
+            <a href="/tags/php/" rel="tag">#PHP</a>
           
-            <a href="/tags/远程控制/" rel="tag">#远程控制</a>
+            <a href="/tags/lnmp/" rel="tag">#lnmp</a>
           
         </div>
       
@@ -335,17 +357,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/11/01/centos8-ssh-reported-error-for-algorithm-negotiation-failes/" rel="next" title="CentOS8解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes">
-                <i class="fa fa-chevron-left"></i> CentOS8解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes
+              <a href="/2020/12/18/win7-apache-suddenly-failed-to-start/" rel="next" title="win7下Apache突然启动失败">
+                <i class="fa fa-chevron-left"></i> win7下Apache突然启动失败
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/11/21/the-installation-of-the-phpmyadmin/" rel="prev" title="phpMyAdmin的安装">
-                phpMyAdmin的安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +507,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、NGINX-499"><span class="nav-number">1.</span> <span class="nav-text">1、NGINX 499</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、NGINX-线程原因"><span class="nav-number">2.</span> <span class="nav-text">2、NGINX 线程原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、NGINX-499"><span class="nav-number">3.</span> <span class="nav-text">3、NGINX 499</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
