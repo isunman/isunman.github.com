@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2020-12-26T04:56:25.717Z</updated>
+  <updated>2021-02-18T14:30:29.537Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苹果键盘的清洁</title>
+    <link href="http://isunman.com/2021/02/18/apple-keyboard-cleaning/"/>
+    <id>http://isunman.com/2021/02/18/apple-keyboard-cleaning/</id>
+    <published>2021-02-18T14:28:00.000Z</published>
+    <updated>2021-02-18T14:30:29.537Z</updated>
+    
+    <content type="html">&lt;p&gt;苹果键盘的清洁&lt;/p&gt;
+&lt;p&gt;这里说的苹果键盘是：Mac 配件——妙控键盘 - 中文 (拼音)。带数字键和不带数字键的应该是类似的逻辑，本人实际使用的是不带数字键的。&lt;/p&gt;
+&lt;p&gt;使用时间长了之后，键盘上面有一层脏东西，灰尘或者油污等。不带好清理，之前试过其他的方法，都不是太简单有效。今天突然试了一种新方法，简单直接有效。&lt;/p&gt;
+&lt;p&gt;那就是，&lt;strong&gt;直接使用毛巾蘸清水，拧干水分之后，直接对键盘进行擦拭&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;下面这个图片是按这个方法擦拭之后的键盘效果。&lt;br&gt;&lt;img src=&quot;http://fusihan.com/isunmanfiles/MagicKeyboard.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;苹果键盘的清洁&lt;/p&gt;
+&lt;p&gt;这里说的苹果键盘是：Mac 配件——妙控键盘 - 中文 (拼音)。带数字键和不带数字键的应该是类似的逻辑，本人实际使用的是不带数字键的。&lt;/p&gt;
+&lt;p&gt;使用时间长了之后，键盘上面有一层脏东西，灰尘或者油污等。不带好清理，之前试过其他的方法，都不
+    
+    </summary>
+    
+      <category term="Mac使用" scheme="http://isunman.com/categories/mac%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="工作" scheme="http://isunman.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="效率" scheme="http://isunman.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP fsockopen 异步调用接口在nginx上偶尔实效的情况</title>
@@ -1435,37 +1466,6 @@ function checkId($id) {
       <category term="PHP算法" scheme="http://isunman.com/tags/php%E7%AE%97%E6%B3%95/"/>
     
       <category term="野趣" scheme="http://isunman.com/tags/%E9%87%8E%E8%B6%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>九酷音乐真实地址解析</title>
-    <link href="http://isunman.com/2019/08/03/9-cool-music-real-address-resolution/"/>
-    <id>http://isunman.com/2019/08/03/9-cool-music-real-address-resolution/</id>
-    <published>2019-08-03T09:04:00.000Z</published>
-    <updated>2020-05-10T11:36:07.825Z</updated>
-    
-    <content type="html">&lt;p&gt;九酷音乐的资源还是比较全的；九酷的历史也比较长，从2002年就有了。&lt;br&gt;许多其他音乐平台，例如QQ音乐、虾米音乐、网易云音乐上面没有的，这里也可以找到。&lt;/p&gt;
-&lt;p&gt;缺点就是网页上广告太多，而且页面也不好看。目前也没有PC客户端，手机客户端iOS版一直不能用（数据加载失败，2年多未更新了）。&lt;/p&gt;
-&lt;p&gt;九酷音乐官网：&lt;a href=&quot;http://www.9ku.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.9ku.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;选择一首歌曲，如 &lt;a href=&quot;http://m.9ku.com/play/86179.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://m.9ku.com/play/86179.htm&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其中，86179就是歌曲的id号&lt;/p&gt;
-&lt;p&gt;真实地址为：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://mp3.9ku.com/m4a/86179.m4a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp3.9ku.com/m4a/86179.m4a&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://111.161.71.11/mp3.9ku.com/m4a/86179.m4a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://111.161.71.11/mp3.9ku.com/m4a/86179.m4a&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;九酷音乐的资源还是比较全的；九酷的历史也比较长，从2002年就有了。&lt;br&gt;许多其他音乐平台，例如QQ音乐、虾米音乐、网易云音乐上面没有的，这里也可以找到。&lt;/p&gt;
-&lt;p&gt;缺点就是网页上广告太多，而且页面也不好看。目前也没有PC客户端，手机客户端iOS版一直不能用（数据加载
-    
-    </summary>
-    
-      <category term="网络工具" scheme="http://isunman.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="音乐" scheme="http://isunman.com/tags/%E9%9F%B3%E4%B9%90/"/>
     
   </entry>
   

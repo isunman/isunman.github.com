@@ -244,6 +244,112 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/16/server-side-cycle-to-remind-how-to-design/" itemprop="url">
+                  服务器端周期提醒如何设计
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-16T16:58:00+08:00" content="2017-03-16">
+              2017-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="服务器端周期提醒如何设计"><a href="#服务器端周期提醒如何设计" class="headerlink" title="服务器端周期提醒如何设计"></a>服务器端周期提醒如何设计</h2><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><p>为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。</p>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><p>因为时间是线性的，设置的再多，其实每次需要执行的下一个时间最多也只有一个。<br>因此可以这进行数据库设计–下一次提醒时间，重复的时间，特定时间。到时间发送通知，然后更新数据库的下一次提醒时间。</p>
+<p>PS：是一种不错的思路，可行性高</p>
+<p>原文链接：<a href="https://segmentfault.com/q/1010000006929169" title="原文链接" target="_blank" rel="external">https://segmentfault.com/q/1010000006929169</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/03/php-and-json-three-points-experience-php-and-json-three-experience/" itemprop="url">
                   PHP与JSON的三点心得
                 </a>
@@ -1526,134 +1632,12 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/osx-common_software-prerequisites-recommended--drawing-and-painting/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （作图与绘画）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T15:05:00+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（作图与绘画）"><a href="#OS-X-常用-必备软件推荐-——-（作图与绘画）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （作图与绘画）"></a>OS X 常用 / 必备软件推荐 —— （作图与绘画）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0000.png" alt=""></p>
-<h4 id="MediBangPaintPro"><a href="#MediBangPaintPro" class="headerlink" title="MediBangPaintPro"></a>MediBangPaintPro</h4><p><a href="http://medibangpaint.com/en/pc/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0001.png" alt=""></p>
-<p>免费软件，功能齐全，还有云画笔素材库，还有云同步和平板手机 app。</p>
-<h4 id="FireAlpaca"><a href="#FireAlpaca" class="headerlink" title="FireAlpaca"></a>FireAlpaca</h4><p><a href="http://firealpaca.com/en" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0002.png" alt=""></p>
-<p>medibang 的轻量版，用来小的涂鸦或者 p 图都是很合适的。</p>
-<h4 id="Clip-Studio-Paint"><a href="#Clip-Studio-Paint" class="headerlink" title="Clip Studio Paint"></a>Clip Studio Paint</h4><p><a href="http://www.clipstudio.net/en" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0003.png" alt=""></p>
-<p>mac 上的收费绘画软件。mac 上没有 sai，这款软件可以替代 sai。</p>
-<h4 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h4><p><a href="https://www.sketchapp.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0004.png" alt=""></p>
-<p>设计界的新宠，如果你只用过 PhotoShop，不妨试一下。</p>
-<h4 id="Pencil"><a href="#Pencil" class="headerlink" title="Pencil"></a>Pencil</h4><p><a href="http://pencil.evolus.vn/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0005.png" alt=""></p>
-<p>UML 图表绘制，wireframe，mockup 草图绘制软件。</p>
-<h4 id="MindNode"><a href="#MindNode" class="headerlink" title="MindNode"></a>MindNode</h4><p><a href="https://mindnode.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--drawing-and-painting-0006.png" alt=""></p>
-<p>思维导图软件。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21281001" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1694,7 +1678,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1775,7 +1759,7 @@ print_r($res);
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

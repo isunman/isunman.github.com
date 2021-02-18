@@ -244,6 +244,116 @@
             
               
                 
+                <a class="post-title-link" href="/2018/07/13/wechat-miniprogramcustomer-service-message/" itemprop="url">
+                  微信小程序客服消息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-13T11:57:00+08:00" content="2018-07-13">
+              2018-07-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="微信小程序消息服务接入步骤"><a href="#微信小程序消息服务接入步骤" class="headerlink" title="微信小程序消息服务接入步骤"></a>微信小程序消息服务接入步骤</h3><p>1、填写服务器配置；<br><br>2、验证服务器地址的有效性；<br><br>3、依据接口文档实现业务逻辑。</p>
+<h3 id="客服消息之接收消息和事件"><a href="#客服消息之接收消息和事件" class="headerlink" title="客服消息之接收消息和事件"></a>客服消息之接收消息和事件</h3><p>1、消息加密方式 与 数据格式（默认使用 明文模式与XML）。<br><br>2、有加密的方式必须使用数据加密与解密算法，且与服务器配置统一。</p>
+<h3 id="客服消息之发送客服消息"><a href="#客服消息之发送客服消息" class="headerlink" title="客服消息之发送客服消息"></a>客服消息之发送客服消息</h3><p>1、发送消息格式固定为JSON格式。<br><br>2、支持4种消息类型：<strong>文本</strong>，<strong>图片</strong>，<strong>图文链接</strong>，<strong>小程序卡片</strong>。<br><br>3、touser等于发送消息的FromUsername，即微信用户的openid。<br><br>4、发送消息时需要accesstoken，则针对小程序APPID和APPSECRET成对使用，且缓存accesstoken 在服务器，随用随取。此处需要注意，同一个小程序APPID多处需要accesstoken时，最好可以统一调用同一个缓存数据。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1、注意客服消息的收发是异步的，调用不同接口，并无直接关系。</p>
+<p>2、若使用加密方式，开发者在接收消息和事件时，都需要进行消息加解密（某些事件可能需要回复，回复时也需要先进行加密）。但是，通过API主动调用接口（包括调用客服消息接口发消息）时，不需要进行加密。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/callback_help.html" target="_blank" rel="external">接入微信小程序消息服务</a></p>
+<p>2、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html" target="_blank" rel="external">接收消息和事件</a></p>
+<p>3、<a href="https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html" target="_blank" rel="external">发送客服消息</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/07/02/How-to-use-the-watch-star-and-fork-in-github/" itemprop="url">
                   如何用好 github 中的 watch、star、fork
                 </a>
@@ -1587,118 +1697,12 @@ echo $file_contents;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/server-side-cycle-to-remind-how-to-design/" itemprop="url">
-                  服务器端周期提醒如何设计
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T16:58:00+08:00" content="2017-03-16">
-              2017-03-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="服务器端周期提醒如何设计"><a href="#服务器端周期提醒如何设计" class="headerlink" title="服务器端周期提醒如何设计"></a>服务器端周期提醒如何设计</h2><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><p>为了活跃App,运营那边提出需要实现一个提醒功能，大概需求就是到了用户设置的提醒时间，打开APP，方便用户记录。用户可以设置重复的时间，就像闹钟一样，可以自己定义哪几天需要提醒。现在我的困惑是，这个数据库如何设计呢？怎么设计会比较方便且容易扩展，我是打算后台用定时任务去轮询，发现有需要提醒的，然后服务器就发推送通知给APP。</p>
-<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><p>因为时间是线性的，设置的再多，其实每次需要执行的下一个时间最多也只有一个。<br>因此可以这进行数据库设计–下一次提醒时间，重复的时间，特定时间。到时间发送通知，然后更新数据库的下一次提醒时间。</p>
-<p>PS：是一种不错的思路，可行性高</p>
-<p>原文链接：<a href="https://segmentfault.com/q/1010000006929169" title="原文链接" target="_blank" rel="external">https://segmentfault.com/q/1010000006929169</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1739,7 +1743,7 @@ echo $file_contents;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1820,7 +1824,7 @@ echo $file_contents;
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
