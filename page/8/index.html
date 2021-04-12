@@ -244,6 +244,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/07/what-queues-are/" itemprop="url">
+                  队列是什么
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-07T23:05:00+08:00" content="2016-04-07">
+              2016-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先，队列是一种数据结构，用链表和数组都可以实现，队列的特点就是先放入队列的数据先出队列。</p>
+<p>不过看到话题标签有Redis，猜测题主想问的应该是现在很广泛使用的消息队列(MQ)。这里的消息不只是简单的文本信息，也可以是序列化后的对象。现在比较流行的开源消息队列系统有Beanstalkd,RabbitMQ,Redis(可以作为队列系统使用)等，其核心作用都是先将消息数据通过系统接口按顺序放入队列(暂存于内存)，需要时再按放入的顺序依次取出以作后续处理。</p>
+<p>就拿我前段时间做的邮件发送系统举例：</p>
+<p>系统以HTTP协议提供服务，对外提供的主要功能是发送邮件，API地址为 /api/msg.send。使用者只要以POST请求此地址，传入subject,body,recipient这三个参数，即可发送一封邮件。</p>
+<p><strong>方案1： 不使用数据库，不使用队列</strong></p>
+<p>请求接口时，控制器直接调用sendmail或外部smtp服务器发送邮件，整个发送过程HTTP请求处于等待状态，待邮件发送完成，返回发送结果（只是调用发送程序是否成功的结果，不是邮件真正的发送结果，真正发送结果需要分析邮件日志) </p>
+<p>这个方案最简单直接，平时发送少量邮件是可以的，但是缺点也很明显： </p>
+<ol>
+<li>因为接口调用时整个邮件发送过程都是同步进行的，每次请求都要等待邮件发送端完成处理，必然导致每次调用接口的等待时间增长。</li>
+<li>当系统接口并发请求较高时，系统可用性不仅受限于WebServer的处理能力，还完全受限于邮件发送端软件的处理能力，其中任一环节故障就会导致整个系统无法提供服务。</li>
+<li>若邮件发送端软件出现故障（比如SMTP连接超时），导致某次请求时邮件发送失败，那这封邮件内容便彻底丢失了，系统没有任何存留，不能实现自动重发。</li>
+</ol>
+<p><strong>方案2： 使用数据库，不使用队列</strong></p>
+<p>请求接口时，将要发送的邮件信息存入数据库,表结构如下：</p>
+<p>id | subject | body | recipient | sent_at | failed_at | failed_times<br>然后在服务器上运行一个定时任务，每秒一次读取 sent_at=0 &amp;&amp; failed_times &lt; 10 的记录，随后调用邮件发送端发送邮件，成功后把sent_at设为当前时间，失败后设置failed_at并累加failed_times。 方案2已经用到了类似队列的思想。</p>
+<p>相对于方案1的提升：</p>
+<ol>
+<li>去掉了同步发送邮件的操作，接口请求响应会快很多</li>
+<li>邮件发送失败后可以重发，邮件不会丢失</li>
+<li>当邮件发送端完全失效后系统也可以接受邮件发送请求，待发送端恢复后可以继续发送邮件。</li>
+</ol>
+<p>但还是存在缺点： </p>
+<p>每次请求都会写一次数据库，当大并发量或者大数据量（一次请求包含100万个收件人）时，数据库负载过高影响稳定性，同时也会严重增加接口的响应时间（一下子写入100万条记录不是闹着玩的）</p>
+<p><strong>方案3： 数据库 + 队列</strong></p>
+<p>请求接口时，将要发送的邮件信息以JSON格式存入队列系统，放入的单个消息形如：</p>
+<pre><code>{
+&quot;subject&quot; : &quot;今天没吃药&quot;,
+&quot;body&quot; : &quot;感觉自己&quot;,
+&quot;recipient&quot; : &quot;mengmeng@da.com&quot;
+}
+</code></pre><p>现在的队列基本上都是内存队列，数据存取非常快，一瞬间写入100万条数据再也不是难事。<br>随后，在服务器上运行一个常驻进程任务(Worker)，实时监听队列中是否有新的消息（Job,此处指邮件信息）。当新消息进入时，从队列中取出消息，调用邮件发送端完成处理，发送成功后将此消息销毁并将消息内容插入数据库（同方案2），如果发送失败，将此消息重新放入队列，并加入一个60秒的延时标记，意味60秒后再取出处理。</p>
+<p>这样改进后整个系统的吞吐量和响应速度将大大提升，而且同时也让系统支持了分布式运行的能力。每个Worker进程都可以视为一个处理节点，倘若把worker分散到不同的服务器上，便实现整个系统的分布式处理了，这也是队列的一个重要特性之一。</p>
+<p>在我实际项目中还是做了许多基于方案3的改进，对于群发还使用了邮件列表和邮件模板等设计，整个系统类似Mailgun和Sendcloud的设计，等整个系统稳定下来，我会考虑将代码开源到Github。</p>
+<p>这个例子只是队列的一个常见使用场景，一般来说在需要缓解数据库写入压力的场景下面，都可以考虑使用消息队列，还有一些需要分布式处理的情况下，也是队列很好的使用场景。</p>
+<p>现在大部分语言都有成熟的消息队列处理组件，可以很方便的使用各种队列系统，比如我常用的Laravel 便原生支持了 Beanstalkd,Amazon SQS,IronMQ,Redis。</p>
+<p>抱砖引玉，不足之处请指正，谢谢。</p>
+<p>原文链接： <a href="https://www.zhihu.com/question/26533799" target="_blank" rel="external">https://www.zhihu.com/question/26533799</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/02/monthly-income-of-thousands-difficult/" itemprop="url">
                   月入十万，难吗？
                 </a>
@@ -1667,143 +1806,6 @@ hexo n == hexo new
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/25/blog-by-hexo-github-step1/" itemprop="url">
-                  用Hexo和Github搭建博客（1）：安装环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-25T19:25:00+08:00" content="2016-02-25">
-              2016-02-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="下载msysGit"><a href="#下载msysGit" class="headerlink" title="下载msysGit"></a>下载msysGit</h3><p>1、访问 msysGit 的项目主页，下载 msysGit。<a href="http://msysgit.Github.io" target="_blank" rel="external">http://msysgit.Github.io</a></p>
-<p>2、点击“Download”，下载软件（当前版本Git-2.7.2-64-bit.exe）</p>
-<h3 id="安装msysGit"><a href="#安装msysGit" class="headerlink" title="安装msysGit"></a>安装msysGit</h3><p>1、点击安装程序（如 Git-2.7.2-64-bit.exe）开始安装；</p>
-<p>2、配置安装目录，可手动修改路径，也可“Browse..”选择安装目录；</p>
-<p>3、选择“not noly for Git Bash”,下一步；</p>
-<p>4、不创建启动文件夹，下一步；</p>
-<p>5、询问是否修改环境变量。默认选择“Use Git Bash Only”，即只在 msysGit 提供的 shell 环境中使用 Git，不修改环境变量。若需要在 CMD 中直接使用 Git，请选择第三项修改环境变量，即可在CMD命令行中使用 Git；</p>
-<p>6、询问换行符的转换方式，默认。下一步；</p>
-<p>7、安装进度显示、安装完成后会显示安装完成界面。</p>
-<h3 id="检测msysGit是否安装成功"><a href="#检测msysGit是否安装成功" class="headerlink" title="检测msysGit是否安装成功"></a>检测msysGit是否安装成功</h3><p>任意目录下，鼠标右键新增Git功能“ Git Gui here”和“ Git Bash here”，点击即可进入 Git 命令行边界界面。说明安装成功。</p>
-<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>在 Windows 环境下安装 Node.js 非常简单，仅需下载安装文件并执行即可。 </p>
-<p>下载地址：<a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a><br>Win 64位系统的当前版本：<br><a href="https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi" target="_blank" rel="external">https://nodejs.org/dist/v4.3.1/node-v4.3.1-x64.msi</a></p>
-<p>安装好后，打开 cmd，查看 Node.js 是否可用</p>
-<p><code>node -v</code></p>
-<p>结果</p>
-<p><code>v5.7.0</code></p>
-<p>再测试 rpm 是否可用</p>
-<p><code>rpm -v</code></p>
-<p>结果</p>
-<p><code>3.6.0</code></p>
-<p>说明下面可以使用 npm 安装 Hexo 了。</p>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>1、任意目录下右键点击“ Git Bash here ”，打开 Git 的命令行界面。</p>
-<p>2、输入如下命令，进行安装 Hexo</p>
-<p><code>npm install -g hexo</code></p>
-<p>3、创建 Hexo 目录</p>
-<p>安装完成后，选择或者新建 Hexo 的根目录。让 Git Bash 切换到此目录，，执行如下命令，Hexo 会进行初始化，自动生成建立网站所需要的文件。</p>
-<p><code>hexo init</code></p>
-<p>安装依赖包</p>
-<p><code>npm install</code></p>
-<p>安装完成后，生成网站静态文件</p>
-<p><code>hexo g</code></p>
-<p>启动本地静态服务器</p>
-<p><code>hexo s</code></p>
-<p>浏览器打开 localhost:4000 即可查看。</p>
-<p>至此，本地基于 Node.js 的 Hexo 博客静态系统已经搭建完成。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1850,7 +1852,7 @@ hexo n == hexo new
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-count">82</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

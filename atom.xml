@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2021-02-18T14:30:29.537Z</updated>
+  <updated>2021-04-12T07:43:44.928Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP实现中文字符串的长度计算和截取无乱码</title>
+    <link href="http://isunman.com/2021/04/12/PHP-to-achieve-the-length-of-Chinese-string-calculation-and-interception-without-garbled-code/"/>
+    <id>http://isunman.com/2021/04/12/PHP-to-achieve-the-length-of-Chinese-string-calculation-and-interception-without-garbled-code/</id>
+    <published>2021-04-12T07:42:00.000Z</published>
+    <updated>2021-04-12T07:43:44.928Z</updated>
+    
+    <content type="html">&lt;p&gt;在我们学习PHP知识的过程中，PHP截取字符串应该是一个非常常见的字符串基础操作了，想必大家都比较熟悉这方面知识点。&lt;/p&gt;
+&lt;p&gt;但是有些新手朋友们可能遇到过，当待截取的字符串出现中英文混合时，计算字符串的长度，会出现不准确和截取出现乱码的情况，其实这个也是非常容易解决的。&lt;/p&gt;
+&lt;h3 id=&quot;首先，要了解关于中英文占多少字节的问题。&quot;&gt;&lt;a href=&quot;#首先，要了解关于中英文占多少字节的问题。&quot; class=&quot;headerlink&quot; title=&quot;首先，要了解关于中英文占多少字节的问题。&quot;&gt;&lt;/a&gt;首先，要了解关于中英文占多少字节的问题。&lt;/h3&gt;&lt;p&gt;ASCII码：一个中文汉字占两个字节的空间。&lt;/p&gt;
+&lt;p&gt;UTF-8编码：一个中文（含繁体）等于三个字节。&lt;/p&gt;
+&lt;p&gt;Unicode编码：一个中文（含繁体）等于两个字节。&lt;/p&gt;
+&lt;h3 id=&quot;其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。&quot;&gt;&lt;a href=&quot;#其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。&quot; class=&quot;headerlink&quot; title=&quot;其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。&quot;&gt;&lt;/a&gt;其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。&lt;/h3&gt;&lt;p&gt;例如，是不是中英文数字符号等1个都算1个，还是按实际占用的字节计算。&lt;br&gt;这个需要看具体的使用场景，需要存储导数据时，需要按字节计算实际的长度，和数据库字段的长度匹配。需要前端显示时，可能需要按字符计算。&lt;/p&gt;
+&lt;h3 id=&quot;第三，实际处理用到的两个函数mb-substr-和mb-strlen&quot;&gt;&lt;a href=&quot;#第三，实际处理用到的两个函数mb-substr-和mb-strlen&quot; class=&quot;headerlink&quot; title=&quot;第三，实际处理用到的两个函数mb_substr()和mb_strlen()&quot;&gt;&lt;/a&gt;第三，实际处理用到的两个函数&lt;code&gt;mb_substr()&lt;/code&gt;和&lt;code&gt;mb_strlen()&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;mb_substr($str,$start,$len,$encoding)&lt;/code&gt;，用于中文字符串的截取,在相应的编码页面输入相应的$encoding&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mb_strlen($str,$encodding)&lt;/code&gt;，用于获取中文字符串的长度，包含多字节的字符算成一个。&lt;/p&gt;
+&lt;p&gt;GBK编码截取示例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$str = &amp;apos;我是谁&amp;apos;;  //gbk编码的字符串
+echo mb_substr($str, 0, 1, &amp;apos;gbk&amp;apos;); //输出 我
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;utf-8编码截取示例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$str = &amp;apos;我abc是谁&amp;apos;;  //utf-8编码的字符串
+echo mb_substr($str, 0, 2, &amp;apos;utf-8&amp;apos;); //输出 我a
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中英混合也完全没有问题。&lt;/p&gt;
+&lt;p&gt;【但是，一定要住编码需要明确指定，否则可能还是会出现乱码】&lt;/p&gt;
+&lt;h3 id=&quot;第四，关于mb-strcut按字节来切分字符串，截取中文都不会产生半个字符的现象&quot;&gt;&lt;a href=&quot;#第四，关于mb-strcut按字节来切分字符串，截取中文都不会产生半个字符的现象&quot; class=&quot;headerlink&quot; title=&quot;第四，关于mb_strcut按字节来切分字符串，截取中文都不会产生半个字符的现象&quot;&gt;&lt;/a&gt;第四，关于&lt;code&gt;mb_strcut&lt;/code&gt;按字节来切分字符串，截取中文都不会产生半个字符的现象&lt;/h3&gt;&lt;p&gt;&lt;code&gt;substr&lt;/code&gt;、&lt;code&gt;mb_substr&lt;/code&gt;、&lt;code&gt;mb_strcut&lt;/code&gt;这三个函数都用来截取字符串，所不同的是：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;substr&lt;/code&gt;是最简单的截取，无法适应中文；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mb_substr&lt;/code&gt;是按字来切分字符串，&lt;/p&gt;
+&lt;p&gt;而&lt;code&gt;mb_strcut&lt;/code&gt;是按字节来切分字符串，截取中文都不会产生半个字符的现象。&lt;/p&gt;
+&lt;p&gt;这三个函数的前三个参数完全一致，即：&lt;/p&gt;
+&lt;p&gt;第一个参数是操作对象&lt;/p&gt;
+&lt;p&gt;第二个参数是截取的起始位置&lt;/p&gt;
+&lt;p&gt;第三个参数是截取的数量&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mb_substr&lt;/code&gt;和&lt;code&gt;mb_strcut&lt;/code&gt;还有第四个参数：第四个参数可以根据不同的字符集进行设置。&lt;/p&gt;
+&lt;h4 id=&quot;友情提示&quot;&gt;&lt;a href=&quot;#友情提示&quot; class=&quot;headerlink&quot; title=&quot;友情提示&quot;&gt;&lt;/a&gt;友情提示&lt;/h4&gt;&lt;p&gt;使用的时候要注意php文件的编码，和网页显示时的编码。&lt;/p&gt;
+&lt;p&gt;使用这两个&lt;code&gt;mb_substr&lt;/code&gt; 和 &lt;code&gt;mb_strcut&lt;/code&gt;方法要事先知道字符串的编码，如果不知道编码，就需要判，mbstring库还提供了&lt;code&gt;mb_check_encoding&lt;/code&gt;来检验字符串编码，但还不完善。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mb_check_encoding($str,$encoding)&lt;/code&gt;;成功是返回true,失败时返回false;&lt;/p&gt;
+&lt;p&gt;php中文字符串的截取  其中ord($str)&amp;gt;127(因为中文字符的acsii码的范围是128(即0x80-0xfe)-254)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在我们学习PHP知识的过程中，PHP截取字符串应该是一个非常常见的字符串基础操作了，想必大家都比较熟悉这方面知识点。&lt;/p&gt;
+&lt;p&gt;但是有些新手朋友们可能遇到过，当待截取的字符串出现中英文混合时，计算字符串的长度，会出现不准确和截取出现乱码的情况，其实这个也是非常容易解决的
+    
+    </summary>
+    
+      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>苹果键盘的清洁</title>
@@ -1387,85 +1439,6 @@ print_r($content);
       <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
     
       <category term="科学上网" scheme="http://isunman.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>身份证号码解释，附：18位公民身份证编码规则</title>
-    <link href="http://isunman.com/2019/09/21/Explanation-of-id-number/"/>
-    <id>http://isunman.com/2019/09/21/Explanation-of-id-number/</id>
-    <published>2019-09-21T09:44:00.000Z</published>
-    <updated>2020-05-10T11:36:37.719Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;身份证号码解释，附：18位公民身份证编码规则&quot;&gt;&lt;a href=&quot;#身份证号码解释，附：18位公民身份证编码规则&quot; class=&quot;headerlink&quot; title=&quot;身份证号码解释，附：18位公民身份证编码规则&quot;&gt;&lt;/a&gt;身份证号码解释，附：18位公民身份证编码规则&lt;/h2&gt;&lt;h3 id=&quot;身份证号码由18位数字组成，你知道它们代表的信息吗？&quot;&gt;&lt;a href=&quot;#身份证号码由18位数字组成，你知道它们代表的信息吗？&quot; class=&quot;headerlink&quot; title=&quot;身份证号码由18位数字组成，你知道它们代表的信息吗？&quot;&gt;&lt;/a&gt;身份证号码由18位数字组成，你知道它们代表的信息吗？&lt;/h3&gt;&lt;p&gt;其中的第一、第二数字表示公民所在地的省份（或自治区、直辖市）；第三、第四位数字表示公民所在地的市（或州）；第五、第六位数字表示公民所在地的县（或县级市）；接下来的8位数字表示公民的出生年、月、日；最后4位数字中的前两位表示当地派出所的编码；倒数第二位表示公民是男性还是女性（男性用单数，女性用双数）；最后一位数字是一个随机数，又称为校验码。&lt;/p&gt;
-&lt;p&gt;大陆的身份证为18位，老的身份证是15位。&lt;/p&gt;
-&lt;h3 id=&quot;关于身份证第18是怎么计算的，原理如下&quot;&gt;&lt;a href=&quot;#关于身份证第18是怎么计算的，原理如下&quot; class=&quot;headerlink&quot; title=&quot;关于身份证第18是怎么计算的，原理如下&quot;&gt;&lt;/a&gt;关于身份证第18是怎么计算的，原理如下&lt;/h3&gt;&lt;p&gt;根据〖中华人民共和国国家标准GB11643-1999〗中有关公民身份号码的规定，公民身份号码是特征组合码，由十七位数字本体码和一位数字校验码组成。排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位数字校验码。&lt;/p&gt;
-&lt;p&gt;地址码（身份证前六位）表示编码对象常住户口所在县(市、旗、区)的行政区划代码。（所有区域的编码可以到这个网址&lt;a href=&quot;http://xzqh.mca.gov.cn查询到最新的县及县以上的行政编码资料。）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xzqh.mca.gov.cn查询到最新的县及县以上的行政编码资料。）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;生日期码（身份证第七位到第十四位）表示编码对象出生的年、月、日，其中年份用四位数字表示，年、月、日之间不用分隔符。例如：1981年05月11日就用19810511表示。&lt;/p&gt;
-&lt;p&gt;顺序码（身份证第十五位到十七位）为同一地址码所标识的区域范围内，对同年、月、日出生的人员编定的顺序号。其中第十七位奇数分给男性，偶数分给女性。&lt;/p&gt;
-&lt;p&gt;校验码（身份证最后一位）是根据前面十七位数字码，按照ISO7064:1983.MOD11-2校验码计算出来的检验码。&lt;/p&gt;
-&lt;h3 id=&quot;第十八位数字的计算方法&quot;&gt;&lt;a href=&quot;#第十八位数字的计算方法&quot; class=&quot;headerlink&quot; title=&quot;第十八位数字的计算方法&quot;&gt;&lt;/a&gt;第十八位数字的计算方法&lt;/h3&gt;&lt;p&gt;1.将前面的身份证号码17位数分别乘以不同的系数。从第一位到第十七位的系数分别为：7910584216379105842&lt;/p&gt;
-&lt;p&gt;2.将这17位数字和系数相乘的结果相加。&lt;/p&gt;
-&lt;p&gt;3.用加出来和除以11，看余数是多少？&lt;/p&gt;
-&lt;p&gt;4.余数只可能有012345678910这11个数字。其分别对应的最后一位身份证的号码为10X98765432。&lt;/p&gt;
-&lt;p&gt;5.通过上面得知如果余数是2，就会在身份证的第18位数字上出现罗马数字的Ⅹ。如果余数是10，身份证的最后一位号码就是2。&lt;/p&gt;
-&lt;p&gt;例如：某男性的身份证号码是34052419800101001X。我们要看看这个身份证是不是合法的身份证。&lt;/p&gt;
-&lt;p&gt;首先：我们得出，前17位的乘积和是189&lt;/p&gt;
-&lt;p&gt;然后：用189除以11得出的结果是17+2/11，也就是说余数是2。&lt;/p&gt;
-&lt;p&gt;最后：通过对应规则就可以知道余数2对应的数字是X。所以，这是一个合格的身份证号码。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;附：18位公民身份证编码规则&quot;&gt;&lt;a href=&quot;#附：18位公民身份证编码规则&quot; class=&quot;headerlink&quot; title=&quot;附：18位公民身份证编码规则&quot;&gt;&lt;/a&gt;附：18位公民身份证编码规则&lt;/h3&gt;&lt;p&gt;18位身份证标准在国家质量技术监督局于1999年7月1日实施的GB11643-1999《公民身份号码》中做了明确规定。GB11643-1999《公民身份号码》为GB11643-1989《社会保障号码》的修订版，其中指出将原标准名称“社会保障号码”更名为“公民身份号码”，另外GB11643-1999《公民身份号码》从实施之日起代替GB11643-1989。公民身份号码是特征组合码，由十七位数字本体码和一位校验码组成。排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位校验码。其含义如下：&lt;/p&gt;
-&lt;p&gt;1.地址码：表示编码对象常住户口所在县(市、旗、区)的行政区划代码，按GB/T2260的规定执行。&lt;/p&gt;
-&lt;p&gt;2.出生日期码：表示编码对象出生的年、月、日，按GB/T7408的规定执行，年、月、日分别用4位、2位、2位数字表示，之间不用分隔符。&lt;/p&gt;
-&lt;p&gt;3.顺序码：表示在同一地址码所标识的区域范围内，对同年、同月、同日出生的人编定的顺序号，顺序码的奇数分配给男性，偶数分配给女性。&lt;/p&gt;
-&lt;p&gt;校验的计算方式：&lt;/p&gt;
-&lt;p&gt;1.对前17位数字本体码加权求和&lt;/p&gt;
-&lt;p&gt;公式为：S=Sum(Ai*Wi),i=0,…,16&lt;/p&gt;
-&lt;p&gt;其中Ai表示第i位置上的身份证号码数字值，Wi表示第i位置上的加权因子，其各位对应的值依次为：7910584216379105842&lt;/p&gt;
-&lt;p&gt;2.以11对计算结果取模&lt;/p&gt;
-&lt;p&gt;Y=mod(S,11)&lt;/p&gt;
-&lt;p&gt;3.根据模的值得到对应的校验码&lt;/p&gt;
-&lt;p&gt;对应关系为：&lt;/p&gt;
-&lt;p&gt;Y值：012345678910&lt;/p&gt;
-&lt;p&gt;校验码：10X98765432&lt;/p&gt;
-&lt;h3 id=&quot;关于18位身份证号码尾数是“X”的解释&quot;&gt;&lt;a href=&quot;#关于18位身份证号码尾数是“X”的解释&quot; class=&quot;headerlink&quot; title=&quot;关于18位身份证号码尾数是“X”的解释&quot;&gt;&lt;/a&gt;关于18位身份证号码尾数是“X”的解释&lt;/h3&gt;&lt;p&gt;居民身份证的号码是按照国家的标准编制的，由18位组成：前六位为行政区划代码，第七至第十四位为出生日期码，第15至17位为顺序码，第18位为校验码。作为尾号的校验码，是由号码编制单位按统一的公式计算出来的，如果某人的尾号是0-9，都不会出现X，但如果尾号是10，那么就得用X来代替，因为如果用10做尾号，那么此人的身份证就变成了19位，而19位的号码违反了国家标准，并且我国的计算机应用系统也不承认19位的身份证号码。X是罗马数字的10，用X来代替10，可以保证公民的身份证符合国家标准。但是我国的居民身份证在升位后，一些人的尾号变成了X，这部分人在工作生活中，例如去银行存取钱、去汽车公司租赁汽车或者报名参加考试等等过程中，往往不被检验者理解，认为是假身份证，这样的误会给很多人的生活带来不便。公安局的同志希望领到X身份证的同志正确理解这个数字的含义，查验身份证的机关和单位更应该清楚这一点。&lt;/p&gt;
-&lt;h3 id=&quot;一个简单身份证号尾号校验算法的PHP实现的过程&quot;&gt;&lt;a href=&quot;#一个简单身份证号尾号校验算法的PHP实现的过程&quot; class=&quot;headerlink&quot; title=&quot;一个简单身份证号尾号校验算法的PHP实现的过程&quot;&gt;&lt;/a&gt;一个简单身份证号尾号校验算法的PHP实现的过程&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-function checkId($id) {
-    $len = strlen($id);
-    if($len != 18) {
-        return 0;
-    }
-    $a=str_split($id,1);
-    $w=array(7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2);
-    $c=array(1,0,&amp;apos;X&amp;apos;,9,8,7,6,5,4,3,2);
-    $sum = 0;
-    for($i=0;$i&amp;lt;17;$i++){
-        $sum= $sum + $a[$i]*$w[$i];
-    }
-    $r=$sum%11;
-    $res=$c[$r];
-    //echo &amp;quot;校验位是: &amp;quot;.$res;
-    if ($res == $a[17]) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;身份证号码解释，附：18位公民身份证编码规则&quot;&gt;&lt;a href=&quot;#身份证号码解释，附：18位公民身份证编码规则&quot; class=&quot;headerlink&quot; title=&quot;身份证号码解释，附：18位公民身份证编码规则&quot;&gt;&lt;/a&gt;身份证号码解释，附：18位公民身份证编码
-    
-    </summary>
-    
-      <category term="网络工具" scheme="http://isunman.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="PHP算法" scheme="http://isunman.com/tags/php%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="野趣" scheme="http://isunman.com/tags/%E9%87%8E%E8%B6%A3/"/>
     
   </entry>
   
