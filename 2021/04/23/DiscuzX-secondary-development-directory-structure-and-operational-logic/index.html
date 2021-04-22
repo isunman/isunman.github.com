@@ -1,0 +1,890 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Discuz,PHP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="太阳侠" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="1.目录结构DISCUZ使用自己的框架，与现在主流的web框架不同，DISCUZ没有路由表，他的路由是由入口文件来实现的。
+api
+uc.php UCenter 通信文件
+/api/addons 应用中心
+/api/connect 通讯互联
+/api/google Google引擎结构处理
+/api/javascript 数据和广告的js调用
+/api/manyou manyou应用及搜索等相关服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DiscuzX二次开发之目录结构和运行逻辑">
+<meta property="og:url" content="http://isunman.com/2021/04/23/DiscuzX-secondary-development-directory-structure-and-operational-logic/index.html">
+<meta property="og:site_name" content="太阳侠">
+<meta property="og:description" content="1.目录结构DISCUZ使用自己的框架，与现在主流的web框架不同，DISCUZ没有路由表，他的路由是由入口文件来实现的。
+api
+uc.php UCenter 通信文件
+/api/addons 应用中心
+/api/connect 通讯互联
+/api/google Google引擎结构处理
+/api/javascript 数据和广告的js调用
+/api/manyou manyou应用及搜索等相关服">
+<meta property="og:updated_time" content="2021-04-22T19:17:22.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DiscuzX二次开发之目录结构和运行逻辑">
+<meta name="twitter:description" content="1.目录结构DISCUZ使用自己的框架，与现在主流的web框架不同，DISCUZ没有路由表，他的路由是由入口文件来实现的。
+api
+uc.php UCenter 通信文件
+/api/addons 应用中心
+/api/connect 通讯互联
+/api/google Google引擎结构处理
+/api/javascript 数据和广告的js调用
+/api/manyou manyou应用及搜索等相关服">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> DiscuzX二次开发之目录结构和运行逻辑 | 太阳侠 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?edc09d74f003ef7b14a37137efc44fd4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">太阳侠</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是一颗恒星</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DiscuzX二次开发之目录结构和运行逻辑
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-04-23T03:15:00+08:00" content="2021-04-23">
+              2021-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h2><p>DISCUZ使用自己的框架，与现在主流的web框架不同，DISCUZ没有路由表，他的路由是由入口文件来实现的。</p>
+<h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><ul>
+<li>uc.php UCenter 通信文件</li>
+<li>/api/addons 应用中心</li>
+<li>/api/connect 通讯互联</li>
+<li>/api/google Google引擎结构处理</li>
+<li>/api/javascript 数据和广告的js调用</li>
+<li>/api/manyou manyou应用及搜索等相关服务</li>
+<li>/api/remote 远程更新</li>
+<li>/api/trade 支付宝、财付通等交易接口</li>
+</ul>
+<h3 id="archiver-论坛Archiver静态化目录"><a href="#archiver-论坛Archiver静态化目录" class="headerlink" title="archiver (论坛Archiver静态化目录)"></a>archiver (论坛Archiver静态化目录)</h3><h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><ul>
+<li>config_global.php 论坛核心参数配置文件</li>
+<li>config_ucenter.php UCenter核心参数配置文件</li>
+</ul>
+<h3 id="data-论坛数据缓存目录"><a href="#data-论坛数据缓存目录" class="headerlink" title="data (论坛数据缓存目录)"></a>data (论坛数据缓存目录)</h3><h3 id="install-论坛安装目录-初始化运行时直接请求到此处将重新安装论坛"><a href="#install-论坛安装目录-初始化运行时直接请求到此处将重新安装论坛" class="headerlink" title="install (论坛安装目录(初始化运行时直接请求到此处将重新安装论坛))"></a>install (论坛安装目录(初始化运行时直接请求到此处将重新安装论坛))</h3><h3 id="source-程序后端功能处理目录"><a href="#source-程序后端功能处理目录" class="headerlink" title="source (程序后端功能处理目录)"></a>source (程序后端功能处理目录)</h3><ul>
+<li>discuz_version.php 程序版本号文件</li>
+<li>/source/admincp 后台管理</li>
+<li>/source/archiver 论坛archiver静态化程序目录</li>
+<li>/source/class 核心类库</li>
+<li>/source/function discuzX自定义函数库</li>
+<li>/source/include 程序功能组件目录</li>
+<li>/source/language 程序语言包(kv结构)</li>
+<li>/source/module 程序功能模块程序包</li>
+<li>/source/plugins 插件扩展目录</li>
+</ul>
+<h3 id="static-程序资源目录-头像、图片、下载文件、js文件等等"><a href="#static-程序资源目录-头像、图片、下载文件、js文件等等" class="headerlink" title="static (程序资源目录(头像、图片、下载文件、js文件等等))"></a>static (程序资源目录(头像、图片、下载文件、js文件等等))</h3><h3 id="template-前端模板目录"><a href="#template-前端模板目录" class="headerlink" title="template (前端模板目录)"></a>template (前端模板目录)</h3><ul>
+<li>/default/common 基础css文件、header、footer等公共引入文件</li>
+<li>/default/collage 大学计划页面</li>
+<li>/default/dige dige专区页面</li>
+<li>/default/forum 首页、帖子页面</li>
+<li>/default/member 会员页面</li>
+<li>/default/home 家园页面</li>
+<li>/default/group 群组页面</li>
+<li>/default/mobile 移动端页面</li>
+<li>/default/portal 文章页面</li>
+<li>/default/search 搜索页面</li>
+</ul>
+<h3 id="uc-client-UCenter客户端"><a href="#uc-client-UCenter客户端" class="headerlink" title="uc_client (UCenter客户端)"></a>uc_client (UCenter客户端)</h3><ul>
+<li>/uc_client/control UC业务处理操作类</li>
+<li>/uc_client/data 缓存文件目录</li>
+<li>/uc_client/lib 类库目录(包括数据库操作类,XML类,UCCODE类,邮件发送类)</li>
+<li>/uc_client/model UC业务模型类</li>
+</ul>
+<h3 id="uc-server-UCenter服务端-后台ucenter功能实现目录"><a href="#uc-server-UCenter服务端-后台ucenter功能实现目录" class="headerlink" title="uc_server (UCenter服务端 后台ucenter功能实现目录)"></a>uc_server (UCenter服务端 后台ucenter功能实现目录)</h3><h3 id="根目录文件"><a href="#根目录文件" class="headerlink" title="根目录文件"></a>根目录文件</h3><ul>
+<li>admin.php 后台入口文件</li>
+<li>api.php API输出 入口文件</li>
+<li>collage.php 大学计划入口文件</li>
+<li>composer.json composer依赖版本记录文件</li>
+<li>composer.lock composer依赖版本控制文件</li>
+<li>connect.php 云平台接口文件</li>
+<li>dige.php dige专区入口文件</li>
+<li>forum.php 帖子信息入口文件</li>
+<li>group.php 群组入口文件</li>
+<li>home.php 家园入口文件</li>
+<li>index.php 首页</li>
+<li>member.php 用户入口文件（登录、注册、退出等）</li>
+<li>misc.php 程序杂项扩展入口</li>
+<li>plugin.php 插件入口文件</li>
+<li>portal.php 门户入口文件</li>
+<li>robots.txt 搜索引擎限制文件</li>
+<li>search.php 搜索频道入口文件</li>
+</ul>
+<h2 id="2-运行逻辑"><a href="#2-运行逻辑" class="headerlink" title="2. 运行逻辑"></a>2. 运行逻辑</h2><p>discuz的入口文件起到了路由的作用。一个标准的discuz请求如下：</p>
+<pre><code>http://localhost/home.php?mod=space&amp;uid=1&amp;do=profile
+</code></pre><p>当在浏览器输入以上url时，首先执行的是跟目录下的 home.php 文件</p>
+<pre><code>&lt;?php
+
+define(&apos;APPTYPEID&apos;, 1);
+define(&apos;CURSCRIPT&apos;, &apos;home&apos;);
+
+if(!empty($_GET[&apos;mod&apos;]) &amp;&amp; ($_GET[&apos;mod&apos;] == &apos;misc&apos; || $_GET[&apos;mod&apos;] == &apos;invite&apos;)) {
+    define(&apos;ALLOWGUEST&apos;, 1);
+}
+
+require_once &apos;./source/class/class_core.php&apos;;  //引入核心类文件，作用为：自动引入类规则，错误和异常处理，单例创建discuz_application类实例，引入默认函数库function.core.php
+require_once &apos;./source/function/function_home.php&apos;;  //引入discuzX函数库
+
+$discuz = C::app();  //实例化discuz_application类
+$cachelist = array(&apos;magic&apos;,&apos;usergroups&apos;, &apos;diytemplatenamehome&apos;,&apos;forumlinks&apos;,&apos;identity&apos;); //加身份组缓存
+$discuz-&gt;cachelist = $cachelist; //设置缓存列表
+$discuz-&gt;init();  //初始化应用:数据库、系统设置、用户、session、任务、等(discuz_appication类里面)
+$space = array();
+
+$mod = getgpc(&apos;mod&apos;); //接收$_GET[&apos;mod&apos;]数据
+if(!in_array($mod, array(&apos;space&apos;, &apos;spacecp&apos;, &apos;misc&apos;, &apos;magic&apos;, &apos;editor&apos;, &apos;invite&apos;, &apos;task&apos;, &apos;medal&apos;, &apos;rss&apos;, &apos;follow&apos;))) {
+    $mod = &apos;space&apos;;
+    $_GET[&apos;do&apos;] = &apos;home&apos;;
+}
+
+if($mod == &apos;space&apos; &amp;&amp; ((empty($_GET[&apos;do&apos;]) || $_GET[&apos;do&apos;] == &apos;index&apos;) &amp;&amp; ($_G[&apos;inajax&apos;]))) {
+    $_GET[&apos;do&apos;] = &apos;profile&apos;;
+}
+$curmod = !empty($_G[&apos;setting&apos;][&apos;followstatus&apos;]) &amp;&amp; (empty($_GET[&apos;diy&apos;]) &amp;&amp; empty($_GET[&apos;do&apos;]) &amp;&amp; $mod == &apos;space&apos; || $_GET[&apos;do&apos;] == &apos;follow&apos;) ? &apos;follow&apos; : $mod;
+define(&apos;CURMODULE&apos;, $curmod);
+runhooks($_GET[&apos;do&apos;] == &apos;profile&apos; &amp;&amp; $_G[&apos;inajax&apos;] ? &apos;card&apos; : $_GET[&apos;do&apos;]);
+require_once libfile(&apos;home/&apos;.$mod, &apos;module&apos;);  //根据请求时传的mod参数经由上方判断确定加载对应文件
+
+?&gt;
+</code></pre><p>注: libfile()函数在会将对应的模块字符串替换为模块的实际url。<br><code>libfile(&#39;home/&#39;.$mod, &#39;module&#39;)</code>的实际访问地址是 <code>/source/module/home/$mod.php</code></p>
+<p>进入到<code>/source/module/home/home_space.php</code> 文件中 根据请求参数 uid和do的值判断具体的执行过程，有些时候会直接引入响应的程序组件完成逻辑处理(这里引入了 <code>/include/space/space_profile.php</code>)</p>
+<p>在 <code>space_profile.php</code>中判断运行之后输出到模板文件<code>/template/default/home/space_profile.htm</code>中。<br>注：<code>template()</code>函数在 核心函数库 <code>function_core.php</code> 中 用于加载当前使用模板的模板文件 。根据传参此时加载了 <code>/template/default/home/space_profile.htm</code> 文件</p>
+<p>在模板文件<code>space_profile.htm</code>中 可以直接使用php文件中的数据变量进行赋值渲染输出到浏览器。<br>注：template模板语法不赘述 详见 <a href="https://open.dismall.com/?ac=document&amp;page=dev_template" target="_blank" rel="external">模板语法</a></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/discuz/" rel="tag">#Discuz</a>
+          
+            <a href="/tags/php/" rel="tag">#PHP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/12/PHP-to-achieve-the-length-of-Chinese-string-calculation-and-interception-without-garbled-code/" rel="next" title="PHP实现中文字符串的长度计算和截取无乱码">
+                <i class="fa fa-chevron-left"></i> PHP实现中文字符串的长度计算和截取无乱码
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="isunman" />
+          <p class="site-author-name" itemprop="name">isunman</p>
+          <p class="site-description motion-element" itemprop="description">love IT, love Movie, love Love</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/isunman" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-目录结构"><span class="nav-number">1.</span> <span class="nav-text">1.目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#api"><span class="nav-number">1.1.</span> <span class="nav-text">api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#archiver-论坛Archiver静态化目录"><span class="nav-number">1.2.</span> <span class="nav-text">archiver (论坛Archiver静态化目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config"><span class="nav-number">1.3.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-论坛数据缓存目录"><span class="nav-number">1.4.</span> <span class="nav-text">data (论坛数据缓存目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-论坛安装目录-初始化运行时直接请求到此处将重新安装论坛"><span class="nav-number">1.5.</span> <span class="nav-text">install (论坛安装目录(初始化运行时直接请求到此处将重新安装论坛))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#source-程序后端功能处理目录"><span class="nav-number">1.6.</span> <span class="nav-text">source (程序后端功能处理目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-程序资源目录-头像、图片、下载文件、js文件等等"><span class="nav-number">1.7.</span> <span class="nav-text">static (程序资源目录(头像、图片、下载文件、js文件等等))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-前端模板目录"><span class="nav-number">1.8.</span> <span class="nav-text">template (前端模板目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uc-client-UCenter客户端"><span class="nav-number">1.9.</span> <span class="nav-text">uc_client (UCenter客户端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uc-server-UCenter服务端-后台ucenter功能实现目录"><span class="nav-number">1.10.</span> <span class="nav-text">uc_server (UCenter服务端 后台ucenter功能实现目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根目录文件"><span class="nav-number">1.11.</span> <span class="nav-text">根目录文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-运行逻辑"><span class="nav-number">2.</span> <span class="nav-text">2. 运行逻辑</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">isunman</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="powered-by">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="theme-info">
+<span id="busuanzi_container_site_pv">
+    PV<span id="busuanzi_value_site_pv"></span> --
+</span>
+<span id="busuanzi_container_site_uv">
+  UV<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+  
+
+</body>
+</html>
