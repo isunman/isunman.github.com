@@ -67,7 +67,7 @@ Composer 是一个PHP类库管理器（官网http://docs.phpcomposer.com）。Co
 <meta property="og:site_name" content="太阳侠">
 <meta property="og:description" content="Discuz X3.1 是一个成熟的基于PHP开发的社区系统（广义上来讲是一个建站系统），自从被企鹅收购后悄无声息的被遗弃了，伤感啊。如今要在Discuz上加什么功能，改bug什么的只能依靠自力更生了；好在有各种开源社区，开发好的功能、类库你可以无偿的直接拿来用。
 Composer 是一个PHP类库管理器（官网http://docs.phpcomposer.com）。Composer 优雅的解决了">
-<meta property="og:updated_time" content="2021-04-23T09:51:43.340Z">
+<meta property="og:updated_time" content="2021-04-23T10:01:10.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DiscuzX3.1使用Composer安装第三方类库">
 <meta name="twitter:description" content="Discuz X3.1 是一个成熟的基于PHP开发的社区系统（广义上来讲是一个建站系统），自从被企鹅收购后悄无声息的被遗弃了，伤感啊。如今要在Discuz上加什么功能，改bug什么的只能依靠自力更生了；好在有各种开源社区，开发好的功能、类库你可以无偿的直接拿来用。
@@ -300,7 +300,7 @@ Composer 是一个PHP类库管理器（官网http://docs.phpcomposer.com）。Co
 <p>Composer 是一个PHP类库管理器（官网<a href="http://docs.phpcomposer.com）。Composer" target="_blank" rel="external">http://docs.phpcomposer.com）。Composer</a> 优雅的解决了PHP项目中第三方类库的安装及依赖关系。很多成熟的项目（如 Laravel ）已经把Composer作为首选的安装方式；</p>
 <p>所以，在Discuz X3.1 上安装第三方类库使用Composer后，会很大提高生产力。</p>
 <p>下面我来说说如何在 Discuz X3.1中使用 Composer 安装并使用第三方类库 ；</p>
-<h2 id="先说安装Composer到Discuz-X3-1框架下"><a href="#先说安装Composer到Discuz-X3-1框架下" class="headerlink" title="先说安装Composer到Discuz X3.1框架下"></a>先说安装Composer到Discuz X3.1框架下</h2><h3 id="一-修改-class-core-php-source-class-class-core-php-如下"><a href="#一-修改-class-core-php-source-class-class-core-php-如下" class="headerlink" title="一. 修改 class_core.php (\source\class\class_core.php) 如下"></a>一. 修改 <code>class_core.php (\source\class\class_core.php)</code> 如下</h3><pre><code>$autoloadfile=DISCUZ_ROOT.&apos;/vendor/autoload.php&apos;;
+<h3 id="先说安装Composer到Discuz-X3-1框架下"><a href="#先说安装Composer到Discuz-X3-1框架下" class="headerlink" title="先说安装Composer到Discuz X3.1框架下"></a>先说安装Composer到Discuz X3.1框架下</h3><h4 id="一-修改-class-core-php-source-class-class-core-php-如下"><a href="#一-修改-class-core-php-source-class-class-core-php-如下" class="headerlink" title="一. 修改 class_core.php (\source\class\class_core.php) 如下"></a>一. 修改 <code>class_core.php (\source\class\class_core.php)</code> 如下</h4><pre><code>$autoloadfile=DISCUZ_ROOT.&apos;/vendor/autoload.php&apos;;
 if(!file_exists($autoloadfile)){  
     if(function_exists(&apos;spl_autoload_register&apos;)) {
         spl_autoload_register(array(&apos;core&apos;, &apos;autoload&apos;));
@@ -312,7 +312,7 @@ if(!file_exists($autoloadfile)){
 }else{
     require_once  $autoloadfile;//如果存在Composer 加载器 ，则使用 ；
 }
-</code></pre><h3 id="二-在-Discuz-目录下，新建一个-composer-json-内容如下："><a href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下：" class="headerlink" title="二. 在 Discuz 目录下，新建一个 composer.json 内容如下："></a>二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</h3><pre><code>{
+</code></pre><h4 id="二-在-Discuz-目录下，新建一个-composer-json-内容如下："><a href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下：" class="headerlink" title="二. 在 Discuz 目录下，新建一个 composer.json 内容如下："></a>二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</h4><pre><code>{
 
     &quot;require&quot;: {
          &quot;guzzlehttp/guzzle&quot;: &quot;~6.0&quot;
@@ -322,7 +322,7 @@ if(!file_exists($autoloadfile)){
         &quot;classmap&quot;: [&quot;source/class/&quot;]
     }
 }
-</code></pre><h3 id="三-终端上执行命令-composer-install"><a href="#三-终端上执行命令-composer-install" class="headerlink" title="三. 终端上执行命令 composer install"></a>三. 终端上执行命令 <code>composer install</code></h3><p>看到类似这样的执行结果，表示已经安装成功了</p>
+</code></pre><h4 id="三-终端上执行命令-composer-install"><a href="#三-终端上执行命令-composer-install" class="headerlink" title="三. 终端上执行命令 composer install"></a>三. 终端上执行命令 <code>composer install</code></h4><p>看到类似这样的执行结果，表示已经安装成功了</p>
 <pre><code>Loading composer repositories with package information
 Updating dependencies (including require-dev)
 Package operations: 10 installs, 0 updates, 0 removals
@@ -347,7 +347,7 @@ Generating autoload files
 Use the `composer fund` command to find out more!
 </code></pre><p>另外，也可以查看项目根目录下的vendor下面的文件，核验新引入的类库是否下载更新成功。</p>
 <p>具体如何安装及使用 Composer 请参阅 <a href="http://docs.phpcomposer.com" target="_blank" rel="external">http://docs.phpcomposer.com</a></p>
-<h2 id="在Discuz程序中如何使用-“composer安装”的第三方类库呢？"><a href="#在Discuz程序中如何使用-“composer安装”的第三方类库呢？" class="headerlink" title="在Discuz程序中如何使用 “composer安装”的第三方类库呢？"></a>在Discuz程序中如何使用 “composer安装”的第三方类库呢？</h2><p>通过Composer autoload 加载器会把这些第三方库自动加载进来，这些第三方类库程序中的类、方法(函数)等等 在Discuz 程序中你想怎么用都可以。</p>
+<h3 id="再说在Discuz程序中如何使用-“composer安装”的第三方类库"><a href="#再说在Discuz程序中如何使用-“composer安装”的第三方类库" class="headerlink" title="再说在Discuz程序中如何使用 “composer安装”的第三方类库"></a>再说在Discuz程序中如何使用 “composer安装”的第三方类库</h3><p>通过Composer autoload 加载器会把这些第三方库自动加载进来，这些第三方类库程序中的类、方法(函数)等等 在Discuz 程序中你想怎么用都可以。</p>
 <p>例如，以使用guzzle为例。在任何一个Discuz X3.1框架下的PHP文件中，直接使用下面代码即可。</p>
 <pre><code>use GuzzleHttp\Client;
 
@@ -537,7 +537,7 @@ if ($response-&gt;hasHeader(&apos;Content-Length&apos;)) {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先说安装Composer到Discuz-X3-1框架下"><span class="nav-number">1.</span> <span class="nav-text">先说安装Composer到Discuz X3.1框架下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-修改-class-core-php-source-class-class-core-php-如下"><span class="nav-number">1.1.</span> <span class="nav-text">一. 修改 class_core.php (\source\class\class_core.php) 如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下："><span class="nav-number">1.2.</span> <span class="nav-text">二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-终端上执行命令-composer-install"><span class="nav-number">1.3.</span> <span class="nav-text">三. 终端上执行命令 composer install</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Discuz程序中如何使用-“composer安装”的第三方类库呢？"><span class="nav-number">2.</span> <span class="nav-text">在Discuz程序中如何使用 “composer安装”的第三方类库呢？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先说安装Composer到Discuz-X3-1框架下"><span class="nav-number">1.</span> <span class="nav-text">先说安装Composer到Discuz X3.1框架下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-修改-class-core-php-source-class-class-core-php-如下"><span class="nav-number">1.1.</span> <span class="nav-text">一. 修改 class_core.php (\source\class\class_core.php) 如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下："><span class="nav-number">1.2.</span> <span class="nav-text">二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-终端上执行命令-composer-install"><span class="nav-number">1.3.</span> <span class="nav-text">三. 终端上执行命令 composer install</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再说在Discuz程序中如何使用-“composer安装”的第三方类库"><span class="nav-number">2.</span> <span class="nav-text">再说在Discuz程序中如何使用 “composer安装”的第三方类库</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
