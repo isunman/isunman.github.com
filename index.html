@@ -244,6 +244,180 @@
             
               
                 
+                <a class="post-title-link" href="/2021/04/23/Discuz-X3.1-uses-Composer-to-install-third-party-libraries/" itemprop="url">
+                  DiscuzX3.1使用Composer安装第三方类库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-04-23T17:48:00+08:00" content="2021-04-23">
+              2021-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Discuz X3.1 是一个成熟的基于PHP开发的社区系统（广义上来讲是一个建站系统），自从被企鹅收购后悄无声息的被遗弃了，伤感啊。如今要在Discuz上加什么功能，改bug什么的只能依靠自力更生了；好在有各种开源社区，开发好的功能、类库你可以无偿的直接拿来用。</p>
+<p>Composer 是一个PHP类库管理器（官网<a href="http://docs.phpcomposer.com）。Composer" target="_blank" rel="external">http://docs.phpcomposer.com）。Composer</a> 优雅的解决了PHP项目中第三方类库的安装及依赖关系。很多成熟的项目（如 Laravel ）已经把Composer作为首选的安装方式；</p>
+<p>所以，在Discuz X3.1 上安装第三方类库使用Composer后，会很大提高生产力。</p>
+<p>下面我来说说如何在 Discuz X3.1中使用 Composer 安装并使用第三方类库 ；</p>
+<h2 id="先说安装Composer到Discuz-X3-1框架下"><a href="#先说安装Composer到Discuz-X3-1框架下" class="headerlink" title="先说安装Composer到Discuz X3.1框架下"></a>先说安装Composer到Discuz X3.1框架下</h2><h3 id="一-修改-class-core-php-source-class-class-core-php-如下"><a href="#一-修改-class-core-php-source-class-class-core-php-如下" class="headerlink" title="一. 修改 class_core.php (\source\class\class_core.php) 如下"></a>一. 修改 <code>class_core.php (\source\class\class_core.php)</code> 如下</h3><pre><code>$autoloadfile=DISCUZ_ROOT.&apos;/vendor/autoload.php&apos;;
+if(!file_exists($autoloadfile)){  
+    if(function_exists(&apos;spl_autoload_register&apos;)) {
+        spl_autoload_register(array(&apos;core&apos;, &apos;autoload&apos;));
+    } else {
+           function __autoload($class) {
+            return core::autoload($class);
+        }
+       }
+}else{
+    require_once  $autoloadfile;//如果存在Composer 加载器 ，则使用 ；
+}
+</code></pre><h3 id="二-在-Discuz-目录下，新建一个-composer-json-内容如下："><a href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下：" class="headerlink" title="二. 在 Discuz 目录下，新建一个 composer.json 内容如下："></a>二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</h3><pre><code>{
+
+    &quot;require&quot;: {
+         &quot;guzzlehttp/guzzle&quot;: &quot;~6.0&quot;
+    },
+
+    &quot;autoload&quot;:{
+        &quot;classmap&quot;: [&quot;source/class/&quot;]
+    }
+}
+</code></pre><h3 id="三-终端上执行命令-composer-install"><a href="#三-终端上执行命令-composer-install" class="headerlink" title="三. 终端上执行命令 composer install"></a>三. 终端上执行命令 <code>composer install</code></h3><p>看到类似这样的执行结果，表示已经安装成功了</p>
+<pre><code>Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 10 installs, 0 updates, 0 removals
+  - Installing ralouphie/getallheaders (3.0.3): Loading from cache
+  - Installing psr/http-message (1.0.1): Loading from cache
+  - Installing guzzlehttp/psr7 (1.8.1): Loading from cache
+  - Installing guzzlehttp/promises (1.4.1): Loading from cache
+  - Installing symfony/polyfill-php72 (v1.19.0): Loading from cache
+  - Installing symfony/polyfill-intl-normalizer (v1.19.0): Loading from cache
+  - Installing paragonie/random_compat (v2.0.20): Loading from cache
+  - Installing symfony/polyfill-php70 (v1.19.0): Loading from cache
+  - Installing symfony/polyfill-intl-idn (v1.19.0): Loading from cache
+  - Installing guzzlehttp/guzzle (6.5.5): Loading from cache
+guzzlehttp/psr7 suggests installing laminas/laminas-httphandlerrunner (Emit PSR-   7 responses)
+symfony/polyfill-intl-normalizer suggests installing ext-intl (For best performa   nce)
+paragonie/random_compat suggests installing ext-libsodium (Provides a modern cry   pto API that can be used to generate random bytes.)
+symfony/polyfill-intl-idn suggests installing ext-intl (For best performance)
+guzzlehttp/guzzle suggests installing psr/log (Required for using the Log middle   ware)
+Writing lock file
+Generating autoload files
+4 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+</code></pre><p>另外，也可以查看项目根目录下的vendor下面的文件，核验新引入的类库是否下载更新成功。</p>
+<p>具体如何安装及使用 Composer 请参阅 <a href="http://docs.phpcomposer.com" target="_blank" rel="external">http://docs.phpcomposer.com</a></p>
+<h2 id="在Discuz程序中如何使用-“composer安装”的第三方类库呢？"><a href="#在Discuz程序中如何使用-“composer安装”的第三方类库呢？" class="headerlink" title="在Discuz程序中如何使用 “composer安装”的第三方类库呢？"></a>在Discuz程序中如何使用 “composer安装”的第三方类库呢？</h2><p>通过Composer autoload 加载器会把这些第三方库自动加载进来，这些第三方类库程序中的类、方法(函数)等等 在Discuz 程序中你想怎么用都可以。</p>
+<p>例如，以使用guzzle为例。在任何一个Discuz X3.1框架下的PHP文件中，直接使用下面代码即可。</p>
+<pre><code>use GuzzleHttp\Client;
+
+$client = new Client([
+    // Base URI is used with relative requests
+    &apos;base_uri&apos; =&gt; &apos;http://httpbin.org&apos;,
+    // You can set any number of default request options.
+    &apos;timeout&apos;  =&gt; 2.0,
+]);
+
+$response = $client-&gt;get(&apos;http://httpbin.org/get&apos;);
+
+$code = $response-&gt;getStatusCode(); // 200
+$reason = $response-&gt;getReasonPhrase(); // OK
+
+// Check if a header exists.
+if ($response-&gt;hasHeader(&apos;Content-Length&apos;)) {
+    echo &quot;It exists&quot;;
+}
+</code></pre><p>另外，Discuz X3.2 也适用上述方法。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2021/04/23/DiscuzX-secondary-development-directory-structure-and-operational-logic/" itemprop="url">
                   DiscuzX二次开发之目录结构和运行逻辑
                 </a>
@@ -1433,184 +1607,6 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/07/29/can-you-write-the-Henan-dialect_P1/" itemprop="url">
-                  能写出来的河南话，你会写几个?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-07-29T16:32:00+08:00" content="2020-07-29">
-              2020-07-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="熰"><a href="#熰" class="headerlink" title="熰"></a>熰</h4><p>[读音]ǒu</p>
-<p>[释义]烤过度的东西出现碳化的迹象</p>
-<p>[引自]《管子?侈靡篇》古之祭有时而熰。《注》熰，热甚也。</p>
-<p>[举例]火上的东西快拿起来，都烤熰了。</p>
-<h4 id="熥"><a href="#熥" class="headerlink" title="熥"></a>熥</h4><p>[读音]tēng</p>
-<p>[释义]把凉了的物体再加热或烤热</p>
-<p>[引自]《集韻》他東切，音通。以火煖物也。</p>
-<p>[举例]你的衣服湿了，脱下来在火上熥熥。</p>
-<h4 id="缏"><a href="#缏" class="headerlink" title="缏"></a>缏</h4><p>[读音]biǎn</p>
-<p>[释义]卷起衣袖</p>
-<p>[引自]《说文通训定声》缏,缝缉其边曰缏。这里用引申义，因为袖子或裤子挽起的部分很像衣服被缝纫形成的缏。</p>
-<p>[举例]干活就把袖子缏起来，省的弄脏。</p>
-<h4 id="癔症"><a href="#癔症" class="headerlink" title="癔症"></a>癔症</h4><p>[读音]yi zheng</p>
-<p>[释义]走神，发呆，说梦话</p>
-<p>[引自]</p>
-<p>[举例]晚上开车看着点，别发癔症。</p>
-<h4 id="撧"><a href="#撧" class="headerlink" title="撧"></a>撧</h4><p>[读音]字典里读音juē，方言里变音quē</p>
-<p>[释义]古同“绝”，折断；断绝。</p>
-<p>[引自]元?佚名《盆儿鬼》：我待撧枝在头上插。</p>
-<p>[举例]过来把这个树枝撧断了。</p>
-<h4 id="爒"><a href="#爒" class="headerlink" title="爒"></a>爒</h4><p>[读音]liǎo</p>
-<p>[释义]古同「燎」。火烧</p>
-<p>[引自]</p>
-<p>[举例]别靠火那么近，小心把衣服爒了。</p>
-<h4 id="吃起来可艮gen（食物坚硬而不松脆）"><a href="#吃起来可艮gen（食物坚硬而不松脆）" class="headerlink" title="吃起来可艮gen（食物坚硬而不松脆）"></a>吃起来可艮gen（食物坚硬而不松脆）</h4><p>[读音]</p>
-<p>[释义]食物坚硬而不松脆。也指为人特别执拗，过于认真或者行动缓慢。</p>
-<p>[引自]</p>
-<p>[举例]这个萝卜吃起来可艮。你这孩子怎么这么艮不听话。</p>
-<h4 id="薅"><a href="#薅" class="headerlink" title="薅"></a>薅</h4><p>[读音]hāo</p>
-<p>[释义]揪</p>
-<p>[引自]《说文解字》拔去田艸也。</p>
-<p>[举例]你俩打架不要薅头发。</p>
-<h4 id="冇"><a href="#冇" class="headerlink" title="冇"></a>冇</h4><p>[读音]māo（河南地区发音：māo mōu mō mù 均有）</p>
-<p>[释义]没有</p>
-<p>[引自]</p>
-<p>[举例]（粤语中的冇也来自河南话）</p>
-<h4 id="抪拉"><a href="#抪拉" class="headerlink" title="抪拉"></a>抪拉</h4><p>[读音]bu la</p>
-<p>[释义]用手来回拨弄；用手擦。</p>
-<p>[引自]</p>
-<p>[举例]他在朋友进屋前赶紧抪拉了一下桌子上的灰。</p>
-<h4 id="哕"><a href="#哕" class="headerlink" title="哕"></a>哕</h4><p>[读音]yuě</p>
-<p>[释义]呕吐，或要吐而吐不出东西来。</p>
-<p>[引自]明?张自烈《正字通》：方书有物无声曰吐，有声无物曰哕，有声有物曰呕。</p>
-<p>[举例]吃得不舒服，想干哕。</p>
-<h4 id="搲"><a href="#搲" class="headerlink" title="搲"></a>搲</h4><p>[读音]wǎ</p>
-<p>[释义]以手或瓢状舀取。</p>
-<p>[引自]宋?司马光《类篇》：吴俗谓手爬物曰搲。元人杂剧《陈州粜米》第一折：他那边又搲了些米去了。</p>
-<p>[举例]没吃饱，再给我搲点儿米饭。</p>
-<h4 id="扽"><a href="#扽" class="headerlink" title="扽"></a>扽</h4><p>[读音]dèn</p>
-<p>[释义]拉，猛拉，使伸直或平整。</p>
-<p>[引自]清?《康熙字典》：《唐韵》《集韵》都困切，音顿。撼也。又《博雅》引也。一曰摩也。</p>
-<p>[举例]刚洗好的床单太皱，来，跟我一起扽平整。</p>
-<h4 id="鬻"><a href="#鬻" class="headerlink" title="鬻"></a>鬻</h4><p>[读音]yū</p>
-<p>[释义]液体沸腾溢出。</p>
-<p>[引自]宋?《广韵》：鬻，薄没切：说文吹釜溢也。清?《说文解字》段玉裁注：今江苏俗谓火盛水鬻溢出为铺出，鬻之转语也，正当作鬻字。</p>
-<p>[举例]米汤煮得快鬻出来了。</p>
-<h4 id="醭"><a href="#醭" class="headerlink" title="醭"></a>醭</h4><p>[读音]bú</p>
-<p>[释义]酒﹑酱﹑醋等因败坏而生的白霉。亦泛指一切东西受潮而表面出现霉斑。</p>
-<p>[引自]杨万里《风雨》：梅天笔墨都生醭，棐几文书懒拂尘。</p>
-<p>[举例]这个菜赶快放冰箱里面，要不明天就出醭。</p>
-<h4 id="敹"><a href="#敹" class="headerlink" title="敹"></a>敹</h4><p>[读音]liáo</p>
-<p>[释义]粗线缝缀。</p>
-<p>[引自]民国章炳麟《新方言》：凡非绽裂而粗率缝之曰敹。</p>
-<p>[举例]袖口炸线了，给它敹几针就好了。</p>
-<h4 id="嬎"><a href="#嬎" class="headerlink" title="嬎"></a>嬎</h4><p>[读音]fàn</p>
-<p>[释义]禽类下蛋；生子多而整齐划一，也是繁殖的意思。</p>
-<p>[引自]清?《康熙字典》：同娩。息也。清?《说文解字》段玉裁注：谓生子多而如一也。</p>
-<p>[举例]昨晚，他家的老母鸡又嬎了三个鸡蛋。</p>
-<h4 id="拌"><a href="#拌" class="headerlink" title="拌"></a>拌</h4><p>[读音]bǎn</p>
-<p>[释义]扔，丢弃。</p>
-<p>[引自]西汉?杨雄《方言》卷十：拌，弃也。楚凡挥弃物谓之拌。</p>
-<p>[举例]把这些垃圾拌出去。</p>
-<h4 id="谝"><a href="#谝" class="headerlink" title="谝"></a>谝</h4><p>[读音]piǎn</p>
-<p>[释义]炫耀、夸耀或骄傲地显示。</p>
-<p>[引自]东汉?许慎《说文解字》：谝，便巧言也。清?蒲松龄《增补幸云曲》第十六回：这奴才不弹琵琶，光谝他的汗巾子，望我夸他。</p>
-<p>[举例]他买了个戒指，老在我面前谝。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1657,7 +1653,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-count">84</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
