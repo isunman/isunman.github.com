@@ -244,6 +244,120 @@
             
               
                 
+                <a class="post-title-link" href="/2021/04/25/Server-management-blood-lessons/" itemprop="url">
+                  服务器管理血的教训
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-04-25T05:38:00+08:00" content="2021-04-25">
+              2021-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>服务器管理血的教训</p>
+<p>服务器管理，尤其是Linux服务器管理，必须注意以下几项原则，并做到。</p>
+<p>###1、绝对不能随便使用<code>rm -rf</code>命令<br>因为会递归强制删除文件，几乎都不会可恢复。【影响响程度太深】</p>
+<h4 id="挽救措施："><a href="#挽救措施：" class="headerlink" title="挽救措施："></a>挽救措施：</h4><p>1、马上停止数据继续写入，将系统挂起。使用一些恢复数据的方法进行磁盘数据数据恢复操作。一般不能全部恢复；而且还会影响线上的业务的停止。</p>
+<p>2、把快照的数据恢复到一个其他不是生产环境的阿里云服务器实例上，然后恢复到那个快照中的数据，再把误删除而需要的数据拷贝过来。原线上生产环境的业务不用停止。</p>
+<p>###2、绝对不能使用 <code>yum update</code>命令<br>因为会升级Linux 内核，而这个升级后的内核可能会引起各种问题。【影响范围太大】</p>
+<h4 id="挽救措施：-1"><a href="#挽救措施：-1" class="headerlink" title="挽救措施："></a>挽救措施：</h4><p>如果之前的系统内核还在，重启启动那个内核；<br>如果没问题的话，设置开机启动的内核为这个正常可用的内核。</p>
+<p>###3、关键操作开始之前必须备份数据+快照</p>
+<p>既不能因为精神不好产生错误的指令输入，或者粗心大意没有在意造成严重的后果；<br>又不能怕操作错误而什么都不敢做了。</p>
+<p>有一个宗旨【稳定第一】【宁愿冗余，也不的丢失数据】。</p>
+<p>不明确知道命令输入执行的后果的，就绝不执行。</p>
+<p>——————于2021年04月25日 凌晨5：35——必须记下。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2021/04/23/Discuz-X3.1-uses-Composer-to-install-third-party-libraries/" itemprop="url">
                   DiscuzX3.1使用Composer安装第三方类库
                 </a>
@@ -1475,138 +1589,6 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/11/01/centos8-ssh-reported-error-for-algorithm-negotiation-failes/" itemprop="url">
-                  CentOS8解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-11-01T16:05:00+08:00" content="2020-11-01">
-              2020-11-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes</p>
-<p>今天新服务器版本已经到了CentOS8，但是SSH Secure Shell还是多年前的3.2.9，所以在连服务器时遇到标题中的报错。这个问题很悲剧，浪费了我很多时间。</p>
-<p>网上解决这个问题的博文非常非常多，都是这样的方案：</p>
-<ol>
-<li><p>打开/etc/ssh文件目录下的文件sshd_config  </p>
-<blockquote>
-<p>sudo vim /etc/ssh/sshd_config</p>
-</blockquote>
-</li>
-<li><p>在文件末尾添加以下信息</p>
-</li>
-</ol>
-<blockquote>
-<pre><code>Ciphers aes128-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,3des-cbc,arcfour128,arcfour256,arcfour,blowfish-cbc,cast128-cbc
-
-MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160,hmac-sha1-96,hmac-md5-96  
-
-KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group-exchange-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group1-sha1,curve25519-sha256@libssh.org
-</code></pre></blockquote>
-<ol>
-<li>保存后重启ssh服务</li>
-</ol>
-<blockquote>
-<p>sudo /etc/init.d/ssh restart</p>
-</blockquote>
-<p>大家都说好用，但是我试了之后悲剧了，增加了配置后重启ssh就启动不了了，会报错。</p>
-<p>但是我依然没能解决问题，最终决定弃用落后的SSH Secure Shell Client了，换成【FileZilla】解决问题：FileZilla也支持ssh协议传输文件，而且操作稍微比SSH Secure Shell Client人性化。</p>
-<p>还有一种方案是把CentOS8退回到CentOS6,这还有什么用呢？</p>
-<p>因此，应该是CentOS8和SSH Secure File Transfer Client之前的冲突解决不了的问题。
-　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1653,7 +1635,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">84</span>
+              <span class="site-state-item-count">85</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
