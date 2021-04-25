@@ -244,6 +244,133 @@
             
               
                 
+                <a class="post-title-link" href="/2021/04/26/two-ways-to-install-composer-on-a-linux-system/" itemprop="url">
+                  Linux系统安装Composer的两种方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-04-26T00:12:00+08:00" content="2021-04-26">
+              2021-04-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>实际使用的系统：CentOS 6.5</p>
+<h4 id="1、方法一-CURL"><a href="#1、方法一-CURL" class="headerlink" title="1、方法一 CURL"></a>1、方法一 CURL</h4><p>下载composer.phar文件</p>
+<pre><code>curl -sS https://getcomposer.org/installer | php
+</code></pre><p>将composer.phar移动到环境变量中并且更名为composer</p>
+<pre><code>mv composer.phar  /usr/local/bin/composer
+</code></pre><p>使用国内镜像</p>
+<pre><code>composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre><h4 id="2、方法二-直接下载composer"><a href="#2、方法二-直接下载composer" class="headerlink" title="2、方法二 直接下载composer"></a>2、方法二 直接下载composer</h4><p>下载</p>
+<pre><code>wget https://getcomposer.org/composer.phar
+</code></pre><p>安装</p>
+<pre><code>cp composer.phar /usr/local/bin/composer
+chmod u+x /usr/local/bin/composer
+</code></pre><p>测试</p>
+<p>composer –help</p>
+<h4 id="3、安装的时候用root用户，使用的时候用非root用户"><a href="#3、安装的时候用root用户，使用的时候用非root用户" class="headerlink" title="3、安装的时候用root用户，使用的时候用非root用户"></a>3、安装的时候用root用户，使用的时候用非root用户</h4><p>否则，如果使用root运行会有提示：</p>
+<p>运行composer出现<code>do not run Composer as root/super user!</code></p>
+<p>解决方法：</p>
+<p>第1步 创建非root的新用户</p>
+<pre><code>[root@centos ~]# useradd newname
+[root@centos ~]# passwd  newname
+</code></pre><p>第2步 切换为新用户账户</p>
+<pre><code>[root@centos ~]# su newname
+</code></pre><p>切换到新用户后 , 即可执行 原来的操作 , 顺利完成 composer 指令。</p>
+<p>【注意】同时，需要使用root用户将 <code>/usr/local/bin/composer</code> 设置为755，否则其他用户无法执行该命令。</p>
+<p>【本人亲测，使用上述方法2和步骤3成功安装了Composer 2.1-dev版。方法1未测试。】</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2021/04/25/Server-management-blood-lessons/" itemprop="url">
                   服务器管理血的教训
                 </a>
@@ -1469,125 +1596,6 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/11/13/aliyun-internal-network-package-transfer-method-of-large-files/" itemprop="url">
-                  阿里云内网打包传输较大文件的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-11-13T15:15:00+08:00" content="2020-11-13">
-              2020-11-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天老夫遇到一个将其一台阿里云ECS服务器某个目录下的所有文件迁移到另外一台服务器，原本以为是一个普通的操作，熟料到一看数据有10GB左右，打包压缩之后基本没有小多少，所以正常的常规wget下载肯定是不行的，效率太低，最快只有500KB/s左右。因此，在这里我准备采用阿里云自带的内网IP地址，然后直接内网SCP拖过去。</p>
-<p>第一、准备工作</p>
-<p>1、登录阿里云账户看到ECS服务器对应的内网IP地址。（打包文件的服务器内网IP）</p>
-<p>2、打包压缩需要备份的网站目录，因为这里我开始打包过了，其实我不应该打包的，直接SCP，因为数据较大，打包时间也很长，后面还要解压也需要时间。</p>
-<p>第二、SCP命令传输</p>
-<p>1、复制目录到本地</p>
-<pre><code>scp -r root@网站所在内网IP地址:/home/wwwroot/拷贝网站目录 /当前拷贝过来的网站目录
-</code></pre><p>2、复制打包文件到本地</p>
-<pre><code>scp root@网站所在的内网IP:/home/wwwroot/拷贝网站目录/laozuo.tar.gz /当前拷贝过来的网站目录
-</code></pre><p>这个执行是在我们转入进来的服务器SSH执行，然后会要求我们同意和输入转出服务器的密码后开始传输。看来速度比直接wget快很多了，达到46MB/s。</p>
-<p>最后，稍等几分钟（这里10G大概不到5分钟)，传输完毕之后我们再到服务器中解压和数据拷贝（移动）即可。</p>
-<p>【注意】</p>
-<p>如果当前用户登录在【目标主机】，从【源主机】拷贝到【目标主机】时，有问题的话（需要输入【源主机】用户SSH密码），</p>
-<p>也可以反过来操作，即：用户登录到【源主机】，然后再从【源主机】拷贝到【目标主机】，需要输入【目标主机】的用户SSH密码。</p>
-<pre><code>scp /root/yasm-1.3.0.tar.gz root@111.66.66.888:/root/
-</code></pre><p>以上为一条具体的示例。</p>
-<p>　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1634,7 +1642,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-count">86</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

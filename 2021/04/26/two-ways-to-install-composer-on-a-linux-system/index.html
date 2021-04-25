@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SQLServer," />
+  <meta name="keywords" content="Linux,PHP," />
 
 
 
@@ -59,28 +59,34 @@
 
 
 
-<meta name="description" content="服务端配置:
-一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
-二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
-telnet 202.114.100.100 1433
-1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
+<meta name="description" content="实际使用的系统：CentOS 6.5
+1、方法一 CURL下载composer.phar文件
+curl -sS https://getcomposer.org/installer | php
+将composer.phar移动到环境变量中并且更名为composer
+mv composer.phar  /usr/local/bin/composer
+使用国内镜像
+composer config -g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sql2000的远程连接（含Sp4补丁）">
-<meta property="og:url" content="http://isunman.com/2016/04/21/sql2000-remote-connections-including-sp4-patch/index.html">
+<meta property="og:title" content="Linux系统安装Composer的两种方法">
+<meta property="og:url" content="http://isunman.com/2021/04/26/two-ways-to-install-composer-on-a-linux-system/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="服务端配置:
-一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
-二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
-telnet 202.114.100.100 1433
-1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
-<meta property="og:updated_time" content="2020-05-10T11:21:13.784Z">
+<meta property="og:description" content="实际使用的系统：CentOS 6.5
+1、方法一 CURL下载composer.phar文件
+curl -sS https://getcomposer.org/installer | php
+将composer.phar移动到环境变量中并且更名为composer
+mv composer.phar  /usr/local/bin/composer
+使用国内镜像
+composer config -g">
+<meta property="og:updated_time" content="2021-04-25T16:12:18.436Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sql2000的远程连接（含Sp4补丁）">
-<meta name="twitter:description" content="服务端配置:
-一 、看ping 服务器IP能否ping通。这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。
-二 、在Dos下输入telnet 服务器IP 端口，看能否连通。例如：
-telnet 202.114.100.100 1433
-1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/I">
+<meta name="twitter:title" content="Linux系统安装Composer的两种方法">
+<meta name="twitter:description" content="实际使用的系统：CentOS 6.5
+1、方法一 CURL下载composer.phar文件
+curl -sS https://getcomposer.org/installer | php
+将composer.phar移动到环境变量中并且更名为composer
+mv composer.phar  /usr/local/bin/composer
+使用国内镜像
+composer config -g">
 
 
 
@@ -98,7 +104,7 @@ telnet 202.114.100.100 1433
   };
 </script>
 
-  <title> Sql2000的远程连接（含Sp4补丁） | 太阳侠 </title>
+  <title> Linux系统安装Composer的两种方法 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +254,7 @@ telnet 202.114.100.100 1433
             
             
               
-                Sql2000的远程连接（含Sp4补丁）
+                Linux系统安装Composer的两种方法
               
             
           </h1>
@@ -260,8 +266,8 @@ telnet 202.114.100.100 1433
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T18:36:00+08:00" content="2016-04-21">
-              2016-04-21
+            <time itemprop="dateCreated" datetime="2021-04-26T00:12:00+08:00" content="2021-04-26">
+              2021-04-26
             </time>
           </span>
 
@@ -274,8 +280,8 @@ telnet 202.114.100.100 1433
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
                   </a>
                 </span>
 
@@ -305,22 +311,31 @@ telnet 202.114.100.100 1433
       
 
       
-        <p>服务端配置:</p>
-<h4 id="一-、看ping-服务器IP能否ping通。"><a href="#一-、看ping-服务器IP能否ping通。" class="headerlink" title="一 、看ping 服务器IP能否ping通。"></a>一 、看ping 服务器IP能否ping通。</h4><p>这个实际上是看和远程sql server 2000服务器的物理连接是否存在。如果不行，请检查网络情况。</p>
-<h4 id="二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><a href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。" class="headerlink" title="二 、在Dos下输入telnet 服务器IP 端口，看能否连通。"></a>二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</h4><p>例如：</p>
-<pre><code>telnet 202.114.100.100 1433
-</code></pre><p>1433是sql 2000对于Tcp/IP的默认侦听端口，也可通过”服务器的网络使用工具”来更改对于TCP/IP的侦听端口。通常这一步会出问题，提示：”……无法打开连接,连接失败”。如果这一步有问题，应该检查以下选项：</p>
-<p>1、在配置侦听端口时，如果把”隐藏服务器复选框”勾选上了，则意味着客户端无法通过枚举服务器来看到这台服务器，起到了保护的作用，但是Tcp/ip协议的默认端口将被隐式修改为2433，在客户端连接时必须作相应的改变。</p>
-<p>2、如果服务器端操作系统打过xp sp2补丁，则要使windows防火墙开放1433端口，方法很简单，在防火墙的”例外”选项卡中，点击”添加端口”按钮，添加相应的端口即可。</p>
-<p>3、检查服务器是否在1433端口侦听。如果服务器没有在tcp连接的1433端口侦听，则是连接不上的。检查方法是在服务器的dos里面输入 </p>
-<pre><code>netstat –an
-</code></pre><p>（全称：network status – all numeric，以数字形式显示所有连接的地址和端口），在结果列表里看是否有类似 </p>
-<pre><code>tcp  127.0.0.1 1433   listening
-</code></pre><p>的项。如果没有，则通常需要给sql server 2000打上至少sp3的补丁。可以在服务器端启动查询分析器，输入</p>
-<pre><code>select @@version
-</code></pre><p>执行后可以看到版本号，版本号在 <strong>8.00.2039</strong> 以下的都需要打补丁。这是Sp4的下载地址  <a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE" target="_blank" rel="external">（SQLServer SP4补丁下载）</a> 。注意下载后,执行的时候是解压,要在解压后的目录中执行setup.bat才是真正的安装。</p>
-<p>这时再做telnet测试，应该OK了。</p>
-<p><a href="http://blog.163.com/tcl_6688/blog/static/168864257201151574157197" target="_blank" rel="external">原文参考</a></p>
+        <p>实际使用的系统：CentOS 6.5</p>
+<h4 id="1、方法一-CURL"><a href="#1、方法一-CURL" class="headerlink" title="1、方法一 CURL"></a>1、方法一 CURL</h4><p>下载composer.phar文件</p>
+<pre><code>curl -sS https://getcomposer.org/installer | php
+</code></pre><p>将composer.phar移动到环境变量中并且更名为composer</p>
+<pre><code>mv composer.phar  /usr/local/bin/composer
+</code></pre><p>使用国内镜像</p>
+<pre><code>composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre><h4 id="2、方法二-直接下载composer"><a href="#2、方法二-直接下载composer" class="headerlink" title="2、方法二 直接下载composer"></a>2、方法二 直接下载composer</h4><p>下载</p>
+<pre><code>wget https://getcomposer.org/composer.phar
+</code></pre><p>安装</p>
+<pre><code>cp composer.phar /usr/local/bin/composer
+chmod u+x /usr/local/bin/composer
+</code></pre><p>测试</p>
+<p>composer –help</p>
+<h4 id="3、安装的时候用root用户，使用的时候用非root用户"><a href="#3、安装的时候用root用户，使用的时候用非root用户" class="headerlink" title="3、安装的时候用root用户，使用的时候用非root用户"></a>3、安装的时候用root用户，使用的时候用非root用户</h4><p>否则，如果使用root运行会有提示：</p>
+<p>运行composer出现<code>do not run Composer as root/super user!</code></p>
+<p>解决方法：</p>
+<p>第1步 创建非root的新用户</p>
+<pre><code>[root@centos ~]# useradd newname
+[root@centos ~]# passwd  newname
+</code></pre><p>第2步 切换为新用户账户</p>
+<pre><code>[root@centos ~]# su newname
+</code></pre><p>切换到新用户后 , 即可执行 原来的操作 , 顺利完成 composer 指令。</p>
+<p>【注意】同时，需要使用root用户将 <code>/usr/local/bin/composer</code> 设置为755，否则其他用户无法执行该命令。</p>
+<p>【本人亲测，使用上述方法2和步骤3成功安装了Composer 2.1-dev版。方法1未测试。】</p>
 
       
     </div>
@@ -329,7 +344,9 @@ telnet 202.114.100.100 1433
       
         <div class="post-tags">
           
-            <a href="/tags/sqlserver/" rel="tag">#SQLServer</a>
+            <a href="/tags/linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/php/" rel="tag">#PHP</a>
           
         </div>
       
@@ -338,17 +355,13 @@ telnet 202.114.100.100 1433
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/21/sqlserver2000-installation-error-a-general-network-error/" rel="next" title="安装sqlserver2000出错，一般性网络错误">
-                <i class="fa fa-chevron-left"></i> 安装sqlserver2000出错，一般性网络错误
+              <a href="/2021/04/25/Server-management-blood-lessons/" rel="next" title="服务器管理血的教训">
+                <i class="fa fa-chevron-left"></i> 服务器管理血的教训
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/23/you-are-generally-obtained-through-what-channels-people-do-not-know-the-knowledge-and-information/" rel="prev" title="你是通过什么渠道获取一般人不知道的知识和信息的？">
-                你是通过什么渠道获取一般人不知道的知识和信息的？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -492,7 +505,7 @@ telnet 202.114.100.100 1433
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-、看ping-服务器IP能否ping通。"><span class="nav-number">1.</span> <span class="nav-text">一 、看ping 服务器IP能否ping通。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-、在Dos下输入telnet-服务器IP-端口，看能否连通。"><span class="nav-number">2.</span> <span class="nav-text">二 、在Dos下输入telnet 服务器IP 端口，看能否连通。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、方法一-CURL"><span class="nav-number">1.</span> <span class="nav-text">1、方法一 CURL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、方法二-直接下载composer"><span class="nav-number">2.</span> <span class="nav-text">2、方法二 直接下载composer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、安装的时候用root用户，使用的时候用非root用户"><span class="nav-number">3.</span> <span class="nav-text">3、安装的时候用root用户，使用的时候用非root用户</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

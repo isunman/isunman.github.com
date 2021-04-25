@@ -244,6 +244,130 @@
             
               
                 
+                <a class="post-title-link" href="/2018/05/25/Linux-timing-tasks-are-accurate-to-seconds/" itemprop="url">
+                  linux定时任务精确到秒
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-25T12:53:00+08:00" content="2018-05-25">
+              2018-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux的crond定时任务只能精确到分，如何才能做到控制到秒呢?答案肯定是明显的，实现的方法也有多种，但本文只介绍一个相对来说比较精确，又方便的写法。</p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>增加一个普通的定时器脚本de &gt;dateTime.shde&gt;，放于/目录</p>
+<p>此脚本用于打印当前系统时间</p>
+<pre><code>#!/bin/bash
+date
+</code></pre><p>增加可执行权限</p>
+<pre><code>chmod +x /dateTime.sh
+</code></pre><p>编写定时任务</p>
+<pre><code>crontab -e
+</code></pre><p>脚本内容为</p>
+<pre><code>*/1 * * * * /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 5 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 10 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 15 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+*/1 * * * * sleep 20 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+...
+*/1 * * * * sleep 55 &amp;&amp; /dateTime.sh &gt;&gt; /dateTime.log
+</code></pre><p>重新启动crond</p>
+<pre><code>service crond restart
+</code></pre><p>程序就会每5秒执行一次脚本，并将时间写入/dateTime.log文件中</p>
+<h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>主要是使用linux的sleep控制脚本执行时间</p>
+<p><a href="http://blog.csdn.net/dounine/article/details/53357113" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/05/25/PHP's-six-ways-to-send-get-and-post-requests-are-a-succinct-summary/" itemprop="url">
                   php发送get、post请求的6种方法简明总结
                 </a>
@@ -1579,182 +1703,6 @@ location ~ \.php$ {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/17/php-probability-of-winning-algorithm/" itemprop="url">
-                  php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-17T18:59:00+08:00" content="2016-08-17">
-              2016-08-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  </p>
-<pre><code>&lt;?php
-/*
- * 经典的概率算法，
- * $proArr是一个预先设置的数组，
- * 假设数组为：array(100,200,300，400)，
- * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
- * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，
- * 在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。
- * 这样 筛选到最终，总会有一个数满足要求。
- * 就相当于去一个箱子里摸东西，
- * 第一个不是，第二个不是，第三个还不是，那最后一个一定是。
- * 这个算法简单，而且效率非常 高，
- * 关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。
- */
-function get_rand($proArr) { 
-$result = &apos;&apos;;  
-//概率数组的总概率精度 
-$proSum = array_sum($proArr);  
-//概率数组循环 
-foreach ($proArr as $key =&gt; $proCur) { 
-$randNum = mt_rand(1, $proSum); 
-if ($randNum &lt;= $proCur) { 
-$result = $key; 
-break; 
-} else { 
-$proSum -= $proCur; 
-}         
-} 
-unset ($proArr);  
-return $result; 
-} 
-
-
-/*
- * 奖项数组
- * 是一个二维数组，记录了所有本次抽奖的奖项信息，
- * 其中id表示中奖等级，prize表示奖品，v表示中奖概率。
- * 注意其中的v必须为整数，你可以将对应的 奖项的v设置成0，即意味着该奖项抽中的几率是0，
- * 数组中v的总和（基数），基数越大越能体现概率的准确性。
- * 本例中v的总和为100，那么平板电脑对应的 中奖概率就是1%，
- * 如果v的总和是10000，那中奖概率就是万分之一了。
- * 
- */
-$prize_arr = array( 
-&apos;0&apos; =&gt; array(&apos;id&apos;=&gt;1,&apos;prize&apos;=&gt;&apos;平板电脑&apos;,&apos;v&apos;=&gt;1), 
-&apos;1&apos; =&gt; array(&apos;id&apos;=&gt;2,&apos;prize&apos;=&gt;&apos;数码相机&apos;,&apos;v&apos;=&gt;5), 
-&apos;2&apos; =&gt; array(&apos;id&apos;=&gt;3,&apos;prize&apos;=&gt;&apos;音箱设备&apos;,&apos;v&apos;=&gt;10), 
-&apos;3&apos; =&gt; array(&apos;id&apos;=&gt;4,&apos;prize&apos;=&gt;&apos;4G优盘&apos;,&apos;v&apos;=&gt;12), 
-&apos;4&apos; =&gt; array(&apos;id&apos;=&gt;5,&apos;prize&apos;=&gt;&apos;10Q币&apos;,&apos;v&apos;=&gt;22), 
-&apos;5&apos; =&gt; array(&apos;id&apos;=&gt;6,&apos;prize&apos;=&gt;&apos;下次没准就能中哦&apos;,&apos;v&apos;=&gt;50), 
-); 
-
-/*
- * 每次前端页面的请求，PHP循环奖项设置数组，
- * 通过概率计算函数get_rand获取抽中的奖项id。
- * 将中奖奖品保存在数组$res[&apos;yes&apos;]中，
- * 而剩下的未中奖的信息保存在$res[&apos;no&apos;]中，
- * 最后输出json个数数据给前端页面。
- */
-foreach ($prize_arr as $key =&gt; $val) { 
-$arr[$val[&apos;id&apos;]] = $val[&apos;v&apos;]; 
-} 
-$rid = get_rand($arr); //根据概率获取奖项id 
-
-$res[&apos;yes&apos;] = $prize_arr[$rid-1][&apos;prize&apos;]; //中奖项 
-unset($prize_arr[$rid-1]); //将中奖项从数组中剔除，剩下未中奖项 
-shuffle($prize_arr); //打乱数组顺序 
-for($i=0;$i&lt;count($prize_arr);$i++){ 
-$pr[] = $prize_arr[$i][&apos;prize&apos;]; 
-} 
-$res[&apos;no&apos;] = $pr; 
-print_r($res); 
-?&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1801,7 +1749,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-count">86</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
