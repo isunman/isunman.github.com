@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2021-08-15T03:54:02.571Z</updated>
+  <updated>2022-04-26T07:53:34.207Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://isunman.com/2021/08/15/linux-finds-and-move-files/"/>
     <id>http://isunman.com/2021/08/15/linux-finds-and-move-files/</id>
     <published>2021-08-15T03:48:00.000Z</published>
-    <updated>2021-08-15T03:54:02.571Z</updated>
+    <updated>2022-04-26T07:53:34.207Z</updated>
     
     <content type="html">&lt;p&gt;linux查找并移动文件&lt;/p&gt;
 &lt;h3 id=&quot;原文参考&quot;&gt;&lt;a href=&quot;#原文参考&quot; class=&quot;headerlink&quot; title=&quot;原文参考&quot;&gt;&lt;/a&gt;原文参考&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;find . -name &amp;apos;10-*.dat&amp;apos; -exec mv {} ../ \;
@@ -40,7 +40,8 @@
 &lt;pre&gt;&lt;code&gt;find . -maxdepth 1 -name &amp;apos;faverifyimage_*.png&amp;apos; -exec mv {} ./faverifyimgbk \;
 find . -maxdepth 1 -name &amp;apos;faverifyimage_*.jpg&amp;apos; -exec mv {} ./faverifyimgbk \;
 find . -maxdepth 1 -name &amp;apos;faverifyimage_*.jpeg&amp;apos; -exec mv {} ./faverifyimgbk \;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后好久没更新。&lt;br&gt;因为github在2021年08月13日之后停止了账号密码的登录机制。
+　　&lt;/p&gt;
 </content>
     
     <summary type="html">
