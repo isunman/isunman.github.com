@@ -244,6 +244,148 @@
             
               
                 
+                <a class="post-title-link" href="/2022/04/27/type-of-Apple-developer-account-and-distribution-method/" itemprop="url">
+                  苹果开发者账号的类型与发布方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2022-04-27T16:42:00+08:00" content="2022-04-27">
+              2022-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>苹果开发者账号的类型与发布方式</p>
+<h2 id="开发者账号类型"><a href="#开发者账号类型" class="headerlink" title="开发者账号类型"></a>开发者账号类型</h2><p>苹果开发者账号有个人版（$99/年），公司版（$99/年）和企业版（$299/年）三种。</p>
+<p><strong>99美金属于标准计划；</strong></p>
+<p>标准计划还分为标准个人计划和标准公司计划，区别是：如登记为标准个人计划（个人开发者），则应用程序商店中的“seller name”将显示您个人的名称，如登记为标准公司计划（公司开发者）则应用程序商店中的“seller name”将显示公司的法定名称，同时您可以把其他会员添加到开发团队。</p>
+<p><strong>299美金属于企业计划。</strong></p>
+<h3 id="一、99美金个人开发者账号："><a href="#一、99美金个人开发者账号：" class="headerlink" title="一、99美金个人开发者账号："></a>一、99美金个人开发者账号：</h3><p>1、开发者能够自由地创造iPhone / iPod Touch/ iPad的商业应用，并且能够发布他们的应用程序（免费或收费）在App Store上</p>
+<p>2、App Store中的“seller name”将显示您个人的名称</p>
+<p>3、每年可以设置100台测试机做开发及测试用</p>
+<p>4、不允许开发人员创建一个团队</p>
+<h3 id="二、99美金公司开发者账号："><a href="#二、99美金公司开发者账号：" class="headerlink" title="二、99美金公司开发者账号："></a>二、99美金公司开发者账号：</h3><p>1、开发者能够自由地创造iPhone / iPod Touch/ iPad的商业应用，并且能够发布他们的应用程序（免费或收费）在App Store上</p>
+<p>2、App Store中的“seller name”将显示公司的法定名称</p>
+<p>3、每年可以设置100台测试机做开发及测试用</p>
+<p>4、允许开发人员创建一个团队，可以把其他成员添加到开发团队</p>
+<p>5、公司应在邓白氏注册并拥有有效的DUNS号码</p>
+<p>删除Provisioning Profiles,appid,发布证书的后果:</p>
+<blockquote>
+<p>如果app已经上线发布至App Store了，那么此时删除开发者账号的证书和描述文件对已经上线的app来说没什么大的影响，app可以正常使用。如果app在开发阶段，此时删除证书和描述文件，应该是不行的，上架估计都不会通过。</p>
+<p>没有实际测试过</p>
+</blockquote>
+<h3 id="三、299美金企业开发者账号："><a href="#三、299美金企业开发者账号：" class="headerlink" title="三、299美金企业开发者账号："></a>三、299美金企业开发者账号：</h3><p>1、不允许该企业在App Store出售他们的应用程序</p>
+<p>2、所开发的应用只能发给其雇员作内部使用</p>
+<p>3、UDID数量不限制</p>
+<p>4、允许开发人员创建一个团队，团队成员添加到他们的帐户</p>
+<p>5、公司应在邓白氏注册并拥有有效的DUNS号码（面向拥有500雇员以上的公司）</p>
+<p>删除Provisioning Profiles,appid,发布证书的后果:</p>
+<blockquote>
+<p>所有已经安装的app不能打开，会闪退，在线itms-services协议不能安装</p>
+<p>所以企业应用安装到手机上则需要开发者账号上的证书和描述文件来通过手机的验证，此时删除证书和描述文件，则无法通过手机的验证，app也就无法使用了。此时下载的话则无法进行安装，会显示Unable to download app，选择Done或Retry。</p>
+<p>但是我测试了删除了appid和发布证书,app没有任何影响,放在fir还是能下载安装,不知道是不是删除时间太短(删除3天了  还是能用)</p>
+</blockquote>
+<h2 id="发布方式（4种）："><a href="#发布方式（4种）：" class="headerlink" title="发布方式（4种）："></a>发布方式（4种）：</h2><h3 id="一、苹果应用商店发布（App-Store）"><a href="#一、苹果应用商店发布（App-Store）" class="headerlink" title="一、苹果应用商店发布（App Store）"></a>一、苹果应用商店发布（App Store）</h3><h3 id="二、苹果应用商店批量购买发布（Volume-Purchase-Program）"><a href="#二、苹果应用商店批量购买发布（Volume-Purchase-Program）" class="headerlink" title="二、苹果应用商店批量购买发布（Volume Purchase Program）"></a>二、苹果应用商店批量购买发布（Volume Purchase Program）</h3><h3 id="三、In-House企业应用发布："><a href="#三、In-House企业应用发布：" class="headerlink" title="三、In-House企业应用发布："></a>三、In-House企业应用发布：</h3><p>1、不能提交到App Store</p>
+<p>2、发布应用的具体内容不需要苹果官方审核</p>
+<p>3、安装设备的数量没有任何限制</p>
+<p>4、把程序放在网站中，提供给最终用户一个链接，他们就能够直接下载并自动安装了</p>
+<h3 id="四、Ad-Hoc应用发布方式"><a href="#四、Ad-Hoc应用发布方式" class="headerlink" title="四、Ad Hoc应用发布方式"></a>四、Ad Hoc应用发布方式</h3><p>1、不能提交到App Store</p>
+<p>2、不需要经过苹果的评审，</p>
+<p>3、限制每个应用不能发布到超过100个设备上</p>
+<p>4、把程序放在网站中，提供给最终用户一个链接，他们就能够直接下载并自动安装了</p>
+<p>（全文完）</p>
+<p><a href="https://www.jianshu.com/p/87d9e4259846" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2021/08/15/linux-finds-and-move-files/" itemprop="url">
                   linux查找并移动文件
                 </a>
@@ -1502,130 +1644,6 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/12/18/win7-apache-suddenly-failed-to-start/" itemprop="url">
-                  win7下Apache突然启动失败
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-12-18T12:45:00+08:00" content="2020-12-18">
-              2020-12-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web构建/" itemprop="url" rel="index">
-                    <span itemprop="name">Web构建</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>win7下Apache突然启动失败</p>
-<p>前段时间有一次重启了电脑（win7）之后，发现Apache服务并未随系统自动启动，结果在手动启动的时候也无法启动。</p>
-<p>报错为：</p>
-<blockquote>
-<p>Windows 不能在本地计算机启动apache2.4。有关更多信息，查阅系统事件日志。如果这是非Microsoft服务，请与服务厂商联系，并参考特定服务错误代码1。</p>
-</blockquote>
-<p>分析后发现最大可能是80端口被占用，于是win+r 运行cmd</p>
-<p>输入<code>netstat -ano</code></p>
-<p>可以看到80端口被PID4占用，于是打开任务管理器-进程-查看，选择列，勾选PID</p>
-<p>可以看到pid 4 的被NT kernel &amp; System 占用</p>
-<p>该进程是Http.sys。它是http API的驱动组件，Http栈服务器。如果该端口被Http.sys占用，说明一些正在使用http.sys的应用程序在运行。这就是阻止Apache运行的原因，因为Http.sys占用着80端口。我们提供了一种应用程序的机制来帮助控制端口共享，但是我需要调查导致你遇到这种困难的是什么特殊应用程序。如果你能提供给我们“netsh http show servicestate”这条命令的输出结果，我就能找出是哪个应用程序在使用Http.sys。</p>
-<p>你可以按照下面步骤禁用http.sys：</p>
-<p>第一步： net stop http</p>
-<p>第二步：Sc config http start= disabled</p>
-<p>【正式操作步骤】</p>
-<p>于是运行<code>net stop http</code></p>
-<p>按“Y”确定</p>
-<p>再运行 <code>Sc config http start= disabled</code></p>
-<p>好了，现在启动Apache，发现可以正常启动了。</p>
-<p>再查看一下netstat -ano</p>
-<p>发现pid 4占用了445端口（不再是80端口）。
-　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1672,7 +1690,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">88</span>
+              <span class="site-state-item-count">89</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

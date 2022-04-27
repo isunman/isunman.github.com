@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2022-04-26T07:53:34.207Z</updated>
+  <updated>2022-04-27T08:44:35.989Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苹果开发者账号的类型与发布方式</title>
+    <link href="http://isunman.com/2022/04/27/type-of-Apple-developer-account-and-distribution-method/"/>
+    <id>http://isunman.com/2022/04/27/type-of-Apple-developer-account-and-distribution-method/</id>
+    <published>2022-04-27T08:42:00.000Z</published>
+    <updated>2022-04-27T08:44:35.989Z</updated>
+    
+    <content type="html">&lt;p&gt;苹果开发者账号的类型与发布方式&lt;/p&gt;
+&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（$99/年），公司版（$99/年）和企业版（$299/年）三种。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;99美金属于标准计划；&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;标准计划还分为标准个人计划和标准公司计划，区别是：如登记为标准个人计划（个人开发者），则应用程序商店中的“seller name”将显示您个人的名称，如登记为标准公司计划（公司开发者）则应用程序商店中的“seller name”将显示公司的法定名称，同时您可以把其他会员添加到开发团队。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;299美金属于企业计划。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一、99美金个人开发者账号：&quot;&gt;&lt;a href=&quot;#一、99美金个人开发者账号：&quot; class=&quot;headerlink&quot; title=&quot;一、99美金个人开发者账号：&quot;&gt;&lt;/a&gt;一、99美金个人开发者账号：&lt;/h3&gt;&lt;p&gt;1、开发者能够自由地创造iPhone / iPod Touch/ iPad的商业应用，并且能够发布他们的应用程序（免费或收费）在App Store上&lt;/p&gt;
+&lt;p&gt;2、App Store中的“seller name”将显示您个人的名称&lt;/p&gt;
+&lt;p&gt;3、每年可以设置100台测试机做开发及测试用&lt;/p&gt;
+&lt;p&gt;4、不允许开发人员创建一个团队&lt;/p&gt;
+&lt;h3 id=&quot;二、99美金公司开发者账号：&quot;&gt;&lt;a href=&quot;#二、99美金公司开发者账号：&quot; class=&quot;headerlink&quot; title=&quot;二、99美金公司开发者账号：&quot;&gt;&lt;/a&gt;二、99美金公司开发者账号：&lt;/h3&gt;&lt;p&gt;1、开发者能够自由地创造iPhone / iPod Touch/ iPad的商业应用，并且能够发布他们的应用程序（免费或收费）在App Store上&lt;/p&gt;
+&lt;p&gt;2、App Store中的“seller name”将显示公司的法定名称&lt;/p&gt;
+&lt;p&gt;3、每年可以设置100台测试机做开发及测试用&lt;/p&gt;
+&lt;p&gt;4、允许开发人员创建一个团队，可以把其他成员添加到开发团队&lt;/p&gt;
+&lt;p&gt;5、公司应在邓白氏注册并拥有有效的DUNS号码&lt;/p&gt;
+&lt;p&gt;删除Provisioning Profiles,appid,发布证书的后果:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果app已经上线发布至App Store了，那么此时删除开发者账号的证书和描述文件对已经上线的app来说没什么大的影响，app可以正常使用。如果app在开发阶段，此时删除证书和描述文件，应该是不行的，上架估计都不会通过。&lt;/p&gt;
+&lt;p&gt;没有实际测试过&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;三、299美金企业开发者账号：&quot;&gt;&lt;a href=&quot;#三、299美金企业开发者账号：&quot; class=&quot;headerlink&quot; title=&quot;三、299美金企业开发者账号：&quot;&gt;&lt;/a&gt;三、299美金企业开发者账号：&lt;/h3&gt;&lt;p&gt;1、不允许该企业在App Store出售他们的应用程序&lt;/p&gt;
+&lt;p&gt;2、所开发的应用只能发给其雇员作内部使用&lt;/p&gt;
+&lt;p&gt;3、UDID数量不限制&lt;/p&gt;
+&lt;p&gt;4、允许开发人员创建一个团队，团队成员添加到他们的帐户&lt;/p&gt;
+&lt;p&gt;5、公司应在邓白氏注册并拥有有效的DUNS号码（面向拥有500雇员以上的公司）&lt;/p&gt;
+&lt;p&gt;删除Provisioning Profiles,appid,发布证书的后果:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所有已经安装的app不能打开，会闪退，在线itms-services协议不能安装&lt;/p&gt;
+&lt;p&gt;所以企业应用安装到手机上则需要开发者账号上的证书和描述文件来通过手机的验证，此时删除证书和描述文件，则无法通过手机的验证，app也就无法使用了。此时下载的话则无法进行安装，会显示Unable to download app，选择Done或Retry。&lt;/p&gt;
+&lt;p&gt;但是我测试了删除了appid和发布证书,app没有任何影响,放在fir还是能下载安装,不知道是不是删除时间太短(删除3天了  还是能用)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;发布方式（4种）：&quot;&gt;&lt;a href=&quot;#发布方式（4种）：&quot; class=&quot;headerlink&quot; title=&quot;发布方式（4种）：&quot;&gt;&lt;/a&gt;发布方式（4种）：&lt;/h2&gt;&lt;h3 id=&quot;一、苹果应用商店发布（App-Store）&quot;&gt;&lt;a href=&quot;#一、苹果应用商店发布（App-Store）&quot; class=&quot;headerlink&quot; title=&quot;一、苹果应用商店发布（App Store）&quot;&gt;&lt;/a&gt;一、苹果应用商店发布（App Store）&lt;/h3&gt;&lt;h3 id=&quot;二、苹果应用商店批量购买发布（Volume-Purchase-Program）&quot;&gt;&lt;a href=&quot;#二、苹果应用商店批量购买发布（Volume-Purchase-Program）&quot; class=&quot;headerlink&quot; title=&quot;二、苹果应用商店批量购买发布（Volume Purchase Program）&quot;&gt;&lt;/a&gt;二、苹果应用商店批量购买发布（Volume Purchase Program）&lt;/h3&gt;&lt;h3 id=&quot;三、In-House企业应用发布：&quot;&gt;&lt;a href=&quot;#三、In-House企业应用发布：&quot; class=&quot;headerlink&quot; title=&quot;三、In-House企业应用发布：&quot;&gt;&lt;/a&gt;三、In-House企业应用发布：&lt;/h3&gt;&lt;p&gt;1、不能提交到App Store&lt;/p&gt;
+&lt;p&gt;2、发布应用的具体内容不需要苹果官方审核&lt;/p&gt;
+&lt;p&gt;3、安装设备的数量没有任何限制&lt;/p&gt;
+&lt;p&gt;4、把程序放在网站中，提供给最终用户一个链接，他们就能够直接下载并自动安装了&lt;/p&gt;
+&lt;h3 id=&quot;四、Ad-Hoc应用发布方式&quot;&gt;&lt;a href=&quot;#四、Ad-Hoc应用发布方式&quot; class=&quot;headerlink&quot; title=&quot;四、Ad Hoc应用发布方式&quot;&gt;&lt;/a&gt;四、Ad Hoc应用发布方式&lt;/h3&gt;&lt;p&gt;1、不能提交到App Store&lt;/p&gt;
+&lt;p&gt;2、不需要经过苹果的评审，&lt;/p&gt;
+&lt;p&gt;3、限制每个应用不能发布到超过100个设备上&lt;/p&gt;
+&lt;p&gt;4、把程序放在网站中，提供给最终用户一个链接，他们就能够直接下载并自动安装了&lt;/p&gt;
+&lt;p&gt;（全文完）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/87d9e4259846&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;苹果开发者账号的类型与发布方式&lt;/p&gt;
+&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（$99/年），公司版（$99/
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://isunman.com/categories/ios/"/>
+    
+    
+      <category term="iOS" scheme="http://isunman.com/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>linux查找并移动文件</title>
@@ -1145,68 +1208,6 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     
     
       <category term="linux" scheme="http://isunman.com/tags/linux/"/>
-    
-      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx access.log文件太大，自动释放清理</title>
-    <link href="http://isunman.com/2020/05/10/the-nginx-accesslog-file-is-too-large-to-clean-up/"/>
-    <id>http://isunman.com/2020/05/10/the-nginx-accesslog-file-is-too-large-to-clean-up/</id>
-    <published>2020-05-10T10:30:00.000Z</published>
-    <updated>2020-05-10T11:39:40.753Z</updated>
-    
-    <content type="html">&lt;p&gt;Nginx access.log文件太大，自动释放清理&lt;/p&gt;
-&lt;p&gt;Nginx在涉及大流量时，会发生非常庞大的日志文件，包含access.log和error.log，日志会随着连接不断增加，到无限大。如果日志文件太大，会导致Nginx运行缓慢，卡顿，也是存储资源的浪费。&lt;/p&gt;
-&lt;p&gt;该文件为nginx的访问日志文件可以删除,删除后nginx启动还会产生&lt;br&gt;如果要关闭日志功能,在nginx配置文件中找到access_log一行,改为access_log off;&lt;/p&gt;
-&lt;h3 id=&quot;手动释放清理Nginx日志文件access-log&quot;&gt;&lt;a href=&quot;#手动释放清理Nginx日志文件access-log&quot; class=&quot;headerlink&quot; title=&quot;手动释放清理Nginx日志文件access.log&quot;&gt;&lt;/a&gt;手动释放清理Nginx日志文件access.log&lt;/h3&gt;&lt;p&gt;查看并查找相关信息及路径&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 查看空间占用
-$ df -h
-
-# 定位Nginx
-$ which nginx
-/usr/local/nginx/logs
-
-# 列出日志文件
-$ cd /usr/local/nginx/logs
-ls
-
-# 查看日志文件大小
-$ du -sh ./*
-
-# 暂停Nginx并删除日志文件
-# nginx -s stop
-rm -rf *.log
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要注意的是，看到网上有人说重启Nginx可以清除日志文件，这是错误的。重启并不会清空日志文件，你需要手动清理。&lt;/p&gt;
-&lt;p&gt;另外，你也可以使用覆盖日志的方法清理Nginx日志文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;&amp;quot; &amp;gt; /usr/local/nginx/access.log
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果不需要日志文件就直接关闭（不建议），nginx.conf&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;access_log off; 
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;对Nginx-access-log进行分割&quot;&gt;&lt;a href=&quot;#对Nginx-access-log进行分割&quot; class=&quot;headerlink&quot; title=&quot;对Nginx access.log进行分割&quot;&gt;&lt;/a&gt;对Nginx access.log进行分割&lt;/h3&gt;&lt;p&gt;通过shell脚本+linux的定时任务进行的一个平滑切分。不需要重启nginx进程。代码cut_logs.sh&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-log_path=/usr/local/nginx/logs/access.log
-save_path=/usr/local/nginx/logs/bak/access_$(date +%Y%m%d -d &amp;apos;yesterday&amp;apos;).log
-cp $log_path $save_path &amp;amp;&amp;amp; echo &amp;gt; $log_path
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;设置定时任务&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ crontab -e
-#输入
-0 0  * * * /usr/bin/sh cut_logs.sh #每天的00:00执行日志切分
-
-$ crontab -l #查看定时任务是否添加成功
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Nginx access.log文件太大，自动释放清理&lt;/p&gt;
-&lt;p&gt;Nginx在涉及大流量时，会发生非常庞大的日志文件，包含access.log和error.log，日志会随着连接不断增加，到无限大。如果日志文件太大，会导致Nginx运行缓慢，卡顿，也是存储资源的浪费。&lt;
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
     
       <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
     
