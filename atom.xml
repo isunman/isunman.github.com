@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2022-04-27T08:44:35.989Z</updated>
+  <updated>2022-04-27T19:08:16.735Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://isunman.com/2022/04/27/type-of-Apple-developer-account-and-distribution-method/"/>
     <id>http://isunman.com/2022/04/27/type-of-Apple-developer-account-and-distribution-method/</id>
     <published>2022-04-27T08:42:00.000Z</published>
-    <updated>2022-04-27T08:44:35.989Z</updated>
+    <updated>2022-04-27T19:08:16.735Z</updated>
     
     <content type="html">&lt;p&gt;苹果开发者账号的类型与发布方式&lt;/p&gt;
-&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（$99/年），公司版（$99/年）和企业版（$299/年）三种。&lt;/p&gt;
+&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（99美金/年），公司版（99美金/年）和企业版（299美金/年）三种。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;99美金属于标准计划；&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;标准计划还分为标准个人计划和标准公司计划，区别是：如登记为标准个人计划（个人开发者），则应用程序商店中的“seller name”将显示您个人的名称，如登记为标准公司计划（公司开发者）则应用程序商店中的“seller name”将显示公司的法定名称，同时您可以把其他会员添加到开发团队。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;299美金属于企业计划。&lt;/strong&gt;&lt;/p&gt;
@@ -67,7 +67,7 @@
     <summary type="html">
     
       &lt;p&gt;苹果开发者账号的类型与发布方式&lt;/p&gt;
-&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（$99/年），公司版（$99/
+&lt;h2 id=&quot;开发者账号类型&quot;&gt;&lt;a href=&quot;#开发者账号类型&quot; class=&quot;headerlink&quot; title=&quot;开发者账号类型&quot;&gt;&lt;/a&gt;开发者账号类型&lt;/h2&gt;&lt;p&gt;苹果开发者账号有个人版（99美金/年），公司版（99美
     
     </summary>
     
@@ -83,7 +83,7 @@
     <link href="http://isunman.com/2021/08/15/linux-finds-and-move-files/"/>
     <id>http://isunman.com/2021/08/15/linux-finds-and-move-files/</id>
     <published>2021-08-15T03:48:00.000Z</published>
-    <updated>2022-04-26T07:53:34.207Z</updated>
+    <updated>2022-04-27T08:56:23.922Z</updated>
     
     <content type="html">&lt;p&gt;linux查找并移动文件&lt;/p&gt;
 &lt;h3 id=&quot;原文参考&quot;&gt;&lt;a href=&quot;#原文参考&quot; class=&quot;headerlink&quot; title=&quot;原文参考&quot;&gt;&lt;/a&gt;原文参考&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;find . -name &amp;apos;10-*.dat&amp;apos; -exec mv {} ../ \;
@@ -103,8 +103,24 @@
 &lt;pre&gt;&lt;code&gt;find . -maxdepth 1 -name &amp;apos;faverifyimage_*.png&amp;apos; -exec mv {} ./faverifyimgbk \;
 find . -maxdepth 1 -name &amp;apos;faverifyimage_*.jpg&amp;apos; -exec mv {} ./faverifyimgbk \;
 find . -maxdepth 1 -name &amp;apos;faverifyimage_*.jpeg&amp;apos; -exec mv {} ./faverifyimgbk \;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后好久没更新。&lt;br&gt;因为github在2021年08月13日之后停止了账号密码的登录机制。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD&lt;/p&gt;
+&lt;p&gt;之后好久没更新。&lt;/p&gt;
+&lt;h1 id=&quot;因为github在2021年08月13日之后停止了账号密码的登录机制。&quot;&gt;&lt;a href=&quot;#因为github在2021年08月13日之后停止了账号密码的登录机制。&quot; class=&quot;headerlink&quot; title=&quot;因为github在2021年08月13日之后停止了账号密码的登录机制。&quot;&gt;&lt;/a&gt;因为github在2021年08月13日之后停止了账号密码的登录机制。&lt;/h1&gt;&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1005c8acaffa52e5d81b9fff2815f3f1febb6fdc
 　　&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
 </content>
     
     <summary type="html">
