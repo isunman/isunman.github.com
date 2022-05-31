@@ -221,6 +221,138 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2022/05/31/online-capacity-expansion-of-cloud-disks/" itemprop="url">
+                  云盘在线扩容
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2022-05-31T11:15:00+08:00" content="2022-05-31">
+              2022-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在线扩容，是在磁盘不够用时，直接不停机不停服的情况下扩展磁盘空间。</p>
+<p>非常好用。不过，需要系统支持。</p>
+<h3 id="一、扩容概述（官网说明）"><a href="#一、扩容概述（官网说明）" class="headerlink" title="一、扩容概述（官网说明）"></a>一、扩容概述（官网说明）</h3><p><a href="https://help.aliyun.com/document_detail/35095.html" target="_blank" rel="external">https://help.aliyun.com/document_detail/35095.html</a></p>
+<p>这个是是前提，包括：扩容场景、系统盘扩容上限、数据盘扩容上限、扩容计费等。<br>是在进行技术操作前的一些须知与准备工作。<br>确认在用的ECS实例与云盘支持“在线扩容”之后，才能进行后续的操作。</p>
+<h3 id="二、在线扩容云盘（Linux系统）（官网说明）"><a href="#二、在线扩容云盘（Linux系统）（官网说明）" class="headerlink" title="二、在线扩容云盘（Linux系统）（官网说明）"></a>二、在线扩容云盘（Linux系统）（官网说明）</h3><p><a href="https://help.aliyun.com/document_detail/113316.htm" target="_blank" rel="external">https://help.aliyun.com/document_detail/113316.htm</a></p>
+<p>这个是具体的执行Linux系统的云盘“在线扩容”的详细步骤。<br>包括：前提条件，背景信息，操作步骤，支持在线扩容的操作系统，常见问题，其他扩容场景。</p>
+<p>其中【操作步骤】又包括：<br>步骤一：创建快照；<br>步骤二：在控制台扩容云盘容量；<br>步骤三：查看云盘分区情况；<br>步骤四：扩容分区；<br>步骤五：扩容文件系统。</p>
+<h3 id="三、实际操作步骤【关键】（实际操作）"><a href="#三、实际操作步骤【关键】（实际操作）" class="headerlink" title="三、实际操作步骤【关键】（实际操作）"></a>三、实际操作步骤【关键】（实际操作）</h3><p>1、例子：扩容/dev/vda 由80G扩容到160G</p>
+<p>在阿里云上进行在线扩容操作 ：</p>
+<p>存储与快照 &gt; 云盘页面选择云盘后，单击云盘扩容，选中在线扩容，并设置扩容后容量<br>Linux上执行命令</p>
+<p>2、查看磁盘信息：<code>fdisk -l</code></p>
+<p>3、查看要扩容的分区的文件系统类型：<code>df -hT</code></p>
+<p>4、安装growpart工具<br>CentOS 7及以上版本：运行命令 <code>yum install cloud-utils-growpart</code><br>Debian 9及以上版本、Ubuntu14及以上版本：运行命令 <code>apt install -y cloud-guest-utils</code></p>
+<p>5、运行命令，扩容分区：<code>growpart /dev/vda 1</code>（1前面有空格）</p>
+<p>6、扩容文件系统：<code>resize2fs /dev/vda1</code> （这里1前面没有空格）</p>
+<p>7、查看是否扩容成功：<code>df -hT</code></p>
+<h3 id="四、几个问题的解决"><a href="#四、几个问题的解决" class="headerlink" title="四、几个问题的解决"></a>四、几个问题的解决</h3><p>1、问题出现在上述详细步骤的“4、安装growpart工具”这一步，由于CentOS8不再被支持，而造成了yum源错误的问题。</p>
+<p>错误提示为：</p>
+<p><code>Error:Failed to download metadata for repo &#39;AppStream&#39;</code></p>
+<p>解决方案：</p>
+<p>由于CentOS 8操作系统版本结束了生命周期而导致YUM源出错的问题：<br><a href="https://help.aliyun.com/document_detail/405635.htm" target="_blank" rel="external">https://help.aliyun.com/document_detail/405635.htm</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1525,141 +1657,6 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/12/26/php-function-psockopen-asynchronous-call-interface-is-occasionally-useful-on-nginx/" itemprop="url">
-                  PHP fsockopen 异步调用接口在nginx上偶尔实效的情况
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-12-26T12:55:00+08:00" content="2020-12-26">
-              2020-12-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在下面这段代码里面，调用后忽略执行结果直接返回，可用于php异步执行。</p>
-<pre><code>private function fsock_asy_do($get){
-    $fp = fsockopen(&quot;ssl://www.xxx.com&quot;, 443, $errno, $errstr, 30);
-    if (!$fp) {
-        echo &quot;$errstr ($errno)&lt;br /&gt;\n&quot;;
-    } else {
-        stream_set_blocking($fp,0);//开启非阻塞模式
-        $out = &quot;GET /&quot;.$get.&quot; HTTP/1.1\r\n&quot;;
-        $out .= &quot;Host: www.xxxx.com\r\n&quot;;
-        $out .= &quot;Connection: Close\r\n\r\n&quot;;
-
-        fwrite($fp, $out);
-        /*忽略执行结果
-        while (!feof($fp)) {
-            echo fgets($fp, 128);
-        }*/
-        usleep(1000);
-        fclose($fp);
-    }
-}
-</code></pre><p>在nginx服务器上有一个比较诡异的情况就是有时候无法调用异步的脚本。</p>
-<p>查阅相关资料后，是nginx 499 的问题。</p>
-<p>其中解决方案有以下，经过对每一个方案的验证最终得出结果：</p>
-<h3 id="1、NGINX-499"><a href="#1、NGINX-499" class="headerlink" title="1、NGINX 499"></a>1、NGINX 499</h3><p>查看 NGINX access log，发现这样的请求会以 499（Client Closed Request）记录。确定问题是因为：客户端主动端口请求连接时，NGINX 不会将该请求代理给上游服务（FastCGI PHP 进程），这个时候 access log 中会以 499 记录这个请求。</p>
-<p>要解决这个问题需要将 NGINX FastCGI 忽略客户端中断配置打开：</p>
-<p>fastcgi_ignore_client_abort on;<br>这样无论客户端是否断开，都会将这个请求代理给上游，并且会记录上游服务处理后的返回状态。</p>
-<h3 id="2、NGINX-线程原因"><a href="#2、NGINX-线程原因" class="headerlink" title="2、NGINX 线程原因"></a>2、NGINX 线程原因</h3><p>将nginx的worker_processes 由之前的auto修改为2（我的是单核服务器）</p>
-<h3 id="3、NGINX-499"><a href="#3、NGINX-499" class="headerlink" title="3、NGINX 499"></a>3、NGINX 499</h3><p>nginx对499的定义是”client has closed connection”，并且在这些情况下会返回这个状态码：</p>
-<p>upstream 在收到读写事件处理之前时发现连接不可用。<br>server处理请求未结束，而client提前关闭了连接。<br>upstream出错，执行next_upstream时发现连接不可用。<br>一个不安全的做法是在fclose之前，让当前的进程先睡眠一段时间；我这里设置为10毫秒，这10毫秒的延迟对我完成整个请求的影响不大，同时我也认为nginx一定能在10毫米内把请求转到fastcgi去执行。这个时间间隔很难把握，不能保证php一定有执行到。</p>
-<p>这种方式并不是真正的异步，只是很取巧的强制关闭连接而不等待服务器端响应。所以在Laruence的那2篇文章中，有2个问题：</p>
-<p>①PHP使用fsock不能叫做异步，只是伪异步。</p>
-<p>②fwrite之后马上执行fclose，nginx会直接返回499</p>
-<p>由于我的代码上面usleep为1000，初步估计是时间不够导致没发出去就close了，所以调整为20000。并进行最后测试。<br>测试2天结果显示正常，的确是usleep数值过小的问题。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1706,7 +1703,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">89</span>
+              <span class="site-state-item-count">90</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1723,7 +1720,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

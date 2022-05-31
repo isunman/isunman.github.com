@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2022-04-27T19:08:16.735Z</updated>
+  <updated>2022-05-31T03:18:39.526Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>云盘在线扩容</title>
+    <link href="http://isunman.com/2022/05/31/online-capacity-expansion-of-cloud-disks/"/>
+    <id>http://isunman.com/2022/05/31/online-capacity-expansion-of-cloud-disks/</id>
+    <published>2022-05-31T03:15:00.000Z</published>
+    <updated>2022-05-31T03:18:39.526Z</updated>
+    
+    <content type="html">&lt;p&gt;在线扩容，是在磁盘不够用时，直接不停机不停服的情况下扩展磁盘空间。&lt;/p&gt;
+&lt;p&gt;非常好用。不过，需要系统支持。&lt;/p&gt;
+&lt;h3 id=&quot;一、扩容概述（官网说明）&quot;&gt;&lt;a href=&quot;#一、扩容概述（官网说明）&quot; class=&quot;headerlink&quot; title=&quot;一、扩容概述（官网说明）&quot;&gt;&lt;/a&gt;一、扩容概述（官网说明）&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://help.aliyun.com/document_detail/35095.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://help.aliyun.com/document_detail/35095.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个是是前提，包括：扩容场景、系统盘扩容上限、数据盘扩容上限、扩容计费等。&lt;br&gt;是在进行技术操作前的一些须知与准备工作。&lt;br&gt;确认在用的ECS实例与云盘支持“在线扩容”之后，才能进行后续的操作。&lt;/p&gt;
+&lt;h3 id=&quot;二、在线扩容云盘（Linux系统）（官网说明）&quot;&gt;&lt;a href=&quot;#二、在线扩容云盘（Linux系统）（官网说明）&quot; class=&quot;headerlink&quot; title=&quot;二、在线扩容云盘（Linux系统）（官网说明）&quot;&gt;&lt;/a&gt;二、在线扩容云盘（Linux系统）（官网说明）&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://help.aliyun.com/document_detail/113316.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://help.aliyun.com/document_detail/113316.htm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个是具体的执行Linux系统的云盘“在线扩容”的详细步骤。&lt;br&gt;包括：前提条件，背景信息，操作步骤，支持在线扩容的操作系统，常见问题，其他扩容场景。&lt;/p&gt;
+&lt;p&gt;其中【操作步骤】又包括：&lt;br&gt;步骤一：创建快照；&lt;br&gt;步骤二：在控制台扩容云盘容量；&lt;br&gt;步骤三：查看云盘分区情况；&lt;br&gt;步骤四：扩容分区；&lt;br&gt;步骤五：扩容文件系统。&lt;/p&gt;
+&lt;h3 id=&quot;三、实际操作步骤【关键】（实际操作）&quot;&gt;&lt;a href=&quot;#三、实际操作步骤【关键】（实际操作）&quot; class=&quot;headerlink&quot; title=&quot;三、实际操作步骤【关键】（实际操作）&quot;&gt;&lt;/a&gt;三、实际操作步骤【关键】（实际操作）&lt;/h3&gt;&lt;p&gt;1、例子：扩容/dev/vda 由80G扩容到160G&lt;/p&gt;
+&lt;p&gt;在阿里云上进行在线扩容操作 ：&lt;/p&gt;
+&lt;p&gt;存储与快照 &amp;gt; 云盘页面选择云盘后，单击云盘扩容，选中在线扩容，并设置扩容后容量&lt;br&gt;Linux上执行命令&lt;/p&gt;
+&lt;p&gt;2、查看磁盘信息：&lt;code&gt;fdisk -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;3、查看要扩容的分区的文件系统类型：&lt;code&gt;df -hT&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4、安装growpart工具&lt;br&gt;CentOS 7及以上版本：运行命令 &lt;code&gt;yum install cloud-utils-growpart&lt;/code&gt;&lt;br&gt;Debian 9及以上版本、Ubuntu14及以上版本：运行命令 &lt;code&gt;apt install -y cloud-guest-utils&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;5、运行命令，扩容分区：&lt;code&gt;growpart /dev/vda 1&lt;/code&gt;（1前面有空格）&lt;/p&gt;
+&lt;p&gt;6、扩容文件系统：&lt;code&gt;resize2fs /dev/vda1&lt;/code&gt; （这里1前面没有空格）&lt;/p&gt;
+&lt;p&gt;7、查看是否扩容成功：&lt;code&gt;df -hT&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四、几个问题的解决&quot;&gt;&lt;a href=&quot;#四、几个问题的解决&quot; class=&quot;headerlink&quot; title=&quot;四、几个问题的解决&quot;&gt;&lt;/a&gt;四、几个问题的解决&lt;/h3&gt;&lt;p&gt;1、问题出现在上述详细步骤的“4、安装growpart工具”这一步，由于CentOS8不再被支持，而造成了yum源错误的问题。&lt;/p&gt;
+&lt;p&gt;错误提示为：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Error:Failed to download metadata for repo &amp;#39;AppStream&amp;#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;p&gt;由于CentOS 8操作系统版本结束了生命周期而导致YUM源出错的问题：&lt;br&gt;&lt;a href=&quot;https://help.aliyun.com/document_detail/405635.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://help.aliyun.com/document_detail/405635.htm&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在线扩容，是在磁盘不够用时，直接不停机不停服的情况下扩展磁盘空间。&lt;/p&gt;
+&lt;p&gt;非常好用。不过，需要系统支持。&lt;/p&gt;
+&lt;h3 id=&quot;一、扩容概述（官网说明）&quot;&gt;&lt;a href=&quot;#一、扩容概述（官网说明）&quot; class=&quot;headerlink&quot; title=&quot;一、扩容
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
+    
+      <category term="阿里云" scheme="http://isunman.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
   
   <entry>
     <title>苹果开发者账号的类型与发布方式</title>
@@ -1165,67 +1212,6 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
       <category term="PHP" scheme="http://isunman.com/tags/php/"/>
     
       <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux系统inodes资源耗尽问题</title>
-    <link href="http://isunman.com/2020/05/10/linux-system-inodes-resource-depletion-problem/"/>
-    <id>http://isunman.com/2020/05/10/linux-system-inodes-resource-depletion-problem/</id>
-    <published>2020-05-10T10:33:00.000Z</published>
-    <updated>2020-05-10T11:39:51.290Z</updated>
-    
-    <content type="html">&lt;p&gt;Linux系统inodes资源耗尽问题&lt;/p&gt;
-&lt;h3 id=&quot;1-inodes介绍&quot;&gt;&lt;a href=&quot;#1-inodes介绍&quot; class=&quot;headerlink&quot; title=&quot;1 inodes介绍&quot;&gt;&lt;/a&gt;1 inodes介绍&lt;/h3&gt;&lt;p&gt;Linux系统下文件数据储存在”块”中，文件的元信息，例如文件的创建者、文件的创建日期、文件的大小等。这种储存文件元信息的区域就叫做inode，中文译名为”索引节点”。&lt;/p&gt;
-&lt;p&gt;inode也占用硬盘空间，硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是inode区（inode table），存放inode所包含的信息。&lt;/p&gt;
-&lt;p&gt;每个inode节点的大小，一般是128字节或256字节。inode节点的总数，在格式化时就给定，一般是每1KB或每2KB就设置一个inode。假定在一块1GB的硬盘中，每个inode节点的大小为128字节，每1KB就设置一个inode，那么inode table的大小就会达到128MB，占整块硬盘的12.8%。&lt;/p&gt;
-&lt;h3 id=&quot;2-inodes资源耗尽&quot;&gt;&lt;a href=&quot;#2-inodes资源耗尽&quot; class=&quot;headerlink&quot; title=&quot;2 inodes资源耗尽&quot;&gt;&lt;/a&gt;2 inodes资源耗尽&lt;/h3&gt;&lt;p&gt;inodes使用完与存储空间使用完相似，都是创建不了文件或无法正常执行一些命令。inodes使用完，存储空间可能还有，这种情况一般是生成了大量的小文件，把inode table占满。&lt;/p&gt;
-&lt;p&gt;一般情况下存储空间使用完，inodes往往才使用百分之几，所以容易忽视对inodes使用情况的监控。&lt;/p&gt;
-&lt;p&gt;借用网图来说明inodes用尽，而磁盘空间还未用完的情况：&lt;/p&gt;
-&lt;p&gt;查看磁盘空间使用情况，使用df命令&lt;/p&gt;
-&lt;p&gt;查看inodess使用情况，使用df -i命令&lt;/p&gt;
-&lt;p&gt;上述两个命令可以使用-h参数，命令为df -h和df -hi。从图中看见磁盘空间使用71%，但是inodes使用100%。&lt;/p&gt;
-&lt;h3 id=&quot;3-inodes耗尽解决&quot;&gt;&lt;a href=&quot;#3-inodes耗尽解决&quot; class=&quot;headerlink&quot; title=&quot;3 inodes耗尽解决&quot;&gt;&lt;/a&gt;3 inodes耗尽解决&lt;/h3&gt;&lt;p&gt;inodes的大小在磁盘格式化分区时确定，跟分区的大小相关，分区越大，inodes越大，反之亦然。&lt;/p&gt;
-&lt;p&gt;linux操作系统根目录一般分区比较小，如果有定时性的小文件产生而又未及时清理，则很容易造成inodes占满。&lt;/p&gt;
-&lt;p&gt;inodes占满解决步骤：&lt;/p&gt;
-&lt;h4 id=&quot;（1）查看文件最多的目录&quot;&gt;&lt;a href=&quot;#（1）查看文件最多的目录&quot; class=&quot;headerlink&quot; title=&quot;（1）查看文件最多的目录&quot;&gt;&lt;/a&gt;（1）查看文件最多的目录&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;for i in /*; do echo $i; find $i | wc -l; done
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果确定目录范围，把/*写的具体点&lt;/p&gt;
-&lt;p&gt;最终发现是/var/spool/postfix/maildrop目录下小文件过多，原因如下：&lt;/p&gt;
-&lt;p&gt;由于linux在执行cron时，会将cron执行脚本中的output和warning信息，都会以邮件的形式发送给cron所有者。由于客户环境中的sendmail和postfix没有正常运行，邮件发送不成功，导致全部小文件都堆积在maildrop目录下，另由于缺乏自动清理的机制，故此目录下堆积了大量的文件。&lt;/p&gt;
-&lt;p&gt;经过排查root用户下发现有个每分钟进行一次时钟同步的定时任务，该定时任务每分钟产生一个小文件。&lt;/p&gt;
-&lt;h4 id=&quot;（2）删除大量文件&quot;&gt;&lt;a href=&quot;#（2）删除大量文件&quot; class=&quot;headerlink&quot; title=&quot;（2）删除大量文件&quot;&gt;&lt;/a&gt;（2）删除大量文件&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;ls | xargs -n 1000 rm -rf
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;需要使用xargs命令，不然会删除失败。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;4-总结&quot;&gt;&lt;a href=&quot;#4-总结&quot; class=&quot;headerlink&quot; title=&quot;4 总结&quot;&gt;&lt;/a&gt;4 总结&lt;/h3&gt;&lt;h4 id=&quot;（1）设置方面&quot;&gt;&lt;a href=&quot;#（1）设置方面&quot; class=&quot;headerlink&quot; title=&quot;（1）设置方面&quot;&gt;&lt;/a&gt;（1）设置方面&lt;/h4&gt;&lt;p&gt;在crontab -e 第一行增加MAILTO=”” ，就没有文件产生啦&lt;/p&gt;
-&lt;h4 id=&quot;（2）重定向&quot;&gt;&lt;a href=&quot;#（2）重定向&quot; class=&quot;headerlink&quot; title=&quot;（2）重定向&quot;&gt;&lt;/a&gt;（2）重定向&lt;/h4&gt;&lt;p&gt;对定时任务设置定向输出文件，不需要日志输出的定时任务可以将日志重定向到/dev/null，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*/10 * * * * /tmp/test.sh &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;（3）定时清理文件&quot;&gt;&lt;a href=&quot;#（3）定时清理文件&quot; class=&quot;headerlink&quot; title=&quot;（3）定时清理文件&quot;&gt;&lt;/a&gt;（3）定时清理文件&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;find 目录 -type f -mtime +30 | xargs -n 1000 rm -f
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;（4）监控inodes的使用&quot;&gt;&lt;a href=&quot;#（4）监控inodes的使用&quot; class=&quot;headerlink&quot; title=&quot;（4）监控inodes的使用&quot;&gt;&lt;/a&gt;（4）监控inodes的使用&lt;/h4&gt;&lt;p&gt;备注：应注意crontab的写法和产生的文件的定时清理&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;以下来自另一篇文章《查找和删除占用较多Inodes的目录》&lt;/p&gt;
-&lt;p&gt;1.df -h 显示磁盘使用未到52%，但 df -i 显示 100%，站点程序提示&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Warning: session_start(): open(/tmp/sess_24q39g3sh8viclu4ok8nkl7nt7, O_RDWR) failed: No space left on device
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.先尝试删除/tmp目录的一个或多个临时文件&lt;/p&gt;
-&lt;p&gt;3.从少到多，显示目录占用的inodes数量【实测此条实用】&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;find / -xdev -printf &amp;apos;%h\n&amp;apos; | sort | uniq -c | sort -k 1 -n
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4.本例是 /var/spool/clientmqueue/ 目录占用的inodes数量最多&lt;/p&gt;
-&lt;p&gt;5.转到相应的目录，且删除该目录下的文件，请谨慎操作&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd /var/spool/clientmqueue &amp;amp;&amp;amp; ls | xargs rm -f
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;6.再次查看inodes占用情况，降到10%了&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Linux系统inodes资源耗尽问题&lt;/p&gt;
-&lt;h3 id=&quot;1-inodes介绍&quot;&gt;&lt;a href=&quot;#1-inodes介绍&quot; class=&quot;headerlink&quot; title=&quot;1 inodes介绍&quot;&gt;&lt;/a&gt;1 inodes介绍&lt;/h3&gt;&lt;p&gt;Linux系统下文件数
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://isunman.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="linux" scheme="http://isunman.com/tags/linux/"/>
-    
-      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
     
   </entry>
   
