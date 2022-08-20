@@ -221,11 +221,113 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2021/02/18/apple-keyboard-cleaning/" itemprop="url">
+                  苹果键盘的清洁
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-02-18T22:28:00+08:00" content="2021-02-18">
+              2021-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mac使用/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac使用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-    
+        
+          
+            <p>苹果键盘的清洁</p>
+<p>这里说的苹果键盘是：Mac 配件——妙控键盘 - 中文 (拼音)。带数字键和不带数字键的应该是类似的逻辑，本人实际使用的是不带数字键的。</p>
+<p>使用时间长了之后，键盘上面有一层脏东西，灰尘或者油污等。不带好清理，之前试过其他的方法，都不是太简单有效。今天突然试了一种新方法，简单直接有效。</p>
+<p>那就是，<strong>直接使用毛巾蘸清水，拧干水分之后，直接对键盘进行擦拭</strong>。</p>
+<p>下面这个图片是按这个方法擦拭之后的键盘效果。<br><img src="http://fusihan.com/isunmanfiles/MagicKeyboard.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1413,144 +1515,12 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/06/01/peer-certificate-of-php-curl-function-cannot-be-authenticated/" itemprop="url">
-                  PHP的curl函数的证书错误 Peer certificate cannot be authenticated
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-06-01T17:14:00+08:00" content="2020-06-01">
-              2020-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>系统的短信发送突然全部失败了。使用postman工具测试阿里云云通信的短信API可以正常发送。</p>
-<p>经过一番仔细核查，原因已找到，是PHP系统自带的CURL函数中的证书验证问题。</p>
-<p>错误提示：</p>
-<pre><code>Peer certificate cannot be authenticated with known CA certificates
-</code></pre><p>中文的意思“对等证书不能使用已知的CA证书进行身份验证”。</p>
-<p>解决方案：<br>curl的设置中加入这样一项</p>
-<pre><code>curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-</code></pre><p>即在请求中“信任任何证书”，不再进行CA证书验证。</p>
-<p>但是至少耽误了一天半的短信发送，只是因为周末和月底，没被发现而已。从2020年05月30日 19:36之后到2020年06月01日10:30之前，都是失败的。</p>
-<p><strong>奇怪的就是</strong>：为什么之前可以用，突然在2020年05月30日晚上失败了，而且是在没有更改任何服务器配置和项目相关代码的情况。后来检测，其他项目中使用相同方法的也失败了。不得不逐一修复。</p>
-<p>关于CURL函数可以参考官网说明<br><a href="https://www.php.net/manual/en/function.curl-setopt.php" target="_blank" rel="external">https://www.php.net/manual/en/function.curl-setopt.php</a></p>
-<p>以下为php curl https ssl 证书相关的设置汇总：</p>
-<pre><code>$curl = curl_init();
-curl_setopt($curl,CURLOPT_URL,$url);
-curl_setopt($curl, CURLOPT_PORT, 443);
-curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //信任任何证书
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); // 检查证书中是否设置域名,0不验证
-curl_setopt($curl, CURLOPT_VERBOSE, 1); //debug模式
-curl_setopt($curl, CURLOPT_SSLCERT, &quot;./keys/client.crt&quot;); //client.crt文件路径
-curl_setopt($curl, CURLOPT_SSLCERTPASSWD, &quot;112358&quot;); //client证书密码
-curl_setopt($curl, CURLOPT_SSLKEY, &quot;./keys/client.key&quot;);
-curl_setopt($curl, CURLOPT_POST, 1);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-</code></pre><hr>
-<p>所以，在最后总结三点：</p>
-<p>1、怎么能及时地发现问题；（有没有报警机制）</p>
-<p>2、怎么能快速地解决问题；（核查问题的能力）</p>
-<p>3、怎么能避免问题不再发生。（预防可能遇到的坑）
-　　</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1591,7 +1561,7 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">90</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1608,7 +1578,7 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

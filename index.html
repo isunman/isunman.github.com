@@ -221,15 +221,147 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2022/08/21/How-to-use-FSOCKOPEN-in-PHP-to-achieve-asynchronous-request-and-response-status-code-499/" itemprop="url">
+                  PHP中怎么使用fsockopen实现异步请求与响应状态码499
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2022-08-21T01:46:00+08:00" content="2022-08-21">
+              2022-08-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>在PHP中使用fsockopen实现异步请求时，发现请求有发出，但是响应不是200而是499，导致被请求脚本并未按要求执行。</p>
+<h3 id="这个问题的起源与解决方案。"><a href="#这个问题的起源与解决方案。" class="headerlink" title="这个问题的起源与解决方案。"></a>这个问题的起源与解决方案。</h3><p>php中怎么使用fsockopen实现异步请求，相信很多没有经验的人对此束手无策，为此本文总结了问题出现的原因和解决方法，通过这篇文章希望你能解决这个问题。</p>
+<p>php执行一段程序，有可能几毫秒就执行完毕，也有可能耗时较长。</p>
+<p>例如，用户下单这个事件，如果调用了些第三方服务进行发邮件、短信、推送等通知，可能导致前端一直在等待。</p>
+<p>而有的时候，我们并不关心这些耗时脚本的返回结果，只要执行就行了。这时候就需要采用异步的方式执行。</p>
+<p>众所周知，PHP没有直接支持多线程这种东西。我们可以采用折衷的方式实现。这里主要说的就是fsockopen。</p>
+<p>通过fsockopen发送请求并忽略返回结果，程序可以马上返回。</p>
+<p>示例代码：</p>
+<pre><code>$fp = fsockopen(&quot;www.example.com&quot;, 80, $errno, $errstr, 30);
+if (!$fp) {
+       echo &quot;$errstr ($errno)&lt;br /&gt;\n&quot;;
+} else {
+       $out = &quot;GET /backend.php   HTTP/1.1\r\n&quot;;
+    $out .= &quot;Host: www.example.com\r\n&quot;;
+    $out .= &quot;Connection: Close\r\n\r\n&quot;;
+
+    fwrite($fp, $out);
+    /*忽略执行结果
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }*/
+       fclose($fp);
+}
+</code></pre><p>需要注意的是我们需要手动拼出header头信息。通过打开注释部分，可以查看请求返回结果，但这时候又变成同步的了，因为程序会等待返回结果才结束。</p>
+<h3 id="实际测试遇到的问题"><a href="#实际测试遇到的问题" class="headerlink" title="实际测试遇到的问题"></a>实际测试遇到的问题</h3><p>实际测试的时候发现，不忽略执行结果，调试的时候每次都会成功发送sock请求；但忽略执行结果，经常看到没有成功发送sock请求。查看nginx日志，发现很多状态码为499的请求。</p>
+<p>后来找到了原因：</p>
+<p><code>fwrite</code>之后马上执行<code>fclose</code>，nginx会直接返回499，不会把请求转发给php处理。</p>
+<p>客户端主动端口请求连接时，NGINX 不会将该请求代理给上游服务（FastCGI PHP 进程），这个时候 access log 中会以 499 记录这个请求。</p>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><p>1)nginx.conf增加配置</p>
+<pre><code>#忽略客户端中断
+fastcgi_ignore_client_abort on;
+</code></pre><p>2)fwrite之后使用usleep函数休眠20毫秒：</p>
+<pre><code>usleep(20000);
+</code></pre><p>后来测试就没有发现失败的情况了。</p>
+<hr>
+<p>相关链接：</p>
+<p><a href="https://www.yisu.com/zixun/367919.html" title="参考文章1" target="_blank" rel="external">参考文章1</a></p>
+<p><a href="https://blog.csdn.net/panjiapengfly/article/details/103010517" title="参考文章2" target="_blank" rel="external">参考文章2</a></p>
+<p><a href="https://blog.csdn.net/wang_quan_li/article/details/41806529" title="参考文章3" target="_blank" rel="external">参考文章3</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1550,119 +1682,12 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2021/02/18/apple-keyboard-cleaning/" itemprop="url">
-                  苹果键盘的清洁
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2021-02-18T22:28:00+08:00" content="2021-02-18">
-              2021-02-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>苹果键盘的清洁</p>
-<p>这里说的苹果键盘是：Mac 配件——妙控键盘 - 中文 (拼音)。带数字键和不带数字键的应该是类似的逻辑，本人实际使用的是不带数字键的。</p>
-<p>使用时间长了之后，键盘上面有一层脏东西，灰尘或者油污等。不带好清理，之前试过其他的方法，都不是太简单有效。今天突然试了一种新方法，简单直接有效。</p>
-<p>那就是，<strong>直接使用毛巾蘸清水，拧干水分之后，直接对键盘进行擦拭</strong>。</p>
-<p>下面这个图片是按这个方法擦拭之后的键盘效果。<br><img src="http://fusihan.com/isunmanfiles/MagicKeyboard.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1703,7 +1728,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">90</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1720,7 +1745,7 @@ echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

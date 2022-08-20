@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2022-05-31T03:18:39.526Z</updated>
+  <updated>2022-08-20T17:54:54.195Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP中怎么使用fsockopen实现异步请求与响应状态码499</title>
+    <link href="http://isunman.com/2022/08/21/How-to-use-FSOCKOPEN-in-PHP-to-achieve-asynchronous-request-and-response-status-code-499/"/>
+    <id>http://isunman.com/2022/08/21/How-to-use-FSOCKOPEN-in-PHP-to-achieve-asynchronous-request-and-response-status-code-499/</id>
+    <published>2022-08-20T17:46:00.000Z</published>
+    <updated>2022-08-20T17:54:54.195Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h3&gt;&lt;p&gt;在PHP中使用fsockopen实现异步请求时，发现请求有发出，但是响应不是200而是499，导致被请求脚本并未按要求执行。&lt;/p&gt;
+&lt;h3 id=&quot;这个问题的起源与解决方案。&quot;&gt;&lt;a href=&quot;#这个问题的起源与解决方案。&quot; class=&quot;headerlink&quot; title=&quot;这个问题的起源与解决方案。&quot;&gt;&lt;/a&gt;这个问题的起源与解决方案。&lt;/h3&gt;&lt;p&gt;php中怎么使用fsockopen实现异步请求，相信很多没有经验的人对此束手无策，为此本文总结了问题出现的原因和解决方法，通过这篇文章希望你能解决这个问题。&lt;/p&gt;
+&lt;p&gt;php执行一段程序，有可能几毫秒就执行完毕，也有可能耗时较长。&lt;/p&gt;
+&lt;p&gt;例如，用户下单这个事件，如果调用了些第三方服务进行发邮件、短信、推送等通知，可能导致前端一直在等待。&lt;/p&gt;
+&lt;p&gt;而有的时候，我们并不关心这些耗时脚本的返回结果，只要执行就行了。这时候就需要采用异步的方式执行。&lt;/p&gt;
+&lt;p&gt;众所周知，PHP没有直接支持多线程这种东西。我们可以采用折衷的方式实现。这里主要说的就是fsockopen。&lt;/p&gt;
+&lt;p&gt;通过fsockopen发送请求并忽略返回结果，程序可以马上返回。&lt;/p&gt;
+&lt;p&gt;示例代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$fp = fsockopen(&amp;quot;www.example.com&amp;quot;, 80, $errno, $errstr, 30);
+if (!$fp) {
+       echo &amp;quot;$errstr ($errno)&amp;lt;br /&amp;gt;\n&amp;quot;;
+} else {
+       $out = &amp;quot;GET /backend.php   HTTP/1.1\r\n&amp;quot;;
+    $out .= &amp;quot;Host: www.example.com\r\n&amp;quot;;
+    $out .= &amp;quot;Connection: Close\r\n\r\n&amp;quot;;
+
+    fwrite($fp, $out);
+    /*忽略执行结果
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }*/
+       fclose($fp);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;需要注意的是我们需要手动拼出header头信息。通过打开注释部分，可以查看请求返回结果，但这时候又变成同步的了，因为程序会等待返回结果才结束。&lt;/p&gt;
+&lt;h3 id=&quot;实际测试遇到的问题&quot;&gt;&lt;a href=&quot;#实际测试遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;实际测试遇到的问题&quot;&gt;&lt;/a&gt;实际测试遇到的问题&lt;/h3&gt;&lt;p&gt;实际测试的时候发现，不忽略执行结果，调试的时候每次都会成功发送sock请求；但忽略执行结果，经常看到没有成功发送sock请求。查看nginx日志，发现很多状态码为499的请求。&lt;/p&gt;
+&lt;p&gt;后来找到了原因：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;fwrite&lt;/code&gt;之后马上执行&lt;code&gt;fclose&lt;/code&gt;，nginx会直接返回499，不会把请求转发给php处理。&lt;/p&gt;
+&lt;p&gt;客户端主动端口请求连接时，NGINX 不会将该请求代理给上游服务（FastCGI PHP 进程），这个时候 access log 中会以 499 记录这个请求。&lt;/p&gt;
+&lt;h3 id=&quot;解决方案：&quot;&gt;&lt;a href=&quot;#解决方案：&quot; class=&quot;headerlink&quot; title=&quot;解决方案：&quot;&gt;&lt;/a&gt;解决方案：&lt;/h3&gt;&lt;p&gt;1)nginx.conf增加配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#忽略客户端中断
+fastcgi_ignore_client_abort on;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2)fwrite之后使用usleep函数休眠20毫秒：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;usleep(20000);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;后来测试就没有发现失败的情况了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.yisu.com/zixun/367919.html&quot; title=&quot;参考文章1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/panjiapengfly/article/details/103010517&quot; title=&quot;参考文章2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wang_quan_li/article/details/41806529&quot; title=&quot;参考文章3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章3&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h3&gt;&lt;p&gt;在PHP中使用fsockopen实现异步请求时，发现请求有发出，但是响应不是200而是499，导致被请求脚本并未按要求执行。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="Nginx" scheme="http://isunman.com/tags/nginx/"/>
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>云盘在线扩容</title>
@@ -1155,63 +1218,6 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
       <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
     
       <category term="PHP" scheme="http://isunman.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP的curl函数的证书错误 Peer certificate cannot be authenticated</title>
-    <link href="http://isunman.com/2020/06/01/peer-certificate-of-php-curl-function-cannot-be-authenticated/"/>
-    <id>http://isunman.com/2020/06/01/peer-certificate-of-php-curl-function-cannot-be-authenticated/</id>
-    <published>2020-06-01T09:14:00.000Z</published>
-    <updated>2020-06-01T09:18:34.390Z</updated>
-    
-    <content type="html">&lt;p&gt;系统的短信发送突然全部失败了。使用postman工具测试阿里云云通信的短信API可以正常发送。&lt;/p&gt;
-&lt;p&gt;经过一番仔细核查，原因已找到，是PHP系统自带的CURL函数中的证书验证问题。&lt;/p&gt;
-&lt;p&gt;错误提示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Peer certificate cannot be authenticated with known CA certificates
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;中文的意思“对等证书不能使用已知的CA证书进行身份验证”。&lt;/p&gt;
-&lt;p&gt;解决方案：&lt;br&gt;curl的设置中加入这样一项&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即在请求中“信任任何证书”，不再进行CA证书验证。&lt;/p&gt;
-&lt;p&gt;但是至少耽误了一天半的短信发送，只是因为周末和月底，没被发现而已。从2020年05月30日 19:36之后到2020年06月01日10:30之前，都是失败的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;奇怪的就是&lt;/strong&gt;：为什么之前可以用，突然在2020年05月30日晚上失败了，而且是在没有更改任何服务器配置和项目相关代码的情况。后来检测，其他项目中使用相同方法的也失败了。不得不逐一修复。&lt;/p&gt;
-&lt;p&gt;关于CURL函数可以参考官网说明&lt;br&gt;&lt;a href=&quot;https://www.php.net/manual/en/function.curl-setopt.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.php.net/manual/en/function.curl-setopt.php&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以下为php curl https ssl 证书相关的设置汇总：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$curl = curl_init();
-curl_setopt($curl,CURLOPT_URL,$url);
-curl_setopt($curl, CURLOPT_PORT, 443);
-curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //信任任何证书
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); // 检查证书中是否设置域名,0不验证
-curl_setopt($curl, CURLOPT_VERBOSE, 1); //debug模式
-curl_setopt($curl, CURLOPT_SSLCERT, &amp;quot;./keys/client.crt&amp;quot;); //client.crt文件路径
-curl_setopt($curl, CURLOPT_SSLCERTPASSWD, &amp;quot;112358&amp;quot;); //client证书密码
-curl_setopt($curl, CURLOPT_SSLKEY, &amp;quot;./keys/client.key&amp;quot;);
-curl_setopt($curl, CURLOPT_POST, 1);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;所以，在最后总结三点：&lt;/p&gt;
-&lt;p&gt;1、怎么能及时地发现问题；（有没有报警机制）&lt;/p&gt;
-&lt;p&gt;2、怎么能快速地解决问题；（核查问题的能力）&lt;/p&gt;
-&lt;p&gt;3、怎么能避免问题不再发生。（预防可能遇到的坑）
-　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;系统的短信发送突然全部失败了。使用postman工具测试阿里云云通信的短信API可以正常发送。&lt;/p&gt;
-&lt;p&gt;经过一番仔细核查，原因已找到，是PHP系统自带的CURL函数中的证书验证问题。&lt;/p&gt;
-&lt;p&gt;错误提示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Peer certifica
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
-    
-      <category term="第三方API" scheme="http://isunman.com/tags/%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
     
   </entry>
   
