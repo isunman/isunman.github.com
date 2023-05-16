@@ -244,6 +244,561 @@
             
               
                 
+                <a class="post-title-link" href="/2023/05/16/network-digital-identity-authentication/" itemprop="url">
+                  网络数字身份认证术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-05-16T20:15:00+08:00" content="2023-05-16">
+              2023-05-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这篇文章是<a href="https://coolshell.cn/articles/19395.html" target="_blank" rel="external">《HTTP API 认证授权术》</a>的姊妹篇，在那篇文章中，主要介绍了 HTTP API 认证和授权技术中用到的 HTTP Basic, Digest Access, HMAC, OAuth, JWT 等各种方式，主要是 API 上用到的一些技术，这篇文章主要想说的是另一个话题——身份认证。也就是说，怎么确认这个数据就是这个人发出来的？</p>
+<h2 id="用户密码"><a href="#用户密码" class="headerlink" title="用户密码"></a>用户密码</h2><p>要解决这个问题，我们先来看一个最简单的解——使用密码，通常来说，在网络上要证明一个人的身份的话，都需要这个人的一些私密而唯一的东西。比如，像密码这样的东西，很多地方，只要你提供了你的用户名+密码，就可以确定这个人是你（注明：关于密码管理，强密码设定，密码泄漏，密码破解以及密码哄骗不在这篇文章的话题中），也就是说，这个密码是非常私密的事，我们可以假设，这个事全世界只能有当事人一个人知道，所以，当事人得供正确的密码，我们就可以认证这个人了。</p>
+<p>为了加强密码的安全程度，一般会使用 2FA（Two-factor authentication）或 MFA（Multi-factor authentication），双因认证或多因认证，这需要用户提供一个唯一的可信设备，比如用户的手机，然后通过验证手机短信，或是像 Google Authenticator  这样的动态口令来完成。这样的安全级别已经算是比较高了。如果能够再加上经常性的变更密码，那么安全级别就更好了。</p>
+<p>另外，一些公司还使用了生物密码来进行用户的身份验证，比如人脸识别。但是，我个人觉得人脸识别或是生物识别是比较糟糕的方式，因为：</p>
+<ul>
+<li>目前能被验证的生物信息（如人脸和指纹）太容易被别人获得和伪造了。</li>
+<li>这样东西不能被变更和吊销，密码可以被吊销和重置，人脸则不能。</li>
+</ul>
+<h2 id="密钥对和证书"><a href="#密钥对和证书" class="headerlink" title="密钥对和证书"></a>密钥对和证书</h2><p>密码可以解决身证认证的问题有很多问题，最重要的一个问题就是，你要把你的密码提供给对方，对方才能验证你的身份。你不可能把你的密码提供给全世界的人吧，这样的话，全世界的人都有你的密码了，那么任何人都能变成你了。所以，用户密码这个事只能存在于权威机构和普通用户之间，不能存在于普遍应用中。所以，这里需要使用更好的解决方案。</p>
+<p>使用 ECC（Elliptic-Curve Cryptography）椭圆曲线密码术，可以通过一个“密钥对”进行非对称加密。这种技术，在对信息进行加密和解密时，使用两个不同的密钥，其中一个用来做加密，另一个做解密。这样一来，我们就可以把其中一个密钥公布出去，称之为公钥，另一个密钥私密地保管好，称之为私钥。</p>
+<p>比如，我用我的私钥加密信息，然后，我把这个私钥所配对的公钥发布给所有人，大家都用公钥解密信息，不用我的公钥你解密不了这个信息。这样一来，就可以保证这个信息是我发出来的，不但保证了信息安全，还完成了身份认证。</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png" alt=""></p>
+<p>这样的现实案例一般用于网站，也就是用户得要知道我访问的这个网站是真实的，不是别人做的。因为 DNS 很容易被 hack，你连上一个不可信的网络，这个网络里的 DNS 把这个网站的 IP 地址解析成什么 就是什么了。但是有了这个加密的机制后，网站把自己的信息加密后连同公钥给到访问者，访问解密后就知道是不是这个网站了。</p>
+<p>但是，这里还是会有一个很严重的问题，那就是中间人攻击。如下图所示：</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png" alt=""></p>
+<p>中间人 Chad 把自己伪装成 Bob 向 Alice 要信息，然后，再伪装成 Alice 对 Bob 说，这就是 Alice 的公钥，于是 Bob 也无法验证是不是 Alice 的公钥，因为公钥里就是一堆乱七八糟的数据，我们完全不能分辨哪个公钥属于 Alice 的。试想，如果我们收到声称属于银行的密钥。我们怎么知道它确实属于你的银行？</p>
+<p>这里的答案就是<strong>使用数字证书</strong>。证书跟我们的身份证非常类似，其需要一个可信机构来颁发和验证的。这个证书机构 CA（Certificate Authority）是一个是大家都相信的权威机构，他用他的人品保证（当然一般会被严格管理和审计），CA 机构同样使用这样的非对称加密的技术来完成颁发和验证的事。下图展示了这一过程。</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/certificate-768x399.png" alt=""></p>
+<p>说明一下上面这个图：</p>
+<ol>
+<li>为了解决公钥认证的问题的，我们需要一个权威的CA 机构。</li>
+<li>Alice 把自己的信息（姓名、组织，地址，电邮，网址等）和自己的公钥打包成一个 CSR 的文件，发给 CA 机构，</li>
+<li>CA 机构会来找 Alice 做物理世界的认证，如果通过后，就会用自己的机构私钥，把CSR 变成一个签名证书。</li>
+<li>Bob 同学拿到 Alice 的证书，用 CA 机构的公钥解密后，得到 Alice 的公钥</li>
+<li>后面就可以签证 信息是否来自 Alice 了。</li>
+</ol>
+<p>是的，这个过程就是在“套娃”，这种证书机构还可以给下级的证书机构发证，于是就会一层套一层地，形成一个证书链，顶层的叫根证书，你得绝对信任之。对于验证证书真实性的客户端，它需要能够验证链中所有 CA 的签名，这意味着客户端需要访问链中所有 CA 的证书。</p>
+<h2 id="证书生成过程演示"><a href="#证书生成过程演示" class="headerlink" title="证书生成过程演示"></a>证书生成过程演示</h2><p>并不是所有的场景都需要向这些大型的 CA 机构申请公钥证书，在任何一个企业，组织或是团体内都可以自己形这样的“小王国”，也就是说，你可以自行生成这样的证书，只需要你自己保证自己的生成证书的私钥的安全，以及不需要扩散到整个互联网。下面，我们用 openssl命令来演示这个过程。</p>
+<p>1）生成 CA 的证书（公钥） ca.crt 和私钥 ca.key</p>
+<pre><code>openssl req -newkey rsa:2048 \
+-new -nodes -x509 \
+-days 365 \
+-out ca.crt \
+-keyout ca.key \
+-subj &quot;/C=SO/ST=Earth/L=Mountain/O=CoolShell/OU=HQ/CN=localhost&quot;
+</code></pre><p>2)  生成 alice 的私钥</p>
+<pre><code>openssl genrsa -out alice.key 2048
+</code></pre><p>3）生成 Alice 的 CSR – Certificate Signing Request</p>
+<pre><code>openssl req -new -key alice.key 365 -out alice.csr \
+-subj &quot;/C=CN/ST=Beijing/L=Haidian/O=CoolShell/OU=Test/CN=localhost.alice&quot;
+</code></pre><p>4）使用 CA 给 Alice 签名证书</p>
+<pre><code>openssl x509  -req -in alice.csr \
+-extfile &lt;(printf &quot;subjectAltName=DNS:localhost.alice&quot;) \ 
+-CA ca.crt -CAkey ca.key  \
+-days 365 -sha256 -CAcreateserial \
+-out alice.crt
+</code></pre><p>##双向认证 mTLS<br>上面，我们说的基本上都是单向认证，大量的场景都是确保用户方访问的是真正的服务方，如：银行，电商网站，等。这样可以保证用户不会被钓鱼网站或是中间人攻击。但是，很多时候，我们也是需要双向认证的。下面是一个典型的场景——微信支付和商户间交互</p>
+<ul>
+<li>用户到商家那边买东西，商家要求用户进行支付。</li>
+<li>用户选择了微信支付，于是，界面从商户侧切到了微信侧</li>
+<li>微信那边支付完成后，商户这边收到微信那边支付完成的通知，于是开始发货。</li>
+</ul>
+<p>这个过程中有件事非常重要——就是微信通知商户支付完成的时候。</p>
+<ul>
+<li>微信得确保通知到的就是用户所支付商户，而不是别个。</li>
+<li>商户也得要能确认，来通知我的就是微信，不是别人。</li>
+</ul>
+<p>一般来说，微信会给商户一个 AppID和一个 AppSerct，用这个来确保是我认证过的商户来调用我，然后，需要商户在自己的系统里填一个回调的 URL，并通过平台设置的 key来做 MD5/HMAC的签名来确保是官方的回调。这都是在《HTTP API 认证授权术》中提到过的技术，是相对传统的技术。</p>
+<p>如今，<strong>mTLS</strong>是确保云原生应用程序中服务之间的通信安全的首选协议。 也就是双向认证。</p>
+<p>传统的 TLS 认证过程是：</p>
+<ol>
+<li>客户端连接到服务器</li>
+<li>服务器提供其 TLS 证书</li>
+<li>客户端验证服务器的证书</li>
+<li>客户端和服务器通过加密的 TLS 连接交换信息</li>
+</ol>
+<p>在 mTLS 中，客户端和服务器都有一个证书，双方都使用他们的公钥/私钥对进行身份验证。与常规 TLS 相比，mTLS 中有额外的步骤来验证双方（以粗体显示的额外步骤）：</p>
+<ol>
+<li>客户端连接到服务器</li>
+<li>服务器提供其 TLS 证书</li>
+<li>客户端验证服务器的证书</li>
+<li><strong>客户端出示其 TLS 证书</strong></li>
+<li><strong>服务器验证客户端的证书</strong></li>
+<li><strong>服务器授予访问权限</strong></li>
+<li>客户端和服务器通过加密的 TLS 连接交换信息</li>
+</ol>
+<p>mTLS 需要“根”TLS 证书；这我们自己来完成证书颁发机构的职责。授权客户端和服务器使用的证书必须与此根证书相对应。根证书是自签名的，这意味着我们需要自己创建它。（注：此方法不适用于公共 Internet 上的单向 TLS，因为外部证书颁发机构必须颁发这些证书）</p>
+<p>那么，为什么整个互联网上都用了 TLS 了，为什么 不升级一下使用 mTLS？这里有两方面的原因：</p>
+<ul>
+<li>公共互联网上要解决的问题是：A) 确保用户访问到的是正确的网站，而不是钓鱼网站。B）网站传输的内容是安全和私密且不会被篡改的。</li>
+<li>将 TLS 证书分发到所有最终用户设备将非常困难。生成、管理和验证为此所需的数十亿个证书几乎是不可能的任务。</li>
+</ul>
+<p>在较小的范围内，mTLS 对于单个组织非常有用且非常实用，尤其是当这些组织采用零信任方法来确保网络安全时。由于默认情况下零信任方法不信任任何用户、设备或请求，因此组织必须能够在每次尝试访问网络中的任何点时对每个用户、设备和请求进行身份验证。mTLS 通过对用户进行身份验证和设备验证来帮助实现这一目标。</p>
+<p>关于 mTLS，这里有一个我用 Golang 写的示例 – <a href="https://github.com/haoel/mTLS，大家可以参考一下。" target="_blank" rel="external">https://github.com/haoel/mTLS，大家可以参考一下。</a></p>
+<p>P.S. 本文图版中的卡司来自安全圈的标准 Cast，参看 Alice and Bob。</p>
+<p>（全文完）</p>
+<p>原文链接：<a href="https://coolshell.cn/articles/21708.html" target="_blank" rel="external">《网络数字身份认证术》</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2023/05/16/http-api-authentication-and-authorization/" itemprop="url">
+                  HTTP API 认证授权术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-05-16T20:03:00+08:00" content="2023-05-16">
+              2023-05-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们知道，HTTP是无状态的，所以，当我们需要获得用户是否在登录的状态时，我们需要检查用户的登录状态，一般来说，用户的登录成功后，服务器会发一个登录凭证（又被叫作Token），就像你去访问某个公司，在前台被认证过合法后，这个公司的前台会给你的一个访客卡一样，之后，你在这个公司内去到哪都用这个访客卡来开门，而不再校验你是哪一个人。在计算机的世界里，这个登录凭证的相关数据会放在两种地方，一个地方在用户端，以Cookie的方式（一般不会放在浏览器的Local Storage，因为这很容易出现登录凭证被XSS攻击），另一个地方是放在服务器端，又叫Session的方式（SessonID存于Cookie）。</p>
+<p>但是，这个世界还是比较复杂的，除了用户访问，还有用户委托的第三方的应用，还有企业和企业间的调用，这里，我想把业内常用的一些 API认证技术相对系统地总结归纳一下，这样可以让大家更为全面的了解这些技术。注意，这是一篇长文！</p>
+<p>本篇文章会覆盖如下技术：</p>
+<ul>
+<li>HTTP Basic</li>
+<li>Digest Access</li>
+<li>App Secret Key + HMAC</li>
+<li>JWT – JSON Web Tokens</li>
+<li>OAuth 1.0 – 3 legged &amp; 2 legged</li>
+<li>OAuth 2.0 – Authentication Code &amp; Client Credential</li>
+</ul>
+<h2 id="HTTP-Basic"><a href="#HTTP-Basic" class="headerlink" title="HTTP Basic"></a>HTTP Basic</h2><p>HTTP Basic 是一个非常传统的API认证技术，也是一个比较简单的技术。这个技术也就是使用 username和 password 来进行登录。整个过程被定义在了 RFC 2617 中，也被描述在了 Wikipedia: Basic Access Authentication 词条中，同时也可以参看 MDN HTTP Authentication</p>
+<p>其技术原理如下：</p>
+<blockquote>
+<p>1、把 username和 password 做成  username:password 的样子（用冒号分隔）</p>
+<p>2、进行Base64编码。Base64(“username:password”) 得到一个字符串（如：把 haoel:coolshell 进行base64 后可以得到 aGFvZW86Y29vbHNoZWxsCg ）</p>
+<p>3、把 aGFvZW86Y29vbHNoZWxsCg放到HTTP头中 Authorization 字段中，形成 Authorization: Basic aGFvZW86Y29vbHNoZWxsCg，然后发送到服务端。</p>
+<p>4、服务端如果没有在头里看到认证字段，则返回401错，以及一个个WWW-Authenticate: Basic Realm=’HelloWorld’ 之类的头要求客户端进行认证。之后如果没有认证通过，则返回一个401错。如果服务端认证通过，那么会返回200。</p>
+</blockquote>
+<p>我们可以看到，使用Base64的目的无非就是为了把一些特殊的字符给搞掉，这样就可以放在HTTP协议里传输了。而这种方式的问题最大的问题就是把用户名和口令放在网络上传，所以，一般要配合TLS/SSL的安全加密方式来使用。我们可以看到 JIRA Cloud 的API认证支持HTTP Basic 这样的方式。</p>
+<p>但我们还是要知道，这种把用户名和密码同时放在公网上传输的方式有点不太好，因为Base64不是加密协议，而是编码协议，所以就算是有HTTPS作为安全保护，给人的感觉还是不放心。</p>
+<h2 id="Digest-Access"><a href="#Digest-Access" class="headerlink" title="Digest Access"></a>Digest Access</h2><p>中文称“HTTP 摘要认证”，最初被定义在了 RFC 2069 文档中（后来被 RFC 2617 引入了一系列安全增强的选项；“保护质量”(qop)、随机数计数器由客户端增加、以及客户生成的随机数）。</p>
+<p>其基本思路是，请求方把用户名口令和域做一个MD5 –  MD5(username:realm:password) 然后传给服务器，这样就不会在网上传用户名和口令了，但是，因为用户名和口令基本不会变，所以，这个MD5的字符串也是比较固定的，因此，这个认证过程在其中加入了两个事，一个是 nonce 另一个是 qop</p>
+<ul>
+<li>首先，调用方发起一个普通的HTTP请求。比如：GET /coolshell/admin/ HTTP/1.1</li>
+<li>服务端自然不能认证能过，服务端返回401错误，并且在HTTP头里的 WWW-Authenticate 包含如下信息：</li>
+</ul>
+<blockquote>
+<pre><code>WWW-Authenticate: Digest realm=&quot;testrealm@host.com&quot;,
+qop=&quot;auth,auth-int&quot;,
+nonce=&quot;dcd98b7102dd2f0e8b11d0f600bfb0c093&quot;,
+opaque=&quot;5ccc069c403ebaf9f0171e9517f40e41&quot;
+</code></pre></blockquote>
+<ul>
+<li>其中的 nonce 为服务器端生成的随机数，然后，客户端做 HASH1=MD5(MD5(username:realm:password):nonce:cnonce) ，其中的 cnonce 为客户端生成的随机数，这样就可以使得整个MD5的结果是不一样的。</li>
+<li>如果 qop 中包含了 auth ，那么还得做  HASH2=MD5(method:digestURI) 其中的 method 就是HTTP的请求方法（GET/POST…），digestURI 是请求的URL。</li>
+<li>如果 qop 中包含了 auth-init ，那么，得做  HASH2=MD5(method:digestURI:MD5(entityBody)) 其中的 entityBody 就是HTTP请求的整个数据体。</li>
+<li>然后，得到 response = MD5(HASH1:nonce:nonceCount:cnonce:qop:HASH2) 如果没有 qop则 response = MD5(HA1:nonce:HA2)</li>
+<li>最后，我们的客户端对服务端发起如下请求—— 注意HTTP头的 Authorization: Digest …<blockquote>
+<pre><code>GET /dir/index.html HTTP/1.0
+Host: localhost
+Authorization: Digest username=&quot;Mufasa&quot;,
+ realm=&quot;testrealm@host.com&quot;,
+ nonce=&quot;dcd98b7102dd2f0e8b11d0f600bfb0c093&quot;,
+ uri=&quot;%2Fcoolshell%2Fadmin&quot;,
+ qop=auth,
+ nc=00000001,
+ cnonce=&quot;0a4f113b&quot;,
+ response=&quot;6629fae49393a05397450978507c4ef1&quot;,
+ opaque=&quot;5ccc069c403ebaf9f0171e9517f40e41&quot;
+</code></pre><p>维基百科上的 Wikipedia: Digest access authentication 词条非常详细地描述了这个细节。</p>
+</blockquote>
+</li>
+</ul>
+<p>摘要认证这个方式会比之前的方式要好一些，因为没有在网上传递用户的密码，而只是把密码的MD5传送过去，相对会比较安全，而且，其并不需要是否TLS/SSL的安全链接。但是，<strong>别看这个算法这么复杂，最后你可以发现，整个过程其实关键是用户的password，这个password如果不够得杂，其实是可以被暴力破解的，而且，整个过程是非常容易受到中间人攻击</strong>——比如一个中间人告诉客户端需要的 Basic 的认证方式 或是 老旧签名认证方式（RFC2069）。</p>
+<h2 id="App-Secret-Key-HMAC"><a href="#App-Secret-Key-HMAC" class="headerlink" title="App Secret Key + HMAC"></a>App Secret Key + HMAC</h2><p>先说HMAC技术，这个东西来自于MAC – Message Authentication Code，是一种用于给消息签名的技术，也就是说，我们怕消息在传递的过程中被人修改，所以，我们需要用对消息进行一个MAC算法，得到一个摘要字串，然后，接收方得到消息后，进行同样的计算，然后比较这个MAC字符串，如果一致，则表明没有被修改过（整个过程参看下图）。而HMAC – Hash-based Authenticsation Code，指的是利用Hash技术完成这一工作，比如：SHA-256算法。</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2019/05/MAC-1024x634.png" alt=""></p>
+<p>（图片来自 Wikipedia – MAC 词条 ）</p>
+<p>我们再来说App ID，这个东西跟验证没有关系，只是用来区分，是谁来调用API的，就像我们每个人的身份证一样，只是用来标注不同的人，不是用来做身份认证的。与前面的不同之处是，这里，我们需要用App ID 来映射一个用于加密的密钥，这样一来，我们就可以在服务器端进行相关的管理，我们可以生成若干个密钥对（AppID, AppSecret），并可以有更细粒度的操作权限管理。</p>
+<p>把AppID和HMAC用于API认证，目前来说，玩得最好最专业的应该是AWS了，我们可以通过S3的API请求签名文档看到AWS是怎么玩的。整个过程还是非常复杂的，可以通过下面的图片流程看个大概。基本上来说，分成如下几个步骤：</p>
+<ul>
+<li>把HTTP的请求（方法、URI、查询字串、头、签名头，body）打个包叫 CanonicalRequest，作个SHA-256的签名，然后再做一个base16的编码</li>
+<li>把上面的这个签名和签名算法 AWS4-HMAC-SHA256、时间戳、Scop，再打一个包，叫 StringToSign。</li>
+<li>准备签名，用 AWSSecretAccessKey来对日期签一个 DataKey，再用 DataKey 对要操作的Region签一个 DataRegionKey ，再对相关的服务签一个DataRegionServiceKey ，最后得到 SigningKey.</li>
+<li>用第三步的 SigningKey来对第二步的 StringToSign 签名。</li>
+</ul>
+<p><img src="https://coolshell.cn/wp-content/uploads/2019/05/sigV4-using-query-params.png" alt=""></p>
+<ul>
+<li>最后，发出HTTP Request时，在HTTP头的 Authorization字段中放入如下的信息：</li>
+</ul>
+<blockquote>
+<pre><code>Authorization: AWS4-HMAC-SHA256 
+Credential=AKIDEXAMPLE/20150830/us-east-1/iam/aws4_request, 
+SignedHeaders=content-type;host;x-amz-date, 
+Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924a6f2b5d7
+</code></pre></blockquote>
+<p>其中的  AKIDEXAMPLE 是 AWS Access Key ID， 也就是所谓的 AppID，服务器端会根据这个AppID来查相关的 Secret Access Key，然后再验证签名。如果，你对这个过程有点没看懂的话，你可以读一读这篇文章——《Amazon S3 Rest API with curl》这篇文章里有好些代码，代码应该是最有细节也是最准确的了。</p>
+<p>这种认证的方式好处在于，AppID和AppSecretKey，是由服务器的系统开出的，所以，是可以被管理的，AWS的IAM就是相关的管理，其管理了用户、权限和其对应的AppID和AppSecretKey。但是不好的地方在于，这个东西没有标准 ，所以，各家的实现很不一致。比如： Acquia 的 HMAC，微信的签名算法 （这里，我们需要说明一下，微信的API没有遵循HTTP协议的标准，把认证信息放在HTTP 头的 Authorization 里，而是放在body里）</p>
+<h2 id="JWT-–-JSON-Web-Tokens"><a href="#JWT-–-JSON-Web-Tokens" class="headerlink" title="JWT – JSON Web Tokens"></a>JWT – JSON Web Tokens</h2><p>JWT是一个比较标准的认证解决方案，这个技术在Java圈里应该用的是非常普遍的。JWT签名也是一种MAC（Message Authentication Code）的方法。JWT的签名流程一般是下面这个样子：</p>
+<ol>
+<li>用户使用用户名和口令到认证服务器上请求认证。</li>
+<li>认证服务器验证用户名和口令后，以服务器端生成JWT Token，这个token的生成过程如下：<ul>
+<li>认证服务器还会生成一个 Secret Key（密钥）</li>
+<li>对JWT Header和 JWT Payload分别求Base64。在Payload可能包括了用户的抽象ID和的过期时间。</li>
+<li>用密钥对JWT签名 HMAC-SHA256(SecertKey, Base64UrlEncode(JWT-Header)+’.’+Base64UrlEncode(JWT-Payload));</li>
+</ul>
+</li>
+</ol>
+<p>3.然后把 base64(header).base64(payload).signature 作为 JWT token返回客户端。</p>
+<p>4.客户端使用JWT Token向应用服务器发送相关的请求。这个JWT Token就像一个临时用户权证一样。</p>
+<p>当应用服务器收到请求后：</p>
+<ol>
+<li>应用服务会检查 JWT  Token，确认签名是正确的。</li>
+<li>然而，因为只有认证服务器有这个用户的Secret Key（密钥），所以，应用服务器得把JWT Token传给认证服务器。</li>
+<li>认证服务器通过JWT Payload 解出用户的抽象ID，然后通过抽象ID查到登录时生成的Secret Key，然后再来检查一下签名。</li>
+<li>认证服务器检查通过后，应用服务就可以认为这是合法请求了。</li>
+</ol>
+<p>我们可以看以，上面的这个过程，是在认证服务器上为用户动态生成 Secret Key的，应用服务在验签的时候，需要到认证服务器上去签，这个过程增加了一些网络调用，所以，JWT除了支持HMAC-SHA256的算法外，还支持RSA的非对称加密的算法。</p>
+<p>使用RSA非对称算法，在认证服务器这边放一个私钥，在应用服务器那边放一个公钥，认证服务器使用私钥加密，应用服务器使用公钥解密，这样一来，就不需要应用服务器向认证服务器请求了，但是，RSA是一个很慢的算法，所以，虽然你省了网络调用，但是却费了CPU，尤其是Header和Payload比较长的时候。所以，一种比较好的玩法是，如果我们把header 和 payload简单地做SHA256，这会很快，然后，我们用RSA加密这个SHA256出来的字符串，这样一来，RSA算法就比较快了，而我们也做到了使用RSA签名的目的。</p>
+<p>最后，我们只需要使用一个机制在认证服务器和应用服务器之间定期地换一下公钥私钥对就好了。</p>
+<p>这里强烈建议全文阅读 Anglar 大学的 《JSW：The Complete Guide to JSON Web Tokens》</p>
+<h2 id="OAuth-1-0"><a href="#OAuth-1-0" class="headerlink" title="OAuth 1.0"></a>OAuth 1.0</h2><p>OAuth也是一个API认证的协议，这个协议最初在2006年由Twitter的工程师在开发OpenID实现的时候和社交书签网站Ma.gnolia时发现，没有一种好的委托授权协议，后来在2007年成立了一个OAuth小组，知道这个消息后，Google员工也加入进来，并完善有善了这个协议，在2007年底发布草案，过一年后，在2008年将OAuth放进了IETF作进一步的标准化工作，最后在2010年4月，正式发布OAuth 1.0，即：RFC 5849 （这个RFC比起TCP的那些来说读起来还是很轻松的），不过，如果你想了解其前身的草案，可以读一下 OAuth Core 1.0 Revision A ，我在下面做个大概的描述。</p>
+<p>根据RFC 5849，可以看到 OAuth 的出现，目的是为了，用户为了想使用一个第三方的网络打印服务来打印他在某网站上的照片，但是，用户不想把自己的用户名和口令交给那个第三方的网络打印服务，但又想让那个第三方的网络打印服务来访问自己的照片，为了解决这个授权的问题，OAuth这个协议就出来了。</p>
+<ul>
+<li>这个协议有三个角色：<ul>
+<li>User（照片所有者-用户）</li>
+<li>Consumer（第三方照片打印服务）</li>
+<li>Service Provider（照片存储服务）</li>
+</ul>
+</li>
+<li>这个协义有三个阶段：<ul>
+<li>Consumer获取Request Token</li>
+<li>Service Provider 认证用户并授权Consumer</li>
+<li>Consumer获取Access Token调用API访问用户的照片</li>
+</ul>
+</li>
+</ul>
+<p>整个授权过程是这样的：</p>
+<ol>
+<li>Consumer（第三方照片打印服务）需要先上Service Provider获得开发的 Consumer Key 和 Consumer Secret</li>
+<li>当 User 访问 Consumer 时，Consumer 向 Service Provide 发起请求请求Request Token （需要对HTTP请求签名）</li>
+<li>Service Provide 验明 Consumer 是注册过的第三方服务商后，返回 Request Token（oauth_token）和 Request Token Secret （oauth_token_secret）</li>
+<li>Consumer 收到 Request Token 后，使用HTTP GET 请求把 User 切到 Service Provide 的认证页上（其中带上Request Token），让用户输入他的用户和口令。</li>
+<li>Service Provider 认证 User 成功后，跳回 Consumer，并返回 Request Token （oauth_token）和 Verification Code（oauth_verifier）</li>
+<li>接下来就是签名请求，用Request Token 和 Verification Code 换取 Access Token （oauth_token）和 Access Token Secret (oauth_token_secret)</li>
+<li>最后使用Access Token 访问用户授权访问的资源。<br>下图附上一个Yahoo!的流程图可以看到整个过程的相关细节。</li>
+</ol>
+<p><img src="https://coolshell.cn/wp-content/uploads/2019/05/oauth_graph.gif" alt=""></p>
+<p>因为上面这个流程有三方：User，Consumer 和 Service Provide，所以，又叫 3-legged flow，三脚流程。OAuth 1.0 也有不需要用户参与的，只有Consumer 和 Service Provider 的， 也就是 2-legged flow 两脚流程，其中省掉了用户认证的事。整个过程如下所示：</p>
+<ol>
+<li>Consumer（第三方照片打印服务）需要先上Service Provider获得开发的 Consumer Key 和 Consumer Secret</li>
+<li>Consumer 向 Service Provide 发起请求请求Request Token （需要对HTTP请求签名）</li>
+<li>Service Provide 验明 Consumer 是注册过的第三方服务商后，返回 Request Token（oauth_token）和 Request Token Secret （oauth_token_secret）</li>
+<li>Consumer 收到 Request Token 后，直接换取 Access Token （oauth_token）和 Access Token Secret (oauth_token_secret)</li>
+<li>最后使用Access Token 访问用户授权访问的资源。<br>最后，再来说一说OAuth中的签名。</li>
+</ol>
+<ul>
+<li>我们可以看到，有两个密钥，一个是Consumer注册Service Provider时由Provider颁发的 Consumer Secret，另一个是 Token Secret。</li>
+<li>签名密钥就是由这两具密钥拼接而成的，其中用 &amp;作连接符。假设 Consumer Secret 为 j49sk3j29djd 而 Token Secret 为dh893hdasih9那个，签名密钥为：j49sk3j29djd&amp;dh893hdasih9</li>
+<li>在请求Request/Access Token的时候需要对整个HTTP请求进行签名（使用HMAC-SHA1和HMAC-RSA1签名算法），请求头中需要包括一些OAuth需要的字段，如：<ul>
+<li>Consumer Key ： 也就是所谓的AppID</li>
+<li>Token： Request Token 或 Access Token</li>
+<li>Signature Method ：签名算法比如：HMAC-SHA1</li>
+<li>Timestamp：过期时间</li>
+<li>Nonce：随机字符串</li>
+<li>Call Back：回调URL<br>下图是整个签名的示意图：</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://coolshell.cn/wp-content/uploads/2019/05/oauth_singature.png" alt=""></p>
+<p>图片还是比较直观的，我就不多解释了。</p>
+<h2 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h2><p>在前面，我们可以看到，从Digest Access， 到AppID+HMAC，再到JWT，再到OAuth 1.0，这些个API认证都是要向Client发一个密钥（或是用密码）然后用HASH或是RSA来签HTTP的请求，<strong>这其中有个主要的原因是，以前的HTTP是明文传输，所以，在传输过程中很容易被篡改，于是才搞出来一套的安全签名机制</strong>，所以，这些个认证的玩法是可以在HTTP明文协议下玩的。</p>
+<p>这种使用签名方式大家可以看到是比较复杂的，所以，对于开发者来说，也是很不友好的，在组织签名的那些HTTP报文的时候，各种，URLEncode和Base64，还要对Query的参数进行排序，然后有的方法还要层层签名，非常容易出错，另外，这种认证的安全粒度比较粗，授权也比较单一，对于有终端用户参与的移动端来说也有点不够。所以，在2012年的时候，OAuth 2.0 的 RFC 6749 正式放出。</p>
+<p><strong>OAuth 2.0依赖于TLS/SSL的链路加密技术（HTTPS），完全放弃了签名的方式，认证服务器再也不返回什么 token secret 的密钥了，所以，OAuth 2.0是完全不同于1.0 的，也是不兼容的。</strong>目前，Facebook 的 Graph API 只支持OAuth 2.0协议，Google 和 Microsoft Azure 也支持Auth 2.0，国内的微信和支付宝也支持使用OAuth 2.0。</p>
+<p>下面，我们来重点看一下OAuth 2.0的两个主要的Flow：</p>
+<ul>
+<li>一个是Authorization Code Flow， 这个是 3 legged 的</li>
+<li>一个是Client Credential Flow，这个是 2 legged 的。<h3 id="Authorization-Code-Flow"><a href="#Authorization-Code-Flow" class="headerlink" title="Authorization Code Flow"></a>Authorization Code Flow</h3>Authorization Code 是最常使用的OAuth 2.0的授权许可类型，它适用于用户给第三方应用授权访问自己信息的场景。这个Flow也是OAuth 2.0四个Flow中我个人觉得最完整的一个Flow，其流程图如下所示。</li>
+</ul>
+<p><img src="https://coolshell.cn/wp-content/uploads/2019/05/auth_code_flow.png" alt=""></p>
+<p>下面是对这个流程的一个细节上的解释：</p>
+<p>1）当用户（Resource Owner）访问第三方应用（Client）的时候，第三方应用会把用户带到认证服务器（Authorization Server）上去，主要请求的是 /authorize API，其中的请求方式如下所示。</p>
+<blockquote>
+<pre><code>https://login.authorization-server.com/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&amp;response_type=code
+&amp;redirect_uri=http%3A%2F%2Fexample-client.com%2Fcallback%2F
+&amp;scope=read
+&amp;state=xcoiv98CoolShell3kch
+</code></pre><p>其中：</p>
+</blockquote>
+<ul>
+<li>client_id为第三方应用的App ID</li>
+<li>response_type=code为告诉认证服务器，我要走Authorization Code Flow。</li>
+<li>redirect_uri意思是我跳转回第三方应用的URL</li>
+<li>scope意是相关的权限</li>
+<li>state 是一个随机的字符串，主要用于防CSRF攻击。</li>
+</ul>
+<p>2）当Authorization Server收到这个URL请求后，其会通过 client_id来检查 redirect_uri和 scope是否合法，如果合法，则弹出一个页面，让用户授权（如果用户没有登录，则先让用户登录，登录完成后，出现授权访问页面）。</p>
+<p>3）当用户授权同意访问以后，Authorization Server 会跳转回 Client ，并以其中加入一个 Authorization Code。 如下所示：</p>
+<blockquote>
+<pre><code>https://example-client.com/callback?
+code=Yzk5ZDczMzRlNDEwYlrEqdFSBzjqfTG
+&amp;state=xcoiv98CoolShell3kch
+</code></pre><p>我们可以看到，</p>
+</blockquote>
+<p>请流动的链接是第 1）步中的 redirect_uri<br>其中的 state 的值也和第 1）步的 state一样。</p>
+<p>4）接下来，Client 就可以使用 Authorization Code 获得 Access Token。其需要向 Authorization Server 发出如下请求。</p>
+<blockquote>
+<pre><code>POST /oauth/token HTTP/1.1
+Host: authorization-server.com
+
+code=Yzk5ZDczMzRlNDEwYlrEqdFSBzjqfTG
+&amp;grant_type=code
+&amp;redirect_uri=https%3A%2F%2Fexample-client.com%2Fcallback%2F
+&amp;client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&amp;client_secret=JqQX2PNo9bpM0uEihUPzyrh
+</code></pre></blockquote>
+<p>5）如果没什么问题，Authorization 会返回如下信息。</p>
+<blockquote>
+<pre><code>{
+  &quot;access_token&quot;: &quot;iJKV1QiLCJhbGciOiJSUzI1NiI&quot;,
+  &quot;refresh_token&quot;: &quot;1KaPlrEqdFSBzjqfTGAMxZGU&quot;,
+  &quot;token_type&quot;: &quot;bearer&quot;,
+  &quot;expires&quot;: 3600,
+  &quot;id_token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciO.eyJhdWQiOiIyZDRkM...&quot;
+}
+</code></pre><p>其中，</p>
+</blockquote>
+<ul>
+<li>access_token就是访问请求令牌了</li>
+<li>refresh_token用于刷新 access_token</li>
+<li>id_token 是JWT的token，其中一般会包含用户的OpenID</li>
+</ul>
+<p>6）接下来就是用 Access Token 请求用户的资源了。</p>
+<blockquote>
+<pre><code>GET /v1/user/pictures
+Host: https://example.resource.com
+
+Authorization: Bearer iJKV1QiLCJhbGciOiJSUzI1NiI
+</code></pre></blockquote>
+<h3 id="Client-Credential-Flow"><a href="#Client-Credential-Flow" class="headerlink" title="Client Credential Flow"></a>Client Credential Flow</h3><p>Client Credential 是一个简化版的API认证，主要是用于认证服务器到服务器的调用，也就是没有用户参与的的认证流程。下面是相关的流程图。<br><img src="https://coolshell.cn/wp-content/uploads/2019/05/client_credentials_flow.png" alt=""></p>
+<p>这个过程非常简单，本质上就是Client用自己的 client_id和 client_secret向Authorization Server 要一个 Access Token，然后使用Access Token访问相关的资源。</p>
+<p>请求示例</p>
+<blockquote>
+<pre><code>POST /token HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&amp;client_id=czZCaGRSa3F0Mzpn
+&amp;client_secret=7Fjfp0ZBr1KtDRbnfVdmIw
+</code></pre><p>返回示例</p>
+<pre><code>{
+  &quot;access_token&quot;:&quot;MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3&quot;,
+  &quot;token_type&quot;:&quot;bearer&quot;,
+  &quot;expires_in&quot;:3600,
+  &quot;refresh_token&quot;:&quot;IwOGYzYTlmM2YxOTQ5MGE3YmNmMDFkNTVk&quot;,
+  &quot;scope&quot;:&quot;create&quot;
+}
+</code></pre><p>这里，容我多扯一句，微信公从平台的开发文档中，使用了OAuth 2.0 的 Client Credentials的方式（参看文档“微信公众号获取access token”），我截了个图如下所谓。我们可以看到，微信公众号使用的是GET方式的请求，把AppID和AppSecret放在了URL中，虽然这也符合OAuth 2.0，但是并不好，因为大多数网关代理会把整个URI请求记到日志中。我们只要脑补一下腾讯的网关的Access Log，里面的日志一定会有很多的各个用户的AppID和AppSecret……</p>
+</blockquote>
+<p> <img src="https://coolshell.cn/wp-content/uploads/2019/05/wechat.dev_-1024x876.png" alt=""></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>讲了这么多，我们来小结一下（下面的小结可能会有点散）</p>
+<h3 id="两个术语和三个概念"><a href="#两个术语和三个概念" class="headerlink" title="两个术语和三个概念"></a>两个术语和三个概念</h3><ul>
+<li>区分两个术语：Authentication（认证） 和 Authorization （授权），前者是证明请求者是身份，就像身份证一样，后者是为了获得权限。身份是区别于别人的证明，而权限是证明自己的特权。Authentication为了证明操作的这个人就是他本人，需要提供密码、短信验证码，甚至人脸识别。Authorization 则是不需要在所有的请求都需要验人，是在经过Authorization后得到一个Token，这就是Authorization。就像护照和签证一样。</li>
+<li>区分三个概念：编码Base64Encode、签名HMAC、加密RSA。Base64编码是为了更好的传输（没有怪异的字符，可以传输二进制文件），等同于明文，HMAC签名是为了信息不能被篡改，RSA加密是为了不让别人看到是什么信息。<h3 id="明白一些初衷"><a href="#明白一些初衷" class="headerlink" title="明白一些初衷"></a>明白一些初衷</h3></li>
+<li>使用复杂地HMAC哈希签名方式主要是应对当年没有TLS/SSL加密链路的情况。</li>
+<li>JWT把 uid 放在 Token中目的是为了去掉状态，但不能让用户修改，所以需要签名。</li>
+<li>OAuth 1.0区分了两个事，一个是第三方的Client，一个是真正的用户，其先拿Request Token，再换Access Token的方法主要是为了把第三方应用和用户区分开来。</li>
+<li>用户的Password是用户自己设置的，复杂度不可控，服务端颁发的Serect会很复杂，但主要目的是为了容易管理，可以随时注销掉。</li>
+<li>OAuth 协议有比所有认证协议有更为灵活完善的配置，如果使用AppID/AppSecret签名的方式，又需要做到可以有不同的权限和可以随时注销，那么你得开发一个像AWS的IAM这样的账号和密钥对管理的系统。<h3 id="相关的注意事项"><a href="#相关的注意事项" class="headerlink" title="相关的注意事项"></a>相关的注意事项</h3></li>
+<li>无论是哪种方式，我们都应该遵循HTTP的规范，把认证信息放在 Authorization HTTP 头中。</li>
+<li>不要使用GET的方式在URL中放入secret之类的东西，因为很多proxy或gateway的软件会把整个URL记在Access Log文件中。</li>
+<li>密钥Secret相当于Password，但他是用来加密的，最好不要在网络上传输，如果要传输，最好使用TLS/SSL的安全链路。</li>
+<li>HMAC中无论是MD5还是SHA1/SHA2，其计算都是非常快的，RSA的非对称加密是比较耗CPU的，尤其是要加密的字符串很长的时候。</li>
+<li>最好不要在程序中hard code 你的 Secret，因为在github上有很多黑客的软件在监视各种Secret，千万小心！这类的东西应该放在你的配置系统或是部署系统中，在程序启动时设置在配置文件或是环境变量中。</li>
+<li>使用AppID/AppSecret，还是使用OAuth1.0a，还是OAuth2.0，还是使用JWT，我个人建议使用TLS/SSL下的OAuth 2.0。</li>
+<li>密钥是需要被管理的，管理就是可以新增可以撤销，可以设置账户和相关的权限。最好密钥是可以被自动更换的。</li>
+<li>认证授权服务器（Authorization Server）和应用服务器（App Server）最好分开。</li>
+</ul>
+<p>(全文完)</p>
+<p>原文链接： <a href="https://coolshell.cn/articles/19395.html" title="HTTP API 认证授权术" target="_blank" rel="external">HTTP API 认证授权术</a></p>
+<p>原文姊妹篇链接：<a href="https://coolshell.cn/articles/21708.html" target="_blank" rel="external">《网络数字身份认证术》</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2023/05/16/talk-about-teamwork-and-collaboration-tools/" itemprop="url">
                   聊聊团队协同和协同工具
                 </a>
@@ -1300,385 +1855,6 @@ chmod u+x /usr/local/bin/composer
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2021/04/23/Discuz-X3.1-uses-Composer-to-install-third-party-libraries/" itemprop="url">
-                  DiscuzX3.1使用Composer安装第三方类库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2021-04-23T17:48:00+08:00" content="2021-04-23">
-              2021-04-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Discuz X3.1 是一个成熟的基于PHP开发的社区系统（广义上来讲是一个建站系统），自从被企鹅收购后悄无声息的被遗弃了，伤感啊。如今要在Discuz上加什么功能，改bug什么的只能依靠自力更生了；好在有各种开源社区，开发好的功能、类库你可以无偿的直接拿来用。</p>
-<p>Composer 是一个PHP类库管理器（官网<a href="http://docs.phpcomposer.com）。Composer" target="_blank" rel="external">http://docs.phpcomposer.com）。Composer</a> 优雅的解决了PHP项目中第三方类库的安装及依赖关系。很多成熟的项目（如 Laravel ）已经把Composer作为首选的安装方式；</p>
-<p>所以，在Discuz X3.1 上安装第三方类库使用Composer后，会很大提高生产力。</p>
-<p>下面我来说说如何在 Discuz X3.1中使用 Composer 安装并使用第三方类库 ；</p>
-<h3 id="先说安装Composer到Discuz-X3-1框架下"><a href="#先说安装Composer到Discuz-X3-1框架下" class="headerlink" title="先说安装Composer到Discuz X3.1框架下"></a>先说安装Composer到Discuz X3.1框架下</h3><h4 id="一-修改-class-core-php-source-class-class-core-php-如下"><a href="#一-修改-class-core-php-source-class-class-core-php-如下" class="headerlink" title="一. 修改 class_core.php (\source\class\class_core.php) 如下"></a>一. 修改 <code>class_core.php (\source\class\class_core.php)</code> 如下</h4><pre><code>$autoloadfile=DISCUZ_ROOT.&apos;/vendor/autoload.php&apos;;
-if(!file_exists($autoloadfile)){  
-    if(function_exists(&apos;spl_autoload_register&apos;)) {
-        spl_autoload_register(array(&apos;core&apos;, &apos;autoload&apos;));
-    } else {
-           function __autoload($class) {
-            return core::autoload($class);
-        }
-       }
-}else{
-    require_once  $autoloadfile;//如果存在Composer 加载器 ，则使用 ；
-}
-</code></pre><h4 id="二-在-Discuz-目录下，新建一个-composer-json-内容如下："><a href="#二-在-Discuz-目录下，新建一个-composer-json-内容如下：" class="headerlink" title="二. 在 Discuz 目录下，新建一个 composer.json 内容如下："></a>二. 在 Discuz 目录下，新建一个 composer.json 内容如下：</h4><pre><code>{
-
-    &quot;require&quot;: {
-         &quot;guzzlehttp/guzzle&quot;: &quot;~6.0&quot;
-    },
-
-    &quot;autoload&quot;:{
-        &quot;classmap&quot;: [&quot;source/class/&quot;]
-    }
-}
-</code></pre><h4 id="三-终端上执行命令-composer-install"><a href="#三-终端上执行命令-composer-install" class="headerlink" title="三. 终端上执行命令 composer install"></a>三. 终端上执行命令 <code>composer install</code></h4><p>看到类似这样的执行结果，表示已经安装成功了</p>
-<pre><code>Loading composer repositories with package information
-Updating dependencies (including require-dev)
-Package operations: 10 installs, 0 updates, 0 removals
-  - Installing ralouphie/getallheaders (3.0.3): Loading from cache
-  - Installing psr/http-message (1.0.1): Loading from cache
-  - Installing guzzlehttp/psr7 (1.8.1): Loading from cache
-  - Installing guzzlehttp/promises (1.4.1): Loading from cache
-  - Installing symfony/polyfill-php72 (v1.19.0): Loading from cache
-  - Installing symfony/polyfill-intl-normalizer (v1.19.0): Loading from cache
-  - Installing paragonie/random_compat (v2.0.20): Loading from cache
-  - Installing symfony/polyfill-php70 (v1.19.0): Loading from cache
-  - Installing symfony/polyfill-intl-idn (v1.19.0): Loading from cache
-  - Installing guzzlehttp/guzzle (6.5.5): Loading from cache
-guzzlehttp/psr7 suggests installing laminas/laminas-httphandlerrunner (Emit PSR-   7 responses)
-symfony/polyfill-intl-normalizer suggests installing ext-intl (For best performa   nce)
-paragonie/random_compat suggests installing ext-libsodium (Provides a modern cry   pto API that can be used to generate random bytes.)
-symfony/polyfill-intl-idn suggests installing ext-intl (For best performance)
-guzzlehttp/guzzle suggests installing psr/log (Required for using the Log middle   ware)
-Writing lock file
-Generating autoload files
-4 packages you are using are looking for funding.
-Use the `composer fund` command to find out more!
-</code></pre><p>另外，也可以查看项目根目录下的vendor下面的文件，核验新引入的类库是否下载更新成功。</p>
-<p>具体如何安装及使用 Composer 请参阅 <a href="http://docs.phpcomposer.com" target="_blank" rel="external">http://docs.phpcomposer.com</a></p>
-<h3 id="再说在Discuz程序中如何使用-“composer安装”的第三方类库"><a href="#再说在Discuz程序中如何使用-“composer安装”的第三方类库" class="headerlink" title="再说在Discuz程序中如何使用 “composer安装”的第三方类库"></a>再说在Discuz程序中如何使用 “composer安装”的第三方类库</h3><p>通过Composer autoload 加载器会把这些第三方库自动加载进来，这些第三方类库程序中的类、方法(函数)等等 在Discuz 程序中你想怎么用都可以。</p>
-<p>例如，以使用guzzle为例。在任何一个Discuz X3.1框架下的PHP文件中，直接使用下面代码即可。</p>
-<pre><code>use GuzzleHttp\Client;
-
-$client = new Client([
-    // Base URI is used with relative requests
-    &apos;base_uri&apos; =&gt; &apos;http://httpbin.org&apos;,
-    // You can set any number of default request options.
-    &apos;timeout&apos;  =&gt; 2.0,
-]);
-
-$response = $client-&gt;get(&apos;http://httpbin.org/get&apos;);
-
-$code = $response-&gt;getStatusCode(); // 200
-$reason = $response-&gt;getReasonPhrase(); // OK
-
-// Check if a header exists.
-if ($response-&gt;hasHeader(&apos;Content-Length&apos;)) {
-    echo &quot;It exists&quot;;
-}
-</code></pre><p>另外，Discuz X3.2 也适用上述方法。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2021/04/23/DiscuzX-secondary-development-directory-structure-and-operational-logic/" itemprop="url">
-                  DiscuzX二次开发之目录结构和运行逻辑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2021-04-23T03:15:00+08:00" content="2021-04-23">
-              2021-04-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h2><p>DISCUZ使用自己的框架，与现在主流的web框架不同，DISCUZ没有路由表，他的路由是由入口文件来实现的。</p>
-<h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><ul>
-<li>uc.php UCenter 通信文件</li>
-<li>/api/addons 应用中心</li>
-<li>/api/connect 通讯互联</li>
-<li>/api/google Google引擎结构处理</li>
-<li>/api/javascript 数据和广告的js调用</li>
-<li>/api/manyou manyou应用及搜索等相关服务</li>
-<li>/api/remote 远程更新</li>
-<li>/api/trade 支付宝、财付通等交易接口</li>
-</ul>
-<h3 id="archiver-论坛Archiver静态化目录"><a href="#archiver-论坛Archiver静态化目录" class="headerlink" title="archiver (论坛Archiver静态化目录)"></a>archiver (论坛Archiver静态化目录)</h3><h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><ul>
-<li>config_global.php 论坛核心参数配置文件</li>
-<li>config_ucenter.php UCenter核心参数配置文件</li>
-</ul>
-<h3 id="data-论坛数据缓存目录"><a href="#data-论坛数据缓存目录" class="headerlink" title="data (论坛数据缓存目录)"></a>data (论坛数据缓存目录)</h3><h3 id="install-论坛安装目录-初始化运行时直接请求到此处将重新安装论坛"><a href="#install-论坛安装目录-初始化运行时直接请求到此处将重新安装论坛" class="headerlink" title="install (论坛安装目录(初始化运行时直接请求到此处将重新安装论坛))"></a>install (论坛安装目录(初始化运行时直接请求到此处将重新安装论坛))</h3><h3 id="source-程序后端功能处理目录"><a href="#source-程序后端功能处理目录" class="headerlink" title="source (程序后端功能处理目录)"></a>source (程序后端功能处理目录)</h3><ul>
-<li>discuz_version.php 程序版本号文件</li>
-<li>/source/admincp 后台管理</li>
-<li>/source/archiver 论坛archiver静态化程序目录</li>
-<li>/source/class 核心类库</li>
-<li>/source/function discuzX自定义函数库</li>
-<li>/source/include 程序功能组件目录</li>
-<li>/source/language 程序语言包(kv结构)</li>
-<li>/source/module 程序功能模块程序包</li>
-<li>/source/plugins 插件扩展目录</li>
-</ul>
-<h3 id="static-程序资源目录-头像、图片、下载文件、js文件等等"><a href="#static-程序资源目录-头像、图片、下载文件、js文件等等" class="headerlink" title="static (程序资源目录(头像、图片、下载文件、js文件等等))"></a>static (程序资源目录(头像、图片、下载文件、js文件等等))</h3><h3 id="template-前端模板目录"><a href="#template-前端模板目录" class="headerlink" title="template (前端模板目录)"></a>template (前端模板目录)</h3><ul>
-<li>/default/common 基础css文件、header、footer等公共引入文件</li>
-<li>/default/collage 大学计划页面</li>
-<li>/default/dige dige专区页面</li>
-<li>/default/forum 首页、帖子页面</li>
-<li>/default/member 会员页面</li>
-<li>/default/home 家园页面</li>
-<li>/default/group 群组页面</li>
-<li>/default/mobile 移动端页面</li>
-<li>/default/portal 文章页面</li>
-<li>/default/search 搜索页面</li>
-</ul>
-<h3 id="uc-client-UCenter客户端"><a href="#uc-client-UCenter客户端" class="headerlink" title="uc_client (UCenter客户端)"></a>uc_client (UCenter客户端)</h3><ul>
-<li>/uc_client/control UC业务处理操作类</li>
-<li>/uc_client/data 缓存文件目录</li>
-<li>/uc_client/lib 类库目录(包括数据库操作类,XML类,UCCODE类,邮件发送类)</li>
-<li>/uc_client/model UC业务模型类</li>
-</ul>
-<h3 id="uc-server-UCenter服务端-后台ucenter功能实现目录"><a href="#uc-server-UCenter服务端-后台ucenter功能实现目录" class="headerlink" title="uc_server (UCenter服务端 后台ucenter功能实现目录)"></a>uc_server (UCenter服务端 后台ucenter功能实现目录)</h3><h3 id="根目录文件"><a href="#根目录文件" class="headerlink" title="根目录文件"></a>根目录文件</h3><ul>
-<li>admin.php 后台入口文件</li>
-<li>api.php API输出 入口文件</li>
-<li>collage.php 大学计划入口文件</li>
-<li>composer.json composer依赖版本记录文件</li>
-<li>composer.lock composer依赖版本控制文件</li>
-<li>connect.php 云平台接口文件</li>
-<li>dige.php dige专区入口文件</li>
-<li>forum.php 帖子信息入口文件</li>
-<li>group.php 群组入口文件</li>
-<li>home.php 家园入口文件</li>
-<li>index.php 首页</li>
-<li>member.php 用户入口文件（登录、注册、退出等）</li>
-<li>misc.php 程序杂项扩展入口</li>
-<li>plugin.php 插件入口文件</li>
-<li>portal.php 门户入口文件</li>
-<li>robots.txt 搜索引擎限制文件</li>
-<li>search.php 搜索频道入口文件</li>
-</ul>
-<h2 id="2-运行逻辑"><a href="#2-运行逻辑" class="headerlink" title="2. 运行逻辑"></a>2. 运行逻辑</h2><p>discuz的入口文件起到了路由的作用。一个标准的discuz请求如下：</p>
-<pre><code>http://localhost/home.php?mod=space&amp;uid=1&amp;do=profile
-</code></pre><p>当在浏览器输入以上url时，首先执行的是跟目录下的 home.php 文件</p>
-<pre><code>&lt;?php
-
-define(&apos;APPTYPEID&apos;, 1);
-define(&apos;CURSCRIPT&apos;, &apos;home&apos;);
-
-if(!empty($_GET[&apos;mod&apos;]) &amp;&amp; ($_GET[&apos;mod&apos;] == &apos;misc&apos; || $_GET[&apos;mod&apos;] == &apos;invite&apos;)) {
-    define(&apos;ALLOWGUEST&apos;, 1);
-}
-
-require_once &apos;./source/class/class_core.php&apos;;  //引入核心类文件，作用为：自动引入类规则，错误和异常处理，单例创建discuz_application类实例，引入默认函数库function.core.php
-require_once &apos;./source/function/function_home.php&apos;;  //引入discuzX函数库
-
-$discuz = C::app();  //实例化discuz_application类
-$cachelist = array(&apos;magic&apos;,&apos;usergroups&apos;, &apos;diytemplatenamehome&apos;,&apos;forumlinks&apos;,&apos;identity&apos;); //加身份组缓存
-$discuz-&gt;cachelist = $cachelist; //设置缓存列表
-$discuz-&gt;init();  //初始化应用:数据库、系统设置、用户、session、任务、等(discuz_appication类里面)
-$space = array();
-
-$mod = getgpc(&apos;mod&apos;); //接收$_GET[&apos;mod&apos;]数据
-if(!in_array($mod, array(&apos;space&apos;, &apos;spacecp&apos;, &apos;misc&apos;, &apos;magic&apos;, &apos;editor&apos;, &apos;invite&apos;, &apos;task&apos;, &apos;medal&apos;, &apos;rss&apos;, &apos;follow&apos;))) {
-    $mod = &apos;space&apos;;
-    $_GET[&apos;do&apos;] = &apos;home&apos;;
-}
-
-if($mod == &apos;space&apos; &amp;&amp; ((empty($_GET[&apos;do&apos;]) || $_GET[&apos;do&apos;] == &apos;index&apos;) &amp;&amp; ($_G[&apos;inajax&apos;]))) {
-    $_GET[&apos;do&apos;] = &apos;profile&apos;;
-}
-$curmod = !empty($_G[&apos;setting&apos;][&apos;followstatus&apos;]) &amp;&amp; (empty($_GET[&apos;diy&apos;]) &amp;&amp; empty($_GET[&apos;do&apos;]) &amp;&amp; $mod == &apos;space&apos; || $_GET[&apos;do&apos;] == &apos;follow&apos;) ? &apos;follow&apos; : $mod;
-define(&apos;CURMODULE&apos;, $curmod);
-runhooks($_GET[&apos;do&apos;] == &apos;profile&apos; &amp;&amp; $_G[&apos;inajax&apos;] ? &apos;card&apos; : $_GET[&apos;do&apos;]);
-require_once libfile(&apos;home/&apos;.$mod, &apos;module&apos;);  //根据请求时传的mod参数经由上方判断确定加载对应文件
-
-?&gt;
-</code></pre><p>注: libfile()函数在会将对应的模块字符串替换为模块的实际url。<br><code>libfile(&#39;home/&#39;.$mod, &#39;module&#39;)</code>的实际访问地址是 <code>/source/module/home/$mod.php</code></p>
-<p>进入到<code>/source/module/home/home_space.php</code> 文件中 根据请求参数 uid和do的值判断具体的执行过程，有些时候会直接引入响应的程序组件完成逻辑处理(这里引入了 <code>/include/space/space_profile.php</code>)</p>
-<p>在 <code>space_profile.php</code>中判断运行之后输出到模板文件<code>/template/default/home/space_profile.htm</code>中。<br>注：<code>template()</code>函数在 核心函数库 <code>function_core.php</code> 中 用于加载当前使用模板的模板文件 。根据传参此时加载了 <code>/template/default/home/space_profile.htm</code> 文件</p>
-<p>在模板文件<code>space_profile.htm</code>中 可以直接使用php文件中的数据变量进行赋值渲染输出到浏览器。<br>注：template模板语法不赘述 详见 <a href="https://open.dismall.com/?ac=document&amp;page=dev_template" target="_blank" rel="external">模板语法</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1725,7 +1901,7 @@ require_once libfile(&apos;home/&apos;.$mod, &apos;module&apos;);  //根据请�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1742,7 +1918,7 @@ require_once libfile(&apos;home/&apos;.$mod, &apos;module&apos;);  //根据请�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

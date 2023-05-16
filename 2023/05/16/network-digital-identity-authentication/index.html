@@ -1,0 +1,859 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="API,HTTP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="太阳侠" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章是《HTTP API 认证授权术》的姊妹篇，在那篇文章中，主要介绍了 HTTP API 认证和授权技术中用到的 HTTP Basic, Digest Access, HMAC, OAuth, JWT 等各种方式，主要是 API 上用到的一些技术，这篇文章主要想说的是另一个话题——身份认证。也就是说，怎么确认这个数据就是这个人发出来的？
+用户密码要解决这个问题，我们先来看一个最简单的解——使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络数字身份认证术">
+<meta property="og:url" content="http://isunman.com/2023/05/16/network-digital-identity-authentication/index.html">
+<meta property="og:site_name" content="太阳侠">
+<meta property="og:description" content="这篇文章是《HTTP API 认证授权术》的姊妹篇，在那篇文章中，主要介绍了 HTTP API 认证和授权技术中用到的 HTTP Basic, Digest Access, HMAC, OAuth, JWT 等各种方式，主要是 API 上用到的一些技术，这篇文章主要想说的是另一个话题——身份认证。也就是说，怎么确认这个数据就是这个人发出来的？
+用户密码要解决这个问题，我们先来看一个最简单的解——使">
+<meta property="og:image" content="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png">
+<meta property="og:image" content="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png">
+<meta property="og:image" content="https://coolshell.cn/wp-content/uploads/2022/01/certificate-768x399.png">
+<meta property="og:updated_time" content="2023-05-16T12:15:45.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络数字身份认证术">
+<meta name="twitter:description" content="这篇文章是《HTTP API 认证授权术》的姊妹篇，在那篇文章中，主要介绍了 HTTP API 认证和授权技术中用到的 HTTP Basic, Digest Access, HMAC, OAuth, JWT 等各种方式，主要是 API 上用到的一些技术，这篇文章主要想说的是另一个话题——身份认证。也就是说，怎么确认这个数据就是这个人发出来的？
+用户密码要解决这个问题，我们先来看一个最简单的解——使">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 网络数字身份认证术 | 太阳侠 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?edc09d74f003ef7b14a37137efc44fd4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">太阳侠</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是一颗恒星</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网络数字身份认证术
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-05-16T20:15:00+08:00" content="2023-05-16">
+              2023-05-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章是<a href="https://coolshell.cn/articles/19395.html" target="_blank" rel="external">《HTTP API 认证授权术》</a>的姊妹篇，在那篇文章中，主要介绍了 HTTP API 认证和授权技术中用到的 HTTP Basic, Digest Access, HMAC, OAuth, JWT 等各种方式，主要是 API 上用到的一些技术，这篇文章主要想说的是另一个话题——身份认证。也就是说，怎么确认这个数据就是这个人发出来的？</p>
+<h2 id="用户密码"><a href="#用户密码" class="headerlink" title="用户密码"></a>用户密码</h2><p>要解决这个问题，我们先来看一个最简单的解——使用密码，通常来说，在网络上要证明一个人的身份的话，都需要这个人的一些私密而唯一的东西。比如，像密码这样的东西，很多地方，只要你提供了你的用户名+密码，就可以确定这个人是你（注明：关于密码管理，强密码设定，密码泄漏，密码破解以及密码哄骗不在这篇文章的话题中），也就是说，这个密码是非常私密的事，我们可以假设，这个事全世界只能有当事人一个人知道，所以，当事人得供正确的密码，我们就可以认证这个人了。</p>
+<p>为了加强密码的安全程度，一般会使用 2FA（Two-factor authentication）或 MFA（Multi-factor authentication），双因认证或多因认证，这需要用户提供一个唯一的可信设备，比如用户的手机，然后通过验证手机短信，或是像 Google Authenticator  这样的动态口令来完成。这样的安全级别已经算是比较高了。如果能够再加上经常性的变更密码，那么安全级别就更好了。</p>
+<p>另外，一些公司还使用了生物密码来进行用户的身份验证，比如人脸识别。但是，我个人觉得人脸识别或是生物识别是比较糟糕的方式，因为：</p>
+<ul>
+<li>目前能被验证的生物信息（如人脸和指纹）太容易被别人获得和伪造了。</li>
+<li>这样东西不能被变更和吊销，密码可以被吊销和重置，人脸则不能。</li>
+</ul>
+<h2 id="密钥对和证书"><a href="#密钥对和证书" class="headerlink" title="密钥对和证书"></a>密钥对和证书</h2><p>密码可以解决身证认证的问题有很多问题，最重要的一个问题就是，你要把你的密码提供给对方，对方才能验证你的身份。你不可能把你的密码提供给全世界的人吧，这样的话，全世界的人都有你的密码了，那么任何人都能变成你了。所以，用户密码这个事只能存在于权威机构和普通用户之间，不能存在于普遍应用中。所以，这里需要使用更好的解决方案。</p>
+<p>使用 ECC（Elliptic-Curve Cryptography）椭圆曲线密码术，可以通过一个“密钥对”进行非对称加密。这种技术，在对信息进行加密和解密时，使用两个不同的密钥，其中一个用来做加密，另一个做解密。这样一来，我们就可以把其中一个密钥公布出去，称之为公钥，另一个密钥私密地保管好，称之为私钥。</p>
+<p>比如，我用我的私钥加密信息，然后，我把这个私钥所配对的公钥发布给所有人，大家都用公钥解密信息，不用我的公钥你解密不了这个信息。这样一来，就可以保证这个信息是我发出来的，不但保证了信息安全，还完成了身份认证。</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png" alt=""></p>
+<p>这样的现实案例一般用于网站，也就是用户得要知道我访问的这个网站是真实的，不是别人做的。因为 DNS 很容易被 hack，你连上一个不可信的网络，这个网络里的 DNS 把这个网站的 IP 地址解析成什么 就是什么了。但是有了这个加密的机制后，网站把自己的信息加密后连同公钥给到访问者，访问解密后就知道是不是这个网站了。</p>
+<p>但是，这里还是会有一个很严重的问题，那就是中间人攻击。如下图所示：</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/key.pair_-768x293.png" alt=""></p>
+<p>中间人 Chad 把自己伪装成 Bob 向 Alice 要信息，然后，再伪装成 Alice 对 Bob 说，这就是 Alice 的公钥，于是 Bob 也无法验证是不是 Alice 的公钥，因为公钥里就是一堆乱七八糟的数据，我们完全不能分辨哪个公钥属于 Alice 的。试想，如果我们收到声称属于银行的密钥。我们怎么知道它确实属于你的银行？</p>
+<p>这里的答案就是<strong>使用数字证书</strong>。证书跟我们的身份证非常类似，其需要一个可信机构来颁发和验证的。这个证书机构 CA（Certificate Authority）是一个是大家都相信的权威机构，他用他的人品保证（当然一般会被严格管理和审计），CA 机构同样使用这样的非对称加密的技术来完成颁发和验证的事。下图展示了这一过程。</p>
+<p><img src="https://coolshell.cn/wp-content/uploads/2022/01/certificate-768x399.png" alt=""></p>
+<p>说明一下上面这个图：</p>
+<ol>
+<li>为了解决公钥认证的问题的，我们需要一个权威的CA 机构。</li>
+<li>Alice 把自己的信息（姓名、组织，地址，电邮，网址等）和自己的公钥打包成一个 CSR 的文件，发给 CA 机构，</li>
+<li>CA 机构会来找 Alice 做物理世界的认证，如果通过后，就会用自己的机构私钥，把CSR 变成一个签名证书。</li>
+<li>Bob 同学拿到 Alice 的证书，用 CA 机构的公钥解密后，得到 Alice 的公钥</li>
+<li>后面就可以签证 信息是否来自 Alice 了。</li>
+</ol>
+<p>是的，这个过程就是在“套娃”，这种证书机构还可以给下级的证书机构发证，于是就会一层套一层地，形成一个证书链，顶层的叫根证书，你得绝对信任之。对于验证证书真实性的客户端，它需要能够验证链中所有 CA 的签名，这意味着客户端需要访问链中所有 CA 的证书。</p>
+<h2 id="证书生成过程演示"><a href="#证书生成过程演示" class="headerlink" title="证书生成过程演示"></a>证书生成过程演示</h2><p>并不是所有的场景都需要向这些大型的 CA 机构申请公钥证书，在任何一个企业，组织或是团体内都可以自己形这样的“小王国”，也就是说，你可以自行生成这样的证书，只需要你自己保证自己的生成证书的私钥的安全，以及不需要扩散到整个互联网。下面，我们用 openssl命令来演示这个过程。</p>
+<p>1）生成 CA 的证书（公钥） ca.crt 和私钥 ca.key</p>
+<pre><code>openssl req -newkey rsa:2048 \
+-new -nodes -x509 \
+-days 365 \
+-out ca.crt \
+-keyout ca.key \
+-subj &quot;/C=SO/ST=Earth/L=Mountain/O=CoolShell/OU=HQ/CN=localhost&quot;
+</code></pre><p>2)  生成 alice 的私钥</p>
+<pre><code>openssl genrsa -out alice.key 2048
+</code></pre><p>3）生成 Alice 的 CSR – Certificate Signing Request</p>
+<pre><code>openssl req -new -key alice.key 365 -out alice.csr \
+-subj &quot;/C=CN/ST=Beijing/L=Haidian/O=CoolShell/OU=Test/CN=localhost.alice&quot;
+</code></pre><p>4）使用 CA 给 Alice 签名证书</p>
+<pre><code>openssl x509  -req -in alice.csr \
+-extfile &lt;(printf &quot;subjectAltName=DNS:localhost.alice&quot;) \ 
+-CA ca.crt -CAkey ca.key  \
+-days 365 -sha256 -CAcreateserial \
+-out alice.crt
+</code></pre><p>##双向认证 mTLS<br>上面，我们说的基本上都是单向认证，大量的场景都是确保用户方访问的是真正的服务方，如：银行，电商网站，等。这样可以保证用户不会被钓鱼网站或是中间人攻击。但是，很多时候，我们也是需要双向认证的。下面是一个典型的场景——微信支付和商户间交互</p>
+<ul>
+<li>用户到商家那边买东西，商家要求用户进行支付。</li>
+<li>用户选择了微信支付，于是，界面从商户侧切到了微信侧</li>
+<li>微信那边支付完成后，商户这边收到微信那边支付完成的通知，于是开始发货。</li>
+</ul>
+<p>这个过程中有件事非常重要——就是微信通知商户支付完成的时候。</p>
+<ul>
+<li>微信得确保通知到的就是用户所支付商户，而不是别个。</li>
+<li>商户也得要能确认，来通知我的就是微信，不是别人。</li>
+</ul>
+<p>一般来说，微信会给商户一个 AppID和一个 AppSerct，用这个来确保是我认证过的商户来调用我，然后，需要商户在自己的系统里填一个回调的 URL，并通过平台设置的 key来做 MD5/HMAC的签名来确保是官方的回调。这都是在《HTTP API 认证授权术》中提到过的技术，是相对传统的技术。</p>
+<p>如今，<strong>mTLS</strong>是确保云原生应用程序中服务之间的通信安全的首选协议。 也就是双向认证。</p>
+<p>传统的 TLS 认证过程是：</p>
+<ol>
+<li>客户端连接到服务器</li>
+<li>服务器提供其 TLS 证书</li>
+<li>客户端验证服务器的证书</li>
+<li>客户端和服务器通过加密的 TLS 连接交换信息</li>
+</ol>
+<p>在 mTLS 中，客户端和服务器都有一个证书，双方都使用他们的公钥/私钥对进行身份验证。与常规 TLS 相比，mTLS 中有额外的步骤来验证双方（以粗体显示的额外步骤）：</p>
+<ol>
+<li>客户端连接到服务器</li>
+<li>服务器提供其 TLS 证书</li>
+<li>客户端验证服务器的证书</li>
+<li><strong>客户端出示其 TLS 证书</strong></li>
+<li><strong>服务器验证客户端的证书</strong></li>
+<li><strong>服务器授予访问权限</strong></li>
+<li>客户端和服务器通过加密的 TLS 连接交换信息</li>
+</ol>
+<p>mTLS 需要“根”TLS 证书；这我们自己来完成证书颁发机构的职责。授权客户端和服务器使用的证书必须与此根证书相对应。根证书是自签名的，这意味着我们需要自己创建它。（注：此方法不适用于公共 Internet 上的单向 TLS，因为外部证书颁发机构必须颁发这些证书）</p>
+<p>那么，为什么整个互联网上都用了 TLS 了，为什么 不升级一下使用 mTLS？这里有两方面的原因：</p>
+<ul>
+<li>公共互联网上要解决的问题是：A) 确保用户访问到的是正确的网站，而不是钓鱼网站。B）网站传输的内容是安全和私密且不会被篡改的。</li>
+<li>将 TLS 证书分发到所有最终用户设备将非常困难。生成、管理和验证为此所需的数十亿个证书几乎是不可能的任务。</li>
+</ul>
+<p>在较小的范围内，mTLS 对于单个组织非常有用且非常实用，尤其是当这些组织采用零信任方法来确保网络安全时。由于默认情况下零信任方法不信任任何用户、设备或请求，因此组织必须能够在每次尝试访问网络中的任何点时对每个用户、设备和请求进行身份验证。mTLS 通过对用户进行身份验证和设备验证来帮助实现这一目标。</p>
+<p>关于 mTLS，这里有一个我用 Golang 写的示例 – <a href="https://github.com/haoel/mTLS，大家可以参考一下。" target="_blank" rel="external">https://github.com/haoel/mTLS，大家可以参考一下。</a></p>
+<p>P.S. 本文图版中的卡司来自安全圈的标准 Cast，参看 Alice and Bob。</p>
+<p>（全文完）</p>
+<p>原文链接：<a href="https://coolshell.cn/articles/21708.html" target="_blank" rel="external">《网络数字身份认证术》</a></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/api/" rel="tag">#API</a>
+          
+            <a href="/tags/http/" rel="tag">#HTTP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/05/16/http-api-authentication-and-authorization/" rel="next" title="HTTP API 认证授权术">
+                <i class="fa fa-chevron-left"></i> HTTP API 认证授权术
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="isunman" />
+          <p class="site-author-name" itemprop="name">isunman</p>
+          <p class="site-description motion-element" itemprop="description">love IT, love Movie, love Love</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/isunman" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户密码"><span class="nav-number">1.</span> <span class="nav-text">用户密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥对和证书"><span class="nav-number">2.</span> <span class="nav-text">密钥对和证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证书生成过程演示"><span class="nav-number">3.</span> <span class="nav-text">证书生成过程演示</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">isunman</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="powered-by">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="theme-info">
+<span id="busuanzi_container_site_pv">
+    PV<span id="busuanzi_value_site_pv"></span> --
+</span>
+<span id="busuanzi_container_site_uv">
+  UV<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+  
+
+</body>
+</html>

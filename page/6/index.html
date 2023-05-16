@@ -244,6 +244,340 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/25/thoroughly-understand-the-web-service-soap-wsdl/" itemprop="url">
+                  彻底理解WebService SOAP WSDL
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-25T19:20:00+08:00" content="2017-08-25">
+              2017-08-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="WebServices简介"><a href="#WebServices简介" class="headerlink" title="WebServices简介"></a>WebServices简介</h2><p>先给出一个概念 SOA ，即Service Oriented Architecture ，中文一般理解为面向服务的架构，既然说是一种架构的话，所以一般认为 SOA 是包含了运行环境，编程模型，架构风格和相关方法论等在内的一整套新的分布式软件系统构造方法和环境，涵盖服务的整个生命周期。而在 SOA 的架构风格中，服务是最核心的抽象手段。</p>
+<p>SOA 中的服务是构建在一些列基于开放标准的基础之上的，Web 服务定义了如何在异构系统之间实现通信的标准化方法，从而就使得 Web 服务可以跨越运行平台和实现语言，同时也使得 Web 服务成为了实现 SOA 中服务的主要技术。</p>
+<p>至于SOA 的话，太高深的技术，这里不予讨论（嘿嘿），本篇博文只介绍 WebServices 这项技术。</p>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p><strong>有没有一种办法可以实现跨应用程序进行通信和跨平台进行通信呢？</strong></p>
+<p>换句话说，就是有什么办法可以实现我的应用程序 A 可以和应用程序 B 进行通信呢？<br>或者说是，我用 Java 写的应用程序和用 . Net 开发的应用程序之间进行通信呢？<br>很多时候，上面提到的这些，我们是必须要使用的，比如，一个跨应用程序吧，<br>拿腾讯 QQ 来说吧，我估计每一个人都用过腾讯 QQ 上面的天气预报工具吧 ！ ！ ！</p>
+<p>上面的这个天气预报功能是如何实现的呢？</p>
+<p>有一种办法，那就是腾讯公司放个卫星上天，并且在公司中成立一个气象部门，天天关注于天气，然后每时每刻更新腾讯 QQ 上的这个天气预报信息，确实，这种办法确实行得通，不过，要真这样做的话，估计马化腾也该被踢出去了（哪有这么蠢啊？），那么上面这个是如何实现的呢？</p>
+<p>别急，且听我慢慢道来~~~</p>
+<p>然后，我们再来看看跨平台这个东东又是什么呢？这里主要是拿 . Net 平台和Java 平台来说明例子，假若，有两个公司，每个公司呢都有自己的一个项目，一个公司呢使用 . Net 开发，一个呢，使用 Java 开发，恩，本来呢，这两个是相互独立的，进水不犯河水，但是有一天，突然，这两个公司给合并了，合并后的老总发现，如果把两个项目结合起来将会大大的赚一笔，为此，如何做？因为要把两个项目结合在一起，那么这两个项目之间总应该通通信吧 ！！！可这两个项目又是基于不同的平台，怎么通信呢？麻烦了吧 ！！！而后再看一种情况，就是比如一个公司使用的服务器是 Windows Server 2008，那么它如何和 IT 供应商的UNIX 或者是 Linux 服务器进行连接呢？也很复杂吧 ！！！</p>
+<h2 id="WebServices特点介绍"><a href="#WebServices特点介绍" class="headerlink" title="WebServices特点介绍"></a>WebServices特点介绍</h2><p>WebServices 提供一个建立分布式应用的平台，使得运行在不同操作系统和不同设备上的软件，或者是用不同的程序语言和不同厂商的软件开发工具开发的软件，所有可能的已开发和部署的软件，能够利用这一平台实现分布式计算的目的。WebServices的思想是：使得应用程序也具有 Web 分布式编程模型的松散耦合性。</p>
+<p><strong>WebServices的特点：</strong></p>
+<p>（1），WebServices 是自包含的。即在客户端不需要附加任何软件，只要客户机支持 HTTP 和XML 就 OK 了。</p>
+<p>（2），WebServices 是自我描述的。在客户端和服务端都不需要知道除了请求和响应消息的格式和内容外的任何事。</p>
+<p>（3），WebServices 是跨平台和跨语言的。客户端和服务端均可以在不同的平台和语言环境中实现，同时，不必为了支持 WebServices 而更改现有的代码。</p>
+<p>（4），WebServices 是基于开放和标准的。XML 和 HTTP 是WebServices 的主要技术基础，而 XML 和HTTP 早就成了业内标准了。</p>
+<p>（5），WebServices 是动态的。</p>
+<p>（6），WebServices 是可以组合的。也就是通过一个 WebService 访问另外一个 WebService 来达到组合的目的。通过组合 WebServices 便可以将简单的 WebServices 聚合成为实现更多复杂功能的复杂的服务。</p>
+<p>（7），WebServices 是松散耦合的。它完全解耦了客户端和服务端。</p>
+<p>（8），WebServices 提供编程访问的能力。换句话说，就是可以通过编写程序来访问Web 服务。</p>
+<p>（9），WebServices 是基于经过考验的成熟技术上构建的。比如 XML 和 HTTP。</p>
+<p>（10），WebServices 提供打包现有应用程序的能力。</p>
+<p>（11），WebServices 通过网络进行发布，查找和使用。</p>
+<p>上面这些特点呢，现在不清楚的话，也不用紧，等下还会有详细的说明的 ！！！</p>
+<h2 id="WebServices到底是什么？"><a href="#WebServices到底是什么？" class="headerlink" title="WebServices到底是什么？"></a>WebServices到底是什么？</h2><p>如果简单的说的话，WebServices就是一组函数库，不过这和我们平时概念中的函数库却又有不同，我们平时所使用的函数库要么是自己写的（在自己的应用程序当中写一组函数库），要么是调用底层的 API（操作系统 API 如Win32 API），上面的这两种情况有一个共同点，那就是函数库是位于客户端本地的，比如，您调用 Win32 API的话，就是调用本地操作系统上的函库，而这里提到 Web 服务也是一组函数库这个概念和上面提到的函数库这个概念的区别就在此处，因为 Web服务看做一组函数库的话，那么这组函数库不是位于本地的，而是位于远程机器上（当然也可以是本地机器中）。</p>
+<p><strong>何为 Web 服务？</strong></p>
+<p>也就是网络服务，那就是把网络上不知道那个地方的一些函数看做是一组服务，然后我再通过网络就可以使用这些服务。</p>
+<p>关于什么是 Web 服务，上面的说法那是山寨版的，稍微正经一点的说法是：Web 服务是一种部署在 Web 上的对象或者是应用程序组件。</p>
+<p><strong>Why WebServices？</strong></p>
+<p>为什么需要使用 WebServices呢？这必须根据 WebServices 的特点以及其优势进行分析了。</p>
+<p>首先，上面呢，也说了，Web服务的话，就是一组网络上的应用程序组件，这样的话，您便可以通过在您的应用程序中使用 Web 服务来将您的应用程序提升到服务层面上来。<br>既然可以看做是一组服务了的话，那么当然就是可以提供给别个（别的应用程序）使用咯。<br>比如，我可以通过 Web 服务来公开一些接口给别个使用，至于这些要不要收费呢？那就看我心情了，前面举了腾讯 QQ 上查询天气的例子，这个例子呢，就可以在这里来做一个解释了，<br>在中国，应该只有一个卫星来进行天气预报的吧？腾讯也不可能为了天气预报而专门放个卫星上天吧？</p>
+<p>可是腾讯 QQ 又确实是可以查询天气的，这里，便可以通过 Web 服务来解决。<br>首先，中国气象局应该是有一个卫星的，气象局根据卫星所返回的结果实时发布全国各地的天气状况，并且将这些天气信息以 Web 服务的形式公开，然后呢，腾讯 QQ 便可以通过这个 Web 服务来访问到天气状况了，再将这些天气状况反馈到 QQ 上就 OK 了。</p>
+<p>然后，上面提到了 Web服务是应用程序组件，既然是组件，那么就可以对这个组件重复的进行使用了，同时可以通过 Web 服务来实现将这个应用程序组件作为一个服务来进行使用，<br>更为强大的是，可以将多个 WebServices组合成为更为强大的 WebServices ，<br>并且是通过互联网哦！！！<br>这也是一大优点啊，</p>
+<p>然后呢，最基本的 WebServices是基于 XML 和 HTTP 的<br>（当然这是最基本的 WebServices ，比如 WebServices 还可以通过 HTTPS 或者是 SMTP 来实现通信），<br>这又有什么好处呢？很明显，XML 和HTTP 这些都已经是标准了，<br>不论你是 Java 平台呢，还是 . Net 平台开发出来的（或者是是使用 Web 服务），既然我是使用 XML 和 HTTP 的话，我才懒得鸟你什么 Java 还是 . Net 呢，我也不管你是 linux 还是 Windows ，这一切都和我 Web 服务无关，我关注的只是通过 HTTP 协议来传输 XML 就 OK 了，<br>至于这些 XML 是如何被服务提供者开发出来的或者这些 XML 是如何被服务请求者使用的，这些都和我无关，这里便可以看出 Web 服务的另一个优势了，那就是跨语言跨平台（实现协同工作），所以可以通过 Web 服务来实现不同应用程序和不同平台之间的通信。</p>
+<p>Web 服务允许独立于实现服务基于的硬件或者是软件平台和编写服务所用的编程语言使用服务，<br>根据上面这两点呢，便可以解决掉最开始提出的使用 Java 开发的应用程序如何和使用 . Net 开发的应用程序之间进行通信这一问题，同时，也可以解决 Linux 或者是UNIX 和 Windows Server 2008 之间进行连接这一问题了。最后就是通过使用不同的 Web 服务，也不管 Web 服务是那种编程语言实现的，<br>我们都可以从不同的平台和操作系统进行访问，从而大大提高了不同应用程序共享数据和应用的能力并且 Web服务提供了构建 SOA 所必须得技术基础。</p>
+<p>从上面可以看出通过 WebServices解决了我们曾经想都不敢想的问题，这么强大的东西为什么不加以好好利用呢？   </p>
+<h2 id="WebServices体系结构"><a href="#WebServices体系结构" class="headerlink" title="WebServices体系结构"></a>WebServices体系结构</h2><p>在Web 服务的体系结构中，涉及到三个角色，一个是 Web 服务提供者，一个是 Web 服务中介者，还有一个就是 Web 服务请求者，同时还涉及到三类动作，即发布，查找，绑定，</p>
+<h3 id="Web-服务提供者："><a href="#Web-服务提供者：" class="headerlink" title="Web 服务提供者："></a>Web 服务提供者：</h3><p>可以发布 Web 服务，并且对使用自身服务的请求进行响应，Web 服务的拥有者，它会等待其他的服务或者是应用程序访问自己。</p>
+<h3 id="Web-服务请求者："><a href="#Web-服务请求者：" class="headerlink" title="Web 服务请求者："></a>Web 服务请求者：</h3><p>也就是 Web 服务功能的使用者，它通过服务注册中心也就是 Web 服务中介者查找到所需要的服务，再利用 SOAP 消息向 Web 服务提供者发送请求以获得服务。</p>
+<h3 id="Web-服务中介者："><a href="#Web-服务中介者：" class="headerlink" title="Web 服务中介者："></a>Web 服务中介者：</h3><p>也称为服务代理，用来注册已经发布的 Web服务提供者，并对其进行分类，同时提供搜索服务，<br>简单来说的话，Web 服务中介者的作用就是把一个 Web 服务请求者和合适的 Web 服务提供者联系在一起，充当一个管理者的角色，一般是通过 UDDI来实现。</p>
+<h3 id="发布："><a href="#发布：" class="headerlink" title="发布："></a>发布：</h3><p>通过发布操作，可以使 Web服务提供者向 Web 服务中介者注册自己的功能以及访问的接口。</p>
+<h3 id="发现（查找）："><a href="#发现（查找）：" class="headerlink" title="发现（查找）："></a>发现（查找）：</h3><p>使得 Web 服务请求者可以通过 Web 服务中介者来查找到特点的种类的 Web 服务。</p>
+<h3 id="绑定："><a href="#绑定：" class="headerlink" title="绑定："></a>绑定：</h3><p>这里就是实现让服务请求者能够使用服务提供者提供的服务了。</p>
+<h2 id="WebServices三种基本元素之-SOAP"><a href="#WebServices三种基本元素之-SOAP" class="headerlink" title="WebServices三种基本元素之 SOAP"></a>WebServices三种基本元素之 SOAP</h2><p><strong>SOAP 即 Simple Object AccessProtocol 也就是简单对象访问协议。</strong></p>
+<p>SOAP 呢，其指导理念是“唯一一个没有发明任何新技术的技术”，是一种用于访问 Web 服务的协议。因为 SOAP 基于XML 和 HTTP ，其通过XML 来实现消息描述，然后再通过 HTTP 实现消息传输。</p>
+<p>SOAP 是用于在应用程序之间进行通信的一种通信协议。</p>
+<p>因为是基于 XML 和HTTP 的，所以其独立于语言，独立于平台，并且因为 XML 的扩展性很好，所以基于 XML 的 SOAP 自然扩展性也不差。通过 SOAP 可以非常方便的解决互联网中消息互联互通的需求，其和其他的 Web 服务协议构建起 SOA 应用的技术基础。<br>SOAP 协议的一个重要特点是它独立于底层传输机制，Web 服务应用程序可以根据需要选择自己的数据传输协议，可以在发送消息时来确定相应传输机制。</p>
+<p>由于 HTTP 协议本身的一些特点和局限性，使得当 SOAP 使用HTTP 绑定的 Web 服务并不能满足某些企业应用的需求。比如，HTTP 不是一个可靠传输协议，所以有可能在传输过程中出现问题，然后 HTTP 协议基于Request/Response 模型，也就是说客户端需要在等待响应消息接收完成后才能继续执行，而此时如果响应时间过长呢？基于上面的这些需求，便需要选择合适的传输协议了。关于这方面的内容的话，有点深奥了，有兴趣的可以去看看 IBM 的一些关于这方面内容的介绍。还有一点需要提及一下，那就是 SOAP 是可以绕过防火墙的，将来将会作为 W3C 的标准进行发展。</p>
+<h2 id="WebServices三种基本元素之-WSDL"><a href="#WebServices三种基本元素之-WSDL" class="headerlink" title="WebServices三种基本元素之 WSDL"></a>WebServices三种基本元素之 WSDL</h2><p>WSDL 即Web Services Description Language也就是 Web 服务描述语言。<br>是基于 XML的用于描述 Web 服务以及如何访问 Web 服务的语言。</p>
+<p>服务提供者通过服务描述将所有用于访问 Web服务的规范传送给服务请求者，要实现 Web服务体系结构的松散耦合，服务描述是一个关键，不管是请求者还是服务提供者，通过服务描述便可以不必了解对方的底层平台，编程语言等，<br>服务描述与底层的 SOAP 基础结构相结合，足以封装服务请求者的应用程序和服务提供者的 Web服务之间的这个细节。</p>
+<p>WSDL 描述了 Web服务的三个基本属性：</p>
+<p>（1）服务所提供的操作</p>
+<p>（2）如何访问服务</p>
+<p>（3）服务位于何处（通过 URL 来确定就 OK 了）</p>
+<h2 id="WebServices三种基本元素之-UDDI"><a href="#WebServices三种基本元素之-UDDI" class="headerlink" title="WebServices三种基本元素之 UDDI"></a>WebServices三种基本元素之 UDDI</h2><p>UDDI 即 Universal Description，Discovery and Integration，也就是通用的描述，发现以及整合。WSDL 呢，用来描述了访问特定的 Web 服务的一些相关的信息，可以在互联网上，或者是在企业的不同部门之间，如何来发现我们所需要的 Web 服务呢？<br>而 Web 服务提供商又如何将自己开发的 Web 服务公布到因特网上，这就需要使用到 UDDI了，UDDI的话，是一个跨产业，跨平台的开放性架构，可以帮助 Web 服务提供商在互联网上发布 Web 服务的信息。</p>
+<p>UDDI 呢是一种目录服务，企业可以通过 UDDI 来注册和搜索 Web 服务。<br>简单来时候话，UDDI 就是一个目录，只不过在这个目录中存放的是一些关于 Web 服务的信息而已。并且 UDDI 通过SOAP 进行通讯，构建于 . Net 之上。</p>
+<h2 id="开发-Web服务的方式"><a href="#开发-Web服务的方式" class="headerlink" title="开发 Web服务的方式"></a>开发 Web服务的方式</h2><h3 id="（1）开发阶段："><a href="#（1）开发阶段：" class="headerlink" title="（1）开发阶段："></a>（1）开发阶段：</h3><p>实现一个 Web 服务，使这个 Web 服务能响应和接收 SOAP 消息，（这个呢，其实可以通过 Visual Studio 来帮助实现），定义好逻辑模块（这个 Web 服务总要干点事情吧）， 然后再撰写 WSDL 文件（这个呢，开发工具会自动生成的，不需要人工撰写了）</p>
+<h3 id="（2）部署阶段："><a href="#（2）部署阶段：" class="headerlink" title="（2）部署阶段："></a>（2）部署阶段：</h3><p>指定 Web 服务的传输协议，将 Web 服务注册到相应服务描述部署文件（这些也是可以由工具来自动完成的）</p>
+<h3 id="（3）发布阶段："><a href="#（3）发布阶段：" class="headerlink" title="（3）发布阶段："></a>（3）发布阶段：</h3><p>将 Web 服务的接口和调用的地址公开给客户端调用，常用的发布方式为基于 Web 提供的WSDL 的链接，当然 UDDI 也是一个选择。</p>
+<h2 id="总结一下-WebServices的优点"><a href="#总结一下-WebServices的优点" class="headerlink" title="总结一下 WebServices的优点"></a>总结一下 WebServices的优点</h2><p>其实呢，前面介绍的都是关于 WebServices 的优点，在这里就只是浅要的总结一下了。</p>
+<p>首先，WebServices 是基于 Internet 和异构平台的应用，这样便可以方便的实现通过网络来通信，同时可以实现在不同的平台之间共享数据。</p>
+<p>然后就是，WebServices 是基于 XML 和HTTP 的，也就是基于标准和开放的，基于 XML 的话，扩展性自然好，自然跨语言。<br>基于 HTTP 的话，自然跨平台了。</p>
+<p>最后，再回忆一下 WebServices 是一种应用程序组件吧，这样便可以将 WebServices 重复使用了。</p>
+<h2 id="谈谈-WebServices-的缺点"><a href="#谈谈-WebServices-的缺点" class="headerlink" title="谈谈 WebServices 的缺点"></a>谈谈 WebServices 的缺点</h2><p>首先就是由于 XML 文件的难以解析，所以在使用 Web 服务的时候，会消耗较多的 CPU 和内存资源，而后，SOAP 是基于XML 的，所以在网络传输中传输的是 XML 文件，<br>但是由 XML 文件相比于二进制文件来说，要大很多，自然就会消耗更多的网络资源了。<br>而后，由于通过 WSDL 解耦了Web 服务提供者和请求者，且 SOAP 消息时从发送者向接收者单向传送的，这在一定程度上造成了 WebServices 是一种无状态服务，尽管现在在 . Net 中可以通过 Session 来实现在客户端和服务端共享一些数据，<br>但是单单依靠 Session 来实现客户端和服务端的状态交互也太牵强了吧</p>
+<p>WebServices 在数据绑定上也存在一些缺陷，因为所有的数据在传输中都是使用的 XML 来实现的，因此，需要在二进制数据和 XML 之间进行一个转换（通过序列化和反序列化来实现），<br>而在转换过程中有可能出现语义丢失的情况。</p>
+<p>最后就是 WebServices 的技术要求相对比较高，因为涉及到底层的 HTTP 协议以及SOAP ，WSDL 和UDDL 这三大平台元素，所以学习的曲线也是比较长的，<br>当然，在 . Net 中可以通过 Visual Studio 非常快速和简单的开发和访问一个 Web 服务，<br>但这只限于在简单的使用上，而对于本质的东西，是比较难的。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>正如题目所言，是 WebServices 简介，既然是简介的话，那么自然就是以简为目标了，<br>说明一下的是，上面的这篇博文呢，源自前几天做的一个关于 WebServices 的演讲，<br>演讲的 PPT 还存有，有兴趣要的可以留个邮箱的。</p>
+<h2 id="WebServices-的实战（待续……）"><a href="#WebServices-的实战（待续……）" class="headerlink" title="WebServices 的实战（待续……）"></a>WebServices 的实战（待续……）</h2><p>之前基于的语言不同，需要重新调整：需要从.Net环境变为PHP语言，暂时不写，待续。</p>
+<p><a href="https://wenku.baidu.com/view/f87b55f19e31433239689314.html" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/21/If-you-want-to-be-a-programmer-related-forum-think-twice/" itemprop="url">
+                  如果你想做个程序员相关的论坛，请三思
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-21T14:43:00+08:00" content="2017-07-21">
+              2017-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标题中的“做”有两方面所指：</p>
+<ul>
+<li>开发：使用某种编程语言实现</li>
+<li>运营：使用某套程序直接搭建</li>
+</ul>
+<p>无论是哪方面，如果你有做程序员相关论坛的想法，请三思而后行，因为你的竞争对手不是一般的多…. 所以在你行动之前，先了解一下吧！</p>
+<p>下面整理了一些使用 开源 程序搭建的论坛，他们的相似点：</p>
+<ul>
+<li>“小众”社区，用户大多是程序员</li>
+<li>基于“节点”进行分版</li>
+<li>界面都比较精致</li>
+</ul>
+<p>每一项的顺序分别是：站点、项目地址、开发语言。</p>
+<ol>
+<li><p><a href="https://phphub.org/" target="_blank" rel="external">PHPHub - PHP &amp; Laravel 的中文社区</a>    <a href="https://github.com/summerblue/phphub5" target="_blank" rel="external">https://github.com/summerblue/phphub5</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="https://flarumone.com/" target="_blank" rel="external">FlarumOne 官网 中文 Flarum 第一站</a>    <a href="https://github.com/flarumone/flarumone" target="_blank" rel="external">https://github.com/flarumone/flarumone</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="https://www.94cb.com/" target="_blank" rel="external">Carbon Forum</a>    <a href="https://github.com/lincanbin/Carbon-Forum" target="_blank" rel="external">https://github.com/lincanbin/Carbon-Forum</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="http://youbbs.sinaapp.com/" target="_blank" rel="external">youBBS - u 社区</a>    <a href="https://github.com/ego008/youbbs" target="_blank" rel="external">https://github.com/ego008/youbbs</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="http://bbs.xiuno.com/" target="_blank" rel="external">Xiuno BBS</a>    <a href="http://git.oschina.net/strwei/xiuno" target="_blank" rel="external">http://git.oschina.net/strwei/xiuno</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="http://vanillaforums.cn/" target="_blank" rel="external">Vanilla 中文社区</a>    <a href="https://github.com/chuck911/vanilla4china" target="_blank" rel="external">https://github.com/chuck911/vanilla4china</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="http://laravel.so/" target="_blank" rel="external">Laravel.so - 最新的 Laravel 技巧</a>    <a href="https://github.com/laravelso/site" target="_blank" rel="external">https://github.com/laravelso/site</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="https://getyii.com/" target="_blank" rel="external">Get√Yii - 致力打造 Yii 中国第一社区</a>    <a href="https://github.com/iiyii/getyii" target="_blank" rel="external">https://github.com/iiyii/getyii</a>    <strong>PHP</strong></p>
+</li>
+<li><p><a href="https://hacpai.com/" target="_blank" rel="external">黑客派</a>    <a href="https://github.com/b3log/symphony" target="_blank" rel="external">https://github.com/b3log/symphony</a>    <strong>Java</strong></p>
+</li>
+<li><p><a href="https://bbs.tomoya.cn/" target="_blank" rel="external">朋也社区</a>    <a href="https://github.com/tomoya92/pybbs" target="_blank" rel="external">https://github.com/tomoya92/pybbs</a>    <strong>Java</strong></p>
+</li>
+<li><p><a href="https://java-china.org/" target="_blank" rel="external">Java 中国</a>    <a href="https://github.com/junicorn/java-china" target="_blank" rel="external">https://github.com/junicorn/java-china</a>    <strong>Java</strong></p>
+</li>
+<li><p><a href="https://nutz.cn/" target="_blank" rel="external">Nutz 社区</a>    <a href="https://github.com/wendal/nutz-book-project" target="_blank" rel="external">https://github.com/wendal/nutz-book-project</a>     <strong>Java</strong></p>
+</li>
+<li><p><a href="http://www.html-js.com/" target="_blank" rel="external">前端乱炖</a>    <a href="https://github.com/xinyu198736/htmljs" target="_blank" rel="external">https://github.com/xinyu198736/htmljs</a>    <strong>Node.js</strong></p>
+</li>
+<li><p><a href="https://cnodejs.org/" target="_blank" rel="external">Node.js 专业中文社区</a>    <a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">https://github.com/cnodejs/nodeclub</a>    <strong>Node.js</strong></p>
+</li>
+<li><p><a href="http://nodebb.org.cn/" target="_blank" rel="external">NodeBB 官方中文社区</a>    <a href="https://github.com/NodeBB/NodeBB" target="_blank" rel="external">https://github.com/NodeBB/NodeBB</a>    <strong>Node.js</strong></p>
+</li>
+<li><p><a href="https://meta.discoursecn.org/" target="_blank" rel="external">Discourse 中文论坛</a>    <a href="https://github.com/discourse/discourse" target="_blank" rel="external">https://github.com/discourse/discourse</a>    <strong>Ruby</strong></p>
+</li>
+<li><p><a href="https://ruby-china.org/" target="_blank" rel="external">Ruby China</a>    <a href="https://github.com/ruby-china/ruby-china" target="_blank" rel="external">https://github.com/ruby-china/ruby-china</a>     <strong>Ruby</strong></p>
+</li>
+<li><p><a href="http://studygolang.com/" target="_blank" rel="external">Go 语言中文网    </a><a href="https://github.com/studygolang/studygolang" target="_blank" rel="external">https://github.com/studygolang/studygolang</a>    <strong>Go</strong></p>
+</li>
+<li><p><a href="http://golangtc.com/" target="_blank" rel="external">Golang 中国</a>    <a href="https://github.com/jimmykuu/gopher" target="_blank" rel="external">https://github.com/jimmykuu/gopher</a>    <strong>Go</strong></p>
+</li>
+<li><p><a href="http://f2e.im/" target="_blank" rel="external">F2E - 前端技术社区</a>    <a href="https://github.com/PaulGuo/F2E.im" target="_blank" rel="external">https://github.com/PaulGuo/F2E.im</a>    <strong>Python</strong></p>
+</li>
+<li><p><a href="http://beyoung.io/" target="_blank" rel="external">Young 社区</a>    <a href="https://github.com/shiyanhui/Young" target="_blank" rel="external">https://github.com/shiyanhui/Young</a>    <strong>Python</strong></p>
+</li>
+</ol>
+<p>欢迎大家进行补充    </p>
+<ul>
+<li>也许每个程序员都有一颗想写论坛的心</li>
+<li>PHP 不愧是世界上最好的编程语言….</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/20/recommend-the-three-favorite-english-learning-sites/" itemprop="url">
                   推荐三个很赞的英语学习网站
                 </a>
@@ -1326,288 +1660,6 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/10/osx-common_software-prerequisites-recommended--developer-and-web/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （Developer/ web）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-10T21:48:00+08:00" content="2016-06-10">
-              2016-06-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（Developer-web）"><a href="#OS-X-常用-必备软件推荐-——-（Developer-web）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （Developer/ web）"></a>OS X 常用 / 必备软件推荐 —— （Developer/ web）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0000.png" alt=""></p>
-<h4 id="Slack"><a href="#Slack" class="headerlink" title="Slack"></a>Slack</h4><p><a href="https://slack.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0001.png" alt=""></p>
-<p>团队合作用的聊天软件，整合了各种应用，比如 github，gogole drive，可以提高沟通效率。</p>
-<h4 id="Sublime-Text"><a href="#Sublime-Text" class="headerlink" title="Sublime Text"></a>Sublime Text</h4><p><a href="https://www.sublimetext.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0002.png" alt=""></p>
-<p>用了几年的文本编辑器，功能非常齐全，插件丰富。</p>
-<h4 id="Atom-Brackets-Visual-Studio-Code"><a href="#Atom-Brackets-Visual-Studio-Code" class="headerlink" title="Atom, Brackets, Visual Studio Code"></a>Atom, Brackets, Visual Studio Code</h4><p><a href="https://atom.io/" target="_blank" rel="external">Atom 官网下载</a></p>
-<p><a href="http://brackets.io/" target="_blank" rel="external">Brackets 官网下载</a></p>
-<p><a href="https://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code 官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0003.png" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0004.png" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0005.png" alt=""></p>
-<p>基于 web 技术的几款编辑器，大同小异吧，各自的发展阶段也不一样，还有背后撑腰的公司不同（Github，Adobe，Microsoft）。值得选一款来使用。</p>
-<h4 id="CotEditor"><a href="#CotEditor" class="headerlink" title="CotEditor"></a>CotEditor</h4><p><a href="http://coteditor.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0006.png" alt=""></p>
-<p>一个开源的文本编辑器。我用这个只是因为转换 encoding 的时候比较方便。</p>
-<h4 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h4><p><a href="https://kapeli.com/dash" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0007.png" alt=""></p>
-<p>本地文档库，支持各种语言。在离线时候查文档很有用……平时，可能不如 google 顺手。</p>
-<h4 id="MAMP-AMPPS"><a href="#MAMP-AMPPS" class="headerlink" title="MAMP, AMPPS"></a>MAMP, AMPPS</h4><p><a href="https://www.mamp.info/en/" target="_blank" rel="external">MAMP 官网下载</a></p>
-<p><a href="http://www.ampps.com/" target="_blank" rel="external">AMPPS 官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0008.png" alt=""></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0009.png" alt=""></p>
-<p>LAMP 的 mac 版本。后者免费。前者收费并且有一些相当便利的功能。不喜欢 command line 喜欢 GUI 的可以考虑一下。</p>
-<h4 id="CodeKit"><a href="#CodeKit" class="headerlink" title="CodeKit"></a>CodeKit</h4><p><a href="https://incident57.com/codekit/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0010.png" alt=""></p>
-<p>同样也是一个 command line tools 的 GUI 版本。可以编译 coffeescript，sass，less，yams 等等，自动刷新浏览器，优化图片大小，等等。</p>
-<h4 id="Transmit"><a href="#Transmit" class="headerlink" title="Transmit"></a>Transmit</h4><p><a href="https://panic.com/transmit/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0011.png" alt=""></p>
-<p>FTP 客户端。</p>
-<h4 id="SourceTree"><a href="#SourceTree" class="headerlink" title="SourceTree"></a>SourceTree</h4><p><a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0012.png" alt=""></p>
-<p>非常好用的 Git 客户端。尤其适合 git-flow。</p>
-<h4 id="Cornerstone"><a href="#Cornerstone" class="headerlink" title="Cornerstone"></a>Cornerstone</h4><p><a href="https://www.zennaware.com/cornerstone/index.php" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0013.png" alt=""></p>
-<p>如果还有人在用 svn，那么这是一个不错的客户端。</p>
-<h4 id="Oh-my-zsh"><a href="#Oh-my-zsh" class="headerlink" title="Oh-my-zsh"></a>Oh-my-zsh</h4><p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0014.png" alt=""></p>
-<p>如果你用 terminal，（ iTerm 当然也可以），如果你还没装 oh my zsh，那么赶紧装吧。</p>
-<h4 id="ImageOptim"><a href="#ImageOptim" class="headerlink" title="ImageOptim"></a>ImageOptim</h4><p><a href="https://imageoptim.com/Mac" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0015.png" alt=""></p>
-<p>用来优化图片体积的小软件。剔除文件中冗余的信息，效果通常很好。</p>
-<h4 id="Things"><a href="#Things" class="headerlink" title="Things"></a>Things</h4><p><a href="https://culturedcode.com/things/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0016.png" alt=""></p>
-<p>适合多平台同步，功能既有一定的深度，又不会繁琐到让人放弃，强烈推荐。</p>
-<h4 id="AnyDo"><a href="#AnyDo" class="headerlink" title="AnyDo"></a>AnyDo</h4><p><a href="https://www.any.do/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0017.png" alt=""></p>
-<p>一个比较简洁的 todo list。</p>
-<h4 id="OfficeTime"><a href="#OfficeTime" class="headerlink" title="OfficeTime"></a>OfficeTime</h4><p><a href="https://www.officetime.net/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0018.png" alt=""></p>
-<p>用来记录你工作花了多少时间，和时间花在了哪些 task 上。如果你做 freelance，那么这个可以帮你生成报告，开invoice。</p>
-<h4 id="WasteNoTime"><a href="#WasteNoTime" class="headerlink" title="WasteNoTime"></a>WasteNoTime</h4><p><a href="http://www.bumblebeesystems.com/wastenotime/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--developer-and-web-0019.png" alt=""></p>
-<p>这是一个 Safari 插件，可以 track 你在哪些网站上花的时间最多，当然，它也挺不准确的（因为似乎连没有 focus 的页面也一直在记录）不过还是能提供一定的有用的信息的。还可以设置屏蔽网站，来限制上无关网站的时间。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21281014" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/05/osx-common_software-prerequisites-recommended--read-and-write/" itemprop="url">
-                  OS X 常用 / 必备软件推荐 —— （读与写）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T12:40:00+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac使用/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac使用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OS-X-常用-必备软件推荐-——-（读与写）"><a href="#OS-X-常用-必备软件推荐-——-（读与写）" class="headerlink" title="OS X 常用 / 必备软件推荐 —— （读与写）"></a>OS X 常用 / 必备软件推荐 —— （读与写）</h3><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0000.png" alt=""></p>
-<h4 id="Simple-Comic"><a href="#Simple-Comic" class="headerlink" title="Simple Comic"></a>Simple Comic</h4><p><a href="http://dancingtortoise.com/simplecomic/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0001.png" alt=""></p>
-<p>看漫画的软件，可以看打包的 zip，或者整个文件夹的图片。不看漫画看图册或者收集的图片也非常合适。</p>
-<h4 id="Pocket"><a href="#Pocket" class="headerlink" title="Pocket"></a>Pocket</h4><p><a href="https://getpocket.com/Mac/?a=Mac" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0002.png" alt=""></p>
-<p>稍后阅读类软件，手机 app 浏览器插件都很完备。</p>
-<h4 id="Reeder"><a href="#Reeder" class="headerlink" title="Reeder"></a>Reeder</h4><p><a href="http://reederapp.com/Mac/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0003.png" alt=""></p>
-<p>RSS feed 阅读器。</p>
-<h4 id="iA-Writer"><a href="#iA-Writer" class="headerlink" title="iA Writer"></a>iA Writer</h4><p><a href="https://ia.net/writer/mac/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0004.png" alt=""></p>
-<p>比较偏向写作者的 markdown 编辑器，干净整洁，但是对代码的支持不是最好。</p>
-<h4 id="MacDown"><a href="#MacDown" class="headerlink" title="MacDown"></a>MacDown</h4><p><a href="http://macdown.uranusjr.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0005.png" alt=""></p>
-<p>各方面都很不错的 markdown 编辑器。</p>
-<h4 id="Leanote"><a href="#Leanote" class="headerlink" title="Leanote"></a>Leanote</h4><p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0006.png" alt=""></p>
-<p>偏向程序员的 markdown 记事本，可以网上发布，可以多人协作。开源。</p>
-<h4 id="Day-One-2"><a href="#Day-One-2" class="headerlink" title="Day One 2"></a>Day One 2</h4><p><a href="http://dayoneapp.com/" target="_blank" rel="external">官网下载</a></p>
-<p><img src="http://7xrl2u.com1.z0.glb.clouddn.com/osx-common_software-prerequisites-recommended--read-and-write-0007.png" alt=""></p>
-<p>日记本，密码，照片，GPS等功能俱全，支持 markdown，有 iOS 客户端。</p>
-<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/21280991" target="_blank" rel="external">知乎专栏：峰兄’s tech talks</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1654,7 +1706,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1671,7 +1723,7 @@ print_r($res);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

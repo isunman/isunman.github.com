@@ -244,6 +244,278 @@
             
               
                 
+                <a class="post-title-link" href="/2018/08/21/web-based-instant-messaging-solution/" itemprop="url">
+                  Web端的即时通讯解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-21T19:00:00+08:00" content="2018-08-21">
+              2018-08-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Web端的即时通讯解决方案</p>
+<h3 id="首先，确定使用WebSocket技术。"><a href="#首先，确定使用WebSocket技术。" class="headerlink" title="首先，确定使用WebSocket技术。"></a>首先，确定使用WebSocket技术。</h3><p>逻辑分析：</p>
+<p>1、如果需要支持多个项目，提交登录信息时，需提供当前的项目的ID。<br>或者不同的项目使用不同的端口，在服务器端启用多个WebSocket的服务。</p>
+<p>2、与Redis的结合。</p>
+<p>3、作为独立第三方，只负责即时通讯的连接和转发消息，不涉及具体业务逻辑。</p>
+<h3 id="在Linux服务器上安装配置该技术的步骤："><a href="#在Linux服务器上安装配置该技术的步骤：" class="headerlink" title="在Linux服务器上安装配置该技术的步骤："></a>在Linux服务器上安装配置该技术的步骤：</h3><p>1、先安装Redis</p>
+<p>2、再安装PHP的redis扩展</p>
+<p>3、调试功能。</p>
+<p>4、Redis的后台运行。</p>
+<p>5、PHP文件的命令行执行的后台运行。</p>
+<h3 id="详细说明每个步骤中遇到的坑"><a href="#详细说明每个步骤中遇到的坑" class="headerlink" title="详细说明每个步骤中遇到的坑"></a>详细说明每个步骤中遇到的坑</h3><p>1、安装Redis中没遇到什么问题。Linux时CentOS 7版本，直接使用yum安装即可。</p>
+<p>2、注意PHP的redis扩展中的PHP的安装路径。</p>
+<p>3、无问题。</p>
+<p>4、Redis的后台运行，需要确认进程和端口未被占用。</p>
+<p>5、这一步有大坑。PHP文件后台命令行模式一直启动不了。说是命令的路径不对，修改了也不行。后来使用PHP命令的绝对地址才可以启动，暂时先使用。因为此文件不会经常启动。</p>
+<h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><p>1、把Redis和server.php文件加入到服务器开机自启动中，Redis可以，server.php不可以。只有暂时手动启动此文件的运行。</p>
+<p>2、每次重启服务器一定要注意重启server.php。</p>
+<p>3、每次重启服务器，一定要住已清理Redis中与WebSocket相关的缓存数据。</p>
+<p>——小永</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/07/Tell-you-that-redis-is-a-real-powerful/" itemprop="url">
+                  告诉你Redis是一个牛逼货
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-07T11:37:00+08:00" content="2018-08-07">
+              2018-08-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>Redis是一个 Key-Value 存储系统。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、 list(链表)、 set(集合)和 zset(有序集合)。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，Redis 支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。区别的是 Redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了 master-slave(主从)同步。</p>
+<h2 id="Key-Value存储系统"><a href="#Key-Value存储系统" class="headerlink" title="Key-Value存储系统"></a>Key-Value存储系统</h2><p>Key-Value Store 是当下比较流行的话题，尤其在构建诸如搜索引擎、IM、P2P、游戏服务器、SNS 等大型互联网应用以及提供云计算服务的时候，怎样保证系统在海量数据环境下的高性能、高可靠性、高扩展性、高可用性、低成本成为所有系统架构们挖苦心思考虑的重点，而怎样解决数据库服务器的性能瓶颈是最大的挑战。</p>
+<p>Key-Value Store 更加注重对海量数据存取的性能、分布式、扩展性支持上，并不需要传统关系数据库的一些特征，例如：Schema、事务、完整 SQL 查询支持等等，因此在分布式环境下的性能相对于传统的关系数据库有较大的提升。</p>
+<h2 id="为什么要选择Key-Value-Store"><a href="#为什么要选择Key-Value-Store" class="headerlink" title="为什么要选择Key-Value Store"></a>为什么要选择Key-Value Store</h2><h3 id="1、大规模互联网应用"><a href="#1、大规模互联网应用" class="headerlink" title="1、大规模互联网应用"></a>1、大规模互联网应用</h3><p>一类是仍然采用RDBMS，然后通过对数据库的垂直和水平切分将整个数据库部署到一个集群上，缺点在于它是针对特定应用，通用型不足<br>另一类就是google采用的方法，抛弃RDBMS，采用Key-Value形式存储，这样可以极大增强系统的可扩展性。</p>
+<h3 id="2、云存储"><a href="#2、云存储" class="headerlink" title="2、云存储"></a>2、云存储</h3><p>如果说上一个问题还有可以替代的解决方案（切割数据库）的话，那么对于云存储来说，也许 key-value 的 store 就是唯一的解决方案了。云存储简单点说就是构建一个大型的存储平台给别人用，这也就意味着在这上面运行的应用其实是不可控的。如果其中某个客户的应用随着用户的增长而不断增长时，云存储供应商是没有办法通过数据库的切割来达到 scale 的，因为这个数据是客户的，供应商不了解这个数据自然就没法作出切割。在这种情况下，key-value 的 store 就是唯一的选择了，因为这种条件下的 scalability 必须是自动完成的，不能有人工干预。这也是为什么几乎所有的现有的云存储都是 key-value 形式的，例如 Amazon的 smipleDB，底层实现就是 key-value，还有 google 的  GoogleAppEngine，采用的是 BigTable的存储形式。</p>
+<p>Key-Value Store 最大的特点就是它的可扩展性，这也就是它最大的优势。所谓的可扩展性，在我看来这里包括了两方面内容。一方面，是指 Key-Value Store 可以支持极大的数据的存储，它的分布式的架构决定了只要有更多的机器，就能够保证存储更多的数据。另一方面，是指它可以支持数量很多的并发的查询。对于 RDBMS，一般几百个并发的查询就可以让它很吃力了，而一个 Key-Value Store，可以很轻松的支持上千的并发查询。下面而简单的罗列了一些特点：</p>
+<ul>
+<li>Key-value store：一个  key-value  数据存储系统，只支持一些基本操作，如： SET(key, value) 和  GET(key)  等；</li>
+<li>分布式：多台机器（nodes）同时存储数据和状态，彼此交换消息来保持数据一致，可视为一个完整的存储系统。</li>
+<li>数据一致：所有机器上的数据都是同步更新的、不用担心得到不一致的结果；<br>冗余：所有机器（nodes）保存相同的数据，整个系统的存储能力取决于单台机器（node）的能力；</li>
+<li>容错：如果有少数  nodes  出错，比如重启、当机、断网、网络丢包等各种  fault/fail  都不影响整个系统的运行；</li>
+<li>高可靠性：容错、冗余等保证了数据库系统的可靠性。</li>
+</ul>
+<h2 id="初识Redis"><a href="#初识Redis" class="headerlink" title="初识Redis"></a>初识Redis</h2><p>Redis是一个开源的使用ANSI C语言编写，支持网络、可基于内存且可持久化的日志型、Key-Value数据库，并且提供多个语言的API，访问十分便捷。</p>
+<h3 id="Redis数据类型："><a href="#Redis数据类型：" class="headerlink" title="Redis数据类型："></a>Redis数据类型：</h3><p>作为 Key-value 型数据库，Redis 也提供了键（Key）和键值（Value）的映射关系。但是，除了常规的数值或字符串，Redis 的键值还可以是以下形式之一：</p>
+<ul>
+<li>Lists  （列表）</li>
+<li>Sets  （集合）</li>
+<li>Sorted sets  （有序集合）</li>
+<li>Hashes  （哈希表）</li>
+</ul>
+<p>键值的数据类型决定了该键值支持的操作。Redis 支持诸如列表、集合或有序集合的交集、并集、查集等高级原子操作；同时，如果键值的类型是普通数字，Redis 则提供自增等原子操作。</p>
+<h2 id="Redis持久化："><a href="#Redis持久化：" class="headerlink" title="Redis持久化："></a>Redis持久化：</h2><p>通常，Redis 将数据存储于内存中，或被配置为使用虚拟内存。通过两种方式可以实现数据持久化：使用截图的方式，将内存中的数据不断写入磁盘；或使用类似 MySQL 的日志方式，记录每次更新的日志。前者性能较高，但是可能会引起一定程度的数据丢失；后者相反。</p>
+<p>Redis主从同步：</p>
+<p>Redis支持将数据同步到多台从库，这种特性对提高读取性能非常有益。</p>
+<h2 id="Redis性能："><a href="#Redis性能：" class="headerlink" title="Redis性能："></a>Redis性能：</h2><p>相比需要依赖磁盘记录每个更新的数据库，基于内存的特性无疑给Redis带来了非常优秀的性能，读写操作之间有显著的性能差异。</p>
+<h3 id="性能测试结果："><a href="#性能测试结果：" class="headerlink" title="性能测试结果："></a>性能测试结果：</h3><p>SET操作每秒钟 110000 次，GET操作每秒钟 81000 次，服务器配置如下：<br>Linux 2.6, Xeon X3320 2.5Ghz.<br>stackoverflow 网站使用 Redis 做为缓存服务器。</p>
+<h2 id="适用场合："><a href="#适用场合：" class="headerlink" title="适用场合："></a>适用场合：</h2><p>Redis其实开创了一种新的数据存储思路，使用Redis，我们不用再面对功能单调的数据库时，把精力放在如何把大象放进冰箱的问题，而是利用Redis提供的灵活多变的数据结构和数据操作，为不同的大象构建不同的冰箱。</p>
+<h3 id="下面是一些Redis常用的场景："><a href="#下面是一些Redis常用的场景：" class="headerlink" title="下面是一些Redis常用的场景："></a>下面是一些Redis常用的场景：</h3><h4 id="1、取最新N个数据的操作"><a href="#1、取最新N个数据的操作" class="headerlink" title="1、取最新N个数据的操作"></a>1、取最新N个数据的操作</h4><p>比如典型的取你网站的最新文章，通过下面方式，我们可以将最新的 5000 条评论的 ID 放在Redis 的 List 集合中，并将超出集合部分从数据库获取。使用 LPUSH latest.comments<id>命令，向 list 集合中插入数据插入完成后再用 LTRIM latest.comments 0 5000 命令使其永远只保存最近 5000 个 ID如果你还有不同的筛选维度，比如某个分类的最新 N 条，那么你可以再建一个按此分类的List，只存 ID 的话，Redis 是非常高效的。</id></p>
+<h4 id="2、排行榜应用，取TOP-N操作"><a href="#2、排行榜应用，取TOP-N操作" class="headerlink" title="2、排行榜应用，取TOP N操作"></a>2、排行榜应用，取TOP N操作</h4><p>这个需求与上面需求的不同之处在于，前面操作以时间为权重，这个是以某一个条件为权重，比如按购买的次数或者顶的次数，这时候就需要 sorted set 出马，将你要排序的值设置为sorted set的score，将具体的数据设置为相应的value，每次只需要执行一条ZADD命令即可。</p>
+<h4 id="3、需要精确设定过期时间的应用"><a href="#3、需要精确设定过期时间的应用" class="headerlink" title="3、需要精确设定过期时间的应用"></a>3、需要精确设定过期时间的应用</h4><p>比如你可以把上面说到的 sorted  set 的 score 值设置成过期时间的时间戳，那么就可以简单地通过过期时间排序，定时清除过期数据了，不仅是清除 Redis 中的过期数据，你完全可以把 Redis 里这个过期时间当成是对数据库中数据的索引，用 Redis 来找出哪些数据需要过期删除，然后再精准地从数据库中删除相应的记录。</p>
+<h4 id="4、计数器应用"><a href="#4、计数器应用" class="headerlink" title="4、计数器应用"></a>4、计数器应用</h4><p>Redis的命令是原子性的，你可以轻松利用INCR、DECR命令来构建计数器系统（底层的写入是单线程模型，并发写会按到位顺序执行）</p>
+<h4 id="5、Uniq操作，获取某段时间所有数据去重值"><a href="#5、Uniq操作，获取某段时间所有数据去重值" class="headerlink" title="5、Uniq操作，获取某段时间所有数据去重值"></a>5、Uniq操作，获取某段时间所有数据去重值</h4><p>这个使用Redis的Set数据结构最合适，只需要不断将数据往Set中扔就行，set就是集合，会自动去重</p>
+<h4 id="6、实时系统、发垃圾系统"><a href="#6、实时系统、发垃圾系统" class="headerlink" title="6、实时系统、发垃圾系统"></a>6、实时系统、发垃圾系统</h4><p>通过上面说到的 set 功能，你可以知道一个终端用户是否进行了某个操作，可以找到其操作的集合并进行分析统计对比等。没有做不到，只有想不到。</p>
+<h4 id="7、Pub、Sub构建实时消息系统"><a href="#7、Pub、Sub构建实时消息系统" class="headerlink" title="7、Pub、Sub构建实时消息系统"></a>7、Pub、Sub构建实时消息系统</h4><p>Redis 的 Pub/Sub 系统可以构建实时的消息系统，比如很多用 Pub/Sub 构建的实时聊天系统的例子。</p>
+<h4 id="8、构建队列系统"><a href="#8、构建队列系统" class="headerlink" title="8、构建队列系统"></a>8、构建队列系统</h4><p>使用list可以构建队列系统，使用sorted set 甚至可以构建有优先级的队列系统。</p>
+<h4 id="9、缓存"><a href="#9、缓存" class="headerlink" title="9、缓存"></a>9、缓存</h4><p>性能优于Memcached，并且更优秀的在于数据结构更加多样化</p>
+<h2 id="Redis作者的宣言"><a href="#Redis作者的宣言" class="headerlink" title="Redis作者的宣言"></a>Redis作者的宣言</h2><p>宣言中，作者列举了Redis的7大原则，可以向大家阐明Redis的思想，看了之后我觉得Redis的作者的确牛叉，Redis这款产品这的是程序猿的福利：</p>
+<p>1、Redis 是一个操作数据结构的语言工具，它提供基于 TCP 的协议以操作丰富的数据结构。</p>
+<p>在 Redis 中，数据结构这个词的意义不仅表示在某种数据结构上的操作，更包括了结构本身及这些操作的时间空间复杂度。</p>
+<p>2、Redis 定位于一个内存数据库，正是由于内存的快速访问特性，才使得 Redis 能够有如此高的性能，才使得 Redis 能够轻松处理大量复杂的数据结构，Redis 会尝试其它的存储方面的选择，但是永远不会改变它是一个内存数据库的角色。</p>
+<p>3、Redis 使用基础的 API 操作基础的数据结构， Redis 的 API 与数据结构一样，都是一些最基础的元素，你几乎可以将任何信息交互使用此 API 格式表示。作者调侃说，如果有其它非人类的智能生物存在，他们也能理解 Redis 的 API。因为它是如此的基础。（作者大大很有趣）</p>
+<p>4、Redis 有着诗一般优美的代码，经常有一些不太了解 Redis  有的人会建议 Redis 采用一些其它人的代码，以实现一些 Redis  未实现的功能，但这对我们来说就像是非要给《红楼梦》接上后四十回一样。</p>
+<p>5、Redis 始终避免复杂化，我们认为设计一个系统的本质，就是与复杂化作战。我们不会为了一个小功能而往源码里添加上千行代码，解决复杂问题的方法就是让复杂问题永远不要提复杂的问题。</p>
+<p>6、Redis 支持两个层成的 API，第一个层面包含部分操作 API，但它支持用于分布式环境下的 Redis。第二个层面的 API 支持更复杂的 multi-key 操作。它们各有所长，但是我们不会推出两者都支持的 API，但我们希望能够提供实例间数据迁移的命令，并执行 multi-key 操作。</p>
+<p>7、我们以优化代码为乐，我们相信编码是一件辛苦的工作，唯一对得起这辛苦的就是去享受它。如果我们在编码中失去了乐趣，那最好的解决办法就是停下来。我们决不会选择让Redis不好玩的开发模式。</p>
+<p>我只能感叹道：Redis乃神物，出污泥而不染，濯清涟而不妖。</p>
+<p><strong>PS</strong>： Redis作者antirez曾笑称Redis为一个数据结构服务器，我认为这个还是挺准确的，Redis的所有功能就是将数据以其固有的几种结构来保存，并提供给用户操作这几种结构的接口。</p>
+<p>本文非原创<br><a href="https://www.jianshu.com/p/01b37cdb3f33" target="_blank" rel="external">原文链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/08/01/the-difference-between-version-and-build-in-xcode/" itemprop="url">
                   Xcode中的Version和Build的区别
                 </a>
@@ -1359,340 +1631,6 @@ echo $file_contents;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/25/thoroughly-understand-the-web-service-soap-wsdl/" itemprop="url">
-                  彻底理解WebService SOAP WSDL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-25T19:20:00+08:00" content="2017-08-25">
-              2017-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="WebServices简介"><a href="#WebServices简介" class="headerlink" title="WebServices简介"></a>WebServices简介</h2><p>先给出一个概念 SOA ，即Service Oriented Architecture ，中文一般理解为面向服务的架构，既然说是一种架构的话，所以一般认为 SOA 是包含了运行环境，编程模型，架构风格和相关方法论等在内的一整套新的分布式软件系统构造方法和环境，涵盖服务的整个生命周期。而在 SOA 的架构风格中，服务是最核心的抽象手段。</p>
-<p>SOA 中的服务是构建在一些列基于开放标准的基础之上的，Web 服务定义了如何在异构系统之间实现通信的标准化方法，从而就使得 Web 服务可以跨越运行平台和实现语言，同时也使得 Web 服务成为了实现 SOA 中服务的主要技术。</p>
-<p>至于SOA 的话，太高深的技术，这里不予讨论（嘿嘿），本篇博文只介绍 WebServices 这项技术。</p>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p><strong>有没有一种办法可以实现跨应用程序进行通信和跨平台进行通信呢？</strong></p>
-<p>换句话说，就是有什么办法可以实现我的应用程序 A 可以和应用程序 B 进行通信呢？<br>或者说是，我用 Java 写的应用程序和用 . Net 开发的应用程序之间进行通信呢？<br>很多时候，上面提到的这些，我们是必须要使用的，比如，一个跨应用程序吧，<br>拿腾讯 QQ 来说吧，我估计每一个人都用过腾讯 QQ 上面的天气预报工具吧 ！ ！ ！</p>
-<p>上面的这个天气预报功能是如何实现的呢？</p>
-<p>有一种办法，那就是腾讯公司放个卫星上天，并且在公司中成立一个气象部门，天天关注于天气，然后每时每刻更新腾讯 QQ 上的这个天气预报信息，确实，这种办法确实行得通，不过，要真这样做的话，估计马化腾也该被踢出去了（哪有这么蠢啊？），那么上面这个是如何实现的呢？</p>
-<p>别急，且听我慢慢道来~~~</p>
-<p>然后，我们再来看看跨平台这个东东又是什么呢？这里主要是拿 . Net 平台和Java 平台来说明例子，假若，有两个公司，每个公司呢都有自己的一个项目，一个公司呢使用 . Net 开发，一个呢，使用 Java 开发，恩，本来呢，这两个是相互独立的，进水不犯河水，但是有一天，突然，这两个公司给合并了，合并后的老总发现，如果把两个项目结合起来将会大大的赚一笔，为此，如何做？因为要把两个项目结合在一起，那么这两个项目之间总应该通通信吧 ！！！可这两个项目又是基于不同的平台，怎么通信呢？麻烦了吧 ！！！而后再看一种情况，就是比如一个公司使用的服务器是 Windows Server 2008，那么它如何和 IT 供应商的UNIX 或者是 Linux 服务器进行连接呢？也很复杂吧 ！！！</p>
-<h2 id="WebServices特点介绍"><a href="#WebServices特点介绍" class="headerlink" title="WebServices特点介绍"></a>WebServices特点介绍</h2><p>WebServices 提供一个建立分布式应用的平台，使得运行在不同操作系统和不同设备上的软件，或者是用不同的程序语言和不同厂商的软件开发工具开发的软件，所有可能的已开发和部署的软件，能够利用这一平台实现分布式计算的目的。WebServices的思想是：使得应用程序也具有 Web 分布式编程模型的松散耦合性。</p>
-<p><strong>WebServices的特点：</strong></p>
-<p>（1），WebServices 是自包含的。即在客户端不需要附加任何软件，只要客户机支持 HTTP 和XML 就 OK 了。</p>
-<p>（2），WebServices 是自我描述的。在客户端和服务端都不需要知道除了请求和响应消息的格式和内容外的任何事。</p>
-<p>（3），WebServices 是跨平台和跨语言的。客户端和服务端均可以在不同的平台和语言环境中实现，同时，不必为了支持 WebServices 而更改现有的代码。</p>
-<p>（4），WebServices 是基于开放和标准的。XML 和 HTTP 是WebServices 的主要技术基础，而 XML 和HTTP 早就成了业内标准了。</p>
-<p>（5），WebServices 是动态的。</p>
-<p>（6），WebServices 是可以组合的。也就是通过一个 WebService 访问另外一个 WebService 来达到组合的目的。通过组合 WebServices 便可以将简单的 WebServices 聚合成为实现更多复杂功能的复杂的服务。</p>
-<p>（7），WebServices 是松散耦合的。它完全解耦了客户端和服务端。</p>
-<p>（8），WebServices 提供编程访问的能力。换句话说，就是可以通过编写程序来访问Web 服务。</p>
-<p>（9），WebServices 是基于经过考验的成熟技术上构建的。比如 XML 和 HTTP。</p>
-<p>（10），WebServices 提供打包现有应用程序的能力。</p>
-<p>（11），WebServices 通过网络进行发布，查找和使用。</p>
-<p>上面这些特点呢，现在不清楚的话，也不用紧，等下还会有详细的说明的 ！！！</p>
-<h2 id="WebServices到底是什么？"><a href="#WebServices到底是什么？" class="headerlink" title="WebServices到底是什么？"></a>WebServices到底是什么？</h2><p>如果简单的说的话，WebServices就是一组函数库，不过这和我们平时概念中的函数库却又有不同，我们平时所使用的函数库要么是自己写的（在自己的应用程序当中写一组函数库），要么是调用底层的 API（操作系统 API 如Win32 API），上面的这两种情况有一个共同点，那就是函数库是位于客户端本地的，比如，您调用 Win32 API的话，就是调用本地操作系统上的函库，而这里提到 Web 服务也是一组函数库这个概念和上面提到的函数库这个概念的区别就在此处，因为 Web服务看做一组函数库的话，那么这组函数库不是位于本地的，而是位于远程机器上（当然也可以是本地机器中）。</p>
-<p><strong>何为 Web 服务？</strong></p>
-<p>也就是网络服务，那就是把网络上不知道那个地方的一些函数看做是一组服务，然后我再通过网络就可以使用这些服务。</p>
-<p>关于什么是 Web 服务，上面的说法那是山寨版的，稍微正经一点的说法是：Web 服务是一种部署在 Web 上的对象或者是应用程序组件。</p>
-<p><strong>Why WebServices？</strong></p>
-<p>为什么需要使用 WebServices呢？这必须根据 WebServices 的特点以及其优势进行分析了。</p>
-<p>首先，上面呢，也说了，Web服务的话，就是一组网络上的应用程序组件，这样的话，您便可以通过在您的应用程序中使用 Web 服务来将您的应用程序提升到服务层面上来。<br>既然可以看做是一组服务了的话，那么当然就是可以提供给别个（别的应用程序）使用咯。<br>比如，我可以通过 Web 服务来公开一些接口给别个使用，至于这些要不要收费呢？那就看我心情了，前面举了腾讯 QQ 上查询天气的例子，这个例子呢，就可以在这里来做一个解释了，<br>在中国，应该只有一个卫星来进行天气预报的吧？腾讯也不可能为了天气预报而专门放个卫星上天吧？</p>
-<p>可是腾讯 QQ 又确实是可以查询天气的，这里，便可以通过 Web 服务来解决。<br>首先，中国气象局应该是有一个卫星的，气象局根据卫星所返回的结果实时发布全国各地的天气状况，并且将这些天气信息以 Web 服务的形式公开，然后呢，腾讯 QQ 便可以通过这个 Web 服务来访问到天气状况了，再将这些天气状况反馈到 QQ 上就 OK 了。</p>
-<p>然后，上面提到了 Web服务是应用程序组件，既然是组件，那么就可以对这个组件重复的进行使用了，同时可以通过 Web 服务来实现将这个应用程序组件作为一个服务来进行使用，<br>更为强大的是，可以将多个 WebServices组合成为更为强大的 WebServices ，<br>并且是通过互联网哦！！！<br>这也是一大优点啊，</p>
-<p>然后呢，最基本的 WebServices是基于 XML 和 HTTP 的<br>（当然这是最基本的 WebServices ，比如 WebServices 还可以通过 HTTPS 或者是 SMTP 来实现通信），<br>这又有什么好处呢？很明显，XML 和HTTP 这些都已经是标准了，<br>不论你是 Java 平台呢，还是 . Net 平台开发出来的（或者是是使用 Web 服务），既然我是使用 XML 和 HTTP 的话，我才懒得鸟你什么 Java 还是 . Net 呢，我也不管你是 linux 还是 Windows ，这一切都和我 Web 服务无关，我关注的只是通过 HTTP 协议来传输 XML 就 OK 了，<br>至于这些 XML 是如何被服务提供者开发出来的或者这些 XML 是如何被服务请求者使用的，这些都和我无关，这里便可以看出 Web 服务的另一个优势了，那就是跨语言跨平台（实现协同工作），所以可以通过 Web 服务来实现不同应用程序和不同平台之间的通信。</p>
-<p>Web 服务允许独立于实现服务基于的硬件或者是软件平台和编写服务所用的编程语言使用服务，<br>根据上面这两点呢，便可以解决掉最开始提出的使用 Java 开发的应用程序如何和使用 . Net 开发的应用程序之间进行通信这一问题，同时，也可以解决 Linux 或者是UNIX 和 Windows Server 2008 之间进行连接这一问题了。最后就是通过使用不同的 Web 服务，也不管 Web 服务是那种编程语言实现的，<br>我们都可以从不同的平台和操作系统进行访问，从而大大提高了不同应用程序共享数据和应用的能力并且 Web服务提供了构建 SOA 所必须得技术基础。</p>
-<p>从上面可以看出通过 WebServices解决了我们曾经想都不敢想的问题，这么强大的东西为什么不加以好好利用呢？   </p>
-<h2 id="WebServices体系结构"><a href="#WebServices体系结构" class="headerlink" title="WebServices体系结构"></a>WebServices体系结构</h2><p>在Web 服务的体系结构中，涉及到三个角色，一个是 Web 服务提供者，一个是 Web 服务中介者，还有一个就是 Web 服务请求者，同时还涉及到三类动作，即发布，查找，绑定，</p>
-<h3 id="Web-服务提供者："><a href="#Web-服务提供者：" class="headerlink" title="Web 服务提供者："></a>Web 服务提供者：</h3><p>可以发布 Web 服务，并且对使用自身服务的请求进行响应，Web 服务的拥有者，它会等待其他的服务或者是应用程序访问自己。</p>
-<h3 id="Web-服务请求者："><a href="#Web-服务请求者：" class="headerlink" title="Web 服务请求者："></a>Web 服务请求者：</h3><p>也就是 Web 服务功能的使用者，它通过服务注册中心也就是 Web 服务中介者查找到所需要的服务，再利用 SOAP 消息向 Web 服务提供者发送请求以获得服务。</p>
-<h3 id="Web-服务中介者："><a href="#Web-服务中介者：" class="headerlink" title="Web 服务中介者："></a>Web 服务中介者：</h3><p>也称为服务代理，用来注册已经发布的 Web服务提供者，并对其进行分类，同时提供搜索服务，<br>简单来说的话，Web 服务中介者的作用就是把一个 Web 服务请求者和合适的 Web 服务提供者联系在一起，充当一个管理者的角色，一般是通过 UDDI来实现。</p>
-<h3 id="发布："><a href="#发布：" class="headerlink" title="发布："></a>发布：</h3><p>通过发布操作，可以使 Web服务提供者向 Web 服务中介者注册自己的功能以及访问的接口。</p>
-<h3 id="发现（查找）："><a href="#发现（查找）：" class="headerlink" title="发现（查找）："></a>发现（查找）：</h3><p>使得 Web 服务请求者可以通过 Web 服务中介者来查找到特点的种类的 Web 服务。</p>
-<h3 id="绑定："><a href="#绑定：" class="headerlink" title="绑定："></a>绑定：</h3><p>这里就是实现让服务请求者能够使用服务提供者提供的服务了。</p>
-<h2 id="WebServices三种基本元素之-SOAP"><a href="#WebServices三种基本元素之-SOAP" class="headerlink" title="WebServices三种基本元素之 SOAP"></a>WebServices三种基本元素之 SOAP</h2><p><strong>SOAP 即 Simple Object AccessProtocol 也就是简单对象访问协议。</strong></p>
-<p>SOAP 呢，其指导理念是“唯一一个没有发明任何新技术的技术”，是一种用于访问 Web 服务的协议。因为 SOAP 基于XML 和 HTTP ，其通过XML 来实现消息描述，然后再通过 HTTP 实现消息传输。</p>
-<p>SOAP 是用于在应用程序之间进行通信的一种通信协议。</p>
-<p>因为是基于 XML 和HTTP 的，所以其独立于语言，独立于平台，并且因为 XML 的扩展性很好，所以基于 XML 的 SOAP 自然扩展性也不差。通过 SOAP 可以非常方便的解决互联网中消息互联互通的需求，其和其他的 Web 服务协议构建起 SOA 应用的技术基础。<br>SOAP 协议的一个重要特点是它独立于底层传输机制，Web 服务应用程序可以根据需要选择自己的数据传输协议，可以在发送消息时来确定相应传输机制。</p>
-<p>由于 HTTP 协议本身的一些特点和局限性，使得当 SOAP 使用HTTP 绑定的 Web 服务并不能满足某些企业应用的需求。比如，HTTP 不是一个可靠传输协议，所以有可能在传输过程中出现问题，然后 HTTP 协议基于Request/Response 模型，也就是说客户端需要在等待响应消息接收完成后才能继续执行，而此时如果响应时间过长呢？基于上面的这些需求，便需要选择合适的传输协议了。关于这方面的内容的话，有点深奥了，有兴趣的可以去看看 IBM 的一些关于这方面内容的介绍。还有一点需要提及一下，那就是 SOAP 是可以绕过防火墙的，将来将会作为 W3C 的标准进行发展。</p>
-<h2 id="WebServices三种基本元素之-WSDL"><a href="#WebServices三种基本元素之-WSDL" class="headerlink" title="WebServices三种基本元素之 WSDL"></a>WebServices三种基本元素之 WSDL</h2><p>WSDL 即Web Services Description Language也就是 Web 服务描述语言。<br>是基于 XML的用于描述 Web 服务以及如何访问 Web 服务的语言。</p>
-<p>服务提供者通过服务描述将所有用于访问 Web服务的规范传送给服务请求者，要实现 Web服务体系结构的松散耦合，服务描述是一个关键，不管是请求者还是服务提供者，通过服务描述便可以不必了解对方的底层平台，编程语言等，<br>服务描述与底层的 SOAP 基础结构相结合，足以封装服务请求者的应用程序和服务提供者的 Web服务之间的这个细节。</p>
-<p>WSDL 描述了 Web服务的三个基本属性：</p>
-<p>（1）服务所提供的操作</p>
-<p>（2）如何访问服务</p>
-<p>（3）服务位于何处（通过 URL 来确定就 OK 了）</p>
-<h2 id="WebServices三种基本元素之-UDDI"><a href="#WebServices三种基本元素之-UDDI" class="headerlink" title="WebServices三种基本元素之 UDDI"></a>WebServices三种基本元素之 UDDI</h2><p>UDDI 即 Universal Description，Discovery and Integration，也就是通用的描述，发现以及整合。WSDL 呢，用来描述了访问特定的 Web 服务的一些相关的信息，可以在互联网上，或者是在企业的不同部门之间，如何来发现我们所需要的 Web 服务呢？<br>而 Web 服务提供商又如何将自己开发的 Web 服务公布到因特网上，这就需要使用到 UDDI了，UDDI的话，是一个跨产业，跨平台的开放性架构，可以帮助 Web 服务提供商在互联网上发布 Web 服务的信息。</p>
-<p>UDDI 呢是一种目录服务，企业可以通过 UDDI 来注册和搜索 Web 服务。<br>简单来时候话，UDDI 就是一个目录，只不过在这个目录中存放的是一些关于 Web 服务的信息而已。并且 UDDI 通过SOAP 进行通讯，构建于 . Net 之上。</p>
-<h2 id="开发-Web服务的方式"><a href="#开发-Web服务的方式" class="headerlink" title="开发 Web服务的方式"></a>开发 Web服务的方式</h2><h3 id="（1）开发阶段："><a href="#（1）开发阶段：" class="headerlink" title="（1）开发阶段："></a>（1）开发阶段：</h3><p>实现一个 Web 服务，使这个 Web 服务能响应和接收 SOAP 消息，（这个呢，其实可以通过 Visual Studio 来帮助实现），定义好逻辑模块（这个 Web 服务总要干点事情吧）， 然后再撰写 WSDL 文件（这个呢，开发工具会自动生成的，不需要人工撰写了）</p>
-<h3 id="（2）部署阶段："><a href="#（2）部署阶段：" class="headerlink" title="（2）部署阶段："></a>（2）部署阶段：</h3><p>指定 Web 服务的传输协议，将 Web 服务注册到相应服务描述部署文件（这些也是可以由工具来自动完成的）</p>
-<h3 id="（3）发布阶段："><a href="#（3）发布阶段：" class="headerlink" title="（3）发布阶段："></a>（3）发布阶段：</h3><p>将 Web 服务的接口和调用的地址公开给客户端调用，常用的发布方式为基于 Web 提供的WSDL 的链接，当然 UDDI 也是一个选择。</p>
-<h2 id="总结一下-WebServices的优点"><a href="#总结一下-WebServices的优点" class="headerlink" title="总结一下 WebServices的优点"></a>总结一下 WebServices的优点</h2><p>其实呢，前面介绍的都是关于 WebServices 的优点，在这里就只是浅要的总结一下了。</p>
-<p>首先，WebServices 是基于 Internet 和异构平台的应用，这样便可以方便的实现通过网络来通信，同时可以实现在不同的平台之间共享数据。</p>
-<p>然后就是，WebServices 是基于 XML 和HTTP 的，也就是基于标准和开放的，基于 XML 的话，扩展性自然好，自然跨语言。<br>基于 HTTP 的话，自然跨平台了。</p>
-<p>最后，再回忆一下 WebServices 是一种应用程序组件吧，这样便可以将 WebServices 重复使用了。</p>
-<h2 id="谈谈-WebServices-的缺点"><a href="#谈谈-WebServices-的缺点" class="headerlink" title="谈谈 WebServices 的缺点"></a>谈谈 WebServices 的缺点</h2><p>首先就是由于 XML 文件的难以解析，所以在使用 Web 服务的时候，会消耗较多的 CPU 和内存资源，而后，SOAP 是基于XML 的，所以在网络传输中传输的是 XML 文件，<br>但是由 XML 文件相比于二进制文件来说，要大很多，自然就会消耗更多的网络资源了。<br>而后，由于通过 WSDL 解耦了Web 服务提供者和请求者，且 SOAP 消息时从发送者向接收者单向传送的，这在一定程度上造成了 WebServices 是一种无状态服务，尽管现在在 . Net 中可以通过 Session 来实现在客户端和服务端共享一些数据，<br>但是单单依靠 Session 来实现客户端和服务端的状态交互也太牵强了吧</p>
-<p>WebServices 在数据绑定上也存在一些缺陷，因为所有的数据在传输中都是使用的 XML 来实现的，因此，需要在二进制数据和 XML 之间进行一个转换（通过序列化和反序列化来实现），<br>而在转换过程中有可能出现语义丢失的情况。</p>
-<p>最后就是 WebServices 的技术要求相对比较高，因为涉及到底层的 HTTP 协议以及SOAP ，WSDL 和UDDL 这三大平台元素，所以学习的曲线也是比较长的，<br>当然，在 . Net 中可以通过 Visual Studio 非常快速和简单的开发和访问一个 Web 服务，<br>但这只限于在简单的使用上，而对于本质的东西，是比较难的。</p>
-<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>正如题目所言，是 WebServices 简介，既然是简介的话，那么自然就是以简为目标了，<br>说明一下的是，上面的这篇博文呢，源自前几天做的一个关于 WebServices 的演讲，<br>演讲的 PPT 还存有，有兴趣要的可以留个邮箱的。</p>
-<h2 id="WebServices-的实战（待续……）"><a href="#WebServices-的实战（待续……）" class="headerlink" title="WebServices 的实战（待续……）"></a>WebServices 的实战（待续……）</h2><p>之前基于的语言不同，需要重新调整：需要从.Net环境变为PHP语言，暂时不写，待续。</p>
-<p><a href="https://wenku.baidu.com/view/f87b55f19e31433239689314.html" target="_blank" rel="external">原文链接</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/21/If-you-want-to-be-a-programmer-related-forum-think-twice/" itemprop="url">
-                  如果你想做个程序员相关的论坛，请三思
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-21T14:43:00+08:00" content="2017-07-21">
-              2017-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>标题中的“做”有两方面所指：</p>
-<ul>
-<li>开发：使用某种编程语言实现</li>
-<li>运营：使用某套程序直接搭建</li>
-</ul>
-<p>无论是哪方面，如果你有做程序员相关论坛的想法，请三思而后行，因为你的竞争对手不是一般的多…. 所以在你行动之前，先了解一下吧！</p>
-<p>下面整理了一些使用 开源 程序搭建的论坛，他们的相似点：</p>
-<ul>
-<li>“小众”社区，用户大多是程序员</li>
-<li>基于“节点”进行分版</li>
-<li>界面都比较精致</li>
-</ul>
-<p>每一项的顺序分别是：站点、项目地址、开发语言。</p>
-<ol>
-<li><p><a href="https://phphub.org/" target="_blank" rel="external">PHPHub - PHP &amp; Laravel 的中文社区</a>    <a href="https://github.com/summerblue/phphub5" target="_blank" rel="external">https://github.com/summerblue/phphub5</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://flarumone.com/" target="_blank" rel="external">FlarumOne 官网 中文 Flarum 第一站</a>    <a href="https://github.com/flarumone/flarumone" target="_blank" rel="external">https://github.com/flarumone/flarumone</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://www.94cb.com/" target="_blank" rel="external">Carbon Forum</a>    <a href="https://github.com/lincanbin/Carbon-Forum" target="_blank" rel="external">https://github.com/lincanbin/Carbon-Forum</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://youbbs.sinaapp.com/" target="_blank" rel="external">youBBS - u 社区</a>    <a href="https://github.com/ego008/youbbs" target="_blank" rel="external">https://github.com/ego008/youbbs</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://bbs.xiuno.com/" target="_blank" rel="external">Xiuno BBS</a>    <a href="http://git.oschina.net/strwei/xiuno" target="_blank" rel="external">http://git.oschina.net/strwei/xiuno</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://vanillaforums.cn/" target="_blank" rel="external">Vanilla 中文社区</a>    <a href="https://github.com/chuck911/vanilla4china" target="_blank" rel="external">https://github.com/chuck911/vanilla4china</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="http://laravel.so/" target="_blank" rel="external">Laravel.so - 最新的 Laravel 技巧</a>    <a href="https://github.com/laravelso/site" target="_blank" rel="external">https://github.com/laravelso/site</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://getyii.com/" target="_blank" rel="external">Get√Yii - 致力打造 Yii 中国第一社区</a>    <a href="https://github.com/iiyii/getyii" target="_blank" rel="external">https://github.com/iiyii/getyii</a>    <strong>PHP</strong></p>
-</li>
-<li><p><a href="https://hacpai.com/" target="_blank" rel="external">黑客派</a>    <a href="https://github.com/b3log/symphony" target="_blank" rel="external">https://github.com/b3log/symphony</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://bbs.tomoya.cn/" target="_blank" rel="external">朋也社区</a>    <a href="https://github.com/tomoya92/pybbs" target="_blank" rel="external">https://github.com/tomoya92/pybbs</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://java-china.org/" target="_blank" rel="external">Java 中国</a>    <a href="https://github.com/junicorn/java-china" target="_blank" rel="external">https://github.com/junicorn/java-china</a>    <strong>Java</strong></p>
-</li>
-<li><p><a href="https://nutz.cn/" target="_blank" rel="external">Nutz 社区</a>    <a href="https://github.com/wendal/nutz-book-project" target="_blank" rel="external">https://github.com/wendal/nutz-book-project</a>     <strong>Java</strong></p>
-</li>
-<li><p><a href="http://www.html-js.com/" target="_blank" rel="external">前端乱炖</a>    <a href="https://github.com/xinyu198736/htmljs" target="_blank" rel="external">https://github.com/xinyu198736/htmljs</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="https://cnodejs.org/" target="_blank" rel="external">Node.js 专业中文社区</a>    <a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">https://github.com/cnodejs/nodeclub</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="http://nodebb.org.cn/" target="_blank" rel="external">NodeBB 官方中文社区</a>    <a href="https://github.com/NodeBB/NodeBB" target="_blank" rel="external">https://github.com/NodeBB/NodeBB</a>    <strong>Node.js</strong></p>
-</li>
-<li><p><a href="https://meta.discoursecn.org/" target="_blank" rel="external">Discourse 中文论坛</a>    <a href="https://github.com/discourse/discourse" target="_blank" rel="external">https://github.com/discourse/discourse</a>    <strong>Ruby</strong></p>
-</li>
-<li><p><a href="https://ruby-china.org/" target="_blank" rel="external">Ruby China</a>    <a href="https://github.com/ruby-china/ruby-china" target="_blank" rel="external">https://github.com/ruby-china/ruby-china</a>     <strong>Ruby</strong></p>
-</li>
-<li><p><a href="http://studygolang.com/" target="_blank" rel="external">Go 语言中文网    </a><a href="https://github.com/studygolang/studygolang" target="_blank" rel="external">https://github.com/studygolang/studygolang</a>    <strong>Go</strong></p>
-</li>
-<li><p><a href="http://golangtc.com/" target="_blank" rel="external">Golang 中国</a>    <a href="https://github.com/jimmykuu/gopher" target="_blank" rel="external">https://github.com/jimmykuu/gopher</a>    <strong>Go</strong></p>
-</li>
-<li><p><a href="http://f2e.im/" target="_blank" rel="external">F2E - 前端技术社区</a>    <a href="https://github.com/PaulGuo/F2E.im" target="_blank" rel="external">https://github.com/PaulGuo/F2E.im</a>    <strong>Python</strong></p>
-</li>
-<li><p><a href="http://beyoung.io/" target="_blank" rel="external">Young 社区</a>    <a href="https://github.com/shiyanhui/Young" target="_blank" rel="external">https://github.com/shiyanhui/Young</a>    <strong>Python</strong></p>
-</li>
-</ol>
-<p>欢迎大家进行补充    </p>
-<ul>
-<li>也许每个程序员都有一颗想写论坛的心</li>
-<li>PHP 不愧是世界上最好的编程语言….</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1739,7 +1677,7 @@ echo $file_contents;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1756,7 +1694,7 @@ echo $file_contents;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
