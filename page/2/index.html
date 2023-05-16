@@ -244,6 +244,137 @@
             
               
                 
+                <a class="post-title-link" href="/2021/04/12/PHP-to-achieve-the-length-of-Chinese-string-calculation-and-interception-without-garbled-code/" itemprop="url">
+                  PHP实现中文字符串的长度计算和截取无乱码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-04-12T15:42:00+08:00" content="2021-04-12">
+              2021-04-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在我们学习PHP知识的过程中，PHP截取字符串应该是一个非常常见的字符串基础操作了，想必大家都比较熟悉这方面知识点。</p>
+<p>但是有些新手朋友们可能遇到过，当待截取的字符串出现中英文混合时，计算字符串的长度，会出现不准确和截取出现乱码的情况，其实这个也是非常容易解决的。</p>
+<h3 id="首先，要了解关于中英文占多少字节的问题。"><a href="#首先，要了解关于中英文占多少字节的问题。" class="headerlink" title="首先，要了解关于中英文占多少字节的问题。"></a>首先，要了解关于中英文占多少字节的问题。</h3><p>ASCII码：一个中文汉字占两个字节的空间。</p>
+<p>UTF-8编码：一个中文（含繁体）等于三个字节。</p>
+<p>Unicode编码：一个中文（含繁体）等于两个字节。</p>
+<h3 id="其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。"><a href="#其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。" class="headerlink" title="其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。"></a>其次，如果是需要计算字符串的长度，需要明确是“字符”的长度还是“字节”的长度。</h3><p>例如，是不是中英文数字符号等1个都算1个，还是按实际占用的字节计算。<br>这个需要看具体的使用场景，需要存储导数据时，需要按字节计算实际的长度，和数据库字段的长度匹配。需要前端显示时，可能需要按字符计算。</p>
+<h3 id="第三，实际处理用到的两个函数mb-substr-和mb-strlen"><a href="#第三，实际处理用到的两个函数mb-substr-和mb-strlen" class="headerlink" title="第三，实际处理用到的两个函数mb_substr()和mb_strlen()"></a>第三，实际处理用到的两个函数<code>mb_substr()</code>和<code>mb_strlen()</code></h3><p><code>mb_substr($str,$start,$len,$encoding)</code>，用于中文字符串的截取,在相应的编码页面输入相应的$encoding</p>
+<p><code>mb_strlen($str,$encodding)</code>，用于获取中文字符串的长度，包含多字节的字符算成一个。</p>
+<p>GBK编码截取示例</p>
+<pre><code>$str = &apos;我是谁&apos;;  //gbk编码的字符串
+echo mb_substr($str, 0, 1, &apos;gbk&apos;); //输出 我
+</code></pre><p>utf-8编码截取示例</p>
+<pre><code>$str = &apos;我abc是谁&apos;;  //utf-8编码的字符串
+echo mb_substr($str, 0, 2, &apos;utf-8&apos;); //输出 我a
+</code></pre><p>中英混合也完全没有问题。</p>
+<p>【但是，一定要住编码需要明确指定，否则可能还是会出现乱码】</p>
+<h3 id="第四，关于mb-strcut按字节来切分字符串，截取中文都不会产生半个字符的现象"><a href="#第四，关于mb-strcut按字节来切分字符串，截取中文都不会产生半个字符的现象" class="headerlink" title="第四，关于mb_strcut按字节来切分字符串，截取中文都不会产生半个字符的现象"></a>第四，关于<code>mb_strcut</code>按字节来切分字符串，截取中文都不会产生半个字符的现象</h3><p><code>substr</code>、<code>mb_substr</code>、<code>mb_strcut</code>这三个函数都用来截取字符串，所不同的是：</p>
+<p><code>substr</code>是最简单的截取，无法适应中文；</p>
+<p><code>mb_substr</code>是按字来切分字符串，</p>
+<p>而<code>mb_strcut</code>是按字节来切分字符串，截取中文都不会产生半个字符的现象。</p>
+<p>这三个函数的前三个参数完全一致，即：</p>
+<p>第一个参数是操作对象</p>
+<p>第二个参数是截取的起始位置</p>
+<p>第三个参数是截取的数量</p>
+<p><code>mb_substr</code>和<code>mb_strcut</code>还有第四个参数：第四个参数可以根据不同的字符集进行设置。</p>
+<h4 id="友情提示"><a href="#友情提示" class="headerlink" title="友情提示"></a>友情提示</h4><p>使用的时候要注意php文件的编码，和网页显示时的编码。</p>
+<p>使用这两个<code>mb_substr</code> 和 <code>mb_strcut</code>方法要事先知道字符串的编码，如果不知道编码，就需要判，mbstring库还提供了<code>mb_check_encoding</code>来检验字符串编码，但还不完善。</p>
+<p><code>mb_check_encoding($str,$encoding)</code>;成功是返回true,失败时返回false;</p>
+<p>php中文字符串的截取  其中ord($str)&gt;127(因为中文字符的acsii码的范围是128(即0x80-0xfe)-254)</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2021/02/18/apple-keyboard-cleaning/" itemprop="url">
                   苹果键盘的清洁
                 </a>
@@ -1393,128 +1524,6 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/06/11/issue-of-ca-root-certificate-expiration/" itemprop="url">
-                  CA根证书过期的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-06-11T15:38:00+08:00" content="2020-06-11">
-              2020-06-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术日记/" itemprop="url" rel="index">
-                    <span itemprop="name">技术日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上一篇文章提到过PHP的curl函数的证书错误</p>
-<pre><code>Peer certificate cannot be authenticated with known CA certificates
-</code></pre><p>中文的意思“对等证书不能使用已知的CA证书进行身份验证”。</p>
-<p>后来采用了在curl函数中不验证证书的临时解决方法。</p>
-<p>虽然问题暂时解决了，但是并没有找到出问题的根本原因，当然也就没有从根本上解决问题。</p>
-<h4 id="紧接着，后续又出大问题了。"><a href="#紧接着，后续又出大问题了。" class="headerlink" title="紧接着，后续又出大问题了。"></a>紧接着，后续又出大问题了。</h4><p>在linux服务器上的crontab中设置的计划任务也不执行了。里面都是使用的wget加https的URL执行的。<br>经核查发现：</p>
-<p>1、crontab的计划任务是在定期执行的，只是没有执行wget+https的URL请求。</p>
-<p>2、上述计划任务中https的URL请求，如果在浏览器执行或postman中执行，都是可以正常执行出结果的。</p>
-<p>所以证明是wget在执行https的请求时出问题了。</p>
-<p>联系亚狐科技的客服，询问他们的SSL证书是不是出问题了。</p>
-<p>回复是，SSL证书本身没有过期，但是颁发SSL证书的CA机构的【根证书】过期了。</p>
-<p>回复原话</p>
-<blockquote>
-<p>是CA证书过期了, 您更新下CA证书即可。证书没问题，有问题的是COMODO的上级证书链。浏览器访问都没问题。我可以发您最新的根证书，您替换旧可以。4月30日后签发的证书就没这个问题了。这个问题是历史问题，没办法避免。这样，我全部更新下，您重新下载可以吧。这个我们会注意这个问题，如果再有类似，我通知您。应该不会再发生了。一般如果只是使用浏览器，不会存在问题。是的，我们接收意见，以后避免再发生此类问题。</p>
-</blockquote>
-<p>当然中间有我的提问没有写出来，这是QQ聊天记录的对方回复的部分内容的合并。</p>
-<p>之后重新颁发了新的SSL证书，然后更新到所有使用该SSL证书的Nginx服务器之后（重启Nginx），crontab的计划任务可以正常执行了。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>1、CA的根证书快过期本应该提前处理好的，这个根证书时间应该不是每一年一次的。5年或10年吧，还不确定。</p>
-<p>2、这个CA根证书过期导致的是一些程序的执行命令和系统方法出问题，在浏览器中使用并不会表现出BUG和错误。（目前已发现明显会受影响的就是PHP的CURL函数和Linux的crontab中的wget命令）</p>
-<p>3、当一个问题出现时，必须及时准确地定位到问题的真正和根本原因，并迅速彻底解决；否则，可能会出现更严重的问题。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1561,7 +1570,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">91</span>
+              <span class="site-state-item-count">92</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1569,7 +1578,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1578,7 +1587,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1642,7 +1651,7 @@ KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hell
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
