@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2023-05-16T12:15:45.399Z</updated>
+  <updated>2023-08-21T07:04:01.301Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -14,6 +14,143 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>全面剖析 PHP-FPM+Nginx 通信原理</title>
+    <link href="http://isunman.com/2023/08/21/comprehensive-analysis-of-PHP-FPM+Nginx-communication-principle/"/>
+    <id>http://isunman.com/2023/08/21/comprehensive-analysis-of-PHP-FPM+Nginx-communication-principle/</id>
+    <published>2023-08-21T06:50:00.000Z</published>
+    <updated>2023-08-21T07:04:01.301Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;用了这么久了PHP+Nginx了，你了解他们之间的通信原理吗？这一次做一回真正的PHPer（在上一篇文章里边已经全面介绍了CGI、FastCGI、PHP-FPM，所以本文对于这些概念不再介绍的那么详细）&lt;/p&gt;
+&lt;h2 id=&quot;PHP-FPM&quot;&gt;&lt;a href=&quot;#PHP-FPM&quot; class=&quot;headerlink&quot; title=&quot;PHP-FPM&quot;&gt;&lt;/a&gt;PHP-FPM&lt;/h2&gt;&lt;p&gt;PHP-FPM的全称是PHP FastCGI Process Manager，PHP-FPM是FastCGI的实现，并提供了进程管理的功能。FastCGI进程包含master进程和worker进程两种进程。master进程只有一个，负责监听端口，接收Nginx的请求，而worker进程则一般有多个(可配置)，每个进程内部都嵌入了一个PHP解释器，是PHP代码真正执行的地方。&lt;/p&gt;
+&lt;h2 id=&quot;Nginx&quot;&gt;&lt;a href=&quot;#Nginx&quot; class=&quot;headerlink&quot; title=&quot;Nginx&quot;&gt;&lt;/a&gt;Nginx&lt;/h2&gt;&lt;p&gt;Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP服务器。这里介绍一下什么是正向代理和反向代理，这个对于我们理解Nginx很重要&lt;/p&gt;
+&lt;h2 id=&quot;正向代理&quot;&gt;&lt;a href=&quot;#正向代理&quot; class=&quot;headerlink&quot; title=&quot;正向代理&quot;&gt;&lt;/a&gt;正向代理&lt;/h2&gt;&lt;p&gt;我们那访问国外的网站为例，比如访问Google、Facebook。我们需要借助vpn才能访问，我们借助vpn访问国外的网站，其实就是个正向代理的过程，上图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic1.zhimg.com/80/v2-264693523af2543b568ed9aa7c7d97ec_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;vpn对于用户来说，是可以感知到的（因为用户需要配置连接），vpn对于google服务器来说，是不可感知的(google服务器只知道有http请求过来)。所以，对于用户来说可以感知到，而对于服务器来说感知不到的服务器，就是正向代理服务器（vpn）&lt;/p&gt;
+&lt;h2 id=&quot;反向代理&quot;&gt;&lt;a href=&quot;#反向代理&quot; class=&quot;headerlink&quot; title=&quot;反向代理&quot;&gt;&lt;/a&gt;反向代理&lt;/h2&gt;&lt;p&gt;拿Nginx作为反向代理服务器实现负载均衡来举例，假设此时我们访问百度，看图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic4.zhimg.com/80/v2-a9736998fd30679e11150296ada745d7_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当用户访问百度时，所有的请求会到达一个反向代理服务器，这个反向代理服务器会将请求分发给后边的某一台服务器去处理。此时，这个代理服务器其实对用户来说是不可感知的，用户感知到的是百度的服务器给自己返回了结果，并不知道代理服务器的存在。也就是说，对于用户来说不可感知，对于服务器来说是可以感知的，就叫反向代理服务器（Nginx）&lt;/p&gt;
+&lt;h2 id=&quot;PHP-FPM-Nginx通信&quot;&gt;&lt;a href=&quot;#PHP-FPM-Nginx通信&quot; class=&quot;headerlink&quot; title=&quot;PHP-FPM+Nginx通信&quot;&gt;&lt;/a&gt;PHP-FPM+Nginx通信&lt;/h2&gt;&lt;p&gt;FastCGI致力于减少Web服务器与CGI程序之间互动的开销，从而使服务器可以同时处理更多的Web请求。与CGI这种为每个请求创建一个新的进程不同，FastCGI使用持续的进程来处理一连串的请求。&lt;strong&gt;这些进程由FastCGI进程管理器管理，而不是web服务器&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;通过图来理解PHP-FPM和Nginx的通信&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic1.zhimg.com/80/v2-5b4221240c64823f21975422586e91dc_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;（1）当Nginx收到http请求（动态请求），它会初始化FastCGI环境。（如果是Apache服务器，则初始化modefastcgi模块、如果是Nginx服务器则初始化ngxhttp_fastcgi_module）&lt;/p&gt;
+&lt;p&gt;（2）我们在配置nginx解析php请求时，一般会有这样一行配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fastcgi_pass 127.0.0.1:9000;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者长这样：&lt;br&gt;    fastcgi_pass unix:/tmp/php-cgi.sock;&lt;/p&gt;
+&lt;p&gt;它其实是Nginx和PHP-FPM一个通信载体（或者说通信方式），目的是为了让Nginx知道，收到动态请求之后该往哪儿发。（关于这两种配置的区别，后边会专门介绍）&lt;/p&gt;
+&lt;p&gt;（3）Nginx将请求采用socket的方式转给FastCGI主进程&lt;/p&gt;
+&lt;p&gt;（4）FastCGI主进程选择一个空闲的worker进程连接，然后Nginx将CGI环境变量和标准输入发送该worker进程（php-cgi）&lt;/p&gt;
+&lt;p&gt;（5）worker进程完成处理后将标准输出和错误信息从同一socket连接返回给Nginx&lt;/p&gt;
+&lt;p&gt;（6）worker进程关闭连接，等待下一个连接&lt;/p&gt;
+&lt;h2 id=&quot;不从配置的角度，再描述一下PHP和Nginx的通信&quot;&gt;&lt;a href=&quot;#不从配置的角度，再描述一下PHP和Nginx的通信&quot; class=&quot;headerlink&quot; title=&quot;不从配置的角度，再描述一下PHP和Nginx的通信&quot;&gt;&lt;/a&gt;不从配置的角度，再描述一下PHP和Nginx的通信&lt;/h2&gt;&lt;p&gt;我们知道Nginx也是有master和worker进程的，worker进程直接处理每一个网络请求&lt;br&gt;其实在Nginx+PHP的架构里边，php可以看做是一个cgi程序的角色，因此出现了php-fpm进程管理器来处理这些php请求。php-fpm和nginx一样，也会监听端口（通过nginx.conf里的配置我们知道，nginx默认监听8080端口，php-fpm默认监听9000端口），并且有master和worker进程，worker负责处理每一个php请求&lt;br&gt;关于fastcgi：fastcgi是一个协议。市面上有多种实现了fastcgi协议的进程管理器，php-fpm就是其中的一种。php-fpm作为一种fastcgi进程管理服务，会监听端口，一般默认监听9000端口，并且是监听本机，也就是只接收来自本机的端口请求&lt;br&gt;关于fastcgi的配置文件，目前fastcgi的配置文件一般放在nginx.conf同级目录下，配置文件形式，一般有两种：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fastcgi.conf和 fastcgi_params。
+不同的nginx版本会有不同的配置文件，这两个配置文件有一个非常重要的区别：
+fastcgi_parames文件中缺少下列配置：
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们可以打开fastcgi_params文件加上上述行，也可以在要使用配置的地方动态添加。使得该配置生效&lt;/p&gt;
+&lt;p&gt;当需要处理php请求时，nginx的worker进程会将请求移交给php-fpm的worker进程进行处理，也就是最开头所说的nginx调用了php，其实严格得讲是nginx间接调用php（反向代理的方式）&lt;br&gt;我本机配置了能正常解析php程序的nginx配置，介绍一下每一行配置的含义&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server{
+listen 8080;
+index index.php
+root /work/html/;
+location ~ [^/]\.php(/|$)
+{
+root /work/html/;
+fastcgi_pass 127.0.0.1:9000;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+include fastcgi_params;
+}
+access_log /work/html/logs/test.log;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第一个大括号 server{ }：代表一个独立的server&lt;br&gt;listen 8080：代表该server监听8080端口&lt;br&gt;location ~ [^/].php(/|$){ }：代表一个能匹配对应uri的location，用于匹配一类uri，并对所匹配的uri请求做自定义的逻辑、配置。这里的location，匹配了所有带.php的uri请求，例如：&lt;a href=&quot;http://192.168.244.128:8011/test.php/asdasdhttp://192.168.244.128:8011/index.php等&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://192.168.244.128:8011/test.php/asdasdhttp://192.168.244.128:8011/index.php等&lt;/a&gt;&lt;br&gt;root /work/html/：请求资源根目录，告诉匹配到该location下的uri到/work/html/文件夹下去寻找同名资源&lt;br&gt;fastcgi_pass 127.0.0.1:9000：这行代码的意思是，将进入到该location内的uri请求看做是cgi程序，并将请求发送到9000端口，交由php-fpm处理(php-fpm配置中会看见它监听了此端口)&lt;br&gt;fastcgiparam SCRIPTFILENAME&lt;/p&gt;
+&lt;p&gt;fastcgiscriptname; ：这行配置意思是：动态添加了一行fastcgi配置，配置内容为SCRIPTFILENAME，告知管理进程，cgi脚本名称。由于我的nginx中只有fastcgiparams文件，没有fastcgi.conf文件，所以要使php-fpm知道SCRIPT_FILENAME的具体值，就必须要动态的添加这行配置&lt;/p&gt;
+&lt;p&gt;include fastcgi_params; 引入fastcgi配置文件&lt;/p&gt;
+&lt;h3 id=&quot;fastcgi-pass&quot;&gt;&lt;a href=&quot;#fastcgi-pass&quot; class=&quot;headerlink&quot; title=&quot;fastcgi_pass&quot;&gt;&lt;/a&gt;fastcgi_pass&lt;/h3&gt;&lt;p&gt;Nginx和PHP-FPM的进程间通信有两种方式,一种是TCP Socket,一种是Unix Socket.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tcp Socket方式是IP加端口,可以跨服务器.而UNIX Socket不经过网络,只能用于Nginx跟PHP-FPM都在同一服务器的场景，用哪种取决于你的PHP-FPM配置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tcp Socket方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;nginx.conf中配置：fastcgi_pass 127.0.0.1:9000;&lt;/p&gt;
+&lt;p&gt;php-fpm.conf中配置：listen=127.0.0.1:9000;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unix Domain Socket方式:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;nginx.conf中配置：fastcgi_pass unix:/tmp/php-fpm.sock;&lt;/p&gt;
+&lt;p&gt;php-fpm中配置：listen = /tmp/php-fpm.sock；&lt;/p&gt;
+&lt;p&gt;(php-fpm.sock是一个文件,由php-fpm生成)&lt;br&gt;&lt;strong&gt;&lt;br&gt;举例：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两种通信配置方式，Nginx和PHP-FPM的通信过程如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tcp Socket：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Nginx &amp;lt;=socket &amp;lt;=TCP/IP &amp;lt;=socket &amp;lt;=PHP-FPM
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;(上边画Nginx和PHP-FPM通信的图时就是这种方式，这种情况是Nginx和PHP-FPM在同一台机器上)&lt;/p&gt;
+&lt;p&gt;看一下Nginx和PHP-FPM不在同一台机器上的情况：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Nginx &amp;lt;=&amp;gt; socket &amp;lt;=&amp;gt; TCP/IP &amp;lt;=&amp;gt; 物理层 &amp;lt;=&amp;gt; 路由器 &amp;lt;=&amp;gt; 物理层 &amp;lt;=&amp;gt; 
+TCP/IP &amp;lt;=&amp;gt; socket &amp;lt;=&amp;gt; PHP-FPM
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Unix Socket：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Nginx &amp;lt;=&amp;gt; socket &amp;lt;=&amp;gt; PHP-FPM
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;include fastcgi_params;&lt;/strong&gt;&lt;br&gt;在nginx中有很多的fasgcgi*的配置，更多的配置可以在nginx.conf的同级目录中看到，在fastcgi.conf和fastcgiparams中，这两个的区别，上边有说明。看一下里边的内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic2.zhimg.com/80/v2-9e8044d378df04f7e255662c51242885_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这里边的内容都会被传递给PHP-FPM所管理的fastcgi进程。为什么会传递这些呢？相信大家都用过$SERVER这个全局变量，这里边的值就是从此配置中拿到的。我们可以在fastcgiparams中看到REMOTEADDR，就是客户端地址，PHP之所以能拿到客户端信息，就是因为Nginx的配置中的fastcgiparams。更多ngxhttpfastcgimodule模块的内容，可以看官方文档：&lt;a href=&quot;http://nginx.org/en/docs/http/ngxhttp_fastcgi_module.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nginx.org/en/docs/http/ngxhttp_fastcgi_module.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;php-fpm-conf配置&quot;&gt;&lt;a href=&quot;#php-fpm-conf配置&quot; class=&quot;headerlink&quot; title=&quot;php-fpm.conf配置&quot;&gt;&lt;/a&gt;php-fpm.conf配置&lt;/h2&gt;&lt;p&gt;熟悉php-fpm的配置，能帮助我们优化服务器性能&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;emergency_restart_threshold = 60
+emergency_restart_interval = 60s
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表示在emergencyrestartinterval所设值内出现SIGSEGV或者SIGBUS错误的php-cgi进程数如果超过 emergencyrestartthreshold个，php-fpm就会优雅重启。这两个选项一般保持默认值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;process_control_timeout = 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;设置子进程接受主进程复用信号的超时时间. 可用单位: s(秒), m(分), h(小时), 或者 d(天) 默认单位: s(秒). 默认值: 0.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;listen = 127.0.0.1:9000
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fpm监听端口，即nginx中php处理的地址，一般默认值即可。可用格式为: ‘ip:port’, ‘port’, ‘/path/to/unix/socket’. 每个进程池都需要设置.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;request_slowlog_timeout = 10s
+#当一个请求该设置的超时时间后，就会将对应的PHP调用堆栈信息完整写入到慢日志中. 
+设置为 ’0′ 表示 ‘Off’
+slowlog = log/$pool.log.slow
+慢请求的记录日志,配合request_slowlog_timeout使用
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下边几个配置参数比较重要：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pm
+pm指的是process manager，指定进程管理器如何控制子进程的数量，它为必填项，支持3个值
+(1)static: 使用固定的子进程数量，由pm.max_children指定(可以同时存活的子进程的最大数量)
+(2)dynamic：基于下面的参数动态的调整子进程的数量，至少有一个子进程(会使用下边几个配置)
+pm.start_servers: 启动时创建的子进程数量，默认值为min_spare_servers + max_spare_servers -
+ min_spare_servers) / 2
+pm.min_spare_servers: 空闲状态的子进程的最小数量，如果不足，新的子进程会被自动创建
+pm.max_spare_servers: 空闲状态的子进程的最大数量，如果超过，一些子进程会被杀死
+(3)ondemand: 启动时不会创建子进程，当新的请求到达时才创建，有下边两个配置
+pm.max_children
+pm.process_idle_timeout 子进程的空闲超时时间，如果超时时间到没有新的请求可以服务，则会被
+杀死
+区别：
+如果pm设置为 static，那么其实只有pm.max_children这个参数生效。系统会开启设置数量的
+php-fpm进程
+如果pm设置为 dynamic，那么pm.max_children参数失效，后面3个参数生效
+系统会在php-fpm运行开始 的时候启动pm.start_servers个php-fpm进程，
+然后根据系统的需求动态在pm.min_spare_servers和pm.max_spare_servers之间调整php-fpm进程数
+还有一个比较重要的配置：
+pm.max_requests
+每一个子进程的最大请求服务数量，如果超过了这个值，该子进程会被自动重启。在解决第三方库的
+内存泄漏问题时，这个参数会很有用。默认值为0，指子进程可以持续不断的服务请求
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;PHP-FPM进程池&quot;&gt;&lt;a href=&quot;#PHP-FPM进程池&quot; class=&quot;headerlink&quot; title=&quot;PHP-FPM进程池&quot;&gt;&lt;/a&gt;PHP-FPM进程池&lt;/h2&gt;&lt;p&gt;php-fpm.conf中默认配置了一个进程池，我们可以打开我们的php-fpm.conf看一下，下边是我的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic3.zhimg.com/80/v2-7365bfe451b0102092f528ea338dc5b6_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;现在我们执行一下:ps -aux|grep php-fpm&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic1.zhimg.com/80/v2-e62c2b5b0a6bef72d702cdc81fb82174_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;会看见有一个master，10个worker进程，和我们配置的一样（www为进程池名）&lt;/p&gt;
+&lt;p&gt;想配置多个，这样做即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic2.zhimg.com/80/v2-56011c2443b60d0280be15ebd9df9ff9_720w.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在nginx中fastcgi_pass这个地方配置使用哪个进程池即可。&lt;/p&gt;
+&lt;p&gt;（完）&lt;/p&gt;
+&lt;p&gt;原文参考：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/339250896&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎文章&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;用了这么久了PHP+Nginx了，你了解他们之间的通信原理吗？这一次做一回真正的PHPer（在上一篇文章里边已经全面介绍了CGI、FastC
+    
+    </summary>
+    
+      <category term="Web构建" scheme="http://isunman.com/categories/web%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="Nginx" scheme="http://isunman.com/tags/nginx/"/>
+    
+      <category term="PHP" scheme="http://isunman.com/tags/php/"/>
+    
+      <category term="lnmp" scheme="http://isunman.com/tags/lnmp/"/>
+    
+  </entry>
   
   <entry>
     <title>网络数字身份认证术</title>
@@ -1426,59 +1563,6 @@ echo mb_substr($str, 0, 2, &amp;apos;utf-8&amp;apos;); //输出 我a
       <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
     
       <category term="远程控制" scheme="http://isunman.com/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS8解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes</title>
-    <link href="http://isunman.com/2020/11/01/centos8-ssh-reported-error-for-algorithm-negotiation-failes/"/>
-    <id>http://isunman.com/2020/11/01/centos8-ssh-reported-error-for-algorithm-negotiation-failes/</id>
-    <published>2020-11-01T08:05:00.000Z</published>
-    <updated>2020-11-01T08:10:17.063Z</updated>
-    
-    <content type="html">&lt;p&gt;解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes&lt;/p&gt;
-&lt;p&gt;今天新服务器版本已经到了CentOS8，但是SSH Secure Shell还是多年前的3.2.9，所以在连服务器时遇到标题中的报错。这个问题很悲剧，浪费了我很多时间。&lt;/p&gt;
-&lt;p&gt;网上解决这个问题的博文非常非常多，都是这样的方案：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;打开/etc/ssh文件目录下的文件sshd_config  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;sudo vim /etc/ssh/sshd_config&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在文件末尾添加以下信息&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;pre&gt;&lt;code&gt;Ciphers aes128-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,3des-cbc,arcfour128,arcfour256,arcfour,blowfish-cbc,cast128-cbc
-
-MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160,hmac-sha1-96,hmac-md5-96  
-
-KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group-exchange-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group1-sha1,curve25519-sha256@libssh.org
-&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;保存后重启ssh服务&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;sudo /etc/init.d/ssh restart&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;大家都说好用，但是我试了之后悲剧了，增加了配置后重启ssh就启动不了了，会报错。&lt;/p&gt;
-&lt;p&gt;但是我依然没能解决问题，最终决定弃用落后的SSH Secure Shell Client了，换成【FileZilla】解决问题：FileZilla也支持ssh协议传输文件，而且操作稍微比SSH Secure Shell Client人性化。&lt;/p&gt;
-&lt;p&gt;还有一种方案是把CentOS8退回到CentOS6,这还有什么用呢？&lt;/p&gt;
-&lt;p&gt;因此，应该是CentOS8和SSH Secure File Transfer Client之前的冲突解决不了的问题。
-　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;解决SSHSecureShellClient连接Linux报错Algorithm negotiation failes&lt;/p&gt;
-&lt;p&gt;今天新服务器版本已经到了CentOS8，但是SSH Secure Shell还是多年前的3.2.9，所以在连服务器时遇到标题中的报错。这个问
-    
-    </summary>
-    
-      <category term="技术日记" scheme="http://isunman.com/categories/%E6%8A%80%E6%9C%AF%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="Linux" scheme="http://isunman.com/tags/linux/"/>
     
   </entry>
   
