@@ -60,38 +60,35 @@
 
 
 <meta name="description" content="手机App扫码登录Web端，技术上是怎么实现的？
-##1、引言
-扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
+1、引言扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
 下面这张图，不管是IM开发者还是普通用户，应该很熟悉：
 
 于是，搞IM产品的老板和产品经理们，从此又多了一个要抛给程序员们的需求——“为什么微信有扫一扫登录，而我们的没有？”。
-好吧，每次只要是微信有的功能，IM程序">
+好吧，每次只要是微信有的功能，IM程序员们想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手机App扫码登录Web端，技术上是怎么实现的？">
 <meta property="og:url" content="http://isunman.com/2020/02/15/mobile-phone-app-scan-code-login-web-terminal-how-to-achieve-technically/index.html">
 <meta property="og:site_name" content="太阳侠">
 <meta property="og:description" content="手机App扫码登录Web端，技术上是怎么实现的？
-##1、引言
-扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
+1、引言扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
 下面这张图，不管是IM开发者还是普通用户，应该很熟悉：
 
 于是，搞IM产品的老板和产品经理们，从此又多了一个要抛给程序员们的需求——“为什么微信有扫一扫登录，而我们的没有？”。
-好吧，每次只要是微信有的功能，IM程序">
+好吧，每次只要是微信有的功能，IM程序员们想">
 <meta property="og:image" content="http://www.52im.net/data/attachment/forum/202001/06/202655hhi73ezfei7icd88.jpg">
 <meta property="og:image" content="http://www.52im.net/data/attachment/forum/202001/06/203056dycwfmmpcpoh6m8e.jpg">
 <meta property="og:image" content="http://www.52im.net/data/attachment/forum/202001/06/210751e2bz7c27qcbq7ugo.png">
 <meta property="og:image" content="http://www.52im.net/data/attachment/forum/202001/06/212653o685grmsmldylv36.png">
 <meta property="og:image" content="http://www.52im.net/data/attachment/forum/202001/06/213927pve6vavng8iavy4v.png">
-<meta property="og:updated_time" content="2020-06-01T09:18:24.369Z">
+<meta property="og:updated_time" content="2025-03-08T17:42:25.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机App扫码登录Web端，技术上是怎么实现的？">
 <meta name="twitter:description" content="手机App扫码登录Web端，技术上是怎么实现的？
-##1、引言
-扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
+1、引言扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。
 下面这张图，不管是IM开发者还是普通用户，应该很熟悉：
 
 于是，搞IM产品的老板和产品经理们，从此又多了一个要抛给程序员们的需求——“为什么微信有扫一扫登录，而我们的没有？”。
-好吧，每次只要是微信有的功能，IM程序">
+好吧，每次只要是微信有的功能，IM程序员们想">
 
 
 
@@ -317,39 +314,30 @@
 
       
         <p>手机App扫码登录Web端，技术上是怎么实现的？</p>
-<p>##1、引言</p>
-<p>扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。</p>
+<h2 id="1、引言"><a href="#1、引言" class="headerlink" title="1、引言"></a>1、引言</h2><p>扫码登录这个功能，最早应该是微信的PC端开始搞，虽然有点反人类的功能（不扫码也没别的方式登录），但不得不说还是很酷的。</p>
 <p>下面这张图，不管是IM开发者还是普通用户，应该很熟悉：</p>
 <p><img src="http://www.52im.net/data/attachment/forum/202001/06/202655hhi73ezfei7icd88.jpg" alt=""></p>
 <p>于是，搞IM产品的老板和产品经理们，从此又多了一个要抛给程序员们的需求——“为什么微信有扫一扫登录，而我们的没有？”。</p>
 <p>好吧，每次只要是微信有的功能，IM程序员们想甩锅，难度就有点大了，毕竟老板们都都会想当然认为，微信有的“我”的IM产品里也得有。</p>
 <p>既然无法回避，那就只能老老实实搞懂技术原理，然后自已使劲撸吧。</p>
 <p>本文将简要的介绍扫码登录功能的技术实现逻辑，并实际结合淘宝、微信的扫码登录功能，学习和研究大厂主流应用的技术实现思路。</p>
-<p>##2、基本技术原理</p>
-<p>###2.1 扫码登录功能到底是什么样的？</p>
-<p>首先介绍下什么是扫码登录。现在大部分同学手机上都装有微信、qq和淘宝这一类的软件。而这些app都有他们相对应的网页端。为了让用户在使用他们的网页时登录更加方便和安全，使用手机扫一扫就可以登录的服务，就显得自然而然了。</p>
+<h2 id="2、基本技术原理"><a href="#2、基本技术原理" class="headerlink" title="2、基本技术原理"></a>2、基本技术原理</h2><h3 id="2-1-扫码登录功能到底是什么样的？"><a href="#2-1-扫码登录功能到底是什么样的？" class="headerlink" title="2.1 扫码登录功能到底是什么样的？"></a>2.1 扫码登录功能到底是什么样的？</h3><p>首先介绍下什么是扫码登录。现在大部分同学手机上都装有微信、qq和淘宝这一类的软件。而这些app都有他们相对应的网页端。为了让用户在使用他们的网页时登录更加方便和安全，使用手机扫一扫就可以登录的服务，就显得自然而然了。</p>
 <p>几个主流大厂应用扫码登录时的界面效果如下：</p>
 <p><img src="http://www.52im.net/data/attachment/forum/202001/06/203056dycwfmmpcpoh6m8e.jpg" alt=""></p>
 <p>有很多小伙伴可能会感到很神奇，网页上只是显示了个二维码，它怎么就知道是哪个手机扫到了二维码，并且进行登录的呢？而且，登录完成以后，还能直接把用户信息显示给用户，真的是很神奇啊。</p>
-<p>###2.2 扫码登录功能的完整技术逻辑</p>
-<p>####1）网页端与服务器的配合逻辑：</p>
-<p>接下来就是对于这个服务的详细实现。</p>
+<h3 id="2-2-扫码登录功能的完整技术逻辑"><a href="#2-2-扫码登录功能的完整技术逻辑" class="headerlink" title="2.2 扫码登录功能的完整技术逻辑"></a>2.2 扫码登录功能的完整技术逻辑</h3><h4 id="1）网页端与服务器的配合逻辑："><a href="#1）网页端与服务器的配合逻辑：" class="headerlink" title="1）网页端与服务器的配合逻辑："></a>1）网页端与服务器的配合逻辑：</h4><p>接下来就是对于这个服务的详细实现。</p>
 <p>首先用户打开网站的登录页面的时候，向浏览器的服务器发送获取登录二维码的请求。服务器收到请求后，随机生成一个uuid，将这个id作为key值存入redis服务器，同时设置一个过期时间，再过期后，用户登录二维码需要进行刷新重新获取。</p>
 <p>同时，将这个key值和本公司的验证字符串合在一起，通过二维码生成接口，生成一个二维码的图片（二维码生成，网上有很多现成的接口和源码，这里不再介绍）。然后，将二维码图片和uuid一起返回给用户浏览器。</p>
 <p>浏览器拿到二维码和uuid后，会每隔一秒向浏览器发送一次，登录是否成功的请求。请求中携带有uuid作为当前页面的标识符。这里有的同学就会奇怪了，服务器只存了个uuid在redis中作为key值，怎么会有用户的id信息呢？</p>
 <p>这里确实会有用户的id信息，这个id信息是由手机服务器存入redis中的。具体请继续阅读“手机端与服务器的配合逻辑”。</p>
-<p>####2）手机端与服务器的配合逻辑：</p>
-<p>话说，浏览器拿到二维码后，将二维码展示到网页上，并给用户一个提示：请掏出您的手机，打开扫一扫进行登录。</p>
+<h4 id="2）手机端与服务器的配合逻辑："><a href="#2）手机端与服务器的配合逻辑：" class="headerlink" title="2）手机端与服务器的配合逻辑："></a>2）手机端与服务器的配合逻辑：</h4><p>话说，浏览器拿到二维码后，将二维码展示到网页上，并给用户一个提示：请掏出您的手机，打开扫一扫进行登录。</p>
 <p>用户拿出手机扫描二维码，就可以得到一个验证信息和一个uuid（扫描二维码获取字符串的功能在网上同样有很多demo，这里就不详细介绍了）。</p>
 <p>由于手机端已经进行过了登录，在访问手机端的服务器的时候，参数中都会携带一个用户的token，手机端服务器可以从中解析到用户的userId（这里从token中取值而不是手机端直接传userid是为了安全，直接传userid可能会被截获和修改，token是加密的，被修改的风险会小很多）。手机端将解析到的数据和用户token一起作为参数，向服务器发送验证登录请求（这里的服务器是手机服务器，手机端的服务器跟网页端服务器不是同一台服务器）。</p>
 <p>服务器收到请求后，首先对比参数中的验证信息，确定是否为用户登录请求接口。如果是，返回一个确认信息给手机端。</p>
 <p>手机端收到返回后，将登录确认框显示给用户（防止用户误操作，同时使登录更加人性化）。用户确认是进行的登录操作后，手机再次发送请求。服务器拿到uuId和userId后，将用户的userid作为value值存入redis中以uuid作为key的键值对中。</p>
-<p>####3）登录成功时的逻辑：</p>
-<p>然后，浏览器再次发送请求的时候，浏览器端的服务器就可以得到一个用户Id，并调用登录的方法，生成一个浏览器端的token，再浏览器再次发送请求的时候，将用户信息返回给浏览器，登录成功。这里存储用户id而不是直接存储用户信息是因为，手机端的用户信息，不一定是和浏览器端的用户信息完全一致。</p>
-<p>####4）详细的技术原理总结如下图所示：</p>
-<p><img src="http://www.52im.net/data/attachment/forum/202001/06/210751e2bz7c27qcbq7ugo.png" alt=""></p>
-<p>###3、淘宝的扫码登录技术实现</p>
-<p>本节我们以淘宝的扫码登录为例，来实际研究分析一下淘宝的扫码登录实现逻辑。</p>
+<h4 id="3）登录成功时的逻辑："><a href="#3）登录成功时的逻辑：" class="headerlink" title="3）登录成功时的逻辑："></a>3）登录成功时的逻辑：</h4><p>然后，浏览器再次发送请求的时候，浏览器端的服务器就可以得到一个用户Id，并调用登录的方法，生成一个浏览器端的token，再浏览器再次发送请求的时候，将用户信息返回给浏览器，登录成功。这里存储用户id而不是直接存储用户信息是因为，手机端的用户信息，不一定是和浏览器端的用户信息完全一致。</p>
+<h4 id="4）详细的技术原理总结如下图所示："><a href="#4）详细的技术原理总结如下图所示：" class="headerlink" title="4）详细的技术原理总结如下图所示："></a>4）详细的技术原理总结如下图所示：</h4><p><img src="http://www.52im.net/data/attachment/forum/202001/06/210751e2bz7c27qcbq7ugo.png" alt=""></p>
+<h3 id="3、淘宝的扫码登录技术实现"><a href="#3、淘宝的扫码登录技术实现" class="headerlink" title="3、淘宝的扫码登录技术实现"></a>3、淘宝的扫码登录技术实现</h3><p>本节我们以淘宝的扫码登录为例，来实际研究分析一下淘宝的扫码登录实现逻辑。</p>
 <p>登录界面 <a href="https://login.taobao.com/member/login.jhtml" target="_blank" rel="external">https://login.taobao.com/member/login.jhtml</a> 传回来的参数为：</p>
 <p>然后请求(GET)报文是这样的:</p>
 <pre><code>https://qrlogin.taobao.com/qrcodelogin/qrcodeLoginCheck.do?
@@ -376,12 +364,9 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
 </code></pre><p>表示登录成功，当然手机端与服务端在点击”确认登录”之间的交互可能就是这样：网页端生成的lgToken去请求服务端，服务端记住了这个lgToken并认为登录了，当网页端再次轮询请求接口时，就返回真正的登录态Token，网页端此时就可以凭着这个Token来登录了。</p>
 <p>详细的技术逻辑如下图所示：</p>
 <p><img src="http://www.52im.net/data/attachment/forum/202001/06/212653o685grmsmldylv36.png" alt=""></p>
-<p>##4、微信的扫码登录技术实现</p>
-<p>###4.1 技术原理流程图<br><img src="http://www.52im.net/data/attachment/forum/202001/06/213927pve6vavng8iavy4v.png" alt=""></p>
+<h2 id="4、微信的扫码登录技术实现"><a href="#4、微信的扫码登录技术实现" class="headerlink" title="4、微信的扫码登录技术实现"></a>4、微信的扫码登录技术实现</h2><h3 id="4-1-技术原理流程图"><a href="#4-1-技术原理流程图" class="headerlink" title="4.1 技术原理流程图"></a>4.1 技术原理流程图</h3><p><img src="http://www.52im.net/data/attachment/forum/202001/06/213927pve6vavng8iavy4v.png" alt=""></p>
 <p>微信的网页版访问地址是：<a href="https://wx.qq.com/，有兴趣也可以自行深入研究。" target="_blank" rel="external">https://wx.qq.com/，有兴趣也可以自行深入研究。</a></p>
-<p>###4.2 实际的技术实现逻辑</p>
-<p>####1）获取唯一的uuid, 以及包含uid信息的二维码：</p>
-<p>// 获取uuid</p>
+<h3 id="4-2-实际的技术实现逻辑"><a href="#4-2-实际的技术实现逻辑" class="headerlink" title="4.2 实际的技术实现逻辑"></a>4.2 实际的技术实现逻辑</h3><h4 id="1）获取唯一的uuid-以及包含uid信息的二维码："><a href="#1）获取唯一的uuid-以及包含uid信息的二维码：" class="headerlink" title="1）获取唯一的uuid, 以及包含uid信息的二维码："></a>1）获取唯一的uuid, 以及包含uid信息的二维码：</h4><p>// 获取uuid</p>
 <pre><code>getUUID: function() {
 
     vare = t.defer();
@@ -407,8 +392,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
     e.promise
 
 }
-</code></pre><p>####2）浏览器轮询服务器，获取扫码状态：</p>
-<p>// 查看扫码状态</p>
+</code></pre><h4 id="2）浏览器轮询服务器，获取扫码状态："><a href="#2）浏览器轮询服务器，获取扫码状态：" class="headerlink" title="2）浏览器轮询服务器，获取扫码状态："></a>2）浏览器轮询服务器，获取扫码状态：</h4><p>// 查看扫码状态</p>
 <pre><code>checkLogin: function(e, a) {
 
     varn = t.defer()
@@ -454,8 +438,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
     n.promise
 
 }
-</code></pre><p>####3）根据服务器返回的扫码状态，进行相应的操作：</p>
-<p>408 扫码超时：如果手机没有扫码或没有授权登录，服务器会阻塞约25s，然后返回状态码 408 -&gt; 前端继续轮询</p>
+</code></pre><h4 id="3）根据服务器返回的扫码状态，进行相应的操作："><a href="#3）根据服务器返回的扫码状态，进行相应的操作：" class="headerlink" title="3）根据服务器返回的扫码状态，进行相应的操作："></a>3）根据服务器返回的扫码状态，进行相应的操作：</h4><p>408 扫码超时：如果手机没有扫码或没有授权登录，服务器会阻塞约25s，然后返回状态码 408 -&gt; 前端继续轮询</p>
 <p>400 二维码失效：大约5分钟的时间内不扫码，二维码失效</p>
 <p>201 已扫码：如果手机已经扫码，服务器立即返回状态码和用户的基本信息 （window.code=201,window.code.userAvator=”…”），-&gt; 前端继续轮询</p>
 <p>200 已授权：如果手机点击了确认登录，服务器返回200及token -&gt; 前端停止轮询, 获取到token，重定向到目标页</p>
@@ -534,13 +517,11 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
     a.log(&quot;get code&quot;, c.code)
 
 }
-</code></pre><p>###4.3 小结</p>
-<p>微信网页端扫码登录时，轮询的数据返回采用的是JSONP的形式，这是为了解决跨域问题。如对JSONP不了解的，可以参考：</p>
+</code></pre><h3 id="4-3-小结"><a href="#4-3-小结" class="headerlink" title="4.3 小结"></a>4.3 小结</h3><p>微信网页端扫码登录时，轮询的数据返回采用的是JSONP的形式，这是为了解决跨域问题。如对JSONP不了解的，可以参考：</p>
 <pre><code>http://www.52im.net/thread-1038-1-1.html
 </code></pre><p>微信网页端扫码登录时，轮询采用了后台根据扫码情况阻塞前台请求，优化轮询及减少前端的无效轮询。这种技术，请详见：</p>
 <pre><code>http://www.52im.net/thread-338-1-1.html
-</code></pre><p>##5、本文小结</p>
-<p>扫码登录这个功能，现在已经不只出现有IM应用里，各种带有移动端的线上网站也都有了这个功能，所以本文中介绍的技术原理并不局限于只用于实现IM应用中的扫码登录。</p>
+</code></pre><h2 id="5、本文小结"><a href="#5、本文小结" class="headerlink" title="5、本文小结"></a>5、本文小结</h2><p>扫码登录这个功能，现在已经不只出现有IM应用里，各种带有移动端的线上网站也都有了这个功能，所以本文中介绍的技术原理并不局限于只用于实现IM应用中的扫码登录。</p>
 <p>另外，为了方便抓取真实的数据进行分析研究，本文中的PC端案例分析是针对的是网页端，但实际上如果你的PC端是富客户端（也就是.exe、.dmg这样的安装版），原理也是一样的，而且还不需要考虑浏览器里的跨域问题等。</p>
 <p>阅读本文时，可能涉及到传统的Web端即时通讯技术（为了扫码登录的实时性），比如长轮询等，如果您对这些技术还不太了解的话，可以系统学习一下即时通讯网整理的有关Web端即时通讯方面的资料。</p>
 <hr>
@@ -645,7 +626,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -653,7 +634,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -662,7 +643,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -719,7 +700,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、引言"><span class="nav-number">1.</span> <span class="nav-text">1、引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基本技术原理"><span class="nav-number">2.</span> <span class="nav-text">2、基本技术原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-扫码登录功能到底是什么样的？"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 扫码登录功能到底是什么样的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-扫码登录功能的完整技术逻辑"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 扫码登录功能的完整技术逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）网页端与服务器的配合逻辑："><span class="nav-number">2.2.1.</span> <span class="nav-text">1）网页端与服务器的配合逻辑：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）手机端与服务器的配合逻辑："><span class="nav-number">2.2.2.</span> <span class="nav-text">2）手机端与服务器的配合逻辑：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）登录成功时的逻辑："><span class="nav-number">2.2.3.</span> <span class="nav-text">3）登录成功时的逻辑：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）详细的技术原理总结如下图所示："><span class="nav-number">2.2.4.</span> <span class="nav-text">4）详细的技术原理总结如下图所示：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、淘宝的扫码登录技术实现"><span class="nav-number">2.3.</span> <span class="nav-text">3、淘宝的扫码登录技术实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、微信的扫码登录技术实现"><span class="nav-number">3.</span> <span class="nav-text">4、微信的扫码登录技术实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-技术原理流程图"><span class="nav-number">3.1.</span> <span class="nav-text">4.1 技术原理流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-实际的技术实现逻辑"><span class="nav-number">3.2.</span> <span class="nav-text">4.2 实际的技术实现逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）获取唯一的uuid-以及包含uid信息的二维码："><span class="nav-number">3.2.1.</span> <span class="nav-text">1）获取唯一的uuid, 以及包含uid信息的二维码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）浏览器轮询服务器，获取扫码状态："><span class="nav-number">3.2.2.</span> <span class="nav-text">2）浏览器轮询服务器，获取扫码状态：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）根据服务器返回的扫码状态，进行相应的操作："><span class="nav-number">3.2.3.</span> <span class="nav-text">3）根据服务器返回的扫码状态，进行相应的操作：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-小结"><span class="nav-number">3.3.</span> <span class="nav-text">4.3 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、本文小结"><span class="nav-number">4.</span> <span class="nav-text">5、本文小结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -743,7 +724,7 @@ lgToken=2c3b4d53ef0513787bf4ce711ea5ba53&amp;defaulturl=&amp;_ksTS=1540106757739
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

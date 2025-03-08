@@ -221,6 +221,187 @@
 
     
     
+      
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/php-probability-of-winning-algorithm/" itemprop="url">
+                  php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T18:59:00+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术日记/" itemprop="url" rel="index">
+                    <span itemprop="name">技术日记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法。本人已测试，非常实用，也可以进一步变种。  </p>
+<pre><code>&lt;?php
+/*
+ * 经典的概率算法，
+ * $proArr是一个预先设置的数组，
+ * 假设数组为：array(100,200,300，400)，
+ * 开始是从1,1000 这个概率范围内筛选第一个数是否在他的出现概率范围之内， 
+ * 如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，
+ * 在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。
+ * 这样 筛选到最终，总会有一个数满足要求。
+ * 就相当于去一个箱子里摸东西，
+ * 第一个不是，第二个不是，第三个还不是，那最后一个一定是。
+ * 这个算法简单，而且效率非常 高，
+ * 关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。
+ */
+function get_rand($proArr) { 
+$result = &apos;&apos;;  
+//概率数组的总概率精度 
+$proSum = array_sum($proArr);  
+//概率数组循环 
+foreach ($proArr as $key =&gt; $proCur) { 
+$randNum = mt_rand(1, $proSum); 
+if ($randNum &lt;= $proCur) { 
+$result = $key; 
+break; 
+} else { 
+$proSum -= $proCur; 
+}         
+} 
+unset ($proArr);  
+return $result; 
+} 
+
+
+/*
+ * 奖项数组
+ * 是一个二维数组，记录了所有本次抽奖的奖项信息，
+ * 其中id表示中奖等级，prize表示奖品，v表示中奖概率。
+ * 注意其中的v必须为整数，你可以将对应的 奖项的v设置成0，即意味着该奖项抽中的几率是0，
+ * 数组中v的总和（基数），基数越大越能体现概率的准确性。
+ * 本例中v的总和为100，那么平板电脑对应的 中奖概率就是1%，
+ * 如果v的总和是10000，那中奖概率就是万分之一了。
+ * 
+ */
+$prize_arr = array( 
+&apos;0&apos; =&gt; array(&apos;id&apos;=&gt;1,&apos;prize&apos;=&gt;&apos;平板电脑&apos;,&apos;v&apos;=&gt;1), 
+&apos;1&apos; =&gt; array(&apos;id&apos;=&gt;2,&apos;prize&apos;=&gt;&apos;数码相机&apos;,&apos;v&apos;=&gt;5), 
+&apos;2&apos; =&gt; array(&apos;id&apos;=&gt;3,&apos;prize&apos;=&gt;&apos;音箱设备&apos;,&apos;v&apos;=&gt;10), 
+&apos;3&apos; =&gt; array(&apos;id&apos;=&gt;4,&apos;prize&apos;=&gt;&apos;4G优盘&apos;,&apos;v&apos;=&gt;12), 
+&apos;4&apos; =&gt; array(&apos;id&apos;=&gt;5,&apos;prize&apos;=&gt;&apos;10Q币&apos;,&apos;v&apos;=&gt;22), 
+&apos;5&apos; =&gt; array(&apos;id&apos;=&gt;6,&apos;prize&apos;=&gt;&apos;下次没准就能中哦&apos;,&apos;v&apos;=&gt;50), 
+); 
+
+/*
+ * 每次前端页面的请求，PHP循环奖项设置数组，
+ * 通过概率计算函数get_rand获取抽中的奖项id。
+ * 将中奖奖品保存在数组$res[&apos;yes&apos;]中，
+ * 而剩下的未中奖的信息保存在$res[&apos;no&apos;]中，
+ * 最后输出json个数数据给前端页面。
+ */
+foreach ($prize_arr as $key =&gt; $val) { 
+$arr[$val[&apos;id&apos;]] = $val[&apos;v&apos;]; 
+} 
+$rid = get_rand($arr); //根据概率获取奖项id 
+
+$res[&apos;yes&apos;] = $prize_arr[$rid-1][&apos;prize&apos;]; //中奖项 
+unset($prize_arr[$rid-1]); //将中奖项从数组中剔除，剩下未中奖项 
+shuffle($prize_arr); //打乱数组顺序 
+for($i=0;$i&lt;count($prize_arr);$i++){ 
+$pr[] = $prize_arr[$i][&apos;prize&apos;]; 
+} 
+$res[&apos;no&apos;] = $pr; 
+print_r($res); 
+?&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1451,326 +1632,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/14/yudong-dialect-vocabulary/" itemprop="url">
-                  豫东方言词汇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-14T16:54:00+08:00" content="2016-05-14">
-              2016-05-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="词条统计"><a href="#词条统计" class="headerlink" title="词条统计"></a>词条统计</h2><p>打鼻：刺鼻。</p>
-<p>愿意：祷告。</p>
-<p>灵：灵性。</p>
-<p>泥洼子：泥潭。</p>
-<p>护犊子：原意大牛犊呵护小牛犊。</p>
-<p>车把式：赶车的。</p>
-<p>执事：总指挥。</p>
-<p>细粉：粉条。</p>
-<p>礼条子、刀头：长条的猪肉。</p>
-<p>见过礼：行过礼。</p>
-<p>封了钱：给了钱。</p>
-<p>大车：牲口拉的四轮木车。</p>
-<p>火煤子：草纸。</p>
-<p>盖头：盖在头上的红布。</p>
-<p>搽：摸。</p>
-<p>周周正正：端端正正。</p>
-<p>簸篱子：用做隔墙的高粱秆织的簸。</p>
-<p>担待：原谅。</p>
-<p>咋：怎么。</p>
-<p>恁：你们。</p>
-<p>秫面：高粱面。</p>
-<p>就：配着吃。</p>
-<p>叽牛子：知了。</p>
-<p>当门：中间的一间。</p>
-<p>爬蚱：知了的前身。</p>
-<p>恁：那么。</p>
-<p>茅房：厕所。</p>
-<p>脚脖子：脚踝。</p>
-<p>一拃：五寸。</p>
-<p>拖车：四腿朝上的木制农具。</p>
-<p>认：愿意。</p>
-<p>中：行，可以。</p>
-<p>钱鞳子：装钱物的小布袋。</p>
-<p>土垃：细土。</p>
-<p>亏：冤屈。</p>
-<p>闲书：指小说。</p>
-<p>先生：医生。</p>
-<p>一节子：一节段。</p>
-<p>串门：到别人家去玩。</p>
-<p>白：别，不要。</p>
-<p>不得法：不舒服。</p>
-<p>垡子：犁好后，还没有种庄稼的空白地。</p>
-<p>略黑：天刚黑。</p>
-<p>三四指：三四个手指，约两寸。</p>
-<p>谷秸瘩：谷根。</p>
-<p>一季子：一个季节。</p>
-<p>八薄：八根绳子织的簸。</p>
-<p>激灵：因惊吓而猛然一动。</p>
-<p>睡的死：熟睡。</p>
-<p>行行好：做做好事。</p>
-<p>碓窑子:石磙一头挖了洞的搉杂粮的石具。</p>
-<p>搉：往下砸。</p>
-<p>碓碓：安了木把子的圆石头。</p>
-<p>箩床子：两根平行的木板。</p>
-<p>秫靶子：高粱头做的小扫帚。</p>
-<p>瓢：半个葫芦。</p>
-<p>洼着脊子：弯着腰。</p>
-<p>揳：砸。</p>
-<p>向口：方向。</p>
-<p>拼对：拼凑。</p>
-<p>老师儿：师傅。</p>
-<p>气：气味。</p>
-<p>劳盆：钻了小孔的小瓦盆。</p>
-<p>大梗：粗绳。</p>
-<p>搭帮：凑伙。</p>
-<p>急：困难。</p>
-<p>红车子：木做的独轮车。</p>
-<p>靽绳：常为拉车用的绳。</p>
-<p>大：父亲。</p>
-<p>今个：今天。</p>
-<p>明个：明天。</p>
-<p>福大命大造化大不中：不可，不行。</p>
-<p>主儿：人。</p>
-<p>悠：串，转。</p>
-<p>家里：老婆。</p>
-<p>女人：妻子。</p>
-<p>先生：医生。</p>
-<p>细粉：粉条。</p>
-<p>被子：用糊涂把几层不粘在一起。</p>
-<p>白眼：不放菜的面条。</p>
-<p>背筐：装草的大筐。</p>
-<p>中蒙：中吗。</p>
-<p>待：在。</p>
-<p>仁彩：漂亮。</p>
-<p>饶：白送。</p>
-<p>瀪蛋：下蛋。</p>
-<p>沤人：吵闹人。</p>
-<p>端上：上面。</p>
-<p>够：伸手拿东西。</p>
-<p>主贵：金贵，贵重。</p>
-<p>木杓：木桶。</p>
-<p>挈：逮。</p>
-<p>劙：划。</p>
-<p>半大橛子：年轻小伙。</p>
-<p>仁彩：好看。</p>
-<p>出门子：出嫁。</p>
-<p>迎喜：结婚。</p>
-<p>大：叔。</p>
-<p>怪：挺。</p>
-<p>刁：懂事，精明。</p>
-<p>花布机子：棉花卷成的长条。</p>
-<p>落子：用来缠线的四框木具。</p>
-<p>作假：谦虚。</p>
-<p>菜修子：钻了洞的铁皮。</p>
-<p>作心：胃里不舒服。</p>
-<p>小铺对子：铺在下面的被子。</p>
-<p>拨支：摆弄。</p>
-<p>塌秧：即将干枯。</p>
-<p>官：官中，公共。</p>
-<p>平活：平安。</p>
-<p>不是：不对。</p>
-<p>谷个子：谷子梱。</p>
-<p>瓢半嘴：乌鸦嘴。</p>
-<p>碾转：用磨磨的麦仁。</p>
-<p>沏猛子：凫水，扎猛子。</p>
-<p>抄：迈。</p>
-<p>破套子：旧棉花。</p>
-<p>使头：撞头。</p>
-<p>跑反：逃匪患。</p>
-<p>打地磙子：比石磙细长。</p>
-<p>墹：根基。</p>
-<p>堆：坍塌。</p>
-<p>泥机子：小板凳样的木鞋。</p>
-<p>瓤：软。</p>
-<p>花卷子：一层杂粮面，一层麦面卷做的馍。</p>
-<p>光：只。</p>
-<p>溜地搬：原指没有根基直接打墙。</p>
-<p>松劲：寂寞无聊，没有兴致。</p>
-<p>面叶子耳朵：软，怕老婆色。</p>
-<p>破五：正月初五。</p>
-<p>色：虱。</p>
-<p>五伏：五代。</p>
-<p>篓角子：肩顶草帽。</p>
-<p>伸头戳屋：东张张望。</p>
-<p>眼巴巴：可怜巴巴。</p>
-<p>鲜：富足。</p>
-<p>扑拉：用手摸扫。</p>
-<p>狗不及：烧的粉芡，因太热狗不敢吃。</p>
-<p>当误：端午。</p>
-<p>饶：另外再无偿多给些。</p>
-<p>尸把子：巫婆。</p>
-<p>一势：一帮，一派。</p>
-<p>揳打：抖动。</p>
-<p>两挎子：两枝。</p>
-<p>大油：猪油。</p>
-<p>杓：桶。</p>
-<p>咕哝：蠕动。</p>
-<p>凿：弯了手指打。</p>
-<p>奋：生：下崽。</p>
-<p>串化肥：施化肥。</p>
-<p>一扇子：半头猪。</p>
-<p>能：聪明。</p>
-<p>拖：两只胳膊伸直为一拖，约五尺。</p>
-<p>主贵：珍贵。</p>
-<p>小小虫：麻雀。</p>
-<p>拍子：麦秸编织的尖顶的圆形蒸馍锅盖。</p>
-<p>鲜：松软。</p>
-<p>掉底：露底。</p>
-<p>打渣子：开玩笑。</p>
-<p>别干大：别开玩笑。</p>
-<p>马虎：凶，不论理。</p>
-<p>走了：死了。</p>
-<p>仲米：婴儿吃用的东西。</p>
-<p>老师儿：师傅。</p>
-<p>抠挤：吝啬。</p>
-<p>泼辣：开放。</p>
-<p>泼泼辣辣：健健康康。</p>
-<p>悠：扇、打。</p>
-<p>哈：轻呼。</p>
-<p>摔轱辘子：摔倒。</p>
-<p>喳喳：吵叫。</p>
-<p>该这个劲儿：该这个样子。</p>
-<p>附路：柏油外的土路。</p>
-<p>照：瞄看。</p>
-<p>摽：较劲。</p>
-<p>搂台：拥护捧场。</p>
-<p>瓤子：皮里面的芯。</p>
-<p>情：只管、尽管。</p>
-<p>老好好：老好人。</p>
-<p>镇压：枪毙。</p>
-<p>兴：狂傲。</p>
-<p>不如是：不如意。</p>
-<p>拉拉呱：聊天。</p>
-<p>眼角食：斜眼看着你吃。</p>
-<p>堆：堆放。托放：发放。</p>
-<p>不胜人：不如人。</p>
-<p>谷堆：蹲。</p>
-<p>拉拉呱：闲聊。</p>
-<p>不经心：不吸取教训。</p>
-<p>丧数：祭奠用品。</p>
-<p>该：欠。</p>
-<h2 id="选几个典型的豫东方言的词汇"><a href="#选几个典型的豫东方言的词汇" class="headerlink" title="选几个典型的豫东方言的词汇"></a>选几个典型的豫东方言的词汇</h2><p><strong>硌硬（胳应）</strong></p>
-<p>意思是说心里不舒服。写做前面的硌硬，让人想到童话里公主睡床上的那棵蚕豆，或者人体中暗种的各种“结石”，隐隐不爽。这词在河南话里好象都通用，加了括号里的，我改做胳支的胳，是因为在豫东方言里，是读作一声的，听起来有点象猫抓得不安稳。</p>
-<p>例句：你别给我说普通话，我听着光胳应。（嘻嘻，这是同学宋小玉打电话给我的通牒，说家乡话）</p>
-<p><strong>枯楚</strong></p>
-<p>其实对应的就是普通话的皱纹。那个枯字，我想大致是不错的，人老了，都会风干了去。那个发chu音，写做哪个，看起来都有点不象原配，没办法了。豫东方言在发这个音时，语音是重音向下后坠的，让人想起那些折皱都是一堆提不起的岁月年轮。</p>
-<p>例句：满脸枯楚。。。</p>
-<p><strong>抢亮(强梁、强粮)</strong></p>
-<p>是说某些人的行为特征，干嘛都爱争个先，稍具贬意，是那种有点自私霸道的不管不顾。我写做抢亮，是有感豫东的火神阏伯台，为黄帝子孙最早保存火种，在中国文明史发展的意义。有可能吗？算我瞎想罢。括号里的强梁，大家都知道，稍早些的强盗山贼叫这个。以前都农业社会，我疑心强梁也许从抢粮化过来的。</p>
-<p>例句：这人干啥都抢亮。</p>
-<p><strong>会过</strong></p>
-<p>意思是说会过日子，精打细算那种。这个词，就是典型的河南方言的尽在不言中的省略。很奇怪，河南话中没有那种叠字多语音的形容词，都是干撅撅的土坷拉（土疙瘩）味。想起来，小时候看街上的女人吵架，也是“你咋咋啦，我咋咋拉”然后加上一些祖宗八代的问候。</p>
-<p>例句：这人可会过啦。</p>
-<p><strong>乱</strong></p>
-<p>这个字在豫东方言里，很有意思。它除却通常意义上说的混乱的状态。一般还做动词用，有“玩闹”、“逗趣”的意思。这个字也是极具河南话特色的简省，一个字把玩闹过程后面可能的严重后果都一字道出。</p>
-<p>例句：你别给他乱！</p>
-<p><strong>逞脸</strong></p>
-<p>经常是大人训小孩的话，调皮捣蛋。细究起来，同齐鲁大地（我听山东的朋友也说过）原来的文明教化有关，那就是大人都是端着的，崩着的，小孩子逞脸的犯上作乱，是在公共场合的出位。</p>
-<p>例句：越有人越逞脸，看你能哩。（那个能，也是简化语意的，能干、本事）</p>
-<p><strong>肉</strong></p>
-<p>是指人做事慢，性子绵。河南话很多这种单字的形容词，纳闷。</p>
-<p>例句：不招人待见（喜欢），忒肉啦！</p>
-<p><strong>沾</strong></p>
-<p>同河南话的“中”通用，好象只在豫东一带。有点象古语中的“诺”，OK啦！</p>
-<p>例句：沾不沾？沾（可以译作这事中不中或者行不行，回答时也就一个字，沾、中、行）</p>
-<p><strong>咕叽guji</strong></p>
-<p>这个词很意思，翻成普通话，也就是蹲，现在也很少人说了。这个词我不知怎么写，写成这个词，是觉得这个词说得过程的动感，少有河南话翻成普通话多了一个字。</p>
-<p>例句：你咕叽那儿！</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1817,7 +1678,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1825,7 +1686,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1834,7 +1695,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1898,7 +1759,7 @@
 <div class="copyright" >
   
   &copy;  2011 - 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
