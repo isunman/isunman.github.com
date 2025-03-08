@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://isunman.com/"/>
-  <updated>2025-03-08T21:05:31.528Z</updated>
+  <updated>2025-03-08T21:11:46.231Z</updated>
   <id>http://isunman.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://isunman.com/2025/03/09/blog-by-hexo-github-step4-lastupdate/"/>
     <id>http://isunman.com/2025/03/09/blog-by-hexo-github-step4-lastupdate/</id>
     <published>2025-03-08T21:20:00.000Z</published>
-    <updated>2025-03-08T21:05:31.528Z</updated>
+    <updated>2025-03-08T21:11:46.231Z</updated>
     
     <content type="html">&lt;p&gt;用Hexo和Github搭建博客（4）：近几年更新汇总&lt;/p&gt;
 &lt;h3 id=&quot;一、nodejs新版本&quot;&gt;&lt;a href=&quot;#一、nodejs新版本&quot; class=&quot;headerlink&quot; title=&quot;一、nodejs新版本&quot;&gt;&lt;/a&gt;一、nodejs新版本&lt;/h3&gt;&lt;p&gt;已经重新安装&lt;/p&gt;
@@ -68,7 +68,7 @@
 &lt;p&gt;用户可手动修改默认分支名称，但需同步更新 CI/CD 等依赖分支名的配置813。&lt;/p&gt;
 &lt;p&gt;其他平台：&lt;br&gt;GitLab 等平台也支持类似调整，但具体实现可能略有差异。&lt;/p&gt;
 &lt;h5 id=&quot;6、总结&quot;&gt;&lt;a href=&quot;#6、总结&quot; class=&quot;headerlink&quot; title=&quot;6、总结&quot;&gt;&lt;/a&gt;6、总结&lt;/h5&gt;&lt;p&gt;若需统一分支命名或启动新项目，推荐使用 main 以符合现代实践。对于既有项目，可根据团队需求决定是否调整&lt;/p&gt;
-&lt;h4 id=&quot;四、更新博客源文件source的错误&quot;&gt;&lt;a href=&quot;#四、更新博客源文件source的错误&quot; class=&quot;headerlink&quot; title=&quot;四、更新博客源文件source的错误&quot;&gt;&lt;/a&gt;四、更新博客源文件source的错误&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;git push -u origin master`
+&lt;h4 id=&quot;四、更新博客源文件source的错误&quot;&gt;&lt;a href=&quot;#四、更新博客源文件source的错误&quot; class=&quot;headerlink&quot; title=&quot;四、更新博客源文件source的错误&quot;&gt;&lt;/a&gt;四、更新博客源文件source的错误&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行后提示&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;fatal: unable to access
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;&amp;#39;https://github.com/xxx/aaaa.git/&amp;#39;: Empty reply from server&lt;/code&gt;，这通常表示 网络通信异常 或 Git 服务器未响应。以下是分步排查和解决方案：&lt;/p&gt;
