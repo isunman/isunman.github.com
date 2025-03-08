@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,wamp," />
+  <meta name="keywords" content="Hexo,github," />
 
 
 
@@ -59,34 +59,40 @@
 
 
 
-<meta name="description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
+<meta name="description" content="用Hexo和Github搭建博客（4）：近几年更新汇总
+一、nodejs新版本已经重新安装
+原来版本：node-v5.7.0-x64
+新安装版本：node-v12.22.12-x86
+因为是在Win7系统中，所以还不能安装更加新的版本；否则，可能运行不了。
+安装后重新配置node与npm的关键目录，与设置环境变量。
+二、Hexo的远程部署问题：
+
+hexo d的错误remote: Invalid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Win下php5.6的curl模块无效">
-<meta property="og:url" content="http://isunman.com/2016/04/12/win-the-curl-module-invalid-under-php56/index.html">
+<meta property="og:title" content="用Hexo和Github搭建博客（4）：近几年更新汇总">
+<meta property="og:url" content="http://isunman.com/2025/03/09/blog-by-hexo-github-step4-lastupdate/index.html">
 <meta property="og:site_name" content="太阳侠">
-<meta property="og:description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
-<meta property="og:updated_time" content="2020-05-10T11:20:08.047Z">
+<meta property="og:description" content="用Hexo和Github搭建博客（4）：近几年更新汇总
+一、nodejs新版本已经重新安装
+原来版本：node-v5.7.0-x64
+新安装版本：node-v12.22.12-x86
+因为是在Win7系统中，所以还不能安装更加新的版本；否则，可能运行不了。
+安装后重新配置node与npm的关键目录，与设置环境变量。
+二、Hexo的远程部署问题：
+
+hexo d的错误remote: Invalid">
+<meta property="og:updated_time" content="2025-03-08T21:05:31.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Win下php5.6的curl模块无效">
-<meta name="twitter:description" content="表现：1、在调用 curl_init 函数时，提示错误
-Fatal error: Call to undefined function curl_init() in ……
-2、在 phpinfo 页不显示 curl 模块信息。
-前提：在 php.ini 配置文件中已经启用了：
-;extension=php_curl.dll
-去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。
-解">
+<meta name="twitter:title" content="用Hexo和Github搭建博客（4）：近几年更新汇总">
+<meta name="twitter:description" content="用Hexo和Github搭建博客（4）：近几年更新汇总
+一、nodejs新版本已经重新安装
+原来版本：node-v5.7.0-x64
+新安装版本：node-v12.22.12-x86
+因为是在Win7系统中，所以还不能安装更加新的版本；否则，可能运行不了。
+安装后重新配置node与npm的关键目录，与设置环境变量。
+二、Hexo的远程部署问题：
+
+hexo d的错误remote: Invalid">
 
 
 
@@ -104,7 +110,7 @@ Fatal error: Call to undefined function curl_init() in ……
   };
 </script>
 
-  <title> Win下php5.6的curl模块无效 | 太阳侠 </title>
+  <title> 用Hexo和Github搭建博客（4）：近几年更新汇总 | 太阳侠 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +260,7 @@ Fatal error: Call to undefined function curl_init() in ……
             
             
               
-                Win下php5.6的curl模块无效
+                用Hexo和Github搭建博客（4）：近几年更新汇总
               
             
           </h1>
@@ -266,8 +272,8 @@ Fatal error: Call to undefined function curl_init() in ……
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T12:03:00+08:00" content="2016-04-12">
-              2016-04-12
+            <time itemprop="dateCreated" datetime="2025-03-09T05:20:00+08:00" content="2025-03-09">
+              2025-03-09
             </time>
           </span>
 
@@ -311,21 +317,80 @@ Fatal error: Call to undefined function curl_init() in ……
       
 
       
-        <p>表现：<br>1、在调用 curl_init 函数时，提示错误</p>
-<pre><code>Fatal error: Call to undefined function curl_init() in ……
-</code></pre><p>2、在 phpinfo 页不显示 curl 模块信息。</p>
-<p>前提：<br>在 php.ini 配置文件中已经启用了：</p>
-<pre><code>;extension=php_curl.dll
-</code></pre><p>去掉了前面的分号，而且在ext目录下存在php_curl.dll文件。</p>
-<p>解决方案：</p>
-<p>官方说明文档中的 <a href="http://php.net/manual/zh/curl.installation.php" target="_blank" rel="external">http://php.net/manual/zh/curl.installation.php</a></p>
-<p><strong>Note: Win32用户注意<br>要在Windows环境下使用这个模块，libeay32.dll和ssleay32.dll必须放到PATH环境变量包含的目录下。 不用cURL网站上的libcurl.dll。</strong></p>
+        <p>用Hexo和Github搭建博客（4）：近几年更新汇总</p>
+<h3 id="一、nodejs新版本"><a href="#一、nodejs新版本" class="headerlink" title="一、nodejs新版本"></a>一、nodejs新版本</h3><p>已经重新安装</p>
+<p>原来版本：node-v5.7.0-x64</p>
+<p>新安装版本：node-v12.22.12-x86</p>
+<p>因为是在Win7系统中，所以还不能安装更加新的版本；否则，可能运行不了。</p>
+<p>安装后重新配置node与npm的关键目录，与设置环境变量。</p>
+<h3 id="二、Hexo的远程部署"><a href="#二、Hexo的远程部署" class="headerlink" title="二、Hexo的远程部署"></a>二、Hexo的远程部署</h3><p>问题：</p>
 <blockquote>
-<p>I had to also also copy libssh2.dll into my Apache24 folder for this to &gt; work with my PHP 5.6.2 installation. So altogether I had to do the &gt; following:</p>
-<p>Move to Windows\system32 folder:<br>libssh2.dll, php_curl.dll, ssleay32.dll, libeay32.dll</p>
-<p>Move to Apache24\bin folder<br>libssh2.dll</p>
-<p>Uncomment extension=php_curl.dll</p>
+<p>hexo d的错误remote: Invalid username or password.<br>fatal: Authentication failed for</p>
 </blockquote>
+<p>修改Hexo 根目录下的_config.yml文件</p>
+<p>在文件的最后，代码修改为：</p>
+<pre><code>deploy:
+
+    type: git
+
+    repo: git@github.com:isunman/isunman.github.com.git 
+
+    branch: master
+</code></pre><p>主要改动是repo这一行。</p>
+<h5 id="HTTPS-切换为-SSH-协议"><a href="#HTTPS-切换为-SSH-协议" class="headerlink" title="HTTPS 切换为 SSH 协议"></a>HTTPS 切换为 SSH 协议</h5><p>既能解决HTTPS访问网络不稳定的问题，也能解决认证容易因密码变更或 2FA 导致失败等问题。</p>
+<p>关于SSH怎么使用，SSH keys怎么生成等问题可以查看官方说明：<br><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank" rel="external">https://docs.github.com/en/authentication/connecting-to-github-with-ssh</a></p>
+<p>已亲测可用。</p>
+<h3 id="三、GitHub的分支master与main区别"><a href="#三、GitHub的分支master与main区别" class="headerlink" title="三、GitHub的分支master与main区别"></a>三、GitHub的分支master与main区别</h3><p>GitHub 中的 master 和 main 分支本质上是同一概念的不同命名，主要区别源于命名习惯的调整和包容性考量。以下是两者的核心差异和关联：</p>
+<h5 id="1、名称差异与历史背景"><a href="#1、名称差异与历史背景" class="headerlink" title="1、名称差异与历史背景"></a>1、名称差异与历史背景</h5><p>master：<br>这是 Git 早期默认的主分支名称，广泛用于旧项目中。其名称源自版本控制系统的传统术语，但因其与奴隶制（”master-slave”）的潜在关联，逐渐被认为不够包容。</p>
+<p>main：<br>自 2020 年 10 月起，GitHub 将新仓库的默认主分支名称改为 main，以推动更具包容性的术语。其他平台（如 GitLab）也逐步采用这一变更。</p>
+<h5 id="2、功能与用途"><a href="#2、功能与用途" class="headerlink" title="2、功能与用途"></a>2、功能与用途</h5><p>功能一致性：<br>无论是 master 还是 main，其功能完全相同，均为项目的主分支，用于存放经过测试的稳定代码，并作为其他开发分支（如 develop、feature）的合并目标。</p>
+<p>使用场景：</p>
+<p>master：常见于旧项目或未主动更名的仓库。</p>
+<p>main：新项目的默认选择，尤其适用于注重包容性的团队或组织。</p>
+<h5 id="3、底层原理"><a href="#3、底层原理" class="headerlink" title="3、底层原理"></a>3、底层原理</h5><p>分支本质：<br>在 Git 中，分支仅是指向某个提交的指针，名称变更不影响其底层逻辑。无论是 master 还是 main，均通过相同机制管理代码提交、合并与推送514。</p>
+<p>默认分支配置：</p>
+<p>Git 允许通过 .git/config 或命令（如 git symbolic-ref）自定义默认分支名称。</p>
+<p>GitHub 提供仓库设置界面，支持修改默认分支。</p>
+<h5 id="4、操作差异"><a href="#4、操作差异" class="headerlink" title="4、操作差异"></a>4、操作差异</h5><p>重命名分支：<br>若需将旧项目的 master 改为 main，可执行以下步骤：</p>
+<p>切换到本地 master：git checkout master</p>
+<p>重命名分支：git branch -m main</p>
+<p>推送新分支：git push -u origin main</p>
+<p>删除远程旧分支（可选）：git push origin –delete master</p>
+<p>在 GitHub 仓库设置中更新默认分支513。</p>
+<p>兼容性注意：<br>若协作项目仍使用 master，需确保本地与远程分支名称一致，避免推送冲突。</p>
+<h5 id="5、社区与平台支持"><a href="#5、社区与平台支持" class="headerlink" title="5、社区与平台支持"></a>5、社区与平台支持</h5><p>GitHub 的默认规则：</p>
+<p>2020 年 10 月后创建的仓库默认使用 main，旧仓库不受影响。</p>
+<p>用户可手动修改默认分支名称，但需同步更新 CI/CD 等依赖分支名的配置813。</p>
+<p>其他平台：<br>GitLab 等平台也支持类似调整，但具体实现可能略有差异。</p>
+<h5 id="6、总结"><a href="#6、总结" class="headerlink" title="6、总结"></a>6、总结</h5><p>若需统一分支命名或启动新项目，推荐使用 main 以符合现代实践。对于既有项目，可根据团队需求决定是否调整</p>
+<h4 id="四、更新博客源文件source的错误"><a href="#四、更新博客源文件source的错误" class="headerlink" title="四、更新博客源文件source的错误"></a>四、更新博客源文件source的错误</h4><pre><code>git push -u origin master`
+</code></pre><p>执行后提示</p>
+<pre><code>fatal: unable to access
+</code></pre><p><code>&#39;https://github.com/xxx/aaaa.git/&#39;: Empty reply from server</code>，这通常表示 网络通信异常 或 Git 服务器未响应。以下是分步排查和解决方案：</p>
+<h5 id="1、检查网络连通性"><a href="#1、检查网络连通性" class="headerlink" title="1、检查网络连通性"></a>1、检查网络连通性</h5><p>测试 GitHub 访问：若返回 HTTP/2 200，说明网络正常；若超时或无响应，可能是网络被阻断。</p>
+<p>排查代理或防火墙：如果使用代理，确保 Git 配置了正确的代理；临时关闭 VPN 或防火墙测试。</p>
+<h5 id="2、验证仓库-URL-是否正确"><a href="#2、验证仓库-URL-是否正确" class="headerlink" title="2、验证仓库 URL 是否正确"></a>2、验证仓库 URL 是否正确</h5><p>检查远程仓库地址是否存在拼写错误；若 URL 错误，修正后重试。</p>
+<h5 id="3、尝试切换协议（HTTPS-—-gt-SSH）"><a href="#3、尝试切换协议（HTTPS-—-gt-SSH）" class="headerlink" title="3、尝试切换协议（HTTPS —-&gt; SSH）"></a>3、尝试切换协议（HTTPS —-&gt; SSH）</h5><p>改用 SSH 协议（避免 HTTPS 端口或代理问题）：</p>
+<pre><code>git remote set-url origin git@github.com:用户名/仓库名.git
+git push -u origin master
+</code></pre><p>若 SSH 失败，检查密钥配置：</p>
+<pre><code>ssh -T git@github.com  # 验证 SSH 连接
+</code></pre><p>(实际测试时，到这一步成功了）</p>
+<h5 id="4-清除-Git-缓存和凭据"><a href="#4-清除-Git-缓存和凭据" class="headerlink" title="4. 清除 Git 缓存和凭据"></a>4. 清除 Git 缓存和凭据</h5><h5 id="5-检查-GitHub-服务状态"><a href="#5-检查-GitHub-服务状态" class="headerlink" title="5. 检查 GitHub 服务状态"></a>5. 检查 GitHub 服务状态</h5><h5 id="6-调整-Git-配置（临时测试）"><a href="#6-调整-Git-配置（临时测试）" class="headerlink" title="6.  调整 Git 配置（临时测试）"></a>6.  调整 Git 配置（临时测试）</h5><h5 id="7-检查本地-Git-版本"><a href="#7-检查本地-Git-版本" class="headerlink" title="7. 检查本地 Git 版本"></a>7. 检查本地 Git 版本</h5><h5 id="8-检查仓库权限和认证方式"><a href="#8-检查仓库权限和认证方式" class="headerlink" title="8.  检查仓库权限和认证方式"></a>8.  检查仓库权限和认证方式</h5><h5 id="9-使用调试模式定位问题"><a href="#9-使用调试模式定位问题" class="headerlink" title="9. 使用调试模式定位问题"></a>9. 使用调试模式定位问题</h5><h5 id="10、-终极方案：重置远程仓库"><a href="#10、-终极方案：重置远程仓库" class="headerlink" title="10、 终极方案：重置远程仓库"></a>10、 终极方案：重置远程仓库</h5><p>如果仓库可重建，尝试重新初始化并推送：</p>
+<pre><code>rm -rf .git
+git init
+git remote add origin https://github.com/用户名/仓库名.git
+git add .
+git commit -m &quot;Initial commit&quot;
+git push -u origin master
+</code></pre><p>这个方案暂时不用。</p>
+<h4 id="五、以上总结"><a href="#五、以上总结" class="headerlink" title="五、以上总结"></a>五、以上总结</h4><p>用像Hexo做分享创作的问题，需要解决后，可以流畅操作。</p>
+<p>现在已经进入到了AI大模型时代，需要尽快学习，然后思考接入使用，总结表达分享自己的思考结果。</p>
+<p>————————————</p>
+<p>相关文章：</p>
+<p>1、<a href="http://isunman.com/2016/02/25/blog-by-hexo-github-step1/" title="用Hexo和Github搭建博客（1）：安装环境">用Hexo和Github搭建博客（1）：安装环境</a></p>
+<p>2、<a href="http://isunman.com/2016/02/25/blog-by-hexo-github-step2/" title="用Hexo和Github搭建博客（2）：部署到Github">用Hexo和Github搭建博客（2）：部署到Github</a></p>
+<p>3、<a href="http://isunman.com/2016/02/26/blog-by-hexo-github-step3/" title="用Hexo和github搭建博客（3）：Hexo介绍">用Hexo和github搭建博客（3）：Hexo介绍</a></p>
 
       
     </div>
@@ -334,9 +399,9 @@ Fatal error: Call to undefined function curl_init() in ……
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#PHP</a>
+            <a href="/tags/hexo/" rel="tag">#Hexo</a>
           
-            <a href="/tags/wamp/" rel="tag">#wamp</a>
+            <a href="/tags/github/" rel="tag">#github</a>
           
         </div>
       
@@ -345,17 +410,13 @@ Fatal error: Call to undefined function curl_init() in ……
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/12/win7-environment-configuration-vc11/" rel="next" title="Win7 配置VC++11环境">
-                <i class="fa fa-chevron-left"></i> Win7 配置VC++11环境
+              <a href="/2025/03/08/A-few-thoughts-on-AI-and-large-models/" rel="next" title="关于AI与大模型的几点想法">
+                <i class="fa fa-chevron-left"></i> 关于AI与大模型的几点想法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/win7-64bit-php56-apache24-mysql56-installation-environment/" rel="prev" title="win7(64位)php5.6-Apache2.4-mysql5.6环境安装">
-                win7(64位)php5.6-Apache2.4-mysql5.6环境安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -499,7 +560,7 @@ Fatal error: Call to undefined function curl_init() in ……
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、nodejs新版本"><span class="nav-number">1.</span> <span class="nav-text">一、nodejs新版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Hexo的远程部署"><span class="nav-number">2.</span> <span class="nav-text">二、Hexo的远程部署</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTPS-切换为-SSH-协议"><span class="nav-number">2.0.1.</span> <span class="nav-text">HTTPS 切换为 SSH 协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、GitHub的分支master与main区别"><span class="nav-number">3.</span> <span class="nav-text">三、GitHub的分支master与main区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、名称差异与历史背景"><span class="nav-number">3.0.1.</span> <span class="nav-text">1、名称差异与历史背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、功能与用途"><span class="nav-number">3.0.2.</span> <span class="nav-text">2、功能与用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、底层原理"><span class="nav-number">3.0.3.</span> <span class="nav-text">3、底层原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、操作差异"><span class="nav-number">3.0.4.</span> <span class="nav-text">4、操作差异</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、社区与平台支持"><span class="nav-number">3.0.5.</span> <span class="nav-text">5、社区与平台支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、总结"><span class="nav-number">3.0.6.</span> <span class="nav-text">6、总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、更新博客源文件source的错误"><span class="nav-number">3.1.</span> <span class="nav-text">四、更新博客源文件source的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、检查网络连通性"><span class="nav-number">3.1.1.</span> <span class="nav-text">1、检查网络连通性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、验证仓库-URL-是否正确"><span class="nav-number">3.1.2.</span> <span class="nav-text">2、验证仓库 URL 是否正确</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、尝试切换协议（HTTPS-—-gt-SSH）"><span class="nav-number">3.1.3.</span> <span class="nav-text">3、尝试切换协议（HTTPS —-> SSH）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-清除-Git-缓存和凭据"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 清除 Git 缓存和凭据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-检查-GitHub-服务状态"><span class="nav-number">3.1.5.</span> <span class="nav-text">5. 检查 GitHub 服务状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-调整-Git-配置（临时测试）"><span class="nav-number">3.1.6.</span> <span class="nav-text">6.  调整 Git 配置（临时测试）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-检查本地-Git-版本"><span class="nav-number">3.1.7.</span> <span class="nav-text">7. 检查本地 Git 版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-检查仓库权限和认证方式"><span class="nav-number">3.1.8.</span> <span class="nav-text">8.  检查仓库权限和认证方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-使用调试模式定位问题"><span class="nav-number">3.1.9.</span> <span class="nav-text">9. 使用调试模式定位问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10、-终极方案：重置远程仓库"><span class="nav-number">3.1.10.</span> <span class="nav-text">10、 终极方案：重置远程仓库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、以上总结"><span class="nav-number">3.2.</span> <span class="nav-text">五、以上总结</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

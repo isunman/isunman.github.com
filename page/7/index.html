@@ -244,6 +244,177 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/17/centos6.5-build-lnmp/" itemprop="url">
+                  CentOS6.5搭建LNMP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T19:27:00+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>CentOS6.5搭建LNMP  </p>
+<h3 id="1：查看环境："><a href="#1：查看环境：" class="headerlink" title="1：查看环境："></a>1：查看环境：</h3><pre><code>[root@10-4-14-168 html]# cat /etc/redhat-release
+CentOS release 6.5 (Final)
+</code></pre><h3 id="2：关掉防火墙"><a href="#2：关掉防火墙" class="headerlink" title="2：关掉防火墙"></a>2：关掉防火墙</h3><pre><code>[root@10-4-14-168 html]# chkconfig iptables off
+</code></pre><h3 id="3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）"><a href="#3：配置CentOS-6-0-第三方yum源（CentOS默认的标准源里没有nginx软件包）" class="headerlink" title="3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）"></a>3：配置CentOS 6.0 第三方yum源（CentOS默认的标准源里没有nginx软件包）</h3><pre><code>#wget http://www.atomicorp.com/installers/atomic
+#sh ./atomic
+#yum check-update
+</code></pre><h3 id="4：安装开发包和库文件"><a href="#4：安装开发包和库文件" class="headerlink" title="4：安装开发包和库文件　"></a>4：安装开发包和库文件　</h3><pre><code>#yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng
+libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel
+gcc gcc-c++ libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2
+libxml2-devel imake autoconf automake screen sysstat compat-libstdc++-33 curl curl-devel
+</code></pre><h3 id="5：卸载已安装的apache、mysql、php"><a href="#5：卸载已安装的apache、mysql、php" class="headerlink" title="5：卸载已安装的apache、mysql、php"></a>5：卸载已安装的apache、mysql、php</h3><pre><code># yum remove httpd
+# yum remove mysql
+# yum remove php
+</code></pre><h3 id="6：安装nginx"><a href="#6：安装nginx" class="headerlink" title="6：安装nginx"></a>6：安装nginx</h3><pre><code># yum install nginx
+# service nginx start
+# chkconfig --levels 235 nginx on
+//设2、3、5级别开机启动
+</code></pre><h3 id="7：安装mysql"><a href="#7：安装mysql" class="headerlink" title="7：安装mysql"></a>7：安装mysql</h3><pre><code># yum install mysql mysql-server mysql-devel
+# service mysqld start
+# chkconfig --levels 235 mysqld on
+</code></pre><p>登陆MySQL删除空用户，修改root密码<br>    mysql&gt;select user,host,password from mysql.user;</p>
+<pre><code>mysql&gt;drop user &apos;&apos;@localhost;
+
+mysql&gt;update mysql.user set password = PASSWORD(&apos;*********&apos;) where user=&apos;root&apos;;
+
+mysql&gt;flush privileges;
+</code></pre><p>　　</p>
+<h3 id="8：安装php"><a href="#8：安装php" class="headerlink" title="8：安装php"></a>8：安装php</h3><pre><code># yum install php lighttpd-fastcgi php-cli php-mysql php-gd php-imap php-ldap
+php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-mssql php-snmp php-soap
+</code></pre><p>//安装php和所需组件使PHP支持MySQL、FastCGI模式</p>
+<pre><code>#yum install  php-tidy php-common php-devel php-fpm php-mysql
+
+# service php-fpm start
+# chkconfig --levels 235 php-fpm on
+</code></pre><h3 id="9：配置nginx支持php"><a href="#9：配置nginx支持php" class="headerlink" title="9：配置nginx支持php"></a>9：配置nginx支持php</h3><pre><code># mv /etc/nginx/nginx.conf /etc/nginx/nginx.confbak
+//将配置文件改为备份文件
+
+# cp /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf
+//由于原配置文件要自己去写因此可以使用默认的配置文件作为配置文件
+
+//修改nginx配置文件，添加fastcgi支持
+# vi /etc/nginx/nginx.conf
+index index.php index.html index.htm;
+//加入index.php
+
+location ~ \.php$ {
+            root           /usr/share/nginx/html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
+            include        fastcgi_params;
+    }
+
+//将以上代码注释去掉，并修改成nginx默认路径
+</code></pre><h3 id="10：配置php"><a href="#10：配置php" class="headerlink" title="10：配置php"></a>10：配置php</h3><p>//编辑文件php.ini，在文件末尾添加cgi.fix_pathinfo = 1<br>    [root@CentOS ~]# vi /etc/php.ini</p>
+<h3 id="11：重启nginx-php-fpm"><a href="#11：重启nginx-php-fpm" class="headerlink" title="11：重启nginx php-fpm"></a>11：重启nginx php-fpm</h3><pre><code># service nginx restart
+# service php-fpm restart
+</code></pre><p>　　</p>
+<h3 id="12：建立info-php文件"><a href="#12：建立info-php文件" class="headerlink" title="12：建立info.php文件"></a>12：建立info.php文件</h3><pre><code># vi /usr/share/nginx/html/info.php
+
+&lt;?php
+   phpinfo();
+?&gt;
+</code></pre><p>　　</p>
+<h3 id="13：测试nginx是否解析php"><a href="#13：测试nginx是否解析php" class="headerlink" title="13：测试nginx是否解析php"></a>13：测试nginx是否解析php</h3><p>本地浏览器输入：</p>
+<pre><code>192.168.1.105/info.php
+</code></pre><p>显示php界面  环境搭建成功
+　　</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/17/php-probability-of-winning-algorithm/" itemprop="url">
                   php中奖概率算法，可用于刮刮卡，大转盘等抽奖算法
                 </a>
@@ -1451,182 +1622,6 @@ print_r($res);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/14/shangqiu-yudong-dialect-words/" itemprop="url">
-                  豫东方言商丘话
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-14T17:03:00+08:00" content="2016-05-14">
-              2016-05-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>豫东方言商丘话</p>
-<h2 id="在俺商丘，-有一种关心叫：你咋咋啦？"><a href="#在俺商丘，-有一种关心叫：你咋咋啦？" class="headerlink" title="在俺商丘， 有一种关心叫：你咋咋啦？"></a>在俺商丘， 有一种关心叫：你咋咋啦？</h2><p>有一种关心叫：你咋咋啦？ </p>
-<p>有一种委屈叫：我咋咋你啦？</p>
-<p>有一种惊讶叫：我类乖乖！</p>
-<p>有一种不耐烦叫：你到底想咋咋吧？</p>
-<p>有一种不甘示弱叫：咋咋！！</p>
-<p>有一种问候叫：这一绷儿咋样儿？</p>
-<p>有一种讨厌叫：你咋嫩不稀罕人哎！</p>
-<p>有一种威胁叫：你给我招捂咯点儿！</p>
-<p>有一种莫名叫：你弄啥家使来？</p>
-<p>有一种舒服叫：得类很！</p>
-<p>有一种失陪叫：先过几啦！</p>
-<p>有一种迷茫叫：zua啦？</p>
-<p>有一种愤怒叫：恼类慌！</p>
-<p>有一种休息叫：歪一会儿！</p>
-<p>有一种直率叫：实诚！</p>
-<p>有一种幼稚叫：跟小孩尚！</p>
-<p>有一种等待叫：先白慌类！</p>
-<p>有一种畏惧叫：吓类合撒！</p>
-<p>有一种不该喝的酒叫：猫尿！</p>
-<h2 id="常见词语"><a href="#常见词语" class="headerlink" title="常见词语"></a>常见词语</h2><p>血虎得====壁虎</p>
-<p>面面呼得===蝙蝠</p>
-<p>马嘎得====喜鹊</p>
-<p>小小虫===麻雀</p>
-<p>扁嘴得—-鸭子</p>
-<p>木伏—–梳子</p>
-<p>马可都得—–蝌蚪</p>
-<p>赖嘟—–蟾蜍</p>
-<p>马扎得—–可以合在一起中间带绳的板凳</p>
-<p>麦了—-蝉的一种</p>
-<p>河马—–青蛙</p>
-<p>屋后——是指家的后边</p>
-<p>鸡鸟得—–蝉</p>
-<p>爬蚱—–幼蝉</p>
-<p>啥家使—什莫东西</p>
-<p>kài蛤蟆—捉青蛙</p>
-<p>莫即了–最后</p>
-<p>裤叉得–短裤</p>
-<p>克朗得-骨头架子</p>
-<p>洋火–火柴</p>
-<p>护弄人、却人–骗人</p>
-<p>决孟得—-感觉</p>
-<p>出不出—-缩水否</p>
-<p>门楼得—-门框</p>
-<p>扑拉蛾得—-飞蛾</p>
-<p>厥得—-木桩</p>
-<p>憋勒慌—-闷</p>
-<p>坷拉—-石块</p>
-<p>秃爪得—-蛐蛐 </p>
-<p>哦（OU）—-牛</p>
-<p>洋车子-自行车 </p>
-<p>洋油–煤油 </p>
-<p>一个半劲–不停的干什么</p>
-<p>装孬–耍无赖 </p>
-<p>佛瞎话–说荒话</p>
-<p>孬种、半扶（熟）—骂人的话</p>
-<p>不惊喜–不聪明（傻的意思）</p>
-<p>前个-前天</p>
-<p>清恼起来–早上</p>
-<p>胡吊乱、跟得乱、跟得砝（FA）-没规矩等</p>
-<p>汗褂查得~~衬衣</p>
-<p>义得~~肥皂</p>
-<p>得劲~~舒服</p>
-<p>梭皮—-头皮削</p>
-<p>sei—-谁</p>
-<p>气刮得—-烟火的一种</p>
-<p>闸皮–土气</p>
-<p>傍灰—灰尘多</p>
-<p>到明儿—以后</p>
-<p>黄晌－－下午</p>
-<p>毛得－－厕所</p>
-<p>夜个－－昨天</p>
-<p>小小得—–小男孩</p>
-<p>膈捞——-角落</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1673,7 +1668,7 @@ print_r($res);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">96</span>
+              <span class="site-state-item-count">97</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
