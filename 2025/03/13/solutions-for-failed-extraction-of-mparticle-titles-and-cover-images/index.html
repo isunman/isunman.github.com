@@ -1,0 +1,969 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="API,HTTP,大模型,爬虫," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="太阳侠" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="原来写的算法【对微信公众号文章的链接直接提取标题与封面图片URL】突然失效了，就在今天2025年03月13日。目前在我们产品中使用的场景还需要继续支持，需要修复。
+第一反应：在我系统中算法未更改的情况下，微信公众号文章的html页面结构有变化，导致原来的正则匹配算法失败了，也可能是微信确实优化了他们的反爬机制算法，例如会通过JavaScript动态加载或验证请求头来限制数据抓取。
+现在AI大模型时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信公众号文章标题与封面图片提取失败的解决方案">
+<meta property="og:url" content="http://isunman.com/2025/03/13/solutions-for-failed-extraction-of-mparticle-titles-and-cover-images/index.html">
+<meta property="og:site_name" content="太阳侠">
+<meta property="og:description" content="原来写的算法【对微信公众号文章的链接直接提取标题与封面图片URL】突然失效了，就在今天2025年03月13日。目前在我们产品中使用的场景还需要继续支持，需要修复。
+第一反应：在我系统中算法未更改的情况下，微信公众号文章的html页面结构有变化，导致原来的正则匹配算法失败了，也可能是微信确实优化了他们的反爬机制算法，例如会通过JavaScript动态加载或验证请求头来限制数据抓取。
+现在AI大模型时">
+<meta property="og:updated_time" content="2025-03-13T08:09:25.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信公众号文章标题与封面图片提取失败的解决方案">
+<meta name="twitter:description" content="原来写的算法【对微信公众号文章的链接直接提取标题与封面图片URL】突然失效了，就在今天2025年03月13日。目前在我们产品中使用的场景还需要继续支持，需要修复。
+第一反应：在我系统中算法未更改的情况下，微信公众号文章的html页面结构有变化，导致原来的正则匹配算法失败了，也可能是微信确实优化了他们的反爬机制算法，例如会通过JavaScript动态加载或验证请求头来限制数据抓取。
+现在AI大模型时">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 微信公众号文章标题与封面图片提取失败的解决方案 | 太阳侠 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?edc09d74f003ef7b14a37137efc44fd4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">太阳侠</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是一颗恒星</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                微信公众号文章标题与封面图片提取失败的解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2025-03-13T16:05:00+08:00" content="2025-03-13">
+              2025-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原来写的算法【对微信公众号文章的链接直接提取标题与封面图片URL】突然失效了，就在今天2025年03月13日。<br>目前在我们产品中使用的场景还需要继续支持，需要修复。</p>
+<p>第一反应：在我系统中算法未更改的情况下，微信公众号文章的html页面结构有变化，导致原来的正则匹配算法失败了，也可能是微信确实优化了他们的<strong>反爬机制算法</strong>，例如会通过JavaScript动态加载或验证请求头来限制数据抓取。</p>
+<p>现在AI大模型时代，直接让Poe与Claude与DeepSeek给出优化建议。</p>
+<p>对比与实测后，DeepSeek给的建议有效可用。</p>
+<h3 id="DeepSeek的建议V1——仅标题"><a href="#DeepSeek的建议V1——仅标题" class="headerlink" title="DeepSeek的建议V1——仅标题"></a>DeepSeek的建议V1——仅标题</h3><p>由于微信公众号的部分公开文章在浏览器未登录时可以直接访问，但实际页面内容会通过 JavaScript动态加载 或 验证请求头 来限制数据抓取。以下是优化后的 PHP代码，通过更精准的请求头模拟和HTML解析策略实现标题提取：</p>
+<h4 id="最终可执行代码（已验证有效）"><a href="#最终可执行代码（已验证有效）" class="headerlink" title="最终可执行代码（已验证有效）"></a>最终可执行代码（已验证有效）</h4><pre><code>&lt;?php
+function extractWechatTitle($url) {
+    $ch = curl_init();
+
+    // 关键：模拟完整浏览器请求头（包含移动端特征）
+    $headers = [
+        &apos;User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1&apos;,
+        &apos;Referer: https://mp.weixin.qq.com/&apos;,
+        &apos;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&apos;,
+        &apos;Accept-Language: zh-CN,zh;q=0.9&apos;,
+        &apos;Cookie: 请替换为实际浏览器Cookie（如需要）&apos;
+    ];
+
+    curl_setopt_array($ch, [
+        CURLOPT_URL =&gt; $url,
+        CURLOPT_RETURNTRANSFER =&gt; true,
+        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_HTTPHEADER =&gt; $headers,
+        CURLOPT_FOLLOWLOCATION =&gt; true,
+        CURLOPT_ENCODING =&gt; &apos;gzip, deflate&apos;  // 处理压缩响应
+    ]);
+
+    $html = curl_exec($ch);
+    curl_close($ch);
+
+    // 调试：保存HTML用于分析
+    // file_put_contents(&apos;debug.html&apos;, $html);
+
+    // 方案一：从JSON-LD结构化数据提取（微信部分文章适用）
+    preg_match(&apos;/&lt;script type=&quot;application\/ld\+json&quot;&gt;(.*?)&lt;\/script&gt;/is&apos;, $html, $jsonMatches);
+    if (!empty($jsonMatches[1])) {
+        $jsonData = json_decode($jsonMatches[1], true);
+        if (isset($jsonData[&apos;name&apos;])) {
+            return html_entity_decode($jsonData[&apos;name&apos;], ENT_QUOTES);
+        }
+    }
+
+    // 方案二：从&lt;meta&gt;标签提取（需处理转义字符）
+    preg_match(&apos;/&lt;meta\s+property=&quot;og:title&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $titleMatches);
+    $title = $titleMatches[1] ?? null;
+
+    // 方案三：从&lt;title&gt;标签提取（兼容性更强）
+    if (empty($title)) {
+        preg_match(&apos;/&lt;title&gt;(.*?)&lt;\/title&gt;/i&apos;, $html, $titleTagMatches);
+        $title = $titleTagMatches[1] ?? &apos;未找到标题&apos;;
+    }
+
+    return html_entity_decode($title, ENT_QUOTES);
+}
+
+// 测试URL
+$url = &apos;https://mp.weixin.qq.com/s/2h_Z_mwRrigGAwmc7yewKg&apos;;
+$title = extractWechatTitle($url);
+echo &quot;提取到的标题：\n&quot; . $title;
+?&gt;
+</code></pre><h4 id="代码关键改进点"><a href="#代码关键改进点" class="headerlink" title="代码关键改进点"></a>代码关键改进点</h4><h5 id="1、请求头深度伪装"><a href="#1、请求头深度伪装" class="headerlink" title="1、请求头深度伪装"></a>1、请求头深度伪装</h5><ul>
+<li>使用 移动端User-Agent（如iPhone Safari）绕过微信的PC端反爬检测</li>
+<li>添加完整的Accept和Accept-Language头模拟真实浏览器环境</li>
+<li>支持Cookie注入（部分文章需要验证登录态）<h5 id="2、多层级标题提取策略"><a href="#2、多层级标题提取策略" class="headerlink" title="2、多层级标题提取策略"></a>2、多层级标题提取策略</h5></li>
+<li>优先解析JSON-LD结构化数据（微信文章可能在此隐藏真实标题）</li>
+<li>备用方案：依次尝试og:title元标签和<title>标签</title></li>
+<li>自动处理HTML实体转义（如&amp;转回&amp;）<h5 id="3、调试辅助"><a href="#3、调试辅助" class="headerlink" title="3、调试辅助"></a>3、调试辅助</h5></li>
+<li>可取消注释file_put_contents保存原始HTML分析页面结构变化</li>
+</ul>
+<h4 id="高频问题解决方案"><a href="#高频问题解决方案" class="headerlink" title="高频问题解决方案"></a>高频问题解决方案</h4><h5 id="1、返回“请在微信客户端打开”"><a href="#1、返回“请在微信客户端打开”" class="headerlink" title="1、返回“请在微信客户端打开”"></a>1、返回“请在微信客户端打开”</h5><ul>
+<li>检查User-Agent是否为移动端格式</li>
+<li>添加随机延迟（如sleep(rand(1,5))）</li>
+</ul>
+<h5 id="2、提取到空白标题"><a href="#2、提取到空白标题" class="headerlink" title="2、提取到空白标题"></a>2、提取到空白标题</h5><ul>
+<li>检查Cookie是否有效（需手动从浏览器复制）</li>
+<li>更新正则表达式匹配规则</li>
+</ul>
+<h5 id="3、请求超时"><a href="#3、请求超时" class="headerlink" title="3、请求超时"></a>3、请求超时</h5><ul>
+<li>设置CURLOPT_TIMEOUT为30秒</li>
+<li>使用代理服务器（配置CURLOPT_PROXY）</li>
+</ul>
+<p>总结：如需进一步优化，可结合 XPath解析器（如DOMDocument）替代正则表达式提升稳定性，或集成 IP代理池 规避访问限制。</p>
+<h3 id="DeepSeek的建议V2——标题-封面图片"><a href="#DeepSeek的建议V2——标题-封面图片" class="headerlink" title="DeepSeek的建议V2——标题+封面图片"></a>DeepSeek的建议V2——标题+封面图片</h3><p>以下是整合标题与封面图提取的 完整PHP代码，基于微信公开文章的页面结构优化，并增加对图片URL的特殊处理（如解码&amp;转义字符）：</p>
+<pre><code>&lt;?php
+function extractWechatInfo($url) {
+    $ch = curl_init();
+
+    // 模拟移动端浏览器请求头（关键）
+    $headers = [
+        &apos;User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1&apos;,
+        &apos;Referer: https://mp.weixin.qq.com/&apos;,
+        &apos;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&apos;,
+        &apos;Accept-Language: zh-CN,zh;q=0.9&apos;,
+        &apos;Accept-Encoding: gzip, deflate, br&apos;
+    ];
+
+    curl_setopt_array($ch, [
+        CURLOPT_URL =&gt; $url,
+        CURLOPT_RETURNTRANSFER =&gt; true,
+        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_HTTPHEADER =&gt; $headers,
+        CURLOPT_FOLLOWLOCATION =&gt; true,
+        CURLOPT_ENCODING =&gt; &apos;gzip, deflate&apos;
+    ]);
+
+    $html = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    // 调试：保存HTML（排查反爬问题）
+    // file_put_contents(&apos;wechat_page.html&apos;, $html);
+
+    $result = [&apos;title&apos; =&gt; &apos;&apos;, &apos;cover&apos; =&gt; &apos;&apos;];
+
+    // 提取标题 ---------------------------------------------------
+    // 方案1：从JSON-LD结构化数据提取
+    preg_match(&apos;/&lt;script type=&quot;application\/ld\+json&quot;&gt;(.*?)&lt;\/script&gt;/is&apos;, $html, $jsonMatches);
+    if (!empty($jsonMatches[1])) {
+        $jsonData = json_decode($jsonMatches[1], true);
+        if (isset($jsonData[&apos;name&apos;])) {
+            $result[&apos;title&apos;] = html_entity_decode($jsonData[&apos;name&apos;], ENT_QUOTES);
+        }
+    }
+
+    // 方案2：从&lt;meta&gt;标签提取
+    if (empty($result[&apos;title&apos;])) {
+        preg_match(&apos;/&lt;meta\s+property=&quot;og:title&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $titleMatches);
+        $result[&apos;title&apos;] = $titleMatches[1] ?? &apos;&apos;;
+    }
+
+    // 方案3：从&lt;title&gt;标签提取
+    if (empty($result[&apos;title&apos;])) {
+        preg_match(&apos;/&lt;title&gt;(.*?)&lt;\/title&gt;/i&apos;, $html, $titleTagMatches);
+        $result[&apos;title&apos;] = $titleTagMatches[1] ?? &apos;标题未找到&apos;;
+    }
+
+    // 提取封面图 -------------------------------------------------
+    // 方案1：从Open Graph协议获取
+    preg_match(&apos;/&lt;meta\s+property=&quot;og:image&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $imageMatches);
+    $coverUrl = $imageMatches[1] ?? &apos;&apos;;
+
+    // 方案2：从JavaScript变量获取（微信特有）
+    if (empty($coverUrl)) {
+        preg_match(&apos;/var msg_cdn_url\s*=\s*[&quot;\&apos;](.*?)[&quot;\&apos;]/i&apos;, $html, $jsMatches);
+        $coverUrl = $jsMatches[1] ?? &apos;&apos;;
+    }
+
+    // 处理微信图片URL转义问题（如 &amp;amp; 转 &amp;）
+    $coverUrl = str_replace([&apos;&amp;amp;&apos;, &apos;\u0026&apos;], &apos;&amp;&apos;, $coverUrl);
+    $result[&apos;cover&apos;] = $coverUrl;
+
+    return $result;
+}
+
+// 使用示例
+$url = &apos;https://mp.weixin.qq.com/s/2h_Z_mwRrigGAwmc7yewKg&apos;;
+$data = extractWechatInfo($url);
+
+echo &quot;文章标题：\n&quot; . $data[&apos;title&apos;] . &quot;\n\n&quot;;
+echo &quot;封面图地址：\n&quot; . ($data[&apos;cover&apos;] ?: &apos;未找到封面图&apos;);
+?&gt;
+</code></pre><h4 id="代码增强特性说明"><a href="#代码增强特性说明" class="headerlink" title="代码增强特性说明"></a>代码增强特性说明</h4><h5 id="封面图双保险提取策略"><a href="#封面图双保险提取策略" class="headerlink" title="封面图双保险提取策略"></a>封面图双保险提取策略</h5><ul>
+<li>第一优先级：解析标准的og:image元标签</li>
+<li>第二优先级：捕获微信特有的msg_cdn_url变量（常用于未登录场景）</li>
+<li>特殊处理：修复微信返回的图片URL中转义字符问题（如&amp;转义符）</li>
+</ul>
+<h5 id="移动端环境模拟"><a href="#移动端环境模拟" class="headerlink" title="移动端环境模拟"></a>移动端环境模拟</h5><ul>
+<li>使用 iOS Safari 的User-Agent绕过PC端反爬检测</li>
+<li>添加完整的Accept-*头模拟真实用户访问</li>
+</ul>
+<h5 id="调试支持"><a href="#调试支持" class="headerlink" title="调试支持"></a>调试支持</h5><ul>
+<li>可取消注释file_put_contents保存原始HTML分析反爬拦截情况</li>
+<li>自动输出HTTP状态码辅助诊断网络问题</li>
+</ul>
+<h4 id="高频问题处理指南"><a href="#高频问题处理指南" class="headerlink" title="高频问题处理指南"></a>高频问题处理指南</h4><h5 id="返回默认微信Logo封面"><a href="#返回默认微信Logo封面" class="headerlink" title="返回默认微信Logo封面"></a>返回默认微信Logo封面</h5><ul>
+<li>检查User-Agent是否为最新移动端版本</li>
+<li>尝试添加有效Cookie（需手动抓取）</li>
+</ul>
+<h5 id="封面图URL无法访问"><a href="#封面图URL无法访问" class="headerlink" title="封面图URL无法访问"></a>封面图URL无法访问</h5><ul>
+<li>在代码中添加URL解码：urldecode($coverUrl)</li>
+</ul>
+<h5 id="HTTP-403-404错误"><a href="#HTTP-403-404错误" class="headerlink" title="HTTP 403/404错误"></a>HTTP 403/404错误</h5><ul>
+<li>使用代理IP</li>
+<li>降低请求频率（如添加sleep(1)）</li>
+</ul>
+<h5 id="提取内容为空"><a href="#提取内容为空" class="headerlink" title="提取内容为空"></a>提取内容为空</h5><ul>
+<li>检查wechat_page.html是否包含“请在微信客户端打开”提示，调整请求头策略</li>
+</ul>
+<p>总结：如需处理 登录态限制，可通过浏览器开发者工具复制登录后的Cookie填入$headers数组（需定期更新）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、对问题：需要更敏感，及时发现问题，及时解决问题。</p>
+<p>同时把不同项目用到相同算法的部分都同同时更新到新的有效的算法。</p>
+<p>2、处理问题时，需要多用AI大模型的支持。</p>
+<p>简单的问题自己想好解决方案后，可以与大模型给到方案对比，选个更好的用；<br>复杂困难的问题，可以让大模型给提供具体的建议。</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/api/" rel="tag">#API</a>
+          
+            <a href="/tags/http/" rel="tag">#HTTP</a>
+          
+            <a href="/tags/大模型/" rel="tag">#大模型</a>
+          
+            <a href="/tags/爬虫/" rel="tag">#爬虫</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2025/03/09/blog-by-hexo-github-step4-lastupdate/" rel="next" title="用Hexo和Github搭建博客（4）：近几年更新汇总">
+                <i class="fa fa-chevron-left"></i> 用Hexo和Github搭建博客（4）：近几年更新汇总
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="isunman" />
+          <p class="site-author-name" itemprop="name">isunman</p>
+          <p class="site-description motion-element" itemprop="description">love IT, love Movie, love Love</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/isunman" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DeepSeek的建议V1——仅标题"><span class="nav-number">1.</span> <span class="nav-text">DeepSeek的建议V1——仅标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最终可执行代码（已验证有效）"><span class="nav-number">1.1.</span> <span class="nav-text">最终可执行代码（已验证有效）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码关键改进点"><span class="nav-number">1.2.</span> <span class="nav-text">代码关键改进点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、请求头深度伪装"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、请求头深度伪装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、多层级标题提取策略"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、多层级标题提取策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、调试辅助"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、调试辅助</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高频问题解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">高频问题解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、返回“请在微信客户端打开”"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、返回“请在微信客户端打开”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、提取到空白标题"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、提取到空白标题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、请求超时"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、请求超时</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeepSeek的建议V2——标题-封面图片"><span class="nav-number">2.</span> <span class="nav-text">DeepSeek的建议V2——标题+封面图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码增强特性说明"><span class="nav-number">2.1.</span> <span class="nav-text">代码增强特性说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#封面图双保险提取策略"><span class="nav-number">2.1.1.</span> <span class="nav-text">封面图双保险提取策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移动端环境模拟"><span class="nav-number">2.1.2.</span> <span class="nav-text">移动端环境模拟</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调试支持"><span class="nav-number">2.1.3.</span> <span class="nav-text">调试支持</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高频问题处理指南"><span class="nav-number">2.2.</span> <span class="nav-text">高频问题处理指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#返回默认微信Logo封面"><span class="nav-number">2.2.1.</span> <span class="nav-text">返回默认微信Logo封面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#封面图URL无法访问"><span class="nav-number">2.2.2.</span> <span class="nav-text">封面图URL无法访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP-403-404错误"><span class="nav-number">2.2.3.</span> <span class="nav-text">HTTP 403/404错误</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提取内容为空"><span class="nav-number">2.2.4.</span> <span class="nav-text">提取内容为空</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">isunman</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="powered-by">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="theme-info">
+<span id="busuanzi_container_site_pv">
+    PV<span id="busuanzi_value_site_pv"></span> --
+</span>
+<span id="busuanzi_container_site_uv">
+  UV<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+  
+
+</body>
+</html>

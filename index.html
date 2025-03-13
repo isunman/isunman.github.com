@@ -244,6 +244,301 @@
             
               
                 
+                <a class="post-title-link" href="/2025/03/13/solutions-for-failed-extraction-of-mparticle-titles-and-cover-images/" itemprop="url">
+                  微信公众号文章标题与封面图片提取失败的解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2025-03-13T16:05:00+08:00" content="2025-03-13">
+              2025-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web构建/" itemprop="url" rel="index">
+                    <span itemprop="name">Web构建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原来写的算法【对微信公众号文章的链接直接提取标题与封面图片URL】突然失效了，就在今天2025年03月13日。<br>目前在我们产品中使用的场景还需要继续支持，需要修复。</p>
+<p>第一反应：在我系统中算法未更改的情况下，微信公众号文章的html页面结构有变化，导致原来的正则匹配算法失败了，也可能是微信确实优化了他们的<strong>反爬机制算法</strong>，例如会通过JavaScript动态加载或验证请求头来限制数据抓取。</p>
+<p>现在AI大模型时代，直接让Poe与Claude与DeepSeek给出优化建议。</p>
+<p>对比与实测后，DeepSeek给的建议有效可用。</p>
+<h3 id="DeepSeek的建议V1——仅标题"><a href="#DeepSeek的建议V1——仅标题" class="headerlink" title="DeepSeek的建议V1——仅标题"></a>DeepSeek的建议V1——仅标题</h3><p>由于微信公众号的部分公开文章在浏览器未登录时可以直接访问，但实际页面内容会通过 JavaScript动态加载 或 验证请求头 来限制数据抓取。以下是优化后的 PHP代码，通过更精准的请求头模拟和HTML解析策略实现标题提取：</p>
+<h4 id="最终可执行代码（已验证有效）"><a href="#最终可执行代码（已验证有效）" class="headerlink" title="最终可执行代码（已验证有效）"></a>最终可执行代码（已验证有效）</h4><pre><code>&lt;?php
+function extractWechatTitle($url) {
+    $ch = curl_init();
+
+    // 关键：模拟完整浏览器请求头（包含移动端特征）
+    $headers = [
+        &apos;User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1&apos;,
+        &apos;Referer: https://mp.weixin.qq.com/&apos;,
+        &apos;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&apos;,
+        &apos;Accept-Language: zh-CN,zh;q=0.9&apos;,
+        &apos;Cookie: 请替换为实际浏览器Cookie（如需要）&apos;
+    ];
+
+    curl_setopt_array($ch, [
+        CURLOPT_URL =&gt; $url,
+        CURLOPT_RETURNTRANSFER =&gt; true,
+        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_HTTPHEADER =&gt; $headers,
+        CURLOPT_FOLLOWLOCATION =&gt; true,
+        CURLOPT_ENCODING =&gt; &apos;gzip, deflate&apos;  // 处理压缩响应
+    ]);
+
+    $html = curl_exec($ch);
+    curl_close($ch);
+
+    // 调试：保存HTML用于分析
+    // file_put_contents(&apos;debug.html&apos;, $html);
+
+    // 方案一：从JSON-LD结构化数据提取（微信部分文章适用）
+    preg_match(&apos;/&lt;script type=&quot;application\/ld\+json&quot;&gt;(.*?)&lt;\/script&gt;/is&apos;, $html, $jsonMatches);
+    if (!empty($jsonMatches[1])) {
+        $jsonData = json_decode($jsonMatches[1], true);
+        if (isset($jsonData[&apos;name&apos;])) {
+            return html_entity_decode($jsonData[&apos;name&apos;], ENT_QUOTES);
+        }
+    }
+
+    // 方案二：从&lt;meta&gt;标签提取（需处理转义字符）
+    preg_match(&apos;/&lt;meta\s+property=&quot;og:title&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $titleMatches);
+    $title = $titleMatches[1] ?? null;
+
+    // 方案三：从&lt;title&gt;标签提取（兼容性更强）
+    if (empty($title)) {
+        preg_match(&apos;/&lt;title&gt;(.*?)&lt;\/title&gt;/i&apos;, $html, $titleTagMatches);
+        $title = $titleTagMatches[1] ?? &apos;未找到标题&apos;;
+    }
+
+    return html_entity_decode($title, ENT_QUOTES);
+}
+
+// 测试URL
+$url = &apos;https://mp.weixin.qq.com/s/2h_Z_mwRrigGAwmc7yewKg&apos;;
+$title = extractWechatTitle($url);
+echo &quot;提取到的标题：\n&quot; . $title;
+?&gt;
+</code></pre><h4 id="代码关键改进点"><a href="#代码关键改进点" class="headerlink" title="代码关键改进点"></a>代码关键改进点</h4><h5 id="1、请求头深度伪装"><a href="#1、请求头深度伪装" class="headerlink" title="1、请求头深度伪装"></a>1、请求头深度伪装</h5><ul>
+<li>使用 移动端User-Agent（如iPhone Safari）绕过微信的PC端反爬检测</li>
+<li>添加完整的Accept和Accept-Language头模拟真实浏览器环境</li>
+<li>支持Cookie注入（部分文章需要验证登录态）<h5 id="2、多层级标题提取策略"><a href="#2、多层级标题提取策略" class="headerlink" title="2、多层级标题提取策略"></a>2、多层级标题提取策略</h5></li>
+<li>优先解析JSON-LD结构化数据（微信文章可能在此隐藏真实标题）</li>
+<li>备用方案：依次尝试og:title元标签和<title>标签</title></li>
+<li>自动处理HTML实体转义（如&amp;转回&amp;）<h5 id="3、调试辅助"><a href="#3、调试辅助" class="headerlink" title="3、调试辅助"></a>3、调试辅助</h5></li>
+<li>可取消注释file_put_contents保存原始HTML分析页面结构变化</li>
+</ul>
+<h4 id="高频问题解决方案"><a href="#高频问题解决方案" class="headerlink" title="高频问题解决方案"></a>高频问题解决方案</h4><h5 id="1、返回“请在微信客户端打开”"><a href="#1、返回“请在微信客户端打开”" class="headerlink" title="1、返回“请在微信客户端打开”"></a>1、返回“请在微信客户端打开”</h5><ul>
+<li>检查User-Agent是否为移动端格式</li>
+<li>添加随机延迟（如sleep(rand(1,5))）</li>
+</ul>
+<h5 id="2、提取到空白标题"><a href="#2、提取到空白标题" class="headerlink" title="2、提取到空白标题"></a>2、提取到空白标题</h5><ul>
+<li>检查Cookie是否有效（需手动从浏览器复制）</li>
+<li>更新正则表达式匹配规则</li>
+</ul>
+<h5 id="3、请求超时"><a href="#3、请求超时" class="headerlink" title="3、请求超时"></a>3、请求超时</h5><ul>
+<li>设置CURLOPT_TIMEOUT为30秒</li>
+<li>使用代理服务器（配置CURLOPT_PROXY）</li>
+</ul>
+<p>总结：如需进一步优化，可结合 XPath解析器（如DOMDocument）替代正则表达式提升稳定性，或集成 IP代理池 规避访问限制。</p>
+<h3 id="DeepSeek的建议V2——标题-封面图片"><a href="#DeepSeek的建议V2——标题-封面图片" class="headerlink" title="DeepSeek的建议V2——标题+封面图片"></a>DeepSeek的建议V2——标题+封面图片</h3><p>以下是整合标题与封面图提取的 完整PHP代码，基于微信公开文章的页面结构优化，并增加对图片URL的特殊处理（如解码&amp;转义字符）：</p>
+<pre><code>&lt;?php
+function extractWechatInfo($url) {
+    $ch = curl_init();
+
+    // 模拟移动端浏览器请求头（关键）
+    $headers = [
+        &apos;User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1&apos;,
+        &apos;Referer: https://mp.weixin.qq.com/&apos;,
+        &apos;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&apos;,
+        &apos;Accept-Language: zh-CN,zh;q=0.9&apos;,
+        &apos;Accept-Encoding: gzip, deflate, br&apos;
+    ];
+
+    curl_setopt_array($ch, [
+        CURLOPT_URL =&gt; $url,
+        CURLOPT_RETURNTRANSFER =&gt; true,
+        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_HTTPHEADER =&gt; $headers,
+        CURLOPT_FOLLOWLOCATION =&gt; true,
+        CURLOPT_ENCODING =&gt; &apos;gzip, deflate&apos;
+    ]);
+
+    $html = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    // 调试：保存HTML（排查反爬问题）
+    // file_put_contents(&apos;wechat_page.html&apos;, $html);
+
+    $result = [&apos;title&apos; =&gt; &apos;&apos;, &apos;cover&apos; =&gt; &apos;&apos;];
+
+    // 提取标题 ---------------------------------------------------
+    // 方案1：从JSON-LD结构化数据提取
+    preg_match(&apos;/&lt;script type=&quot;application\/ld\+json&quot;&gt;(.*?)&lt;\/script&gt;/is&apos;, $html, $jsonMatches);
+    if (!empty($jsonMatches[1])) {
+        $jsonData = json_decode($jsonMatches[1], true);
+        if (isset($jsonData[&apos;name&apos;])) {
+            $result[&apos;title&apos;] = html_entity_decode($jsonData[&apos;name&apos;], ENT_QUOTES);
+        }
+    }
+
+    // 方案2：从&lt;meta&gt;标签提取
+    if (empty($result[&apos;title&apos;])) {
+        preg_match(&apos;/&lt;meta\s+property=&quot;og:title&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $titleMatches);
+        $result[&apos;title&apos;] = $titleMatches[1] ?? &apos;&apos;;
+    }
+
+    // 方案3：从&lt;title&gt;标签提取
+    if (empty($result[&apos;title&apos;])) {
+        preg_match(&apos;/&lt;title&gt;(.*?)&lt;\/title&gt;/i&apos;, $html, $titleTagMatches);
+        $result[&apos;title&apos;] = $titleTagMatches[1] ?? &apos;标题未找到&apos;;
+    }
+
+    // 提取封面图 -------------------------------------------------
+    // 方案1：从Open Graph协议获取
+    preg_match(&apos;/&lt;meta\s+property=&quot;og:image&quot;\s+content=&quot;([^&quot;]+)/i&apos;, $html, $imageMatches);
+    $coverUrl = $imageMatches[1] ?? &apos;&apos;;
+
+    // 方案2：从JavaScript变量获取（微信特有）
+    if (empty($coverUrl)) {
+        preg_match(&apos;/var msg_cdn_url\s*=\s*[&quot;\&apos;](.*?)[&quot;\&apos;]/i&apos;, $html, $jsMatches);
+        $coverUrl = $jsMatches[1] ?? &apos;&apos;;
+    }
+
+    // 处理微信图片URL转义问题（如 &amp;amp; 转 &amp;）
+    $coverUrl = str_replace([&apos;&amp;amp;&apos;, &apos;\u0026&apos;], &apos;&amp;&apos;, $coverUrl);
+    $result[&apos;cover&apos;] = $coverUrl;
+
+    return $result;
+}
+
+// 使用示例
+$url = &apos;https://mp.weixin.qq.com/s/2h_Z_mwRrigGAwmc7yewKg&apos;;
+$data = extractWechatInfo($url);
+
+echo &quot;文章标题：\n&quot; . $data[&apos;title&apos;] . &quot;\n\n&quot;;
+echo &quot;封面图地址：\n&quot; . ($data[&apos;cover&apos;] ?: &apos;未找到封面图&apos;);
+?&gt;
+</code></pre><h4 id="代码增强特性说明"><a href="#代码增强特性说明" class="headerlink" title="代码增强特性说明"></a>代码增强特性说明</h4><h5 id="封面图双保险提取策略"><a href="#封面图双保险提取策略" class="headerlink" title="封面图双保险提取策略"></a>封面图双保险提取策略</h5><ul>
+<li>第一优先级：解析标准的og:image元标签</li>
+<li>第二优先级：捕获微信特有的msg_cdn_url变量（常用于未登录场景）</li>
+<li>特殊处理：修复微信返回的图片URL中转义字符问题（如&amp;转义符）</li>
+</ul>
+<h5 id="移动端环境模拟"><a href="#移动端环境模拟" class="headerlink" title="移动端环境模拟"></a>移动端环境模拟</h5><ul>
+<li>使用 iOS Safari 的User-Agent绕过PC端反爬检测</li>
+<li>添加完整的Accept-*头模拟真实用户访问</li>
+</ul>
+<h5 id="调试支持"><a href="#调试支持" class="headerlink" title="调试支持"></a>调试支持</h5><ul>
+<li>可取消注释file_put_contents保存原始HTML分析反爬拦截情况</li>
+<li>自动输出HTTP状态码辅助诊断网络问题</li>
+</ul>
+<h4 id="高频问题处理指南"><a href="#高频问题处理指南" class="headerlink" title="高频问题处理指南"></a>高频问题处理指南</h4><h5 id="返回默认微信Logo封面"><a href="#返回默认微信Logo封面" class="headerlink" title="返回默认微信Logo封面"></a>返回默认微信Logo封面</h5><ul>
+<li>检查User-Agent是否为最新移动端版本</li>
+<li>尝试添加有效Cookie（需手动抓取）</li>
+</ul>
+<h5 id="封面图URL无法访问"><a href="#封面图URL无法访问" class="headerlink" title="封面图URL无法访问"></a>封面图URL无法访问</h5><ul>
+<li>在代码中添加URL解码：urldecode($coverUrl)</li>
+</ul>
+<h5 id="HTTP-403-404错误"><a href="#HTTP-403-404错误" class="headerlink" title="HTTP 403/404错误"></a>HTTP 403/404错误</h5><ul>
+<li>使用代理IP</li>
+<li>降低请求频率（如添加sleep(1)）</li>
+</ul>
+<h5 id="提取内容为空"><a href="#提取内容为空" class="headerlink" title="提取内容为空"></a>提取内容为空</h5><ul>
+<li>检查wechat_page.html是否包含“请在微信客户端打开”提示，调整请求头策略</li>
+</ul>
+<p>总结：如需处理 登录态限制，可通过浏览器开发者工具复制登录后的Cookie填入$headers数组（需定期更新）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、对问题：需要更敏感，及时发现问题，及时解决问题。</p>
+<p>同时把不同项目用到相同算法的部分都同同时更新到新的有效的算法。</p>
+<p>2、处理问题时，需要多用AI大模型的支持。</p>
+<p>简单的问题自己想好解决方案后，可以与大模型给到方案对比，选个更好的用；<br>复杂困难的问题，可以让大模型给提供具体的建议。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2025/03/09/blog-by-hexo-github-step4-lastupdate/" itemprop="url">
                   用Hexo和Github搭建博客（4）：近几年更新汇总
                 </a>
@@ -1822,144 +2117,6 @@ fastcgi_ignore_client_abort on;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2021/08/15/linux-finds-and-move-files/" itemprop="url">
-                  linux查找并移动文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2021-08-15T11:48:00+08:00" content="2021-08-15">
-              2021-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>linux查找并移动文件</p>
-<h3 id="原文参考"><a href="#原文参考" class="headerlink" title="原文参考"></a>原文参考</h3><pre><code>find . -name &apos;10-*.dat&apos; -exec mv {} ../ \;
-</code></pre><p>这里：</p>
-<p>=&gt; -exec mv {} /mnt/mp3 \; - 运行mv命令。</p>
-<p>=&gt; {} - 字符 ‘{}’ 代表find到的所有内容。</p>
-<p>=&gt;../表示当前用户目录的上一级目录</p>
-<p>=&gt; \; - 结束 /bin/mv 命令。</p>
-<h3 id="亲测可用"><a href="#亲测可用" class="headerlink" title="亲测可用"></a>亲测可用</h3><p>移动搜索匹配条件的文件到指定目录</p>
-<p>查找并移动</p>
-<pre><code>find . -name &apos;faverifyimage_*.png&apos; -exec mv {} ../ \;
-</code></pre><p>只查找</p>
-<pre><code>find . -name &apos;faverifyimage_*.png&apos;;
-</code></pre><p>以下命令是：</p>
-<p>移动【当前目录下（不含子目录）】【以faverifyimage_开头的图片文件】到【faverifyimgbk】目录。</p>
-<p>说明：扩展了“不含子目录”这个条件，只操作“当前目录”；同时，继续执行了其他格式的图片文件。</p>
-<pre><code>find . -maxdepth 1 -name &apos;faverifyimage_*.png&apos; -exec mv {} ./faverifyimgbk \;
-find . -maxdepth 1 -name &apos;faverifyimage_*.jpg&apos; -exec mv {} ./faverifyimgbk \;
-find . -maxdepth 1 -name &apos;faverifyimage_*.jpeg&apos; -exec mv {} ./faverifyimgbk \;
-</code></pre><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<p>之后好久没更新。</p>
-<h1 id="因为github在2021年08月13日之后停止了账号密码的登录机制。"><a href="#因为github在2021年08月13日之后停止了账号密码的登录机制。" class="headerlink" title="因为github在2021年08月13日之后停止了账号密码的登录机制。"></a>因为github在2021年08月13日之后停止了账号密码的登录机制。</h1><blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>1005c8acaffa52e5d81b9fff2815f3f1febb6fdc
-　　</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -2006,7 +2163,7 @@ find . -maxdepth 1 -name &apos;faverifyimage_*.jpeg&apos; -exec mv {} ./faverify
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

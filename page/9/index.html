@@ -221,6 +221,173 @@
 
     
     
+      
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/21/sqlserver2000-installation-error-a-general-network-error/" itemprop="url">
+                  安装sqlserver2000出错，一般性网络错误
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T18:32:00+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>安装sqlserver2000出错，一般性网络错误，错误提示如下：</p>
+<pre><code>安装程序配置服务器失败。参考服务器错误日志和C:\windows\sqlstp.log了解更多信息
+正在启动?
+
+Chinese_PRC_CI_AS
+
+-m -Q -T4022 -T3659
+
+正在与服务?
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+driver={sql server};server=zhangxx\MATCHONE;UID=sa;PWD=;database=master
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]一般性网络错误。
+
+[Microsoft][ODBC SQL Server Driver][DBMSLPCN]ConnectionRead (WrapperRead()).
+
+SQL Server 配置?
+
+###############################################################################
+
+13:11:03 Process Exit Code: (-1) 
+13:11:25 安装程序配置服务器失败。参考服务器错误日志和 C:\WINDOWS\sqlstp.log 了解更多信息。
+13:11:25 Action CleanUpInstall:
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service SQLAgent$MATCHONE
+13:11:25 Process Exit Code: (1060) 指定的服务并未以已安装的服务存在。
+
+13:11:25 C:\WINDOWS\TEMP\SqlSetup\Bin\scm.exe  -Silent 1 -Action 4 -Service MSSQL$MATCHONE
+13:11:25 Process Exit Code: (0) 
+13:11:25 StatsGenerate returned: 2
+13:11:25 StatsGenerate (0xc0200006,0x1,0xf000000,0x300,2052,303,0x0,0x1,0,0,0
+13:11:25 StatsGenerate -1,zhang)
+13:11:25 Installation Failed.
+
+SQL SERVER 2000在C:\windows\sqlstp.log中提示错误如下：
+=======================================================
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionRead (WrapperRead()).
+driver={sql server};server=soyo;UID=sa;PWD=;database=master
+[Microsoft][ODBC SQL Server Driver][Shared Memory]一般性网络错误。
+[Microsoft][ODBC SQL Server Driver][Shared Memory]ConnectionR
+=======================================================
+</code></pre><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>把计算机名改为大写，重新启动</strong></p>
+<p>OK  真的解决问题。</p>
+<p>另外提示一下，在安装sqlServer时 安装路径下不能有中文！</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1594,133 +1761,6 @@ extension=php_mysqli.dll
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/life-is-too-short-it-is-what-we-want/" itemprop="url">
-                  Facebook一组火爆漫画：生命太短暂，什么才是我们想要的？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T14:34:00+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活感悟/" itemprop="url" rel="index">
-                    <span itemprop="name">生活感悟</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>人们都在关心事业、追逐成功，但是不管我们取得了怎样的成就，永远都不够，我们总是想要得到更多、更多……慢慢的我们开始思考：什么才是我们想要的，一开始陪伴我们的人在哪里走散了。</p>
-<p>但是，生活就像一个小偷，偷走我们快乐、我们的爱，所以无论如何都别忘了自己，别忘了你爱的人，握紧快乐，抓牢爱人。</p>
-<h3 id="1、尝试逗他人开心，每天至少让三个人因你而微笑。"><a href="#1、尝试逗他人开心，每天至少让三个人因你而微笑。" class="headerlink" title="1、尝试逗他人开心，每天至少让三个人因你而微笑。"></a>1、尝试逗他人开心，每天至少让三个人因你而微笑。</h3><p><img src="https://i.postimg.cc/qBxrjY95/1456205478566426.jpg" alt=""></p>
-<h3 id="2、每天至少安静地坐十分钟。"><a href="#2、每天至少安静地坐十分钟。" class="headerlink" title="2、每天至少安静地坐十分钟。"></a>2、每天至少安静地坐十分钟。</h3><p><img src="https://i.postimg.cc/tThb0m77/1456205482526617.jpg" alt=""></p>
-<h3 id="3、你不需要赢得每一场争论。赞同你不赞同的。"><a href="#3、你不需要赢得每一场争论。赞同你不赞同的。" class="headerlink" title="3、你不需要赢得每一场争论。赞同你不赞同的。"></a>3、你不需要赢得每一场争论。赞同你不赞同的。</h3><p><img src="https://i.postimg.cc/02tsqS5G/1456205487908408.jpg" alt=""></p>
-<h3 id="4、不要把自己看得太重要，其他人不会在乎的。"><a href="#4、不要把自己看得太重要，其他人不会在乎的。" class="headerlink" title="4、不要把自己看得太重要，其他人不会在乎的。"></a>4、不要把自己看得太重要，其他人不会在乎的。</h3><p><img src="https://i.postimg.cc/8zjVkCs2/1456205491546975.jpg" alt=""></p>
-<h3 id="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"><a href="#5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。" class="headerlink" title="5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。"></a>5、别做八卦党，不要把你的宝贵能量用在无聊的八卦绯闻上。</h3><p><img src="https://i.postimg.cc/ht6RXqdf/1456205495400750.jpg" alt=""></p>
-<h3 id="6、在你清醒的时候，你可以梦想更多。"><a href="#6、在你清醒的时候，你可以梦想更多。" class="headerlink" title="6、在你清醒的时候，你可以梦想更多。"></a>6、在你清醒的时候，你可以梦想更多。</h3><p><img src="https://i.postimg.cc/cChNCgRS/1456205500992894.jpg" alt=""></p>
-<h3 id="7、别人怎么看待你，完全与你无关。"><a href="#7、别人怎么看待你，完全与你无关。" class="headerlink" title="7、别人怎么看待你，完全与你无关。"></a>7、别人怎么看待你，完全与你无关。</h3><p><img src="https://i.postimg.cc/Rh4BvQnd/1456205505772668-1.jpg" alt=""></p>
-<h3 id="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"><a href="#8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。" class="headerlink" title="8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。"></a>8、花更多时间跟这样的人在一起：年龄大于70岁、或者小于6岁。</h3><p><img src="https://i.postimg.cc/FsF4qpvs/1456205509874225.jpg" alt=""></p>
-<h3 id="9、生命太短暂，我没时间讨厌你。"><a href="#9、生命太短暂，我没时间讨厌你。" class="headerlink" title="9、生命太短暂，我没时间讨厌你。"></a>9、生命太短暂，我没时间讨厌你。</h3><p><img src="https://i.postimg.cc/FRQtxgGv/1456205526340886.jpg" alt=""></p>
-<h3 id="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"><a href="#10、微笑、大笑、笑哭了……让生活拥有更多欢笑" class="headerlink" title="10、微笑、大笑、笑哭了……让生活拥有更多欢笑"></a>10、微笑、大笑、笑哭了……让生活拥有更多欢笑</h3><p><img src="https://i.postimg.cc/mr9fM6YV/1456205515324739.jpg" alt=""></p>
-<h3 id="11、没有人能决定你的快乐，除了你自己。"><a href="#11、没有人能决定你的快乐，除了你自己。" class="headerlink" title="11、没有人能决定你的快乐，除了你自己。"></a>11、没有人能决定你的快乐，除了你自己。</h3><p><img src="https://i.postimg.cc/2y2PrpYj/1456205563443853.jpg" alt=""></p>
-<h3 id="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"><a href="#12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。" class="headerlink" title="12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。"></a>12、当你病了，你的工作不会在乎的，但你的朋友会，跟朋友们保持联络。</h3><p><img src="https://i.postimg.cc/7YtpRyXm/1456205568257275.jpg" alt=""></p>
-<h3 id="13、每天睡8小时。"><a href="#13、每天睡8小时。" class="headerlink" title="13、每天睡8小时。"></a>13、每天睡8小时。</h3><p><img src="https://i.postimg.cc/sXPkHQ0h/1456205572729404.jpg" alt=""></p>
-<h3 id="14、多喝水（每天至少摄入2升水）。"><a href="#14、多喝水（每天至少摄入2升水）。" class="headerlink" title="14、多喝水（每天至少摄入2升水）。"></a>14、多喝水（每天至少摄入2升水）。</h3><p><img src="https://i.postimg.cc/5yxZh4Zk/1456205576399627.jpg" alt=""></p>
-<h3 id="15、多读书，争取比上个月多读一本书。"><a href="#15、多读书，争取比上个月多读一本书。" class="headerlink" title="15、多读书，争取比上个月多读一本书。"></a>15、多读书，争取比上个月多读一本书。</h3><p><img src="https://i.postimg.cc/zD7mnhhm/1456205581769081.jpg" alt=""></p>
-<h3 id="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"><a href="#16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。" class="headerlink" title="16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。"></a>16、过去的就忘了吧，不要总是提起你的伴侣犯过什么错。</h3><p><img src="https://i.postimg.cc/htJHW35g/1456205585570622.jpg" alt=""></p>
-<h3 id="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"><a href="#17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。" class="headerlink" title="17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。"></a>17、不要把你的生活跟别人比较。你不知道其他人走过什么样的路。</h3><p><img src="https://i.postimg.cc/3Jxs9wjk/1456205589771679.jpg" alt=""></p>
-<h3 id="18、每天慢跑10-30分钟。"><a href="#18、每天慢跑10-30分钟。" class="headerlink" title="18、每天慢跑10-30分钟。"></a>18、每天慢跑10-30分钟。</h3><p><img src="https://i.postimg.cc/bwK4zH7n/1456205594213644.jpg" alt=""></p>
-<h3 id="19、经常给家人打电话。"><a href="#19、经常给家人打电话。" class="headerlink" title="19、经常给家人打电话。"></a>19、经常给家人打电话。</h3><p><img src="https://i.postimg.cc/k5KzDRCp/1456205598893489.jpg" alt=""></p>
-<h3 id="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"><a href="#20、留一些时间给自己，练习冥想、瑜伽和祈祷。" class="headerlink" title="20、留一些时间给自己，练习冥想、瑜伽和祈祷。"></a>20、留一些时间给自己，练习冥想、瑜伽和祈祷。</h3><p><img src="https://i.postimg.cc/ZRmgNYKK/1456205603567533.jpg" alt=""></p>
-<p>以上，可能有点鸡汤了。</p>
-<p>但是有些确实需要去改变，并坚持下去。</p>
-<p>2016/3/20 14:33:26 </p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1767,7 +1807,7 @@ extension=php_mysqli.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
